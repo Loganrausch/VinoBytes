@@ -139,7 +139,7 @@
 		CE6ADF242B925ED600982366 = {
 			isa = PBXGroup;
 			children = (
-				CE6ADF2F2B925ED600982366 /* VinoDecks */,
+				CE6ADF2F2B925ED600982366 /* VinoBytes */,
 				CE6ADF452B925ED700982366 /* VinoDecksTests */,
 				CE6ADF4F2B925ED700982366 /* VinoDecksUITests */,
 				CE6ADF2E2B925ED600982366 /* Products */,
@@ -157,7 +157,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CE6ADF2F2B925ED600982366 /* VinoDecks */ = {
+		CE6ADF2F2B925ED600982366 /* VinoBytes */ = {
 			isa = PBXGroup;
 			children = (
 				CE7F35D82BD57B210055E6DB /* Common */,
@@ -178,7 +178,7 @@
 				CE6ADF342B925ED700982366 /* Assets.xcassets */,
 				CE6ADF362B925ED700982366 /* Preview Content */,
 			);
-			path = VinoDecks;
+			path = VinoBytes;
 			sourceTree = "<group>";
 		};
 		CE6ADF362B925ED700982366 /* Preview Content */ = {
@@ -194,7 +194,8 @@
 			children = (
 				CE6ADF462B925ED700982366 /* VinoDecksTests.swift */,
 			);
-			path = VinoDecksTests;
+			name = VinoDecksTests;
+			path = VinoBytesTests;
 			sourceTree = "<group>";
 		};
 		CE6ADF4F2B925ED700982366 /* VinoDecksUITests */ = {
@@ -203,7 +204,8 @@
 				CE6ADF502B925ED700982366 /* VinoDecksUITests.swift */,
 				CE6ADF522B925ED700982366 /* VinoDecksUITestsLaunchTests.swift */,
 			);
-			path = VinoDecksUITests;
+			name = VinoDecksUITests;
+			path = VinoBytesUITests;
 			sourceTree = "<group>";
 		};
 		CE6ADF612B9269C400982366 /* Frameworks */ = {
@@ -601,7 +603,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"VinoDecks/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"VinoBytes/Preview Content\"";
 				DEVELOPMENT_TEAM = PPKQZNXSX8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -633,7 +635,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"VinoDecks/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"VinoBytes/Preview Content\"";
 				DEVELOPMENT_TEAM = PPKQZNXSX8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
