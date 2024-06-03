@@ -26,7 +26,6 @@ struct PersistenceController {
         
         // Load flashcards from JSON
         loadFlashcardsFromJSON()
-        loadQuizQuestionsFromJSON()
     }
     
     
@@ -91,34 +90,6 @@ struct PersistenceController {
     }
     
     
-    
-    
-    
-    func loadQuizQuestionsFromJSON() {
-        let fetchRequest: NSFetchRequest<QuizQuestion> = QuizQuestion.fetchRequest()
-        let count = (try? container.viewContext.count(for: fetchRequest)) ?? 0
-        guard count == 0 else { return } // Don't load if data already exists
-        
-        guard let url = Bundle.main.url(forResource: "quizzes", withExtension: "json"),
-              let data = try? Data(contentsOf: url) else {
-            fatalError("Failed to load quizzes.json from bundle.")
-        }
-        
-        do {
-            let decoder = JSONDecoder()
-            let quizQuestions = try decoder.decode([QuizQuestionJSON].self, from: data)
-            for question in quizQuestions {
-                let newQuizQuestion = QuizQuestion(context: container.viewContext)
-                newQuizQuestion.questionText = question.questionText
-                newQuizQuestion.answerOptions = question.answerOptions as NSObject
-                newQuizQuestion.correctAnswer = question.correctAnswer
-                newQuizQuestion.region = question.region
-            }
-            try container.viewContext.save()
-        } catch {
-            fatalError("Failed to load quiz questions from JSON: \(error)")
-        }
-    }
     
     static func reviewFlashcard(flashcard: StudyCard, knewAnswer: Bool, context: NSManagedObjectContext) {
         if knewAnswer {

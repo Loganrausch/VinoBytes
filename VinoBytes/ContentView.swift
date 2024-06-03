@@ -29,10 +29,10 @@ struct ContentView: View {
                     Text("Study")
                 }
             
-            QuizMenu()
+            ReferenceMainView()
                 .tabItem {
                     Image(systemName: "pencil.line")
-                    Text("Quizzes")
+                    Text("Reference")
                 }
             
             MyWinesView(wineData: wineData)

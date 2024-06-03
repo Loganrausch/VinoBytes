@@ -24,13 +24,7 @@
 		CE6ADF602B9266D600982366 /* FlashcardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6ADF5F2B9266D600982366 /* FlashcardView.swift */; };
 		CE6ADF632B9269C400982366 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE6ADF622B9269C400982366 /* CoreData.framework */; };
 		CE6F73692B93BE8900770B35 /* WineFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F73682B93BE8900770B35 /* WineFormView.swift */; };
-		CE7879F32BA0B0AD00CB0E97 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7879F22BA0B0AD00CB0E97 /* QuizView.swift */; };
-		CE7879F52BA0B0BC00CB0E97 /* QuizQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7879F42BA0B0BC00CB0E97 /* QuizQuestionView.swift */; };
-		CE7879FB2BA0BE8400CB0E97 /* QuizQuestion+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7879F92BA0BE8400CB0E97 /* QuizQuestion+CoreDataClass.swift */; };
-		CE7879FC2BA0BE8400CB0E97 /* QuizQuestion+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7879FA2BA0BE8400CB0E97 /* QuizQuestion+CoreDataProperties.swift */; };
-		CE7879FE2BA0C12300CB0E97 /* quizzes.json in Resources */ = {isa = PBXBuildFile; fileRef = CE7879FD2BA0C12300CB0E97 /* quizzes.json */; };
 		CE7B36EB2B94DA58006AFFA0 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7B36EA2B94DA58006AFFA0 /* AccountView.swift */; };
-		CE7B36ED2B94EE24006AFFA0 /* QuizMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7B36EC2B94EE24006AFFA0 /* QuizMenu.swift */; };
 		CE7B36EF2B96B6F9006AFFA0 /* WineDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7B36EE2B96B6F9006AFFA0 /* WineDetailView.swift */; };
 		CE7F35D72BD579710055E6DB /* Wine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7F35D62BD579710055E6DB /* Wine.swift */; };
 		CE80C17A2B9F4F29004EF540 /* StudyCardModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE80C1782B9F4F29004EF540 /* StudyCardModel.xcdatamodeld */; };
@@ -38,6 +32,17 @@
 		CE82D2852B98B853002B55F1 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82D2842B98B853002B55F1 /* SearchBar.swift */; };
 		CE82D2872B9A1F91002B55F1 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82D2862B9A1F91002B55F1 /* ImagePicker.swift */; };
 		CE82D2892B9B72CF002B55F1 /* StudyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82D2882B9B72CF002B55F1 /* StudyView.swift */; };
+		CE94AAF12C0D3957004CE8E0 /* ReferenceMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94AAF02C0D3957004CE8E0 /* ReferenceMainView.swift */; };
+		CE94AAF42C0D39DE004CE8E0 /* GrapeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94AAF32C0D39DE004CE8E0 /* GrapeDetailView.swift */; };
+		CE94AAF62C0D421E004CE8E0 /* GrapeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94AAF52C0D421E004CE8E0 /* GrapeListView.swift */; };
+		CE94AAF82C0D444E004CE8E0 /* Grape.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94AAF72C0D444E004CE8E0 /* Grape.swift */; };
+		CE94AAFA2C0D502D004CE8E0 /* GrapeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94AAF92C0D502D004CE8E0 /* GrapeData.swift */; };
+		CE94AAFC2C0E2547004CE8E0 /* RegionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94AAFB2C0E2547004CE8E0 /* RegionListView.swift */; };
+		CE94AAFE2C0E279F004CE8E0 /* RegionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94AAFD2C0E279F004CE8E0 /* RegionData.swift */; };
+		CE94AB002C0E27FC004CE8E0 /* RegionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94AAFF2C0E27FC004CE8E0 /* RegionDetailView.swift */; };
+		CE94AB072C0E3624004CE8E0 /* WineGlossaryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94AB062C0E3624004CE8E0 /* WineGlossaryListView.swift */; };
+		CE94AB0A2C0E3645004CE8E0 /* WineGlossaryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94AB092C0E3645004CE8E0 /* WineGlossaryDetailView.swift */; };
+		CE94AB0C2C0E3675004CE8E0 /* WineGlossaryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94AB0B2C0E3675004CE8E0 /* WineGlossaryData.swift */; };
 		CEA304EA2BA3DDFC00DD010D /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA304E92BA3DDFC00DD010D /* ActivityViewController.swift */; };
 		CECB7A622BACB69200659CB6 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB7A612BACB69200659CB6 /* WelcomeView.swift */; };
 		CECB7A662BACC50600659CB6 /* ContactFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB7A652BACC50600659CB6 /* ContactFormView.swift */; };
@@ -85,13 +90,7 @@
 		CE6ADF5F2B9266D600982366 /* FlashcardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardView.swift; sourceTree = "<group>"; };
 		CE6ADF622B9269C400982366 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		CE6F73682B93BE8900770B35 /* WineFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineFormView.swift; sourceTree = "<group>"; };
-		CE7879F22BA0B0AD00CB0E97 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
-		CE7879F42BA0B0BC00CB0E97 /* QuizQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestionView.swift; sourceTree = "<group>"; };
-		CE7879F92BA0BE8400CB0E97 /* QuizQuestion+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuizQuestion+CoreDataClass.swift"; sourceTree = "<group>"; };
-		CE7879FA2BA0BE8400CB0E97 /* QuizQuestion+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuizQuestion+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		CE7879FD2BA0C12300CB0E97 /* quizzes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = quizzes.json; sourceTree = "<group>"; };
 		CE7B36EA2B94DA58006AFFA0 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
-		CE7B36EC2B94EE24006AFFA0 /* QuizMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizMenu.swift; sourceTree = "<group>"; };
 		CE7B36EE2B96B6F9006AFFA0 /* WineDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineDetailView.swift; sourceTree = "<group>"; };
 		CE7F35D62BD579710055E6DB /* Wine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wine.swift; sourceTree = "<group>"; };
 		CE80C1792B9F4F29004EF540 /* Flashcard Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Flashcard Model.xcdatamodel"; sourceTree = "<group>"; };
@@ -99,6 +98,17 @@
 		CE82D2842B98B853002B55F1 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		CE82D2862B9A1F91002B55F1 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		CE82D2882B9B72CF002B55F1 /* StudyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyView.swift; sourceTree = "<group>"; };
+		CE94AAF02C0D3957004CE8E0 /* ReferenceMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceMainView.swift; sourceTree = "<group>"; };
+		CE94AAF32C0D39DE004CE8E0 /* GrapeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrapeDetailView.swift; sourceTree = "<group>"; };
+		CE94AAF52C0D421E004CE8E0 /* GrapeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrapeListView.swift; sourceTree = "<group>"; };
+		CE94AAF72C0D444E004CE8E0 /* Grape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grape.swift; sourceTree = "<group>"; };
+		CE94AAF92C0D502D004CE8E0 /* GrapeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrapeData.swift; sourceTree = "<group>"; };
+		CE94AAFB2C0E2547004CE8E0 /* RegionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionListView.swift; sourceTree = "<group>"; };
+		CE94AAFD2C0E279F004CE8E0 /* RegionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionData.swift; sourceTree = "<group>"; };
+		CE94AAFF2C0E27FC004CE8E0 /* RegionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionDetailView.swift; sourceTree = "<group>"; };
+		CE94AB062C0E3624004CE8E0 /* WineGlossaryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineGlossaryListView.swift; sourceTree = "<group>"; };
+		CE94AB092C0E3645004CE8E0 /* WineGlossaryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineGlossaryDetailView.swift; sourceTree = "<group>"; };
+		CE94AB0B2C0E3675004CE8E0 /* WineGlossaryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineGlossaryData.swift; sourceTree = "<group>"; };
 		CEA304E92BA3DDFC00DD010D /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		CECB7A612BACB69200659CB6 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		CECB7A652BACC50600659CB6 /* ContactFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactFormView.swift; sourceTree = "<group>"; };
@@ -170,7 +180,7 @@
 				CECB7A652BACC50600659CB6 /* ContactFormView.swift */,
 				CED380DE2BB756A400CAFB29 /* ContentfulManager.swift */,
 				CED0F8BE2B93DE9500508E6E /* BlogPostView.swift */,
-				CE7879F62BA0B13600CB0E97 /* Quizzes */,
+				CE94AAF22C0D3961004CE8E0 /* Reference */,
 				CE7879F72BA0B16200CB0E97 /* My Wines */,
 				CE7879F82BA0B18E00CB0E97 /* Flashcard */,
 				CE80C1782B9F4F29004EF540 /* StudyCardModel.xcdatamodeld */,
@@ -216,19 +226,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		CE7879F62BA0B13600CB0E97 /* Quizzes */ = {
-			isa = PBXGroup;
-			children = (
-				CE7879F22BA0B0AD00CB0E97 /* QuizView.swift */,
-				CE7B36EC2B94EE24006AFFA0 /* QuizMenu.swift */,
-				CE7879F42BA0B0BC00CB0E97 /* QuizQuestionView.swift */,
-				CE7879F92BA0BE8400CB0E97 /* QuizQuestion+CoreDataClass.swift */,
-				CE7879FA2BA0BE8400CB0E97 /* QuizQuestion+CoreDataProperties.swift */,
-				CE7879FD2BA0C12300CB0E97 /* quizzes.json */,
-			);
-			path = Quizzes;
-			sourceTree = "<group>";
-		};
 		CE7879F72BA0B16200CB0E97 /* My Wines */ = {
 			isa = PBXGroup;
 			children = (
@@ -268,8 +265,50 @@
 			isa = PBXGroup;
 			children = (
 				CE7F35D62BD579710055E6DB /* Wine.swift */,
+				CE94AAF72C0D444E004CE8E0 /* Grape.swift */,
 			);
 			path = Struct;
+			sourceTree = "<group>";
+		};
+		CE94AAF22C0D3961004CE8E0 /* Reference */ = {
+			isa = PBXGroup;
+			children = (
+				CE94AAF02C0D3957004CE8E0 /* ReferenceMainView.swift */,
+				CE94AB012C0E2836004CE8E0 /* Grapes */,
+				CE94AB022C0E2855004CE8E0 /* Regions */,
+				CE94AB052C0E35D2004CE8E0 /* Glossary */,
+			);
+			path = Reference;
+			sourceTree = "<group>";
+		};
+		CE94AB012C0E2836004CE8E0 /* Grapes */ = {
+			isa = PBXGroup;
+			children = (
+				CE94AAF92C0D502D004CE8E0 /* GrapeData.swift */,
+				CE94AAF52C0D421E004CE8E0 /* GrapeListView.swift */,
+				CE94AAF32C0D39DE004CE8E0 /* GrapeDetailView.swift */,
+			);
+			path = Grapes;
+			sourceTree = "<group>";
+		};
+		CE94AB022C0E2855004CE8E0 /* Regions */ = {
+			isa = PBXGroup;
+			children = (
+				CE94AAFD2C0E279F004CE8E0 /* RegionData.swift */,
+				CE94AAFB2C0E2547004CE8E0 /* RegionListView.swift */,
+				CE94AAFF2C0E27FC004CE8E0 /* RegionDetailView.swift */,
+			);
+			path = Regions;
+			sourceTree = "<group>";
+		};
+		CE94AB052C0E35D2004CE8E0 /* Glossary */ = {
+			isa = PBXGroup;
+			children = (
+				CE94AB0B2C0E3675004CE8E0 /* WineGlossaryData.swift */,
+				CE94AB062C0E3624004CE8E0 /* WineGlossaryListView.swift */,
+				CE94AB092C0E3645004CE8E0 /* WineGlossaryDetailView.swift */,
+			);
+			path = Glossary;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -387,7 +426,6 @@
 				CE6ADF382B925ED700982366 /* Preview Assets.xcassets in Resources */,
 				CE80C17C2B9F5574004EF540 /* flashcards.json in Resources */,
 				CE6ADF352B925ED700982366 /* Assets.xcassets in Resources */,
-				CE7879FE2BA0C12300CB0E97 /* quizzes.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,34 +451,40 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE82D2852B98B853002B55F1 /* SearchBar.swift in Sources */,
-				CE7879FC2BA0BE8400CB0E97 /* QuizQuestion+CoreDataProperties.swift in Sources */,
+				CE94AAF82C0D444E004CE8E0 /* Grape.swift in Sources */,
 				CED0F8BF2B93DE9500508E6E /* BlogPostView.swift in Sources */,
+				CE94AB002C0E27FC004CE8E0 /* RegionDetailView.swift in Sources */,
 				CED380DF2BB756A400CAFB29 /* ContentfulManager.swift in Sources */,
 				CEA304EA2BA3DDFC00DD010D /* ActivityViewController.swift in Sources */,
-				CE7879FB2BA0BE8400CB0E97 /* QuizQuestion+CoreDataClass.swift in Sources */,
 				CE64D2782B92ED64009BF1B9 /* MyWinesView.swift in Sources */,
+				CE94AAF62C0D421E004CE8E0 /* GrapeListView.swift in Sources */,
 				CE82D2872B9A1F91002B55F1 /* ImagePicker.swift in Sources */,
+				CE94AAFC2C0E2547004CE8E0 /* RegionListView.swift in Sources */,
 				CE1103272BA1F9AD008B0096 /* StudyCard+CoreDataProperties.swift in Sources */,
-				CE7879F52BA0B0BC00CB0E97 /* QuizQuestionView.swift in Sources */,
+				CE94AAFA2C0D502D004CE8E0 /* GrapeData.swift in Sources */,
 				CE2051012B9F98BD0072704E /* FlashcardContent.swift in Sources */,
 				CE82D2892B9B72CF002B55F1 /* StudyView.swift in Sources */,
 				CED380D82BB5E18400CAFB29 /* DashboardView.swift in Sources */,
 				CE1103262BA1F9AD008B0096 /* StudyCard+CoreDataClass.swift in Sources */,
 				CED380DA2BB70E1500CAFB29 /* WineData.swift in Sources */,
 				CE6ADF3D2B925ED700982366 /* VinoDecks.xcdatamodeld in Sources */,
-				CE7B36ED2B94EE24006AFFA0 /* QuizMenu.swift in Sources */,
 				CECB7A662BACC50600659CB6 /* ContactFormView.swift in Sources */,
 				CE7B36EF2B96B6F9006AFFA0 /* WineDetailView.swift in Sources */,
-				CE7879F32BA0B0AD00CB0E97 /* QuizView.swift in Sources */,
 				CE6ADF602B9266D600982366 /* FlashcardView.swift in Sources */,
 				CE80C17A2B9F4F29004EF540 /* StudyCardModel.xcdatamodeld in Sources */,
 				CECB7A622BACB69200659CB6 /* WelcomeView.swift in Sources */,
 				CE7B36EB2B94DA58006AFFA0 /* AccountView.swift in Sources */,
 				CE6ADF3A2B925ED700982366 /* Persistence.swift in Sources */,
 				CE6ADF332B925ED600982366 /* ContentView.swift in Sources */,
+				CE94AAFE2C0E279F004CE8E0 /* RegionData.swift in Sources */,
+				CE94AAF12C0D3957004CE8E0 /* ReferenceMainView.swift in Sources */,
+				CE94AB0A2C0E3645004CE8E0 /* WineGlossaryDetailView.swift in Sources */,
 				CE6ADF312B925ED600982366 /* VinoDecksApp.swift in Sources */,
 				CE7F35D72BD579710055E6DB /* Wine.swift in Sources */,
 				CE6F73692B93BE8900770B35 /* WineFormView.swift in Sources */,
+				CE94AAF42C0D39DE004CE8E0 /* GrapeDetailView.swift in Sources */,
+				CE94AB072C0E3624004CE8E0 /* WineGlossaryListView.swift in Sources */,
+				CE94AB0C2C0E3675004CE8E0 /* WineGlossaryData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

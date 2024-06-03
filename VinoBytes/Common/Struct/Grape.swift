@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+struct Grape: Identifiable {
+    var id = UUID()
+    var name: String
+    var details: String
+    var imageName: String
+    var iconNames: [String]
+}
