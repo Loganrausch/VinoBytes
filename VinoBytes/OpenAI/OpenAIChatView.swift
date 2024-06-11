@@ -5,56 +5,80 @@
 //  Created by Logan Rausch on 6/11/24.
 //
 
-import Foundation
-
 import SwiftUI
 
-// This SwiftUI view provides a simple chat interface for interacting with OpenAI.
 struct OpenAIChatView: View {
-    // Create an instance of OpenAIManager to handle the API communication.
-    @StateObject private var openAIManager = OpenAIManager()
-    // State variable to hold the user's input.
-    @State private var userInput: String = ""
+    @Environment(\.managedObjectContext) private var managedObjectContext
+    @StateObject var openAIManager: OpenAIManager
+    
+    @State private var inputText = ""
+
+    init() {
+        _openAIManager = StateObject(wrappedValue: OpenAIManager(context: PersistenceController.shared.container.viewContext))
+    }
 
     var body: some View {
-        VStack {
-            Text("Ask OpenAI:")
-                .font(.title)
-
-            // Text field for user input.
-            TextField("Enter your question...", text: $userInput)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+        NavigationView {
+            VStack {
+                ScrollView {
+                    ForEach(openAIManager.messages) { message in
+                        MessageView(message: message)
+                    }
+                }
                 .padding()
 
-            // Button to send the user's message to the API.
-            Button(action: {
-                openAIManager.sendMessageToAPI(message: userInput)
-            }) {
-                Text("Send")
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(8)
+                HStack {
+                    TextField("Type your message...", text: $inputText)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding()
+
+                    Button("Send") {
+                        openAIManager.sendMessage(inputText) { _ in
+                            inputText = ""
+                        }
+                    }
+                    .buttonStyle(.borderedProminent)
+                }
+                .padding()
+
+                Button("Clear Chat") {
+                    openAIManager.clearMessages()
+                }
+                .padding()
+                .foregroundColor(.red)
             }
-
-            // Display the response from the API.
-            Text("Response:")
-                .font(.title2)
-                .padding(.top)
-
-            Text(openAIManager.responseMessage)
-                .padding()
-                .background(Color.gray.opacity(0.2))
-                .cornerRadius(8)
-                .padding()
+            .navigationBarTitle("Chat", displayMode: .inline)
         }
-        .padding()
     }
 }
 
-// Preview provider for SwiftUI previews.
+struct MessageView: View {
+    var message: Message
+
+    var body: some View {
+        HStack {
+            if message.role == "user" {
+                Spacer()
+                Text(message.content)
+                    .padding()
+                    .background(Color.blue.opacity(0.2))
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .frame(maxWidth: 300, alignment: .trailing)
+            } else {
+                Text(message.content)
+                    .padding()
+                    .background(Color.green.opacity(0.2))
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .frame(maxWidth: 300, alignment: .leading)
+                Spacer()
+            }
+        }
+        .padding(.horizontal)
+    }
+}
+
 struct OpenAIChatView_Previews: PreviewProvider {
     static var previews: some View {
-        OpenAIChatView()
+        OpenAIChatView().environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
     }
 }
