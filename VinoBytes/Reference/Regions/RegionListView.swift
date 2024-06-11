@@ -6,7 +6,6 @@
 //
 
 import Foundation
-
 import SwiftUI
 
 struct RegionListView: View {
@@ -14,14 +13,21 @@ struct RegionListView: View {
 
     var body: some View {
         List {
-            ForEach(countries, id: \.name) { country in
-                Section(header: Text(country.name)) {
-                    ForEach(country.regions, id: \.name) { region in
-                        NavigationLink(destination: RegionDetailView(region: region)) {
-                            Text(region.name)
+            ForEach(countries.sorted(by: { $0.name < $1.name }), id: \.name) { country in
+                DisclosureGroup(
+                    content: {
+                        ForEach(country.regions.sorted(by: { $0.name < $1.name }), id: \.name) { region in
+                            NavigationLink(destination: RegionDetailView(countryName: country.name, region: region)) {
+                                Text(region.name)
+                            }
                         }
+                    },
+                    label: {
+                        Text(country.name)
+                            .font(.headline)
                     }
-                }
+                )
+                .padding(.vertical, 5)
             }
         }
         .navigationTitle("Regions")

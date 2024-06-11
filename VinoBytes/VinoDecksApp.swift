@@ -32,8 +32,9 @@ struct VinoDecksApp: App {
 }
 
     
+
 struct LaunchScreen: View {
-    @State private var opacity: Double = 0
+    @State private var opacity: Double = 0  // Single opacity variable for both text and image
     @Binding var isShowingLaunchScreen: Bool
 
     var body: some View {
@@ -41,27 +42,33 @@ struct LaunchScreen: View {
             Color(.systemBackground)
                 .edgesIgnoringSafeArea(.all)
 
-            VStack(spacing: 10) {
+            VStack(spacing: 20) {
+                Image("vinobytes_logo_final")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 200, height: 200)
+                    .opacity(opacity)  // Use the same opacity for image and text
+
                 Text("VinoBytes")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .foregroundColor(.primary)
-                    .opacity(opacity)
-                
+                    .opacity(opacity)  // Shared opacity for uniform fade-in
+
                 Text("Wine Education in Small Bites.")
                     .font(.title3)
                     .foregroundColor(.primary)
-                    .opacity(opacity)
+                    .opacity(opacity)  // Shared opacity for uniform fade-in
             }
             .onAppear {
                 withAnimation(Animation.easeIn(duration: 2)) {
-                    self.opacity = 1
+                    self.opacity = 1  // Fade in everything together
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     withAnimation(Animation.easeOut(duration: 1)) {
-                        self.opacity = 0
+                        self.opacity = 0  // Fade out everything together
                     }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         isShowingLaunchScreen = false
                     }
                 }

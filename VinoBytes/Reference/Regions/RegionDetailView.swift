@@ -8,20 +8,22 @@
 import SwiftUI
 
 struct RegionDetailView: View {
+    var countryName: String
     var region: Region
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
+                
                 // Region Image
-                Image(region.imageName)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 200)
-                    .clipped()
-                    .cornerRadius(10)
-                    .padding(.horizontal)
-                    .padding(.top)
+                // Image(region.imageName)
+                //     .resizable()
+                //     .scaledToFit()
+                //     .frame(height: 200)
+                //     .clipped()
+                //     .cornerRadius(10)
+                //     .padding(.horizontal)
+                //     .padding(.top)
 
                 // Region Name
                 Text(region.name)
@@ -91,7 +93,7 @@ struct RegionDetailView: View {
                 }
                 .padding(.top)
             }
-            .navigationTitle(region.name)
+            .navigationTitle(countryName)
             .navigationBarTitleDisplayMode(.inline)
         }
     }
@@ -99,6 +101,6 @@ struct RegionDetailView: View {
 
 struct RegionDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        RegionDetailView(region: Region(name: "Sample Region", details: "Sample details about the region, including its origins, typical flavor profile, and regions where it's grown.", subregions: ["Subregion 1", "Subregion 2"], climate: "Sample climate description.", soil: "Sample soil description.", keyWineStyles: "Sample key wine styles.", imageName: "sample_region", iconNames: ["leaf", "drop"]))
+        RegionDetailView(countryName: "Austria", region: Region(name: "Sample Region", details: "Sample details about the region, including its origins, typical flavor profile, and regions where it's grown.", subregions: ["Subregion 1", "Subregion 2"], climate: "Sample climate description.", soil: "Sample soil description.", keyWineStyles: "Sample key wine styles.", imageName: "sample_region", iconNames: ["leaf", "drop"]))
     }
 }

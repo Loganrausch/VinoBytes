@@ -130,6 +130,15 @@ Spacer(minLength: 20)
                                 
                             }
                             .padding()
+            
+            NavigationLink(destination: OpenAIChatView()) {
+                                Text("Go to OpenAI Chat")
+                                    .font(.title)
+                                    .padding()
+                                    .background(Color.blue)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(10)
+                            }
                         }
                         .navigationBarTitle("Dashboard", displayMode: .large)
                         .onAppear {
