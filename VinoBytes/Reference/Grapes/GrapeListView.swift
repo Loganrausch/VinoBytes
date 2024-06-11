@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct GrapeListView: View {
-    let redGrapes = GrapeData.redGrapes
-    let whiteGrapes = GrapeData.whiteGrapes
+    // Fetch and sort the red and white grapes alphabetically by name
+    let redGrapes = GrapeData.redGrapes.sorted { $0.name < $1.name }
+    let whiteGrapes = GrapeData.whiteGrapes.sorted { $0.name < $1.name }
 
     var body: some View {
         List {
