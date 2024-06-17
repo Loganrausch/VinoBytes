@@ -7,131 +7,142 @@
 
 import Foundation
 import CoreData
-import SwiftUI
-
-struct Message: Identifiable {
-    let id: UUID
-    let role: String
-    let content: String
-    let timestamp: Date
-}
 
 class OpenAIManager: ObservableObject {
-    @Published var messages: [Message] = []
+    @Published var conversations: [Conversation] = []
+    @Published var messages: [ChatMessage] = []  // Add messages to track conversation messages
     private let context: NSManagedObjectContext
-
+    
+    // System message to set context for the assistant
+    private let systemMessage = ["role": "system", "content": "You are a wine expert assistant. Answer all questions with a focus on wine and wine education. Provide detailed information about wine regions, grape varieties, wine tasting notes, and wine production methods."]
+    
     init(context: NSManagedObjectContext) {
         self.context = context
-        loadRecentMessages()
+        loadAllConversations()
     }
 
-    func sendMessage(_ text: String, completion: @escaping (String?) -> Void) {
-        let userMessage = Message(id: UUID(), role: "user", content: text, timestamp: Date())
-        messages.append(userMessage)
-        saveMessage(userMessage)
+    func sendMessage(_ text: String, in conversation: Conversation, completion: @escaping (String?) -> Void) {
+        let userMessage = saveMessage(text, role: "user", in: conversation)
 
+        requestResponse(for: text) { responseText in
+            DispatchQueue.main.async {
+                if let responseText = responseText {
+                    self.saveMessage(responseText, role: "assistant", in: conversation)
+                    self.loadMessages(from: conversation)  // Load messages after sending
+                    completion(responseText)
+                } else {
+                    completion("Failed to get a reply from OpenAI")
+                }
+            }
+        }
+    }
+
+    private func requestResponse(for text: String, completion: @escaping (String?) -> Void) {
         guard let url = URL(string: "https://vinobytes-afe480cea091.herokuapp.com/api/chat") else {
-            print("Invalid URL")
-            completion("Invalid URL")
+            completion(nil)
             return
         }
-
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
 
+        // Include the system message along with the user's message and set max_tokens to 150
         let body: [String: Any] = [
-            "messages": messages.map { ["role": $0.role, "content": $0.content] }
+            "messages": [systemMessage, ["role": "user", "content": text]],
+            "max_tokens": 150
         ]
 
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
         } catch {
-            print("Failed to encode request body: \(error)")
-            completion("Failed to encode request body")
+            completion(nil)
             return
         }
 
         URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
-                print("Error: \(error?.localizedDescription ?? "No data")")
-                completion("Network error: \(error?.localizedDescription ?? "No data")")
+                completion(nil)
                 return
             }
-
-            // Debugging: print the raw response
-            if let rawResponse = String(data: data, encoding: .utf8) {
-                print("Raw response: \(rawResponse)")
-            }
-
-            do {
-                let result = try JSONDecoder().decode(OpenAIResponse.self, from: data)
-                if let reply = result.choices.first?.message.content {
-                    DispatchQueue.main.async {
-                        let assistantMessage = Message(id: UUID(), role: "assistant", content: reply, timestamp: Date())
-                        self.messages.append(assistantMessage)
-                        self.saveMessage(assistantMessage)
-                        completion(reply)
-                    }
-                } else {
-                    print("Failed to get a reply from OpenAI")
-                    completion("Failed to get a reply from OpenAI")
-                }
-            } catch {
-                print("Failed to decode response: \(error)")
-                completion("Failed to decode response")
-            }
+            let result = try? JSONDecoder().decode(OpenAIResponse.self, from: data)
+            completion(result?.choices.first?.message.content)
         }.resume()
     }
 
-    private func saveMessage(_ message: Message) {
-        let newMessage = ChatMessage(context: context)
-        newMessage.id = message.id
-        newMessage.role = message.role
-        newMessage.content = message.content
-        newMessage.timestamp = message.timestamp
-
+    func saveMessage(_ text: String, role: String, in conversation: Conversation) -> ChatMessage {
+        let message = ChatMessage(context: context)
+        message.id = UUID()
+        message.content = text
+        message.role = role
+        message.timestamp = Date()
+        message.conversation = conversation
+        
         do {
             try context.save()
         } catch {
-            print("Failed to save message: \(error)")
+            print("Error saving message: \(error)")
         }
+        return message
     }
 
-    private func loadRecentMessages() {
-        let fetchRequest: NSFetchRequest<ChatMessage> = ChatMessage.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "timestamp", ascending: false)]
-        fetchRequest.fetchLimit = 10
-
+    func startNewConversation() -> Conversation {
+        let conversation = Conversation(context: context)
+        conversation.id = UUID()
+        conversation.startTime = Date()
+        
         do {
-            let chatMessages = try context.fetch(fetchRequest)
-            self.messages = chatMessages.map { Message(id: $0.id ?? UUID(), role: $0.role ?? "", content: $0.content ?? "", timestamp: $0.timestamp ?? Date()) }.reversed()
+            try context.save()
         } catch {
-            print("Failed to load messages: \(error)")
+            print("Error starting a new conversation: \(error)")
+        }
+        loadAllConversations()  // Reload conversations after creating a new one
+        return conversation
+    }
+
+    func loadAllConversations() {
+        let fetchRequest: NSFetchRequest<Conversation> = Conversation.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "startTime", ascending: false)]
+        
+        do {
+            conversations = try context.fetch(fetchRequest)
+        } catch {
+            print("Failed to load conversations: \(error)")
         }
     }
 
-    func loadAllMessages() {
+    func loadMessages(from conversation: Conversation) {
         let fetchRequest: NSFetchRequest<ChatMessage> = ChatMessage.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "conversation == %@", conversation)
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "timestamp", ascending: true)]
-
+        
         do {
-            let chatMessages = try context.fetch(fetchRequest)
-            self.messages = chatMessages.map { Message(id: $0.id ?? UUID(), role: $0.role ?? "", content: $0.content ?? "", timestamp: $0.timestamp ?? Date()) }
+            messages = try context.fetch(fetchRequest)
         } catch {
             print("Failed to load messages: \(error)")
         }
     }
 
-    func clearMessages() {
-        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = ChatMessage.fetchRequest()
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-
+    func endConversation(_ conversation: Conversation) {
+        context.delete(conversation)
         do {
-            try context.execute(deleteRequest)
-            messages.removeAll()
+            try context.save()
         } catch {
-            print("Failed to clear messages: \(error)")
+            print("Failed to delete conversation: \(error)")
+        }
+        loadAllConversations()  // Reload conversations after deletion
+    }
+
+    // New method to delete a conversation
+    func deleteConversation(at offsets: IndexSet) {
+        for index in offsets {
+            let conversation = conversations[index]
+            context.delete(conversation)
+        }
+        do {
+            try context.save()
+            loadAllConversations()  // Reload conversations after deletion
+        } catch {
+            print("Failed to delete conversation: \(error)")
         }
     }
 }

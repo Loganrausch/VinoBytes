@@ -6,7 +6,6 @@
 //
 
 import Foundation
-
 import SwiftUI
 
 struct DashboardView: View {
@@ -17,24 +16,20 @@ struct DashboardView: View {
     @State private var isFlashcardProgressExpanded = false
     @State private var wineFactOfTheWeek: String?
 
-    
-
     var body: some View {
         ScrollView {
             VStack(alignment: .center) {
                 Text("Wine Fact of the Week")
                     .font(.title2)
                     .bold()
-            
+                
                 Spacer()
                 
-            
-
                 Text(wineFactOfTheWeek ?? "Loading wine fact...")
                     .padding(.bottom)
-
-            
-Spacer(minLength: 20)
+                
+                Spacer(minLength: 20)
+                
                 // Flashcard Progress Section
                 VStack {
                     Button(action: {
@@ -82,35 +77,36 @@ Spacer(minLength: 20)
                 .padding(.bottom)
 
                 HStack(spacing: 80) {
-                                    VStack {
-                                        Text("My Wines")
-                                            .font(.headline)
-                                        ZStack {
-                                            RoundedRectangle(cornerRadius: 10)
-                                                .stroke(Color.gray, lineWidth: 1)
-                                                .frame(width: 100, height: 100)
-                                            Text("\(wineData.wines.count)")
-                                                .font(.largeTitle)
-                                        }
-                                    }
+                    VStack {
+                        Text("My Wines")
+                            .font(.headline)
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.gray, lineWidth: 1)
+                                .frame(width: 100, height: 100)
+                            Text("\(wineData.wines.count)")
+                                .font(.largeTitle)
+                        }
+                    }
 
-                                    VStack {
-                                        Text("Streak")
-                                            .font(.headline)
-                                        ZStack {
-                                            RoundedRectangle(cornerRadius: 10)
-                                                .stroke(Color.gray, lineWidth: 1)
-                                                .frame(width: 100, height: 100)
-                                            Text("🔥 \(studyStreak)")
-                                                .font(.largeTitle)
-                                        }
-                                    }
-                                }
-                                .padding(.bottom)
+                    VStack {
+                        Text("Streak")
+                            .font(.headline)
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.gray, lineWidth: 1)
+                                .frame(width: 100, height: 100)
+                            Text("🔥 \(studyStreak)")
+                                .font(.largeTitle)
+                        }
+                    }
+                }
+                .padding(.bottom)
+                
                 Text("Weekly Wine")
-                                    .font(.title2)
-                                    .bold()
-                                    .padding(.top)
+                    .font(.title2)
+                    .bold()
+                    .padding(.top)
 
                 if let latestPost = blogPosts.first {
                     NavigationLink(destination: BlogPostView(blogPost: latestPost, blogPosts: blogPosts)) {
@@ -127,54 +123,64 @@ Spacer(minLength: 20)
                         .cornerRadius(8)
                         .foregroundColor(.white)
                 }
-                                
+                
+                Spacer(minLength: 20)
+                
+                NavigationLink(destination: OpenAIChatView()) {
+                                    VStack {
+                                        Image(systemName: "message.fill")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 50, height: 50)
+                                            .foregroundColor(Color(red: 235/255, green: 218/255, blue: 170/255))
+                                        Text("AI Chat")
+                                            .font(.headline)
+                                            .foregroundColor(Color(red: 235/255, green: 218/255, blue: 170/255))
+                                    }
+                                    .padding()
+                                    .frame(width: 110, height: 110) // Make the button larger
+                                    .background(Color(red: 128/255, green: 0, blue: 0))
+                                    .clipShape(Circle()) // Make the button circular
+                                    .shadow(radius: 5)
+                                }
+                                .padding(.top)
                             }
                             .padding()
+                        }
+        .navigationBarTitle("Dashboard", displayMode: .large)
+        .onAppear {
+            ContentfulManager.shared.fetchBlogPosts { posts, error in
+                if let posts = posts {
+                    self.blogPosts = posts
+                    print("Fetched \(posts.count) posts")  // Debug print
+                } else if let error = error {
+                    print("Error fetching posts: \(error.localizedDescription)")
+                }
+            }
             
-            NavigationLink(destination: OpenAIChatView()) {
-                                Text("Go to OpenAI Chat")
-                                    .font(.title)
-                                    .padding()
-                                    .background(Color.blue)
-                                    .foregroundColor(.white)
-                                    .cornerRadius(10)
-                            }
-                        }
-                        .navigationBarTitle("Dashboard", displayMode: .large)
-                        .onAppear {
-                            ContentfulManager.shared.fetchBlogPosts { posts, error in
-                                if let posts = posts {
-                                    self.blogPosts = posts
-                                    print("Fetched \(posts.count) posts")  // Debug print
-                                } else if let error = error {
-                                    print("Error fetching posts: \(error.localizedDescription)")
-                                }
-                            }
-                            
-                            ContentfulManager.shared.fetchWineFact { fact, error in
-                                   if let fact = fact {
-                                       self.wineFactOfTheWeek = fact
-                                   } else {
-                                       print("Error fetching wine fact: \(error?.localizedDescription ?? "Unknown error")")
-                                   }
-                               }
-                           }
-                        }
-                    }
-                
-
-                // Custom ProgressViewStyle
-                struct CustomProgressViewStyle: ProgressViewStyle {
-                    func makeBody(configuration: Configuration) -> some View {
-                        ProgressView(configuration)
-                            .accentColor(Color(red: 128/255, green: 0, blue: 0)) // Set the accent color for the progress fill
-                    }
+            ContentfulManager.shared.fetchWineFact { fact, error in
+                if let fact = fact {
+                    self.wineFactOfTheWeek = fact
+                } else {
+                    print("Error fetching wine fact: \(error?.localizedDescription ?? "Unknown error")")
                 }
+            }
+        }
+    }
+}
 
-                struct DashboardView_Previews: PreviewProvider {
-                    static var previews: some View {
-                        NavigationView {
-                            DashboardView(wineData: WineData()) // Pass a WineData instance for previews
-                        }
-                    }
-                }
+// Custom ProgressViewStyle
+struct CustomProgressViewStyle: ProgressViewStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        ProgressView(configuration)
+            .accentColor(Color(red: 128/255, green: 0, blue: 0)) // Set the accent color for the progress fill
+    }
+}
+
+struct DashboardView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            DashboardView(wineData: WineData()) // Pass a WineData instance for previews
+        }
+    }
+}

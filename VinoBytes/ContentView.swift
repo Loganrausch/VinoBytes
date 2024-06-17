@@ -29,10 +29,10 @@ struct ContentView: View {
                     Text("Study")
                 }
             
-            ReferenceMainView()
+            OpenAIChatView()
                 .tabItem {
-                    Image(systemName: "pencil.line")
-                    Text("Reference")
+                    Image(systemName: "figure.wave")
+                    Text("VinoAI")
                 }
             
             MyWinesView(wineData: wineData)
@@ -41,10 +41,10 @@ struct ContentView: View {
                     Text("My Wines")
                 }
             
-            AccountView()
+            ReferenceMainView()
                 .tabItem {
-                    Image(systemName: "person")
-                    Text("Account")
+                    Image(systemName: "pencil.line")
+                    Text("Reference")
                 }
         }
     }
