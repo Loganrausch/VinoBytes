@@ -11,6 +11,8 @@
 		CE0EF5982C18D5FF009CFDCB /* OpenAIChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0EF5972C18D5FF009CFDCB /* OpenAIChatView.swift */; };
 		CE1103262BA1F9AD008B0096 /* StudyCard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1103242BA1F9AD008B0096 /* StudyCard+CoreDataClass.swift */; };
 		CE1103272BA1F9AD008B0096 /* StudyCard+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1103252BA1F9AD008B0096 /* StudyCard+CoreDataProperties.swift */; };
+		CE1D8B682C221EC200580834 /* BrightnessModifierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1D8B672C221EC200580834 /* BrightnessModifierView.swift */; };
+		CE1D8B6A2C221EF000580834 /* WhiteBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1D8B692C221EF000580834 /* WhiteBackgroundView.swift */; };
 		CE2051012B9F98BD0072704E /* FlashcardContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2051002B9F98BD0072704E /* FlashcardContent.swift */; };
 		CE21266D2BB86FC30058DCC4 /* ContentfulRichTextRenderer in Frameworks */ = {isa = PBXBuildFile; productRef = CE21266C2BB86FC30058DCC4 /* ContentfulRichTextRenderer */; };
 		CE32CDD82C1CE3C900A87202 /* WineFlawData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE32CDD72C1CE3C900A87202 /* WineFlawData.swift */; };
@@ -88,6 +90,8 @@
 		CE0EF5972C18D5FF009CFDCB /* OpenAIChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIChatView.swift; sourceTree = "<group>"; };
 		CE1103242BA1F9AD008B0096 /* StudyCard+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "StudyCard+CoreDataClass.swift"; path = "../StudyCard+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CE1103252BA1F9AD008B0096 /* StudyCard+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "StudyCard+CoreDataProperties.swift"; path = "../StudyCard+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CE1D8B672C221EC200580834 /* BrightnessModifierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrightnessModifierView.swift; sourceTree = "<group>"; };
+		CE1D8B692C221EF000580834 /* WhiteBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteBackgroundView.swift; sourceTree = "<group>"; };
 		CE2051002B9F98BD0072704E /* FlashcardContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardContent.swift; sourceTree = "<group>"; };
 		CE32CDD72C1CE3C900A87202 /* WineFlawData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineFlawData.swift; sourceTree = "<group>"; };
 		CE32CDDB2C1CE3E400A87202 /* WineFlawDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineFlawDetailView.swift; sourceTree = "<group>"; };
@@ -324,6 +328,8 @@
 			children = (
 				CE7F35D62BD579710055E6DB /* Wine.swift */,
 				CE94AAF72C0D444E004CE8E0 /* Grape.swift */,
+				CE1D8B672C221EC200580834 /* BrightnessModifierView.swift */,
+				CE1D8B692C221EF000580834 /* WhiteBackgroundView.swift */,
 			);
 			path = Struct;
 			sourceTree = "<group>";
@@ -523,6 +529,7 @@
 			files = (
 				CE82D2852B98B853002B55F1 /* SearchBar.swift in Sources */,
 				CEE07EFD2C1A70450088F94C /* ConversationHistoryView.swift in Sources */,
+				CE1D8B6A2C221EF000580834 /* WhiteBackgroundView.swift in Sources */,
 				CE32CDE52C1CE5DD00A87202 /* FoodWinePairingsDetailView.swift in Sources */,
 				CE94AAF82C0D444E004CE8E0 /* Grape.swift in Sources */,
 				CED0F8BF2B93DE9500508E6E /* BlogPostView.swift in Sources */,
@@ -551,6 +558,7 @@
 				CE6ADF3D2B925ED700982366 /* VinoDecks.xcdatamodeld in Sources */,
 				CECB7A662BACC50600659CB6 /* ContactFormView.swift in Sources */,
 				CE7B36EF2B96B6F9006AFFA0 /* WineDetailView.swift in Sources */,
+				CE1D8B682C221EC200580834 /* BrightnessModifierView.swift in Sources */,
 				CE6ADF602B9266D600982366 /* FlashcardView.swift in Sources */,
 				CE80C17A2B9F4F29004EF540 /* StudyCardModel.xcdatamodeld in Sources */,
 				CECB7A622BACB69200659CB6 /* WelcomeView.swift in Sources */,

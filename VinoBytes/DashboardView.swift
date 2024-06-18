@@ -12,23 +12,40 @@ struct DashboardView: View {
     @ObservedObject var wineData: WineData
     @State private var blogPosts: [BlogPost] = []
     @State private var flashcardProgress: [String: Int] = ["France": 75, "Italy": 60, "Spain": 80]
-    @State private var studyStreak = 7
     @State private var isFlashcardProgressExpanded = false
     @State private var wineFactOfTheWeek: String?
+    @State private var isSheetPresented = false // State for sheet presentation
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .center) {
+            VStack(alignment: .center, spacing: 20) {
                 Text("Wine Fact of the Week")
                     .font(.title2)
                     .bold()
                 
-                Spacer()
+                // Box around the wine fact
+                VStack {
+                    if let fact = wineFactOfTheWeek {
+                        Text(fact)
+                            .multilineTextAlignment(.center) // Ensure text within is centered
+                            .padding()
+                    } else {
+                        Text("Loading wine fact...")
+                            .multilineTextAlignment(.center) // Center the loading text
+                            .padding()
+                    }
+                }
+                .frame(maxWidth: .infinity) // Ensure the box takes the full width
+                .padding()
+                .background(Color(.systemBackground))
+                .cornerRadius(10)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color(red: 235/255, green: 218/255, blue: 170/255), lineWidth: 1.5) // Set the stroke color
+                )
+                .padding(.horizontal)
                 
-                Text(wineFactOfTheWeek ?? "Loading wine fact...")
-                    .padding(.bottom)
-                
-                Spacer(minLength: 20)
+                Spacer(minLength: 1)
                 
                 // Flashcard Progress Section
                 VStack {
@@ -51,7 +68,7 @@ struct DashboardView: View {
                     .cornerRadius(10)
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.gray, lineWidth: 1)
+                            .stroke(Color(red: 235/255, green: 218/255, blue: 170/255), lineWidth: 1.5) // Set the stroke color
                     )
                     .padding(.horizontal)
 
@@ -76,77 +93,76 @@ struct DashboardView: View {
                 }
                 .padding(.bottom)
 
-                HStack(spacing: 80) {
-                    VStack {
-                        Text("My Wines")
-                            .font(.headline)
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color.gray, lineWidth: 1)
-                                .frame(width: 100, height: 100)
-                            Text("\(wineData.wines.count)")
-                                .font(.largeTitle)
-                        }
-                    }
+                HStack(spacing: 75) {
+                                    VStack {
+                                        Text("My Wines")
+                                            .font(.headline)
+                                            .frame(width: 100, alignment: .center)
+                                        // Fix the width
+                                        ZStack {
+                                            Circle()
+                                                .stroke(Color(red: 235/255, green: 218/255, blue: 170/255), lineWidth: 1.5) // Set the stroke color
+                                                .frame(width: 110, height: 110)
+                                            Text("\(wineData.wines.count)")
+                                                .font(.largeTitle)
+                                        }
+                                    }
 
-                    VStack {
-                        Text("Streak")
-                            .font(.headline)
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color.gray, lineWidth: 1)
-                                .frame(width: 100, height: 100)
-                            Text("🔥 \(studyStreak)")
-                                .font(.largeTitle)
-                        }
-                    }
-                }
-                .padding(.bottom)
+                                    VStack {
+                                        Text("White Display") // Longer title
+                                            .font(.headline)
+                                            .frame(width: 109, alignment: .center) // Fix the width
+                                        Button(action: {
+                                            isSheetPresented = true
+                                        }) {
+                                            ZStack {
+                                                Circle()
+                                                    .stroke(Color(red: 235/255, green: 218/255, blue: 170/255), lineWidth: 1.5) // Set the stroke color
+                                                    .frame(width: 110, height: 110)
+                                                Text("Tap Here")
+                                                    .font(.headline) // Use headline for a smaller font
+                                                    .foregroundColor(.black) // Set the text color to black
+                                            }
+                                        }
+                                        .sheet(isPresented: $isSheetPresented) {
+                                            WhiteBackgroundView()
+                                        }
+                                    }
+                                }
+                                .padding(.bottom)
                 
-                Text("Weekly Wine")
+                Text("Weekly Wine Blog")
                     .font(.title2)
                     .bold()
                     .padding(.top)
 
                 if let latestPost = blogPosts.first {
                     NavigationLink(destination: BlogPostView(blogPost: latestPost, blogPosts: blogPosts)) {
-                        Text("Read Our Latest Post")
-                            .padding()
-                            .foregroundColor(.white)
-                            .background(Color(red: 128/255, green: 0, blue: 0))
-                            .cornerRadius(8)
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color(red: 235/255, green: 218/255, blue: 170/255), lineWidth: 1.5) // Set the stroke color
+                                .frame(width: 200, height: 50)
+                            Text("Read Our Latest Post")
+                                .font(.headline)
+                                .foregroundColor(.black)
+                        }
                     }
                 } else {
-                    Text("Read Our Latest Post")
-                        .padding()
-                        .background(Color.gray.opacity(0.5))
-                        .cornerRadius(8)
-                        .foregroundColor(.white)
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color(red: 235/255, green: 218/255, blue: 170/255), lineWidth: 1.5) // Set the stroke color
+                            .frame(width: 200, height: 50)
+                        Text("Read Our Latest Post")
+                            .font(.headline)
+                            .foregroundColor(.gray)
+                    }
                 }
                 
                 Spacer(minLength: 20)
                 
-                NavigationLink(destination: OpenAIChatView()) {
-                                    VStack {
-                                        Image(systemName: "message.fill")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 50, height: 50)
-                                            .foregroundColor(Color(red: 235/255, green: 218/255, blue: 170/255))
-                                        Text("AI Chat")
-                                            .font(.headline)
-                                            .foregroundColor(Color(red: 235/255, green: 218/255, blue: 170/255))
-                                    }
-                                    .padding()
-                                    .frame(width: 110, height: 110) // Make the button larger
-                                    .background(Color(red: 128/255, green: 0, blue: 0))
-                                    .clipShape(Circle()) // Make the button circular
-                                    .shadow(radius: 5)
-                                }
-                                .padding(.top)
-                            }
-                            .padding()
-                        }
+            }
+            .padding()
+        }
         .navigationBarTitle("Dashboard", displayMode: .large)
         .onAppear {
             ContentfulManager.shared.fetchBlogPosts { posts, error in
