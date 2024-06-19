@@ -41,10 +41,10 @@ struct ContentView: View {
                     Text("My Wines")
                 }
             
-            ReferenceMainView()
+            AccountView()
                 .tabItem {
                     Image(systemName: "pencil.line")
-                    Text("Reference")
+                    Text("Settings")
                 }
         }
     }

@@ -10,28 +10,12 @@ import Foundation
 import SwiftUI
 
 struct AccountView: View {
-    @AppStorage("isDarkMode") private var isDarkMode: Bool = UITraitCollection.current.userInterfaceStyle == .dark
-
     @State private var showingShareSheet = false
     @State private var showingFeedbackSheet = false
-
-
-
 
     var body: some View {
         NavigationView {
             List {
-                Section(header: Text("Appearance")) {
-                    Toggle("Dark Mode", isOn: $isDarkMode)
-                        .onChange(of: isDarkMode) {
-                            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-                                if let window = windowScene.windows.first(where: { $0.isKeyWindow }) {
-                                    window.overrideUserInterfaceStyle = isDarkMode ? .dark : .light
-                                }
-                            }
-                        }
-                }
-
                 Section(header: Text("Actions")) {
                     Button(action: {
                         // Rate your app logic
@@ -39,14 +23,14 @@ struct AccountView: View {
                         Text("Rate App")
                     }
                     Button(action: {
-                    // Invite friends logic
-                    showingShareSheet.toggle()
+                        // Invite friends logic
+                        showingShareSheet.toggle()
                     }) {
-                    Text("Invite Friends")
+                        Text("Invite Friends")
                     }
                     .sheet(isPresented: $showingShareSheet) {
-                            ShareSheet(activityItems: ["Check out this cool wine app!"])
-                                        }
+                        ShareSheet(activityItems: ["Check out this cool wine app!"])
+                    }
                     Button(action: {
                         showingFeedbackSheet = true
                     }) {
@@ -67,13 +51,12 @@ struct AccountView: View {
                     }) {
                         Text("Log Out")
                     }
-
                 }
                 Section(header: Text("Legal")) {
-                    NavigationLink(destination: Text("Terms of Service")) {
-                        Text("Terms of Service")
+                    NavigationLink(destination: LegalDocumentView(documentTitle: "Terms and Conditions", documentText: termsAndConditionsText)) {
+                        Text("Terms and Conditions")
                     }
-                    NavigationLink(destination: Text("Privacy Policy")) {
+                    NavigationLink(destination: LegalDocumentView(documentTitle: "Privacy Policy", documentText: privacyPolicyText)) {
                         Text("Privacy Policy")
                     }
                 }

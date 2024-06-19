@@ -44,27 +44,32 @@ struct MyWinesView: View {
                     .padding(.horizontal)
 
                 List {
-                                    ForEach(filteredWinesGrouped, id: \.0) { region, regionWines in
-                                        Section(header: Text(region)) {
-                                            ForEach(regionWines.indices, id: \.self) { index in
-                                                let wineBinding = $wineData.wines[index]
-                                                NavigationLink(destination: WineDetailView(wine: wineBinding, wineData: wineData)) {
-                                                    HStack {
-                                                        Text("\(String(wineBinding.wrappedValue.vintage)) \(wineBinding.wrappedValue.producer) \(wineBinding.wrappedValue.wineName)")
-                                                            .lineLimit(1)
-                                                    }
-                                                }
-
-
-                                            }
-                                            .onDelete { indexSet in
-                                                wineData.wines.remove(atOffsets: indexSet)
-                                            }
+                    ForEach(filteredWinesGrouped, id: \.0) { region, regionWines in
+                        Section(header: Text(region)) {
+                            ForEach(regionWines, id: \.id) { wine in
+                                if let index = wineData.wines.firstIndex(where: { $0.id == wine.id }) {
+                                    let wineBinding = $wineData.wines[index]
+                                    NavigationLink(destination: WineDetailView(wine: wineBinding, wineData: wineData)) {
+                                        HStack {
+                                            Text("\(String(wineBinding.wrappedValue.vintage)) \(wineBinding.wrappedValue.producer) \(wineBinding.wrappedValue.wineName)")
+                                                .lineLimit(1)
                                         }
                                     }
                                 }
-                                .listStyle(PlainListStyle())
-
+                            }
+                            .onDelete { indexSet in
+                                           // Convert index set from view's filtered list to global list indices
+                                           indexSet.forEach { index in
+                                               let wineToDelete = regionWines[index]
+                                               if let globalIndex = wineData.wines.firstIndex(where: { $0.id == wineToDelete.id }) {
+                                                   wineData.wines.remove(at: globalIndex)
+                                               }
+                                           }
+                                       }
+                                   }
+                               }
+                           }
+                           .listStyle(PlainListStyle())
 
                 NavigationLink(destination: WineFormView(addWine: { wine in
                     wineData.wines.append(wine)

@@ -34,6 +34,9 @@
 		CE6ADF602B9266D600982366 /* FlashcardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6ADF5F2B9266D600982366 /* FlashcardView.swift */; };
 		CE6ADF632B9269C400982366 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE6ADF622B9269C400982366 /* CoreData.framework */; };
 		CE6F73692B93BE8900770B35 /* WineFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F73682B93BE8900770B35 /* WineFormView.swift */; };
+		CE7717012C2274DB00F34C4C /* LegalDocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7717002C2274DB00F34C4C /* LegalDocumentView.swift */; };
+		CE7717042C22750900F34C4C /* PrivacyPolicyText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7717032C22750900F34C4C /* PrivacyPolicyText.swift */; };
+		CE7717062C22752000F34C4C /* TermsAndConditionsText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7717052C22752000F34C4C /* TermsAndConditionsText.swift */; };
 		CE7B36EB2B94DA58006AFFA0 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7B36EA2B94DA58006AFFA0 /* AccountView.swift */; };
 		CE7B36EF2B96B6F9006AFFA0 /* WineDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7B36EE2B96B6F9006AFFA0 /* WineDetailView.swift */; };
 		CE7F35D72BD579710055E6DB /* Wine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7F35D62BD579710055E6DB /* Wine.swift */; };
@@ -115,6 +118,9 @@
 		CE6ADF5F2B9266D600982366 /* FlashcardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardView.swift; sourceTree = "<group>"; };
 		CE6ADF622B9269C400982366 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		CE6F73682B93BE8900770B35 /* WineFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineFormView.swift; sourceTree = "<group>"; };
+		CE7717002C2274DB00F34C4C /* LegalDocumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalDocumentView.swift; sourceTree = "<group>"; };
+		CE7717032C22750900F34C4C /* PrivacyPolicyText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyText.swift; sourceTree = "<group>"; };
+		CE7717052C22752000F34C4C /* TermsAndConditionsText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsText.swift; sourceTree = "<group>"; };
 		CE7B36EA2B94DA58006AFFA0 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		CE7B36EE2B96B6F9006AFFA0 /* WineDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineDetailView.swift; sourceTree = "<group>"; };
 		CE7F35D62BD579710055E6DB /* Wine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wine.swift; sourceTree = "<group>"; };
@@ -237,7 +243,7 @@
 				CE6ADF302B925ED600982366 /* VinoDecksApp.swift */,
 				CE6ADF322B925ED600982366 /* ContentView.swift */,
 				CE6ADF392B925ED700982366 /* Persistence.swift */,
-				CE7B36EA2B94DA58006AFFA0 /* AccountView.swift */,
+				CE7717022C2274EF00F34C4C /* AccountView */,
 				CECB7A652BACC50600659CB6 /* ContactFormView.swift */,
 				CED380DE2BB756A400CAFB29 /* ContentfulManager.swift */,
 				CED0F8BE2B93DE9500508E6E /* BlogPostView.swift */,
@@ -286,6 +292,17 @@
 				CE6ADF622B9269C400982366 /* CoreData.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CE7717022C2274EF00F34C4C /* AccountView */ = {
+			isa = PBXGroup;
+			children = (
+				CE7B36EA2B94DA58006AFFA0 /* AccountView.swift */,
+				CE7717002C2274DB00F34C4C /* LegalDocumentView.swift */,
+				CE7717032C22750900F34C4C /* PrivacyPolicyText.swift */,
+				CE7717052C22752000F34C4C /* TermsAndConditionsText.swift */,
+			);
+			path = AccountView;
 			sourceTree = "<group>";
 		};
 		CE7879F72BA0B16200CB0E97 /* My Wines */ = {
@@ -549,11 +566,13 @@
 				CE32CDD82C1CE3C900A87202 /* WineFlawData.swift in Sources */,
 				CE94AAFA2C0D502D004CE8E0 /* GrapeData.swift in Sources */,
 				CE2051012B9F98BD0072704E /* FlashcardContent.swift in Sources */,
+				CE7717062C22752000F34C4C /* TermsAndConditionsText.swift in Sources */,
 				CE82D2892B9B72CF002B55F1 /* StudyView.swift in Sources */,
 				CE32CDE12C1CE5C600A87202 /* FoodWinePairingsListView.swift in Sources */,
 				CED380D82BB5E18400CAFB29 /* DashboardView.swift in Sources */,
 				CE1103262BA1F9AD008B0096 /* StudyCard+CoreDataClass.swift in Sources */,
 				CED380DA2BB70E1500CAFB29 /* WineData.swift in Sources */,
+				CE7717012C2274DB00F34C4C /* LegalDocumentView.swift in Sources */,
 				CE94AB132C0E6FF6004CE8E0 /* WineLawDetailView.swift in Sources */,
 				CE6ADF3D2B925ED700982366 /* VinoDecks.xcdatamodeld in Sources */,
 				CECB7A662BACC50600659CB6 /* ContactFormView.swift in Sources */,
@@ -571,6 +590,7 @@
 				CE32CDDE2C1CE3FD00A87202 /* WineFlawListView.swift in Sources */,
 				CE94AAF12C0D3957004CE8E0 /* ReferenceMainView.swift in Sources */,
 				CE94AB0A2C0E3645004CE8E0 /* WineGlossaryDetailView.swift in Sources */,
+				CE7717042C22750900F34C4C /* PrivacyPolicyText.swift in Sources */,
 				CE6ADF312B925ED600982366 /* VinoDecksApp.swift in Sources */,
 				CE7F35D72BD579710055E6DB /* Wine.swift in Sources */,
 				CE6F73692B93BE8900770B35 /* WineFormView.swift in Sources */,

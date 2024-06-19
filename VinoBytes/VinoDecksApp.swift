@@ -10,7 +10,6 @@ import SwiftUI
 @main
 struct VinoDecksApp: App {
     @State private var isShowingLaunchScreen = true
-    @AppStorage("isDarkMode") private var isDarkMode: Bool = UITraitCollection.current.userInterfaceStyle == .dark
 
     var body: some Scene {
         WindowGroup {
@@ -19,19 +18,10 @@ struct VinoDecksApp: App {
             } else {
                 ContentView() // Use ContentView here
                     .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
-                    .onAppear {
-                        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-                            if let window = windowScene.windows.first(where: { $0.isKeyWindow }) {
-                                window.overrideUserInterfaceStyle = isDarkMode ? .dark : .light
-                            }
-                        }
-                    }
             }
         }
     }
 }
-
-    
 
 struct LaunchScreen: View {
     @State private var opacity: Double = 0  // Single opacity variable for both text and image
