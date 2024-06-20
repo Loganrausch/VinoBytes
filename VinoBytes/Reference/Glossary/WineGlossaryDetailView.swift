@@ -6,7 +6,6 @@
 //
 
 import Foundation
-
 import SwiftUI
 
 struct WineGlossaryDetailView: View {
@@ -21,22 +20,28 @@ struct WineGlossaryDetailView: View {
                     .fontWeight(.bold)
                     .padding(.horizontal)
 
+                // Definition Title
+                Text("Definition")
+                    .font(.headline)
+                    .padding(.horizontal)
+                
                 // Definition
                 Text(entry.definition)
                     .font(.body)
                     .padding(.horizontal)
 
-                // Additional Information
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("Additional Information")
-                        .font(.headline)
-                        .padding(.horizontal)
+                // Additional Information Title
+                Text("Additional Information")
+                    .font(.headline)
+                    .padding(.horizontal)
 
-                    Text(entry.additionalInfo)
-                        .padding(.horizontal)
-                }
-                .padding(.top)
+                // Additional Information
+                Text(entry.additionalInfo)
+                    .font(.body)
+                    .padding(.horizontal)
             }
+            .frame(maxWidth: .infinity, alignment: .leading) // Enforces leading alignment
+            .padding(.top) // Optionally add top padding for spacing from the top edge
             .navigationTitle(entry.term)
             .navigationBarTitleDisplayMode(.inline)
         }
@@ -45,6 +50,8 @@ struct WineGlossaryDetailView: View {
 
 struct WineGlossaryDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        WineGlossaryDetailView(entry: GlossaryEntry(term: "Sample Term", definition: "Sample definition of the wine term.", additionalInfo: "Additional information about the wine term."))
+        NavigationView {
+            WineGlossaryDetailView(entry: GlossaryEntry(term: "Phloem", definition: "The vascular tissue in plants responsible for transporting nutrients.", additionalInfo: "In grapevines, phloem distributes the sugars produced by photosynthesis."))
+        }
     }
 }

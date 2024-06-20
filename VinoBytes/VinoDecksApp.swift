@@ -48,7 +48,7 @@ struct LaunchScreen: View {
                     .foregroundColor(.primary)
                     .opacity(opacity)  // Shared opacity for uniform fade-in
 
-                Text("Wine Education in Small Bites.")
+                Text("Wine Education in Small Bytes")
                     .font(.title3)
                     .foregroundColor(.primary)
                     .opacity(opacity)  // Shared opacity for uniform fade-in

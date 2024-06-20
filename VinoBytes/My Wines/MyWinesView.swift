@@ -59,6 +59,7 @@ struct MyWinesView: View {
                                 NavigationLink(destination: WineDetailView(wine: wineBinding, wineData: wineData)) {
                                     Text("\(String(wineBinding.wrappedValue.vintage)) \(wineBinding.wrappedValue.producer) \(wineBinding.wrappedValue.wineName)")
                                         .lineLimit(1)
+                                    
                                 }
                             }
                         }

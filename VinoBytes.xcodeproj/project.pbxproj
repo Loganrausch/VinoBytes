@@ -239,14 +239,14 @@
 			children = (
 				CE7F35D82BD57B210055E6DB /* Common */,
 				CECB7A612BACB69200659CB6 /* WelcomeView.swift */,
-				CEC8A80B2C23C1C5009F937D /* Dashboard */,
 				CE6ADF302B925ED600982366 /* VinoDecksApp.swift */,
 				CE6ADF322B925ED600982366 /* ContentView.swift */,
 				CE6ADF392B925ED700982366 /* Persistence.swift */,
-				CE7717022C2274EF00F34C4C /* AccountView */,
 				CECB7A652BACC50600659CB6 /* ContactFormView.swift */,
 				CED380DE2BB756A400CAFB29 /* ContentfulManager.swift */,
 				CED0F8BE2B93DE9500508E6E /* BlogPostView.swift */,
+				CEC8A80B2C23C1C5009F937D /* Dashboard */,
+				CE7717022C2274EF00F34C4C /* AccountView */,
 				CE0EF5942C18D5A8009CFDCB /* OpenAI */,
 				CE94AAF22C0D3961004CE8E0 /* Reference */,
 				CE7879F72BA0B16200CB0E97 /* My Wines */,
@@ -335,28 +335,28 @@
 		CE7F35D82BD57B210055E6DB /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				CE7F35D92BD57B8A0055E6DB /* Struct */,
+				CE7F35D92BD57B8A0055E6DB /* Structs */,
 			);
 			path = Common;
 			sourceTree = "<group>";
 		};
-		CE7F35D92BD57B8A0055E6DB /* Struct */ = {
+		CE7F35D92BD57B8A0055E6DB /* Structs */ = {
 			isa = PBXGroup;
 			children = (
 				CE7F35D62BD579710055E6DB /* Wine.swift */,
 				CE94AAF72C0D444E004CE8E0 /* Grape.swift */,
 			);
-			path = Struct;
+			path = Structs;
 			sourceTree = "<group>";
 		};
 		CE94AAF22C0D3961004CE8E0 /* Reference */ = {
 			isa = PBXGroup;
 			children = (
 				CE94AAF02C0D3957004CE8E0 /* ReferenceMainView.swift */,
+				CE94AB012C0E2836004CE8E0 /* Grapes */,
 				CE32CDDF2C1CE59E00A87202 /* FoodWinePairings */,
 				CE32CDD62C1CE39200A87202 /* WineFlaws */,
 				CE94AB0D2C0E6FB4004CE8E0 /* WineLaw */,
-				CE94AB012C0E2836004CE8E0 /* Grapes */,
 				CE94AB022C0E2855004CE8E0 /* Regions */,
 				CE94AB052C0E35D2004CE8E0 /* Glossary */,
 			);

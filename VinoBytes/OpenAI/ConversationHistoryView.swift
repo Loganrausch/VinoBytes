@@ -33,6 +33,7 @@ struct ConversationHistoryView: View {
                 }
             }
         }
+        .preferredColorScheme(.light) // Apply light mode to the entire view
     }
     
     private func deleteConversation(at offsets: IndexSet) {

@@ -20,15 +20,11 @@ struct DashboardView: View {
         VStack(alignment: .center, spacing: 20) {
             
             VStack {
-            Text("Wine Fact of the Week")
-                .font(.title3)
-                .bold()
+                Text("Wine Fact of the Week")
+                    .font(.title3)
+                    .bold()
+            
                 
-                // Lightbulb icon
-                                Image(systemName: "lightbulb")
-                                    .foregroundColor(Color(red: 128/255, green: 0, blue: 0))
-                                    .padding(.vertical, 3) // Adds space around the icon
-
                 if let fact = wineFactOfTheWeek {
                     Text(fact)
                         .multilineTextAlignment(.center)
@@ -39,7 +35,8 @@ struct DashboardView: View {
                         .padding()
                 }
             }
-            .frame(maxWidth: .infinity)
+            .frame(minWidth: 250, maxWidth: 350) // Ensures the box is never too small or too large
+            .frame(maxHeight: 200) // Ensures the height does not exceed 150
             .padding()
             .background(Color(red: 128/255, green: 0, blue: 0).opacity(0.07)) // Subtle, semi-transparent background
             .cornerRadius(10)
@@ -47,9 +44,10 @@ struct DashboardView: View {
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(Color(red: 128/255, green: 0, blue: 0), lineWidth: 0.7)
             )
-            .padding(.horizontal)
-
+            .padding()
             Spacer(minLength: 1)
+         
+            
 
             // Flashcard Progress Button
             VStack {
@@ -58,19 +56,20 @@ struct DashboardView: View {
                 }) {
                     VStack(spacing: 6) {
                         Text("Flashcard Progress")
+                            .frame(maxWidth: .infinity, minHeight: 20) // Ensures the text field fills the button area
+                            .contentShape(Rectangle()) // Makes the whole area tappable
+                            .bold()
                     }
                     .foregroundColor(.black)
+                    .padding()
+                    .background(Color.white) // Moved inside the button
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .shadow(color: Color.black.opacity(0.8), radius: 3)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color(red: 128/255, green: 0, blue: 0), lineWidth: 1.5)
+                    )
                 }
-                .font(.headline)
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(Color.white)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-                .shadow(radius: 10)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color(red: 128/255, green: 0, blue: 0), lineWidth: 1)
-                )
                 .padding(.horizontal)
             }
             .sheet(isPresented: $isFlashcardProgressSheetPresented) {
@@ -87,11 +86,11 @@ struct DashboardView: View {
                     NavigationLink(destination: MyWinesView(wineData: wineData)) {
                         ZStack {
                             Circle()
-                                .stroke(Color(red: 128/255, green: 0, blue: 0), lineWidth: 1.5)
+                                .stroke(Color(red: 128/255, green: 0, blue: 0), lineWidth: 3)
                                 .frame(width: 110, height: 110)
                                 .background(Color.white)
                                 .clipShape(Circle())
-                                .shadow(radius: 10)
+                                .shadow(color: Color.black.opacity(0.8), radius: 3)
                             Text("\(wineData.wines.count)")
                                 .font(.largeTitle)
                                 .foregroundColor(.black)
@@ -100,7 +99,7 @@ struct DashboardView: View {
                 }
 
                 VStack {
-                    Text("White Display")
+                    Text("White Sheet")
                         .font(.headline)
                         .frame(width: 109, alignment: .center)
                     Button(action: {
@@ -108,11 +107,11 @@ struct DashboardView: View {
                     }) {
                         ZStack {
                             Circle()
-                                .stroke(Color(red: 128/255, green: 0, blue: 0), lineWidth: 1.5)
+                                .stroke(Color(red: 128/255, green: 0, blue: 0), lineWidth: 3)
                                 .frame(width: 110, height: 110)
                                 .background(Color.white)
                                 .clipShape(Circle())
-                                .shadow(radius: 10)
+                                .shadow(color: Color.black.opacity(0.8), radius: 3)
                             Text("Tap Here")
                                 .font(.headline)
                                 .foregroundColor(.black)
@@ -124,7 +123,7 @@ struct DashboardView: View {
                     }
                 }
             }
-            .padding(.bottom)
+            .padding()
 
             Text("Weekly Wine Blog")
                 .font(.title3)
@@ -135,11 +134,11 @@ struct DashboardView: View {
                 NavigationLink(destination: BlogPostView(blogPost: latestPost, blogPosts: blogPosts)) {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color(red: 128/255, green: 0, blue: 0), lineWidth: 1)
+                            .stroke(Color(red: 128/255, green: 0, blue: 0), lineWidth: 3)
                             .frame(width: 200, height: 50)
                             .background(Color.white)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
-                            .shadow(radius: 10)
+                            .shadow(color: Color.black.opacity(0.8), radius: 3)
                         Text("Read Our Latest Post")
                             .font(.headline)
                             .foregroundColor(.black)
