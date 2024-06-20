@@ -39,7 +39,7 @@ struct ContactFormView: View {
             .sheet(isPresented: $isShowingMailCompose) {
                 MailComposeView(isShowing: $isShowingMailCompose, result: $mailResult) { mailCompose in
                     mailCompose.setSubject("Feedback from \(name)")
-                    mailCompose.setToRecipients(["your_email@example.com"]) // Replace with your email address
+                    mailCompose.setToRecipients(["support@vinobytes.com"]) // Replace with your email address
                     let body = "Name: \(name)\nMessage: \(message)"
                     mailCompose.setMessageBody(body, isHTML: false)
                 }

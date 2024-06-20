@@ -6,7 +6,6 @@
 //
 
 import Foundation
-
 import SwiftUI
 
 struct AccountView: View {
@@ -14,8 +13,8 @@ struct AccountView: View {
     @State private var showingFeedbackSheet = false
 
     var body: some View {
-        NavigationView {
-            List {
+        VStack {
+            Form {
                 Section(header: Text("Actions")) {
                     Button(action: {
                         // Rate your app logic
@@ -61,9 +60,9 @@ struct AccountView: View {
                     }
                 }
             }
-            .listStyle(GroupedListStyle())
-            .navigationBarTitle("Account")
+            .navigationBarTitle("Account", displayMode: .large)
         }
+        .background(Color(.systemGroupedBackground).edgesIgnoringSafeArea(.all))
     }
 }
 
@@ -79,6 +78,8 @@ struct ShareSheet: UIViewControllerRepresentable {
 
 struct AccountView_Previews: PreviewProvider {
     static var previews: some View {
-        AccountView()
+        NavigationView {
+            AccountView()
+        }
     }
 }

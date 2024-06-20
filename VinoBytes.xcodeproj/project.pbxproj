@@ -239,7 +239,7 @@
 			children = (
 				CE7F35D82BD57B210055E6DB /* Common */,
 				CECB7A612BACB69200659CB6 /* WelcomeView.swift */,
-				CED380D72BB5E18400CAFB29 /* DashboardView.swift */,
+				CEC8A80B2C23C1C5009F937D /* Dashboard */,
 				CE6ADF302B925ED600982366 /* VinoDecksApp.swift */,
 				CE6ADF322B925ED600982366 /* ContentView.swift */,
 				CE6ADF392B925ED700982366 /* Persistence.swift */,
@@ -345,8 +345,6 @@
 			children = (
 				CE7F35D62BD579710055E6DB /* Wine.swift */,
 				CE94AAF72C0D444E004CE8E0 /* Grape.swift */,
-				CE1D8B672C221EC200580834 /* BrightnessModifierView.swift */,
-				CE1D8B692C221EF000580834 /* WhiteBackgroundView.swift */,
 			);
 			path = Struct;
 			sourceTree = "<group>";
@@ -403,6 +401,16 @@
 				CE94AB122C0E6FF6004CE8E0 /* WineLawDetailView.swift */,
 			);
 			path = WineLaw;
+			sourceTree = "<group>";
+		};
+		CEC8A80B2C23C1C5009F937D /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				CED380D72BB5E18400CAFB29 /* DashboardView.swift */,
+				CE1D8B692C221EF000580834 /* WhiteBackgroundView.swift */,
+				CE1D8B672C221EC200580834 /* BrightnessModifierView.swift */,
+			);
+			path = Dashboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

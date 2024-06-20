@@ -4,14 +4,12 @@
 //
 //  Created by Logan Rausch on 3/2/24.
 //
-import Foundation
-
 import SwiftUI
-
 
 struct MyWinesView: View {
     @ObservedObject var wineData: WineData
     @State private var searchText: String = ""
+    var isRootView: Bool = false  // Flag to determine if NavigationView should be included
 
     var filteredWinesGrouped: [(String, [Wine])] {
         if searchText.isEmpty {
@@ -35,56 +33,61 @@ struct MyWinesView: View {
     }
 
     var body: some View {
-        NavigationView {
-            VStack {
-                TextField("Search", text: $searchText)
-                    .padding()
-                    .background(Color(.systemGray5))
-                    .cornerRadius(8)
-                    .padding(.horizontal)
+        Group {
+            if isRootView {
+                NavigationView { contentView }
+            } else {
+                contentView
+            }
+        }
+    }
 
-                List {
-                    ForEach(filteredWinesGrouped, id: \.0) { region, regionWines in
-                        Section(header: Text(region)) {
-                            ForEach(regionWines, id: \.id) { wine in
-                                if let index = wineData.wines.firstIndex(where: { $0.id == wine.id }) {
-                                    let wineBinding = $wineData.wines[index]
-                                    NavigationLink(destination: WineDetailView(wine: wineBinding, wineData: wineData)) {
-                                        HStack {
-                                            Text("\(String(wineBinding.wrappedValue.vintage)) \(wineBinding.wrappedValue.producer) \(wineBinding.wrappedValue.wineName)")
-                                                .lineLimit(1)
-                                        }
-                                    }
+    var contentView: some View {
+        VStack {
+            TextField("Search", text: $searchText)
+                .padding()
+                .background(Color(.systemGray5))
+                .cornerRadius(8)
+                .padding(.horizontal)
+
+            List {
+                ForEach(filteredWinesGrouped, id: \.0) { region, regionWines in
+                    Section(header: Text(region)) {
+                        ForEach(regionWines, id: \.id) { wine in
+                            if let index = wineData.wines.firstIndex(where: { $0.id == wine.id }) {
+                                let wineBinding = $wineData.wines[index]
+                                NavigationLink(destination: WineDetailView(wine: wineBinding, wineData: wineData)) {
+                                    Text("\(String(wineBinding.wrappedValue.vintage)) \(wineBinding.wrappedValue.producer) \(wineBinding.wrappedValue.wineName)")
+                                        .lineLimit(1)
                                 }
                             }
-                            .onDelete { indexSet in
-                                           // Convert index set from view's filtered list to global list indices
-                                           indexSet.forEach { index in
-                                               let wineToDelete = regionWines[index]
-                                               if let globalIndex = wineData.wines.firstIndex(where: { $0.id == wineToDelete.id }) {
-                                                   wineData.wines.remove(at: globalIndex)
-                                               }
-                                           }
-                                       }
-                                   }
-                               }
-                           }
-                           .listStyle(PlainListStyle())
-
-                NavigationLink(destination: WineFormView(addWine: { wine in
-                    wineData.wines.append(wine)
-                })) {
-                    Text("Add a Wine")
-                        .padding()
-                        .foregroundColor(.white)
-                        .background(Color(red: 128 / 255, green: 0, blue: 0))
-                        .cornerRadius(8)
+                        }
+                        .onDelete { indexSet in
+                            indexSet.forEach { index in
+                                let wineToDelete = regionWines[index]
+                                if let globalIndex = wineData.wines.firstIndex(where: { $0.id == wineToDelete.id }) {
+                                    wineData.wines.remove(at: globalIndex)
+                                }
+                            }
+                        }
+                    }
                 }
-                .padding()
+                .listStyle(PlainListStyle())
+            }
+
+            NavigationLink(destination: WineFormView(addWine: { wine in
+                wineData.wines.append(wine)
+            })) {
+                Text("Add a Wine")
+                    .padding()
+                    .foregroundColor(.white)
+                    .background(Color(red: 128 / 255, green: 0, blue: 0))
+                    .cornerRadius(8)
             }
             .padding()
-            .navigationBarTitle("My Wines")
         }
+        .padding()
+        .navigationBarTitle("My Wines", displayMode: .large)
     }
 
     private func sortedWines() -> [(String, [Wine])] {
@@ -99,6 +102,6 @@ struct MyWinesView: View {
 
 struct MyWinesView_Previews: PreviewProvider {
     static var previews: some View {
-        MyWinesView(wineData: WineData())
+        MyWinesView(wineData: WineData(), isRootView: true)
     }
 }

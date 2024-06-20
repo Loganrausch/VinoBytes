@@ -15,11 +15,14 @@ struct VinoDecksApp: App {
         WindowGroup {
             if isShowingLaunchScreen {
                 LaunchScreen(isShowingLaunchScreen: $isShowingLaunchScreen)
+                    .environment(\.colorScheme, .light)  // Apply light mode to the launch screen
             } else {
-                ContentView() // Use ContentView here
+                ContentView()
                     .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
+                    .environment(\.colorScheme, .light)  // Ensure light mode continues to the main content
             }
         }
+        .environment(\.colorScheme, .light)  // Forces light mode for all views in the app
     }
 }
 
@@ -66,3 +69,4 @@ struct LaunchScreen: View {
         }
     }
 }
+
