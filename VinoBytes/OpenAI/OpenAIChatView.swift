@@ -16,89 +16,90 @@ struct OpenAIChatView: View {
     @State private var showConversationHistory = false  // State for toggling conversation history
     
     var body: some View {
-        NavigationView {
-            VStack {
-                // Message display area with border
-                VStack {
-                    if let selectedConversation = selectedConversation {
-                        ScrollView {
-                            ForEach(openAIManager.messages) { message in
-                                MessageView(message: message)
-                            }
-                        }
-                    } else {
-                        Text("The world of wine, uncorked.")
-                            .foregroundColor(.gray)
-                    }
-                }
-                .frame(minWidth: 300, minHeight: 400)  // Set a minimum width and height for the message display box
-                .padding()
-                .background(Color.white)
-                .cornerRadius(10)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke((Color(red: 235/255, green: 218/255, blue: 170/255)), lineWidth: 1.2)
-                )
-                .padding()
+           NavigationView {
+               GeometryReader { geometry in
+                   VStack {
+                       VStack {
+                           if let selectedConversation = selectedConversation {
+                               ScrollView {
+                                   VStack {
+                                       ForEach(openAIManager.messages) { message in
+                                           MessageView(message: message)
+                                       }
+                                   }
+                               }
+                           } else {
+                               Text("The world of wine, uncorked.")
+                                   .foregroundColor(.gray)
+                           }
+                       }
+                       .frame(width: min(geometry.size.width * 0.83, 350), height: 350) // Dynamic width, fixed height
+                       .padding()
+                       .background(Color.white)
+                       .cornerRadius(10)
+                       .overlay(
+                           RoundedRectangle(cornerRadius: 10)
+                               .stroke(Color(red: 128/255, green: 0, blue: 0), lineWidth: 1.2)
+                       )
 
-                // TextField and buttons
-                VStack {
-                    HStack {
-                        TextField("Ask me anything...", text: $inputText)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .padding(.leading)
+                    // TextField and buttons
+                    VStack {
+                        HStack {
+                            TextField("Ask me anything...", text: $inputText)
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .padding(.leading)
+                                
+                            
+                            Button(action: {
+                                if !inputText.trimmingCharacters(in: .whitespaces).isEmpty {
+                                    if selectedConversation == nil {
+                                        selectedConversation = openAIManager.startNewConversation()
+                                    }
+                                    if let conversation = selectedConversation {
+                                        openAIManager.sendMessage(inputText, in: conversation) { _ in
+                                            inputText = ""  // Clear text field after sending
+                                        }
+                                    }
+                                }
+                            }) {
+                                Image(systemName: "arrow.up.square")
+                                    .resizable()
+                                    .frame(width: 30, height: 30)
+                                    .foregroundColor(Color(red: 128/255, green: 0, blue: 0))
+                            }
+                            .padding(.trailing)
+                        }
+                        .padding(.bottom)
                         
-                        Button(action: {
-                                                    if !inputText.trimmingCharacters(in: .whitespaces).isEmpty {
-                                                        if selectedConversation == nil {
-                                                            selectedConversation = openAIManager.startNewConversation()
-                                                        }
-                                                        if let conversation = selectedConversation {
-                                                            openAIManager.sendMessage(inputText, in: conversation) { _ in
-                                                                inputText = ""  // Clear text field after sending
-                                                            }
-                                                        }
-                                                    }
-                                                }) {
-                                                    Image(systemName: "arrow.up.square")
-                                                        .resizable()
-                                                        .frame(width: 30, height: 30)
-                                                        .foregroundColor(Color(red: 128/255, green: 0, blue: 0))
-                                                }
-                                                .padding(.trailing)
-                                            }
-                                            .padding(.bottom)
-                    
-                    Button("Start New Conversation") {
-                        selectedConversation = nil
-                        inputText = ""
+                        Button("Start New Conversation") {
+                            selectedConversation = nil
+                            inputText = ""
+                        }
+                        .padding()
+                        .foregroundColor(Color(red: 128/255, green: 0, blue: 0))
                     }
-                    .padding()
-                    .foregroundColor(Color(red: 128/255, green: 0, blue: 0))
                 }
             }
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitle("VinoAi Chat", displayMode: .inline)
             .toolbar {
-                ToolbarItem(placement: .principal) {
-                    HStack {
-                        Text("Chat")
-                            .font(.title)
-                        Spacer()
-                        Button(action: {
-                            showConversationHistory.toggle()
-                        }) {
-                            Image(systemName: "list.bullet")
-                                .imageScale(.large)
-                        }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        showConversationHistory.toggle()
+                    }) {
+                        Image(systemName: "list.bullet")
+                            .imageScale(.large)
+                            .foregroundColor(Color(red: 128/255, green: 0, blue: 0))
                     }
                 }
             }
             .sheet(isPresented: $showConversationHistory) {
                 ConversationHistoryView(openAIManager: openAIManager)
+                .preferredColorScheme(.light)  // Forces the sheet to be displayed in light mode
             }
         }
     }
 }
+
 
 struct ConversationView: View {
     var conversation: Conversation
