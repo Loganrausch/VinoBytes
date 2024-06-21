@@ -36,12 +36,12 @@ struct GrapeDetailView: View {
                         
                
 
-                SectionBox(title: "Origin") {
+                SectionBox(title: "Origin")  {
                     Text(grape.details.origin)
                 }
 
                 SectionBox(title: "Countries Where It’s Grown") {
-                    VStack {
+                    VStack (alignment: .leading, spacing: 5) {
                         ForEach(grape.details.countries.primary, id: \.self) { country in
                             Text(country)
                         }
@@ -82,7 +82,7 @@ struct GrapeDetailView: View {
                 }
 
                 SectionBox(title: "Wine Styles") {
-                    VStack {
+                    VStack (alignment: .leading, spacing: 5) {
                         ForEach(grape.details.wineStyles, id: \.self) { style in
                             Text(style)
                         }
@@ -90,7 +90,7 @@ struct GrapeDetailView: View {
                 }
 
                 SectionBox(title: "Food Pairing") {
-                    VStack {
+                    VStack (alignment: .leading, spacing: 5) {
                         ForEach(grape.details.foodPairing, id: \.self) { pairing in
                             Text(pairing)
                         }
@@ -139,6 +139,7 @@ struct SectionBox<Content: View>: View {
                 .background(Color.secondary.opacity(0.1))
                 .cornerRadius(10)
                 .padding(.horizontal)
+                .frame(maxWidth: .infinity, alignment: .leading) // Ensure leading alignment
         }
     }
 }
@@ -152,6 +153,7 @@ struct LabeledContent: View {
             Text(label)
                 .bold()
             Text(content)
+            .frame(maxWidth: .infinity, alignment: .leading) // Ensure leading alignment
         }
     }
 }

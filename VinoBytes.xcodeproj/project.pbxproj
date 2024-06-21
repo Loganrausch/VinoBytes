@@ -185,6 +185,7 @@
 		CE0EF5942C18D5A8009CFDCB /* OpenAI */ = {
 			isa = PBXGroup;
 			children = (
+				CED380D72BB5E18400CAFB29 /* DashboardView.swift */,
 				CE0EF5952C18D5ED009CFDCB /* OpenAIManager.swift */,
 				CE0EF5972C18D5FF009CFDCB /* OpenAIChatView.swift */,
 				CEE07EFC2C1A70450088F94C /* ConversationHistoryView.swift */,
@@ -406,7 +407,6 @@
 		CEC8A80B2C23C1C5009F937D /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
-				CED380D72BB5E18400CAFB29 /* DashboardView.swift */,
 				CE1D8B692C221EF000580834 /* WhiteBackgroundView.swift */,
 				CE1D8B672C221EC200580834 /* BrightnessModifierView.swift */,
 			);

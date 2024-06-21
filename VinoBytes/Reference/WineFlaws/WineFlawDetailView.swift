@@ -15,16 +15,35 @@ struct WineFlawDetailView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             Text(wineFlaw.name)
-                .font(.largeTitle)
+                .font(.title)
                 .fontWeight(.bold)
+            
+            Text("Description")
+                .font(.headline)
+                .foregroundStyle(Color(red: 128/255, green: 0, blue: 0))
             
             Text(wineFlaw.description)
                 .font(.body)
+                .padding()
+                .background(Color.secondary.opacity(0.1))
+                .cornerRadius(10)
+            
+            Text("Additional Info")
+                .font(.headline)
+                .foregroundStyle(Color(red: 128/255, green: 0, blue: 0))
+            
+            Text(wineFlaw.additionalInfo)
+                .font(.body)
+                .padding()
+                .background(Color.secondary.opacity(0.1))
+                .cornerRadius(10)
+                
             
             Spacer()
         }
         .padding()
-        .navigationTitle("Wine Flaw Detail")
+        .navigationTitle("Wine Flaws")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

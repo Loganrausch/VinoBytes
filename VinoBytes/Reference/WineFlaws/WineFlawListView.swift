@@ -6,12 +6,11 @@
 //
 
 import Foundation
-
 import SwiftUI
 
 struct WineFlawListView: View {
     var body: some View {
-        List(wineFlawData) { flaw in
+        List(wineFlawData.sorted { $0.name < $1.name }) { flaw in
             NavigationLink(destination: WineFlawDetailView(wineFlaw: flaw)) {
                 Text(flaw.name)
             }

@@ -275,7 +275,6 @@ struct WineGlossaryData {
             GlossaryEntry(term: "Wine Closure", definition: "The method used to seal a wine bottle.", additionalInfo: "Common closures include corks, screw caps, and synthetic stoppers."),
             GlossaryEntry(term: "Vitner", definition: "A person who makes or sells wine.", additionalInfo: "Vitners are involved in the production and commercialization of wine."),
             GlossaryEntry(term: "Clone", definition: "A grapevine that is genetically identical to the original plant.", additionalInfo: "Cloning allows for the replication of desirable grapevine characteristics."),
-            GlossaryEntry(term: "Tartrate Crystals", definition: "Small, crystalline deposits that can form in wine.", additionalInfo: "Tartrate crystals are harmless and result from the natural formation of tartaric acid."),
             GlossaryEntry(term: "Doux", definition: "A French term meaning 'sweet', used to describe wines with a high sugar content.", additionalInfo: "Doux wines are often dessert wines and can be very rich and luscious."),
             GlossaryEntry(term: "Dieback", definition: "The decline or death of grapevine branches or shoots.", additionalInfo: "Dieback can be caused by disease, pests, or environmental stress."),
             GlossaryEntry(term: "Membrane Filtration", definition: "A technique used to clarify and stabilize wine by removing unwanted particles.", additionalInfo: "Membrane filtration can improve the clarity and shelf life of the wine."),

@@ -14,33 +14,34 @@ struct OpenAIChatView: View {
     @State private var inputText = ""
     @State private var selectedConversation: Conversation?
     @State private var showConversationHistory = false  // State for toggling conversation history
+    @State private var keyboardHeight: CGFloat = 0  // State to track keyboard height
     
     var body: some View {
-           NavigationView {
-               GeometryReader { geometry in
-                   VStack {
-                       VStack {
-                           if let selectedConversation = selectedConversation {
-                               ScrollView {
-                                   VStack {
-                                       ForEach(openAIManager.messages) { message in
-                                           MessageView(message: message)
-                                       }
-                                   }
-                               }
-                           } else {
-                               Text("The world of wine, uncorked.")
-                                   .foregroundColor(.gray)
-                           }
-                       }
-                       .frame(width: min(geometry.size.width * 0.83, 350), height: 350) // Dynamic width, fixed height
-                       .padding()
-                       .background(Color.white)
-                       .cornerRadius(10)
-                       .overlay(
-                           RoundedRectangle(cornerRadius: 10)
-                               .stroke(Color(red: 128/255, green: 0, blue: 0), lineWidth: 1.2)
-                       )
+        NavigationView {
+            GeometryReader { geometry in
+                VStack {
+                    VStack {
+                        if let selectedConversation = selectedConversation {
+                            ScrollView {
+                                VStack {
+                                    ForEach(openAIManager.messages) { message in
+                                        MessageView(message: message)
+                                    }
+                                }
+                            }
+                        } else {
+                            Text("The world of wine, uncorked.")
+                                .foregroundColor(.gray)
+                        }
+                    }
+                    .frame(width: min(geometry.size.width * 0.83, 350), height: 525) // Dynamic width, fixed height
+                    .padding()
+                    .background(Color.white)
+                    .cornerRadius(10)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color(red: 128/255, green: 0, blue: 0), lineWidth: 1.2)
+                    )
 
                     // TextField and buttons
                     VStack {
@@ -49,7 +50,6 @@ struct OpenAIChatView: View {
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .padding(.leading)
                                 
-                            
                             Button(action: {
                                 if !inputText.trimmingCharacters(in: .whitespaces).isEmpty {
                                     if selectedConversation == nil {
@@ -69,7 +69,6 @@ struct OpenAIChatView: View {
                             }
                             .padding(.trailing)
                         }
-                        .padding(.bottom)
                         
                         Button("Start New Conversation") {
                             selectedConversation = nil
@@ -78,6 +77,7 @@ struct OpenAIChatView: View {
                         .padding()
                         .foregroundColor(Color(red: 128/255, green: 0, blue: 0))
                     }
+                    .padding(.bottom, keyboardHeight)  // Adjust this padding based on the keyboard height
                 }
             }
             .navigationBarTitle("VinoAi Chat", displayMode: .inline)
@@ -96,6 +96,21 @@ struct OpenAIChatView: View {
                 ConversationHistoryView(openAIManager: openAIManager)
                 .preferredColorScheme(.light)  // Forces the sheet to be displayed in light mode
             }
+        }
+        .onAppear(perform: subscribeToKeyboardEvents)
+    }
+
+    private func subscribeToKeyboardEvents() {
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { notification in
+            guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+            guard let safeAreaInsets = windowScene.windows.first?.safeAreaInsets.bottom else { return }
+            
+            keyboardHeight = keyboardFrame.height - safeAreaInsets
+        }
+
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { _ in
+            keyboardHeight = 0
         }
     }
 }

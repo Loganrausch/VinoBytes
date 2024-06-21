@@ -28,6 +28,9 @@ struct WineGlossaryDetailView: View {
                 // Definition
                 Text(entry.definition)
                     .font(.body)
+                    .padding()
+                    .background(Color.secondary.opacity(0.1))
+                    .cornerRadius(10)
                     .padding(.horizontal)
 
                 // Additional Information Title
@@ -38,6 +41,9 @@ struct WineGlossaryDetailView: View {
                 // Additional Information
                 Text(entry.additionalInfo)
                     .font(.body)
+                    .padding()
+                    .background(Color.secondary.opacity(0.1))
+                    .cornerRadius(10)
                     .padding(.horizontal)
             }
             .frame(maxWidth: .infinity, alignment: .leading) // Enforces leading alignment
