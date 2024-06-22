@@ -15,6 +15,11 @@ struct DashboardView: View {
     @State private var wineFactOfTheWeek: String?
     @State private var isFlashcardProgressSheetPresented = false
     @State private var isWhiteDisplaySheetPresented = false
+    
+    init(wineData: WineData) {
+            self.wineData = wineData
+            configureNavigationBar()
+        }
 
     var body: some View {
         VStack(alignment: .center, spacing: 20) {
@@ -38,11 +43,11 @@ struct DashboardView: View {
             .frame(minWidth: 250, maxWidth: 350) // Ensures the box is never too small or too large
             .frame(maxHeight: 200) // Ensures the height does not exceed 150
             .padding()
-            .background(Color(red: 128/255, green: 0, blue: 0).opacity(0.07)) // Subtle, semi-transparent background
+             // Subtle, semi-transparent background
             .cornerRadius(10)
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color(red: 128/255, green: 0, blue: 0), lineWidth: 0.7)
+                    .stroke(Color(red: 128/255, green: 0, blue: 0), lineWidth: 1.5)
             )
             .padding()
             Spacer(minLength: 1)
@@ -59,15 +64,19 @@ struct DashboardView: View {
                             .frame(maxWidth: .infinity, minHeight: 20) // Ensures the text field fills the button area
                             .contentShape(Rectangle()) // Makes the whole area tappable
                             .bold()
+                        
                     }
                     .foregroundColor(.black)
                     .padding()
-                    .background(Color.white) // Moved inside the button
+                    
                     .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .shadow(color: Color.black.opacity(0.8), radius: 5)
+                   
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color(red: 128/255, green: 0, blue: 0), lineWidth: 3)
+                            .shadow(color: Color.black.opacity(0.8), radius: 5)
+                            .background(Color(red: 128/255, green: 0, blue: 0).opacity(0.07))
+                        
                     )
                 }
                 .padding(.horizontal)
@@ -88,7 +97,7 @@ struct DashboardView: View {
                             Circle()
                                 .stroke(Color(red: 128/255, green: 0, blue: 0), lineWidth: 8)
                                 .frame(width: 110, height: 110)
-                                .background(Color.white)
+                                .background(Color(red: 128/255, green: 0, blue: 0).opacity(0.07))
                                 .clipShape(Circle())
                                 .shadow(color: Color.black.opacity(0.8), radius: 3)
                             Text("\(wineData.wines.count)")
@@ -109,12 +118,14 @@ struct DashboardView: View {
                             Circle()
                                 .stroke(Color(red: 128/255, green: 0, blue: 0), lineWidth: 7)
                                 .frame(width: 110, height: 110)
-                                .background(Color.white)
+                                .background(Color(red: 128/255, green: 0, blue: 0).opacity(0.07))
                                 .clipShape(Circle())
                                 .shadow(color: Color.black.opacity(0.8), radius: 3)
+                            
                             Text("Tap Here")
                                 .font(.headline)
                                 .foregroundColor(.black)
+                                
                         }
                     }
                     .sheet(isPresented: $isWhiteDisplaySheetPresented) {
@@ -136,7 +147,7 @@ struct DashboardView: View {
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color(red: 128/255, green: 0, blue: 0), lineWidth: 7)
                             .frame(width: 200, height: 50)
-                            .background(Color.white)
+                            .background(Color(red: 128/255, green: 0, blue: 0).opacity(0.07))
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                             .shadow(color: Color.black.opacity(0.8), radius: 3)
                         Text("Read Our Latest Post")
@@ -149,7 +160,7 @@ struct DashboardView: View {
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(Color(red: 128/255, green: 0, blue: 0), lineWidth: 7)
                         .frame(width: 200, height: 50)
-                        .background(Color.white)
+                        .background(Color(red: 128/255, green: 0, blue: 0).opacity(0.07))
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .shadow(radius: 10)
                     Text("Read Our Latest Post")
@@ -161,36 +172,50 @@ struct DashboardView: View {
             Spacer(minLength: 20)
         }
         .padding()
+        
+        .background(Color(red: 243/255, green: 232/255, blue: 219/255))
         .navigationBarTitle("Dashboard", displayMode: .inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink(destination: AccountView()) {
                     Image(systemName: "gearshape.fill")
                         .imageScale(.large)
-                        .foregroundColor(Color(red: 128/255, green: 0, blue: 0))
+                        .foregroundColor(Color(red: 243/255, green: 232/255, blue: 219/255))
                 }
             }
         }
         .onAppear {
-            ContentfulManager.shared.fetchBlogPosts { posts, error in
-                if let posts = posts {
-                    self.blogPosts = posts
-                    print("Fetched \(posts.count) posts")
-                } else if let error = error {
-                    print("Error fetching posts: \(error.localizedDescription)")
+                    fetchContent()
                 }
             }
 
-            ContentfulManager.shared.fetchWineFact { fact, error in
-                if let fact = fact {
-                    self.wineFactOfTheWeek = fact
-                } else {
-                    print("Error fetching wine fact: \(error?.localizedDescription ?? "Unknown error")")
+            private func configureNavigationBar() {
+                let appearance = UINavigationBarAppearance()
+                appearance.backgroundColor = UIColor(Color(red: 60/255, green: 20/255, blue: 30/255)) // Dark maroon color
+                appearance.titleTextAttributes = [.foregroundColor: UIColor.white] // Title color
+                UINavigationBar.appearance().standardAppearance = appearance
+                UINavigationBar.appearance().compactAppearance = appearance
+                UINavigationBar.appearance().scrollEdgeAppearance = appearance
+            }
+
+            private func fetchContent() {
+                ContentfulManager.shared.fetchBlogPosts { posts, error in
+                    if let posts = posts {
+                        self.blogPosts = posts
+                        print("Fetched \(posts.count) posts")
+                    } else if let error = error {
+                        print("Error fetching posts: \(error.localizedDescription)")
+                    }
+                }
+                ContentfulManager.shared.fetchWineFact { fact, error in
+                    if let fact = fact {
+                        self.wineFactOfTheWeek = fact
+                    } else {
+                        print("Error fetching wine fact: \(error?.localizedDescription ?? "Unknown error")")
+                    }
                 }
             }
         }
-    }
-}
 
 // Custom ProgressViewStyle
 struct CustomProgressViewStyle: ProgressViewStyle {
