@@ -64,10 +64,10 @@ struct DashboardView: View {
                     .padding()
                     .background(Color.white) // Moved inside the button
                     .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .shadow(color: Color.black.opacity(0.8), radius: 3)
+                    .shadow(color: Color.black.opacity(0.8), radius: 5)
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color(red: 128/255, green: 0, blue: 0), lineWidth: 1.5)
+                            .stroke(Color(red: 128/255, green: 0, blue: 0), lineWidth: 3)
                     )
                 }
                 .padding(.horizontal)
@@ -86,7 +86,7 @@ struct DashboardView: View {
                     NavigationLink(destination: MyWinesView(wineData: wineData)) {
                         ZStack {
                             Circle()
-                                .stroke(Color(red: 128/255, green: 0, blue: 0), lineWidth: 3)
+                                .stroke(Color(red: 128/255, green: 0, blue: 0), lineWidth: 8)
                                 .frame(width: 110, height: 110)
                                 .background(Color.white)
                                 .clipShape(Circle())
@@ -107,7 +107,7 @@ struct DashboardView: View {
                     }) {
                         ZStack {
                             Circle()
-                                .stroke(Color(red: 128/255, green: 0, blue: 0), lineWidth: 3)
+                                .stroke(Color(red: 128/255, green: 0, blue: 0), lineWidth: 7)
                                 .frame(width: 110, height: 110)
                                 .background(Color.white)
                                 .clipShape(Circle())
@@ -134,7 +134,7 @@ struct DashboardView: View {
                 NavigationLink(destination: BlogPostView(blogPost: latestPost, blogPosts: blogPosts)) {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color(red: 128/255, green: 0, blue: 0), lineWidth: 3)
+                            .stroke(Color(red: 128/255, green: 0, blue: 0), lineWidth: 7)
                             .frame(width: 200, height: 50)
                             .background(Color.white)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
@@ -147,7 +147,7 @@ struct DashboardView: View {
             } else {
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color(red: 128/255, green: 0, blue: 0), lineWidth: 1)
+                        .stroke(Color(red: 128/255, green: 0, blue: 0), lineWidth: 7)
                         .frame(width: 200, height: 50)
                         .background(Color.white)
                         .clipShape(RoundedRectangle(cornerRadius: 10))

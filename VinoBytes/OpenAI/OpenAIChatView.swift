@@ -34,7 +34,7 @@ struct OpenAIChatView: View {
                                 .foregroundColor(.gray)
                         }
                     }
-                    .frame(width: min(geometry.size.width * 0.83, 350), height: 525) // Dynamic width, fixed height
+                    .frame(width: min(geometry.size.width * 0.84, 350), height: 525) // Dynamic width, fixed height
                     .padding()
                     .background(Color.white)
                     .cornerRadius(10)
@@ -42,33 +42,28 @@ struct OpenAIChatView: View {
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color(red: 128/255, green: 0, blue: 0), lineWidth: 1.2)
                     )
-
-                    // TextField and buttons
+                    
+                    Image("OpenAIBadge")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 110, height: 110) // Adjust the size as needed
+                        .padding(.top, -45)
+                        .padding(.bottom, -30)
+                    
                     VStack {
-                        HStack {
-                            TextField("Ask me anything...", text: $inputText)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
-                                .padding(.leading)
-                                
-                            Button(action: {
-                                if !inputText.trimmingCharacters(in: .whitespaces).isEmpty {
-                                    if selectedConversation == nil {
-                                        selectedConversation = openAIManager.startNewConversation()
-                                    }
-                                    if let conversation = selectedConversation {
-                                        openAIManager.sendMessage(inputText, in: conversation) { _ in
-                                            inputText = ""  // Clear text field after sending
-                                        }
+                        CustomTextField(placeholder: "Ask me anything...", text: $inputText, onSend: {
+                            if !inputText.trimmingCharacters(in: .whitespaces).isEmpty {
+                                if selectedConversation == nil {
+                                    selectedConversation = openAIManager.startNewConversation()
+                                }
+                                if let conversation = selectedConversation {
+                                    openAIManager.sendMessage(inputText, in: conversation) { _ in
+                                        inputText = ""  // Clear text field after sending
                                     }
                                 }
-                            }) {
-                                Image(systemName: "arrow.up.square")
-                                    .resizable()
-                                    .frame(width: 30, height: 30)
-                                    .foregroundColor(Color(red: 128/255, green: 0, blue: 0))
                             }
-                            .padding(.trailing)
-                        }
+                        })
+                        .padding(.horizontal)
                         
                         Button("Start New Conversation") {
                             selectedConversation = nil
@@ -78,9 +73,10 @@ struct OpenAIChatView: View {
                         .foregroundColor(Color(red: 128/255, green: 0, blue: 0))
                     }
                     .padding(.bottom, keyboardHeight)  // Adjust this padding based on the keyboard height
+                    Spacer()
                 }
             }
-            .navigationBarTitle("VinoAi Chat", displayMode: .inline)
+            .navigationBarTitle("Vino Chat", displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
@@ -94,7 +90,7 @@ struct OpenAIChatView: View {
             }
             .sheet(isPresented: $showConversationHistory) {
                 ConversationHistoryView(openAIManager: openAIManager)
-                .preferredColorScheme(.light)  // Forces the sheet to be displayed in light mode
+                    .preferredColorScheme(.light)  // Forces the sheet to be displayed in light mode
             }
         }
         .onAppear(perform: subscribeToKeyboardEvents)
@@ -115,6 +111,42 @@ struct OpenAIChatView: View {
     }
 }
 
+struct CustomTextField: View {
+    var placeholder: String
+    @Binding var text: String
+    var onSend: () -> Void
+    
+    var body: some View {
+        HStack {
+            ZStack(alignment: .leading) {
+                if text.isEmpty {
+                    Text(placeholder)
+                        .foregroundColor(.gray) // Placeholder text color
+                        .padding(.leading, 4)
+                }
+                TextField("", text: $text)
+                    .foregroundColor(.black) // Input text color
+                    .padding(4)
+            }
+            
+            Button(action: onSend) {
+                Image(systemName: "arrow.up.square")
+                    .resizable()
+                    .frame(width: 26, height: 26)
+                    .foregroundColor(Color(red: 128/255, green: 0, blue: 0))
+                    .padding(.trailing, -4)
+            }
+        }
+        .padding(.horizontal)
+        .padding(.vertical, 8)
+        .background(Color.gray.opacity(0.08))
+        .cornerRadius(8)
+        .overlay(
+            RoundedRectangle(cornerRadius: 8)
+                .stroke(Color.black, lineWidth: 1)
+        )
+    }
+}
 
 struct ConversationView: View {
     var conversation: Conversation

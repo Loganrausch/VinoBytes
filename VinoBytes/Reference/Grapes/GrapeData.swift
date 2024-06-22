@@ -992,9 +992,9 @@ Grape(
                 origin: "Grenache, or Garnacha in Spanish, is one of the most widely planted red wine grape varieties worldwide. It likely originated in Spain before spreading to other regions, notably Southern France.",
                 countries: Countries(
                     primary: [
-                        "Spain: Predominantly in regions like Priorat and Aragón.",
-                        "France: Extensively used in the Rhône Valley and Languedoc-Roussillon.",
-                        "USA: Grown in California, particularly in Paso Robles and Santa Barbara.",
+                        "Spain: Predominantly in regions like Priorat and Aragón.\n",
+                        "France: Extensively used in the Rhône Valley and Languedoc-Roussillon.\n",
+                        "USA: Grown in California, particularly in Paso Robles and Santa Barbara.\n",
                         "Australia: Found in regions like Barossa Valley and McLaren Vale."
                     ]
                 ),
@@ -1010,7 +1010,7 @@ Grape(
                     growingConditions: "Resistant to wind and drought, but susceptible to various vine diseases."
                 ),
                 wineStyles: [
-                    "Red Wines: Often used in blends, especially in Rhône blends and as a major component of Châteauneuf-du-Pape.",
+                    "Red Wines: Often used in blends, especially in Rhône blends and as a major component of Châteauneuf-du-Pape.\n",
                     "Rosé Wines: Important in rosé production in regions like Tavel and Provence."
                 ],
                 foodPairing: [
@@ -1034,7 +1034,7 @@ Grape(
                 origin: "Kadarka is a historic red grape variety that is believed to have originated in the Balkans, now most commonly associated with Hungarian and Bulgarian wines.",
                 countries: Countries(
                     primary: [
-                        "Hungary: Particularly in regions like Szekszárd and Eger.",
+                        "Hungary: Particularly in regions like Szekszárd and Eger.\n",
                         "Bulgaria: Also widely planted and used in Bulgarian wine production."
                     ]
                 ),
