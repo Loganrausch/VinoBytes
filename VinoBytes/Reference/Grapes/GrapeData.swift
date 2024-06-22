@@ -32,11 +32,11 @@ struct GrapeData {
                     growingConditions: "Resistant to drought and can adapt to various elevations. Known for its high yield and vigorous growth."
                 ),
                 wineStyles: [
-                    "Red Wines: Ranges from fresh, young, and fruity wines to more complex, oak-aged versions.",
+                    "Red Wines: Ranges from fresh, young, and fruity wines to more complex, oak-aged versions.\n",
                     "Rosé Wines: Produced in a lighter style with fresh red fruit flavors and crisp acidity."
                 ],
                 foodPairing: [
-                    "Red Wines: Pairs well with grilled meats, lamb, moussaka, and Mediterranean cuisine featuring herbs and spices.",
+                    "Red Wines: Pairs well with grilled meats, lamb, moussaka, and Mediterranean cuisine featuring herbs and spices.\n",
                     "Rosé Wines: Complements lighter dishes like salads, seafood, and poultry."
                 ],
                 notableProducers: [
@@ -57,7 +57,7 @@ struct GrapeData {
                 origin: "Aglianico is an ancient grape variety believed to have been introduced by the Greeks to southern Italy. It is primarily grown in the Campania and Basilicata regions, with a long history of producing high-quality wines.",
                 countries: Countries(
                     primary: [
-                        "• Italy: Predominantly in the regions of Campania and Basilicata."
+                        "Italy: Predominantly in the regions of Campania and Basilicata."
                     ]
                 ),
                 tastingNotes: TastingNotes(
@@ -72,11 +72,11 @@ struct GrapeData {
                     growingConditions: "Known for its late ripening, requiring a long growing season. It is resilient and can withstand hot climates, producing wines with high acidity and tannins."
                 ),
                 wineStyles: [
-                    "Red Wines: Typically produces full-bodied, age-worthy reds with high acidity and tannins.",
+                    "Red Wines: Typically produces full-bodied, age-worthy reds with high acidity and tannins.\n",
                     "Rosé Wines: Occasionally made into rosé, offering bright acidity and fresh fruit flavors."
                 ],
                 foodPairing: [
-                    "Red Wines: Pairs well with rich, hearty dishes such as braised meats, game, and aged cheeses.",
+                    "Red Wines: Pairs well with rich, hearty dishes such as braised meats, game, and aged cheeses.\n",
                     "Rosé Wines: Complements lighter fare like charcuterie, grilled vegetables, and poultry."
                 ],
                 notableProducers: [
@@ -97,7 +97,7 @@ Grape(
         origin: "Alicante Bouschet is a teinturier grape variety created by Henri Bouschet in France in 1866 by crossing Petit Bouschet with Grenache. It is known for its deep color and high anthocyanin content.",
         countries: Countries(
             primary: [
-                "France: Particularly in the Languedoc and Provence regions.",
+                "France: Particularly in the Languedoc and Provence regions.\n",
                 "Portugal: Widely grown in the Alentejo region."
             ]
         ),
@@ -113,11 +113,11 @@ Grape(
             growingConditions: "Vigorous and productive, known for its resistance to disease and ability to produce deeply colored wines."
         ),
         wineStyles: [
-            "Red Wines: Often used in blends to add color, body, and complexity.",
+            "Red Wines: Often used in blends to add color, body, and complexity.\n",
             "Varietal Wines: Produces rich, dark wines with aging potential."
         ],
         foodPairing: [
-            "Red Wines: Pairs well with grilled meats, game, stews, and dishes with robust flavors.",
+            "Red Wines: Pairs well with grilled meats, game, stews, and dishes with robust flavors.\n",
             "Varietal Wines: Complements hearty dishes, aged cheeses, and dark chocolate."
         ],
         notableProducers: [
@@ -154,11 +154,11 @@ Grape(
                     growingConditions: "Vigorous and late-ripening, requiring careful management to avoid rot and ensure phenolic ripeness."
                 ),
                 wineStyles: [
-                    "Red Wines: Known for producing tannic, age-worthy wines with significant structure.",
+                    "Red Wines: Known for producing tannic, age-worthy wines with significant structure.\n",
                     "Rosé Wines: Can produce vibrant and complex sparkling rosé."
                 ],
                 foodPairing: [
-                    "Red Wines: Pairs well with roasted meats, braised beef ribs, and robust dishes.",
+                    "Red Wines: Pairs well with roasted meats, braised beef ribs, and robust dishes.\n",
                     "Rosé Wines: Complements lighter dishes, smoked trout, and white meats."
                 ],
                 notableProducers: [
@@ -219,7 +219,7 @@ Grape(
         origin: "Blaufränkisch, also known as Lemberger and Kékfrankos, is a black-skinned grape variety primarily grown in Austria and Hungary. It is believed to have originated in Central Europe and is known for producing rich, spicy wines.",
         countries: Countries(
             primary: [
-                "Austria: Particularly in Burgenland and Neusiedlersee regions.",
+                "Austria: Particularly in Burgenland and Neusiedlersee regions.\n",
                 "Hungary: Known as Kékfrankos, especially in Sopron and Eger."
             ]
         ),
@@ -274,11 +274,11 @@ Grape(
                 growingConditions: "Bobal is known for its hardiness and resistance to drought and diseases."
             ),
             wineStyles: [
-                "Red Wines: Typically robust and tannic, suitable for aging.",
+                "Red Wines: Typically robust and tannic, suitable for aging.\n",
                 "Rosé Wines: Fruit-forward and vibrant, usually consumed young."
             ],
             foodPairing: [
-                "Red Wines: Pairs well with hearty meat dishes like stews and grilled red meats.",
+                "Red Wines: Pairs well with hearty meat dishes like stews and grilled red meats.\n",
                 "Rosé Wines: Excellent with tapas, charcuterie, and lighter fare."
             ],
             notableProducers: [
@@ -316,7 +316,7 @@ Grape(
                     "Red Wines: Typically fruity and approachable, often vinified to be enjoyed young."
                 ],
                 foodPairing: [
-                    "Pairs well with pizza, pasta dishes with red sauces, and various meats like chicken and pork."
+                    "Red Wines: Pairs well with pizza, pasta dishes with red sauces, and various meats like chicken and pork."
                 ],
                 notableProducers: [
                     "Familia Zuccardi",
@@ -372,8 +372,8 @@ Grape(
                 origin: "Originating from the Bordeaux region of France, Cabernet Franc is a key variety also found in the Loire Valley. It is a parent grape to Cabernet Sauvignon and Merlot.",
                 countries: Countries(
                     primary: [
-                        "France: Predominantly in Bordeaux and Loire Valley.",
-                        "Italy: Increasingly popular in northern regions.",
+                        "France: Predominantly in Bordeaux and Loire Valley.\n",
+                        "Italy: Increasingly popular in northern regions.\n",
                         "USA: Widely planted in California and Washington State."
                     ]
                 ),
@@ -413,8 +413,8 @@ Grape(
                 origin: "Originally from Bordeaux, France, Cabernet Sauvignon has become one of the most widely recognized red wine grape varieties globally.",
                 countries: Countries(
                     primary: [
-                        "France: A staple in Bordeaux blends.",
-                        "USA: Dominant in California, especially Napa Valley.",
+                        "France: A staple in Bordeaux blends.\n",
+                        "USA: Dominant in California, especially Napa Valley.\n",
                         "Chile, Australia, South Africa: Extensively planted."
                     ]
                 ),
@@ -491,8 +491,8 @@ Grape(
                 origin: "Carignan is believed to have originated in Spain but became extensively planted in the Languedoc-Roussillon region in France.",
                 countries: Countries(
                     primary: [
-                        "France: Widely found in Languedoc-Roussillon.",
-                        "Spain: Known as Cariñena in Aragón.",
+                        "France: Widely found in Languedoc-Roussillon.\n",
+                        "Spain: Known as Cariñena in Aragón.\n",
                         "Italy: Grown in Sardinia where it is known as Carignano."
                     ]
                 ),
@@ -508,11 +508,11 @@ Grape(
                     growingConditions: "High yielding but susceptible to diseases; benefits from old vines and low yields for quality."
                 ),
                 wineStyles: [
-                    "Red Wines: Often used in blends, adding color, acidity, and tannin structure.",
+                    "Red Wines: Often used in blends, adding color, acidity, and tannin structure.\n",
                     "Rosé Wines: Also made into deeply colored rosés."
                 ],
                 foodPairing: [
-                    "Pairs well with grilled meats, game, and hearty stews."
+                    "Red Wines: Pairs well with grilled meats, game, and hearty stews."
                 ],
                 notableProducers: [
                     "Domaine de Courbissac",
@@ -532,7 +532,7 @@ Grape(
                 origin: "Cariñena, also known as Carignan, originates from the Aragón region of Spain, where it is still a prominent variety.",
                 countries: Countries(
                     primary: [
-                        "Spain: Particularly in the Aragón region.",
+                        "Spain: Particularly in the Aragón region.\n",
                         "France: Common in the southern regions, known as Carignan."
                     ]
                 ),
@@ -570,7 +570,7 @@ Grape(
                 origin: "Originally from Bordeaux, France, Carmenere is now primarily associated with Chile where it has become a signature grape variety.",
                 countries: Countries(
                     primary: [
-                        "Chile: Extensively planted throughout the Central Valley.",
+                        "Chile: Extensively planted throughout the Central Valley.\n",
                         "France: Small quantities remain in Bordeaux."
                     ]
                 ),
@@ -646,8 +646,8 @@ Grape(
                 origin: "Cinsault is a heat-tolerant grape variety originating from the South of France, widely used in blends with Grenache and Syrah.",
                 countries: Countries(
                     primary: [
-                        "France: Common in the Languedoc-Roussillon and Provence regions.",
-                        "South Africa: Used in many blends and for making rosé wines.",
+                        "France: Common in the Languedoc-Roussillon and Provence regions.\n",
+                        "South Africa: Used in many blends and for making rosé wines.\n",
                         "Lebanon: Integral part of the famed Chateau Musar blends."
                     ]
                 ),
@@ -663,7 +663,7 @@ Grape(
                     growingConditions: "Highly vigorous and can produce high yields, but best quality comes from controlled yields."
                 ),
                 wineStyles: [
-                    "Red Wines: Often blended for its aromatics and acidity.",
+                    "Red Wines: Often blended for its aromatics and acidity.\n",
                     "Rosé Wines: Frequently used to produce light, aromatic rosés."
                 ],
                 foodPairing: [
@@ -701,7 +701,7 @@ Grape(
                     growingConditions: "Susceptible to grape diseases like powdery mildew but benefits from the traditional drying process for Amarone."
                 ),
                 wineStyles: [
-                    "Red Wines: Ranges from light, crisp Valpolicella to rich, concentrated Amarone.",
+                    "Red Wines: Ranges from light, crisp Valpolicella to rich, concentrated Amarone.\n",
                     "Recioto: Sweet wines also made from semi-dried grapes."
                 ],
                 foodPairing: [
@@ -890,7 +890,7 @@ Grape(
                     growingConditions: "Resilient to heat and drought, but sensitive to overcropping which can dilute its aromatic profile."
                 ),
                 wineStyles: [
-                    "Red Wines: Typically produced as a varietal wine or blended with Nero d’Avola in Cerasuolo di Vittoria.",
+                    "Red Wines: Typically produced as a varietal wine or blended with Nero d’Avola in Cerasuolo di Vittoria.\n",
                     "Rosé Wines: Occasionally made into light, aromatic rosés."
                 ],
                 foodPairing: [
@@ -928,7 +928,7 @@ Grape(
                     growingConditions: "Susceptible to diseases like powdery mildew; benefits from careful canopy management."
                 ),
                 wineStyles: [
-                    "Red Wines: Primarily produced as light, fruity reds. Notably, the Beaujolais Nouveau is released annually with much fanfare.",
+                    "Red Wines: Primarily produced as light, fruity reds. Notably, the Beaujolais Nouveau is released annually with much fanfare.\n",
                     "Rosé Wines: Sometimes made into light and refreshing rosés."
                 ],
                 foodPairing: [
