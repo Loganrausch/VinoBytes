@@ -7,6 +7,25 @@
 
 import SwiftUI
 
+struct ConversationView: View {
+    var conversation: Conversation
+
+    private var displayText: String {
+        if let startTime = conversation.startTime {
+            let formatter = DateFormatter()
+            formatter.dateStyle = .long
+            formatter.timeStyle = .short
+            return "Conversation started on \(formatter.string(from: startTime))"
+        } else {
+            return "Date unavailable"
+        }
+    }
+
+    var body: some View {
+        Text(displayText)
+    }
+}
+
 struct ConversationHistoryView: View {
     @ObservedObject var openAIManager: OpenAIManager
     @State private var selectedConversation: Conversation?

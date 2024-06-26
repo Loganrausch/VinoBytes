@@ -103,6 +103,7 @@ struct FlashcardView: View {
         .padding()
         .background(Color.clear)
         .navigationBarTitle("Flashcard Study")
+        .navigationBarTitleDisplayMode(.inline)
     }
 
     private func moveToNextFlashcard() {

@@ -10,44 +10,45 @@ import SwiftUI
 struct ReferenceMainView: View {
     var body: some View {
         NavigationView {
-            VStack(spacing: 50) {
-                HStack(spacing: 40) {
-                    NavigationLink(destination: GrapeListView()) {
-                        buttonContent(title: "Grapes", systemImage: "leaf.arrow.circlepath")
+            ZStack {
+                Color("Latte")
+                    .edgesIgnoringSafeArea(.all) // Extend background to the edges
+                
+                VStack(spacing: 50) {
+                    HStack(spacing: 40) {
+                        NavigationLink(destination: GrapeListView()) {
+                            buttonContent(title: "Grapes", systemImage: "leaf.arrow.circlepath")
+                        }
+
+                        NavigationLink(destination: WineGlossaryListView()) {
+                            buttonContent(title: "Glossary", systemImage: "books.vertical")
+                        }
                     }
 
-                    NavigationLink(destination: WineGlossaryListView()) {
-                        buttonContent(title: "Glossary", systemImage: "books.vertical")
-                    }
-                }
+                    HStack(spacing: 40) {
+                        NavigationLink(destination: FoodWinePairingsListView()) {
+                            buttonContent(title: "Pairings", systemImage: "fork.knife")
+                        }
 
-                HStack(spacing: 40) {
-                    
-                    NavigationLink(destination: FoodWinePairingsListView()) {
-                        buttonContent(title: "Pairings", systemImage: "fork.knife")
-                    }
-                    
-                    NavigationLink(destination: RegionListView()) {
-                        buttonContent(title: "Regions", systemImage: "map")
+                        NavigationLink(destination: RegionListView()) {
+                            buttonContent(title: "Regions", systemImage: "map")
+                        }
                     }
 
-                  
-                }
-
-                HStack(spacing: 40) {
-                    
-                    NavigationLink(destination: WineFlawListView()) {
-                        buttonContent(title: "Wine Flaws", systemImage: "exclamationmark.triangle")
-                    }
+                    HStack(spacing: 40) {
+                        NavigationLink(destination: WineFlawListView()) {
+                            buttonContent(title: "Wine Flaws", systemImage: "exclamationmark.triangle")
+                        }
                         NavigationLink(destination: WineLawListView()) {
                             buttonContent(title: "Wine Law", systemImage: "scalemass")
                         }
                     }
                 }
-            
-            .padding(.horizontal, 40)
-            .padding(.top, -20)
-            .navigationTitle("Wine Reference")
+                .padding(.horizontal, 40)
+                .padding(.top, -20)
+                .navigationTitle("Wine Reference")
+                .navigationBarTitleDisplayMode(.inline)
+            }
         }
     }
 
@@ -61,11 +62,11 @@ struct ReferenceMainView: View {
                 .foregroundColor(.black)
         }
         .frame(width: 150, height: 150)
-        .background(Color.white)
+        .background(Color.latte)
         .clipShape(Circle())
         .shadow(radius: 10)
         .overlay(
-            Circle().stroke(Color(red: 128/255, green: 0, blue: 0), lineWidth: 2)
+            Circle().stroke(Color("Maroon"), lineWidth: 2)
         )
     }
 }

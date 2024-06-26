@@ -11,6 +11,10 @@ import SwiftUI
 struct VinoDecksApp: App {
     @State private var isShowingLaunchScreen = true
 
+    init() {
+        configureNavigationBar()
+    }
+
     var body: some Scene {
         WindowGroup {
             if isShowingLaunchScreen {
@@ -24,15 +28,28 @@ struct VinoDecksApp: App {
         }
         .environment(\.colorScheme, .light)  // Forces light mode for all views in the app
     }
+
+    private func configureNavigationBar() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground() // Ensures the background is not transparent
+        appearance.backgroundColor = UIColor(Color("Maroon")) // Dark maroon color
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+
+        // Apply the appearance to all navigation bar types
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().compactAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+    }
 }
 
 struct LaunchScreen: View {
-    @State private var opacity: Double = 0  // Single opacity variable for both text and image
     @Binding var isShowingLaunchScreen: Bool
+    @State private var opacity: Double = 0  // Single opacity variable for both text and image
 
     var body: some View {
         ZStack {
-            Color(.systemBackground)
+            Color(.latte)
                 .edgesIgnoringSafeArea(.all)
 
             VStack(spacing: 20) {
@@ -69,4 +86,3 @@ struct LaunchScreen: View {
         }
     }
 }
-

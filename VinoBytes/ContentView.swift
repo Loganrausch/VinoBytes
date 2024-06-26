@@ -6,44 +6,18 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct ContentView: View {
-    @StateObject var wineData = WineData() // Create an instance of WineData
-
     var body: some View {
-        TabView {
-            NavigationView {
-                DashboardView(wineData: wineData) // Pass wineData to DashboardView
-            }
-            .tabItem {
-                Image(systemName: "house.fill")
-                Text("Dashboard")
-            }
-            
-            StudyView()
-                .tabItem {
-                    Image(systemName: "book")
-                    Text("Study")
-                }
-            
-            OpenAIChatView()
-                .tabItem {
-                    Image(systemName: "figure.wave")
-                    Text("VinoAI")
-                }
-            
-            MyWinesView(wineData: wineData, isRootView: true) // Ensure MyWinesView manages its own NavigationView
-                .tabItem {
-                    Image(systemName: "wineglass")
-                    Text("My Wines")
-                }
-            
-            ReferenceMainView()
-                .tabItem {
-                    Image(systemName: "pencil.line")
-                    Text("Reference")
-                }
+        NavigationView {
+            CustomTabBarView()
+                .edgesIgnoringSafeArea(.top)  // Extend content into the safe area
         }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
     }
 }

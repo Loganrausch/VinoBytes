@@ -23,12 +23,17 @@ class OpenAIManager: ObservableObject {
 
     func sendMessage(_ text: String, in conversation: Conversation, completion: @escaping (String?) -> Void) {
         let userMessage = saveMessage(text, role: "user", in: conversation)
+        // Add the message to the messages array immediately after saving it
+        DispatchQueue.main.async {
+            self.messages.append(userMessage)
+            self.loadMessages(from: conversation)  // This might be redundant if messages are managed properly
+        }
 
         requestResponse(for: text) { responseText in
             DispatchQueue.main.async {
                 if let responseText = responseText {
-                    self.saveMessage(responseText, role: "assistant", in: conversation)
-                    self.loadMessages(from: conversation)  // Load messages after sending
+                    let responseMessage = self.saveMessage(responseText, role: "assistant", in: conversation)
+                    self.messages.append(responseMessage)
                     completion(responseText)
                 } else {
                     completion("Failed to get a reply from OpenAI")

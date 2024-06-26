@@ -38,29 +38,37 @@ struct MyWinesView: View {
                 NavigationView {
                     contentView
                         .navigationTitle("My Wines")
-                        .navigationBarTitleDisplayMode(.large)
+                        .navigationBarTitleDisplayMode(.inline)
                 }
             } else {
                 contentView
                     .navigationTitle("My Wines")
-                    .navigationBarTitleDisplayMode(.large)
+                    .navigationBarTitleDisplayMode(.inline)
             }
         }
     }
 
     private var contentView: some View {
-        VStack {
-            searchField
-            wineList
-            addButton
+        ZStack {
+            Color("Latte").edgesIgnoringSafeArea(.all)
+            VStack(spacing: 20) {
+                Spacer(minLength: 10)
+                searchField
+                wineList
+                addButton
+            }
         }
     }
 
     private var searchField: some View {
         TextField("Search", text: $searchText)
             .padding(8)
-            .background(Color(.systemGray5))
+            .background(Color(.systemGray6)) // Background color of the TextField
             .cornerRadius(8)
+            .overlay(
+                RoundedRectangle(cornerRadius: 8) // Match the corner radius with the background
+                    .stroke(Color("Maroon"), lineWidth: 2) // Apply stroke with your custom color and define its width
+            )
             .padding(.horizontal)
     }
 
@@ -99,7 +107,7 @@ struct MyWinesView: View {
             Text("Add a Wine")
                 .padding()
                 .foregroundColor(.white)
-                .background(Color(red: 128 / 255, green: 0, blue: 0))
+                .background(Color("Maroon"))
                 .cornerRadius(8)
         }
         .padding()

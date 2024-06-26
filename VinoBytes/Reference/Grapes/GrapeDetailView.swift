@@ -32,7 +32,7 @@ struct GrapeDetailView: View {
                         .font(.title)
                         .fontWeight(.bold)
                         .padding()
-                        .background(Color.white) // Optional: Change background color if needed
+                       
                         
                
 
@@ -115,8 +115,11 @@ struct GrapeDetailView: View {
                     
                 }
             }
+          
             .navigationTitle(grape.name)
+            
             .navigationBarTitleDisplayMode(.inline)
+            .background(.latte).edgesIgnoringSafeArea(.all)
         }
     }
 }
@@ -132,7 +135,7 @@ struct SectionBox<Content: View>: View {
                 .fontWeight(.semibold)
                 .padding(.vertical, 8) // Adding vertical padding for better spacing
                 .padding(.horizontal)
-                .foregroundColor(Color(red: 128/255, green: 0, blue: 0))
+                .foregroundColor(.black)
 
             content()
                 .padding()

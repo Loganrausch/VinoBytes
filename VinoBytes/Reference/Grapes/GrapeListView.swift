@@ -13,26 +13,39 @@ struct GrapeListView: View {
     let whiteGrapes = GrapeData.whiteGrapes.sorted { $0.name < $1.name }
 
     var body: some View {
-        List {
-            Section(header: Text("Red Grapes")) {
-                ForEach(redGrapes) { grape in
-                    NavigationLink(destination: GrapeDetailView(grape: grape)) {
-                        Text(grape.name)
-                            .padding(.vertical, 5)
+            ZStack {
+                Color("Latte").edgesIgnoringSafeArea(.all) // Ensure the background covers the entire screen
+                
+                List {
+                    Section(header: Text("Red Grapes")) {
+                        ForEach(redGrapes) { grape in
+                            NavigationLink(destination: GrapeDetailView(grape: grape)) {
+                                Text(grape.name)
+                                    .padding(.vertical, 5)
+                                    .background(Color("Latte"))
+                            }
+                            .listRowBackground(Color("Latte")) // Ensure each row respects the background color
+                        }
                     }
-                }
-            }
-            
-            Section(header: Text("White Grapes")) {
-                ForEach(whiteGrapes) { grape in
-                    NavigationLink(destination: GrapeDetailView(grape: grape)) {
-                        Text(grape.name)
-                            .padding(.vertical, 5)
+                    .headerProminence(.increased)
+
+                    Section(header: Text("White Grapes")) {
+                        ForEach(whiteGrapes) { grape in
+                            NavigationLink(destination: GrapeDetailView(grape: grape)) {
+                                Text(grape.name)
+                                    .padding(.vertical, 5)
+                                    .background(Color("Latte"))
+                            }
+                            .listRowBackground(Color("Latte")) // Ensure each row respects the background color
+                        }
                     }
+                    .headerProminence(.increased)
                 }
+                .background(Color("Latte")) // Background for the list
+                .listStyle(InsetGroupedListStyle()) // Apply a list style for better appearance
             }
-        }
-        .navigationTitle("Grapes")
+            .navigationTitle("Grapes")
+        
     }
 }
 

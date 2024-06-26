@@ -64,6 +64,7 @@ struct StudyView: View {
                 .padding()
             }
             .navigationTitle("Flashcards")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
