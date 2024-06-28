@@ -9,6 +9,7 @@
     </entity>
     <entity name="Conversation" representedClassName="Conversation" syncable="YES" codeGenerationType="class">
         <attribute name="endTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="firstMessageContent" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="startTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="messages" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="ChatMessage" inverseName="conversation" inverseEntity="ChatMessage"/>

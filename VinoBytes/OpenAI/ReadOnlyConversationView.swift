@@ -14,11 +14,16 @@ struct ReadOnlyConversationView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                ForEach(openAIManager.messages) { message in
-                    MessageView(message: message)
+                VStack(spacing: 20) {  // Add spacing between messages if needed
+                    ForEach(openAIManager.messages) { message in
+                        MessageView(message: message)
+                    }
                 }
+                .padding(.top, 20)  // Add padding at the top of the ScrollView
             }
+            .background(Color("Latte"))
             .navigationBarTitle("Conversation", displayMode: .inline)
+            .preferredColorScheme(.light) // Apply light mode to the entire view
         }
         .onAppear {
             openAIManager.loadMessages(from: conversation)

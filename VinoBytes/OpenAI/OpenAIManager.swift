@@ -23,26 +23,38 @@ class OpenAIManager: ObservableObject {
 
     func sendMessage(_ text: String, in conversation: Conversation, completion: @escaping (String?) -> Void) {
         let userMessage = saveMessage(text, role: "user", in: conversation)
-        // Add the message to the messages array immediately after saving it
-        DispatchQueue.main.async {
-            self.messages.append(userMessage)
-            self.loadMessages(from: conversation)  // This might be redundant if messages are managed properly
+        
+        // Set the first message content if it's not already set
+        if conversation.firstMessageContent == nil {
+            conversation.firstMessageContent = text
+            do {
+                try context.save()
+            } catch {
+                print("Failed to update conversation: \(error)")
+            }
         }
 
-        requestResponse(for: text) { responseText in
+        DispatchQueue.main.async {
+            self.messages.append(userMessage)
+            self.loadMessages(from: conversation)
+        }
+        
+        let lastTwoMessages = self.messages.suffix(2).map { ["role": $0.role, "content": $0.content as String?] }
+        
+        requestResponse(for: text, context: lastTwoMessages) { responseText in
             DispatchQueue.main.async {
-                if let responseText = responseText {
-                    let responseMessage = self.saveMessage(responseText, role: "assistant", in: conversation)
-                    self.messages.append(responseMessage)
-                    completion(responseText)
-                } else {
+                guard let responseText = responseText else {
                     completion("Failed to get a reply from OpenAI")
+                    return
                 }
+                let responseMessage = self.saveMessage(responseText, role: "assistant", in: conversation)
+                self.messages.append(responseMessage)
+                completion(nil)
             }
         }
     }
 
-    private func requestResponse(for text: String, completion: @escaping (String?) -> Void) {
+    private func requestResponse(for text: String, context: [[String: String?]], completion: @escaping (String?) -> Void) {
         guard let url = URL(string: "https://vinobytes-afe480cea091.herokuapp.com/api/chat") else {
             completion(nil)
             return
@@ -51,10 +63,13 @@ class OpenAIManager: ObservableObject {
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
 
-        // Include the system message along with the user's message and set max_tokens to 150
+        let modifiedContext = context.map { dict in
+            dict.compactMapValues { $0 }  // Remove nil values if they are not handled by the API
+        }
+
         let body: [String: Any] = [
-            "messages": [systemMessage, ["role": "user", "content": text]],
-            "max_tokens": 150
+            "messages": modifiedContext + [["role": "user", "content": text]],
+            "max_tokens": 250
         ]
 
         do {
@@ -69,8 +84,17 @@ class OpenAIManager: ObservableObject {
                 completion(nil)
                 return
             }
-            let result = try? JSONDecoder().decode(OpenAIResponse.self, from: data)
-            completion(result?.choices.first?.message.content)
+            do {
+                let result = try JSONDecoder().decode(OpenAIResponse.self, from: data)
+                
+                        print("Prompt tokens used: \(result.usage.prompt_tokens)")
+                        print("Completion tokens used: \(result.usage.completion_tokens)")
+                        print("Total tokens used: \(result.usage.total_tokens)")
+                
+                completion(result.choices.first?.message.content)
+            } catch {
+                completion(nil)
+            }
         }.resume()
     }
 
@@ -94,13 +118,13 @@ class OpenAIManager: ObservableObject {
         let conversation = Conversation(context: context)
         conversation.id = UUID()
         conversation.startTime = Date()
-        
+
         do {
             try context.save()
         } catch {
-            print("Error starting a new conversation: \(error)")
+            print("Error saving new conversation: \(error)")
         }
-        loadAllConversations()  // Reload conversations after creating a new one
+        loadAllConversations()  // Reload conversations to update the list
         return conversation
     }
 

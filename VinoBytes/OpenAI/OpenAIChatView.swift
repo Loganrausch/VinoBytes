@@ -13,66 +13,71 @@ struct OpenAIChatView: View {
     
     @State private var inputText = ""
     @State private var selectedConversation: Conversation?
-    @State private var showConversationHistory = false  // State for toggling conversation history
-    @State private var keyboardHeight: CGFloat = 0  // State to track keyboard height
+    @State private var showConversationHistory = false
+    @State private var keyboardHeight: CGFloat = 0
     @State private var isLoading = false
-    @State private var scrollViewProxy: ScrollViewProxy?  // State to hold the ScrollViewProxy
+    @State private var scrollViewProxy: ScrollViewProxy?
 
     var body: some View {
         NavigationView {
-            GeometryReader { geometry in
-                VStack {
-                    Spacer(minLength: 25)
-                    VStack {
-                        if let selectedConversation = selectedConversation {
-                            ScrollView {
-                                ScrollViewReader { proxy in
-                                    VStack {
-                                        ForEach(openAIManager.messages) { message in
-                                            MessageView(message: message)
-                                        }
+            VStack {
+                if let selectedConversation = selectedConversation {
+                    ScrollView {
+                        ScrollViewReader { proxy in
+                            VStack {
+                                ForEach(openAIManager.messages) { message in
+                                    MessageView(message: message)
+                                }
+                                if isLoading {
+                                    HStack {
+                                        WineGlassLoadingView()
+                                            .scaleEffect(1.5)
+                                            .padding(.vertical, 10)
+                                        Spacer()
                                     }
-                                        
-                                        
-                                    .onChange(of: openAIManager.messages.count) { _ in
-                                                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                                                                                if let lastUserMessage = openAIManager.messages.last(where: { $0.role == "user" }) {
-                                                                                    proxy.scrollTo(lastUserMessage.id, anchor: .top)
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        } else {
-                            Text("The world of wine, uncorked.")
-                                .foregroundColor(.gray)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(.horizontal)
+                                }
+                            }
+                            .padding(.top, 20)  // Add padding to the top of the ScrollView content
+                            .onAppear {
+                                self.scrollViewProxy = proxy
+                            }
+                            .onChange(of: openAIManager.messages.count) { _ in
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                                    if let lastUserMessage = openAIManager.messages.last(where: { $0.role == "user" }) {
+                                        proxy.scrollTo(lastUserMessage.id, anchor: .top)
+                                    }
+                                }
+                            }
                         }
                     }
-                    .frame(width: min(geometry.size.width * 0.84, 350), height: 495)
-                    .padding()
-                    .background(Color("latte"))
-                    .cornerRadius(10)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color("Maroon"), lineWidth: 1.2)
-                    )
-                    
-                    if isLoading {
-                        WineGlassLoadingView()  // This will show the loading animation outside the ScrollView.
-                            .scaleEffect(1.5)
-                            .transition(.opacity)
-                        }
-                    
+                } else {
+                    Spacer()
+                    Text("The world of wine, uncorked.")
+                        .foregroundColor(.gray)
+                }
+                
+                Spacer()
+                
+
+
+            
+
+                    Rectangle()
+                        .fill(Color("Maroon"))
+                        .frame(height: 2)
+                        .opacity(0.4)
+                        
+                    VStack(spacing: 0) {
                     Image("OpenAIBadge")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 110, height: 110)
-                        .padding(.top, -45)
-                        .padding(.bottom, -30)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 120, height: 120)
+                                        .padding(.bottom, -25) // Reduce padding as needed
+                                        .padding(.top, -30) // Reduce padding as needed
+                       
                     
-                    
-                    
-                    VStack {
                         CustomTextField(placeholder: "Ask me anything...", text: $inputText, onSend: {
                             if !inputText.trimmingCharacters(in: .whitespaces).isEmpty {
                                 let messageToSend = inputText
@@ -81,7 +86,6 @@ struct OpenAIChatView: View {
                                 if selectedConversation == nil {
                                     selectedConversation = openAIManager.startNewConversation()
                                 }
-                                
                                 if let conversation = selectedConversation {
                                     isLoading = true
                                     openAIManager.sendMessage(messageToSend, in: conversation) { errorMessage in
@@ -98,34 +102,38 @@ struct OpenAIChatView: View {
                             }
                         })
                         .padding(.horizontal)
-                        
-                        Button("Start New Conversation") {
-                            selectedConversation = nil
-                            inputText = ""
+                    
+                                   }
+                                   .padding(.bottom, 20)  // Adjust padding to account for tab view
+                               }
+                               .padding(.horizontal, 0)
+                               .background(Color("Latte"))
+                               .navigationBarTitle("Vino Chat", displayMode: .inline)
+                        .toolbar {
+                            ToolbarItem(placement: .navigationBarLeading) {
+                                Button(action: {
+                                    showConversationHistory.toggle()
+                                }) {
+                                    Image(systemName: "list.bullet")
+                                        .imageScale(.large)
+                                        .foregroundColor(Color("Latte"))
+                                }
+                            }
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                Button(action: {
+                                    selectedConversation = nil
+                                    inputText = ""
+                                }) {
+                                    Image(systemName: "plus")
+                                        .imageScale(.large)
+                                        .foregroundColor(Color("Latte"))
+                                }
+                            }
                         }
-                        .padding()
-                        .foregroundColor(Color("Maroon"))
-                    }
-                    .padding(.bottom, keyboardHeight)
-                    Spacer()
-                }
-            }
-            .background(Color("Latte"))
-            .navigationBarTitle("Vino Chat", displayMode: .inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        showConversationHistory.toggle()
-                    }) {
-                        Image(systemName: "list.bullet")
-                            .imageScale(.large)
-                            .foregroundColor(Color("Latte"))
-                    }
-                }
-            }
-            .sheet(isPresented: $showConversationHistory) {
+                        .sheet(isPresented: $showConversationHistory) {
                 ConversationHistoryView(openAIManager: openAIManager)
                     .preferredColorScheme(.light)
+                    .background(Color.latte)
             }
         }
         .onAppear(perform: subscribeToKeyboardEvents)
@@ -206,7 +214,7 @@ struct MessageView: View {
             Spacer()
             Text(content)
                 .padding()
-                .background(Color("Maroon").opacity(0.2))  // Adjust opacity as needed
+                .background(Color("Maroon").opacity(0.4))  // Adjust opacity as needed
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .frame(maxWidth: 300, alignment: .trailing)
         } else {
@@ -225,3 +233,4 @@ struct OpenAIChatView_Previews: PreviewProvider {
         OpenAIChatView().environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
     }
 }
+
