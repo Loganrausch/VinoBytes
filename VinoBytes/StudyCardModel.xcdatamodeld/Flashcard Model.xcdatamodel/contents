@@ -11,7 +11,9 @@
         <attribute name="endTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="firstMessageContent" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isActive" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="startTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="messages" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="ChatMessage" inverseName="conversation" inverseEntity="ChatMessage"/>
     </entity>
     <entity name="StudyCard" representedClassName=".StudyCard" syncable="YES">

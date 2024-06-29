@@ -10,7 +10,8 @@ import CoreData
 
 class OpenAIManager: ObservableObject {
     @Published var conversations: [Conversation] = []
-    @Published var messages: [ChatMessage] = []  // Add messages to track conversation messages
+    @Published var messages: [ChatMessage] = []
+    @Published var activeConversation: Conversation?  // Track the active conversation
     private let context: NSManagedObjectContext
     
     // System message to set context for the assistant
@@ -24,9 +25,10 @@ class OpenAIManager: ObservableObject {
     func sendMessage(_ text: String, in conversation: Conversation, completion: @escaping (String?) -> Void) {
         let userMessage = saveMessage(text, role: "user", in: conversation)
         
-        // Set the first message content if it's not already set
-        if conversation.firstMessageContent == nil {
-            conversation.firstMessageContent = text
+        // Update the conversation title if it's still set as "New Conversation"
+        if conversation.title == "New Conversation" {
+            conversation.title = text
+            conversation.firstMessageContent = text // Set the first message content
             do {
                 try context.save()
             } catch {
@@ -87,9 +89,9 @@ class OpenAIManager: ObservableObject {
             do {
                 let result = try JSONDecoder().decode(OpenAIResponse.self, from: data)
                 
-                        print("Prompt tokens used: \(result.usage.prompt_tokens)")
-                        print("Completion tokens used: \(result.usage.completion_tokens)")
-                        print("Total tokens used: \(result.usage.total_tokens)")
+                print("Prompt tokens used: \(result.usage.prompt_tokens)")
+                print("Completion tokens used: \(result.usage.completion_tokens)")
+                print("Total tokens used: \(result.usage.total_tokens)")
                 
                 completion(result.choices.first?.message.content)
             } catch {
@@ -114,18 +116,22 @@ class OpenAIManager: ObservableObject {
         return message
     }
 
-    func startNewConversation() -> Conversation {
+    func startNewConversation() -> Conversation? {
         let conversation = Conversation(context: context)
         conversation.id = UUID()
+        conversation.title = "New Conversation"
         conversation.startTime = Date()
+        conversation.isActive = true
 
         do {
             try context.save()
+            loadAllConversations()  // Reload conversations to ensure order after adding
+            self.activeConversation = conversation  // Set the newly created conversation as active
+            return conversation
         } catch {
             print("Error saving new conversation: \(error)")
+            return nil // Return nil in case of an error
         }
-        loadAllConversations()  // Reload conversations to update the list
-        return conversation
     }
 
     func loadAllConversations() {
@@ -161,10 +167,15 @@ class OpenAIManager: ObservableObject {
         loadAllConversations()  // Reload conversations after deletion
     }
 
-    // New method to delete a conversation
+    // Updated method to prevent deletion of the active conversation
     func deleteConversation(at offsets: IndexSet) {
         for index in offsets {
             let conversation = conversations[index]
+            if conversation == activeConversation {
+                // Prevent deletion of the active conversation
+                print("Cannot delete the active conversation")
+                return
+            }
             context.delete(conversation)
         }
         do {

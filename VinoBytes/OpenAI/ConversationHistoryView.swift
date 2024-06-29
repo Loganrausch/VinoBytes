@@ -11,11 +11,11 @@ struct ConversationView: View {
     var conversation: Conversation
 
     var body: some View {
-        Text(conversation.firstMessageContent ?? "No initial message")
+        Text(conversation.title ?? "No initial message")
             .foregroundColor(Color("Maroon"))  // Change text color to Maroon
             .padding(.vertical, 4)  // Adjust padding for better spacing
             .frame(maxWidth: .infinity, minHeight: 20, alignment: .leading)  // Ensures a minimum height but adapts if content needs more space
-            .background(Color.latte)  // Background color for each row
+            .background(Color("Latte"))  // Background color for each row
     }
 }
 
@@ -23,6 +23,8 @@ struct ConversationHistoryView: View {
     @ObservedObject var openAIManager: OpenAIManager
     @State private var selectedConversation: Conversation?
     @State private var showReadOnlyConversation: Bool = false
+    @State private var showAlert: Bool = false
+    @State private var alertMessage: String = ""
 
     var body: some View {
         NavigationView {
@@ -47,12 +49,24 @@ struct ConversationHistoryView: View {
                     ReadOnlyConversationView(conversation: convo, openAIManager: openAIManager)
                 }
             }
+            .alert(isPresented: $showAlert) {
+                Alert(title: Text("Cannot Delete"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+            }
         }
         .background(Color("Latte").edgesIgnoringSafeArea(.all))  // Apply background color to the navigation view
     }
     
     private func deleteConversation(at offsets: IndexSet) {
-        openAIManager.deleteConversation(at: offsets)
+        for index in offsets {
+            let conversation = openAIManager.conversations[index]
+            if conversation == openAIManager.activeConversation {
+                // Show alert if trying to delete active conversation
+                alertMessage = "This is an active conversation. Please end this conversation before deleting."
+                showAlert = true
+                return
+            }
+            openAIManager.deleteConversation(at: IndexSet(integer: index))
+        }
     }
 }
 
