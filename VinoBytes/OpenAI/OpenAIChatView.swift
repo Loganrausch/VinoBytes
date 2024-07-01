@@ -115,20 +115,19 @@ struct OpenAIChatView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        selectedConversation = nil
-                        inputText = ""
-                        openAIManager.messages.removeAll()  // Clear messages
-
-                        // Start a new conversation
-                        selectedConversation = openAIManager.startNewConversation()
-                        if selectedConversation == nil {
-                            // Optionally handle the error, e.g., show an alert or log
-                            print("Failed to start a new conversation.")
+                        if let conversation = selectedConversation {
+                            openAIManager.endConversation(conversation)  // End and save the conversation
                         }
+                        selectedConversation = nil  // Clear the current conversation context
+                        inputText = ""  // Clear the input field
+                        openAIManager.messages.removeAll()  // Clear the messages displayed
+
+                        // Optionally reset the environment to allow starting a new conversation easily
+                        // This could be setting up for a new conversation or just clearing the UI
                     }) {
-                        Text("End Chat")  // Using Text instead of Image
-                                   .foregroundColor(Color("Latte"))  // Set the text color
-                                   .font(.headline)  // Optional: Adjust the font style as needed
+                        Text("End Chat")  // The button text correctly indicates the action
+                               .foregroundColor(Color("Latte"))  // Set the text color
+                               .font(.headline)  // Optional: Adjust the font style as needed
                     }
                 }
             }

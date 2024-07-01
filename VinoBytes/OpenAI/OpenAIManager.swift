@@ -21,14 +21,13 @@ class OpenAIManager: ObservableObject {
         self.context = context
         loadAllConversations()
     }
-
+    
     func sendMessage(_ text: String, in conversation: Conversation, completion: @escaping (String?) -> Void) {
         let userMessage = saveMessage(text, role: "user", in: conversation)
-        
-        // Update the conversation title if it's still set as "New Conversation"
-        if conversation.title == "New Conversation" {
-            conversation.title = text
-            conversation.firstMessageContent = text // Set the first message content
+
+        // Set the conversation title if it hasn't been set yet (i.e., it's nil)
+        if conversation.title == nil {
+            conversation.title = text  // Use the first user message as the title
             do {
                 try context.save()
             } catch {
@@ -40,9 +39,9 @@ class OpenAIManager: ObservableObject {
             self.messages.append(userMessage)
             self.loadMessages(from: conversation)
         }
-        
+
         let lastTwoMessages = self.messages.suffix(2).map { ["role": $0.role, "content": $0.content as String?] }
-        
+
         requestResponse(for: text, context: lastTwoMessages) { responseText in
             DispatchQueue.main.async {
                 guard let responseText = responseText else {
@@ -55,7 +54,7 @@ class OpenAIManager: ObservableObject {
             }
         }
     }
-
+    
     private func requestResponse(for text: String, context: [[String: String?]], completion: @escaping (String?) -> Void) {
         guard let url = URL(string: "https://vinobytes-afe480cea091.herokuapp.com/api/chat") else {
             completion(nil)
@@ -64,23 +63,23 @@ class OpenAIManager: ObservableObject {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-
+        
         let modifiedContext = context.map { dict in
             dict.compactMapValues { $0 }  // Remove nil values if they are not handled by the API
         }
-
+        
         let body: [String: Any] = [
             "messages": modifiedContext + [["role": "user", "content": text]],
             "max_tokens": 250
         ]
-
+        
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
         } catch {
             completion(nil)
             return
         }
-
+        
         URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 completion(nil)
@@ -99,7 +98,7 @@ class OpenAIManager: ObservableObject {
             }
         }.resume()
     }
-
+    
     func saveMessage(_ text: String, role: String, in conversation: Conversation) -> ChatMessage {
         let message = ChatMessage(context: context)
         message.id = UUID()
@@ -115,28 +114,23 @@ class OpenAIManager: ObservableObject {
         }
         return message
     }
-
-    func startNewConversation() -> Conversation? {
+    
+    // Method to start a new conversation without saving it immediately
+    func startNewConversation() -> Conversation {
         let conversation = Conversation(context: context)
         conversation.id = UUID()
-        conversation.title = "New Conversation"
         conversation.startTime = Date()
-        conversation.isActive = true
-
-        do {
-            try context.save()
-            loadAllConversations()  // Reload conversations to ensure order after adding
-            self.activeConversation = conversation  // Set the newly created conversation as active
-            return conversation
-        } catch {
-            print("Error saving new conversation: \(error)")
-            return nil // Return nil in case of an error
-        }
+        conversation.isActive = true // This remains true until the conversation is ended
+        
+        self.activeConversation = conversation // Set the newly created conversation as active but do not save it yet
+        return conversation
     }
-
+    
+    // Modified method to load only ended conversations
     func loadAllConversations() {
         let fetchRequest: NSFetchRequest<Conversation> = Conversation.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "startTime", ascending: false)]
+        fetchRequest.predicate = NSPredicate(format: "isActive == NO") // Only fetch conversations that are not active
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "endTime", ascending: false)] // Sort by end time now
         
         do {
             conversations = try context.fetch(fetchRequest)
@@ -144,7 +138,7 @@ class OpenAIManager: ObservableObject {
             print("Failed to load conversations: \(error)")
         }
     }
-
+    
     func loadMessages(from conversation: Conversation) {
         let fetchRequest: NSFetchRequest<ChatMessage> = ChatMessage.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "conversation == %@", conversation)
@@ -156,32 +150,28 @@ class OpenAIManager: ObservableObject {
             print("Failed to load messages: \(error)")
         }
     }
-
+    
+    // Updated method to end and save the conversation
     func endConversation(_ conversation: Conversation) {
+        conversation.isActive = false
+        conversation.endTime = Date()  // Set the end time of the conversation
+
+        do {
+            try context.save()
+            loadAllConversations()  // Optionally refresh the list to include this now ended conversation
+        } catch let error {
+            print("Failed to end conversation: \(error)")
+        }
+    }
+    
+    // Updated method to prevent deletion of the active conversation
+    // Method to delete a conversation
+    func deleteConversation(_ conversation: Conversation) {
         context.delete(conversation)
         do {
             try context.save()
-        } catch {
-            print("Failed to delete conversation: \(error)")
-        }
-        loadAllConversations()  // Reload conversations after deletion
-    }
-
-    // Updated method to prevent deletion of the active conversation
-    func deleteConversation(at offsets: IndexSet) {
-        for index in offsets {
-            let conversation = conversations[index]
-            if conversation == activeConversation {
-                // Prevent deletion of the active conversation
-                print("Cannot delete the active conversation")
-                return
-            }
-            context.delete(conversation)
-        }
-        do {
-            try context.save()
-            loadAllConversations()  // Reload conversations after deletion
-        } catch {
+            loadAllConversations()  // Optional: Refresh your conversation list after deletion
+        } catch let error {
             print("Failed to delete conversation: \(error)")
         }
     }

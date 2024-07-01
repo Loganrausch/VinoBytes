@@ -23,9 +23,7 @@ struct ConversationHistoryView: View {
     @ObservedObject var openAIManager: OpenAIManager
     @State private var selectedConversation: Conversation?
     @State private var showReadOnlyConversation: Bool = false
-    @State private var showAlert: Bool = false
-    @State private var alertMessage: String = ""
-
+    
     var body: some View {
         NavigationView {
             List {
@@ -37,35 +35,26 @@ struct ConversationHistoryView: View {
                     }) {
                         ConversationView(conversation: conversation)
                     }
-                    .listRowBackground(Color("Latte"))  // Apply the Latte color to each row
+                    .listRowBackground(Color("Latte"))
                 }
-                .onDelete(perform: deleteConversation)
+                .onDelete(perform: deleteConversations)
             }
-            .listStyle(PlainListStyle())  // Use PlainListStyle to ensure full background color application
-            .background(Color("Latte"))  // Background color for the whole list
+            .listStyle(PlainListStyle())
+            .background(Color("Latte"))
             .navigationBarTitle("Conversation History", displayMode: .inline)
             .sheet(isPresented: $showReadOnlyConversation) {
                 if let convo = selectedConversation {
                     ReadOnlyConversationView(conversation: convo, openAIManager: openAIManager)
                 }
             }
-            .alert(isPresented: $showAlert) {
-                Alert(title: Text("Cannot Delete"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
-            }
         }
-        .background(Color("Latte").edgesIgnoringSafeArea(.all))  // Apply background color to the navigation view
+        .background(Color("Latte").edgesIgnoringSafeArea(.all))
     }
     
-    private func deleteConversation(at offsets: IndexSet) {
-        for index in offsets {
+    private func deleteConversations(at offsets: IndexSet) {
+        offsets.forEach { index in
             let conversation = openAIManager.conversations[index]
-            if conversation == openAIManager.activeConversation {
-                // Show alert if trying to delete active conversation
-                alertMessage = "This is an active conversation. Please end this conversation before deleting."
-                showAlert = true
-                return
-            }
-            openAIManager.deleteConversation(at: IndexSet(integer: index))
+            openAIManager.deleteConversation(conversation)
         }
     }
 }
