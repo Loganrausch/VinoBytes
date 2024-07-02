@@ -170,6 +170,7 @@ struct CustomTextField: View {
                 }
                 TextField("", text: $text)
                     .foregroundColor(.black) // Input text color
+                    .accentColor(.black) // Set cursor color here
                     .padding(4)
             }
             

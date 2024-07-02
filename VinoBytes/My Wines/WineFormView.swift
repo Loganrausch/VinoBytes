@@ -71,6 +71,7 @@ struct WineFormView: View {
                             .scaledToFit()
                     } else {
                         Text("Select Image")
+                            .accentColor(Color.blue) // Applying the accent color to all TextField elements in the section
                     }
                 }
                 .sheet(isPresented: $isShowingImagePicker) {
@@ -87,16 +88,21 @@ struct WineFormView: View {
                 TextField("Wine Name", text: $wineName)
                 TextField("Region", text: $region)
                 TextField("Grape", text: $grape)
+                
             }
+            
+            .accentColor(Color(UIColor.systemGray)) // Applying the accent color to all TextField elements in the section
             
             Section(header: Text("Sight")) {
                 TextEditor(text: $sight)
+                    .accentColor(Color(UIColor.systemGray)) // Set cursor color to system gray
                     .frame(minHeight: 100, maxHeight: 200) // Set minimum and maximum height
                     .cornerRadius(8)
             }
             
             Section(header: Text("Smell / Taste")) {
                 TextEditor(text: $smellTaste)
+                    .accentColor(Color(UIColor.systemGray)) // Set cursor color to system gray
                     .frame(minHeight: 100, maxHeight: 200) // Set minimum and maximum height
                     .cornerRadius(8)
             }
@@ -189,6 +195,7 @@ struct WineFormView: View {
             
             Section(header: Text("Final Thoughts")) {
                 TextEditor(text: $finalThoughts)
+                    .accentColor(Color(UIColor.systemGray)) // Set cursor color to system gray
                     .frame(minHeight: 100, maxHeight: 200) // Set minimum and maximum height
                     .cornerRadius(8)
             }
@@ -230,6 +237,7 @@ struct WineFormView: View {
 
             }) {
                 Text(wine != nil ? "Update Wine" : "Save Wine")
+                    .accentColor(Color.blue) // Set cursor color to system gray
             }
             
             .navigationBarTitle(wine != nil ? "Edit Wine" : "Add a Wine")

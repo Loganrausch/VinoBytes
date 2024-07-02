@@ -40,7 +40,6 @@
 		CE7B36EB2B94DA58006AFFA0 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7B36EA2B94DA58006AFFA0 /* AccountView.swift */; };
 		CE7B36EF2B96B6F9006AFFA0 /* WineDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7B36EE2B96B6F9006AFFA0 /* WineDetailView.swift */; };
 		CE7F35D72BD579710055E6DB /* Wine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7F35D62BD579710055E6DB /* Wine.swift */; };
-		CE7F3C862C273D8200D81C49 /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7F3C852C273D8200D81C49 /* CustomTabBarView.swift */; };
 		CE7F9DE62C2CA1C400BA61C1 /* LoadingDotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7F9DE52C2CA1C400BA61C1 /* LoadingDotsView.swift */; };
 		CE80C17A2B9F4F29004EF540 /* StudyCardModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE80C1782B9F4F29004EF540 /* StudyCardModel.xcdatamodeld */; };
 		CE80C17C2B9F5574004EF540 /* flashcards.json in Resources */ = {isa = PBXBuildFile; fileRef = CE80C17B2B9F5574004EF540 /* flashcards.json */; };
@@ -126,7 +125,6 @@
 		CE7B36EA2B94DA58006AFFA0 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		CE7B36EE2B96B6F9006AFFA0 /* WineDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineDetailView.swift; sourceTree = "<group>"; };
 		CE7F35D62BD579710055E6DB /* Wine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wine.swift; sourceTree = "<group>"; };
-		CE7F3C852C273D8200D81C49 /* CustomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarView.swift; sourceTree = "<group>"; };
 		CE7F9DE52C2CA1C400BA61C1 /* LoadingDotsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingDotsView.swift; sourceTree = "<group>"; };
 		CE80C1792B9F4F29004EF540 /* Flashcard Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Flashcard Model.xcdatamodel"; sourceTree = "<group>"; };
 		CE80C17B2B9F5574004EF540 /* flashcards.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = flashcards.json; sourceTree = "<group>"; };
@@ -244,8 +242,8 @@
 				CE7F35D82BD57B210055E6DB /* Common */,
 				CECB7A612BACB69200659CB6 /* WelcomeView.swift */,
 				CE6ADF302B925ED600982366 /* VinoDecksApp.swift */,
-				CE6ADF322B925ED600982366 /* ContentView.swift */,
 				CE6ADF392B925ED700982366 /* Persistence.swift */,
+				CE6ADF322B925ED600982366 /* ContentView.swift */,
 				CECB7A652BACC50600659CB6 /* ContactFormView.swift */,
 				CED380DE2BB756A400CAFB29 /* ContentfulManager.swift */,
 				CED0F8BE2B93DE9500508E6E /* BlogPostView.swift */,
@@ -349,7 +347,6 @@
 			children = (
 				CE7F35D62BD579710055E6DB /* Wine.swift */,
 				CE94AAF72C0D444E004CE8E0 /* Grape.swift */,
-				CE7F3C852C273D8200D81C49 /* CustomTabBarView.swift */,
 				CE7F9DE52C2CA1C400BA61C1 /* LoadingDotsView.swift */,
 			);
 			path = Structs;
@@ -567,7 +564,6 @@
 				CE94AB002C0E27FC004CE8E0 /* RegionDetailView.swift in Sources */,
 				CED380DF2BB756A400CAFB29 /* ContentfulManager.swift in Sources */,
 				CE32CDDC2C1CE3E400A87202 /* WineFlawDetailView.swift in Sources */,
-				CE7F3C862C273D8200D81C49 /* CustomTabBarView.swift in Sources */,
 				CEA304EA2BA3DDFC00DD010D /* ActivityViewController.swift in Sources */,
 				CE32CDE32C1CE5D100A87202 /* FoodWinePairingsData.swift in Sources */,
 				CEE07EFF2C1A71C40088F94C /* ReadOnlyConversationView.swift in Sources */,

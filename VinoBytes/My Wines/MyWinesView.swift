@@ -106,11 +106,14 @@ struct MyWinesView: View {
         })) {
             Text("Add a Wine")
                 .padding()
-                .foregroundColor(.white)
+                .foregroundColor(Color("Latte"))
                 .background(Color("Maroon"))
+                .shadow(radius: 10)
                 .cornerRadius(8)
+                
         }
         .padding()
+       
     }
 
     private func sortedWines() -> [(String, [Wine])] {
