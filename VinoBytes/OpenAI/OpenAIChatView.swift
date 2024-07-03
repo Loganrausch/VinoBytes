@@ -17,6 +17,7 @@ struct OpenAIChatView: View {
     @State private var keyboardHeight: CGFloat = 0
     @State private var isLoading = false
     @State private var scrollViewProxy: ScrollViewProxy?
+    @State private var showEndChatAlert = false  // State for showing the end chat alert
 
     var body: some View {
         NavigationView {
@@ -59,20 +60,30 @@ struct OpenAIChatView: View {
                             }
                                 Spacer()
                 
-                Rectangle()
-                    .fill(Color("Maroon"))
-                    .frame(height: 2)
-                    .opacity(0.4)
                     
                 VStack(spacing: 0) {
-                    Image("OpenAIBadge")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 120, height: 120)
-                        .padding(.bottom, -25) // Reduce padding as needed
-                        .padding(.top, -30) // Reduce padding as needed
-                    
-                    CustomTextField(placeholder: "Ask me anything...", text: $inputText, onSend: {
+                                    Rectangle()
+                                        .fill(Color("Maroon"))
+                                        .frame(height: 2)
+                                        .opacity(0.4)
+                                    
+                                    VStack {
+                                        Spacer(minLength: 0)
+                                        
+                                        Image("OpenAIBadge")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 120, height: 120)
+                                            .padding(.bottom, -25)
+                                            .padding(.top, -30)
+                                        
+                                        Spacer(minLength: 0)
+                                    }
+                                    .frame(maxWidth: .infinity, maxHeight: 70)
+                                    .contentShape(Rectangle())
+                                    .background(Color.clear)
+                                    
+                                    CustomTextField(placeholder: "Ask me anything...", text: $inputText, onSend: {
                         if !inputText.trimmingCharacters(in: .whitespaces).isEmpty {
                             let messageToSend = inputText
                             inputText = ""
@@ -98,9 +109,14 @@ struct OpenAIChatView: View {
                     .padding(.horizontal)
                 
                 }
-                .padding(.bottom, 20)  // Adjust padding to account for tab view
-            }
-            .padding(.horizontal, 0)
+                .padding(.bottom, 20) // Adjust padding to account for tab view
+                                .gesture(DragGesture().onEnded { value in
+                                    if value.translation.height > 50 {
+                                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                                    }
+                                })
+                            }
+                            .padding(.horizontal, 0)
             .background(Color("Latte"))
             .navigationBarTitle("Vino Chat", displayMode: .inline)
             .toolbar {
@@ -114,24 +130,37 @@ struct OpenAIChatView: View {
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
+                                   Button(action: {
+                                       showEndChatAlert = true
+                                   }) {
+                                       Text("End Chat")
+                                           .foregroundColor(Color("Latte"))
+                                           .font(.headline)
+                                   }
+                               }
+                           }
+            .alert(isPresented: $showEndChatAlert) {
+                Alert(
+                    title: Text("End Chat"),
+                    message: Text("Would you like to save your current chat?"),
+                    primaryButton: .destructive(Text("Don't Save")) {
+                        // Code to handle not saving the chat
+                        selectedConversation = nil
+                        inputText = ""
+                        openAIManager.messages.removeAll()
+                    },
+                    secondaryButton: .default(Text("Save")) {
+                        // Code to handle saving the chat
                         if let conversation = selectedConversation {
-                            openAIManager.endConversation(conversation)  // End and save the conversation
+                            openAIManager.endConversation(conversation)
                         }
-                        selectedConversation = nil  // Clear the current conversation context
-                        inputText = ""  // Clear the input field
-                        openAIManager.messages.removeAll()  // Clear the messages displayed
-
-                        // Optionally reset the environment to allow starting a new conversation easily
-                        // This could be setting up for a new conversation or just clearing the UI
-                    }) {
-                        Text("End Chat")  // The button text correctly indicates the action
-                               .foregroundColor(Color("Latte"))  // Set the text color
-                               .font(.headline)  // Optional: Adjust the font style as needed
+                        selectedConversation = nil
+                        inputText = ""
+                        openAIManager.messages.removeAll()
                     }
-                }
+                )
             }
-            .sheet(isPresented: $showConversationHistory) {
+                           .sheet(isPresented: $showConversationHistory) {
                 ConversationHistoryView(openAIManager: openAIManager)
                     .preferredColorScheme(.light)
                     .background(Color.latte)
