@@ -18,7 +18,7 @@ extension WineEntity {
         self.region = wine.region
         self.grape = wine.grape
         self.vintage = wine.vintage
-        self.rating = wine.rating
+        self.rating = Int16(wine.rating)
         self.sight = wine.sight
         self.smellTaste = wine.smellTaste
         self.acid = wine.acid
@@ -39,7 +39,7 @@ extension WineEntity {
             region: self.region!,
             grape: self.grape!,
             vintage: self.vintage!,
-            rating: self.rating!,
+            rating: Int(self.rating),
             sight: self.sight!,
             smellTaste: self.smellTaste!,
             acid: self.acid!,

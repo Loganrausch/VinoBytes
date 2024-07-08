@@ -71,6 +71,8 @@
 		CED380DF2BB756A400CAFB29 /* ContentfulManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED380DE2BB756A400CAFB29 /* ContentfulManager.swift */; };
 		CEE07EFD2C1A70450088F94C /* ConversationHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE07EFC2C1A70450088F94C /* ConversationHistoryView.swift */; };
 		CEE07EFF2C1A71C40088F94C /* ReadOnlyConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE07EFE2C1A71C40088F94C /* ReadOnlyConversationView.swift */; };
+		CEE1607C2C3C56F9006F5E66 /* StarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE1607B2C3C56F9006F5E66 /* StarRatingView.swift */; };
+		CEE1607E2C3C5AB3006F5E66 /* StarRatingDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE1607D2C3C5AB3006F5E66 /* StarRatingDisplayView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +158,8 @@
 		CED380DE2BB756A400CAFB29 /* ContentfulManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentfulManager.swift; sourceTree = "<group>"; };
 		CEE07EFC2C1A70450088F94C /* ConversationHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationHistoryView.swift; sourceTree = "<group>"; };
 		CEE07EFE2C1A71C40088F94C /* ReadOnlyConversationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadOnlyConversationView.swift; sourceTree = "<group>"; };
+		CEE1607B2C3C56F9006F5E66 /* StarRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingView.swift; sourceTree = "<group>"; };
+		CEE1607D2C3C5AB3006F5E66 /* StarRatingDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingDisplayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -321,6 +325,8 @@
 				CE82D2842B98B853002B55F1 /* SearchBar.swift */,
 				CE82D2862B9A1F91002B55F1 /* ImagePicker.swift */,
 				CEA304E92BA3DDFC00DD010D /* ActivityViewController.swift */,
+				CEE1607B2C3C56F9006F5E66 /* StarRatingView.swift */,
+				CEE1607D2C3C5AB3006F5E66 /* StarRatingDisplayView.swift */,
 			);
 			path = "My Wines";
 			sourceTree = "<group>";
@@ -581,6 +587,7 @@
 				CE94AAFA2C0D502D004CE8E0 /* GrapeData.swift in Sources */,
 				CE2051012B9F98BD0072704E /* FlashcardContent.swift in Sources */,
 				CE7717062C22752000F34C4C /* TermsAndConditionsText.swift in Sources */,
+				CEE1607E2C3C5AB3006F5E66 /* StarRatingDisplayView.swift in Sources */,
 				CE82D2892B9B72CF002B55F1 /* StudyView.swift in Sources */,
 				CE32CDE12C1CE5C600A87202 /* FoodWinePairingsListView.swift in Sources */,
 				CED380D82BB5E18400CAFB29 /* DashboardView.swift in Sources */,
@@ -607,6 +614,7 @@
 				CE94AAF12C0D3957004CE8E0 /* ReferenceMainView.swift in Sources */,
 				CE94AB0A2C0E3645004CE8E0 /* WineGlossaryDetailView.swift in Sources */,
 				CE7717042C22750900F34C4C /* PrivacyPolicyText.swift in Sources */,
+				CEE1607C2C3C56F9006F5E66 /* StarRatingView.swift in Sources */,
 				CE6ADF312B925ED600982366 /* VinoDecksApp.swift in Sources */,
 				CE7F35D72BD579710055E6DB /* Wine.swift in Sources */,
 				CE6F73692B93BE8900770B35 /* WineFormView.swift in Sources */,

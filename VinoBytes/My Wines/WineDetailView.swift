@@ -78,20 +78,8 @@ struct WineDetailView: View {
             }
 
             Section(header: Text("Rating")) {
-                HStack {
-                    if wineEntity.rating == "Negative" {
-                        Image(systemName: "hand.thumbsdown.circle.fill")
-                            .resizable()
-                            .frame(width: 40, height: 40)
-                            .foregroundColor(.red)
-                    } else if wineEntity.rating == "Positive" {
-                        Image(systemName: "hand.thumbsup.circle.fill")
-                            .resizable()
-                            .frame(width: 40, height: 40)
-                            .foregroundColor(.green)
-                    }
-                }
-            }
+                           StarRatingDisplayView(rating: Int(wineEntity.rating))
+                       }
 
             Section(header: Text("Final Thoughts")) {
                 Text(wineEntity.finalThoughts ?? "")
@@ -132,7 +120,7 @@ struct WineDetailView: View {
             "Body: \(wineEntity.structureBody ?? "")\n",
             "Sweetness: \(wineEntity.sweetness ?? "")\n",
             "Tannin: \(wineEntity.tannin ?? "")\n",
-            "Rating: \(wineEntity.rating ?? "")\n",
+            "Rating: \(wineEntity.rating) out of 5\n",
             "Final Thoughts: \(wineEntity.finalThoughts ?? "")\n\n", // Added extra newline for spacing
             "VinoBytes on iOS"
         ]

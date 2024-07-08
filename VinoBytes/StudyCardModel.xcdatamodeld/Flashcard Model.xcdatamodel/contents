@@ -32,7 +32,7 @@
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="imageData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="producer" attributeType="String"/>
-        <attribute name="rating" optional="YES" attributeType="String"/>
+        <attribute name="rating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="region" attributeType="String"/>
         <attribute name="sight" optional="YES" attributeType="String"/>
         <attribute name="smellTaste" optional="YES" attributeType="String"/>

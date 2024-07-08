@@ -21,7 +21,7 @@ struct WineFormView: View {
     @State private var grape: String = ""
     @State private var vintage: String = ""
     @State private var isNonVintage: Bool = false
-    @State private var rating: String = ""
+    @State private var rating: Int = 0
     @State private var sight: String = ""
     @State private var smellTaste: String = ""
     @State private var acid: String = ""
@@ -43,7 +43,7 @@ struct WineFormView: View {
             // Adjust vintage initialization to handle NV represented by 0
             _vintage = State(initialValue: wineEntity.vintage ?? "")
             _isNonVintage = State(initialValue: wineEntity.vintage == "NV")
-            _rating = State(initialValue: wineEntity.rating ?? "")
+            _rating = State(initialValue: Int(wineEntity.rating))  // Convert Int16 to Int
             _sight = State(initialValue: wineEntity.sight ?? "")
             _smellTaste = State(initialValue: wineEntity.smellTaste ?? "")
             _acid = State(initialValue: wineEntity.acid ?? "")
@@ -190,32 +190,8 @@ struct WineFormView: View {
             }
             
             Section(header: Text("Rating")) {
-                HStack(spacing: 20) { // Ensure there is space between buttons
-                    Button(action: {
-                        print("Thumbs Down Pressed")
-                        rating = (rating == "Negative") ? "" : "Negative"
-                    }) {
-                        Image(systemName: "hand.thumbsdown.circle")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 40, height: 40)
-                            .foregroundColor(rating == "Negative" ? .red : .gray)
-                    }
-                    .buttonStyle(PlainButtonStyle()) // Prevent parent styles from affecting this button
-                    
-                    Button(action: {
-                        print("Thumbs Up Pressed")
-                        rating = (rating == "Positive") ? "" : "Positive"
-                    }) {
-                        Image(systemName: "hand.thumbsup.circle")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 40, height: 40)
-                            .foregroundColor(rating == "Positive" ? .green : .gray)
-                    }
-                    .buttonStyle(PlainButtonStyle()) // Prevent parent styles from affecting this button
-                }
-            }
+                            StarRatingView(rating: $rating)
+                        }
             
             Section(header: Text("Final Thoughts")) {
                 TextEditor(text: $finalThoughts)
@@ -249,7 +225,7 @@ struct WineFormView: View {
         wineToSave.region = region
         wineToSave.grape = grape
         wineToSave.vintage = vintage
-        wineToSave.rating = rating
+        wineToSave.rating = Int16(rating)
         wineToSave.sight = sight
         wineToSave.smellTaste = smellTaste
         wineToSave.acid = acid

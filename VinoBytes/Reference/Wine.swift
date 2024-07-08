@@ -16,7 +16,7 @@ struct Wine: Identifiable {
     var region: String
     var grape: String
     var vintage: String
-    var rating: String
+    var rating: Int
     var sight: String
     var smellTaste: String
     var acid: String
