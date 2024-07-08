@@ -3,83 +3,88 @@
 //  VinoDecks
 //
 //  Created by Logan Rausch on 3/4/24.
-//
+
 import SwiftUI
+import UIKit
 
 struct WineDetailView: View {
     @Environment(\.presentationMode) var presentationMode
-    @Binding var wine: Wine
-    @State private var isSharing = false
-    var wineData: WineData
-    @State private var isEditing = false
+    @Environment(\.managedObjectContext) private var context
     
+    @ObservedObject var wineEntity: WineEntity
+    
+    @State private var isSharing = false
+    @State private var isEditing = false
+
     var body: some View {
         Form {
-            if wine.image != nil {
+            if let imageData = wineEntity.imageData, let uiImage = UIImage(data: imageData) {
                 Section(header: Text("Wine Image")) {
-                    if let image = wine.image {
-                        Image(uiImage: image)
-                            .resizable()
-                            .scaledToFit()
-                    }
-                }
-            }
-            
-            Section(header: Text("Vintage")) {
-                Text("\(wine.vintageFormatted)")
-            }
-            
-            Section(header: Text("Producer")) {
-                Text(wine.producer)
-            }
-            
-            Section(header: Text("Wine Name")) {
-                Text(wine.wineName)
-            }
-            
-            Section(header: Text("Region")) {
-                Text(wine.region)
-            }
-            
-            Section(header: Text("Grape")) {
-                Text(wine.grape)
-            }
-            
-            Section(header: Text("Sight")) {
-                Text(wine.sight)
-            }
-            
-            Section(header: Text("Smell / Taste")) {
-                Text(wine.smellTaste)
-            }
-            
-            Section(header: Text("Structure")) {
-                if wine.acid != "" {
-                    Text("Acid: \(wine.acid)")
-                }
-                if wine.alcohol != "" {
-                    Text("Alcohol: \(wine.alcohol)")
-                }
-                if wine.structureBody != "" {
-                    Text("Body: \(wine.structureBody)")
-                }
-                if wine.sweetness != "" {
-                    Text("Sweetness: \(wine.sweetness)")
-                }
-                if wine.tannin != "" {
-                    Text("Tannin: \(wine.tannin)")
+                    Image(uiImage: uiImage)
+                        .resizable()
+                        .scaledToFit()
                 }
             }
 
-            
+            Section(header: Text("Vintage")) {
+                // Directly display the vintage as it's already a string. No need for String() conversion.
+                Text(wineEntity.vintage ?? "Not specified") // Provide a fallback in case of nil
+            }
+
+            Section(header: Text("Producer")) {
+                // Display the producer, handle nil with a fallback to an empty string or placeholder
+                Text(wineEntity.producer ?? "Unknown Producer")
+            }
+
+            Section(header: Text("Wine Name")) {
+                // Display the wine name, handle nil similarly
+                Text(wineEntity.wineName ?? "Unnamed Wine")
+            }
+
+            Section(header: Text("Region")) {
+                Text(wineEntity.region ?? "")
+            }
+
+            Section(header: Text("Grape")) {
+                Text(wineEntity.grape ?? "")
+            }
+
+            Section(header: Text("Sight")) {
+                Text(wineEntity.sight ?? "")
+            }
+
+            Section(header: Text("Smell / Taste")) {
+                Text(wineEntity.smellTaste ?? "")
+            }
+
+            Section(header: Text("Structure")) {
+                VStack(alignment: .leading) {
+                    if let acid = wineEntity.acid {
+                        Text("Acid: \(acid)")
+                    }
+                    if let alcohol = wineEntity.alcohol {
+                        Text("Alcohol: \(alcohol)")
+                    }
+                    if let body = wineEntity.structureBody {
+                        Text("Body: \(body)")
+                    }
+                    if let sweetness = wineEntity.sweetness {
+                        Text("Sweetness: \(sweetness)")
+                    }
+                    if let tannin = wineEntity.tannin {
+                        Text("Tannin: \(tannin)")
+                    }
+                }
+            }
+
             Section(header: Text("Rating")) {
                 HStack {
-                    if wine.rating == "Negative" {
+                    if wineEntity.rating == "Negative" {
                         Image(systemName: "hand.thumbsdown.circle.fill")
                             .resizable()
                             .frame(width: 40, height: 40)
                             .foregroundColor(.red)
-                    } else if wine.rating == "Positive" {
+                    } else if wineEntity.rating == "Positive" {
                         Image(systemName: "hand.thumbsup.circle.fill")
                             .resizable()
                             .frame(width: 40, height: 40)
@@ -87,82 +92,61 @@ struct WineDetailView: View {
                     }
                 }
             }
-            
-            Section(header: Text("Final Thoughts")) {
-                Text(wine.finalThoughts)
-            }
 
+            Section(header: Text("Final Thoughts")) {
+                Text(wineEntity.finalThoughts ?? "")
+            }
         }
         .navigationBarItems(
-            trailing: Button("Edit") {
-                isEditing = true
+            trailing: HStack {
+                Button("Edit") {
+                    isEditing = true
+                }
+                Button(action: {
+                    isSharing = true
+                }) {
+                    Image(systemName: "square.and.arrow.up")
+                }
             }
         )
         .sheet(isPresented: $isEditing) {
-            WineFormView(
-                wine: wine,
-                addWine: nil, // We don't need to set this here since we are updating an existing wine
-                updateWine: { updatedWine, completion in
-                    if let index = wineData.wines.firstIndex(where: { $0.id == updatedWine.id }) {
-                        wineData.wines[index] = updatedWine
-                        completion()
-                    }
-                },
-                onWineUpdated: {
-                    // Update the UI or perform further actions after the wine has been updated
-                    isEditing = false
-                }
-            )
+            WineFormView(wineEntity: wineEntity)
         }
+        .sheet(isPresented: $isSharing, content: {
+            ActivityViewController(activityItems: wineItems())
+        })
     }
-    
+
     func wineItems() -> [Any] {
         var items: [Any] = [
-            "Producer: \(wine.producer)\n",
-            "Wine Name: \(wine.wineName)\n",
-            "Region: \(wine.region)\n",
-            "Grape: \(wine.grape)\n",
-            "Vintage: \(wine.vintageFormatted)\n",
-            "Rating: \(wine.rating)\n",
-            "Sight: \(wine.sight)\n",
-            "Smell/Taste: \(wine.smellTaste)\n",
-            "Acid: \(wine.acid)\n",
-            "Alcohol: \(wine.alcohol)\n",
-            "Body: \(wine.structureBody)\n",
-            "Sweetness: \(wine.sweetness)\n",
-            "Tannin: \(wine.tannin)\n"
+            "\n",
+            "Vintage: \(wineEntity.vintage ?? "")\n",
+            "Producer: \(wineEntity.producer ?? "")\n",
+            "Wine Name: \(wineEntity.wineName ?? "")\n",
+            "Region: \(wineEntity.region ?? "")\n",
+            "Grape: \(wineEntity.grape ?? "")\n",
+            "Sight: \(wineEntity.sight ?? "")\n",
+            "Smell/Taste: \(wineEntity.smellTaste ?? "")\n",
+            "Acid: \(wineEntity.acid ?? "")\n",
+            "Alcohol: \(wineEntity.alcohol ?? "")\n",
+            "Body: \(wineEntity.structureBody ?? "")\n",
+            "Sweetness: \(wineEntity.sweetness ?? "")\n",
+            "Tannin: \(wineEntity.tannin ?? "")\n",
+            "Rating: \(wineEntity.rating ?? "")\n",
+            "Final Thoughts: \(wineEntity.finalThoughts ?? "")\n\n", // Added extra newline for spacing
+            "VinoBytes on iOS"
         ]
-        
-        if let image = wine.image {
+
+        if let imageData = wineEntity.imageData, let image = UIImage(data: imageData) {
             items.append(image)
         }
-        
+
         return items
     }
 }
 
 struct WineDetailView_Previews: PreviewProvider {
-    @State static var wine = Wine(
-        producer: "Producer Name",
-        wineName: "Wine Name",
-        region: "Region",
-        grape: "Grape",
-        vintage: 2020,
-        rating: "Neutral",
-        sight: "Sight description",
-        smellTaste: "Smell/Taste description",
-        acid: "Med",
-        alcohol: "Med",
-        structureBody: "Med",
-        sweetness: "Dry",
-        tannin: "Med",
-        image: nil,
-        finalThoughts: "Other"
-    )
-    
     static var previews: some View {
-        NavigationView {
-            WineDetailView(wine: $wine, wineData: WineData())
-        }
+        WineDetailView(wineEntity: WineEntity()) // Assuming a default initializable context or mock
     }
 }

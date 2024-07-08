@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.managedObjectContext) private var context
     @State private var selectedTab = 0
 
     init() {
@@ -15,45 +16,43 @@ struct ContentView: View {
     }
 
     var body: some View {
-            TabView(selection: $selectedTab) {
-                DashboardView(wineData: WineData())
-                    .tabItem {
-                        Image(systemName: "house")
-                        Text("Home")
-                    }
-                    .tag(0)
+        TabView(selection: $selectedTab) {
+            DashboardView()
+                .tabItem {
+                    Image(systemName: "house")
+                    Text("Home")
+                }
+                .tag(0)
 
-                StudyView()
-                    .tabItem {
-                        Image(systemName: "book")
-                        Text("Study")
-                    }
-                    .tag(1)
+            StudyView()
+                .tabItem {
+                    Image(systemName: "book")
+                    Text("Study")
+                }
+                .tag(1)
 
-                OpenAIChatView()
-                    .tabItem {
-                        Image(systemName: "bubble.left.and.bubble.right")
-                        Text("Chat")
-                    }
-                    .tag(2)
+            OpenAIChatView()
+                .tabItem {
+                    Image(systemName: "bubble.left.and.bubble.right")
+                    Text("Chat")
+                }
+                .tag(2)
 
-                MyWinesView(wineData: WineData(), isRootView: true)
-                    .tabItem {
-                        Image(systemName: "wineglass")
-                        Text("My Wines")
-                    }
-                    .tag(3)
+            MyWinesView(isRootView: true)
+                .tabItem {
+                    Label("My Wines", systemImage: "wineglass")
+                }
+                .tag(3)
 
-                ReferenceMainView()
-                    .tabItem {
-                        Image(systemName: "books.vertical")
-                        Text("References")
-                    }
-                    .tag(4)
-            }
-            .accentColor(Color("Latte"))
+            ReferenceMainView()
+                .tabItem {
+                    Image(systemName: "books.vertical")
+                    Text("References")
+                }
+                .tag(4)
         }
-    
+        .accentColor(Color("Latte"))
+    }
 
     private func setupTabBarAppearance() {
         let appearance = UITabBarAppearance()

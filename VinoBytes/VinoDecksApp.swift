@@ -49,10 +49,7 @@ struct LaunchScreen: View {
 
     var body: some View {
         ZStack {
-            Color(.latte)
-                .edgesIgnoringSafeArea(.all)
-
-            VStack(spacing: 20) {
+          VStack(spacing: 20) {
                 Image("vinobytes_logo_final")
                     .resizable()
                     .scaledToFit()

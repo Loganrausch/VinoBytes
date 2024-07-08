@@ -5,129 +5,97 @@
 //  Created by Logan Rausch on 3/2/24.
 //
 import SwiftUI
+import CoreData
 
 struct MyWinesView: View {
-    @ObservedObject var wineData: WineData
+    @Environment(\.managedObjectContext) private var context
     @State private var searchText: String = ""
-    var isRootView: Bool = false  // Flag to determine if NavigationView should be included
+    @State private var isAddingWine = false  // State to trigger navigation to the WineFormView
+    var isRootView: Bool
 
-    var filteredWinesGrouped: [(String, [Wine])] {
-        if searchText.isEmpty {
-            return sortedWines()
-        } else {
-            return sortedWines().compactMap { region, regionWines in
-                let filteredWines = regionWines.filter { wine in
-                    let searchLowercased = searchText.lowercased()
-                    return wine.producer.lowercased().contains(searchLowercased) ||
-                        wine.wineName.lowercased().contains(searchLowercased) ||
-                        wine.region.lowercased().contains(searchLowercased) ||
-                        wine.grape.lowercased().contains(searchLowercased) ||
-                        wine.vintageFormatted.contains(searchText)
-                }
-                if !filteredWines.isEmpty {
-                    return (region, filteredWines)
-                }
-                return nil
-            }
-        }
-    }
+    @FetchRequest(
+        entity: WineEntity.entity(),
+        sortDescriptors: [
+            NSSortDescriptor(keyPath: \WineEntity.region, ascending: true),
+            NSSortDescriptor(keyPath: \WineEntity.producer, ascending: true)
+        ]
+    ) var winesFetched: FetchedResults<WineEntity>
 
     var body: some View {
         Group {
             if isRootView {
                 NavigationView {
-                    contentView
-                        .navigationTitle("My Wines")
-                        .navigationBarTitleDisplayMode(.inline)
+                    winesList
                 }
             } else {
-                contentView
-                    .navigationTitle("My Wines")
-                    .navigationBarTitleDisplayMode(.inline)
+                winesList
             }
         }
     }
 
-    private var contentView: some View {
-        ZStack {
-            Color("Latte").edgesIgnoringSafeArea(.all)
-            VStack(spacing: 20) {
-                Spacer(minLength: 10)
-                searchField
-                wineList
-                addButton
-            }
-        }
-    }
+    private var winesList: some View {
+        VStack {
+            TextField("Search wines...", text: $searchText)
+                .padding(10)
+                .padding(.horizontal)
+                .background(Color.white)
+                .cornerRadius(10)
+                .padding(.top)
+                .padding(.horizontal)
+                .accentColor(.black)
+                .shadow(radius: 4)
 
-    private var searchField: some View {
-        TextField("Search", text: $searchText)
-            .padding(8)
-            .background(Color(.systemGray6)) // Background color of the TextField
-            .cornerRadius(8)
-            .overlay(
-                RoundedRectangle(cornerRadius: 8) // Match the corner radius with the background
-                    .stroke(Color("Maroon"), lineWidth: 2) // Apply stroke with your custom color and define its width
-            )
-            .padding(.horizontal)
-    }
-
-    private var wineList: some View {
-        List {
-            ForEach(filteredWinesGrouped, id: \.0) { region, regionWines in
-                Section(header: Text(region)) {
-                    ForEach(regionWines, id: \.id) { wine in
-                        if let index = wineData.wines.firstIndex(where: { $0.id == wine.id }) {
-                            let wineBinding = $wineData.wines[index]
-                            NavigationLink(destination: WineDetailView(wine: wineBinding, wineData: wineData)) {
-                                Text("\(wineBinding.wrappedValue.vintageFormatted) \(wineBinding.wrappedValue.producer) \(wineBinding.wrappedValue.wineName)")
-                                    .lineLimit(1)
+            List {
+                ForEach(filteredWinesGrouped, id: \.0) { region, wines in
+                    Section(header: Text(region).textCase(nil).padding(.leading, -7)) {
+                        ForEach(wines, id: \.self) { wine in
+                            NavigationLink(destination: WineDetailView(wineEntity: wine)) {
+                                Text("\(wine.vintage ?? "Unknown Vintage") \(wine.producer ?? "Unknown Producer") \(wine.wineName ?? "Unnamed Wine")")
                             }
                         }
-                    }
-                    .onDelete { indexSet in
-                        indexSet.forEach { index in
-                            let wineToDelete = regionWines[index]
-                            if let globalIndex = wineData.wines.firstIndex(where: { $0.id == wineToDelete.id }) {
-                                wineData.wines.remove(at: globalIndex)
-                            }
+                        .onDelete { offsets in
+                            deleteWines(at: offsets, in: wines)
                         }
                     }
                 }
             }
-            .listRowBackground(Color.clear)
-        }
-        .listStyle(PlainListStyle())
-    }
-
-    private var addButton: some View {
-        NavigationLink(destination: WineFormView(addWine: { wine in
-            wineData.wines.append(wine)
-        })) {
-            Text("Add a Wine")
-                .padding()
-                .foregroundColor(Color("Latte"))
-                .background(Color("Maroon"))
-                .shadow(radius: 10)
-                .cornerRadius(8)
-                
-        }
-        .padding()
-       
-    }
-
-    private func sortedWines() -> [(String, [Wine])] {
-        wineData.wines
-            .sorted { $0.region < $1.region || ($0.region == $1.region && $0.producer < $1.producer) }
-            .reduce(into: [String: [Wine]]()) { result, wine in
-                result[wine.region, default: []].append(wine)
+            .listStyle(PlainListStyle())
+            .navigationTitle("My Wines")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Add Wine") {
+                        isAddingWine = true
+                    }
+                }
             }
-            .sorted { $0.key < $1.key }
+            
+            NavigationLink(destination: WineFormView(wineEntity: nil), isActive: $isAddingWine) {
+                EmptyView()
+            }
+        }
+    }
+
+    private func deleteWines(at offsets: IndexSet, in wines: [WineEntity]) {
+        offsets.map { wines[$0] }.forEach(context.delete)
+        try? context.save()
+    }
+
+    var filteredWinesGrouped: [(String, [WineEntity])] {
+        let filteredWines: [WineEntity] = searchText.isEmpty ? Array(winesFetched) : winesFetched.filter { wine in
+            wine.producer?.lowercased().contains(searchText.lowercased()) ?? false ||
+            wine.wineName?.lowercased().contains(searchText.lowercased()) ?? false ||
+            wine.region?.lowercased().contains(searchText.lowercased()) ?? false ||
+            wine.grape?.lowercased().contains(searchText.lowercased()) ?? false
+        }
+        return Dictionary(grouping: filteredWines, by: { $0.region ?? "Unknown" })
+            .map { ($0.key, $0.value) }
+            .sorted { $0.0 < $1.0 }
     }
 }
 
 struct MyWinesView_Previews: PreviewProvider {
     static var previews: some View {
-        MyWinesView(wineData: WineData(), isRootView: true)
+        MyWinesView(isRootView: true).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

@@ -21,7 +21,6 @@ struct ReadOnlyConversationView: View {
                 }
                 .padding(.top, 20)  // Add padding at the top of the ScrollView
             }
-            .background(Color("Latte"))
             .navigationBarTitle("Conversation", displayMode: .inline)
             .preferredColorScheme(.light) // Apply light mode to the entire view
         }

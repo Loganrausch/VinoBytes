@@ -119,7 +119,6 @@ struct GrapeDetailView: View {
             .navigationTitle(grape.name)
             
             .navigationBarTitleDisplayMode(.inline)
-            .background(.latte).edgesIgnoringSafeArea(.all)
         }
     }
 }

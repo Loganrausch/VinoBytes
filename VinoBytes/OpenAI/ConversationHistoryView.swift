@@ -15,7 +15,6 @@ struct ConversationView: View {
             .foregroundColor(Color("Maroon"))  // Change text color to Maroon
             .padding(.vertical, 4)  // Adjust padding for better spacing
             .frame(maxWidth: .infinity, minHeight: 20, alignment: .leading)  // Ensures a minimum height but adapts if content needs more space
-            .background(Color("Latte"))  // Background color for each row
     }
 }
 
@@ -35,12 +34,10 @@ struct ConversationHistoryView: View {
                     }) {
                         ConversationView(conversation: conversation)
                     }
-                    .listRowBackground(Color("Latte"))
                 }
                 .onDelete(perform: deleteConversations)
             }
             .listStyle(PlainListStyle())
-            .background(Color("Latte"))
             .navigationBarTitle("Conversation History", displayMode: .inline)
             .sheet(isPresented: $showReadOnlyConversation) {
                 if let convo = selectedConversation {
@@ -48,7 +45,6 @@ struct ConversationHistoryView: View {
                 }
             }
         }
-        .background(Color("Latte").edgesIgnoringSafeArea(.all))
     }
     
     private func deleteConversations(at offsets: IndexSet) {

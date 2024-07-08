@@ -117,7 +117,7 @@ struct OpenAIChatView: View {
                                 })
                             }
                             .padding(.horizontal, 0)
-            .background(Color("Latte"))
+          
             .navigationBarTitle("Vino Chat", displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -163,7 +163,6 @@ struct OpenAIChatView: View {
                            .sheet(isPresented: $showConversationHistory) {
                 ConversationHistoryView(openAIManager: openAIManager)
                     .preferredColorScheme(.light)
-                    .background(Color.latte)
             }
         }
         .onAppear(perform: subscribeToKeyboardEvents)

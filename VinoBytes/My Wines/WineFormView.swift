@@ -11,11 +11,16 @@ import PhotosUI
 
 struct WineFormView: View {
     @Environment(\.presentationMode) var presentationMode
+    @Environment(\.managedObjectContext) private var context
+
+    var wineEntity: WineEntity?
+
     @State private var producer: String = ""
     @State private var wineName: String = ""
     @State private var region: String = ""
     @State private var grape: String = ""
-    @State private var vintage: Int = 2024
+    @State private var vintage: String = ""
+    @State private var isNonVintage: Bool = false
     @State private var rating: String = ""
     @State private var sight: String = ""
     @State private var smellTaste: String = ""
@@ -24,38 +29,30 @@ struct WineFormView: View {
     @State private var structureBody: String = ""
     @State private var sweetness: String = ""
     @State private var tannin: String = ""
+    @State private var finalThoughts: String = ""
     @State private var selectedImage: UIImage?
     @State private var isShowingImagePicker = false
-    @State private var finalThoughts: String = ""
 
-    
-    var wine: Wine? // Optional wine for editing
-    var addWine: ((Wine) -> Void)? // Optional closure for adding a wine
-    var updateWine: ((Wine, @escaping () -> Void) -> Void)?
-    var onWineUpdated: (() -> Void)? // Closure to be called after wine is updated
-    
-    init(wine: Wine? = nil, addWine: ((Wine) -> Void)? = nil, updateWine: ((Wine, @escaping () -> Void) -> Void)? = nil, onWineUpdated: (() -> Void)? = nil) {
-        self.wine = wine
-        self.addWine = addWine
-        self.updateWine = updateWine
-        self.onWineUpdated = onWineUpdated
-        
-        if let wine = wine {
-            _producer = State(initialValue: wine.producer)
-            _wineName = State(initialValue: wine.wineName)
-            _region = State(initialValue: wine.region)
-            _grape = State(initialValue: wine.grape)
-            _vintage = State(initialValue: wine.vintage)
-            _rating = State(initialValue: wine.rating)
-            _sight = State(initialValue: wine.sight)
-            _smellTaste = State(initialValue: wine.smellTaste)
-            _acid = State(initialValue: wine.acid)
-            _alcohol = State(initialValue: wine.alcohol)
-            _structureBody = State(initialValue: wine.structureBody)
-            _sweetness = State(initialValue: wine.sweetness)
-            _tannin = State(initialValue: wine.tannin)
-            _selectedImage = State(initialValue: wine.image)
-            _finalThoughts = State(initialValue: wine.finalThoughts)
+    init(wineEntity: WineEntity? = nil) {
+        self.wineEntity = wineEntity
+        if let wineEntity = wineEntity {
+            _producer = State(initialValue: wineEntity.producer ?? "")
+            _wineName = State(initialValue: wineEntity.wineName ?? "")
+            _region = State(initialValue: wineEntity.region ?? "")
+            _grape = State(initialValue: wineEntity.grape ?? "")
+            // Adjust vintage initialization to handle NV represented by 0
+            _vintage = State(initialValue: wineEntity.vintage ?? "")
+            _isNonVintage = State(initialValue: wineEntity.vintage == "NV")
+            _rating = State(initialValue: wineEntity.rating ?? "")
+            _sight = State(initialValue: wineEntity.sight ?? "")
+            _smellTaste = State(initialValue: wineEntity.smellTaste ?? "")
+            _acid = State(initialValue: wineEntity.acid ?? "")
+            _alcohol = State(initialValue: wineEntity.alcohol ?? "")
+            _structureBody = State(initialValue: wineEntity.structureBody ?? "")
+            _sweetness = State(initialValue: wineEntity.sweetness ?? "")
+            _tannin = State(initialValue: wineEntity.tannin ?? "")
+            _finalThoughts = State(initialValue: wineEntity.finalThoughts ?? "")
+            _selectedImage = State(initialValue: wineEntity.imageData != nil ? UIImage(data: wineEntity.imageData!) : nil)
         }
     }
     
@@ -63,34 +60,64 @@ struct WineFormView: View {
         Form {
             Section(header: Text("Wine Image")) {
                 Button(action: {
-                    isShowingImagePicker = true
-                }) {
-                    if let selectedImage = selectedImage {
-                        Image(uiImage: selectedImage)
-                            .resizable()
-                            .scaledToFit()
-                    } else {
-                        Text("Select Image")
-                            .accentColor(Color.blue) // Applying the accent color to all TextField elements in the section
-                    }
-                }
-                .sheet(isPresented: $isShowingImagePicker) {
-                    ImagePicker(selectedImage: $selectedImage)
-                }
-            }
+                                    isShowingImagePicker = true
+                                }) {
+                                    if let selectedImage = selectedImage {
+                                        Image(uiImage: selectedImage)
+                                            .resizable()
+                                            .scaledToFit()
+                                    } else {
+                                        Text("Select Image")
+                                            .accentColor(Color.blue)
+                                    }
+                                }
+                            }
+                            
+            Section(header: Text("Vintage Selection")) {
+                            HStack {
+                                Button("NV") {
+                                    vintage = "NV"
+                                    isNonVintage = true
+                                }
+                                .foregroundColor(isNonVintage ? Color("Maroon") : .gray)
+                                .padding()
+                                .background(isNonVintage ? Color("Maroon").opacity(0.2) : Color.clear)
+                                .cornerRadius(5)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 5)
+                                        .stroke(isNonVintage ? Color("Maroon") : Color.clear, lineWidth: 2)
+                                )
+                                .disabled(isNonVintage)
+
+                                Button("Vintage") {
+                                    isNonVintage = false
+                                    vintage = ""  // Clear the vintage or set it to a default value
+                                }
+                                .foregroundColor(!isNonVintage ? Color("Maroon") : .gray)
+                                .padding()
+                                .background(!isNonVintage ? Color("Maroon").opacity(0.2) : Color.clear)
+                                .cornerRadius(5)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 5)
+                                        .stroke(!isNonVintage ? Color("Maroon") : Color.clear, lineWidth: 2)
+                                )
+                                .disabled(!isNonVintage)
+                            }
+                            if !isNonVintage {
+                                TextField("Enter Vintage Year", text: $vintage)
+                                    .keyboardType(.default)  // Allow alphanumeric input
+                            }
+                        }
+            .accentColor(Color.black) // Set cursor color to system gray
             
-            Section(header: Text("Vintage")) {
-                Stepper("\(String(vintage))", value: $vintage, in: 1900...2024)
-            }
+                    
             
             Section(header: Text("Wine Details")) {
                 TextField("Producer", text: $producer)
                 TextField("Wine Name", text: $wineName)
                 TextField("Region", text: $region)
                 TextField("Grape", text: $grape)
-                
             }
-            
             .accentColor(Color(UIColor.systemGray)) // Applying the accent color to all TextField elements in the section
             
             Section(header: Text("Sight")) {
@@ -162,11 +189,9 @@ struct WineFormView: View {
                 }
             }
             
-            
             Section(header: Text("Rating")) {
                 HStack(spacing: 20) { // Ensure there is space between buttons
                     Button(action: {
-                        // This print statement will help you confirm that only this button action is called
                         print("Thumbs Down Pressed")
                         rating = (rating == "Negative") ? "" : "Negative"
                     }) {
@@ -179,7 +204,6 @@ struct WineFormView: View {
                     .buttonStyle(PlainButtonStyle()) // Prevent parent styles from affecting this button
                     
                     Button(action: {
-                        // This print statement will help you confirm that only this button action is called
                         print("Thumbs Up Pressed")
                         rating = (rating == "Positive") ? "" : "Positive"
                     }) {
@@ -199,53 +223,56 @@ struct WineFormView: View {
                     .frame(minHeight: 100, maxHeight: 200) // Set minimum and maximum height
                     .cornerRadius(8)
             }
-
             
-            
-            Button(action: {
-                print("Update button clicked")
-                let newWine = Wine(
-                    id: wine?.id ?? UUID(),
-                    producer: producer,
-                    wineName: wineName,
-                    region: region,
-                    grape: grape,
-                    vintage: vintage,
-                    rating: rating,
-                    sight: sight,
-                    smellTaste: smellTaste,
-                    acid: acid,
-                    alcohol: alcohol,
-                    structureBody: structureBody,
-                    sweetness: sweetness,
-                    tannin: tannin,
-                    image: selectedImage,
-                    finalThoughts: finalThoughts
-                )
-                
-                if wine != nil {
-                    updateWine?(newWine) {
-                        print("Wine updated")
-                        onWineUpdated?()
+            Button("Save") {
+                saveWine()
+            }
+            .foregroundColor(.blue) // Sets the text color to white
+            .navigationBarTitle(wineEntity != nil ? "Edit Wine" : "Add Wine")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Cancel") {
                         presentationMode.wrappedValue.dismiss()
                     }
-                } else {
-                    print("Adding new wine")
-                    addWine?(newWine)
-                    presentationMode.wrappedValue.dismiss()
                 }
-
-            }) {
-                Text(wine != nil ? "Update Wine" : "Save Wine")
-                    .accentColor(Color.blue) // Set cursor color to system gray
-            }
-            
-            .navigationBarTitle(wine != nil ? "Edit Wine" : "Add a Wine")
-            .sheet(isPresented: $isShowingImagePicker) {
-                ImagePicker(selectedImage: $selectedImage)
             }
         }
+        .sheet(isPresented: $isShowingImagePicker, onDismiss: loadImage) {
+            ImagePicker(selectedImage: $selectedImage)
+        }
     }
+
+    private func saveWine() {
+        let wineToSave = wineEntity ?? WineEntity(context: context)
+        wineToSave.producer = producer
+        wineToSave.wineName = wineName
+        wineToSave.region = region
+        wineToSave.grape = grape
+        wineToSave.vintage = vintage
+        wineToSave.rating = rating
+        wineToSave.sight = sight
+        wineToSave.smellTaste = smellTaste
+        wineToSave.acid = acid
+        wineToSave.alcohol = alcohol
+        wineToSave.structureBody = structureBody
+        wineToSave.sweetness = sweetness
+        wineToSave.tannin = tannin
+        wineToSave.finalThoughts = finalThoughts
+        wineToSave.imageData = selectedImage?.jpegData(compressionQuality: 1.0)
+
+                    do {
+                        try context.save()
+                        presentationMode.wrappedValue.dismiss()
+                    } catch {
+                        print("Failed to save wine: \(error)")
+                    }
+                }
+
+                private func loadImage() {
+                    guard let selectedImage = selectedImage else { return }
+                    wineEntity?.imageData = selectedImage.jpegData(compressionQuality: 1.0)
+                }
+            }
     
     
     struct WineFormView_Previews: PreviewProvider {
@@ -253,4 +280,4 @@ struct WineFormView: View {
             WineFormView()
         }
     }
-}
+

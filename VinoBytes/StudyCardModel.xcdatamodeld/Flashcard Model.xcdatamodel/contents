@@ -24,4 +24,22 @@
         <attribute name="question" optional="YES" attributeType="String"/>
         <attribute name="region" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="WineEntity" representedClassName=".WineEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="acid" optional="YES" attributeType="String"/>
+        <attribute name="alcohol" optional="YES" attributeType="String"/>
+        <attribute name="finalThoughts" optional="YES" attributeType="String"/>
+        <attribute name="grape" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="imageData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="producer" attributeType="String"/>
+        <attribute name="rating" optional="YES" attributeType="String"/>
+        <attribute name="region" attributeType="String"/>
+        <attribute name="sight" optional="YES" attributeType="String"/>
+        <attribute name="smellTaste" optional="YES" attributeType="String"/>
+        <attribute name="structureBody" optional="YES" attributeType="String"/>
+        <attribute name="sweetness" optional="YES" attributeType="String"/>
+        <attribute name="tannin" optional="YES" attributeType="String"/>
+        <attribute name="vintage" optional="YES" attributeType="String"/>
+        <attribute name="wineName" attributeType="String"/>
+    </entity>
 </model>

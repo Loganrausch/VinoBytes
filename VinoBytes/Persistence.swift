@@ -9,6 +9,7 @@ import CoreData
 
 struct PersistenceController {
     static let shared = PersistenceController()
+    static let preview = PersistenceController(inMemory: true)  // Add this line for SwiftUI previews
     
     let container: NSPersistentContainer
     

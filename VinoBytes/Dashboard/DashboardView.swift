@@ -5,17 +5,21 @@
 //  Created by Logan Rausch on 3/28/24.
 //
 
-import Foundation
 import SwiftUI
+import CoreData
 
 struct DashboardView: View {
-    @ObservedObject var wineData: WineData
+    @Environment(\.managedObjectContext) private var context
     @State private var blogPosts: [BlogPost] = []
     @State private var flashcardProgress: [String: Int] = ["France": 75, "Italy": 60, "Spain": 80]
     @State private var wineFactOfTheWeek: String?
     @State private var isFlashcardProgressSheetPresented = false
     @State private var isWhiteDisplaySheetPresented = false
-    
+
+    @FetchRequest(
+        entity: WineEntity.entity(),
+        sortDescriptors: []
+    ) var wines: FetchedResults<WineEntity>
 
     var body: some View {
         NavigationView {
@@ -89,7 +93,7 @@ struct DashboardView: View {
                         Text("My Wines")
                             .font(.headline)
                             .frame(width: 100, alignment: .center)
-                        NavigationLink(destination: MyWinesView(wineData: wineData)) {
+                        NavigationLink(destination: MyWinesView(isRootView: false)) {
                             ZStack {
                                 Circle()
                                     .stroke(Color("Maroon"), lineWidth: 5)
@@ -97,7 +101,7 @@ struct DashboardView: View {
                                     .background(Color(red: 128/255, green: 0, blue: 0).opacity(0.07))
                                     .clipShape(Circle())
                                     .shadow(color: Color.black.opacity(0.8), radius: 3)
-                                Text("\(wineData.wines.count)")
+                                Text("\(wines.count)")
                                     .font(.largeTitle)
                                     .foregroundColor(.black)
                             }
@@ -169,8 +173,6 @@ struct DashboardView: View {
                 Spacer(minLength: 20)
             }
             .padding()
-            
-            .background(Color("Latte"))
             .navigationBarTitle("Dashboard", displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -243,10 +245,12 @@ struct FlashcardProgressView: View {
     }
 }
 
+
 struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            DashboardView(wineData: WineData())
+            DashboardView()
+                .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
         }
     }
 }

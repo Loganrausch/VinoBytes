@@ -14,17 +14,14 @@ struct GrapeListView: View {
 
     var body: some View {
             ZStack {
-                Color("Latte").edgesIgnoringSafeArea(.all) // Ensure the background covers the entire screen
-                
                 List {
                     Section(header: Text("Red Grapes")) {
                         ForEach(redGrapes) { grape in
                             NavigationLink(destination: GrapeDetailView(grape: grape)) {
                                 Text(grape.name)
                                     .padding(.vertical, 5)
-                                    .background(Color("Latte"))
+                                   
                             }
-                            .listRowBackground(Color("Latte")) // Ensure each row respects the background color
                         }
                     }
                     .headerProminence(.increased)
@@ -34,14 +31,12 @@ struct GrapeListView: View {
                             NavigationLink(destination: GrapeDetailView(grape: grape)) {
                                 Text(grape.name)
                                     .padding(.vertical, 5)
-                                    .background(Color("Latte"))
+                                    
                             }
-                            .listRowBackground(Color("Latte")) // Ensure each row respects the background color
                         }
                     }
                     .headerProminence(.increased)
                 }
-                .background(Color("Latte")) // Background for the list
                 .listStyle(InsetGroupedListStyle()) // Apply a list style for better appearance
             }
             .navigationTitle("Grapes")

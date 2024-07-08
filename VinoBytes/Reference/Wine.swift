@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import UIKit
 
 struct Wine: Identifiable {
     var id = UUID()
@@ -14,7 +15,7 @@ struct Wine: Identifiable {
     var wineName: String
     var region: String
     var grape: String
-    var vintage: Int
+    var vintage: String
     var rating: String
     var sight: String
     var smellTaste: String
@@ -25,15 +26,6 @@ struct Wine: Identifiable {
     var tannin: String
     var image: UIImage?
     var finalThoughts: String
-}
-
-
-extension Wine {
-    var vintageFormatted: String {
-        get {
-            return "\(vintage)"
-        }
-    }
 }
 
 

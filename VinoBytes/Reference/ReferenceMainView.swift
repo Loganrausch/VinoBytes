@@ -11,9 +11,6 @@ struct ReferenceMainView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color("Latte")
-                    .edgesIgnoringSafeArea(.all) // Extend background to the edges
-                
                 VStack(spacing: 50) {
                     HStack(spacing: 40) {
                         NavigationLink(destination: GrapeListView()) {
@@ -62,7 +59,6 @@ struct ReferenceMainView: View {
                 .foregroundColor(.black)
         }
         .frame(width: 150, height: 150)
-        .background(Color.latte)
         .clipShape(Circle())
         .shadow(radius: 10)
         .overlay(
