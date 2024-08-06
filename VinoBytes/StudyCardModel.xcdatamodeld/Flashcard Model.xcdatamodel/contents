@@ -41,5 +41,6 @@
         <attribute name="tannin" optional="YES" attributeType="String"/>
         <attribute name="vintage" optional="YES" attributeType="String"/>
         <attribute name="wineName" attributeType="String"/>
+        <attribute name="wineType" optional="YES" attributeType="String"/>
     </entity>
 </model>

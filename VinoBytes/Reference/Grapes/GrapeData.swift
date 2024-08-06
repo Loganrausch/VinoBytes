@@ -1184,9 +1184,9 @@ Grape(
                 origin: "Originally from the Bordeaux region of France, Malbec has become synonymous with Argentine wine, where it thrives and is considered the national variety.",
                 countries: Countries(
                     primary: [
-                        "Argentina: Predominantly in Mendoza and also found in Salta and Patagonia.",
-                        "France: Still grown in Cahors and some parts of Bordeaux.",
-                        "USA: Increasingly popular in California and Washington."
+                        "Argentina: Predominantly in Mendoza and also found in Salta and Patagonia.\n",
+                        "France: Still grown in Cahors and some parts of Bordeaux.\n",
+                        "USA: Increasingly popular in California and Washington.\n"
                     ]
                 ),
                 tastingNotes: TastingNotes(
@@ -1261,7 +1261,7 @@ Grape(
                 origin: "Mencía is primarily found in the northwestern part of Spain, particularly in Bierzo, Ribeira Sacra, and Valdeorras. It is known for producing aromatic, medium-bodied red wines.",
                 countries: Countries(
                     primary: [
-                        "Spain: Concentrated in Bierzo, Ribeira Sacra, and Valdeorras.",
+                        "Spain: Concentrated in Bierzo, Ribeira Sacra, and Valdeorras.\n",
                         "Portugal: Known as Jaen in the Dão and Bairrada regions."
                     ]
                 ),
@@ -1300,8 +1300,8 @@ Grape(
                 origin: "Merlot is one of the world's most popular and widely planted red wine grapes, originating from the Bordeaux region of France. It is prized for its soft, ripe, elegant profile.",
                 countries: Countries(
                     primary: [
-                        "France: A key component in Bordeaux blends, especially from the Right Bank.",
-                        "USA: Extensively planted across California and Washington.",
+                        "France: A key component in Bordeaux blends, especially from the Right Bank.\n",
+                        "USA: Extensively planted across California and Washington.\n",
                         "Chile, Italy, Australia: Also significant in these regions."
                     ]
                 ),
@@ -1451,8 +1451,8 @@ Grape(
                 origin: "Mourvèdre, originally from Spain where it's known as Monastrell, is extensively used in the Rhône and Provence regions of France. It's valued for its deep color, rich tannins, and dark fruit flavors.",
                 countries: Countries(
                     primary: [
-                        "France: Widely planted in the Rhône Valley and Provence, particularly famous in Bandol.",
-                        "Spain: Known as Monastrell, especially prevalent in regions like Jumilla and Alicante.",
+                        "France: Widely planted in the Rhône Valley and Provence, particularly famous in Bandol.\n",
+                        "Spain: Known as Monastrell, especially prevalent in regions like Jumilla and Alicante.\n",
                         "USA: Grown in California and Washington."
                     ]
                 ),
@@ -1641,8 +1641,8 @@ Grape(
                 origin: "Petit Verdot is a red wine grape that originated in the Bordeaux region of France, traditionally used as a blending grape in Bordeaux blends.",
                 countries: Countries(
                     primary: [
-                        "France: Historically part of the Bordeaux blend.",
-                        "USA: Increasingly popular in California and Virginia.",
+                        "France: Historically part of the Bordeaux blend.\n",
+                        "USA: Increasingly popular in California and Virginia.\n",
                         "Australia: Grown in regions like Margaret River and Barossa Valley."
                     ]
                 ),
@@ -1680,7 +1680,7 @@ Grape(
                 origin: "Petite Sirah, also known as Durif, is a variety that originated from a cross between Syrah and Peloursin grapes in France. It has found a particularly hospitable home in California.",
                 countries: Countries(
                     primary: [
-                        "USA: Extensively planted in California, especially in regions like Napa Valley and Paso Robles.",
+                        "USA: Extensively planted in California, especially in regions like Napa Valley and Paso Robles.\n",
                         "Australia: Known as Durif, where it's also popular."
                     ]
                 ),
@@ -1719,8 +1719,8 @@ Grape(
                 origin: "Pinot Noir is a red wine grape of the species Vitis vinifera. Originating from the Burgundy region of France, it is now grown under a variety of climate conditions and is known for producing some of the finest wines in the world.",
                 countries: Countries(
                     primary: [
-                        "France: Primarily in Burgundy, also in Champagne and Alsace.",
-                        "USA: Widely grown in California, Oregon, and New York.",
+                        "France: Primarily in Burgundy, also in Champagne and Alsace.\n",
+                        "USA: Widely grown in California, Oregon, and New York.\n",
                         "New Zealand, Australia, Chile, and Germany: Also significant producers."
                     ]
                 ),
@@ -1834,7 +1834,7 @@ Grape(
                 origin: "Primitivo, also known internationally as Zinfandel, is a red wine grape that has become synonymous with the Puglia region of southern Italy. It is known for its robust wines and early ripening.",
                 countries: Countries(
                     primary: [
-                        "Italy: Predominantly grown in Puglia, especially in the Manduria area.",
+                        "Italy: Predominantly grown in Puglia, especially in the Manduria area.\n",
                         "USA: Known as Zinfandel, especially in California."
                     ]
                 ),
@@ -1926,7 +1926,7 @@ Grape(
                     growingConditions: "Resistant to many common vine diseases and adapts well to different training systems, though it is less vigorous than Corvina."
                 ),
                 wineStyles: [
-                    "Red Wines: Commonly used in blends to add color and aroma.",
+                    "Red Wines: Commonly used in blends to add color and aroma.\n",
                     "Rosé Wines: Sometimes used to produce light rosés."
                 ],
                 foodPairing: [
@@ -2062,7 +2062,7 @@ Grape(
                 origin: "St. Laurent is a dark-skinned wine grape variety believed to have originated in Austria. It is closely related to Pinot Noir and offers wines with a similar, though distinctly spicier, profile.",
                 countries: Countries(
                     primary: [
-                        "Austria: Widely grown, particularly in Lower Austria and Burgenland.",
+                        "Austria: Widely grown, particularly in Lower Austria and Burgenland.\n",
                         "Czech Republic: Also found in regions like Moravia."
                     ]
                 ),
@@ -2101,8 +2101,8 @@ Grape(
                 origin: "Syrah, also known as Shiraz, is a robust red wine grape that originated in the Rhône Valley of France. It's known for its powerful flavor profile and is a key component in both varietal and blended wines.",
                 countries: Countries(
                     primary: [
-                        "France: Dominantly in the Rhône Valley.",
-                        "Australia: Known as Shiraz, particularly prevalent in Barossa Valley and McLaren Vale.",
+                        "France: Dominantly in the Rhône Valley.\n",
+                        "Australia: Known as Shiraz, particularly prevalent in Barossa Valley and McLaren Vale.\n",
                         "USA: Widely planted in California and Washington."
                     ]
                 ),
@@ -2140,8 +2140,8 @@ Grape(
                 origin: "Tannat is originally from the Madiran region in South West France. It's also incredibly popular in Uruguay, where it has become the national grape, known for its robust tannins and dark fruit flavors.",
                 countries: Countries(
                     primary: [
-                        "France: Predominantly in Madiran and surrounding areas.",
-                        "Uruguay: Widely considered the national grape, extensively cultivated across the country.",
+                        "France: Predominantly in Madiran and surrounding areas.\n",
+                        "Uruguay: Widely considered the national grape, extensively cultivated across the country.\n",
                         "USA: Planted in smaller amounts, particularly in California."
                     ]
                 ),
@@ -2180,7 +2180,7 @@ Grape(
                 origin: "Tempranillo is the quintessential Spanish grape, central to the profiles of wines from Rioja and Ribera del Duero. Its name derives from 'temprano', meaning 'early', referring to its tendency to ripen earlier than other Spanish red grapes.",
                 countries: Countries(
                     primary: [
-                        "Spain: Dominant in Rioja and Ribera del Duero, also widely planted across the Iberian Peninsula.",
+                        "Spain: Dominant in Rioja and Ribera del Duero, also widely planted across the Iberian Peninsula.\n",
                         "Portugal: Known as Tinta Roriz in the Douro and Dão regions, used in Port wine production."
                     ]
                 ),
@@ -2293,8 +2293,8 @@ Grape(
                 origin: "Trousseau is a red wine grape from the Jura region in France, known for its light-bodied wines. It's also grown in Portugal, where it's known as Bastardo, and has found a niche in California.",
                 countries: Countries(
                     primary: [
-                        "France: Predominantly in the Jura region.",
-                        "Portugal: Known as Bastardo, particularly in the Douro and Dão regions for Port production.",
+                        "France: Predominantly in the Jura region.\n",
+                        "Portugal: Known as Bastardo, particularly in the Douro and Dão regions for Port production.\n",
                         "USA: Limited plantings in California, especially in cooler, coastal areas."
                     ]
                 ),
@@ -2333,7 +2333,7 @@ Grape(
                 origin: "Trollinger, also known as Schiava in Italy, is a red wine grape variety primarily associated with the wine regions of South Tyrol, Italy, and Württemberg, Germany. It produces light, fruity red wines.",
                 countries: Countries(
                     primary: [
-                        "Germany: Mainly in Württemberg.",
+                        "Germany: Mainly in Württemberg.\n",
                         "Italy: Known as Schiava in South Tyrol."
                     ]
                 ),
@@ -2424,7 +2424,7 @@ Grape(
                     growingConditions: "Vigorous vine that can produce high yields; careful vineyard management is needed to maintain quality."
                 ),
                 wineStyles: [
-                    "Red Wines: Ranges from medium-bodied to rich and intense. Also famous for the sweet, light rosé style known as White Zinfandel.",
+                    "Red Wines: Ranges from medium-bodied to rich and intense. Also famous for the sweet, light rosé style known as White Zinfandel.\n",
                     "Rosé Wines: White Zinfandel, which is a sweeter and lighter rosé wine style."
                 ],
                 foodPairing: [
@@ -2505,11 +2505,11 @@ static let whiteGrapes: [Grape] = [
                 growingConditions: "Resistant to drought and can produce high yields. Known for its ability to thrive in harsh growing conditions."
             ),
             wineStyles: [
-                "White Wines: Often produced as a light, easy-drinking wine with refreshing acidity.",
+                "White Wines: Often produced as a light, easy-drinking wine with refreshing acidity.\n",
                 "Blended Wines: Commonly used in blends to add body and neutral flavors."
             ],
             foodPairing: [
-                "White Wines: Pairs well with light salads, seafood, and poultry dishes.",
+                "White Wines: Pairs well with light salads, seafood, and poultry dishes.\n",
                 "Blended Wines: Complements a variety of dishes due to its neutral profile."
             ],
             notableProducers: [
@@ -2530,7 +2530,7 @@ static let whiteGrapes: [Grape] = [
             origin: "Albariño, known as Alvarinho in Portugal, is a white grape variety from the Iberian Peninsula. It is especially prominent in the Rías Baixas DO in Spain and Vinho Verde in Portugal.",
             countries: Countries(
                 primary: [
-                    "Spain: Particularly in Rías Baixas, Galicia.",
+                    "Spain: Particularly in Rías Baixas, Galicia.\n",
                     "Portugal: Known as Alvarinho, especially in the Vinho Verde region."
                 ]
             ),
@@ -2757,8 +2757,8 @@ static let whiteGrapes: [Grape] = [
             origin: "Chardonnay is a versatile white grape variety that originated in the Burgundy region of France. It is now one of the most widely planted and well-known white wine grapes globally.",
             countries: Countries(
                 primary: [
-                    "France: Especially in Burgundy and Champagne.",
-                    "USA: Notably in California.",
+                    "France: Especially in Burgundy and Champagne.\n",
+                    "USA: Notably in California.\n",
                     "Australia: Particularly in the regions of Adelaide Hills and Yarra Valley."
                 ]
             ),
@@ -2774,7 +2774,7 @@ static let whiteGrapes: [Grape] = [
                 growingConditions: "Versatile and hardy, though prone to early bud break which can make it susceptible to frost."
             ),
             wineStyles: [
-                "White Wines: Can range from lean, crisp, and unoaked to rich, buttery, and oak-aged.",
+                "White Wines: Can range from lean, crisp, and unoaked to rich, buttery, and oak-aged.\n",
                 "Sparkling Wines: Key grape in Champagne and other sparkling wines."
             ],
             foodPairing: [
@@ -2798,7 +2798,7 @@ static let whiteGrapes: [Grape] = [
             origin: "Chenin Blanc is a white grape variety originating from the Loire Valley in France. It is known for its high acidity and versatility in producing a wide range of wine styles.",
             countries: Countries(
                 primary: [
-                    "France: Especially in the Loire Valley (Vouvray, Anjou).",
+                    "France: Especially in the Loire Valley (Vouvray, Anjou).\n",
                     "South Africa: Known locally as Steen."
                 ]
             ),
@@ -2837,8 +2837,8 @@ static let whiteGrapes: [Grape] = [
             origin: "Colombard is a white grape variety originating from the Charentes region in France, traditionally used in Cognac production but also appreciated for its fresh, fruity wines.",
             countries: Countries(
                 primary: [
-                    "France: Mainly in the Charentes and Gascony regions.",
-                    "USA: Particularly in California.",
+                    "France: Mainly in the Charentes and Gascony regions.\n",
+                    "USA: Particularly in California.\n",
                     "South Africa: Increasingly popular for its fresh, easy-drinking wines."
                 ]
             ),
@@ -3178,8 +3178,8 @@ static let whiteGrapes: [Grape] = [
             origin: "Gewürztraminer is a highly aromatic white grape variety believed to have originated in the Alsace region of France. It is known for its distinctively spicy and floral character.",
             countries: Countries(
                 primary: [
-                    "France: Especially in Alsace.",
-                    "Germany: Known as Traminer or Roter Traminer in some regions.",
+                    "France: Especially in Alsace.\n",
+                    "Germany: Known as Traminer or Roter Traminer in some regions.\n",
                     "USA: Particularly in California and Oregon."
                 ]
             ),
@@ -3406,7 +3406,7 @@ static let whiteGrapes: [Grape] = [
             origin: "Grenache Blanc is a white grape variety that is a mutation of the red Grenache grape. It originated in Spain and is widely planted in the Rhône Valley of France.",
             countries: Countries(
                 primary: [
-                    "France: Particularly in the Rhône Valley and Languedoc-Roussillon.",
+                    "France: Particularly in the Rhône Valley and Languedoc-Roussillon.\n",
                     "Spain: Known as Garnacha Blanca, especially in Catalonia and Navarra."
                 ]
             ),
@@ -3633,7 +3633,7 @@ static let whiteGrapes: [Grape] = [
             origin: "Kerner is a white grape variety developed in Germany by crossing Riesling with Trollinger. It is known for its aromatic intensity and crisp acidity.",
             countries: Countries(
                 primary: [
-                    "Germany: Particularly in the regions of Pfalz, Rheinhessen, and Mosel.",
+                    "Germany: Particularly in the regions of Pfalz, Rheinhessen, and Mosel.\n",
                     "Italy: Also grown in South Tyrol."
                 ]
             ),
@@ -3671,7 +3671,7 @@ static let whiteGrapes: [Grape] = [
             origin: "Macabeo, also known as Viura in Rioja, is a white grape variety native to Spain. It is widely used in both still white wines and as a key component in Cava sparkling wines.",
             countries: Countries(
                 primary: [
-                    "Spain: Particularly in Rioja, Catalonia (for Cava), and other regions.",
+                    "Spain: Particularly in Rioja, Catalonia (for Cava), and other regions.\n",
                     "France: Known as Maccabeu, especially in the Languedoc-Roussillon."
                 ]
             ),
@@ -3687,7 +3687,7 @@ static let whiteGrapes: [Grape] = [
                 growingConditions: "Vigorous vine with good resistance to disease."
             ),
             wineStyles: [
-                "White Wines: Often used in both young and aged white wines.",
+                "White Wines: Often used in both young and aged white wines.\n",
                 "Sparkling Wines: Key component in Cava."
             ],
             foodPairing: [
@@ -3711,7 +3711,7 @@ static let whiteGrapes: [Grape] = [
             origin: "Malmsey, also known as Malvasia, is a white grape variety traditionally used in the production of rich, sweet Madeira wines. It has a long history of cultivation in the Mediterranean region.",
             countries: Countries(
                 primary: [
-                    "Portugal: Particularly in Madeira.",
+                    "Portugal: Particularly in Madeira.\n",
                     "Italy: Known as Malvasia in various regions, including Tuscany and Lazio."
                 ]
             ),
@@ -3750,7 +3750,7 @@ static let whiteGrapes: [Grape] = [
             origin: "Marsanne is a white grape variety originating from the Rhône Valley in France. It is often blended with Roussanne and is known for producing rich, full-bodied white wines.",
             countries: Countries(
                 primary: [
-                    "France: Particularly in the northern Rhône Valley (Hermitage, Crozes-Hermitage, Saint-Joseph).",
+                    "France: Particularly in the northern Rhône Valley (Hermitage, Crozes-Hermitage, Saint-Joseph).\n",
                     "Australia: Grown in regions like Victoria."
                 ]
             ),
@@ -3826,7 +3826,7 @@ static let whiteGrapes: [Grape] = [
             origin: "Moscatel, also known as Muscat, is one of the oldest grape varieties in the world, with a rich history of cultivation across the Mediterranean. It is known for its intensely aromatic wines.",
             countries: Countries(
                 primary: [
-                    "Spain: Particularly in regions like Valencia and Andalucía.",
+                    "Spain: Particularly in regions like Valencia and Andalucía.\n",
                     "Portugal: Known as Moscatel in Setúbal."
                 ]
             ),
@@ -3902,7 +3902,7 @@ static let whiteGrapes: [Grape] = [
             origin: "Müller-Thurgau is a white grape variety developed in Germany in the late 19th century by crossing Riesling with Madeleine Royale. It is known for its early ripening and ability to grow in a variety of climates.",
             countries: Countries(
                 primary: [
-                    "Germany: Widely grown in regions like Rheinhessen and Mosel.",
+                    "Germany: Widely grown in regions like Rheinhessen and Mosel.\n",
                     "Switzerland: Known as Riesling-Silvaner."
                 ]
             ),
@@ -3941,7 +3941,7 @@ static let whiteGrapes: [Grape] = [
             origin: "Muscadelle is a white grape variety native to France, often used in the production of Bordeaux and Australian sweet wines. It is known for its aromatic intensity and floral character.",
             countries: Countries(
                 primary: [
-                    "France: Particularly in Bordeaux and Bergerac.",
+                    "France: Particularly in Bordeaux and Bergerac.\n",
                     "Australia: Especially in Rutherglen for sweet wines."
                 ]
             ),
@@ -3980,8 +3980,8 @@ static let whiteGrapes: [Grape] = [
             origin: "Muscat is one of the oldest and most widespread grape varieties, known for its intensely aromatic wines. It has numerous sub-varieties and is cultivated in many wine-producing regions worldwide.",
             countries: Countries(
                 primary: [
-                    "Italy: Particularly in Piedmont and Sicily.",
-                    "France: Especially in Alsace and the Rhône Valley.",
+                    "Italy: Particularly in Piedmont and Sicily.\n",
+                    "France: Especially in Alsace and the Rhône Valley.\n",
                     "Spain: Widely grown in various regions including Valencia and Andalucía."
                 ]
             ),
@@ -4019,8 +4019,8 @@ static let whiteGrapes: [Grape] = [
             origin: "Muscat of Alexandria is one of the oldest known grape varieties, believed to have originated in Egypt. It is part of the Muscat family and is used for both table grapes and wine production.",
             countries: Countries(
                 primary: [
-                    "Spain: Particularly in regions like Valencia and Málaga.",
-                    "Italy: Known as Zibibbo, especially in Sicily.",
+                    "Spain: Particularly in regions like Valencia and Málaga.\n",
+                    "Italy: Known as Zibibbo, especially in Sicily.\n",
                     "Australia: Grown in various regions including Rutherglen for fortified wines."
                 ]
             ),
@@ -4059,8 +4059,8 @@ static let whiteGrapes: [Grape] = [
             origin: "Muscat Ottonel is a white grape variety developed in France in the mid-19th century. It is known for its aromatic wines and is widely grown in Eastern Europe and Alsace.",
             countries: Countries(
                 primary: [
-                    "France: Particularly in Alsace.",
-                    "Hungary: Widely grown for its aromatic qualities.",
+                    "France: Particularly in Alsace.\n",
+                    "Hungary: Widely grown for its aromatic qualities.\n",
                     "Romania: Known for its sweet and aromatic wines."
                 ]
             ),
@@ -4099,8 +4099,8 @@ static let whiteGrapes: [Grape] = [
             origin: "Olaszrizling, also known as Welschriesling, is a white grape variety widely grown in Central Europe. Despite its name, it is not related to Riesling.",
             countries: Countries(
                 primary: [
-                    "Hungary: Known as Olaszrizling.",
-                    "Austria: Known as Welschriesling.",
+                    "Hungary: Known as Olaszrizling.\n",
+                    "Austria: Known as Welschriesling.\n",
                     "Croatia: Known as Graševina."
                 ]
             ),
@@ -4327,8 +4327,8 @@ static let whiteGrapes: [Grape] = [
             origin: "Pinot Blanc is a white grape variety believed to have originated in Burgundy, France. It is known for producing elegant, medium-bodied wines.",
             countries: Countries(
                 primary: [
-                    "France: Particularly in Alsace and Burgundy.",
-                    "Germany: Known as Weissburgunder.",
+                    "France: Particularly in Alsace and Burgundy.\n",
+                    "Germany: Known as Weissburgunder.\n",
                     "Italy: Known as Pinot Bianco, especially in Alto Adige."
                 ]
             ),
@@ -4366,8 +4366,8 @@ static let whiteGrapes: [Grape] = [
             origin: "Pinot Gris is a white grape variety believed to have originated in Burgundy, France. It is known for producing a wide range of wine styles, from dry to sweet, and is closely related to Pinot Noir.",
             countries: Countries(
                 primary: [
-                    "France: Particularly in Alsace.",
-                    "Italy: Known as Pinot Grigio, especially in Veneto and Friuli-Venezia Giulia.",
+                    "France: Particularly in Alsace.\n",
+                    "Italy: Known as Pinot Grigio, especially in Veneto and Friuli-Venezia Giulia.\n",
                     "USA: Particularly in Oregon."
                 ]
             ),
@@ -4406,7 +4406,7 @@ static let whiteGrapes: [Grape] = [
             origin: "Ribolla Gialla is a white grape variety native to the Friuli-Venezia Giulia region in northeastern Italy. It is known for producing crisp, aromatic wines with good acidity.",
             countries: Countries(
                 primary: [
-                    "Italy: Particularly in Friuli-Venezia Giulia.",
+                    "Italy: Particularly in Friuli-Venezia Giulia.\n",
                     "Slovenia: Known as Rebula."
                 ]
             ),
@@ -4445,8 +4445,8 @@ static let whiteGrapes: [Grape] = [
             origin: "Riesling is a white grape variety originating from the Rhine region of Germany. It is known for its aromatic intensity, high acidity, and versatility in producing wines ranging from dry to sweet.",
             countries: Countries(
                 primary: [
-                    "Germany: Particularly in the Mosel, Rheingau, and Pfalz regions.",
-                    "France: Especially in Alsace.",
+                    "Germany: Particularly in the Mosel, Rheingau, and Pfalz regions.\n",
+                    "France: Especially in Alsace.\n",
                     "Australia: Particularly in the Clare and Eden Valleys."
                 ]
             ),
@@ -4522,7 +4522,7 @@ static let whiteGrapes: [Grape] = [
             origin: "Roussanne is a white grape variety originating from the Rhône Valley in France. It is often blended with Marsanne and is known for producing rich, aromatic wines with good aging potential.",
             countries: Countries(
                 primary: [
-                    "France: Particularly in the northern and southern Rhône Valley (Hermitage, Crozes-Hermitage, Châteauneuf-du-Pape).",
+                    "France: Particularly in the northern and southern Rhône Valley (Hermitage, Crozes-Hermitage, Châteauneuf-du-Pape).\n",
                     "USA: Particularly in California."
                 ]
             ),
@@ -4598,8 +4598,8 @@ static let whiteGrapes: [Grape] = [
             origin: "Sárga Muskotály, also known as Muscat Blanc à Petits Grains, is a white grape variety that is part of the extensive Muscat family. It is known for its intensely aromatic and sweet wines.",
             countries: Countries(
                 primary: [
-                    "Hungary: Widely grown in Tokaj and other regions.",
-                    "France: Particularly in Alsace and the Rhône Valley.",
+                    "Hungary: Widely grown in Tokaj and other regions.\n",
+                    "France: Particularly in Alsace and the Rhône Valley.\n",
                     "Italy: Known as Moscato Bianco, especially in Piedmont."
                 ]
             ),
@@ -4638,8 +4638,8 @@ static let whiteGrapes: [Grape] = [
             origin: "Sauvignon Blanc is a white grape variety originating from the Loire Valley in France. It is known for its high acidity, aromatic intensity, and versatility in producing both dry and sweet wines.",
             countries: Countries(
                 primary: [
-                    "France: Particularly in the Loire Valley (Sancerre, Pouilly-Fumé) and Bordeaux.",
-                    "New Zealand: Especially in Marlborough.",
+                    "France: Particularly in the Loire Valley (Sancerre, Pouilly-Fumé) and Bordeaux.\n",
+                    "New Zealand: Especially in Marlborough.\n",
                     "USA: Particularly in California."
                 ]
             ),
@@ -4753,7 +4753,7 @@ static let whiteGrapes: [Grape] = [
             origin: "Scheurebe is a white grape variety developed in Germany in the early 20th century by crossing Riesling with an unknown grape. It is known for its aromatic intensity and versatility in producing both dry and sweet wines.",
             countries: Countries(
                 primary: [
-                    "Germany: Particularly in the Rheinhessen and Pfalz regions.",
+                    "Germany: Particularly in the Rheinhessen and Pfalz regions.\n",
                     "Austria: Grown in regions like Burgenland and Lower Austria."
                 ]
             ),
@@ -4829,8 +4829,8 @@ static let whiteGrapes: [Grape] = [
             origin: "Semillon is a white grape variety originating from the Bordeaux region of France. It is known for its role in producing both dry and sweet wines, including the famous Sauternes.",
             countries: Countries(
                 primary: [
-                    "France: Particularly in Bordeaux.",
-                    "Australia: Especially in the Hunter Valley.",
+                    "France: Particularly in Bordeaux.\n",
+                    "Australia: Especially in the Hunter Valley.\n",
                     "South Africa: Widely grown in various regions."
                 ]
             ),
@@ -4869,7 +4869,7 @@ static let whiteGrapes: [Grape] = [
             origin: "Silvaner is a white grape variety believed to have originated in Austria or Germany. It is widely grown in Franconia and Rheinhessen regions of Germany.",
             countries: Countries(
                 primary: [
-                    "Germany: Particularly in Franconia (Franken) and Rheinhessen.",
+                    "Germany: Particularly in Franconia (Franken) and Rheinhessen.\n",
                     "Austria: Grown in various regions."
                 ]
             ),
@@ -4945,7 +4945,7 @@ static let whiteGrapes: [Grape] = [
             origin: "Trebbiano, known as Ugni Blanc in France, is a white grape variety believed to have originated in Italy. It is one of the most widely planted grape varieties in the world.",
             countries: Countries(
                 primary: [
-                    "Italy: Widely grown in many regions.",
+                    "Italy: Widely grown in many regions.\n",
                     "France: Known as Ugni Blanc, particularly in Cognac and Armagnac."
                 ]
             ),
@@ -4961,7 +4961,7 @@ static let whiteGrapes: [Grape] = [
                 growingConditions: "Vigorous vine with high yield potential; quality is maintained with controlled yields."
             ),
             wineStyles: [
-                "White Wines: Often made in a dry, crisp style, showcasing its fresh acidity and subtle fruit flavors.",
+                "White Wines: Often made in a dry, crisp style, showcasing its fresh acidity and subtle fruit flavors.\n",
                 "Spirits: Used in the production of Cognac and Armagnac."
             ],
             foodPairing: [
@@ -5060,7 +5060,7 @@ static let whiteGrapes: [Grape] = [
             origin: "Verdelho is a white grape variety originally from Portugal, particularly the island of Madeira. It is known for its versatility and is used in both dry table wines and fortified wines.",
             countries: Countries(
                 primary: [
-                    "Portugal: Especially in Madeira.",
+                    "Portugal: Especially in Madeira.\n",
                     "Australia: Particularly in the Hunter Valley."
                 ]
             ),
@@ -5076,7 +5076,7 @@ static let whiteGrapes: [Grape] = [
                 growingConditions: "Vigorous vine with good disease resistance, requiring careful management to maintain quality."
             ),
             wineStyles: [
-                "White Wines: Typically made in a dry, crisp style.",
+                "White Wines: Typically made in a dry, crisp style.\n",
                 "Fortified Wines: Used in the production of Madeira."
             ],
             foodPairing: [
@@ -5175,7 +5175,7 @@ static let whiteGrapes: [Grape] = [
             origin: "Vermentino is a white grape variety that is believed to have originated in Italy. It is widely planted in the coastal regions of Liguria, Tuscany, and Sardinia.",
             countries: Countries(
                 primary: [
-                    "Italy: Particularly in Liguria, Tuscany, and Sardinia.",
+                    "Italy: Particularly in Liguria, Tuscany, and Sardinia.\n",
                     "France: Known as Rolle, especially in Provence and Corsica."
                 ]
             ),
@@ -5214,8 +5214,8 @@ static let whiteGrapes: [Grape] = [
             origin: "Viognier is a white grape variety originating from the Rhône Valley in France. It is known for its rich, aromatic wines with floral and fruit-driven characteristics.",
             countries: Countries(
                 primary: [
-                    "France: Particularly in the northern Rhône Valley (Condrieu, Château-Grillet).",
-                    "USA: Particularly in California and Virginia.",
+                    "France: Particularly in the northern Rhône Valley (Condrieu, Château-Grillet).\n",
+                    "USA: Particularly in California and Virginia.\n",
                     "Australia: Widely grown in various regions."
                 ]
             ),
@@ -5254,8 +5254,8 @@ static let whiteGrapes: [Grape] = [
             origin: "Weißburgunder, known as Pinot Blanc in France, is a white grape variety that is believed to have originated in Burgundy. It is known for producing elegant, medium-bodied wines.",
             countries: Countries(
                 primary: [
-                    "Germany: Widely grown in regions like Baden and Pfalz.",
-                    "France: Particularly in Alsace and Burgundy.",
+                    "Germany: Widely grown in regions like Baden and Pfalz.\n",
+                    "France: Particularly in Alsace and Burgundy.\n",
                     "Italy: Known as Pinot Bianco, especially in Alto Adige."
                 ]
             ),
@@ -5293,15 +5293,15 @@ static let whiteGrapes: [Grape] = [
             origin: "Welschriesling is a white grape variety that is not related to the Riesling grape. It is widely grown in Central and Eastern Europe.",
             countries: Countries(
                 primary: [
-                    "Austria: Particularly in the regions of Burgenland and Styria.",
-                    "Hungary: Known as Olaszrizling, especially in the Lake Balaton area.",
+                    "Austria: Particularly in the regions of Burgenland and Styria.\n",
+                    "Hungary: Known as Olaszrizling, especially in the Lake Balaton area.\n",
                     "Croatia: Known as Graševina, widely planted in Slavonia and other regions."
                 ]
             ),
             tastingNotes: TastingNotes(
                 color: "Pale yellow.",
-                aroma: "Aromas of green apple, citrus, and white flowers with hints of herbs.",
-                palate: "Light to medium-bodied with high acidity, featuring flavors of lemon, green apple, and a touch of minerality.",
+                aroma: "Aromas of green apple, citrus, and white flowers with hints of herbs.\n",
+                palate: "Light to medium-bodied with high acidity, featuring flavors of lemon, green apple, and a touch of minerality.\n",
                 finish: "Crisp and refreshing with a clean, zesty finish."
             ),
             viticulturalCharacteristics: ViticulturalCharacteristics(

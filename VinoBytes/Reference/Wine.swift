@@ -13,6 +13,7 @@ struct Wine: Identifiable {
     var id = UUID()
     var producer: String
     var wineName: String
+    var wineType: String
     var region: String
     var grape: String
     var vintage: String

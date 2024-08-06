@@ -9,20 +9,80 @@ import SwiftUI
 
 struct FoodWinePairingsDetailView: View {
     var foodWinePairing: FoodWinePairing
+    @State private var selectedGrape: GrapeDetail?
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            Text("\(foodWinePairing.food) & \(foodWinePairing.wine)")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-            
-            Text(foodWinePairing.description)
-                .font(.body)
-            
-            Spacer()
+        ScrollView {
+            VStack(alignment: .leading, spacing: 20) {
+                Text("\(foodWinePairing.food)")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .padding(.top)
+
+                Text(foodWinePairing.description)
+                    .font(.body)
+                    .padding(.bottom)
+
+                Divider()
+
+                Text("Pair with:")
+                    .font(.headline)
+                    .padding(.vertical)
+
+                // Sorting grapes alphabetically by name
+                ForEach(foodWinePairing.grapes.sorted { $0.name < $1.name }, id: \.id) { grape in
+                    Button(action: {
+                        selectedGrape = grape
+                    }) {
+                        HStack {
+                            Text(grape.name)
+                                .foregroundColor(.primary)
+                            Spacer()
+                            Image(systemName: "info.circle")
+                                .foregroundColor(.maroon)
+                        }
+                        .padding()
+                        .background(Color.white)
+                        .cornerRadius(10)
+                        .shadow(radius: 4)
+                    }
+                }
+            }
+            .padding()
+            .navigationTitle("Pairing Details")
+            .sheet(item: $selectedGrape) { grape in
+                GrapePairingDetailView(grape: grape)
+            }
         }
-        .padding()
-        .navigationTitle("Food & Wine Pairing Detail")
+    }
+}
+
+struct GrapePairingDetailView: View {
+    var grape: GrapeDetail
+
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 20) {
+                Text(grape.name)
+                    .font(.title)
+                    .fontWeight(.bold)
+
+                Text(grape.description)
+                    .font(.body)
+
+                Text("Serving Suggestions")
+                    .font(.headline)
+                    .padding(.top)
+
+                Text("Temperature: \(grape.servingTemperature)")
+                Text("Glass: \(grape.glassType)")
+                Text("Decanting: \(grape.decantingRecommendation)")
+                
+                Spacer()
+            }
+            .padding()
+            .navigationTitle("Grape Details")
+        }
     }
 }
 

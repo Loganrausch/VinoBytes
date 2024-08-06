@@ -15,6 +15,7 @@ extension WineEntity {
         self.id = wine.id
         self.producer = wine.producer
         self.wineName = wine.wineName
+        self.wineType = wine.wineType
         self.region = wine.region
         self.grape = wine.grape
         self.vintage = wine.vintage
@@ -36,6 +37,7 @@ extension WineEntity {
             id: self.id!,
             producer: self.producer!,
             wineName: self.wineName!,
+            wineType: self.wineType!,
             region: self.region!,
             grape: self.grape!,
             vintage: self.vintage!,

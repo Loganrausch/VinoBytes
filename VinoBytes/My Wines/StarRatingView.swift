@@ -13,10 +13,10 @@ struct StarRatingView: View {
     var maximumRating = 5
 
     var offImage: Image?
-    var onImage = Image(systemName: "star.fill")
+    var onImage = Image(systemName: "wineglass.fill")
     
     var offColor = Color.gray
-    var onColor = Color.yellow
+    var onColor = Color.maroon
     
     func image(for number: Int) -> Image {
         if number > rating {

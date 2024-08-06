@@ -1,5 +1,1395 @@
-
 [
+    
+      {
+        "id": "59a6b127-349c-4b92-86c1-ff443d993e7f",
+        "question": "What is the signature grape variety of Luján de Cuyo, Mendoza?",
+        "answer": "Malbec",
+        "region": "Argentina",
+        "boxNumber": 1,
+        "nextReviewDate": "2024-08-10"
+      },
+      {
+        "id": "73d3f9c5-14d8-45a8-8d76-7a4598ec56d0",
+        "question": "What are the typical characteristics of Malbec wines from Luján de Cuyo?",
+        "answer": "Intense dark fruit flavors (plums, blackberries), violet aromas, full-bodied, with smooth tannins and a long finish.",
+        "region": "Argentina",
+        "boxNumber": 1,
+        "nextReviewDate": "2024-08-10"
+      },
+      {
+        "id": "842f2d5f-41f8-48b6-bf2d-36c0c98b7c51",
+        "question": "What is the elevation range of vineyards in Luján de Cuyo?",
+        "answer": "800-1,100 meters above sea level",
+        "region": "Argentina",
+        "boxNumber": 1,
+        "nextReviewDate": "2024-08-10"
+      },
+      {
+        "id": "be6bc049-95b6-4786-bbc8-c11a1e6758d6",
+        "question": "Describe the climate of Luján de Cuyo.",
+        "answer": "Semi-arid, with significant temperature variations between day and night.",
+        "region": "Argentina",
+        "boxNumber": 1,
+        "nextReviewDate": "2024-08-10"
+      },
+      {
+        "id": "a6d8dd6b-d4fb-479c-8e99-302b44e5cc8e",
+        "question": "What are the primary soil types in Luján de Cuyo?",
+        "answer": "Alluvial, with a mix of sand, silt, and clay, and presence of stones and gravel for good drainage.",
+        "region": "Argentina",
+        "boxNumber": 1,
+        "nextReviewDate": "2024-08-10"
+      },
+      {
+        "id": "2cde6c5e-3b0e-42dc-8664-175fa9ebf36b",
+        "question": "Name two other grape varieties commonly grown in Luján de Cuyo besides Malbec.",
+        "answer": "Cabernet Sauvignon and Chardonnay",
+        "region": "Argentina",
+        "boxNumber": 1,
+        "nextReviewDate": "2024-08-10"
+      },
+      {
+        "id": "98ac21fd-cc55-4eae-a863-9412a5ef23e5",
+        "question": "Besides Malbec, name a white grape variety that is commonly grown in Luján de Cuyo.",
+        "answer": "Chardonnay",
+        "region": "Argentina",
+        "boxNumber": 1,
+        "nextReviewDate": "2024-08-10"
+      },
+      {
+        "id": "a5c9792c-237b-4d44-93e2-eb5a4bcb6f1b",
+        "question": "What are the typical characteristics of Cabernet Sauvignon wines from Luján de Cuyo?",
+        "answer": "Black currant and red fruit flavors, notes of pepper and spices, well-structured with firm tannins.",
+        "region": "Argentina",
+        "boxNumber": 1,
+        "nextReviewDate": "2024-08-10"
+      },
+      {
+        "id": "93e42ed4-7f6f-4cfe-b075-375b5d0f7f4b",
+        "question": "Describe the typical flavor profile of Chardonnay from Luján de Cuyo.",
+        "answer": "Tropical and citrus fruit flavors, with a balanced acidity and hints of vanilla from oak aging.",
+        "region": "Argentina",
+        "boxNumber": 1,
+        "nextReviewDate": "2024-08-10"
+      },
+      {
+        "id": "f3045f81-afbe-4992-b5a4-32ee5aaca8a0",
+        "question": "What region of Argentina is Lujan de Cuyo located in?",
+        "answer": "Mendoza",
+        "region": "Argentina",
+        "boxNumber": 1,
+        "nextReviewDate": "2024-08-10"
+      },
+      {
+        "id": "6bf4f7a4-56f2-46db-bb83-b21f8782c941",
+        "question": "What is a common winemaking technique used in Luján de Cuyo to enhance the aromatic profile of Malbec wines?",
+        "answer": "Cold maceration before fermentation to extract more aromas and color from the grape skins.",
+        "region": "Argentina",
+        "boxNumber": 1,
+        "nextReviewDate": "2024-08-10"
+      },
+      {
+        "id": "3ae30d2c-643f-470a-a4b7-c0671b2e93cf",
+        "question": "What winemaking technique is often used in Luján de Cuyo to preserve the natural acidity of the grapes?",
+        "answer": "Night harvesting, which involves picking grapes at cooler temperatures to maintain their acidity and freshness.",
+        "region": "Argentina",
+        "boxNumber": 1,
+        "nextReviewDate": "2024-08-10"
+      },
+        {
+          "id": "26b20a8e-2f1e-42aa-a2f0-4ff1fc145a6e",
+          "question": "What is the signature grape variety of Maipú, Mendoza?",
+          "answer": "Malbec",
+          "region": "Argentina",
+          "boxNumber": 1,
+          "nextReviewDate": "2024-08-10"
+        },
+        {
+          "id": "6db3f85b-35e0-4b4b-8005-90fe399600c4",
+          "question": "Name two other grape varieties commonly grown in Maipú besides Malbec.",
+          "answer": "Tempranillo and Bonarda",
+          "region": "Argentina",
+          "boxNumber": 1,
+          "nextReviewDate": "2024-08-10"
+        },
+        {
+          "id": "c2ff8bf8-e7cf-4b4d-8dfc-91b73406e334",
+          "question": "Describe the climate of Maipú.",
+          "answer": "Semi-arid with hot summers and cool winters",
+          "region": "Argentina",
+          "boxNumber": 1,
+          "nextReviewDate": "2024-08-10"
+        },
+        {
+          "id": "a7e1eb17-9b74-4be6-a6a7-481efb7521e2",
+          "question": "What is the primary soil type in Maipú?",
+          "answer": "Sandy loam with some areas of clay and silt",
+          "region": "Argentina",
+          "boxNumber": 1,
+          "nextReviewDate": "2024-08-10"
+        },
+        {
+          "id": "07bd1a6b-f3ee-43ed-b59c-56e5e34c2572",
+          "question": "What winemaking technique is commonly used in Maipú to enhance the fruitiness of Malbec wines?",
+          "answer": "Carbonic maceration",
+          "region": "Argentina",
+          "boxNumber": 1,
+          "nextReviewDate": "2024-08-10"
+        },
+        {
+          "id": "e5c6ab8d-5415-42ed-8d34-5cb78f1e5a90",
+          "question": "How is irrigation typically managed in the vineyards of Maipú?",
+          "answer": "Through traditional flood irrigation using meltwater from the Andes Mountains",
+          "region": "Argentina",
+          "boxNumber": 1,
+          "nextReviewDate": "2024-08-10"
+        },
+        {
+          "id": "b2eeb4f3-fc1e-4c98-88cb-a8c4bb17d117",
+          "question": "What is a typical characteristic of Tempranillo wines from Maipú?",
+          "answer": "Red fruit flavors with hints of tobacco and leather",
+          "region": "Argentina",
+          "boxNumber": 1,
+          "nextReviewDate": "2024-08-10"
+        },
+        {
+          "id": "ba5d7d1e-5a1d-4fa4-89aa-ff5f3684ef00",
+          "question": "Describe the typical flavor profile of Bonarda wines from Maipú.",
+          "answer": "Dark fruit flavors with a hint of spice and smooth tannins",
+          "region": "Argentina",
+          "boxNumber": 1,
+          "nextReviewDate": "2024-08-10"
+        },
+        {
+          "id": "3fd5aa07-522b-4844-aebb-938a64a0931b",
+          "question": "What is a common technique used in Maipú to concentrate the flavors of the grapes?",
+          "answer": "Late harvest, which involves leaving the grapes on the vine longer to increase sugar concentration",
+          "region": "Argentina",
+          "boxNumber": 1,
+          "nextReviewDate": "2024-08-10"
+        },
+        {
+          "id": "ecba1c36-317d-4392-b95a-5ba81034f8c8",
+          "question": "How is oak aging used in Maipú to influence the characteristics of the wines?",
+          "answer": "It adds complexity, tannin structure, and flavors such as vanilla and toast to the wines.",
+          "region": "Argentina",
+          "boxNumber": 1,
+          "nextReviewDate": "2024-08-10"
+        },
+        {
+          "id": "4c44d935-a30b-409c-a6aa-d88139a71c59",
+          "question": "How does the proximity of Maipú to the Andes Mountains affect its vineyards?",
+          "answer": "It provides a cooler microclimate and diurnal temperature variation, which is beneficial for grape quality.",
+          "region": "Argentina",
+          "boxNumber": 1,
+          "nextReviewDate": "2024-08-10"
+        },
+        {
+          "id": "6b80216a-4f25-43a5-b179-204b4a93fa14",
+          "question": "How do the alluvial soils in Maipú, composed of sandy loam and clay, influence the water retention and root penetration of grapevines?",
+          "answer": "The alluvial soils offer good drainage while retaining sufficient moisture, allowing deep root penetration and promoting healthy vine growth.",
+          "region": "Argentina",
+          "boxNumber": 1,
+          "nextReviewDate": "2024-08-10"
+        },
+        {
+          "id": "1c7ea6cd-6f89-458b-a405-6f98af3dab95",
+          "question": "Describe the typical flavor profile and structure of a Maipú Malbec in comparison to a Malbec from Luján de Cuyo.",
+          "answer": "Maipú Malbecs tend to have a more intense fruit profile with plum and black cherry flavors, slightly less acidity, and softer tannins compared to the more structured and floral Malbecs from Luján de Cuyo.",
+          "region": "Argentina",
+          "boxNumber": 1,
+          "nextReviewDate": "2024-08-10"
+        },
+        {
+          "id": "9c153b07-3029-4e36-b5cc-ec73305ed9c2",
+          "question": "What are the typical characteristics of a Chardonnay from Maipú, and how do they compare to Chardonnays from cooler regions in Argentina?",
+          "answer": "Chardonnays from Maipú typically exhibit ripe tropical fruit flavors, fuller body, and a softer acidity compared to Chardonnays from cooler regions, which tend to have higher acidity and more pronounced citrus and mineral notes.",
+          "region": "Argentina",
+          "boxNumber": 1,
+          "nextReviewDate": "2024-08-10"
+        },
+        {
+          "id": "5d30710d-527c-4c2e-a65a-17b9d5a482b8",
+          "question": "How do the sandy soils of Maipú affect the vine's resistance to pests and diseases?",
+          "answer": "They provide natural resistance to phylloxera and promote healthy root growth.",
+          "region": "Argentina",
+          "boxNumber": 1,
+          "nextReviewDate": "2024-08-10"
+        },
+        {
+          "id": "3f6a3e93-efac-4565-b5b4-ada89cb4af01",
+          "question": "What is the Zonda wind, and how can it positively impact the vineyards in Mendoza?",
+          "answer": "The Zonda wind is a warm, dry wind that descends from the Andes Mountains. It can positively impact the vineyards by reducing humidity and preventing fungal diseases.",
+          "region": "Argentina",
+          "boxNumber": 1,
+          "nextReviewDate": "2024-08-10"
+        },
+        {
+          "id": "78934fc7-80d7-4f10-ae25-1b4892288e53",
+          "question": "Describe two negative effects of the Zonda wind on Mendoza vineyards.",
+          "answer": "The Zonda wind can cause dehydration of the vines and physical damage to branches, leaves, and young shoots. It can also lead to sudden temperature fluctuations and increase the risk of wildfires.",
+          "region": "Argentina",
+          "boxNumber": 1,
+          "nextReviewDate": "2024-08-10"
+        },
+        
+          {
+            "id": "1fc59256-89d2-4af7-bf9b-0bdec3e6c004",
+            "question": "Describe the climate of the Uco Valley and its impact on grape growing.",
+            "answer": "The Uco Valley has a cool, continental climate with significant diurnal temperature variation, which contributes to slow, balanced ripening and preservation of acidity in the grapes.",
+            "region": "Argentina",
+            "boxNumber": 1,
+            "nextReviewDate": "2024-08-10"
+          },
+          {
+            "id": "e2fe3349-abc8-495f-b9fc-736bfea77e0b",
+            "question": "What is the predominant soil type in the Uco Valley, and how does it affect vine growth?",
+            "answer": "The predominant soil type is alluvial, consisting of sandy loam, gravel, and rocks. It provides excellent drainage, forcing vines to develop deep root systems, leading to concentrated and complex grapes.",
+            "region": "Argentina",
+            "boxNumber": 1,
+            "nextReviewDate": "2024-08-10"
+          },
+          {
+            "id": "b787b3a7-1966-4589-89dc-16e0b97e6d53",
+            "question": "Name three grape varieties that thrive in the Uco Valley besides Malbec.",
+            "answer": "Pinot Noir, Merlot, and Chardonnay",
+            "region": "Argentina",
+            "boxNumber": 1,
+            "nextReviewDate": "2024-08-10"
+          },
+          {
+            "id": "3c6c9302-cb49-48e4-b653-3c0d5b0f9ee4",
+            "question": "What is the significance of the Tunuyán River in the Uco Valley's viticulture?",
+            "answer": "The Tunuyán River provides a vital water source for irrigation in the semi-arid region and influences the microclimate and soil composition of nearby vineyards.",
+            "region": "Argentina",
+            "boxNumber": 1,
+            "nextReviewDate": "2024-08-10"
+          },
+          {
+            "id": "dd63a4ed-9e0b-4d6c-8f0a-cf933ac5913b",
+            "question": "Describe the impact of the Andes Mountains on the viticulture of the Uco Valley.",
+            "answer": "The Andes provide a rain shadow effect, creating a dry climate, and their meltwater is a crucial irrigation source. They also contribute to the diurnal temperature variation and influence the soil composition.",
+            "region": "Argentina",
+            "boxNumber": 1,
+            "nextReviewDate": "2024-08-10"
+          },
+          {
+            "id": "245936fd-15d5-4c02-b650-12d2b9c9debb",
+            "question": "How does the presence of limestone in some areas of the Uco Valley influence the flavor profile of the wines?",
+            "answer": "Limestone contributes to a higher pH in the soil, which can result in wines with brighter acidity, finer tannins, and distinct mineral notes.",
+            "region": "Argentina",
+            "boxNumber": 1,
+            "nextReviewDate": "2024-08-10"
+          },
+          {
+            "id": "ad246e95-7c08-4616-aeae-9de6285feccd",
+            "question": "What is the primary grape variety grown in San Rafael?",
+            "answer": "The primary grape variety is Malbec.",
+            "region": "Argentina",
+            "boxNumber": 1,
+            "nextReviewDate": "2024-08-10"
+          },
+          {
+            "id": "5d09345b-14e2-488d-ba28-cf6343d8e837",
+            "question": "Describe the climate of San Rafael and its impact on viticulture.",
+            "answer": "San Rafael has a semi-arid climate with cooler temperatures and more rainfall than the northern parts of Mendoza. This climate allows for a longer growing season, promoting balanced ripening and preserving the grapes' natural acidity.",
+            "region": "Argentina",
+            "boxNumber": 1,
+            "nextReviewDate": "2024-08-10"
+          },
+          {
+            "id": "bf53feda-01e6-4ed8-b504-976e46ba3171",
+            "question": "What are the primary soil types in San Rafael, and how do they affect vine growth and wine style?",
+            "answer": "The primary soil types are sandy loam and clay, with some areas having limestone and alluvial deposits. These soils provide good drainage and mineral content, contributing to wines with elegance, minerality, and well-defined fruit characteristics.",
+            "region": "Argentina",
+            "boxNumber": 1,
+            "nextReviewDate": "2024-08-10"
+          },
+          {
+            "id": "04e2ef1b-b994-4308-aaf8-7ae04b0cf174",
+            "question": "How does the Diamante River influence the viticulture of San Rafael?",
+            "answer": "The Diamante River provides essential irrigation water for the vineyards in this semi-arid region and influences the microclimate, moderating temperatures and reducing the risk of frost.",
+            "region": "Argentina",
+            "boxNumber": 1,
+            "nextReviewDate": "2024-08-10"
+          },
+          {
+            "id": "6e33abdf-930d-4b2f-9606-8487b4b4b912",
+            "question": "What are the key grape varieties grown in San Rafael besides Malbec?",
+            "answer": "Key grape varieties include Cabernet Sauvignon and Syrah",
+            "region": "Argentina",
+            "boxNumber": 1,
+            "nextReviewDate": "2024-08-10"
+          },
+          {
+            "id": "b6529ec5-145f-4c64-a186-0c15bbeca5e5",
+            "question": "Describe the typical flavor profile of Syrah wines from San Rafael.",
+            "answer": "Syrah wines from San Rafael typically exhibit dark fruit flavors, such as blackberry and plum, with notes of black pepper, spice, and a hint of smokiness, balanced by moderate acidity and tannins.",
+            "region": "Argentina",
+            "boxNumber": 1,
+            "nextReviewDate": "2024-08-10"
+          },
+          {
+              "id": "9a0d6f97-ee91-4d52-b0f8-6240c5c14518",
+              "question": "What is the signature white grape variety of Cafayate, and what are its typical aromas and flavors?",
+              "answer": "Torrontés is the signature white grape variety of Cafayate, known for its intense floral aromas, with notes of rose, jasmine, and citrus, along with peach and apricot flavors.",
+              "region": "Argentina",
+              "boxNumber": 1,
+              "nextReviewDate": "2024-08-10"
+            },
+            {
+              "id": "312f3c1d-0196-4b18-825e-bbbe5eab732d",
+              "question": "Describe the climate of Cafayate and how it influences the characteristics of the wines produced there.",
+              "answer": "Cafayate has a high-altitude desert climate with intense sunlight, cool nights, and low rainfall, resulting in wines with concentrated flavors, high acidity, and well-developed aromas.",
+              "region": "Argentina",
+              "boxNumber": 1,
+              "nextReviewDate": "2024-08-10"
+            },
+            {
+              "id": "ac2e07c3-8b70-406f-8e59-7c292b658abf",
+              "question": "What is the dominant soil type in Cafayate, and how does it influence the growth of Torrontés grapes?",
+              "answer": "The dominant soil type in Cafayate is sandy loam, which provides good drainage and stresses the Torrontés vines, leading to concentrated flavors and aromatic intensity in the grapes.",
+              "region": "Argentina",
+              "boxNumber": 1,
+              "nextReviewDate": "2024-08-10"
+            },
+            {
+              "id": "aed7ec19-1ac6-4e84-8ba6-c2f5c978dab6",
+              "question": "How does the altitude of Cafayate's vineyards affect the ripening process of Malbec grapes?",
+              "answer": "The high altitude of Cafayate's vineyards provides intense sunlight and significant diurnal temperature variation, leading to a longer ripening process for Malbec grapes, resulting in wines with deep color, rich flavors, and balanced acidity.",
+              "region": "Argentina",
+              "boxNumber": 1,
+              "nextReviewDate": "2024-08-10"
+            },
+            {
+              "id": "8cd47ae9-03b5-4581-bd1f-d9aecd036726",
+              "question": "How does the high-altitude terroir of Cafayate affect the flavor profile of Malbec compared to lower-altitude regions?",
+              "answer": "In Cafayate's high-altitude terroir, Malbec grapes develop thicker skins due to intense sunlight, resulting in wines with deeper color, more pronounced fruit flavors, and higher tannin levels compared to those from lower-altitude regions.",
+              "region": "Argentina",
+              "boxNumber": 1,
+              "nextReviewDate": "2024-08-10"
+            },
+            {
+              "id": "ee6d027a-d8d6-4b7a-a688-efe2e0cb72a2",
+              "question": "What role do the rocky and gravelly subsoils play in the viticulture of Cafayate?",
+              "answer": "The rocky and gravelly subsoils in Cafayate provide excellent drainage, reducing the risk of waterlogging and encouraging deep root growth, which helps vines access nutrients and water, leading to healthier vines and more concentrated grapes.",
+              "region": "Argentina",
+              "boxNumber": 1,
+              "nextReviewDate": "2024-08-10"
+            },
+            {
+              "id": "b2b31b60-4935-4ee7-bc2b-e1ecf098f1fa",
+              "question": "Which two red grape varieties are popular in Cafayate, known for producing high-quality wines with distinct characteristics?",
+              "answer": "The two popular red grape varieties in Cafayate are Malbec and Cabernet Sauvignon. Malbec is known for its deep color, rich fruit flavors, and smooth tannins, while Cabernet Sauvignon is recognized for its structured, age-worthy wines with flavors of blackcurrant, blackberry, and herbal notes.",
+              "region": "Argentina",
+              "boxNumber": 1,
+              "nextReviewDate": "2024-08-10"
+            },
+            {
+              "id": "04d0720d-01bb-42c7-94f1-a41795f64153",
+              "question": "What is the signature white grape variety of the Calchaquí Valley, known for its distinctive aromatic profile?",
+              "answer": "The signature white grape variety of the Calchaquí Valley is Torrontés, which is known for its floral aromas and flavors of peach, citrus, and apricot.",
+              "region": "Argentina",
+              "boxNumber": 1,
+              "nextReviewDate": "2024-08-10"
+            },
+            {
+              "id": "17995d91-b249-4f31-8ed8-f27f6cc66d41",
+              "question": "Describe the climate of the Calchaquí Valley and its impact on viticulture.",
+              "answer": "The Calchaquí Valley has a high-altitude desert climate with intense sunlight, cool nights, and low rainfall, which contributes to slow grape ripening, concentrated flavors, and well-developed aromas in the wines.",
+              "region": "Argentina",
+              "boxNumber": 1,
+              "nextReviewDate": "2024-08-10"
+            },
+            {
+              "id": "8a9b2e60-4a64-40ef-b1bd-fd526634a5b7",
+              "question": "What are the primary soil types in the Calchaquí Valley, and how do they influence wine styles?",
+              "answer": "The primary soil types in the Calchaquí Valley are sandy, rocky, and alluvial, which provide excellent drainage and contribute to the production of wines with minerality, depth, and concentrated fruit flavors.",
+              "region": "Argentina",
+              "boxNumber": 1,
+              "nextReviewDate": "2024-08-10"
+            },
+            {
+              "id": "9634f0d8-58b9-4ad1-851d-6547ae3c254f",
+              "question": "What is the typical flavor profile of a Tannat wine from the Calchaquí Valley?",
+              "answer": "Tannat wines from the Calchaquí Valley typically exhibit bold flavors of dark fruits, such as blackberry and plum, with firm tannins, good acidity, and a hint of spice.",
+              "region": "Argentina",
+              "boxNumber": 1,
+              "nextReviewDate": "2024-08-10"
+            },
+            {
+              "id": "06bc07ef-8b68-490d-b247-df64c9353cf9",
+              "question": "Describe the viticultural challenges and advantages of growing grapes in the Calchaquí Valley's high-altitude desert climate.",
+              "answer": "Challenges include managing water scarcity and protecting vines from intense UV radiation and hail. Advantages include a reduced risk of fungal diseases and the ability to produce grapes with concentrated flavors and well-preserved acidity.",
+              "region": "Argentina",
+              "boxNumber": 1,
+              "nextReviewDate": "2024-08-10"
+            },
+            {
+              "id": "27d8bb2c-639d-4a81-8a9a-650a3ac0e7c7",
+              "question": "Which red grape variety is known for producing deeply colored and richly flavored wines in the Calchaquí Valley?",
+              "answer": "Malbec",
+              "region": "Argentina",
+              "boxNumber": 1,
+              "nextReviewDate": "2024-08-10"
+            },
+            {
+              "id": "9bf0e8b1-0e7e-40c8-817e-644654b4c6b8",
+              "question": "What red grape variety in the Calchaquí Valley is recognized for its bold flavors and firm tannins?",
+              "answer": "Tannat",
+              "region": "Argentina",
+              "boxNumber": 1,
+              "nextReviewDate": "2024-08-10"
+            },
+            {
+                "id": "1f42a69c-1b42-461e-b880-6e5f43c17a1e",
+                "question": "What are the main soil types found in the Rio Negro region of Patagonia?",
+                "answer": "The main soil types in the Rio Negro region are sandy and alluvial.",
+                "region": "Argentina",
+                "boxNumber": 1,
+                "nextReviewDate": "2024-08-10"
+              },
+              {
+                "id": "39c88fef-0b74-46f4-8329-8b2e4b9448cf",
+                "question": "Which red grape variety is prominent in the Rio Negro region and known for its elegant wines?",
+                "answer": "Pinot Noir is the prominent red grape variety in the Rio Negro region, known for its elegant wines.",
+                "region": "Argentina",
+                "boxNumber": 1,
+                "nextReviewDate": "2024-08-10"
+              },
+              {
+                "id": "c3f0d2b4-614b-4666-962c-2f98c2a4ac77",
+                "question": "How does the climate of the Rio Negro region affect grape ripening?",
+                "answer": "The cool and dry climate of the Rio Negro region helps maintain acidity and allows for slow and even grape ripening.",
+                "region": "Argentina",
+                "boxNumber": 1,
+                "nextReviewDate": "2024-08-10"
+              },
+              {
+                "id": "4c05a5c7-b504-4acb-95d9-a3401a1ba7c7",
+                "question": "What characteristics do Merlot wines from the Rio Negro region typically exhibit?",
+                "answer": "Merlot wines from the Rio Negro region typically exhibit smooth textures, moderate tannins, and flavors of dark fruits like plums and cherries.",
+                "region": "Argentina",
+                "boxNumber": 1,
+                "nextReviewDate": "2024-08-10"
+              },
+              {
+                "id": "6cd7ab07-f5b8-4738-9a6b-bdb76b575ad6",
+                "question": "Which red grape varieties besides pinot noir are commonly grown in the Rio Negro region of Patagonia?",
+                "answer": "Merlot, and Malbec",
+                "region": "Argentina",
+                "boxNumber": 1,
+                "nextReviewDate": "2024-08-10"
+              },
+              {
+                "id": "813f9b3b-e001-42b7-a49f-69f7e6ae1f0b",
+                "question": "What white grape variety is notable in the Rio Negro region of Patagonia?",
+                "answer": "Semillon is the notable white grape variety grown in the Rio Negro region, appreciated for its ability to produce aromatic and well-balanced dry wines.",
+                "region": "Argentina",
+                "boxNumber": 1,
+                "nextReviewDate": "2024-08-10"
+              },
+              {
+                "id": "b81a1c1a-5662-4d87-8077-589fc02c47ea",
+                "question": "What distinguishes Malbec wines from Rio Negro compared to those from warmer regions like Mendoza?",
+                "answer": "Malbec from Rio Negro tends to have a more subtle and elegant profile with higher acidity and floral notes, contrasting the more intense and robust Malbecs from warmer regions such as Mendoza.",
+                "region": "Argentina",
+                "boxNumber": 1,
+                "nextReviewDate": "2024-08-10"
+              },
+              {
+                "id": "f546c122-50a8-4daa-8013-6f955e0ffdb1",
+                "question": "Which red grape variety is particularly noted for its high-quality production in Neuquén?",
+                "answer": "Pinot Noir is particularly noted for its high-quality production in Neuquén, where it produces elegant and aromatic wines.",
+                "region": "Argentina",
+                "boxNumber": 1,
+                "nextReviewDate": "2024-08-10"
+              },
+              {
+                "id": "9fd4e6fa-ade7-4080-9787-5dabe6c8be91",
+                "question": "What white grape variety is known for its crisp and aromatic wines in Neuquén?",
+                "answer": "Sauvignon Blanc is known for producing crisp and aromatic wines in Neuquén, characterized by vibrant citrus and herbal flavors.",
+                "region": "Argentina",
+                "boxNumber": 1,
+                "nextReviewDate": "2024-08-10"
+              },
+              {
+                "id": "50fa6897-02ef-4b8d-9c25-bd2d3e4b9e17",
+                "question": "What types of soils are prevalent in Neuquén's vineyards, and how do they influence wine production?",
+                "answer": "The soils in Neuquén are primarily sandy and stony, with patches of clay. These well-drained soils help stress the vines moderately, leading to the production of grapes with concentrated flavors and aromas. The sandy component also aids in preventing phylloxera, a vine pest, ensuring healthier vineyards. These soil characteristics contribute to producing wines with good structure and minerality.",
+                "region": "Argentina",
+                "boxNumber": 1,
+                "nextReviewDate": "2024-08-10"
+              },
+              {
+                  "id": "da72577a-0e1b-4977-b8c6-ccb781f204af",
+                  "question": "Which red grape varieties besides Pinot Noir are commonly grown in the Neuquén region of Patagonia?",
+                  "answer": "Merlot and Malbec",
+                  "region": "Argentina",
+                  "boxNumber": 1,
+                  "nextReviewDate": "2024-08-10"
+                },
+                {
+                  "id": "1a792d9f-68ad-4b11-9626-84a5a2a10f29",
+                  "question": "True or False: Compared to Mendoza, Malbec wines from Neuquén are more robust and full-bodied.",
+                  "answer": "False. Malbec wines from Neuquén are typically lighter in style, with more subtlety and higher acidity, reflecting the region’s cooler climate.",
+                  "region": "Argentina",
+                  "boxNumber": 1,
+                  "nextReviewDate": "2024-08-10"
+                },
+                {
+                   "id": "2d635c7b-72c3-48b7-80e6-fc6b4de47f9d",
+                   "question": "What is the primary grape variety grown in Tafí del Valle, Tucumán?",
+                   "answer": "Torrontés.",
+                   "region": "Argentina",
+                   "boxNumber": 1,
+                   "nextReviewDate": "2024-08-10"
+                 },
+                 {
+                   "id": "3ea4eb82-41d8-414f-b16e-1605400a4d99",
+                   "question": "What climate type is found in Tafí del Valle?",
+                   "answer": "Cool, high-altitude climate.",
+                   "region": "Argentina",
+                   "boxNumber": 1,
+                   "nextReviewDate": "2024-08-10"
+                 },
+                 {
+                   "id": "f59e3b6d-5b9f-46bb-8f64-8e6210b6f7be",
+                   "question": "What effect does high altitude have on Torrontés wines from Tafí del Valle?",
+                   "answer": "It enhances the grape’s aromatic profile and maintains high acidity.",
+                   "region": "Argentina",
+                   "boxNumber": 1,
+                   "nextReviewDate": "2024-08-10"
+                 },
+                 {
+                   "id": "33c56e25-c399-48f5-a235-6352fa7382e7",
+                   "question": "What soil type predominates in Tafí del Valle?",
+                   "answer": "Rocky and well-drained soil.",
+                   "region": "Argentina",
+                   "boxNumber": 1,
+                   "nextReviewDate": "2024-08-10"
+                 },
+                 {
+                   "id": "c7593094-42e2-4e5b-91a6-95cb8723a2f0",
+                   "question": "What are the typical aromas of Torrontés from Tafí del Valle?",
+                   "answer": "Rose, jasmine, and citrus fruits.",
+                   "region": "Argentina",
+                   "boxNumber": 1,
+                   "nextReviewDate": "2024-08-10"
+                 },
+                 {
+                   "id": "f597d7a8-66e7-42d5-a3c7-bae9d9b1e8e1",
+                   "question": "How do winemakers in Tafí del Valle manage the cool temperatures during viticulture?",
+                   "answer": "By selecting sun-exposed sites and using training systems that protect vines from cold.",
+                   "region": "Argentina",
+                   "boxNumber": 1,
+                   "nextReviewDate": "2024-08-10"
+                 },
+                 {
+                   "id": "43c1b76e-6d83-4568-8e74-280b58c29b18",
+                   "question": "What is the primary red grape variety grown in Tinogasta, Catamarca?",
+                   "answer": "Malbec.",
+                   "region": "Argentina",
+                   "boxNumber": 1,
+                   "nextReviewDate": "2024-08-10"
+                 },
+                 {
+                   "id": "a13e5cb6-7c10-4d39-849a-d31d08a2d3d6",
+                   "question": "Besides Malbec, name two other red grape varieties commonly grown in Tinogasta.",
+                   "answer": "Syrah and Cabernet Sauvignon.",
+                   "region": "Argentina",
+                   "boxNumber": 1,
+                   "nextReviewDate": "2024-08-10"
+                 },
+                 {
+                   "id": "ccdc3b25-0aa7-4609-bf8a-baccf7765f8e",
+                   "question": "What climate type is predominant in Tinogasta?",
+                   "answer": "Semi-arid climate.",
+                   "region": "Argentina",
+                   "boxNumber": 1,
+                   "nextReviewDate": "2024-08-10"
+                 },
+                 {
+                   "id": "24815b9e-f73a-41a8-ae95-5e6178a0d9a1",
+                   "question": "What are the typical characteristics of Malbec wines from Tinogasta?",
+                   "answer": "They typically exhibit rich dark fruit flavors, robust tannins, and a full-bodied profile.",
+                   "region": "Argentina",
+                   "boxNumber": 1,
+                   "nextReviewDate": "2024-08-10"
+                 },
+                 {
+                   "id": "cf15f5cc-5c47-4e4b-a77e-2f44bb441d89",
+                   "question": "How does the semi-arid climate of Tinogasta affect grape ripening?",
+                   "answer": "It promotes intense sunlight exposure and low humidity, which helps concentrate sugars and flavors in the grapes.",
+                   "region": "Argentina",
+                   "boxNumber": 1,
+                   "nextReviewDate": "2024-08-10"
+                 },
+                 {
+                   "id": "27b8d9d2-412e-4723-95e3-9a5d437b342a",
+                   "question": "What soil type is prevalent in Tinogasta, and how does it influence viticulture?",
+                   "answer": "Sandy loam soil, which provides excellent drainage and is beneficial for controlling vine vigor and enhancing grape quality.",
+                   "region": "Argentina",
+                   "boxNumber": 1,
+                   "nextReviewDate": "2024-08-10"
+                 },
+                 {
+                   "id": "3a3c3f50-73d5-48c2-9c0e-19108712b1b3",
+                   "question": "Describe the typical flavor profile of Syrah from Tinogasta.",
+                   "answer": "Syrah from Tinogasta often features flavors of dark berries, pepper, and spices, with a full-bodied structure and balanced acidity.",
+                   "region": "Argentina",
+                   "boxNumber": 1,
+                   "nextReviewDate": "2024-08-10"
+                 },
+                   {
+                     "id": "a9d8c6bf-b57a-4c7e-8771-4a1e4b9b7d2f",
+                     "question": "Where is Famatina Valley located?",
+                     "answer": "Famatina Valley is located in La Rioja province, Argentina.",
+                     "region": "Argentina",
+                     "boxNumber": 1,
+                     "nextReviewDate": "2024-08-10"
+                   },
+                   {
+                     "id": "dfb4a593-fdfb-44d5-a0df-c97c69b4a92b",
+                     "question": "What is the climate like in Famatina Valley?",
+                     "answer": "The climate is continental, characterized by hot days and cool nights.",
+                     "region": "Argentina",
+                     "boxNumber": 1,
+                     "nextReviewDate": "2024-08-10"
+                   },
+                   {
+                     "id": "54212da4-3f1c-40f8-a98c-e3cafff5c4de",
+                     "question": "What type of soil is predominant in Famatina Valley?",
+                     "answer": "The valley has sandy and alluvial soils.",
+                     "region": "Argentina",
+                     "boxNumber": 1,
+                     "nextReviewDate": "2024-08-10"
+                   },
+                   {
+                     "id": "b11b8828-9405-4c25-b196-1e29f22ec11b",
+                     "question": "What are the key grape varieties grown in Famatina Valley?",
+                     "answer": "Key varieties include Torrontés Riojano, Malbec, Syrah, Bonarda, and Cabernet Sauvignon.",
+                     "region": "Argentina",
+                     "boxNumber": 1,
+                     "nextReviewDate": "2024-08-10"
+                   },
+                   {
+                     "id": "597d6cf8-8362-4d3e-987b-91a2321d116e",
+                     "question": "Describe the wine style of Torrontés from Famatina Valley.",
+                     "answer": "Torrontés here is aromatic and fresh, featuring floral and citrus notes.",
+                     "region": "Argentina",
+                     "boxNumber": 1,
+                     "nextReviewDate": "2024-08-10"
+                   },
+                   {
+                     "id": "9a2827e2-92b7-4891-b7f0-3709c15753b4",
+                     "question": "What are the typical characteristics of red wines from Famatina Valley?",
+                     "answer": "Red wines are rich and fruit-forward, often exhibiting flavors of dark berries and spices.",
+                     "region": "Argentina",
+                     "boxNumber": 1,
+                     "nextReviewDate": "2024-08-10"
+                   },
+                   {
+                     "id": "0b92c9a7-e2cc-4031-a800-f8bc6d7ff0db",
+                     "question": "Name a top wine producer in Famatina Valley.",
+                     "answer": "La Riojana is a notable producer in the region.",
+                     "region": "Argentina",
+                     "boxNumber": 1,
+                     "nextReviewDate": "2024-08-10"
+                   },
+                   {
+                     "id": "56a3fda8-ec3a-4c32-8d96-d11a320d9f91",
+                     "question": "How do the soils in Famatina Valley affect the wines produced there?",
+                     "answer": "The sandy and alluvial soils provide good drainage, which is beneficial for vine health and contributes to the concentration of flavors in the grapes.",
+                     "region": "Argentina",
+                     "boxNumber": 1,
+                     "nextReviewDate": "2024-08-10"
+                   },
+                   {
+                     "id": "dfaa1589-c40a-4a2f-bf30-fb0c14e4f2f6",
+                     "question": "What impact does the continental climate have on the grape growing in Famatina Valley?",
+                     "answer": "The high diurnal temperature variation helps maintain acidity and develop aromatic compounds in the grapes.",
+                     "region": "Argentina",
+                     "boxNumber": 1,
+                     "nextReviewDate": "2024-08-10"
+                   },
+                   {
+                     "id": "bc8a4a75-f7fa-45ea-8e22-415053e226ff",
+                     "question": "Can you name a subregion within Famatina Valley known for its wines?",
+                     "answer": "Chilecito is a notable subregion within Famatina Valley.",
+                     "region": "Argentina",
+                     "boxNumber": 1,
+                     "nextReviewDate": "2024-08-10"
+                   },
+                   {
+                     "id": "4b8207c2-2844-4c68-8325-0a78438378b8",
+                     "question": "What wine style is Syrah known for in Famatina Valley?",
+                     "answer": "Syrah from Famatina Valley is known for its full-bodied profile with notes of pepper and dark fruits.",
+                     "region": "Argentina",
+                     "boxNumber": 1,
+                     "nextReviewDate": "2024-08-10"
+                   },
+                   {
+                     "id": "09fa84b7-1cf5-4a57-8351-f83292cc0dbe",
+                     "question": "What role does the cool night temperature play in the wine production of Famatina Valley?",
+                     "answer": "Cool nights help preserve the grapes’ natural acidity and slow the ripening process, enhancing flavor development.",
+                     "region": "Argentina",
+                     "boxNumber": 1,
+                     "nextReviewDate": "2024-08-10"
+                   },
+                   {
+                     "id": "2e1fda8b-02e2-4c9c-97d5-74870e44c85e",
+                     "question": "How does Famatina Valley’s climate differ from other Argentine wine regions?",
+                     "answer": "Unlike the cooler, more temperate regions like Mendoza, Famatina Valley’s climate is more extreme with greater temperature variations between day and night.",
+                     "region": "Argentina",
+                     "boxNumber": 1,
+                     "nextReviewDate": "2024-08-10"
+                   },
+                   {
+                     "id": "4c4e4d15-52b6-4d0c-b7a0-7164f3f994ef",
+                     "question": "What is a characteristic feature of Cabernet Sauvignon from Famatina Valley?",
+                     "answer": "Cabernet Sauvignon from this region typically displays robust tannins and flavors of black currant and spices.",
+                     "region": "Argentina",
+                     "boxNumber": 1,
+                     "nextReviewDate": "2024-08-10"
+                   },
+                   {
+                     "id": "ec91b825-f9e5-42ab-b9f7-279f2cb1f216",
+                     "question": "Describe the influence of alluvial soils on the vineyards of Famatina Valley.",
+                     "answer": "Alluvial soils contribute to the mineral complexity and structured mouthfeel of wines from Famatina Valley.",
+                     "region": "Argentina",
+                     "boxNumber": 1,
+                     "nextReviewDate": "2024-08-10"
+                   },
+                   {
+                     "id": "a582d1d4-bb41-4af6-bf59-975aa4e5d61e",
+                     "question": "Where is Chilecito located?",
+                     "answer": "Chilecito is located in the La Rioja province of Argentina.",
+                     "region": "Argentina",
+                     "boxNumber": 1,
+                     "nextReviewDate": "2024-08-10"
+                   },
+                   {
+                     "id": "1f724f69-91da-4c26-8b1b-43b8ed0fd0f3",
+                     "question": "What is the climate like in Chilecito for vine growing?",
+                     "answer": "Chilecito has a continental climate, characterized by hot days and very cool nights, which is ideal for high-quality grape growing.",
+                     "region": "Argentina",
+                     "boxNumber": 1,
+                     "nextReviewDate": "2024-08-10"
+                   },
+                   {
+                     "id": "3f1c60e2-81d7-4141-9b7e-e9303e8890ed",
+                     "question": "What are the predominant soil types in Chilecito?",
+                     "answer": "The soils in Chilecito are primarily sandy and alluvial, providing excellent drainage for vineyards.",
+                     "region": "Argentina",
+                     "boxNumber": 1,
+                     "nextReviewDate": "2024-08-10"
+                   },
+                   {
+                     "id": "e9dfc072-d60a-4692-92cc-cf9c1e57bdda",
+                     "question": "What grape varieties are commonly grown in Chilecito?",
+                     "answer": "Chilecito is known for growing Torrontés, Malbec, and Bonarda, among others.",
+                     "region": "Argentina",
+                     "boxNumber": 1,
+                     "nextReviewDate": "2024-08-10"
+                   },
+                   {
+                     "id": "c7ebf0f4-3527-41c4-8ad0-674537f10b73",
+                     "question": "Describe the wine styles typically produced in Chilecito.",
+                     "answer": "Wines from Chilecito are known for their aromatic qualities in whites like Torrontés, and rich, fruit-forward profiles in reds such as Malbec.",
+                     "region": "Argentina",
+                     "boxNumber": 1,
+                     "nextReviewDate": "2024-08-10"
+                   },
+                   {
+                     "id": "64a8192b-9ad6-45f2-9633-7f9e065c2a98",
+                     "question": "Name a notable wine producer based in Chilecito.",
+                     "answer": "Bodega La Riojana is a significant producer in Chilecito, known for its range of varietal wines.",
+                     "region": "Argentina",
+                     "boxNumber": 1,
+                     "nextReviewDate": "2024-08-10"
+                   },
+                   {
+                     "id": "7fbd0289-0d56-4a41-84e8-cf40a1c7d453",
+                     "question": "How do the cool nights affect grape cultivation in Chilecito?",
+                     "answer": "The cool nights help to retain natural grape acidity and slow the ripening process, allowing for more balanced and aromatic wines.",
+                     "region": "Argentina",
+                     "boxNumber": 1,
+                     "nextReviewDate": "2024-08-10"
+                   },
+                   {
+                     "id": "d9ae53d7-d06c-4d65-a279-d4bb3b55fd4e",
+                     "question": "What makes Chilecito distinct from other wine regions in Argentina?",
+                     "answer": "Chilecito’s combination of high altitude, specific soil types, and extreme diurnal temperature variation creates a unique terroir that is particularly suited for aromatic and concentrated wines.",
+                     "region": "Argentina",
+                     "boxNumber": 1,
+                     "nextReviewDate": "2024-08-10"
+                   },
+                   {
+                     "id": "a35a1263-3c41-474e-b37d-56c7202d8b9b",
+                     "question": "What impact does the altitude have on vineyards in Chilecito?",
+                     "answer": "The high altitude exposes vineyards to more intense sunlight and cooler temperatures, which contribute to the development of thicker grape skins and more complex flavors in the wines.",
+                     "region": "Argentina",
+                     "boxNumber": 1,
+                     "nextReviewDate": "2024-08-10"
+                   },
+                   {
+                     "id": "fc8e5d5a-4380-4a58-bb45-93c5088be8a4",
+                     "question": "What are the benefits of sandy soils for grape growing in Chilecito?",
+                     "answer": "Sandy soils provide excellent drainage, reducing the risk of vine diseases and stress, leading to healthier vines and better quality grapes.",
+                     "region": "Argentina",
+                     "boxNumber": 1,
+                     "nextReviewDate": "2024-08-10"
+                   },
+                   {
+                     "id": "e0d2a3fa-4377-41ed-a317-398abea45210",
+                     "question": "Describe the typical flavor profile of Malbec from Chilecito.",
+                     "answer": "Malbec from Chilecito often features deep fruit flavors like plum and blackberry, with a robust body and notable spice undertones.",
+                     "region": "Argentina",
+                     "boxNumber": 1,
+                     "nextReviewDate": "2024-08-10"
+                   },
+                   {
+                     "id": "36623e26-61bc-4aa4-85c3-9d2f8f6a635d",
+                     "question": "What types of wine aging practices are common in Chilecito?",
+                     "answer": "Wineries in Chilecito commonly use oak aging to enhance the complexity and texture of their red wines, particularly Malbec.",
+                     "region": "Argentina",
+                     "boxNumber": 1,
+                     "nextReviewDate": "2024-08-10"
+                   },
+                   {
+                     "id": "bb8db623-9de1-4a71-bb38-73df2b4ff084",
+                     "question": "How does Chilecito’s climate influence the harvest season?",
+                     "answer": "The climate allows for a longer growing season, ensuring grapes can be harvested at optimal ripeness, often extending into late April.",
+                     "region": "Argentina",
+                     "boxNumber": 1,
+                     "nextReviewDate": "2024-08-10"
+                   },
+                   {
+                     "id": "9a2e8b2d-4e44-4d4b-a58b-1e255b1d92a2",
+                     "question": "What challenges do vineyards face in Chilecito?",
+                     "answer": "Challenges include managing water resources wisely due to the arid climate and protecting vines from occasional frost during spring.",
+                     "region": "Argentina",
+                     "boxNumber": 1,
+                     "nextReviewDate": "2024-08-10"
+                   },
+                   {
+                     "id": "d51cfb5f-bb37-40e2-aec8-b64e478e8914",
+                     "question": "What sustainable practices are becoming popular among vineyards in Chilecito?",
+                     "answer": "Many vineyards are adopting organic farming methods and using drip irrigation to improve water usage efficiency in the arid climate.",
+                     "region": "Argentina",
+                     "boxNumber": 1,
+                     "nextReviewDate": "2024-08-10"
+                   },
+                   {
+                       "id": "d6e72c3d-1e27-4b90-a157-12bc4b9f5869",
+                       "question": "Where is Tulum Valley located within Argentina?",
+                       "answer": "Tulum Valley is located in the San Juan province of Argentina.",
+                       "region": "Argentina",
+                       "boxNumber": 1,
+                       "nextReviewDate": "2024-08-10"
+                     },
+                     {
+                       "id": "f2e7c1f5-11df-4b5a-8e36-2bb8df0600b2",
+                       "question": "What is the climate like in Tulum Valley?",
+                       "answer": "Tulum Valley features a hot and arid climate with very little rainfall throughout the year.",
+                       "region": "Argentina",
+                       "boxNumber": 1,
+                       "nextReviewDate": "2024-08-10"
+                     },
+                     {
+                       "id": "bfaf1328-92df-4d0d-8a23-6f5e5d6ed5e7",
+                       "question": "Describe the soil composition in Tulum Valley.",
+                       "answer": "The soils are mostly sandy with some areas having clay and loam, which helps in retaining moisture.",
+                       "region": "Argentina",
+                       "boxNumber": 1,
+                       "nextReviewDate": "2024-08-10"
+                     },
+                     {
+                       "id": "e168ab09-7f62-43af-9510-f3aabfd992e4",
+                       "question": "What are the primary grape varieties grown in Tulum Valley?",
+                       "answer": "The valley is known for Syrah, Malbec, and Viognier.",
+                       "region": "Argentina",
+                       "boxNumber": 1,
+                       "nextReviewDate": "2024-08-10"
+                     },
+                     {
+                       "id": "f1d4e93a-bbe2-4cb8-b6ee-57b084ab2ab5",
+                       "question": "What wine style is Tulum Valley known for?",
+                       "answer": "Tulum Valley produces bold and intense red wines, particularly from the Syrah and Malbec varieties.",
+                       "region": "Argentina",
+                       "boxNumber": 1,
+                       "nextReviewDate": "2024-08-10"
+                     },
+                     {
+                       "id": "5a1956a8-4de3-47d3-a5bb-fc515f87d926",
+                       "question": "How do vineyards in Tulum Valley manage irrigation?",
+                       "answer": "Due to the arid climate, vineyards heavily rely on drip irrigation systems to efficiently use the scarce water resources.",
+                       "region": "Argentina",
+                       "boxNumber": 1,
+                       "nextReviewDate": "2024-08-10"
+                     },
+                     {
+                       "id": "ec487e0d-140f-4ba5-a77f-5473dd84fc6b",
+                       "question": "What impact does the hot climate have on grape ripening in Tulum Valley?",
+                       "answer": "The hot climate accelerates grape ripening, leading to higher sugar levels in grapes, which translates into more robust and alcoholic wines.",
+                       "region": "Argentina",
+                       "boxNumber": 1,
+                       "nextReviewDate": "2024-08-10"
+                     },
+                     {
+                       "id": "a3e9812e-dff3-4b6d-8473-b89b9784f7ad",
+                       "question": "Name a prominent winery based in Tulum Valley.",
+                       "answer": "Bodega Graffigna is a notable winery in Tulum Valley, known for its high-quality red wines.",
+                       "region": "Argentina",
+                       "boxNumber": 1,
+                       "nextReviewDate": "2024-08-10"
+                     },
+                     {
+                       "id": "a13c7f27-ef49-4517-81c6-c6e2e9ef01a5",
+                       "question": "What challenges do winemakers face in Tulum Valley?",
+                       "answer": "Managing heat and limited water supply are major challenges, requiring careful vineyard management to maintain vine health and balance in the wines.",
+                       "region": "Argentina",
+                       "boxNumber": 1,
+                       "nextReviewDate": "2024-08-10"
+                     },
+                     {
+                       "id": "1d0bb3de-d33f-4198-9c44-ec8d470623a4",
+                       "question": "How does Tulum Valley’s terroir influence the flavor profile of its wines?",
+                       "answer": "The sandy soils and hot climate contribute to the production of concentrated and intensely flavored wines with ripe fruit characteristics.",
+                       "region": "Argentina",
+                       "boxNumber": 1,
+                       "nextReviewDate": "2024-08-10"
+                     },
+                     {
+                       "id": "b774d4ed-97f2-4b55-9e2a-1a646b7416e3",
+                       "question": "What sustainability practices are adopted by vineyards in Tulum Valley?",
+                       "answer": "Many vineyards are implementing solar power for energy and using cover crops to improve soil health and reduce water evaporation.",
+                       "region": "Argentina",
+                       "boxNumber": 1,
+                       "nextReviewDate": "2024-08-10"
+                     },
+                     {
+                       "id": "d6c526d0-1d60-4217-b1b8-8f1f128e2851",
+                       "question": "What types of white wines are produced in Tulum Valley, and what are their characteristics?",
+                       "answer": "Viognier is the prominent white wine, known for its floral aromatics and full body, a result of the intense sun exposure which enhances its aromatic compounds.",
+                       "region": "Argentina",
+                       "boxNumber": 1,
+                       "nextReviewDate": "2024-08-10"
+                     },
+                     {
+                         "id": "bf74ae4c-b215-4210-80d0-fd6fcb04c94c",
+                         "question": "Where is Pedernal Valley located?",
+                         "answer": "Pedernal Valley is located in the San Juan province, southwest of the city of San Juan, Argentina.",
+                         "region": "Argentina",
+                         "boxNumber": 1,
+                         "nextReviewDate": "2024-08-10"
+                       },
+                       {
+                         "id": "d537cc3f-5b5b-4c72-b2c4-e9a950a43e4e",
+                         "question": "What is unique about the climate in Pedernal Valley?",
+                         "answer": "The valley has a cooler, more temperate climate compared to other parts of San Juan, due to its higher altitude.",
+                         "region": "Argentina",
+                         "boxNumber": 1,
+                         "nextReviewDate": "2024-08-10"
+                       },
+                       {
+                         "id": "fa1a1bb4-8c3f-4a38-bf32-c3f6b4a865a4",
+                         "question": "What are the predominant soil types in Pedernal Valley?",
+                         "answer": "Soils in Pedernal Valley are rocky and contain a high percentage of pebbles, which aid in heat retention and drainage.",
+                         "region": "Argentina",
+                         "boxNumber": 1,
+                         "nextReviewDate": "2024-08-10"
+                       },
+                       {
+                         "id": "3fb52660-b53c-4c4a-9a77-0ff7cb196fbd",
+                         "question": "What grape varieties are most commonly planted in Pedernal Valley?",
+                         "answer": "Malbec and Syrah are the most commonly planted, with increasing focus on Cabernet Franc and Merlot.",
+                         "region": "Argentina",
+                         "boxNumber": 1,
+                         "nextReviewDate": "2024-08-10"
+                       },
+                       {
+                         "id": "84a500a8-7d10-4f35-9ad2-f736bb6b5a96",
+                         "question": "Describe the typical characteristics of Malbec from Pedernal Valley.",
+                         "answer": "Malbec from Pedernal Valley is noted for its deep color, intense fruit flavors, and well-structured tannins.",
+                         "region": "Argentina",
+                         "boxNumber": 1,
+                         "nextReviewDate": "2024-08-10"
+                       },
+                       {
+                         "id": "2e0590d3-0bb8-43be-96b7-42a4ac56f9ee",
+                         "question": "How does the altitude of Pedernal Valley affect its wines?",
+                         "answer": "The high altitude leads to greater UV exposure and significant diurnal temperature variations, contributing to thicker grape skins and more concentrated flavors.",
+                         "region": "Argentina",
+                         "boxNumber": 1,
+                         "nextReviewDate": "2024-08-10"
+                       },
+                       {
+                         "id": "7e3a6880-e07a-4d2f-b4a3-e1a3c6b8a9d5",
+                         "question": "Name a notable winery in Pedernal Valley.",
+                         "answer": "Pyros Wines is a prominent winery, known for its premium Malbec and Syrah.",
+                         "region": "Argentina",
+                         "boxNumber": 1,
+                         "nextReviewDate": "2024-08-10"
+                       },
+                       {
+                         "id": "3d882438-7f17-4bb1-b32b-82b27cf99468",
+                         "question": "What sustainable practices are common among vineyards in Pedernal Valley?",
+                         "answer": "Vineyards often use organic farming techniques and sustainable water management practices to cope with the arid conditions.",
+                         "region": "Argentina",
+                         "boxNumber": 1,
+                         "nextReviewDate": "2024-08-10"
+                       },
+                       {
+                         "id": "536d4c5d-08b0-4cb5-85d4-2f456d125722",
+                         "question": "What is the impact of rocky soils on vine growth in Pedernal Valley?",
+                         "answer": "Rocky soils stress the vines, leading to lower yields but higher quality grapes with more intense flavors.",
+                         "region": "Argentina",
+                         "boxNumber": 1,
+                         "nextReviewDate": "2024-08-10"
+                       },
+                       {
+                         "id": "4cbe0d0d-c1a0-420b-b22d-6ed4dc2739a6",
+                         "question": "How do winemakers in Pedernal Valley adapt to the cooler climate?",
+                         "answer": "Winemakers often harvest grapes later in the season to achieve optimal ripeness and develop complex flavor profiles.",
+                         "region": "Argentina",
+                         "boxNumber": 1,
+                         "nextReviewDate": "2024-08-10"
+                       },
+                       {
+                         "id": "5e0e6744-c724-4cf1-8bfa-7cfbedad60ea",
+                         "question": "What styles of wine is Pedernal Valley particularly known for?",
+                         "answer": "It is renowned for producing premium, full-bodied red wines with excellent aging potential.",
+                         "region": "Argentina",
+                         "boxNumber": 1,
+                         "nextReviewDate": "2024-08-10"
+                       },
+                       {
+                         "id": "0f3e8e14-8e93-44a2-9065-2a5989613f16",
+                         "question": "Describe the water source for irrigation in Pedernal Valley.",
+                         "answer": "Irrigation primarily relies on mountain runoff and controlled drip irrigation systems to manage the scarce water resources efficiently.",
+                         "region": "Argentina",
+                         "boxNumber": 1,
+                         "nextReviewDate": "2024-08-10"
+                       },
+                       {
+                           "id": "ca4b2dc6-d59a-4b3b-bc65-09cc4521c4ae",
+                           "question": "Where is Ullum Valley located within San Juan?",
+                           "answer": "Ullum Valley is situated in the San Juan province, close to the city of San Juan in Argentina.",
+                           "region": "Argentina",
+                           "boxNumber": 1,
+                           "nextReviewDate": "2024-08-10"
+                         },
+                         {
+                           "id": "19b41e4c-f5e0-47fa-9203-d4a430b6b497",
+                           "question": "What type of climate characterizes Ullum Valley?",
+                           "answer": "Ullum Valley has a semi-arid climate with hot summers and minimal rainfall.",
+                           "region": "Argentina",
+                           "boxNumber": 1,
+                           "nextReviewDate": "2024-08-10"
+                         },
+                         {
+                           "id": "6bc43b65-4212-4b4e-8437-0bcdab6830c2",
+                           "question": "Describe the soil composition in Ullum Valley.",
+                           "answer": "The soils are mostly sandy with some gravel and clay, providing good drainage for vine roots.",
+                           "region": "Argentina",
+                           "boxNumber": 1,
+                           "nextReviewDate": "2024-08-10"
+                         },
+                         {
+                           "id": "d0a80cf7-c8a5-4e62-8a38-22dbcdcb4aa3",
+                           "question": "What grape varieties thrive in Ullum Valley?",
+                           "answer": "The valley is known for producing quality Syrah, Chardonnay, and Viognier.",
+                           "region": "Argentina",
+                           "boxNumber": 1,
+                           "nextReviewDate": "2024-08-10"
+                         },
+                         {
+                           "id": "1a7856b7-0a14-40be-b6bc-27f8edc155e8",
+                           "question": "How does the semi-arid climate affect viticulture in Ullum Valley?",
+                           "answer": "The dry conditions reduce the risk of vine diseases, allowing for healthier vines and more consistent yields.",
+                           "region": "Argentina",
+                           "boxNumber": 1,
+                           "nextReviewDate": "2024-08-10"
+                         },
+                         {
+                           "id": "9302c1c0-74bc-49ba-b73d-fc35490b38eb",
+                           "question": "What is the role of irrigation in Ullum Valley’s vineyards?",
+                           "answer": "Irrigation is crucial due to low natural rainfall, with most vineyards relying on drip irrigation systems sourced from the San Juan River.",
+                           "region": "Argentina",
+                           "boxNumber": 1,
+                           "nextReviewDate": "2024-08-10"
+                         },
+                         {
+                           "id": "058e9e4b-4f71-4453-8168-973951dd8fa8",
+                           "question": "Describe the typical wine profile produced in Ullum Valley.",
+                           "answer": "Wines from Ullum Valley are typically bold and aromatic, with Syrah showing rich berry flavors and Viognier offering floral and fruity notes.",
+                           "region": "Argentina",
+                           "boxNumber": 1,
+                           "nextReviewDate": "2024-08-10"
+                         },
+                         {
+                           "id": "ac4db5d0-9b3b-4b79-8228-e2999dc4b46d",
+                           "question": "What winemaking techniques are prevalent in Ullum Valley?",
+                           "answer": "Many wineries employ modern winemaking techniques, including temperature-controlled fermentation and oak aging to enhance the complexity of the wines.",
+                           "region": "Argentina",
+                           "boxNumber": 1,
+                           "nextReviewDate": "2024-08-10"
+                         },
+                         {
+                           "id": "0a64054b-8080-4a66-b030-e30b72f948db",
+                           "question": "How does the sandy soil benefit the vineyards in Ullum Valley?",
+                           "answer": "Sandy soils warm up quickly and drain well, encouraging deep root growth and helping vines withstand the heat and dry conditions.",
+                           "region": "Argentina",
+                           "boxNumber": 1,
+                           "nextReviewDate": "2024-08-10"
+                         },
+                         {
+                           "id": "bfcf89c4-64af-453b-90ea-58244aa3e342",
+                           "question": "What challenges do wine producers face in Ullum Valley?",
+                           "answer": "Managing water resources and protecting vines from intense sunlight and heat are the main challenges.",
+                           "region": "Argentina",
+                           "boxNumber": 1,
+                           "nextReviewDate": "2024-08-10"
+                         },
+                         {
+                           "id": "44dfc7d3-c8ae-4d3d-b1ef-5d626cdb8cfb",
+                           "question": "What sustainable practices are adopted by vineyards in Ullum Valley?",
+                           "answer": "Vineyards commonly implement sustainable water management, solar energy for power, and organic farming methods to enhance soil health.",
+                           "region": "Argentina",
+                           "boxNumber": 1,
+                           "nextReviewDate": "2024-08-10"
+                         },
+                         {
+                           "id": "f68b236f-151d-40cf-8e43-ccdc7996e1f8",
+                           "question": "What types of white wines are prominent in Ullum Valley, and what are their characteristics?",
+                           "answer": "Chardonnay and Viognier are prominent, known for their robust fruit flavors and floral aromatics, often with a well-balanced acidity.",
+                           "region": "Argentina",
+                           "boxNumber": 1,
+                           "nextReviewDate": "2024-08-10"
+                         },
+                         {
+                            "id": "e0e1d2a9-4ab7-4db1-aef2-442f03a4dc28",
+                            "question": "Where is Zonda Valley located within San Juan?",
+                            "answer": "Zonda Valley is situated west of the city of San Juan in Argentina.",
+                            "region": "Argentina",
+                            "boxNumber": 1,
+                            "nextReviewDate": "2024-08-10"
+                          },
+                          {
+                            "id": "c6ed4673-68e1-4486-bb88-f4b51d9d5fc6",
+                            "question": "What type of climate characterizes Zonda Valley?",
+                            "answer": "Zonda Valley experiences a very dry, desert-like climate with significant wind influence, especially from the Zonda wind.",
+                            "region": "Argentina",
+                            "boxNumber": 1,
+                            "nextReviewDate": "2024-08-10"
+                          },
+                          {
+                            "id": "7db362a8-4f8c-4ba5-bb58-bae5e82b9786",
+                            "question": "Describe the soil composition in Zonda Valley.",
+                            "answer": "The soils are primarily sandy with significant amounts of rock and pebbles, which aid in drainage and heat retention.",
+                            "region": "Argentina",
+                            "boxNumber": 1,
+                            "nextReviewDate": "2024-08-10"
+                          },
+                          {
+                            "id": "b37780fc-10ff-4e75-9fc8-87634574884a",
+                            "question": "What grape varieties are commonly grown in Zonda Valley?",
+                            "answer": "The valley is predominantly known for Syrah and Cabernet Sauvignon.",
+                            "region": "Argentina",
+                            "boxNumber": 1,
+                            "nextReviewDate": "2024-08-10"
+                          },
+                          {
+                            "id": "f7c1558d-66ad-421a-9998-231d6dd019df",
+                            "question": "How does the Zonda wind affect viticulture in Zonda Valley?",
+                            "answer": "The Zonda wind can stress vines, reducing yields but potentially increasing the concentration and complexity of the grapes.",
+                            "region": "Argentina",
+                            "boxNumber": 1,
+                            "nextReviewDate": "2024-08-10"
+                          },
+                          {
+                            "id": "13f4b8a7-0d2f-42cb-9bdb-f0ef91208d12",
+                            "question": "What is the role of irrigation in Zonda Valley’s vineyards?",
+                            "answer": "Due to the dry climate, irrigation is essential, with water often being sourced from Andean snowmelt.",
+                            "region": "Argentina",
+                            "boxNumber": 1,
+                            "nextReviewDate": "2024-08-10"
+                          },
+                          {
+                            "id": "378a6ba8-cc02-4d1d-9d78-5ec136c6b2b1",
+                            "question": "Describe the typical wine profile produced in Zonda Valley.",
+                            "answer": "Wines from Zonda Valley are known for their intensity and robustness, with reds showing deep color and strong tannic structures.",
+                            "region": "Argentina",
+                            "boxNumber": 1,
+                            "nextReviewDate": "2024-08-10"
+                          },
+                          {
+                            "id": "3d6c4513-3167-46f7-802d-2ec5eeb5897f",
+                            "question": "What winemaking techniques are favored in Zonda Valley?",
+                            "answer": "Producers often use controlled fermentation and extended maceration to maximize flavor extraction from the grapes.",
+                            "region": "Argentina",
+                            "boxNumber": 1,
+                            "nextReviewDate": "2024-08-10"
+                          },
+                          {
+                            "id": "42b4a98f-2c09-4b82-9cb7-d5f0806890f4",
+                            "question": "What challenges do wine producers face in Zonda Valley?",
+                            "answer": "The main challenges include managing the harsh winds, scarce water resources, and extreme heat.",
+                            "region": "Argentina",
+                            "boxNumber": 1,
+                            "nextReviewDate": "2024-08-10"
+                          },
+                          {
+                            "id": "9fa81dc8-ea83-44a0-9a89-d54242632c84",
+                            "question": "What sustainable practices are implemented in Zonda Valley vineyards?",
+                            "answer": "Many vineyards employ water conservation techniques, windbreaks to protect vines, and organic practices to maintain soil health.",
+                            "region": "Argentina",
+                            "boxNumber": 1,
+                            "nextReviewDate": "2024-08-10"
+                          },
+                          {
+                            "id": "22fe5199-4e4b-4cc1-81b5-f50182de78f4",
+                            "question": "How does the desert-like climate influence the grape varieties selected for cultivation in Zonda Valley?",
+                            "answer": "Grape varieties are chosen for their ability to withstand intense sunlight and heat, focusing on those that can produce high-quality fruit under these conditions.",
+                            "region": "Argentina",
+                            "boxNumber": 1,
+                            "nextReviewDate": "2024-08-10"
+                          },
+                          {
+                            "id": "4f9a8e39-7082-4aa7-b9c3-3cb4d7b724d8",
+                            "question": "Describe the impact of rocky soils on vine growth and grape quality in Zonda Valley.",
+                            "answer": "Rocky soils stress the vines, leading to lower yields but higher quality grapes that are intensely flavored and suitable for premium wines.",
+                            "region": "Argentina",
+                            "boxNumber": 1,
+                            "nextReviewDate": "2024-08-10"
+                          },
+                          {
+                              "id": "6e14f431-2e22-441a-9759-5ed40e45f482",
+                              "question": "What does the designation 'IG' stand for in Argentine wines, and what does it indicate?",
+                              "answer": "'IG' stands for 'Indicación Geográfica' in Argentina, indicating that the wine comes from a specific geographic area where the grapes are grown and the wine produced reflects the unique characteristics of that area's terroir.",
+                              "region": "Argentina",
+                              "boxNumber": 1,
+                              "nextReviewDate": "2024-08-10"
+                            },
+                            {
+                              "id": "27f3a9e5-7643-41d6-8e7d-9484c37f8d54",
+                              "question": "What is the purpose of the 'DO' designation in Argentina, and how is it similar to European wine classifications?",
+                              "answer": "The 'DO' designation, standing for 'Denominación de Origen,' is used in Argentina to ensure that wines adhere to specific regional standards in grape growing and winemaking. It is similar to the European DOC or AOC systems, emphasizing quality control and regional authenticity.",
+                              "region": "Argentina",
+                              "boxNumber": 1,
+                              "nextReviewDate": "2024-08-10"
+                            },
+                            {
+                              "id": "45237b92-0189-4c3d-83a0-ef1f202f21ba",
+                              "question": "How does the 'IP' classification differ from 'IG' and 'DO' in Argentine wine laws?",
+                              "answer": "'IP,' or 'Indicación de Procedencia,' is a more general geographical indication compared to 'IG' and 'DO.' It specifies the regional origin of the wine without stringent requirements on viticultural and winemaking practices, unlike 'IG' and 'DO' that focus more on quality and specific regional characteristics.",
+                              "region": "Argentina",
+                              "boxNumber": 1,
+                              "nextReviewDate": "2024-08-10"
+                            },
+                            {
+                              "id": "92b6b124-c6a0-4ae4-9a41-8e4b45f4e3ad",
+                              "question": "Describe the traditional 'parral' training system used in some Argentine vineyards.",
+                              "answer": "The 'parral' system, traditional in Argentina, involves training vines to grow on high wires, creating a canopy that protects grapes from intense sunlight. This method is particularly useful in hotter areas, helping to preserve grape acidity and prevent sunburn.",
+                              "region": "Argentina",
+                              "boxNumber": 1,
+                              "nextReviewDate": "2024-08-10"
+                            },
+                            {
+                              "id": "39ad8f65-22ba-4b66-87f4-3e452d57a981",
+                              "question": "What impact does the Zonda wind have on viticulture in Argentina?",
+                              "answer": "The Zonda wind, occurring mainly in Mendoza, is a warm, dry wind that can cause sudden temperature increases, potentially leading to vine dehydration and disrupted flowering, which affects grape yields and quality. However, it can also help reduce the humidity around the vines, lowering the risk of fungal diseases.",
+                              "region": "Argentina",
+                              "boxNumber": 1,
+                              "nextReviewDate": "2024-08-10"
+                            },
+                            {
+                              "id": "13e45b4f-457e-49f0-9351-1ae4373a2d7e",
+                              "question": "Describe the role of concrete eggs in modern Argentine winemaking.",
+                              "answer": "Concrete eggs are used in modern Argentine winemaking for fermentation and aging. Their porous nature allows for micro-oxygenation similar to barrels, but without imparting oak flavors, enhancing the purity of fruit and terroir expression in wines.",
+                              "region": "Argentina",
+                              "boxNumber": 1,
+                              "nextReviewDate": "2024-08-10"
+                            },
+                            {
+                              "id": "29d10f25-6a02-4b87-89df-762c8d9af1f7",
+                              "question": "Describe the impact of the Andes Mountains on Argentine viticulture.",
+                              "answer": "The Andes Mountains significantly impact Argentine viticulture by providing water through snowmelt irrigation, moderating the climate to ensure a wide diurnal temperature variation, and protecting vineyards from excessive rainfall, which is crucial for maintaining vine health and enhancing grape quality.",
+                              "region": "Argentina",
+                              "boxNumber": 1,
+                              "nextReviewDate": "2024-08-10"
+                            },
+                            {
+                              "id": "462c1d4c-c038-4420-87b3-940624cd2761",
+                              "question": "How does extended maceration affect the tannins in Argentine red wines, particularly Malbec?",
+                              "answer": "Extended maceration increases the extraction of tannins, which can initially intensify their presence. However, over time, these tannins may polymerize and integrate more smoothly into the wine, resulting in a perception of softer tannins that contribute to a richer, more complex, and balanced wine.",
+                              "region": "Argentina",
+                              "boxNumber": 1,
+                              "nextReviewDate": "2024-08-10"
+                            },
+                            {
+                              "id": "582d14fa-fef4-47d8-b130-4f2d425297cf",
+                              "question": "What are the main challenges facing the Argentine wine industry today, and how are producers addressing them?",
+                              "answer": "Main challenges include economic instability, climate change, and competition in international markets. Producers are addressing these by diversifying their export markets, investing in sustainable and resilient viticultural practices, and focusing on high-quality, distinctively Argentine wines that showcase the unique characteristics of their terroirs.",
+                              "region": "Argentina",
+                              "boxNumber": 1,
+                              "nextReviewDate": "2024-08-10"
+                            },
+                            {
+                              "id": "7303b689-b676-46ef-9851-3cbcf9e0e7f3",
+                              "question": "Are there mandatory aging requirements for wines in Argentina, and how do winemakers typically handle aging?",
+                              "answer": "There are no mandatory aging requirements for wines in Argentina. Aging decisions are typically left to the discretion of winemakers, who may choose to age higher-quality wines in oak barrels and bottles to enhance complexity and maturity based on the style and quality they aim to achieve. This practice varies widely across different wineries and wine regions.",
+                              "region": "Argentina",
+                              "boxNumber": 1,
+                              "nextReviewDate": "2024-08-10"
+                            },
+                            
+                          
+                 
+              
+              
+              
+        
+      
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
   {
     "id": "1a2b3c4d-5e6f-7g8h-9i0j-1k2l3m4n5o6p",
     "question": "What is the traditional method of sparkling wine production used in Champagne called?",

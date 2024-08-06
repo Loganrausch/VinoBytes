@@ -1,21 +1,31 @@
-//
-//  FoodWinePairingsListView.swift
-//  VinoBytes
-//
-//  Created by Logan Rausch on 6/14/24.
-//
-
 import Foundation
-
 import SwiftUI
 
 struct FoodWinePairingsListView: View {
+    // Sorting the pairings data alphabetically by the food name
+    var sortedPairings: [FoodWinePairing] {
+        foodWinePairingsData.sorted { $0.food < $1.food }
+    }
+
     var body: some View {
-        List(foodWinePairingsData) { pairing in
-            NavigationLink(destination: FoodWinePairingsDetailView(foodWinePairing: pairing)) {
-                Text("\(pairing.food) & \(pairing.wine)")
+        VStack {
+            List(sortedPairings) { pairing in
+                NavigationLink(destination: FoodWinePairingsDetailView(foodWinePairing: pairing)) {
+                    Text(pairing.food)
+                }
             }
+            .listStyle(PlainListStyle())
+            
+            Divider()
+                .padding(.horizontal)
+                .background(Color.black)
+            
+            Text("See Grapes Section for More Pairings")
+                .font(.footnote)
+                .foregroundColor(.gray)
+                .padding(.top, 10)
         }
+        .padding(.bottom, 20) // Adjust this value if necessary
         .navigationTitle("Food & Wine Pairings")
     }
 }

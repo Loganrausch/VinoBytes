@@ -52,11 +52,11 @@ struct StudyView: View {
                     .padding(.top, 10)
                     
                     NavigationLink(destination: FlashcardView(selectedRegions: Array(selectedRegions))) {
-                        Text("Start Studying")
+                        Text("Start Learning")
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity, alignment: .center)
                             .padding()
-                            .background(Color(red: 128/255, green: 0, blue: 0))
+                            .background(Color.maroon)
                             .cornerRadius(8)
                             .padding(.top, 10) // Adjust the padding as needed
                     }
@@ -88,3 +88,8 @@ struct RegionView: View {
     }
 }
 
+struct StudyView_Previews: PreviewProvider {
+    static var previews: some View {
+        StudyView()
+    }
+}

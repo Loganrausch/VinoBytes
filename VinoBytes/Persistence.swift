@@ -120,11 +120,3 @@ struct FlashcardJSON: Codable {
     let boxNumber: Int // Add this line
     let nextReviewDate: String // Add this line
 }
-
-
-struct QuizQuestionJSON: Codable {
-    let questionText: String
-    let answerOptions: [String]
-    let correctAnswer: String
-    let region: String
-}

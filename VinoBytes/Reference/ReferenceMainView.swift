@@ -11,34 +11,25 @@ struct ReferenceMainView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                VStack(spacing: 50) {
-                    HStack(spacing: 40) {
-                        NavigationLink(destination: GrapeListView()) {
-                            buttonContent(title: "Grapes", systemImage: "leaf.arrow.circlepath")
-                        }
-
-                        NavigationLink(destination: WineGlossaryListView()) {
-                            buttonContent(title: "Glossary", systemImage: "books.vertical")
-                        }
+                VStack(spacing: 45) { // Adjust spacing as needed
+                    NavigationLink(destination: GrapeListView()) {
+                        buttonContent(title: "Grapes", systemImage: "leaf.arrow.circlepath")
                     }
-
-                    HStack(spacing: 40) {
-                        NavigationLink(destination: FoodWinePairingsListView()) {
-                            buttonContent(title: "Pairings", systemImage: "fork.knife")
-                        }
-
-                        NavigationLink(destination: RegionListView()) {
-                            buttonContent(title: "Regions", systemImage: "map")
-                        }
+                    
+                    NavigationLink(destination: WineGlossaryListView()) {
+                        buttonContent(title: "Glossary", systemImage: "books.vertical")
                     }
-
-                    HStack(spacing: 40) {
-                        NavigationLink(destination: WineFlawListView()) {
-                            buttonContent(title: "Wine Flaws", systemImage: "exclamationmark.triangle")
-                        }
-                        NavigationLink(destination: WineLawListView()) {
-                            buttonContent(title: "Wine Law", systemImage: "scalemass")
-                        }
+                    
+                    NavigationLink(destination: FoodWinePairingsListView()) {
+                        buttonContent(title: "Pairings", systemImage: "fork.knife")
+                    }
+                    
+                    NavigationLink(destination: RegionListView()) {
+                        buttonContent(title: "Regions", systemImage: "map")
+                    }
+                    
+                    NavigationLink(destination: WineFlawListView()) {
+                        buttonContent(title: "Wine Flaws", systemImage: "exclamationmark.triangle")
                     }
                 }
                 .padding(.horizontal, 40)
@@ -48,21 +39,23 @@ struct ReferenceMainView: View {
             }
         }
     }
-
+    
     @ViewBuilder
     private func buttonContent(title: String, systemImage: String) -> some View {
         VStack(spacing: 8) { // Add custom spacing here
+            Image(systemName: systemImage)
+                .foregroundColor(.black)
+                .font(.title2) // Adjust icon size
             Text(title)
                 .font(.headline)
                 .foregroundColor(.black)
-            Image(systemName: systemImage)
-                .foregroundColor(.black)
         }
-        .frame(width: 150, height: 150)
-        .clipShape(Circle())
-        .shadow(radius: 10)
+        .frame(width: 340, height: 80) // Adjust frame size to make it rectangular
+        .background(Color.white)
+        .cornerRadius(10) // Add corner radius to make the rectangle corners rounded
+        .shadow(radius: 10) // Apply shadow
         .overlay(
-            Circle().stroke(Color("Maroon"), lineWidth: 2)
+            RoundedRectangle(cornerRadius: 10).stroke(Color("Maroon"), lineWidth: 2)
         )
     }
 }

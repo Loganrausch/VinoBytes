@@ -25,6 +25,10 @@ struct WineDetailView: View {
                         .scaledToFit()
                 }
             }
+            
+            Section(header: Text("Wine Type")) {
+                            Text(wineEntity.wineType ?? "Not Specified")  // Display the wine type
+                        }
 
             Section(header: Text("Vintage")) {
                 // Directly display the vintage as it's already a string. No need for String() conversion.
@@ -108,6 +112,7 @@ struct WineDetailView: View {
     func wineItems() -> [Any] {
         var items: [Any] = [
             "\n",
+            "Wine Type: \(wineEntity.wineType ?? "")\n",
             "Vintage: \(wineEntity.vintage ?? "")\n",
             "Producer: \(wineEntity.producer ?? "")\n",
             "Wine Name: \(wineEntity.wineName ?? "")\n",

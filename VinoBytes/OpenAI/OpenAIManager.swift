@@ -164,6 +164,12 @@ class OpenAIManager: ObservableObject {
         }
     }
     
+    func clearTemporaryData() {
+            // Clear the messages or reset any other relevant state here
+            messages.removeAll()
+            // Add any other cleanup code needed to reset the manager's state
+        }
+    
     // Updated method to prevent deletion of the active conversation
     // Method to delete a conversation
     func deleteConversation(_ conversation: Conversation) {

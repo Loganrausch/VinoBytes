@@ -27,6 +27,11 @@ struct ReadOnlyConversationView: View {
         .onAppear {
             openAIManager.loadMessages(from: conversation)
         }
+        
+        .onDisappear {
+                    // Call a function to clear any temporary data or reset states
+                    openAIManager.clearTemporaryData()
+                }
     }
 }
 

@@ -17,6 +17,7 @@ struct WineFormView: View {
 
     @State private var producer: String = ""
     @State private var wineName: String = ""
+    @State private var wineType: String = ""
     @State private var region: String = ""
     @State private var grape: String = ""
     @State private var vintage: String = ""
@@ -38,6 +39,7 @@ struct WineFormView: View {
         if let wineEntity = wineEntity {
             _producer = State(initialValue: wineEntity.producer ?? "")
             _wineName = State(initialValue: wineEntity.wineName ?? "")
+            _wineType = State(initialValue: wineEntity.wineType ?? "")
             _region = State(initialValue: wineEntity.region ?? "")
             _grape = State(initialValue: wineEntity.grape ?? "")
             // Adjust vintage initialization to handle NV represented by 0
@@ -72,6 +74,19 @@ struct WineFormView: View {
                                     }
                                 }
                             }
+            
+            Section(header: Text("Wine Type")) {
+                            Picker("Select Wine Type", selection: $wineType) {
+                                Text("Red").tag("Red")
+                                Text("White").tag("White")
+                                Text("Rosé").tag("Rosé")
+                                Text("Sparkling").tag("Sparkling")
+                                Text("Dessert").tag("Dessert")
+                                Text("Fortified").tag("Fortified")
+                            }
+                            .pickerStyle(MenuPickerStyle())
+                            .accentColor(.black)
+                        }
                             
             Section(header: Text("Vintage Selection")) {
                             HStack {
@@ -80,7 +95,7 @@ struct WineFormView: View {
                                     isNonVintage = true
                                 }
                                 .foregroundColor(isNonVintage ? Color("Maroon") : .gray)
-                                .padding()
+                                .padding(8)
                                 .background(isNonVintage ? Color("Maroon").opacity(0.2) : Color.clear)
                                 .cornerRadius(5)
                                 .overlay(
@@ -94,7 +109,7 @@ struct WineFormView: View {
                                     vintage = ""  // Clear the vintage or set it to a default value
                                 }
                                 .foregroundColor(!isNonVintage ? Color("Maroon") : .gray)
-                                .padding()
+                                .padding(8)
                                 .background(!isNonVintage ? Color("Maroon").opacity(0.2) : Color.clear)
                                 .cornerRadius(5)
                                 .overlay(
@@ -222,6 +237,7 @@ struct WineFormView: View {
         let wineToSave = wineEntity ?? WineEntity(context: context)
         wineToSave.producer = producer
         wineToSave.wineName = wineName
+        wineToSave.wineType = wineType
         wineToSave.region = region
         wineToSave.grape = grape
         wineToSave.vintage = vintage

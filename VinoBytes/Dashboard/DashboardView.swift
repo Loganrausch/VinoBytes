@@ -61,26 +61,26 @@ struct DashboardView: View {
                         isFlashcardProgressSheetPresented = true
                     }) {
                         VStack(spacing: 6) {
-                            Text("Flashcard Progress")
+                            Text("View Flashcard Progress")
                                 .frame(maxWidth: .infinity, minHeight: 20) // Ensures the text field fills the button area
                                 .contentShape(Rectangle()) // Makes the whole area tappable
                                 .bold()
+                                .foregroundColor(Color.black) // Text color set to Latte
                             
                         }
-                        .foregroundColor(.black)
                         .padding()
-                        
+                        .background(Color.white) // Background color set to Maroon
                         .clipShape(RoundedRectangle(cornerRadius: 10))
-                        
                         .overlay(
                             RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color("Maroon"), lineWidth: 2.6)
-                                .shadow(color: Color.black.opacity(0.8), radius: 5)
-                                .background(Color(red: 128/255, green: 0, blue: 0).opacity(0.07))
-                            
+                                .stroke(Color("Maroon"), lineWidth: 2)
+                                
+                                
                         )
+                        .shadow(radius: 10) // Apply shadow
                     }
                     .padding(.horizontal)
+                  
                 }
                 .sheet(isPresented: $isFlashcardProgressSheetPresented) {
                     FlashcardProgressView(flashcardProgress: flashcardProgress)
@@ -98,9 +98,9 @@ struct DashboardView: View {
                                 Circle()
                                     .stroke(Color("Maroon"), lineWidth: 5)
                                     .frame(width: 110, height: 110)
-                                    .background(Color(red: 128/255, green: 0, blue: 0).opacity(0.07))
+                                    .background(Color.white)
                                     .clipShape(Circle())
-                                    .shadow(color: Color.black.opacity(0.8), radius: 3)
+                                    .shadow(radius: 10) // Apply shadow
                                 Text("\(wines.count)")
                                     .font(.largeTitle)
                                     .foregroundColor(.black)
@@ -119,9 +119,9 @@ struct DashboardView: View {
                                 Circle()
                                     .stroke(Color("Maroon"), lineWidth: 5)
                                     .frame(width: 110, height: 110)
-                                    .background(Color(red: 128/255, green: 0, blue: 0).opacity(0.07))
+                                    .background(Color.white)
                                     .clipShape(Circle())
-                                    .shadow(color: Color.black.opacity(0.8), radius: 3)
+                                    .shadow(radius: 10) // Apply shadow
                                 
                                 Text("Tap Here")
                                     .font(.headline)
@@ -148,9 +148,9 @@ struct DashboardView: View {
                             RoundedRectangle(cornerRadius: 10)
                                 .stroke(Color("Maroon"), lineWidth: 5)
                                 .frame(width: 200, height: 50)
-                                .background(Color(red: 128/255, green: 0, blue: 0).opacity(0.07))
+                                .background(Color.white)
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
-                                .shadow(color: Color.black.opacity(0.8), radius: 3)
+                                .shadow(radius: 10) // Apply shadow
                             Text("Read Our Latest Post")
                                 .font(.headline)
                                 .foregroundColor(.black)
@@ -161,7 +161,7 @@ struct DashboardView: View {
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color("Maroon"), lineWidth: 5)
                             .frame(width: 200, height: 50)
-                            .background(Color(red: 128/255, green: 0, blue: 0).opacity(0.07))
+                            .background(Color.white)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                             .shadow(radius: 10)
                         Text("Read Our Latest Post")

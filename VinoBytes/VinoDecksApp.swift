@@ -33,8 +33,8 @@ struct VinoDecksApp: App {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground() // Ensures the background is not transparent
         appearance.backgroundColor = UIColor(Color("Maroon")) // Dark maroon color
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.latte]
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.latte]
 
         // Apply the appearance to all navigation bar types
         UINavigationBar.appearance().standardAppearance = appearance
