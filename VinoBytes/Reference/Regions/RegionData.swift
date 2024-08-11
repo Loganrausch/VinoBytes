@@ -1565,32 +1565,7 @@ Country(name: "Australia", regions: [
         imageName: "adelaide_hills_image",
         iconNames: ["mountain", "wine_glass"]
     ),
-    Region(
-        name: "Eden Valley",
-        details: "Eden Valley is a cool-climate wine region located within the Barossa zone in South Australia. Known for its high-altitude vineyards and diverse terroir, Eden Valley produces some of Australia's finest Rieslings and Shiraz. The region's unique climate and soil conditions contribute to the elegance and complexity of its wines.",
-        subregions: [
-            "High Eden: The highest part of the Eden Valley, known for its exceptional Riesling and Shiraz, with vineyards located at elevations of up to 600 meters.\n",
-            "Flaxman Valley: Produces a variety of high-quality wines, including Riesling, Shiraz, and Cabernet Sauvignon.\n",
-            "Keyneton: Famous for its historic vineyards and premium Shiraz and Riesling."
-        ],
-        climate: "Eden Valley has a cool to moderate climate with significant diurnal temperature variations. The region experiences warm days and cool nights during the growing season, which helps to preserve acidity and develop complex flavors in the grapes.",
-        soil: [
-            "High Eden: Predominantly rocky and acidic soils, contributing to the minerality and finesse of the wines.\n",
-            "Flaxman Valley: A mix of sandy loam and clay soils, supporting the production of structured and balanced wines.\n",
-            "Keyneton: Loamy and sandy soils, ideal for producing elegant and refined wines."
-        ],
-        keyWineStyles: "Eden Valley is best known for its Riesling, which is characterized by its bright acidity, citrus and floral aromas, and mineral notes. The region also produces outstanding Shiraz, known for its elegance, complexity, and fine tannins. Other notable varieties include Cabernet Sauvignon, Chardonnay, and Viognier.",
-        topProducers: [
-            "Henschke (Keyneton)",
-            "Pewsey Vale (High Eden)",
-            "Yalumba (Flaxman Valley)",
-            "Eden Road Wines (High Eden)",
-            "Mountadam Vineyards (High Eden)",
-            "Irvine Wines (Keyneton)"
-        ],
-        imageName: "eden_valley_image",
-        iconNames: ["mountain", "wine_glass"]
-    ),
+
     Region(
         name: "Riverina",
         details: "Riverina is one of Australia's largest wine regions, located in New South Wales. Known for its high-volume production, the region produces a wide range of wine styles, from affordable, everyday wines to premium, botrytized dessert wines. The fertile soils and warm climate make Riverina a vital part of Australia's wine industry.",

@@ -44,6 +44,7 @@ struct PersistenceController {
             let flashcards = try decoder.decode([FlashcardJSON].self, from: data)
             let flashcardIDs = flashcards.map { $0.id }
             
+            
             let fetchRequest: NSFetchRequest<StudyCard> = StudyCard.fetchRequest()
             
             // Fetch all existing flashcards
@@ -85,10 +86,29 @@ struct PersistenceController {
             }
             
             try container.viewContext.save()
+            
+            printAllFlashcards()
+            
         } catch {
             fatalError("Failed to load flashcards from JSON: \(error)")
         }
     }
+    
+    func printAllFlashcards() {
+        let fetchRequest: NSFetchRequest<StudyCard> = StudyCard.fetchRequest()
+        
+        do {
+            let flashcards = try container.viewContext.fetch(fetchRequest)
+            print("Total flashcards in Core Data: \(flashcards.count)")
+            for flashcard in flashcards {
+                print("ID: \(flashcard.id ?? "No ID"), Region: \(flashcard.region ?? "No Region"), Question: \(flashcard.question ?? "No Question")")
+            }
+        } catch {
+            print("Failed to fetch flashcards: \(error)")
+        }
+    }
+    
+    
     
     
     
@@ -112,11 +132,6 @@ struct PersistenceController {
     }
 }
 
-struct FlashcardJSON: Codable {
-    let question: String
-    let answer: String
-    let region: String
-    let id: String
-    let boxNumber: Int // Add this line
-    let nextReviewDate: String // Add this line
-}
+
+
+

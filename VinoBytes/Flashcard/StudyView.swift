@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct StudyView: View {
-    let regions = ["Argentina", "Australia", "Austria", "Chile", "France", "Germany", "Italy", "New Zealand", "Portugal", "South Africa", "Spain", "USA"]
+    let regions = ["Argentina", "Australia", "Austria", "Chile", "France", "Germany", "Greece", "Hungary", "Italy", "New Zealand", "Portugal", "South Africa", "Spain", "USA"]
     @State private var selectedRegions = Set<String>()
     
     var body: some View {

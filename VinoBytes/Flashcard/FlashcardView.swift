@@ -35,6 +35,10 @@ struct FlashcardView: View {
             if flashcards.isEmpty {
                 Text("No flashcards for the selected regions.")
             } else {
+                Text(flashcards[currentFlashcardIndex].region ?? "Unknown Region") // Region displayed above the card
+                                    .font(.headline)
+                                    .foregroundColor(.maroon)
+                                    .padding(.bottom, 10)
                 ZStack {
                     ForEach(flashcards.indices, id: \.self) { index in
                         if index == currentFlashcardIndex { // Show only the current card

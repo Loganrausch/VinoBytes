@@ -13,6 +13,7 @@ struct ContentView: View {
 
     init() {
         setupTabBarAppearance()
+        
     }
 
     var body: some View {

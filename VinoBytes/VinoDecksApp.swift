@@ -13,6 +13,7 @@ struct VinoDecksApp: App {
 
     init() {
         configureNavigationBar()
+        
     }
 
     var body: some Scene {
@@ -28,6 +29,7 @@ struct VinoDecksApp: App {
         }
         .environment(\.colorScheme, .light)  // Forces light mode for all views in the app
     }
+    
 
     private func configureNavigationBar() {
         let appearance = UINavigationBarAppearance()
