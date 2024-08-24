@@ -12,14 +12,16 @@ struct MyWinesView: View {
     @State private var searchText: String = ""
     @State private var isAddingWine = false  // State to trigger navigation to the WineFormView
     var isRootView: Bool
+    @ObservedObject var refreshNotifier: RefreshNotifier
 
     @FetchRequest(
-        entity: WineEntity.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \WineEntity.region, ascending: true),
-            NSSortDescriptor(keyPath: \WineEntity.producer, ascending: true)
-        ]
-    ) var winesFetched: FetchedResults<WineEntity>
+            entity: WineEntity.entity(),
+            sortDescriptors: [
+                NSSortDescriptor(keyPath: \WineEntity.region, ascending: true),
+                NSSortDescriptor(keyPath: \WineEntity.producer, ascending: true)
+            ],
+            animation: .default)
+        var winesFetched: FetchedResults<WineEntity>
 
     var body: some View {
         Group {
@@ -31,6 +33,14 @@ struct MyWinesView: View {
                 winesList
             }
         }
+        
+        .onAppear {
+                    // This will check if the data needs to be refreshed
+                    if refreshNotifier.needsRefresh {
+                        context.refreshAllObjects() // Refresh all objects in the context
+                        refreshNotifier.needsRefresh = false
+                    }
+                }
     }
 
     private var winesList: some View {
@@ -96,6 +106,8 @@ struct MyWinesView: View {
 
 struct MyWinesView_Previews: PreviewProvider {
     static var previews: some View {
-        MyWinesView(isRootView: true).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        let refreshNotifier = RefreshNotifier()
+        return MyWinesView(isRootView: true, refreshNotifier: refreshNotifier)
+            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

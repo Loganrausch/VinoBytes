@@ -37,6 +37,8 @@
 		CE6ADF602B9266D600982366 /* FlashcardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6ADF5F2B9266D600982366 /* FlashcardView.swift */; };
 		CE6ADF632B9269C400982366 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE6ADF622B9269C400982366 /* CoreData.framework */; };
 		CE6F73692B93BE8900770B35 /* WineFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F73682B93BE8900770B35 /* WineFormView.swift */; };
+		CE738AC72C7781D500C76892 /* RefreshNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE738AC62C7781D500C76892 /* RefreshNotifier.swift */; };
+		CE738AC92C7793DB00C76892 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE738AC82C7793DB00C76892 /* Toast.swift */; };
 		CE7717012C2274DB00F34C4C /* LegalDocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7717002C2274DB00F34C4C /* LegalDocumentView.swift */; };
 		CE7717042C22750900F34C4C /* PrivacyPolicyText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7717032C22750900F34C4C /* PrivacyPolicyText.swift */; };
 		CE7717062C22752000F34C4C /* TermsAndConditionsText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7717052C22752000F34C4C /* TermsAndConditionsText.swift */; };
@@ -123,6 +125,8 @@
 		CE6ADF5F2B9266D600982366 /* FlashcardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardView.swift; sourceTree = "<group>"; };
 		CE6ADF622B9269C400982366 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		CE6F73682B93BE8900770B35 /* WineFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineFormView.swift; sourceTree = "<group>"; };
+		CE738AC62C7781D500C76892 /* RefreshNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshNotifier.swift; sourceTree = "<group>"; };
+		CE738AC82C7793DB00C76892 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		CE7717002C2274DB00F34C4C /* LegalDocumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalDocumentView.swift; sourceTree = "<group>"; };
 		CE7717032C22750900F34C4C /* PrivacyPolicyText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyText.swift; sourceTree = "<group>"; };
 		CE7717052C22752000F34C4C /* TermsAndConditionsText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsText.swift; sourceTree = "<group>"; };
@@ -305,6 +309,7 @@
 				CE7717002C2274DB00F34C4C /* LegalDocumentView.swift */,
 				CE7717032C22750900F34C4C /* PrivacyPolicyText.swift */,
 				CE7717052C22752000F34C4C /* TermsAndConditionsText.swift */,
+				CE738AC82C7793DB00C76892 /* Toast.swift */,
 			);
 			path = AccountView;
 			sourceTree = "<group>";
@@ -323,6 +328,7 @@
 				CEA304E92BA3DDFC00DD010D /* ActivityViewController.swift */,
 				CEE1607B2C3C56F9006F5E66 /* StarRatingView.swift */,
 				CEE1607D2C3C5AB3006F5E66 /* StarRatingDisplayView.swift */,
+				CE738AC62C7781D500C76892 /* RefreshNotifier.swift */,
 			);
 			path = "My Wines";
 			sourceTree = "<group>";
@@ -557,6 +563,7 @@
 				CE94AAF82C0D444E004CE8E0 /* Grape.swift in Sources */,
 				CED0F8BF2B93DE9500508E6E /* BlogPostView.swift in Sources */,
 				CE94AB002C0E27FC004CE8E0 /* RegionDetailView.swift in Sources */,
+				CE738AC72C7781D500C76892 /* RefreshNotifier.swift in Sources */,
 				CED380DF2BB756A400CAFB29 /* ContentfulManager.swift in Sources */,
 				CE32CDDC2C1CE3E400A87202 /* WineFlawDetailView.swift in Sources */,
 				CEA304EA2BA3DDFC00DD010D /* ActivityViewController.swift in Sources */,
@@ -571,6 +578,7 @@
 				CE1103272BA1F9AD008B0096 /* StudyCard+CoreDataProperties.swift in Sources */,
 				CE1F50752C67203200D2C51F /* FlashcardJSON.swift in Sources */,
 				CE32CDD82C1CE3C900A87202 /* WineFlawData.swift in Sources */,
+				CE738AC92C7793DB00C76892 /* Toast.swift in Sources */,
 				CE94AAFA2C0D502D004CE8E0 /* GrapeData.swift in Sources */,
 				CE2051012B9F98BD0072704E /* FlashcardContent.swift in Sources */,
 				CE7717062C22752000F34C4C /* TermsAndConditionsText.swift in Sources */,

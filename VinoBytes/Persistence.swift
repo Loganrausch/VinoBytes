@@ -40,7 +40,7 @@ struct PersistenceController {
             let decoder = JSONDecoder()
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd"
-
+            
             let flashcards = try decoder.decode([FlashcardJSON].self, from: data)
             let flashcardIDs = flashcards.map { $0.id }
             
@@ -59,7 +59,7 @@ struct PersistenceController {
             
             // Update existing flashcards and create new ones
             for flashcard in flashcards {
-             
+                
                 let fetchRequest: NSFetchRequest<StudyCard> = StudyCard.fetchRequest()
                 fetchRequest.predicate = NSPredicate(format: "id == %@", flashcard.id)
                 
@@ -120,15 +120,23 @@ struct PersistenceController {
             // If the answer was incorrect, move the flashcard back to Box 1
             flashcard.boxNumber = 1
         }
-
+        
         // Update the next review date based on the new box number
         let reviewInterval = [1, 3, 7, 14, 28] // Example intervals for each box (in days)
         let boxIndex = Int(flashcard.boxNumber) - 1 // Adjust for 0-based indexing
         let interval = reviewInterval[boxIndex]
-        flashcard.nextReviewDate = Calendar.current.date(byAdding: .day, value: interval, to: Date())
-
+        
+        let newReviewDate = Calendar.current.date(byAdding: .day, value: interval, to: Date())
+        print("Updating flashcard ID \(flashcard.id ?? "unknown") to box \(flashcard.boxNumber) with next review date \(newReviewDate!)")
+        flashcard.nextReviewDate = newReviewDate
+        
         // Save the changes
-        try? context.save()
+        do {
+            try context.save()
+            print("Flashcard \(flashcard.id ?? "unknown") saved successfully.")
+        } catch {
+            print("Failed to save flashcard \(flashcard.id ?? "unknown"): \(error)")
+        }
     }
 }
 

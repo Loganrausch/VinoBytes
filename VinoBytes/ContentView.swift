@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var context
     @State private var selectedTab = 0
+    let refreshNotifier = RefreshNotifier()  // Create a single instance
 
     init() {
         setupTabBarAppearance()
@@ -18,7 +19,7 @@ struct ContentView: View {
 
     var body: some View {
         TabView(selection: $selectedTab) {
-            DashboardView()
+            DashboardView(refreshNotifier: refreshNotifier)
                 .tabItem {
                     Image(systemName: "house")
                     Text("Home")
@@ -38,8 +39,7 @@ struct ContentView: View {
                     Text("Chat")
                 }
                 .tag(2)
-
-            MyWinesView(isRootView: true)
+            MyWinesView(isRootView: true, refreshNotifier: refreshNotifier)
                 .tabItem {
                     Label("My Wines", systemImage: "wineglass")
                 }
@@ -52,6 +52,7 @@ struct ContentView: View {
                 }
                 .tag(4)
         }
+        
         .accentColor(Color("Latte"))
     }
 

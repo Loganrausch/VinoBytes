@@ -7,50 +7,68 @@
 
 import Foundation
 import SwiftUI
+import StoreKit
+import CoreData
+
+enum ActiveAlert: Identifiable {
+    case resetWines, resetFlashcards
+
+    var id: Int {
+        hashValue
+    }
+}
 
 struct AccountView: View {
     @State private var showingShareSheet = false
     @State private var showingFeedbackSheet = false
-
+    @State private var activeAlert: ActiveAlert?
+    @State private var errorMessage: String?
+    @State private var showingSuccessToast = false  // State for showing the toast message
+    @Environment(\.managedObjectContext) private var viewContext  // Core Data context
+    @ObservedObject var refreshNotifier: RefreshNotifier  // Add this line
+    
     var body: some View {
         VStack {
+            if let errorMessage = errorMessage {
+                Text(errorMessage)
+                    .foregroundColor(.red)
+            }
             Form {
                 Section(header: Text("Actions")) {
-                    Button(action: {
-                        // Rate your app logic
-                    }) {
-                        Text("Rate App")
+                    Button("Rate VinoBytes App") {
+                        if let windowScene = UIApplication.shared.windows.first?.windowScene {
+                            SKStoreReviewController.requestReview(in: windowScene)
+                        }
                     }
-                    Button(action: {
-                        // Invite friends logic
+                    Button("Invite Friends") {
                         showingShareSheet.toggle()
-                    }) {
-                        Text("Invite Friends")
                     }
                     .sheet(isPresented: $showingShareSheet) {
                         ShareSheet(activityItems: ["Check out this cool wine app!"])
                     }
-                    Button(action: {
+                    Button("Feedback") {
                         showingFeedbackSheet = true
-                    }) {
-                        Text("Feedback")
                     }
                     .sheet(isPresented: $showingFeedbackSheet) {
                         ContactFormView()
                     }
-
-                    Button(action: {
-                        // Reset progress logic
-                    }) {
-                        Text("Reset Progress")
+                }
+                .accentColor(Color.black) // Applying custom accent color locally to these buttons
+                
+                Section(header: Text("Reset Progress")) {
+                    Button("Reset My Wines") {
+                        activeAlert = .resetWines
+                        viewContext.refreshAllObjects()
                     }
-
-                    Button(action: {
-                        // Log out logic
-                    }) {
-                        Text("Log Out")
+                    
+                    
+                    Button("Reset Flashcard Progress") {
+                        activeAlert = .resetFlashcards
                     }
                 }
+                .accentColor(Color.black) // Applying custom accent color locally to these buttons
+                
+                
                 Section(header: Text("Legal")) {
                     NavigationLink(destination: LegalDocumentView(documentTitle: "Terms and Conditions", documentText: termsAndConditionsText)) {
                         Text("Terms and Conditions")
@@ -59,12 +77,85 @@ struct AccountView: View {
                         Text("Privacy Policy")
                     }
                 }
+                
+                Button(action: {
+                    // Log out logic
+                }) {
+                    Text("Log Out")
+                }
+                .accentColor(Color.black) // Applying custom accent color locally to these buttons
             }
-            .navigationBarTitle("Account", displayMode: .large)
+            .navigationBarTitle("Account Settings", displayMode: .inline)
         }
         .background(Color(.systemGroupedBackground).edgesIgnoringSafeArea(.all))
+        .toast(message: "All wines successfully deleted!", isShowing: $showingSuccessToast)
+        .alert(item: $activeAlert) { alertType in
+            switch alertType {
+            case .resetWines:
+                return Alert(
+                    title: Text("Confirm Delete"),
+                    message: Text("Are you sure you want to delete all your wines? This action cannot be undone."),
+                    primaryButton: .destructive(Text("Delete")) {
+                        resetMyWines()
+                    },
+                    secondaryButton: .cancel()
+                )
+            case .resetFlashcards:
+                return Alert(
+                    title: Text("Confirm Reset"),
+                    message: Text("Are you sure you want to reset all your flashcard progress? This action cannot be undone."),
+                    primaryButton: .destructive(Text("Reset")) {
+                        resetFlashcardProgress()
+                    },
+                    secondaryButton: .cancel()
+                )
+            }
+        }
     }
+    
+    
+    // Function to reset flashcard progress
+    private func resetFlashcardProgress() {
+        let fetchRequest: NSFetchRequest<StudyCard> = StudyCard.fetchRequest()
+        do {
+            let flashcards = try viewContext.fetch(fetchRequest)
+            for flashcard in flashcards {
+                flashcard.boxNumber = 1
+                flashcard.nextReviewDate = Date()
+            }
+            try viewContext.save()
+        } catch {
+            self.errorMessage = "Failed to reset flashcard progress: \(error.localizedDescription)"
+        }
+    }
+    
+    
+    // Update resetMyWines function
+    private func resetMyWines() {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = WineEntity.fetchRequest()
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+
+        deleteRequest.resultType = .resultTypeCount  // This will return the count of objects deleted
+
+        do {
+            let result = try viewContext.execute(deleteRequest) as? NSBatchDeleteResult
+            if let count = result?.result as? Int {
+                print("Deleted \(count) wines.")
+                showingSuccessToast = true
+            }
+            viewContext.reset()  // Reset the context to fully sync with the persistent store
+            try viewContext.save()
+            refreshNotifier.needsRefresh = true  // Notify that data needs to be refreshed
+        } catch {
+            self.errorMessage = "Failed to reset wines: \(error.localizedDescription)"
+            print("Failed to reset wines: \(error)")
+        }
+    }
+    
+    
 }
+    
+
 
 struct ShareSheet: UIViewControllerRepresentable {
     let activityItems: [Any]
@@ -78,8 +169,10 @@ struct ShareSheet: UIViewControllerRepresentable {
 
 struct AccountView_Previews: PreviewProvider {
     static var previews: some View {
+        let refreshNotifier = RefreshNotifier()
+        
         NavigationView {
-            AccountView()
+            AccountView(refreshNotifier: refreshNotifier)
         }
     }
 }

@@ -25,18 +25,18 @@ struct FlashcardContent: View {
                     .font(.title)
                     .padding()
                     .foregroundColor(.primary)
-                    .frame(width: 300, height: 400)
+                    .frame(width: 360, height: 575)
                     .background(Color.white)
-                    .cornerRadius(10)
+                    .cornerRadius(12)
                     .shadow(radius: 5)
             } else {
                 Text("No text")
                     .font(.title)
                     .padding()
                     .foregroundColor(.primary)
-                    .frame(width: 300, height: 400)
+                    .frame(width: 360, height: 575)
                     .background(Color.white)
-                    .cornerRadius(10)
+                    .cornerRadius(12)
                     .shadow(radius: 5)
             }
         }

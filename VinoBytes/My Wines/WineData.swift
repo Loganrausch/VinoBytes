@@ -53,6 +53,19 @@ class WineData: ObservableObject {
             saveContext()
         }
     }
+    
+    func deleteAllWines() {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = WineEntity.fetchRequest()
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+
+        do {
+            try context.execute(deleteRequest)
+            try context.save()
+            print("All wines have been successfully deleted.")
+        } catch let error as NSError {
+            print("Failed to delete all wines: \(error), \(error.userInfo)")
+        }
+    }
 
     private func saveContext() {
         do {
@@ -63,6 +76,8 @@ class WineData: ObservableObject {
         }
     }
 }
+
+
 
 
 

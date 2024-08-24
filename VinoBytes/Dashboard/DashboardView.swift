@@ -11,15 +11,19 @@ import CoreData
 struct DashboardView: View {
     @Environment(\.managedObjectContext) private var context
     @State private var blogPosts: [BlogPost] = []
-    @State private var flashcardProgress: [String: Int] = ["France": 75, "Italy": 60, "Spain": 80]
+    @State private var flashcardProgress: [String: Int] = [:]
     @State private var wineFactOfTheWeek: String?
     @State private var isFlashcardProgressSheetPresented = false
     @State private var isWhiteDisplaySheetPresented = false
+    @ObservedObject var refreshNotifier: RefreshNotifier  // Add this line
 
     @FetchRequest(
         entity: WineEntity.entity(),
         sortDescriptors: []
     ) var wines: FetchedResults<WineEntity>
+    
+    // List of all regions
+        let allRegions = ["Argentina", "Australia", "Austria", "Chile", "France", "Germany", "Greece", "Hungary", "Italy", "New Zealand", "Portugal", "South Africa", "Spain", "USA"]
 
     var body: some View {
         NavigationView {
@@ -93,7 +97,7 @@ struct DashboardView: View {
                         Text("My Wines")
                             .font(.headline)
                             .frame(width: 100, alignment: .center)
-                        NavigationLink(destination: MyWinesView(isRootView: false)) {
+                        NavigationLink(destination: MyWinesView(isRootView: false, refreshNotifier: refreshNotifier)) {
                             ZStack {
                                 Circle()
                                     .stroke(Color("Maroon"), lineWidth: 5)
@@ -176,7 +180,7 @@ struct DashboardView: View {
             .navigationBarTitle("Dashboard", displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink(destination: AccountView()) {
+                    NavigationLink(destination: AccountView(refreshNotifier: refreshNotifier)) {
                         Image(systemName: "gearshape.fill")
                             .imageScale(.large)
                             .foregroundColor(Color(red: 243/255, green: 232/255, blue: 219/255))
@@ -185,6 +189,7 @@ struct DashboardView: View {
             }
             .onAppear {
                 fetchContent()
+                initializeFlashcardProgress()
             }
         }
     }
@@ -206,7 +211,42 @@ struct DashboardView: View {
                     }
                 }
             }
+    
+    private func initializeFlashcardProgress() {
+            var initialProgress: [String: Int] = [:]
+            for region in allRegions {
+                initialProgress[region] = 0 // Start every region at 0%
+            }
+            fetchFlashcardProgress()
+            flashcardProgress = initialProgress
         }
+    
+    private func fetchFlashcardProgress() {
+            let request: NSFetchRequest<StudyCard> = StudyCard.fetchRequest()
+            do {
+                let results = try context.fetch(request)
+                var progressCount: [String: Int] = [:]
+                var totalCount: [String: Int] = [:]
+
+                for card in results {
+                    let region = card.region ?? "Unknown"
+                    totalCount[region, default: 0] += 1
+                    if card.boxNumber >= 3 {
+                        progressCount[region, default: 0] += 1
+                    }
+                }
+
+                for (region, knownCount) in progressCount {
+                    let total = totalCount[region] ?? 1 // Avoid division by zero
+                    let percentage = (knownCount * 100) / total
+                    flashcardProgress[region] = percentage
+                }
+            } catch {
+                print("Error fetching flashcard data: \(error)")
+            }
+        }
+    }
+        
 
 // Custom ProgressViewStyle
 struct CustomProgressViewStyle: ProgressViewStyle {
@@ -227,17 +267,16 @@ struct FlashcardProgressView: View {
                 .padding()
 
             ForEach(flashcardProgress.keys.sorted(), id: \.self) { region in
-                if let progress = flashcardProgress[region] {
-                    HStack {
-                        Text(region)
-                        Spacer()
-                        ProgressView(value: Float(progress), total: 100)
-                            .progressViewStyle(CustomProgressViewStyle())
-                            .frame(width: 100)
-                        Text("\(progress)%")
-                    }
-                    .padding(.vertical, 2)
+                let progress = flashcardProgress[region, default: 0]
+                HStack {
+                    Text(region)
+                    Spacer()
+                    ProgressView(value: Float(progress), total: 100)
+                        .progressViewStyle(CustomProgressViewStyle())
+                        .frame(width: 100)
+                    Text("\(progress)%")
                 }
+                .padding(.vertical, 2)
             }
             Spacer()
         }
@@ -246,11 +285,4 @@ struct FlashcardProgressView: View {
 }
 
 
-struct DashboardView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            DashboardView()
-                .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-        }
-    }
-}
+

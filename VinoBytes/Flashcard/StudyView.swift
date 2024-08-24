@@ -11,11 +11,14 @@ import SwiftUI
 struct StudyView: View {
     let regions = ["Argentina", "Australia", "Austria", "Chile", "France", "Germany", "Greece", "Hungary", "Italy", "New Zealand", "Portugal", "South Africa", "Spain", "USA"]
     @State private var selectedRegions = Set<String>()
-    
+    @State private var showingAlert = false
+    @State private var isActiveLink = false // Manages navigation link activation
+
     var body: some View {
         NavigationView {
             ScrollView {
-                VStack(spacing: 10) { // Adjust the spacing as needed
+                VStack(spacing: 20) {
+                    Spacer(minLength: 5)
                     Text("Select Regions").font(.headline)
                     
                     LazyVGrid(columns: [GridItem(.fixed(160)), GridItem(.fixed(160))]) {
@@ -28,43 +31,49 @@ struct StudyView: View {
                                 }
                             }
                             .frame(width: 150, height: 50)
-                            .padding(5)
+                            .padding(9)
                         }
                     }
 
-                    
-                    
-                    
-                    Button("Select All Regions") {
-                        if selectedRegions.count == regions.count {
-                            selectedRegions.removeAll()
+                    Button(action: {
+                        if selectedRegions.isEmpty {
+                            showingAlert = true
                         } else {
-                            selectedRegions = Set(regions)
+                            isActiveLink = true
                         }
-                    }
-                    .font(.system(size: 14))
-                    .foregroundColor(selectedRegions.count == regions.count ? .white : .black)
-                    .frame(maxWidth: 120)
-                    .padding()
-                    .background(selectedRegions.count == regions.count ? Color(red: 128/255, green: 0, blue: 0) : Color.white)
-                    .cornerRadius(8)
-                    .shadow(color: .gray, radius: 2, x: 0, y: 2)
-                    .padding(.top, 10)
-                    
-                    NavigationLink(destination: FlashcardView(selectedRegions: Array(selectedRegions))) {
+                    }) {
                         Text("Start Learning")
-                            .foregroundColor(.white)
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            .padding()
-                            .background(Color.maroon)
-                            .cornerRadius(8)
-                            .padding(.top, 10) // Adjust the padding as needed
+                                                   .foregroundColor(.black)
+                                                   .frame(width: 100, height: 100) // Adjust the width and height to be equal for a circle
+                                                   .background(Color.white)
+                                                   .clipShape(Circle()) // This makes the background a circle
+                                                   .overlay(
+                                                       Circle() // Overlay a circle border
+                                                           .stroke(Color("Maroon"), lineWidth: 2)
+                                                   )
+                                                   .shadow(radius: 5)
+                                           }
+                    .alert(isPresented: $showingAlert) {
+                        Alert(title: Text("No Regions Selected"), message: Text("Please select a wine region to start learning."), dismissButton: .default(Text("OK")))
                     }
+                    .background(NavigationLink(destination: FlashcardView(selectedRegions: Array(selectedRegions)), isActive: $isActiveLink) {
+                        EmptyView()
+                    })
                 }
-                .padding()
             }
-            .navigationTitle("Flashcards")
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitle("Flashcards", displayMode: .inline)
+            .navigationBarItems(trailing: Button(action: toggleSelection) {
+                            Text(selectedRegions.count == regions.count ? "Deselect All" : "Select All")
+                        })
+        }
+    }
+
+
+private func toggleSelection() {
+        if selectedRegions.count == regions.count {
+            selectedRegions.removeAll()
+        } else {
+            selectedRegions = Set(regions)
         }
     }
 }
@@ -77,14 +86,14 @@ struct RegionView: View {
     var body: some View {
         Button(action: action) {
             Text(region)
-                .font(.system(size: 14))
                 .foregroundColor(isSelected ? .white : .black)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .padding()
+                .background(isSelected ? Color(red: 128/255, green: 0, blue: 0) : Color.white)
+                .cornerRadius(5)
+                
+                .shadow(color: .gray, radius: 4)
         }
-        .background(isSelected ? Color(red: 128/255, green: 0, blue: 0) : Color.white)
-        .cornerRadius(5)
-        .shadow(color: .gray, radius: 2, x: 0, y: 2)
     }
 }
 
