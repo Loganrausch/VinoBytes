@@ -7,6 +7,8 @@
 
 import Foundation
 
+//PRODUCERS IN THIS DATA ARE NOT ACCURATE AND VERIFIED. WILL COME BACK TO IT. REMOVING FROM DETAILVIEW FOR NOW. 
+
 struct Region {
     let name: String
     let details: String
@@ -37,26 +39,35 @@ struct RegionData {
                         subregions: [
                             "Left Bank: Famous for Cabernet Sauvignon-dominant wines with notable appellations including Médoc, Margaux, Pauillac, Saint-Julien, and Saint-Estèphe.\n",
                             "Right Bank: Dominated by Merlot, this area features celebrated regions like Saint-Émilion and Pomerol.\n",
-                            "Graves (Left Bank): Distinct for both its sophisticated red wines and premium dry white wines predominantly from Sauvignon Blanc and Sémillon. Sauternes, a subregion within Graves, is globally acclaimed for its exceptional sweet wines, crafted from grapes affected by Botrytis cinerea, or noble rot, which concentrates their sugars and flavors."
+                            "Graves (Left Bank): Distinct for both its sophisticated red wines and premium dry white wines predominantly from Sauvignon Blanc and Sémillon. Sauternes, a subregion within Graves, is globally acclaimed for its exceptional sweet wines, crafted from grapes affected by Botrytis cinerea, or noble rot.\n",
+                            "Entre-Deux-Mers: Situated between the Garonne and Dordogne rivers, this area is primarily recognized for its crisp and aromatic white wines made from Sauvignon Blanc, Sémillon, and Muscadelle."
                         ],
+                        
+                        
                         climate: "Bordeaux's maritime climate, moderated by the Atlantic Ocean and the Gironde Estuary, ensures a temperate environment ideal for viticulture, with a long growing season critical for the complex maturation of grapes.",
                         soil: [
-                            "Deep gravel of the Left Bank, conducive to Cabernet Sauvignon.\n",
-                            "Clay and limestone of the Right Bank, which supports Merlot cultivation.\n",
-                            "Unique mix in Graves, contributing to the diverse wine styles it produces."
+                            "Left Bank: Deep gravel, good for Cabernet Sauvignon, reflects sunlight and retains heat aiding in ripening, while adding minerality and structure to the wines.",
+                            "Right Bank: Predominantly clay and limestone, which support Merlot cultivation by retaining moisture and providing the necessary nutrients to produce robust and complex wines.",
+                            "Graves: A unique mix of gravel, sand, clay, and limestone, creating diverse wine styles. Gravel and limestone enhance the minerality and freshness, particularly in white wines, while clay and sand offer structure and elegance, supporting both robust reds and aromatic whites.",
+                            "Entre-Deux-Mers: Predominantly clay, limestone, and sandy soils, ideal for enhancing the fruitiness and acidity of Sauvignon Blanc, Sémillon, and Muscadelle. These soils provide excellent drainage and moderate fertility, contributing to the vibrant and fresh character of the wines."
                         ],
                         keyWineStyles: "The region is celebrated for its red blends based on Cabernet Sauvignon and Merlot, known for their depth and complexity. Bordeaux also boasts of the dry white wines of Graves and the sublime sweet wines of Sauternes, each expressing a distinct palate profile reflective of their terroir.",
                         topProducers: [
                             "Château Margaux (Margaux)",
                             "Château Latour (Pauillac)",
-                            "Château Haut-Brion (Graves)",
+                            "Château Haut-Brion (Pessac-Léognan)",
+                            "Château Lafite Rothschild (Pauillac)",
+                            "Château Mouton Rothschild (Pauillac)",
                             "Château Cheval Blanc (Saint-Émilion)",
                             "Château Pétrus (Pomerol)",
+                            "Château Le Pin (Pomerol)",
                             "Château d'Yquem (Sauternes)"
                         ],
                         imageName: "bordeaux_image",
                         iconNames: ["leaf", "drop"]
                     ),
+            
+            
                     Region(
                         name: "Burgundy",
                         details: "Burgundy, or Bourgogne, is celebrated for its complex terroir and the climats system, a UNESCO World Heritage site that precisely delineates its vineyards. This historical wine region is renowned for its exceptional Chardonnay and Pinot Noir wines, produced from a tapestry of closely spaced vineyards that express subtle variations in flavor and character.",
@@ -68,6 +79,7 @@ struct RegionData {
                             "Mâconnais: Located in the southern part of Burgundy, known for its robust Chardonnay wines.\n",
                             "Beaujolais: Geographically part of Burgundy but distinct in its wine style, predominantly producing light, fruit-forward red wines from the Gamay grape."
                         ],
+                        
                         climate: "Continental, with cold winters and warm summers, promoting a range of wine styles from the various subregions.",
                         soil: [
                             "Chablis: Kimmeridgian limestone rich in marine fossils, lending a distinct minerality to the wines.\n",
@@ -165,7 +177,7 @@ struct RegionData {
                 ],
                 keyWineStyles: "The Loire Valley is celebrated for its vibrant and aromatic white wines, particularly from Sauvignon Blanc and Chenin Blanc. The region also produces elegant red wines from Cabernet Franc, refreshing rosés, and renowned sparkling wines made using the traditional method.",
                 topProducers: [
-                    "Domaine de la Romanée (Sancerre)",
+                    "Domaine Vacheron (Sancerre)",
                     "Domaine Huet (Vouvray)",
                     "Château de Fesles (Anjou)",
                     "Clos Rougeard (Saumur-Champigny)",
@@ -180,8 +192,8 @@ struct RegionData {
                 name: "Alsace",
                 details: "Alsace, located in northeastern France along the Rhine River, is renowned for its aromatic white wines and picturesque vineyards nestled at the foothills of the Vosges Mountains. The region is distinguished by its unique cultural blend of French and German influences, which is reflected in its winemaking traditions.",
                 subregions: [
-                    "Bas-Rhin: The northern part of Alsace, producing lighter and more delicate wines, with notable appellations such as Marlenheim and Barr.\n",
-                    "Haut-Rhin: The southern part of Alsace, known for its richer and more full-bodied wines, with prestigious appellations like Colmar, Riquewihr, and Guebwiller."
+                    "Bas-Rhin: The northern part of Alsace, producing lighter and more delicate wines. Notable grape varieties include Riesling, Sylvaner, and Pinot Blanc.\n",
+                    "Haut-Rhin: The southern part of Alsace, known for its richer and more full-bodied wines. This area is home to many of the region's Grand Cru vineyards and is particularly renowned for Riesling, Gewürztraminer, Pinot Gris, and Muscat.\n",
                 ],
                 climate: "Alsace has a semi-continental climate with warm summers and cold winters. The Vosges Mountains provide a rain shadow effect, resulting in one of the driest climates in France, which is ideal for viticulture.",
                 soil: [
@@ -205,7 +217,7 @@ struct RegionData {
                 name: "Languedoc-Roussillon",
                 details: "Languedoc-Roussillon, located in the southern part of France along the Mediterranean coast, is known for its diverse range of wines and its vast vineyard area. The region is celebrated for its innovative winemaking and a variety of wine styles, from robust reds to crisp whites and rosés.",
                 subregions: [
-                    "Languedoc: The larger part of the region, known for its versatile wine production including appellations like Corbières, Minervois, and Pic Saint-Loup.\n",
+                    "Languedoc: The larger part of the region, known for its versatile wine production including appellations like Corbières, Minervois, Pic Saint-Loup, and Picpoul de Pinet.\n",
                     "Roussillon: Located to the south, near the Spanish border, famous for its powerful red wines and sweet fortified wines from appellations such as Maury and Banyuls."
                 ],
                 climate: "Mediterranean climate with hot, dry summers and mild, wet winters. The region benefits from ample sunshine and the cooling influence of the Mediterranean Sea, which helps to maintain acidity in the wines.",
@@ -213,7 +225,7 @@ struct RegionData {
                     "Languedoc: A mix of soils including limestone, clay, schist, and gravel, contributing to the complexity and variety of the wines.\n",
                     "Roussillon: Predominantly schist and granite, with some areas of clay and limestone, supporting the production of rich and concentrated wines."
                 ],
-                keyWineStyles: "Languedoc-Roussillon is known for its robust red wines made from Grenache, Syrah, Mourvèdre, and Carignan. The region also produces crisp and aromatic white wines from varieties like Picpoul and Marsanne, as well as refreshing rosés. In addition, Roussillon is renowned for its sweet fortified wines, known as Vins Doux Naturels.",
+                keyWineStyles: "Languedoc-Roussillon is known for its robust red wines made from Grenache, Syrah, Mourvèdre, and Carignan. The region also produces crisp and aromatic white wines from varieties like Picpoul (especially from the Picpoul de Pinet appellation) and Marsanne, as well as refreshing rosés. In addition, Roussillon is renowned for its sweet fortified wines, known as Vins Doux Naturels.",
                 topProducers: [
                     "Domaine de la Grange des Pères (Languedoc)",
                     "Mas de Daumas Gassac (Languedoc)",
@@ -278,8 +290,8 @@ struct RegionData {
                     "Domaine Tissot (Arbois)",
                     "Domaine Berthet-Bondet (Château-Chalon)",
                     "Domaine de Montbourgeau (L'Étoile)",
-                    "Domaine Rolet (Côtes du Jura)",
-                    "Jean Bourdy (Arbois)",
+                    "Domaine Rolet (Arbois)",
+                    "Jean Bourdy (Côtes du Jura)",
                     "Domaine Pignier (Côtes du Jura)"
                 ],
                 imageName: "jura_image",
@@ -306,7 +318,7 @@ struct RegionData {
                 ],
                 keyWineStyles: "Savoie is renowned for its white wines, particularly those made from Jacquère, which are light, crisp, and floral. The region also produces notable wines from Altesse and Mondeuse, as well as sparkling wines and a small amount of rosé.",
                 topProducers: [
-                    "Domaine Belluard",
+                    "Domaine Belluard (Now Domaine du Gringet)",
                     "Domaine Dupasquier",
                     "Domaine Jean Perrier et Fils",
                     "Domaine Adrien Berlioz",
@@ -864,7 +876,7 @@ Country(name: "Spain", regions: [
         subregions: [
             "Rioja Alta: Known for producing elegant and age-worthy wines with high acidity and moderate alcohol levels. The higher altitude and cooler climate contribute to the refined character of these wines.\n",
             "Rioja Alavesa: Produces some of the finest wines in the region, characterized by their full-bodied nature and excellent aging potential. The limestone-rich soils and Atlantic influence play a significant role in the quality of the wines.\n",
-            "Rioja Oriental: The warmest of the three subregions, producing wines with higher alcohol content and a riper fruit profile. This area is more influenced by Mediterranean climate conditions."
+            "Rioja Oriental (Previously Rioja Baja): The warmest of the three subregions, producing wines with higher alcohol content and a riper fruit profile. This area is more influenced by Mediterranean climate conditions."
         ],
         climate: "Rioja experiences a combination of Atlantic and Mediterranean climate influences. Rioja Alta and Rioja Alavesa have cooler, wetter climates due to the Atlantic influence, while Rioja Oriental is warmer and drier with more Mediterranean characteristics. This climatic diversity allows for the production of a wide range of wine styles.",
         soil: [
@@ -939,8 +951,8 @@ Country(name: "Spain", regions: [
 ),
     
     Region(
-        name: "Jerez",
-        details: "Jerez, also known as Sherry, is a renowned wine region located in the Andalusia region of southern Spain. Famous for its unique fortified wines, Jerez has a long history of winemaking dating back to ancient times. The region's wines are made primarily from the Palomino grape, with Pedro Ximénez and Moscatel used for sweeter styles. The solera aging system and unique albariza soils contribute to the distinctive character of Jerez wines.",
+        name: "Jerez-Xérès-Sherry",
+        details: "Jerez is a renowned wine region located in the Andalusia region of southern Spain. Famous for its unique fortified wines, Jerez has a long history of winemaking dating back to ancient times. The region's wines are made primarily from the Palomino grape, with Pedro Ximénez and Moscatel used for sweeter styles. The solera aging system and unique albariza soils contribute to the distinctive character of Jerez wines.",
         subregions: [
             "Jerez de la Frontera: The heart of Sherry production, known for producing a wide range of styles, from dry Fino and Manzanilla to rich Oloroso and sweet Pedro Ximénez.\n",
             "Sanlúcar de Barrameda: Renowned for its coastal influence and the production of Manzanilla Sherry, known for its light, saline character.\n",
@@ -1074,14 +1086,12 @@ Country(name: "Spain", regions: [
         subregions: [
             "Alcázar de San Juan: Known for its diverse wine production, including whites from Airén and reds from Tempranillo.\n",
             "Tomelloso: Produces a wide range of wines, with a focus on red varieties like Tempranillo and international grapes like Cabernet Sauvignon.\n",
-            "Valdepeñas: Although technically its own DO, it is surrounded by La Mancha and shares similar climatic and soil conditions, producing robust reds from Tempranillo.\n",
             "Manzanares: Known for its quality wines from both local and international varieties, offering a diverse wine portfolio."
         ],
         climate: "La Mancha has an extreme continental climate with hot, dry summers and cold winters. The large diurnal temperature variation helps maintain acidity and develop complex flavors in the grapes.",
         soil: [
             "Alcázar de San Juan: Predominantly limestone and clay soils, contributing to the structure and complexity of the wines.\n",
             "Tomelloso: A mix of clay, limestone, and sandy soils, supporting the production of diverse wine styles.\n",
-            "Valdepeñas: Clay and limestone soils, enhancing the richness and body of the wines.\n",
             "Manzanares: Alluvial and clay soils, ideal for producing balanced and aromatic wines."
         ],
         keyWineStyles: "La Mancha is known for its wide variety of wine styles, including fresh and fruity whites from Airén, robust and complex reds from Tempranillo, and innovative wines from international varieties such as Cabernet Sauvignon, Syrah, and Chardonnay. The region also produces some excellent rosés and sparkling wines.",

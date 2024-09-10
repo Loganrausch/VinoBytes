@@ -70,7 +70,7 @@ class OpenAIManager: ObservableObject {
         
         let body: [String: Any] = [
             "messages": modifiedContext + [["role": "user", "content": text]],
-            "max_tokens": 250
+            "max_tokens": 500
         ]
         
         do {

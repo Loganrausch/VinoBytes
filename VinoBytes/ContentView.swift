@@ -29,14 +29,14 @@ struct ContentView: View {
             StudyView()
                 .tabItem {
                     Image(systemName: "book")
-                    Text("Study")
+                    Text("Flashcards")
                 }
                 .tag(1)
 
             OpenAIChatView()
                 .tabItem {
                     Image(systemName: "bubble.left.and.bubble.right")
-                    Text("Chat")
+                    Text("Vino Chat")
                 }
                 .tag(2)
             MyWinesView(isRootView: true, refreshNotifier: refreshNotifier)
@@ -48,7 +48,7 @@ struct ContentView: View {
             ReferenceMainView()
                 .tabItem {
                     Image(systemName: "books.vertical")
-                    Text("References")
+                    Text("Library")
                 }
                 .tag(4)
         }

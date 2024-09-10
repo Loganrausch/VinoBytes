@@ -19,7 +19,7 @@ struct WineGlossaryListView: View {
                 Text(entry.term)
             }
         }
-        .navigationTitle("Wine Glossary")
+        .navigationTitle("Glossary")
     }
 }
 

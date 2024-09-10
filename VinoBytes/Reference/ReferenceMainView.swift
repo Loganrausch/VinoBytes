@@ -34,7 +34,7 @@ struct ReferenceMainView: View {
                 }
                 .padding(.horizontal, 40)
                 .padding(.top, -20)
-                .navigationTitle("Wine Reference")
+                .navigationTitle("Wine Library")
                 .navigationBarTitleDisplayMode(.inline)
             }
         }

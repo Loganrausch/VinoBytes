@@ -24,6 +24,7 @@ struct AccountView: View {
     @State private var activeAlert: ActiveAlert?
     @State private var errorMessage: String?
     @State private var showingSuccessToast = false  // State for showing the toast message
+    @State private var showingFlashcardResetToast = false  // State for showing the toast message for flashcards
     @Environment(\.managedObjectContext) private var viewContext  // Core Data context
     @ObservedObject var refreshNotifier: RefreshNotifier  // Add this line
     
@@ -89,6 +90,7 @@ struct AccountView: View {
         }
         .background(Color(.systemGroupedBackground).edgesIgnoringSafeArea(.all))
         .toast(message: "All wines successfully deleted!", isShowing: $showingSuccessToast)
+        .toast(message: "Flashcard progress reset successfully!", isShowing: $showingFlashcardResetToast)  // Add toast for flashcards
         .alert(item: $activeAlert) { alertType in
             switch alertType {
             case .resetWines:
@@ -119,12 +121,17 @@ struct AccountView: View {
         let fetchRequest: NSFetchRequest<StudyCard> = StudyCard.fetchRequest()
         do {
             let flashcards = try viewContext.fetch(fetchRequest)
+            print("Resetting progress for \(flashcards.count) flashcards.")
             for flashcard in flashcards {
+                print("Resetting flashcard with ID \(flashcard.id ?? "Unknown ID") from box \(flashcard.boxNumber) to box 1.")
                 flashcard.boxNumber = 1
                 flashcard.nextReviewDate = Date()
             }
             try viewContext.save()
+            print("All flashcards have been reset.")
+            showingFlashcardResetToast = true  // Trigger the toast
         } catch {
+            print("Failed to reset flashcard progress: \(error.localizedDescription)")
             self.errorMessage = "Failed to reset flashcard progress: \(error.localizedDescription)"
         }
     }

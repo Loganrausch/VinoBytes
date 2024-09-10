@@ -16,15 +16,15 @@ struct DashboardView: View {
     @State private var isFlashcardProgressSheetPresented = false
     @State private var isWhiteDisplaySheetPresented = false
     @ObservedObject var refreshNotifier: RefreshNotifier  // Add this line
-
+    
     @FetchRequest(
         entity: WineEntity.entity(),
         sortDescriptors: []
     ) var wines: FetchedResults<WineEntity>
     
     // List of all regions
-        let allRegions = ["Argentina", "Australia", "Austria", "Chile", "France", "Germany", "Greece", "Hungary", "Italy", "New Zealand", "Portugal", "South Africa", "Spain", "USA"]
-
+    let allRegions = ["Argentina", "Australia", "Austria", "Chile", "France", "Germany", "Greece", "Hungary", "Italy", "New Zealand", "Portugal", "South Africa", "Spain", "USA"]
+    
     var body: some View {
         NavigationView {
             VStack(alignment: .center, spacing: 20) {
@@ -78,13 +78,13 @@ struct DashboardView: View {
                         .overlay(
                             RoundedRectangle(cornerRadius: 10)
                                 .stroke(Color("Maroon"), lineWidth: 2)
-                                
-                                
+                            
+                            
                         )
                         .shadow(radius: 10) // Apply shadow
                     }
                     .padding(.horizontal)
-                  
+                    
                 }
                 .sheet(isPresented: $isFlashcardProgressSheetPresented) {
                     FlashcardProgressView(flashcardProgress: flashcardProgress)
@@ -193,59 +193,62 @@ struct DashboardView: View {
             }
         }
     }
-
-            private func fetchContent() {
-                ContentfulManager.shared.fetchBlogPosts { posts, error in
-                    if let posts = posts {
-                        self.blogPosts = posts
-                        print("Fetched \(posts.count) posts")
-                    } else if let error = error {
-                        print("Error fetching posts: \(error.localizedDescription)")
-                    }
-                }
-                ContentfulManager.shared.fetchWineFact { fact, error in
-                    if let fact = fact {
-                        self.wineFactOfTheWeek = fact
-                    } else {
-                        print("Error fetching wine fact: \(error?.localizedDescription ?? "Unknown error")")
-                    }
-                }
-            }
     
-    private func initializeFlashcardProgress() {
-            var initialProgress: [String: Int] = [:]
-            for region in allRegions {
-                initialProgress[region] = 0 // Start every region at 0%
+    private func fetchContent() {
+        ContentfulManager.shared.fetchBlogPosts { posts, error in
+            if let posts = posts {
+                self.blogPosts = posts
+                print("Fetched \(posts.count) posts")
+            } else if let error = error {
+                print("Error fetching posts: \(error.localizedDescription)")
             }
-            fetchFlashcardProgress()
-            flashcardProgress = initialProgress
         }
-    
-    private func fetchFlashcardProgress() {
-            let request: NSFetchRequest<StudyCard> = StudyCard.fetchRequest()
-            do {
-                let results = try context.fetch(request)
-                var progressCount: [String: Int] = [:]
-                var totalCount: [String: Int] = [:]
-
-                for card in results {
-                    let region = card.region ?? "Unknown"
-                    totalCount[region, default: 0] += 1
-                    if card.boxNumber >= 3 {
-                        progressCount[region, default: 0] += 1
-                    }
-                }
-
-                for (region, knownCount) in progressCount {
-                    let total = totalCount[region] ?? 1 // Avoid division by zero
-                    let percentage = (knownCount * 100) / total
-                    flashcardProgress[region] = percentage
-                }
-            } catch {
-                print("Error fetching flashcard data: \(error)")
+        ContentfulManager.shared.fetchWineFact { fact, error in
+            if let fact = fact {
+                self.wineFactOfTheWeek = fact
+            } else {
+                print("Error fetching wine fact: \(error?.localizedDescription ?? "Unknown error")")
             }
         }
     }
+    
+    private func initializeFlashcardProgress() {
+        if flashcardProgress.isEmpty {  // Only initialize if it's empty
+            for region in allRegions {
+                flashcardProgress[region] = 0 // Start every region at 0%
+            }
+        }
+        fetchFlashcardProgress()  // Always fetch to update with the latest data
+    }
+    
+    private func fetchFlashcardProgress() {
+        let request: NSFetchRequest<StudyCard> = StudyCard.fetchRequest()
+        do {
+            let results = try context.fetch(request)
+            var progressCount: [String: Int] = [:]
+            var totalCount: [String: Int] = [:]
+            
+            // Calculate the number of cards per region and the number qualifying for progress
+            for card in results {
+                let region = card.region ?? "Unknown"
+                totalCount[region, default: 0] += 1
+                if card.boxNumber >= 3 {  // Assuming progress is counted from box 3 and above
+                    progressCount[region, default: 0] += 1
+                }
+            }
+            
+            // Calculate and update progress for each region
+            for region in allRegions {
+                let knownCount = progressCount[region] ?? 0
+                let total = totalCount[region] ?? 1  // Avoid division by zero
+                let percentage = (knownCount * 100) / total
+                flashcardProgress[region] = percentage
+            }
+        } catch {
+            print("Error fetching flashcard data: \(error)")
+        }
+    }
+}
         
 
 // Custom ProgressViewStyle

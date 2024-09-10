@@ -31,21 +31,21 @@ let foodWinePairingsData = [
                 description: "Ideal for rich, red meat dishes like steak because it matches their intensity. Known for its bold tannins and flavors of black cherry and blackcurrant.",
                 servingTemperature: "Serve at 16-18°C (60-65°F)",
                 glassType: "Use a large, bold wine glass to enhance aromatics.",
-                decantingRecommendation: "Decant for at least 30 minutes before serving."
+                decantingRecommendation: "Decant for at least one hour before serving to soften the tannins and bring out more nuanced flavors."
             ),
             GrapeDetail(
                 name: "Malbec (Red)",
                 description: "Especially Argentine Malbec, known for its dark fruit flavors and smoky finish. A great match for grilled steaks.",
                 servingTemperature: "Serve at 16-18°C (60-65°F)",
                 glassType: "Use a broad glass to capture its complex aromas.",
-                decantingRecommendation: "Beneficial to decant for up to 1 hour."
+                decantingRecommendation: "Decant for 30-60 minutes to allow the fruit flavors to fully develop and to soften the tannins."
             ),
             GrapeDetail(
                 name: "Syrah/Shiraz (Red)",
                 description: "Offers robust flavors of dark fruit and spice, standing up well to heavily seasoned or grilled steaks.",
                 servingTemperature: "Serve at 15-18°C (59-64°F)",
                 glassType: "Best served in a medium-sized wine glass.",
-                decantingRecommendation: "Decanting recommended for young wines."
+                decantingRecommendation: "Decant for 30 minutes to one hour, especially if the wine is young, to open up the flavors and aromas."
             ),
             GrapeDetail(
                 name: "Merlot (Red)",
@@ -66,23 +66,25 @@ let foodWinePairingsData = [
                 description: "Known for its bold fruit and often spicy character, Zinfandel can be a good choice for barbecued steak.",
                 servingTemperature: "Serve at 15-18°C (59-64°F)",
                 glassType: "Use a glass with a wide bowl to enhance its spicy notes.",
-                decantingRecommendation: "Decant for 30 minutes to unleash flavors."
+                decantingRecommendation: "Decant for 30 minutes to soften the tannins and highlight the wine’s fruit character."
             ),
             GrapeDetail(
                 name: "Tannat (Red)",
                 description: "Known for its high tannin levels, Tannat is a powerful pairing for fatty cuts of steak.",
                 servingTemperature: "Serve at 16-18°C (60-65°F)",
                 glassType: "Best in a glass with a wide opening to soften tannins.",
-                decantingRecommendation: "Decant for an hour or more for best results."
+                decantingRecommendation: "Decant for an hour or more to mellow the tannins and fully develop the wine’s flavors."
             ),
             GrapeDetail(
                 name: "Nebbiolo (Red)",
                 description: "Famous for producing Barolo and Barbaresco, Nebbiolo wines have high acidity and tannin, pairing well with richer steak dishes.",
                 servingTemperature: "Serve at 16-18°C (60-65°F)",
                 glassType: "Use a large bowl glass to collect its aromatics.",
-                decantingRecommendation: "Decant for several hours before serving."
+                decantingRecommendation: "Decant for several hours before serving to allow the wine to soften and develop its intricate flavor profile."
             )
-    ], description: "Rich, bold red wines work best with steak."),
+    ], description: "Steak dishes, with their rich, savory flavors, pair best with bold red wines that offer firm tannins, good acidity, and complex flavor profiles."
+                   
+                   ),
     
     
     
@@ -709,7 +711,7 @@ let foodWinePairingsData = [
                 decantingRecommendation: "Not required; serve immediately after opening to maintain effervescence."
             )
         ],
-        description: "Selecting the right wine for lobster enhances this luxurious dish, with choices ranging from rich, oaky whites to crisp, effervescent options."
+        description: "Lobster, with its sweet and tender meat, pairs beautifully with wines that offer a balance of richness, acidity, and aromatics. Whether choosing a full-bodied, oaky Chardonnay, a floral Viognier, or a crisp Champagne, the right wine can elevate the luxurious flavors of this seafood delicacy."
     ),
     
     FoodWinePairing(
@@ -1158,6 +1160,118 @@ let foodWinePairingsData = [
             )
         ],
         description: "Artichokes, with their unique flavor and texture, pair well with wines that offer crisp acidity and herbal notes. The selected wines are chosen to enhance the natural flavors of the artichokes without overwhelming them, ensuring a harmonious match with each preparation style."
+    ),
+    
+    FoodWinePairing(
+        food: "Spicy Foods",
+        grapes: [
+            GrapeDetail(
+                name: "Riesling (Off-Dry White)",
+                description: "Off-dry Riesling has a slight sweetness that helps balance the heat of spicy dishes like Thai curry or Indian cuisine, while its high acidity refreshes the palate.",
+                servingTemperature: "Serve well-chilled at 6-8°C (43-46°F)",
+                glassType: "A tall, slender glass helps to concentrate the wine's aromatic profile.",
+                decantingRecommendation: "Not required, serve chilled."
+            ),
+            GrapeDetail(
+                name: "Gewürztraminer (White)",
+                description: "Gewürztraminer’s exotic floral and spice notes complement spicy foods, particularly dishes with Asian spices, offering a balance of sweetness and acidity.",
+                servingTemperature: "Serve chilled at 8-10°C (46-50°F)",
+                glassType: "A standard white wine glass will concentrate the vibrant aromatics.",
+                decantingRecommendation: "No decanting needed."
+            ),
+            GrapeDetail(
+                name: "Syrah (Red)",
+                description: "Syrah, with its bold, peppery profile and dark fruit flavors, works well with spicy foods that have a smoky or peppery element, such as spicy grilled meats or dishes with a pepper sauce.",
+                servingTemperature: "Serve at 15-18°C (59-64°F)",
+                glassType: "A glass with a wide opening best supports the bold flavors of Syrah.",
+                decantingRecommendation: "Decant for up to an hour to soften the wine and bring forward its complex flavors."
+            ),
+            GrapeDetail(
+                name: "Rosé (Dry or Off-Dry)",
+                description: "A dry or slightly off-dry Rosé can handle the heat of spicy dishes, particularly Mediterranean or Middle Eastern cuisine, balancing the flavors without overpowering the dish.",
+                servingTemperature: "Serve well-chilled at 6-8°C (43-46°F)",
+                glassType: "A standard rosé glass, which is similar to a white wine glass, enhances its fruity and floral notes.",
+                decantingRecommendation: "No decanting required; serve chilled."
+            ),
+            GrapeDetail(
+                name: "Moscato d'Asti (Sparkling White)",
+                description: "With its low alcohol and sweet, fruity flavors, Moscato d'Asti pairs well with spicy dishes, helping to soothe the palate and balance intense spices.",
+                servingTemperature: "Serve well-chilled at 6-8°C (43-46°F)",
+                glassType: "A slim flute to preserve bubbles and enhance the lifting of aromas.",
+                decantingRecommendation: "Not required; serve immediately after opening to maintain effervescence."
+            )
+        ],
+        description: "Spicy foods often require wines that either have a touch of sweetness, lower alcohol content, or bold flavors with spice notes to balance the heat and enhance the flavors of the dish."
+    ),
+    
+    FoodWinePairing(
+        food: "Plant-Based Proteins",
+        grapes: [
+            GrapeDetail(
+                name: "Pinot Noir (Red)",
+                description: "Pinot Noir’s light body and red fruit flavors pair well with plant-based proteins like lentils, tofu, and tempeh, especially when prepared with earthy spices or herbs.",
+                servingTemperature: "Serve at 14-16°C (57-61°F)",
+                glassType: "A Burgundy glass, with a wide bowl, is ideal for enhancing its delicate flavors.",
+                decantingRecommendation: "Decanting can open up the flavors, particularly in older vintages."
+            ),
+            GrapeDetail(
+                name: "Sauvignon Blanc (White)",
+                description: "The crisp acidity and herbal notes of Sauvignon Blanc complement a variety of plant-based proteins, particularly in fresh salads or dishes with a lot of herbs.",
+                servingTemperature: "Serve chilled at 8-10°C (46-50°F)",
+                glassType: "A standard white wine glass will concentrate the vibrant aromatics.",
+                decantingRecommendation: "No decanting needed."
+            ),
+            GrapeDetail(
+                name: "Chenin Blanc (White)",
+                description: "Chenin Blanc, with its balance of acidity and slight sweetness, is versatile enough to pair with a variety of plant-based proteins, particularly those in mildly spiced or savory dishes.",
+                servingTemperature: "Serve well-chilled at 6-8°C (43-46°F)",
+                glassType: "A tall, slender glass helps to emphasize the wine's aromatic profile.",
+                decantingRecommendation: "Not required, serve chilled."
+            ),
+            GrapeDetail(
+                name: "Zinfandel (Red)",
+                description: "Zinfandel’s bold fruit and spice profile can complement plant-based proteins with smoky or barbecue flavors, such as grilled vegetables or tempeh skewers.",
+                servingTemperature: "Serve at 15-18°C (59-64°F)",
+                glassType: "A robust glass to support its bold flavors and spicy undertones.",
+                decantingRecommendation: "Decant for about 30 minutes to enhance the flavors and soften the tannins."
+            )
+        ],
+        description: "Plant-based proteins, with their versatile flavors and textures, pair well with wines that offer a range of profiles from light and crisp whites to bold, fruity reds."
+    ),
+    
+    FoodWinePairing(
+        food: "Fruit-Based Desserts",
+        grapes: [
+            GrapeDetail(
+                name: "Moscato d'Asti (Sparkling White)",
+                description: "Moscato d'Asti, with its light sweetness and low alcohol, is perfect for pairing with fruit-based desserts like tarts and fruit salads, enhancing the fresh fruit flavors.",
+                servingTemperature: "Serve well-chilled at 6-8°C (43-46°F)",
+                glassType: "A slim flute to preserve bubbles and enhance the lifting of aromas.",
+                decantingRecommendation: "Not required; serve immediately after opening to maintain effervescence."
+            ),
+            GrapeDetail(
+                name: "Late-Harvest Riesling (White)",
+                description: "Late-harvest Riesling, with its rich, honeyed sweetness and balanced acidity, pairs beautifully with fruit pies or cobblers, providing a sweet yet refreshing finish.",
+                servingTemperature: "Serve well-chilled at 6-8°C (43-46°F)",
+                glassType: "A tall, slender glass helps to concentrate the wine's aromatic profile.",
+                decantingRecommendation: "Not required, serve chilled."
+            ),
+            GrapeDetail(
+                name: "Brachetto d’Acqui (Red Sparkling)",
+                description: "Brachetto d’Acqui, a light sparkling red wine, pairs well with berry-based desserts, offering a sweet, floral complement to dishes like strawberry shortcake or raspberry sorbet.",
+                servingTemperature: "Serve well-chilled at 6-8°C (43-46°F)",
+                glassType: "A standard flute glass to enhance the bubbles and fruity aromas.",
+                decantingRecommendation: "No decanting needed; serve immediately after opening to preserve bubbles."
+            ),
+            GrapeDetail(
+                name: "Sauternes (White Dessert Wine)",
+                description: "Sauternes, with its rich, luscious sweetness and notes of apricot and honey, pairs exceptionally well with baked fruit desserts, such as apple crisp or peach cobbler.",
+                servingTemperature: "Serve well-chilled at 8-10°C (46-50°F)",
+                glassType: "A small dessert wine glass helps focus the complex, rich flavors.",
+                decantingRecommendation: "Not required, but slight aeration can enhance the aromas."
+            )
+        ],
+        description: "Fruit-based desserts, with their natural sweetness and acidity, pair well with wines that complement their flavors without overwhelming them. The selected wines offer a balance of sweetness, acidity, and refreshing qualities to enhance the dessert experience."
     )
 
 ]

@@ -97,14 +97,14 @@ struct GrapeDetailView: View {
                     }
                 }
 
-                SectionBox(title: "Notable Producers") {
-                    VStack(alignment: .leading, spacing: 5) {  // Ensures content inside is aligned to the leading edge
-                        ForEach(grape.details.notableProducers, id: \.self) { producer in
-                            Text(producer)
-                                .frame(maxWidth: .infinity, alignment: .leading) // Aligns text to the left
-                        }
-                    }
-                }
+              //  SectionBox(title: "Notable Producers") {
+                //    VStack(alignment: .leading, spacing: 5) {  // Ensures content inside is aligned to the leading edge
+                  //      ForEach(grape.details.notableProducers, id: \.self) { producer in
+                    //        Text(producer)
+                      //          .frame(maxWidth: .infinity, alignment: .leading) // Aligns text to the left
+                   //     }
+                   // }
+               // }
 
                 SectionBox(title: "Other Names") {
                     Text(grape.details.otherNames)

@@ -40,7 +40,7 @@ struct RegionDetailView: View {
                 }
 
                 if !region.subregions.isEmpty {
-                    SectionBox(title: "Subregions") {
+                    SectionBox(title: "Notable Areas") {
                         VStack(alignment: .leading) {
                             ForEach(region.subregions, id: \.self) { subregion in
                                 Text(subregion)
@@ -48,6 +48,7 @@ struct RegionDetailView: View {
                         }
                     }
                 }
+                
 
                 SectionBox(title: "Climate") {
                     Text(region.climate)
@@ -65,15 +66,15 @@ struct RegionDetailView: View {
                     Text(region.keyWineStyles)
                 }
 
-                if !region.topProducers.isEmpty {
-                    SectionBox(title: "Top Producers") {
-                        VStack(alignment: .leading) {
-                            ForEach(region.topProducers, id: \.self) { producer in
-                                Text(producer)
-                            }
-                        }
-                    }
-                }
+               // if !region.topProducers.isEmpty {
+               //     SectionBox(title: "Top Producers") {
+                //        VStack(alignment: .leading) {
+               //             ForEach(region.topProducers, id: \.self) { producer in
+               //                 Text(producer)
+               //             }
+               //         }
+               //     }
+              //  }
 
                 // Uncomment if icons are to be used
                 /*

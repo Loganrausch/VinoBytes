@@ -7,6 +7,8 @@
 
 import Foundation
 
+//THE PRODUCERS IN THIS SECTION ARE NOT VERIFIED.. WILL BE ADDING LATER BUT HAVE PRODUCER PLACEHOLDERS IN PLACE FOR NOW. ALL OTHER INFORMATION IS VERIFIED AND CORRECT.
+
 struct GrapeData {
     static let redGrapes: [Grape] = [
     
@@ -40,9 +42,9 @@ struct GrapeData {
                     "Rosé Wines: Complements lighter dishes like salads, seafood, and poultry."
                 ],
                 notableProducers: [
-                    "Gaia Wines",
-                    "Skouras Winery",
-                    "Domaine Spiropoulos"
+                    "Gaia Wines (Nemea, Greece)",
+                    "Skouras Winery (Nemea, Greece)",
+                    "Domaine Spiropoulos (Nemea, Greece)"
                 ],
                 otherNames: "Locally known as Agiorgitiko, which means 'Saint George's grape.'",
                 grapeSummary: "Agiorgitiko is a versatile grape, capable of producing a wide range of wine styles, from refreshing rosés to concentrated sweet wines. It is often compared to Merlot for its versatility and approachable style. Agiorgitiko plays a significant role in Greece’s wine production."
@@ -80,9 +82,10 @@ struct GrapeData {
                     "Rosé Wines: Complements lighter fare like charcuterie, grilled vegetables, and poultry."
                 ],
                 notableProducers: [
-                    "Mastroberardino",
-                    "Feudi di San Gregorio",
-                    "Terredora di Paolo"
+                    "Mastroberardino (Campania, Italy)",
+                    "Feudi di San Gregorio (Campania, Italy)",
+                    "Terredora di Paolo (Campania, Italy)",
+                    "Cantine del Notaio (Basilicata, Italy)"
                 ],
                 otherNames: "Sometimes referred to as 'the Barolo of the South' due to its tannic structure and aging potential.",
                 grapeSummary: "Aglianico is a noble grape variety of southern Italy, known for producing robust, age-worthy wines. Its high acidity and tannins make it ideal for long aging, and it is often compared to Nebbiolo for its structure and complexity. Aglianico is a cornerstone of Italian viticulture, particularly in the regions of Campania and Basilicata."
@@ -91,46 +94,46 @@ struct GrapeData {
             iconNames: ["leaf", "drop"]
         ),
 
-Grape(
-    name: "Alicante Bouschet",
-    details: GrapeDetails(
-        origin: "Alicante Bouschet is a teinturier grape variety created by Henri Bouschet in France in 1866 by crossing Petit Bouschet with Grenache. It is known for its deep color and high anthocyanin content.",
-        countries: Countries(
-            primary: [
-                "France: Particularly in the Languedoc and Provence regions.\n",
-                "Portugal: Widely grown in the Alentejo region."
-            ]
+        Grape(
+            name: "Alicante Bouschet",
+            details: GrapeDetails(
+                origin: "Alicante Bouschet is a teinturier grape variety created by Henri Bouschet in France in 1866 by crossing Petit Bouschet with Grenache. It is known for its deep color and high anthocyanin content.",
+                countries: Countries(
+                    primary: [
+                        "Portugal: Widely grown in the Alentejo region, where it is a key component in many red blends and varietal wines.",
+                        "Spain: Known as Garnacha Tintorera, especially in regions like Castilla-La Mancha, where it adds color and structure to various blends."
+                    ]
+                ),
+                tastingNotes: TastingNotes(
+                    color: "Deep ruby to purple.",
+                    aroma: "Aromas of dark berries, plum, and cherry, with hints of spices, earth, and tobacco.",
+                    palate: "Full-bodied with firm tannins and balanced acidity. Flavors of black fruits, such as blackberry and black cherry, with notes of pepper and chocolate.",
+                    finish: "Long and robust with lingering fruit and spice notes."
+                ),
+                viticulturalCharacteristics: ViticulturalCharacteristics(
+                    climate: "Thrives in warm, sunny climates with well-drained soils.",
+                    soil: "Prefers a variety of soil types, including sandy, clay, and limestone soils.",
+                    growingConditions: "Vigorous and productive, known for its resistance to disease and ability to produce deeply colored wines."
+                ),
+                wineStyles: [
+                    "Red Wines: Often used in blends to add color, body, and complexity.",
+                    "Varietal Wines: Produces rich, dark wines with aging potential."
+                ],
+                foodPairing: [
+                    "Red Wines: Pairs well with grilled meats, game, stews, and dishes with robust flavors.",
+                    "Varietal Wines: Complements hearty dishes, aged cheeses, and dark chocolate."
+                ],
+                notableProducers: [
+                    "Herdade do Esporão (Alentejo, Portugal)",
+                    "Adega de Borba (Alentejo, Portugal)",
+                    "Bodegas Castaño (Murcia, Spain)"
+                ],
+                otherNames: "Sometimes referred to as 'Garnacha Tintorera' in Spain.",
+                grapeSummary: "Alicante Bouschet is one of the few grape varieties with red flesh, making it unique in its ability to produce deeply colored wines. It is valued for its versatility in blending and its contribution to the structure and color of wines."
+            ),
+            imageName: "alicante_bouschet",
+            iconNames: ["leaf", "drop"]
         ),
-        tastingNotes: TastingNotes(
-            color: "Deep ruby to purple.",
-            aroma: "Aromas of dark berries, plum, and cherry, with hints of spices, earth, and tobacco.",
-            palate: "Full-bodied with firm tannins and balanced acidity. Flavors of black fruits, such as blackberry and black cherry, with notes of pepper and chocolate.",
-            finish: "Long and robust with lingering fruit and spice notes."
-        ),
-        viticulturalCharacteristics: ViticulturalCharacteristics(
-            climate: "Thrives in warm, sunny climates with well-drained soils.",
-            soil: "Prefers a variety of soil types, including sandy, clay, and limestone soils.",
-            growingConditions: "Vigorous and productive, known for its resistance to disease and ability to produce deeply colored wines."
-        ),
-        wineStyles: [
-            "Red Wines: Often used in blends to add color, body, and complexity.\n",
-            "Varietal Wines: Produces rich, dark wines with aging potential."
-        ],
-        foodPairing: [
-            "Red Wines: Pairs well with grilled meats, game, stews, and dishes with robust flavors.\n",
-            "Varietal Wines: Complements hearty dishes, aged cheeses, and dark chocolate."
-        ],
-        notableProducers: [
-            "Herdade do Esporão",
-            "Adega de Borba",
-            "Château de la Selve"
-        ],
-        otherNames: "Sometimes referred to as 'Garnacha Tintorera' in Spain.",
-        grapeSummary: "Alicante Bouschet is one of the few grape varieties with red flesh, making it unique in its ability to produce deeply colored wines. It is valued for its versatility in blending and its contribution to the structure and color of wines."
-    ),
-    imageName: "alicante_bouschet",
-    iconNames: ["leaf", "drop"]
-),
 
 
 Grape(
@@ -162,9 +165,9 @@ Grape(
                     "Rosé Wines: Complements lighter dishes, smoked trout, and white meats."
                 ],
                 notableProducers: [
-                    "Luis Pato",
-                    "Niepoort",
-                    "Quinta das Bágeiras"
+                    "Luis Pato (Bairrada, Portugal)",
+                    "Niepoort (Douro, Portugal)",
+                    "Quinta das Bágeiras (Bairrada, Portugal)"
                 ],
                 otherNames: "Also known as Tinta Bairrada, Tinta Poeirinha.",
                 grapeSummary: "Baga is often compared to Pinot Noir and Nebbiolo due to its ability to reflect the terroir and its high acidity and tannin structure. It is essential in the production of Bairrada's signature sparkling and red wines."
@@ -200,9 +203,9 @@ Grape(
             "Red Wines: Pairs well with pizza, stews, mushroom dishes, grilled meats, and aged cheeses like Pecorino and Asiago."
         ],
         notableProducers: [
-            "Vietti",
-            "Braida",
-            "Giacomo Bologna"
+            "Vietti (Piedmont, Italy)",
+            "Braida (Piedmont, Italy)",
+            "Pio Cesare (Piedmont, Italy)"
         ],
         otherNames: "Known as 'Barbera Nera' in some regions.",
         grapeSummary: "Barbera is often overshadowed by Nebbiolo in Piedmont but is beloved for its versatility and approachable style. Its high acidity makes it a perfect food wine."
@@ -241,10 +244,11 @@ Grape(
             "Red Wines: Pairs well with smoked sausages, red potato goulash, and cheesy spaetzle dumplings."
         ],
         notableProducers: [
-            "Weingut Moric",
-            "Weingut Prieler",
-            "Heinrich Winery"
-        ],
+                "Weingut Moric (Burgenland, Austria)",
+                "Weingut Prieler (Burgenland, Austria)",
+                "Heinrich Winery (Burgenland, Austria)",
+                "Weninger (Sopron, Hungary; also operates in Burgenland, Austria)"
+            ],
         otherNames: "Known as Kékfrankos in Hungary and Lemberger in Germany and the United States.",
         grapeSummary: "Blaufränkisch is notable for its ability to reflect terroir, producing a wide range of wine styles from different regions. It is often compared to Syrah for its spicy character and to Pinot Noir for its ability to age gracefully."
     ),
@@ -282,8 +286,8 @@ Grape(
                 "Rosé Wines: Excellent with tapas, charcuterie, and lighter fare."
             ],
             notableProducers: [
-                "Mustiguillo",
-                "Bodega Sierra Norte"
+                "Mustiguillo (Utiel-Requena, Valencia, Spain)",
+                "Bodega Sierra Norte (Utiel-Requena, Valencia, Spain)"
             ],
             otherNames: "None",
             grapeSummary: "Bobal is known for its deep color and ability to produce both full-bodied red wines and fresh rosés. It is appreciated for its adaptability to the hot climate of central Spain and its versatility in winemaking."
@@ -292,10 +296,10 @@ Grape(
         iconNames: ["leaf", "drop"]
     ),
 
-Grape(
+        Grape(
             name: "Bonarda",
             details: GrapeDetails(
-                origin: "Originally from Italy, Bonarda is now predominantly found in Argentina where it is the second most planted red grape variety after Malbec.",
+                origin: "Bonarda in Argentina refers to Douce Noir, a grape variety originally from the Savoie region in France. It is now predominantly found in Argentina, where it is the second most planted red grape variety after Malbec. It is important to note that the name 'Bonarda' is also used in Italy to refer to different grape varieties, such as Bonarda Piemontese and Bonarda Novarese (Uva Rara), which are distinct from the Bonarda in Argentina.",
                 countries: Countries(
                     primary: [
                         "Argentina: Widely planted across Mendoza and San Juan."
@@ -319,11 +323,11 @@ Grape(
                     "Red Wines: Pairs well with pizza, pasta dishes with red sauces, and various meats like chicken and pork."
                 ],
                 notableProducers: [
-                    "Familia Zuccardi",
-                    "El Esteco"
+                    "Familia Zuccardi (Mendoza, Argentina)",
+                    "El Esteco (Salta, Argentina)"
                 ],
-                otherNames: "Also known as Douce Noir in California and Charbono in other regions.",
-                grapeSummary: "Bonarda is valued for its fruit-forward, accessible wines that are best enjoyed while young. It plays a significant role in Argentina's red wine production."
+                otherNames: "Also known as Douce Noir in its French origin and Charbono in California.",
+                grapeSummary: "Bonarda, known as Douce Noir or Charbono in other regions, is valued for its fruit-forward, accessible wines that are best enjoyed while young. It plays a significant role in Argentina's red wine production, particularly in the Mendoza and San Juan regions."
             ),
             imageName: "bonarda",
             iconNames: ["leaf", "drop"]
@@ -356,8 +360,9 @@ Grape(
                     "Ideal with desserts, particularly those featuring berries, chocolate, or cream."
                 ],
                 notableProducers: [
-                    "Braida",
-                    "Casa Vinicola H. M. Borgo"
+                    "Marenco (Piedmont, Italy)",
+                    "Braida di Giacomo Bologna (Piedmont, Italy)",
+                    "Cantina Sociale di Acqui (Piedmont, Italy)"
                 ],
                 otherNames: "Brachetto d’Acqui when made in its traditional sparkling, sweet style.",
                 grapeSummary: "Brachetto is celebrated for its sweet, aromatic wines that showcase its distinctive floral and fruity notes. It is often enjoyed as a dessert wine, particularly in its sparkling form."
@@ -395,9 +400,9 @@ Grape(
                     "Ideal with roasted meats, poultry, and hearty vegetable dishes like ratatouille."
                 ],
                 notableProducers: [
-                    "Château Cheval Blanc",
-                    "Domaine Bernard Baudry",
-                    "Frog's Leap"
+                    "Château Cheval Blanc (Bordeaux, France)",
+                    "Domaine Bernard Baudry (Loire Valley, France)",
+                    "Frog's Leap (Napa Valley, USA)"
                 ],
                 otherNames: "Also known as Breton in the Loire Valley.",
                 grapeSummary: "Cabernet Franc is appreciated for its finesse, aromatic complexity, and ability to age gracefully. It serves both as a blending grape and as a standalone varietal in many regions."
@@ -410,11 +415,12 @@ Grape(
 Grape(
             name: "Cabernet Sauvignon",
             details: GrapeDetails(
-                origin: "Originally from Bordeaux, France, Cabernet Sauvignon has become one of the most widely recognized red wine grape varieties globally.",
+                origin: "Cabernet Sauvignon, originating from the Bordeaux region of France, has transcended its regional beginnings to become one of the most celebrated and widely planted red wine grape varieties worldwide. Its rise to fame is attributed to its prominent role in Bordeaux blends, where it contributes structure, tannins, and longevity. Over centuries, it has adapted to a variety of climates and terroirs, making it a versatile grape that has helped to establish and enhance the reputation of emerging wine regions across the globe. This includes the acclaimed vineyards of Napa Valley in California, the diverse terrains of Chile and Australia, the historic estates of South Africa, and as a crucial component in Italy’s Super Tuscans, where it adds depth and complexity to these innovative blends.",
                 countries: Countries(
                     primary: [
-                        "France: A staple in Bordeaux blends.\n",
-                        "USA: Dominant in California, especially Napa Valley.\n",
+                        "France: A staple in Bordeaux blends.",
+                        "USA: Dominant in California, especially Napa Valley.",
+                        "Italy: Integral to Super Tuscans alongside traditional regions.",
                         "Chile, Australia, South Africa: Extensively planted."
                     ]
                 ),
@@ -436,17 +442,26 @@ Grape(
                     "Pairs excellently with grilled steaks, lamb, and hearty stews."
                 ],
                 notableProducers: [
-                    "Château Margaux",
-                    "Robert Mondavi Winery",
-                    "Penfolds"
+                    "Château Margaux (Bordeaux, France)",
+                    "Château Latour (Bordeaux, France)",
+                    "Château Haut-Brion (Bordeaux, France)",
+                    "Château Mouton Rothschild (Bordeaux, France)",
+                    "Robert Mondavi Winery (Napa Valley, USA)",
+                    "Penfolds (South Australia, Australia)",
+                    "Tenuta San Guido - Sassicaia (Tuscany, Italy)",
+                    "Ornellaia (Tuscany, Italy)",
+                    "Antinori - Tignanello (Tuscany, Italy)",
+                    "Marchesi de' Frescobaldi - Mormoreto (Tuscany, Italy)"
                 ],
-                otherNames: "None",
-                grapeSummary: "Cabernet Sauvignon is celebrated for its depth, longevity, and structure. It plays a central role in some of the world's most prestigious wines."
+                otherNames: "None - Cabernet Sauvignon is universally recognized by this name across different regions.",
+                grapeSummary: "Cabernet Sauvignon is renowned for its depth, structure, and capacity to produce complex wines with exceptional aging potential. Celebrated for its robust tannins and rich flavors of dark fruits and spices, it has played a pivotal role in crafting some of the world’s most prestigious wines. The grape’s adaptability to different climates and soils, combined with its consistent quality across both Old and New World wine regions, has solidified its status as a cornerstone of the global wine industry. Its influence extends beyond the vineyard, shaping winemaking techniques and consumer preferences around the world."
             ),
             imageName: "cabernet_sauvignon",
             iconNames: ["leaf", "drop"]
         ),
-Grape(
+
+        
+        Grape(
             name: "Cannonau",
             details: GrapeDetails(
                 origin: "Cannonau is believed to be native to Sardinia, Italy, and is genetically identical to Grenache, which is widespread across Spain and France.",
@@ -473,8 +488,8 @@ Grape(
                     "Pairs well with rich, hearty dishes such as roasted meats, game, and strong cheeses."
                 ],
                 notableProducers: [
-                    "Cantina di Santadi",
-                    "Argiolas"
+                    "Cantina di Santadi (Sardinia, Italy)",
+                    "Argiolas (Sardinia, Italy)"
                 ],
                 otherNames: "Identical to Grenache or Garnacha but locally known as Cannonau.",
                 grapeSummary: "Cannonau is celebrated for its bold flavors and is a staple in Sardinian culture, often associated with longevity of life among the island’s inhabitants."
@@ -515,8 +530,10 @@ Grape(
                     "Red Wines: Pairs well with grilled meats, game, and hearty stews."
                 ],
                 notableProducers: [
-                    "Domaine de Courbissac",
-                    "Château Maris"
+                    "Domaine de Courbissac (Languedoc-Roussillon, France)",
+                    "Château Maris (Languedoc-Roussillon, France)",
+                    "Bodegas San Valero (Aragón, Spain)",
+                    "Cantina Santadi (Sardinia, Italy)"
                 ],
                 otherNames: "Known as Mazuelo in some regions of Spain.",
                 grapeSummary: "Carignan is known for its ability to produce deeply colored, robust wines, often used in blends for added complexity and structure."
@@ -525,44 +542,7 @@ Grape(
             iconNames: ["leaf", "drop"]
         ),
 
-        // Cariñena Details
-Grape(
-            name: "Cariñena",
-            details: GrapeDetails(
-                origin: "Cariñena, also known as Carignan, originates from the Aragón region of Spain, where it is still a prominent variety.",
-                countries: Countries(
-                    primary: [
-                        "Spain: Particularly in the Aragón region.\n",
-                        "France: Common in the southern regions, known as Carignan."
-                    ]
-                ),
-                tastingNotes: TastingNotes(
-                    color: "Dark garnet red.",
-                    aroma: "Complex aromas of ripe plum, blackberry, with earthy and herbal undertones.",
-                    palate: "Full-bodied with pronounced tannins and acidity, showcasing flavors of dark fruits, herbs, and mineral notes.",
-                    finish: "Long and intense, often with a hint of spice and smoke."
-                ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Adapts well to hot, arid climates.",
-                    soil: "Performs best in limestone and clay soils.",
-                    growingConditions: "Durable and resistant to drought, but needs careful management to control yields and enhance quality."
-                ),
-                wineStyles: [
-                    "Red Wines: Predominantly made as varietal wines or used in blends for structure and depth."
-                ],
-                foodPairing: [
-                    "Excellent with lamb, beef, and spicy dishes."
-                ],
-                notableProducers: [
-                    "Bodegas San Alejandro",
-                    "Bodegas Paniza"
-                ],
-                otherNames: "Also known globally as Carignan, and as Mazuelo in other parts of Spain.",
-                grapeSummary: "Cariñena is esteemed for its contribution to robust, structured wines, often bringing depth and longevity to blends."
-            ),
-            imageName: "carinena",
-            iconNames: ["leaf", "drop"]
-        ),
+    
         // Carmenere Details
         Grape(
             name: "Carmenere",
@@ -592,8 +572,8 @@ Grape(
                     "Ideal with lamb, spicy dishes, and hearty stews."
                 ],
                 notableProducers: [
-                    "Viña Montes",
-                    "Concha y Toro"
+                    "Viña Montes (Colchagua Valley, Chile)",
+                    "Concha y Toro (Central Valley, Chile)"
                 ],
                 otherNames: "Sometimes confused with Merlot in its early days in Chile.",
                 grapeSummary: "Carmenere is celebrated for its rich, smooth character and complex spice and fruit flavors, embodying the winemaking heritage of Chile."
@@ -602,9 +582,9 @@ Grape(
             iconNames: ["leaf", "drop"]
         ),
 
-        // Castelao Details
+        // Castelão Details
         Grape(
-            name: "Castelao",
+            name: "Castelão",
             details: GrapeDetails(
                 origin: "Native to Portugal, particularly thriving in the regions of Ribatejo and Península de Setúbal.",
                 countries: Countries(
@@ -630,11 +610,11 @@ Grape(
                     "Pairs well with traditional Portuguese dishes, grilled meats, and cheeses."
                 ],
                 notableProducers: [
-                    "José Maria da Fonseca",
-                    "Quinta do Carmo"
+                    "José Maria da Fonseca (Península de Setúbal, Portugal)",
+                    "Quinta do Carmo (Alentejo, Portugal)"
                 ],
                 otherNames: "Also known as Periquita in some local regions.",
-                grapeSummary: "Castelao is a versatile grape known for its adaptability and the rustic, approachable wines it produces."
+                grapeSummary: "Castelão is a versatile grape known for its adaptability and the rustic, approachable wines it produces."
             ),
             imageName: "castelao",
             iconNames: ["leaf", "drop"]
@@ -670,8 +650,9 @@ Grape(
                     "Excellent with light dishes, seafood, and Mediterranean cuisine."
                 ],
                 notableProducers: [
-                    "Domaine de Triennes",
-                    "Chateau Musar"
+                    "Domaine de Triennes (Provence, France)",
+                    "AA Badenhorst (Swartland, South Africa)",
+                    "Chateau Musar (Bekaa Valley, Lebanon)"
                 ],
                 otherNames: "Often used synonymously with its blends and sometimes referred to as Hermitage in South Africa.",
                 grapeSummary: "Cinsault is favored for its ability to add freshness and aromatic lift to blends, as well as its capability to produce elegant rosé wines."
@@ -708,8 +689,8 @@ Grape(
                     "Valpolicella pairs well with pizza and lighter pasta dishes, while Amarone is excellent with game, roasted meats, and mature cheeses."
                 ],
                 notableProducers: [
-                    "Allegrini",
-                    "Masi Agricola"
+                    "Allegrini (Valpolicella, Veneto)",
+                    "Masi Agricola (Valpolicella, Veneto)"
                 ],
                 otherNames: "None",
                 grapeSummary: "Corvina is best known for its role in creating the distinct styles of red wines from the Veneto region, especially appreciated in the raisined, intense flavors of Amarone."
@@ -746,8 +727,8 @@ Grape(
                     "Ideal with rich meat dishes, such as braised beef, and strong, aged cheeses."
                 ],
                 notableProducers: [
-                    "Tedeshi",
-                    "Tommasi"
+                    "Tedeshi (Valpolicella, Veneto)",
+                    "Tommasi (Valpolicella, Veneto)"
                 ],
                 otherNames: "Often confused with Corvina but is a distinct variety with larger berries and looser clusters.",
                 grapeSummary: "Corvinone is valued for its contribution to the body and structure of Veneto's prestigious red wines, particularly in Amarone, where it adds complexity and aging potential."
@@ -783,10 +764,10 @@ Grape(
                     "Pairs well with grilled meats, charcuterie, and hearty vegetable dishes."
                 ],
                 notableProducers: [
-                    "Château de Beaucastel",
-                    "Domaine du Vieux Télégraphe"
+                    "Château de Beaucastel (Châteauneuf-du-Pape, France)",
+                    "Domaine du Vieux Télégraphe (Châteauneuf-du-Pape, France)"
                 ],
-                otherNames: "Sometimes known simply as Counoise in the U.S.",
+                otherNames: "None",
                 grapeSummary: "Counoise is appreciated for its contribution to the aromatic complexity and freshness in Rhône blends, particularly in those from Châteauneuf-du-Pape."
             ),
             imageName: "counoise",
@@ -1600,7 +1581,7 @@ Grape(
         Grape(
             name: "Nero d’Avola",
             details: GrapeDetails(
-                origin: "Nero d'Avola is the most important and widely planted red wine grape in Sicily, Italy, known for its bold flavors and adaptability.",
+                origin: "Nero d'Avola is the most widely planted red wine grape in Sicily, Italy, known for its bold flavors and adaptability.",
                 countries: Countries(
                     primary: [
                         "Italy: Predominantly grown in Sicily, especially in regions around Siracusa and the southern parts of the island."
@@ -2059,7 +2040,7 @@ Grape(
         Grape(
             name: "St. Laurent",
             details: GrapeDetails(
-                origin: "St. Laurent is a dark-skinned wine grape variety believed to have originated in Austria. It is closely related to Pinot Noir and offers wines with a similar, though distinctly spicier, profile.",
+                origin: "St. Laurent is a dark-skinned wine grape variety with a debated origin. Some believe it originated in Austria, where it is widely grown today, while others suggest it may have French roots due to its genetic similarities with Pinot Noir. Regardless of its origin, St. Laurent is valued for its unique, spicy profile.",
                 countries: Countries(
                     primary: [
                         "Austria: Widely grown, particularly in Lower Austria and Burgenland.\n",
@@ -2326,44 +2307,6 @@ Grape(
             iconNames: ["leaf", "drop"]
         ),
 
-        // Trollinger Details
-        Grape(
-            name: "Trollinger",
-            details: GrapeDetails(
-                origin: "Trollinger, also known as Schiava in Italy, is a red wine grape variety primarily associated with the wine regions of South Tyrol, Italy, and Württemberg, Germany. It produces light, fruity red wines.",
-                countries: Countries(
-                    primary: [
-                        "Germany: Mainly in Württemberg.\n",
-                        "Italy: Known as Schiava in South Tyrol."
-                    ]
-                ),
-                tastingNotes: TastingNotes(
-                    color: "Light red to pale ruby.",
-                    aroma: "Fruity and floral with notes of red berries, cherries, and almonds, with a hint of violet.",
-                    palate: "Light-bodied with low tannins and high acidity, featuring juicy and fresh flavors of red fruit with a slight nuttiness.",
-                    finish: "Refreshing and straightforward, often enjoyed young."
-                ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Thrives in cooler, alpine climates which enhance its freshness and acidity.",
-                    soil: "Performs well in sandy and loamy soils.",
-                    growingConditions: "Hardy and resistant to cold, but prone to high yields which can dilute quality if not managed properly."
-                ),
-                wineStyles: [
-                    "Red Wines: Typically light and easy-drinking, popular as a casual, everyday wine."
-                ],
-                foodPairing: [
-                    "Perfect with traditional German dishes, light pasta dishes, and cold cuts."
-                ],
-                notableProducers: [
-                    "Cantina Tramin",
-                    "Heinrich"
-                ],
-                otherNames: "Known as Schiava in Italy.",
-                grapeSummary: "Trollinger is appreciated for its light, approachable wines that offer a pleasant, fruity experience, making it a popular choice in its native regions."
-            ),
-            imageName: "trollinger",
-            iconNames: ["leaf", "drop"]
-        ),
         // Xinomavro Details
         Grape(
             name: "Xinomavro",
@@ -3051,7 +2994,7 @@ static let whiteGrapes: [Grape] = [
                 "Domaine de la Foliette",
                 "Château de Laubade (for Armagnac)"
             ],
-            otherNames: "Picpoule in some regions.",
+            otherNames: "Sometimes called Picpoule or Piquepoul in certain contexts, but not related to the Piquepoul variety found in Languedoc.",
             grapeSummary: "Folle Blanche is known for its high acidity and crisp, clean profile, making it a versatile grape for both wine and spirit production."
         ),
         imageName: "folle_blanche",
@@ -3089,7 +3032,7 @@ static let whiteGrapes: [Grape] = [
                 "Livio Felluga",
                 "Jermann"
             ],
-            otherNames: "None",
+            otherNames: "Formerly known as Tocai Friulano, but renamed Friulano due to EU regulations to distinguish it from Hungary's Tokaji wines.",
             grapeSummary: "Friulano is appreciated for its fresh, aromatic profile and distinctive almond finish, making it a key white wine from Friuli-Venezia Giulia."
         ),
         imageName: "friulano",
@@ -3175,7 +3118,7 @@ static let whiteGrapes: [Grape] = [
     Grape(
         name: "Gewürztraminer",
         details: GrapeDetails(
-            origin: "Gewürztraminer is a highly aromatic white grape variety believed to have originated in the Alsace region of France. It is known for its distinctively spicy and floral character.",
+            origin: "Gewürztraminer is a highly aromatic white grape variety believed to have originated in the Tramin region (now part of South Tyrol in Italy). It later gained prominence in Alsace, France, where it is known for its distinctively spicy and floral character.",
             countries: Countries(
                 primary: [
                     "France: Especially in Alsace.\n",
@@ -3217,7 +3160,7 @@ static let whiteGrapes: [Grape] = [
             origin: "Glera, formerly known as Prosecco, is a white grape variety from the Veneto region of Italy. It is the primary grape used in the production of Prosecco sparkling wine.",
             countries: Countries(
                 primary: [
-                    "Italy: Predominantly in the Veneto and Friuli-Venezia Giulia regions."
+                    "Italy: The production of Prosecco spans both Veneto and Friuli-Venezia Giulia regions, with the majority of Glera cultivation concentrated in these areas."
                 ]
             ),
             tastingNotes: TastingNotes(
@@ -3241,7 +3184,7 @@ static let whiteGrapes: [Grape] = [
                 "Nino Franco",
                 "Santa Margherita"
             ],
-            otherNames: "Formerly known as Prosecco.",
+            otherNames: "Formerly known as Prosecco. The name was changed to Glera in 2009 to protect the Prosecco wine designation and distinguish the grape from the sparkling wine made using it.",
             grapeSummary: "Glera is celebrated for its role in producing Prosecco, offering bright, fruity flavors and a refreshing effervescence."
         ),
         imageName: "glera",
@@ -3286,43 +3229,6 @@ static let whiteGrapes: [Grape] = [
         iconNames: ["leaf", "drop"]
     ),
 
-    // Grauburgunder (Pinot Gris) Details
-    Grape(
-        name: "Grauburgunder",
-        details: GrapeDetails(
-            origin: "Grauburgunder, known internationally as Pinot Gris, is a white grape variety believed to have originated in Burgundy, France. It is widely grown in Germany where it produces aromatic white wines.",
-            countries: Countries(
-                primary: [
-                    "Germany: Particularly in Baden, Pfalz, and Rheinhessen."
-                ]
-            ),
-            tastingNotes: TastingNotes(
-                color: "Pale gold to coppery pink.",
-                aroma: "Aromas of ripe pear, apple, and citrus with hints of honey and nuts.",
-                palate: "Medium-bodied with moderate acidity, featuring flavors of pear, melon, and a touch of spice.",
-                finish: "Smooth and slightly creamy with a long, fruit-driven finish."
-            ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in cool to moderate climates which help develop its aromatic profile.",
-                soil: "Performs well in loam and limestone soils.",
-                growingConditions: "Moderately vigorous vine, requiring careful management to avoid over-ripening."
-            ),
-            wineStyles: [
-                "White Wines: Ranges from dry to off-dry, showcasing its rich fruit flavors and aromatic complexity."
-            ],
-            foodPairing: [
-                "Pairs well with rich seafood dishes, poultry, and creamy pastas."
-            ],
-            notableProducers: [
-                "Dr. Loosen",
-                "Weingut Markus Molitor"
-            ],
-            otherNames: "Pinot Gris, Pinot Grigio in Italy.",
-            grapeSummary: "Grauburgunder, or Pinot Gris, is known for its aromatic complexity and rich fruit flavors, making it a versatile and popular white wine variety."
-        ),
-        imageName: "grauburgunder",
-        iconNames: ["leaf", "drop"]
-    ),
     // Grechetto Details
     Grape(
         name: "Grechetto",
@@ -3365,7 +3271,7 @@ static let whiteGrapes: [Grape] = [
     Grape(
         name: "Greco",
         details: GrapeDetails(
-            origin: "Greco is a white grape variety that originated in Greece but is now primarily grown in southern Italy, particularly in Campania. It is the key grape in the production of Greco di Tufo DOCG wines.",
+            origin: "Greco is a white grape variety believed to have ancient Greek origins but has been primarily cultivated in southern Italy, especially Campania, for centuries. It is the key grape in the production of Greco di Tufo DOCG wines.",
             countries: Countries(
                 primary: [
                     "Italy: Primarily in Campania, especially in the Greco di Tufo DOCG area."
@@ -3666,13 +3572,13 @@ static let whiteGrapes: [Grape] = [
     ),
     // Macabeo (Viura) Details
     Grape(
-        name: "Macabeo (Viura)",
+        name: "Macabeo",
         details: GrapeDetails(
             origin: "Macabeo, also known as Viura in Rioja, is a white grape variety native to Spain. It is widely used in both still white wines and as a key component in Cava sparkling wines.",
             countries: Countries(
                 primary: [
                     "Spain: Particularly in Rioja, Catalonia (for Cava), and other regions.\n",
-                    "France: Known as Maccabeu, especially in the Languedoc-Roussillon."
+                    "France: Known as Macabeu, especially in the Languedoc-Roussillon."
                 ]
             ),
             tastingNotes: TastingNotes(
@@ -3697,7 +3603,7 @@ static let whiteGrapes: [Grape] = [
                 "R. López de Heredia",
                 "Freixenet (for Cava)"
             ],
-            otherNames: "Viura in Rioja, Maccabeu in France.",
+            otherNames: "Viura in Rioja, Macabeu in France.",
             grapeSummary: "Macabeo (Viura) is a versatile grape known for its crisp acidity and ability to produce both fresh and aged white wines, as well as being a key component in Cava sparkling wines."
         ),
         imageName: "macabeo",
@@ -3708,7 +3614,7 @@ static let whiteGrapes: [Grape] = [
     Grape(
         name: "Malmsey",
         details: GrapeDetails(
-            origin: "Malmsey, also known as Malvasia, is a white grape variety traditionally used in the production of rich, sweet Madeira wines. It has a long history of cultivation in the Mediterranean region.",
+            origin: "Malmsey is a white grape variety traditionally used in the production of rich, sweet Madeira wines. It has a long history of cultivation in the Mediterranean region.",
             countries: Countries(
                 primary: [
                     "Portugal: Particularly in Madeira.\n",
@@ -3727,8 +3633,9 @@ static let whiteGrapes: [Grape] = [
                 growingConditions: "Vigorous vine with high yield potential, requiring careful management for quality."
             ),
             wineStyles: [
-                "Fortified Wines: Primarily used in sweet Madeira wines."
-            ],
+                        "Fortified Wines: Primarily used in sweet Madeira wines in Portugal.",
+                        "White Wines: In Italy, Malvasia is used to produce a range of white wines, from light and dry to rich and aromatic, often showcasing fresh fruit and floral notes."
+                    ],
             foodPairing: [
                 "Pairs well with desserts, particularly those with dried fruits and nuts, as well as strong cheeses."
             ],
@@ -3766,7 +3673,7 @@ static let whiteGrapes: [Grape] = [
                 growingConditions: "Moderately vigorous vine with a tendency to produce low yields, enhancing quality."
             ),
             wineStyles: [
-                "White Wines: Often blended with Roussanne, showcasing its rich, full-bodied character."
+                "White Wines: Often blended with Roussanne, showcasing its rich, full-bodied character. Also vinified as a varietal wine, particularly in Australia, to highlight its unique richness and texture."
             ],
             foodPairing: [
                 "Pairs well with poultry, seafood, and creamy sauces."
@@ -3776,7 +3683,7 @@ static let whiteGrapes: [Grape] = [
                 "Yalumba"
             ],
             otherNames: "None",
-            grapeSummary: "Marsanne is celebrated for its rich, full-bodied character and is often blended with Roussanne to produce complex, aromatic white wines."
+            grapeSummary: "Marsanne is celebrated for its rich, full-bodied character and is often blended with Roussanne or vinified on its own to produce complex, aromatic white wines."
         ),
         imageName: "marsanne",
         iconNames: ["leaf", "drop"]
@@ -3803,8 +3710,8 @@ static let whiteGrapes: [Grape] = [
                 growingConditions: "Vigorous vine that produces high yields; quality is maintained with controlled yields and extended lees aging."
             ),
             wineStyles: [
-                "White Wines: Often made in a dry style, with extended lees aging to add complexity."
-            ],
+                        "White Wines: Typically made in a dry, unoaked style, often with extended lees aging ('sur lie') to add complexity and a subtle bread dough character."
+                    ],
             foodPairing: [
                 "Pairs well with seafood, especially oysters, and light salads."
             ],
@@ -3812,8 +3719,8 @@ static let whiteGrapes: [Grape] = [
                 "Domaine de la Pépière",
                 "Château de Cléry"
             ],
-            otherNames: "Muscadet (when used for wines from the Muscadet appellations).",
-            grapeSummary: "Melon de Bourgogne is valued for its high acidity and fresh, mineral-driven profile, making it the ideal grape for the crisp wines of Muscadet."
+            otherNames: "Muscadet (refers to the wine made from Melon de Bourgogne in the Muscadet appellations).",
+            grapeSummary: "Melon de Bourgogne is valued for its high acidity and fresh, mineral-driven profile, making it the ideal grape for the crisp, refreshing wines of Muscadet. The grape's ability to thrive in the Loire Valley's maritime climate and its compatibility with extended lees aging ('sur lie') techniques contributes to the unique character of Muscadet wines."
         ),
         imageName: "melon_de_bourgogne",
         iconNames: ["leaf", "drop"]
@@ -3823,36 +3730,42 @@ static let whiteGrapes: [Grape] = [
     Grape(
         name: "Moscatel",
         details: GrapeDetails(
-            origin: "Moscatel, also known as Muscat, is one of the oldest grape varieties in the world, with a rich history of cultivation across the Mediterranean. It is known for its intensely aromatic wines.",
+            origin: "Moscatel, also known as Muscat, is one of the oldest and most genetically diverse grape varieties in the world, with a rich history of cultivation across the Mediterranean and beyond. It is known for its intensely aromatic wines, ranging from sweet to dry styles.",
             countries: Countries(
                 primary: [
                     "Spain: Particularly in regions like Valencia and Andalucía.\n",
-                    "Portugal: Known as Moscatel in Setúbal."
+                    "Portugal: Known as Moscatel in Setúbal.\n",
+                    "Italy: Known as Moscato, especially in Piedmont (for Moscato d'Asti) and Sicily.\n",
+                    "France: Known as Muscat, especially in Languedoc-Roussillon and Alsace.\n",
+                    "Greece: Grown widely, especially in Samos for Muscat of Samos."
                 ]
             ),
             tastingNotes: TastingNotes(
                 color: "Pale gold.",
-                aroma: "Intense aromas of orange blossom, apricot, and honey, with floral and spicy notes.",
-                palate: "Medium-bodied with moderate acidity, featuring flavors of ripe peach, orange, and a touch of honey.",
-                finish: "Sweet and luscious with a long, aromatic finish."
+                aroma: "Intense aromas of orange blossom, apricot, and honey, with floral, spicy, and sometimes musky notes.",
+                palate: "Medium-bodied with moderate acidity, featuring flavors of ripe peach, orange, and a touch of honey, with variations depending on the style.",
+                finish: "Sweet and luscious with a long, aromatic finish, or crisp and refreshing in drier styles."
             ),
             viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Prefers warm, sunny climates which enhance its aromatic profile.",
-                soil: "Adaptable to various soil types but prefers well-drained soils.",
-                growingConditions: "Vigorous vine with good resistance to drought."
+                climate: "Prefers warm, sunny climates which enhance its aromatic profile and sugar content, but also adaptable to cooler climates for a fresher style.",
+                soil: "Adaptable to various soil types but performs exceptionally well in well-drained, sandy, and calcareous soils.",
+                growingConditions: "Vigorous vine with good resistance to drought and a propensity for high sugar accumulation, making it ideal for both dry and fortified wine production."
             ),
             wineStyles: [
-                "White Wines: Often made in sweet and fortified styles, showcasing its aromatic intensity."
+                "White Wines: Often made in sweet and fortified styles, showcasing its aromatic intensity, but also produced as dry and sparkling wines in regions like Italy (Moscato d'Asti) and Greece (Muscat of Samos)."
             ],
             foodPairing: [
-                "Pairs well with desserts, particularly those with fruit and nuts, as well as strong cheeses."
+                "Pairs well with desserts, particularly those with fruit and nuts, strong cheeses, spicy Asian dishes, and certain seafood dishes."
             ],
             notableProducers: [
-                "Bodegas Jorge Ordóñez",
-                "José Maria da Fonseca (for Moscatel de Setúbal)"
+                "Bodegas Jorge Ordóñez (Spain)",
+                "José Maria da Fonseca (for Moscatel de Setúbal, Portugal)",
+                "Michele Chiarlo (Italy, for Moscato d'Asti)",
+                "Union des Grands Crus de Muscat (France, for Muscat d’Alsace)",
+                "Samos Cooperative Winery (Greece, for Muscat of Samos)"
             ],
-            otherNames: "Muscat, Moscato.",
-            grapeSummary: "Moscatel is celebrated for its intensely aromatic and sweet wines, making it one of the most versatile and widely cultivated grape varieties in the world."
+            otherNames: "Muscat, Moscato, Muscat Blanc à Petits Grains, Muscat of Alexandria, Muscat Ottonel depending on the region and variety.",
+            grapeSummary: "Moscatel is celebrated for its intensely aromatic wines, capable of producing a wide range of styles from sweet and fortified to dry and sparkling, making it one of the most versatile and widely cultivated grape varieties globally."
         ),
         imageName: "moscatel",
         iconNames: ["leaf", "drop"]
@@ -3903,7 +3816,7 @@ static let whiteGrapes: [Grape] = [
             countries: Countries(
                 primary: [
                     "Germany: Widely grown in regions like Rheinhessen and Mosel.\n",
-                    "Switzerland: Known as Riesling-Silvaner."
+                    "Switzerland: “Known as Riesling-Silvaner due to the historical belief that it was a cross between Riesling and Silvaner."
                 ]
             ),
             tastingNotes: TastingNotes(
@@ -3973,45 +3886,6 @@ static let whiteGrapes: [Grape] = [
         iconNames: ["leaf", "drop"]
     ),
 
-    // Muscat Details
-    Grape(
-        name: "Muscat",
-        details: GrapeDetails(
-            origin: "Muscat is one of the oldest and most widespread grape varieties, known for its intensely aromatic wines. It has numerous sub-varieties and is cultivated in many wine-producing regions worldwide.",
-            countries: Countries(
-                primary: [
-                    "Italy: Particularly in Piedmont and Sicily.\n",
-                    "France: Especially in Alsace and the Rhône Valley.\n",
-                    "Spain: Widely grown in various regions including Valencia and Andalucía."
-                ]
-            ),
-            tastingNotes: TastingNotes(
-                color: "Pale gold.",
-                aroma: "Intense aromas of orange blossom, apricot, and honey, with floral and spicy notes.",
-                palate: "Medium-bodied with moderate acidity, featuring flavors of ripe peach, orange, and a touch of honey.",
-                finish: "Sweet and luscious with a long, aromatic finish."
-            ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Prefers warm, sunny climates which enhance its aromatic profile.",
-                soil: "Adaptable to various soil types but prefers well-drained soils.",
-                growingConditions: "Vigorous vine with good resistance to drought."
-            ),
-            wineStyles: [
-                "White Wines: Often made in sweet and fortified styles, showcasing its aromatic intensity."
-            ],
-            foodPairing: [
-                "Pairs well with desserts, particularly those with fruit and nuts, as well as strong cheeses."
-            ],
-            notableProducers: [
-                "Domaine Weinbach",
-                "G.D. Vajra"
-            ],
-            otherNames: "Moscato, Muscatel.",
-            grapeSummary: "Muscat is celebrated for its intensely aromatic and sweet wines, making it one of the most versatile and widely cultivated grape varieties in the world."
-        ),
-        imageName: "muscat",
-        iconNames: ["leaf", "drop"]
-    ),
     // Muscat of Alexandria Details
     Grape(
         name: "Muscat of Alexandria",
@@ -4049,6 +3923,48 @@ static let whiteGrapes: [Grape] = [
             grapeSummary: "Muscat of Alexandria is celebrated for its intensely aromatic and sweet wines, making it one of the most versatile and widely cultivated grape varieties."
         ),
         imageName: "muscat_of_alexandria",
+        iconNames: ["leaf", "drop"]
+    ),
+    
+    // Muscat Blanc à Petits Grains Details
+    Grape(
+        name: "Muscat Blanc à Petits Grains",
+        details: GrapeDetails(
+            origin: "Muscat Blanc à Petits Grains is one of the oldest and most esteemed grape varieties in the Muscat family, believed to have originated in ancient Greece. It is known for its small berries and intensely aromatic wines, often used in the production of both sweet and dry wines.",
+            countries: Countries(
+                primary: [
+                    "France: Especially in regions like Alsace, Languedoc-Roussillon, and the Rhône Valley for Muscat de Beaumes-de-Venise and Muscat de Rivesaltes.\n",
+                    "Italy: Known as Moscato Bianco, particularly in Piedmont for Moscato d'Asti and Asti Spumante.\n",
+                    "Greece: Widely grown in Samos and Patras, where it is used to produce sweet wines like Muscat of Samos.\n",
+                    "Spain: Grown in regions like Valencia and Málaga, often used in sweet wine production."
+                ]
+            ),
+            tastingNotes: TastingNotes(
+                color: "Pale straw to deep gold, depending on the wine style.",
+                aroma: "Intense aromas of orange blossom, rose, honeysuckle, and grapefruit, with hints of fresh herbs and spices.",
+                palate: "Light to medium-bodied with a refreshing acidity, featuring flavors of peach, apricot, and citrus, with a honeyed sweetness in sweeter styles.",
+                finish: "Crisp and floral in dry styles, or rich and long-lasting with a sweet, aromatic finish in dessert wines."
+            ),
+            viticulturalCharacteristics: ViticulturalCharacteristics(
+                climate: "Prefers warm, sunny climates that help develop its aromatic profile and high sugar content, but can also thrive in cooler regions with sufficient sunlight.",
+                soil: "Thrives in well-drained, calcareous soils but is adaptable to a variety of soil types, including sandy and rocky terrains.",
+                growingConditions: "Moderately vigorous vine that requires careful management to prevent overripening and maintain acidity and aromatic intensity."
+            ),
+            wineStyles: [
+                "White Wines: Produced in a variety of styles, including dry, sweet, fortified, and sparkling, showcasing its aromatic complexity and versatility."
+            ],
+            foodPairing: [
+                "Pairs well with fruit-based desserts, soft cheeses, foie gras, spicy Asian dishes, and light salads."
+            ],
+            notableProducers: [
+                "Domaine des Bernardins (France, for Muscat de Beaumes-de-Venise)",
+                "Cavino (Greece, for Muscat of Samos)",
+                "Paolo Saracco (Italy, for Moscato d'Asti)"
+            ],
+            otherNames: "Moscato Bianco in Italy, Muscat à Petits Grains in France.",
+            grapeSummary: "Muscat Blanc à Petits Grains is celebrated for its aromatic intensity and versatility, producing some of the world's finest sweet wines, as well as dry and sparkling wines with a distinct floral and fruity character."
+        ),
+        imageName: "muscat_blanc_a_petits_grains",
         iconNames: ["leaf", "drop"]
     ),
 
@@ -4211,7 +4127,7 @@ static let whiteGrapes: [Grape] = [
     Grape(
         name: "Pedro Ximénez",
         details: GrapeDetails(
-            origin: "Pedro Ximénez is a white grape variety from Spain, renowned for producing intensely sweet, dark dessert wines.",
+            origin: "Pedro Ximénez is a white grape variety from Spain, primarily renowned for producing intensely sweet, dark dessert wines known as Pedro Ximénez Sherry in the Jerez and Montilla-Moriles regions.",
             countries: Countries(
                 primary: [
                     "Spain: Especially in the Jerez and Montilla-Moriles regions."
@@ -4239,7 +4155,7 @@ static let whiteGrapes: [Grape] = [
                 "González Byass"
             ],
             otherNames: "PX.",
-            grapeSummary: "Pedro Ximénez is celebrated for its intensely sweet and rich dessert wines, offering complex flavors and a luxurious finish, making it a staple in Spanish winemaking."
+            grapeSummary: "Pedro Ximénez is celebrated for its role in producing Pedro Ximénez Sherry, an intensely sweet and rich dessert wine with complex flavors and a luxurious finish, making it a staple in the Sherry production of Spain."
         ),
         imageName: "pedro_ximenez",
         iconNames: ["leaf", "drop"]
@@ -4363,11 +4279,12 @@ static let whiteGrapes: [Grape] = [
     Grape(
         name: "Pinot Gris",
         details: GrapeDetails(
-            origin: "Pinot Gris is a white grape variety believed to have originated in Burgundy, France. It is known for producing a wide range of wine styles, from dry to sweet, and is closely related to Pinot Noir.",
+            origin: "Pinot Gris, also known as Grauburgunder in Germany and Pinot Grigio in Italy, is a white grape variety believed to have originated in Burgundy, France. It is known for producing a wide range of wine styles, from dry to sweet, and is closely related to Pinot Noir.",
             countries: Countries(
                 primary: [
                     "France: Particularly in Alsace.\n",
                     "Italy: Known as Pinot Grigio, especially in Veneto and Friuli-Venezia Giulia.\n",
+                    "Germany: Known as Grauburgunder, especially in Baden, Pfalz, and Rheinhessen.\n",
                     "USA: Particularly in Oregon."
                 ]
             ),
@@ -4389,11 +4306,12 @@ static let whiteGrapes: [Grape] = [
                 "Pairs well with rich seafood dishes, poultry, and creamy pastas."
             ],
             notableProducers: [
-                "Domaine Zind-Humbrecht",
-                "Alois Lageder"
+                "Domaine Zind-Humbrecht (France)",
+                "Alois Lageder (Italy)",
+                "Dr. Loosen (Germany)"
             ],
-            otherNames: "Pinot Grigio in Italy.",
-            grapeSummary: "Pinot Gris is valued for its aromatic complexity and rich fruit flavors, making it a versatile and popular white wine variety."
+            otherNames: "Pinot Grigio in Italy, Grauburgunder in Germany.",
+            grapeSummary: "Pinot Gris, or Grauburgunder, is valued for its aromatic complexity and rich fruit flavors, making it a versatile and popular white wine variety enjoyed worldwide."
         ),
         imageName: "pinot_gris",
         iconNames: ["leaf", "drop"]
@@ -4591,56 +4509,18 @@ static let whiteGrapes: [Grape] = [
         imageName: "rkatsiteli",
         iconNames: ["leaf", "drop"]
     ),
-    // Sárga Muskotály (Muscat Blanc) Details
-    Grape(
-        name: "Sárga Muskotály (Muscat Blanc)",
-        details: GrapeDetails(
-            origin: "Sárga Muskotály, also known as Muscat Blanc à Petits Grains, is a white grape variety that is part of the extensive Muscat family. It is known for its intensely aromatic and sweet wines.",
-            countries: Countries(
-                primary: [
-                    "Hungary: Widely grown in Tokaj and other regions.\n",
-                    "France: Particularly in Alsace and the Rhône Valley.\n",
-                    "Italy: Known as Moscato Bianco, especially in Piedmont."
-                ]
-            ),
-            tastingNotes: TastingNotes(
-                color: "Pale gold.",
-                aroma: "Intense aromas of orange blossom, apricot, and honey, with floral and spicy notes.",
-                palate: "Medium-bodied with moderate acidity, featuring flavors of ripe peach, orange, and a touch of honey.",
-                finish: "Sweet and luscious with a long, aromatic finish."
-            ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Prefers warm, sunny climates which enhance its aromatic profile.",
-                soil: "Adaptable to various soil types but prefers well-drained soils.",
-                growingConditions: "Vigorous vine with good resistance to drought."
-            ),
-            wineStyles: [
-                "White Wines: Often made in sweet and fortified styles, showcasing its aromatic intensity."
-            ],
-            foodPairing: [
-                "Pairs well with desserts, particularly those with fruit and nuts, as well as strong cheeses."
-            ],
-            notableProducers: [
-                "Domaine Weinbach",
-                "Vega Sicilia"
-            ],
-            otherNames: "Muscat Blanc à Petits Grains, Moscato Bianco.",
-            grapeSummary: "Sárga Muskotály (Muscat Blanc) is celebrated for its intensely aromatic and sweet wines, making it one of the most versatile and widely cultivated grape varieties in the world."
-        ),
-        imageName: "sarga_muskotaly",
-        iconNames: ["leaf", "drop"]
-    ),
+
 
     // Sauvignon Blanc Details
     Grape(
         name: "Sauvignon Blanc",
         details: GrapeDetails(
-            origin: "Sauvignon Blanc is a white grape variety originating from the Loire Valley in France. It is known for its high acidity, aromatic intensity, and versatility in producing both dry and sweet wines.",
+            origin: "Sauvignon Blanc is a white grape variety with a somewhat contested origin, believed to have ties to both the Loire Valley and Bordeaux regions of France. While some argue it first appeared in the Loire, others claim Bordeaux as its true birthplace. It is known for its high acidity, aromatic intensity, and versatility in producing primarily dry wines, though it is also used in the production of sweet wines, particularly in Bordeaux.",
             countries: Countries(
                 primary: [
                     "France: Particularly in the Loire Valley (Sancerre, Pouilly-Fumé) and Bordeaux.\n",
                     "New Zealand: Especially in Marlborough.\n",
-                    "USA: Particularly in California."
+                    "USA: Particularly in California, where it is sometimes known as Fumé Blanc, typically indicating an oaked style."
                 ]
             ),
             tastingNotes: TastingNotes(
@@ -4664,7 +4544,7 @@ static let whiteGrapes: [Grape] = [
                 "Domaine Vacheron",
                 "Cloudy Bay"
             ],
-            otherNames: "None",
+            otherNames: "Fumé Blanc (USA, indicating an oaked style)",
             grapeSummary: "Sauvignon Blanc is celebrated for its high acidity, aromatic intensity, and versatility, making it one of the most popular and widely planted white grape varieties in the world."
         ),
         imageName: "sauvignon_blanc",
@@ -4730,8 +4610,9 @@ static let whiteGrapes: [Grape] = [
                 growingConditions: "Vigorous vine with high yield potential; quality is maintained with controlled yields."
             ),
             wineStyles: [
-                "White Wines: Typically made in a dry, crisp style, showcasing its fresh acidity and mineral character."
-            ],
+                        "White Wines: Typically made in a dry, crisp style, showcasing its fresh acidity and mineral character.",
+                        "Retsina: A traditional Greek wine made by adding pine resin during fermentation, giving it a distinctive pine flavor."
+                    ],
             foodPairing: [
                 "Pairs well with seafood, salads, and light Mediterranean dishes."
             ],
@@ -4750,7 +4631,7 @@ static let whiteGrapes: [Grape] = [
     Grape(
         name: "Scheurebe",
         details: GrapeDetails(
-            origin: "Scheurebe is a white grape variety developed in Germany in the early 20th century by crossing Riesling with an unknown grape. It is known for its aromatic intensity and versatility in producing both dry and sweet wines.",
+            origin: "Scheurebe is a white grape variety developed in Germany in the early 20th century by crossing Riesling with Bukettraube. It is known for its aromatic intensity and versatility in producing both dry and sweet wines.",
             countries: Countries(
                 primary: [
                     "Germany: Particularly in the Rheinhessen and Pfalz regions.\n",
@@ -4759,7 +4640,7 @@ static let whiteGrapes: [Grape] = [
             ),
             tastingNotes: TastingNotes(
                 color: "Pale yellow.",
-                aroma: "Aromas of blackcurrant, grapefruit, and peach with floral and herbal notes.",
+                aroma: "Aromas of blackcurrant, grapefruit, and peach with floral and herbal notes. The presence of blackcurrant is distinctive and unusual for a white grape, adding to Scheurebe's unique profile.",
                 palate: "Medium-bodied with high acidity, featuring flavors of citrus, peach, and a hint of spice.",
                 finish: "Crisp and aromatic with a long, fruity finish."
             ),
@@ -4778,7 +4659,7 @@ static let whiteGrapes: [Grape] = [
                 "Weingut Wirsching",
                 "Weingut Bründlmayer"
             ],
-            otherNames: "None",
+            otherNames: "Sämling 88 (Austria)",
             grapeSummary: "Scheurebe is celebrated for its aromatic intensity and versatility, making it a popular choice for both dry and sweet wines in Germany and Austria."
         ),
         imageName: "scheurebe",
@@ -4816,7 +4697,7 @@ static let whiteGrapes: [Grape] = [
                 "Blandy's",
                 "Henriques & Henriques"
             ],
-            otherNames: "None",
+            otherNames: "Esgana Cão in mainland Portugal",
             grapeSummary: "Sercial is valued for its high acidity and ability to produce dry, crisp wines that are a key component in the production of Madeira, offering a distinct mineral and nutty character."
         ),
         imageName: "sercial",
@@ -4870,7 +4751,8 @@ static let whiteGrapes: [Grape] = [
             countries: Countries(
                 primary: [
                     "Germany: Particularly in Franconia (Franken) and Rheinhessen.\n",
-                    "Austria: Grown in various regions."
+                    "Austria: Grown in various regions.\n",
+                    "France: Known as Sylvaner, particularly in Alsace."
                 ]
             ),
             tastingNotes: TastingNotes(
@@ -4894,7 +4776,7 @@ static let whiteGrapes: [Grape] = [
                 "Weingut Hans Wirsching",
                 "Weingut Juliusspital"
             ],
-            otherNames: "Sylvaner.",
+            otherNames: "Sylvaner (Alsace)",
             grapeSummary: "Silvaner is valued for its fresh acidity and crisp, clean profile, making it a versatile and widely planted grape variety in Germany and Austria."
         ),
         imageName: "silvaner",
@@ -4940,9 +4822,9 @@ static let whiteGrapes: [Grape] = [
     ),
     // Trebbiano (Ugni Blanc) Details
     Grape(
-        name: "Trebbiano (Ugni Blanc)",
+        name: "Trebbiano",
         details: GrapeDetails(
-            origin: "Trebbiano, known as Ugni Blanc in France, is a white grape variety believed to have originated in Italy. It is one of the most widely planted grape varieties in the world.",
+            origin: "Trebbiano is a white grape variety believed to have originated in Italy. It is one of the most widely planted grape varieties in the world.",
             countries: Countries(
                 primary: [
                     "Italy: Widely grown in many regions.\n",
@@ -4982,10 +4864,11 @@ static let whiteGrapes: [Grape] = [
     Grape(
         name: "Treixadura",
         details: GrapeDetails(
-            origin: "Treixadura is a white grape variety native to the Ribeiro region in Galicia, Spain. It is known for producing aromatic and well-structured wines.",
+            origin: "Treixadura is a white grape variety primarily associated with the Ribeiro region in Galicia, Spain. It is also grown in Portugal, particularly in the Vinho Verde region. The grape is known for producing aromatic and well-structured wines.",
             countries: Countries(
                 primary: [
-                    "Spain: Particularly in Galicia, especially in the Ribeiro and Rías Baixas regions."
+                    "Spain: Particularly in Galicia, especially in the Ribeiro and Rías Baixas regions.\n",
+                    "Portugal: Known as Trajadura, especially in the Vinho Verde region."
                 ]
             ),
             tastingNotes: TastingNotes(
@@ -5009,7 +4892,7 @@ static let whiteGrapes: [Grape] = [
                 "Viña Mein",
                 "Casal de Armán"
             ],
-            otherNames: "None",
+            otherNames: "Trajadura (Portugal).",
             grapeSummary: "Treixadura is appreciated for its aromatic intensity and fresh acidity, making it a key grape in the production of crisp, well-structured white wines from Galicia."
         ),
         imageName: "treixadura",
@@ -5133,9 +5016,9 @@ static let whiteGrapes: [Grape] = [
 
     // Vernaccia Details
     Grape(
-        name: "Vernaccia",
+        name: "Vernaccia di San Gimignano",
         details: GrapeDetails(
-            origin: "Vernaccia is a white grape variety native to Italy, most famously grown in the San Gimignano region of Tuscany. It is known for producing crisp, aromatic wines with good acidity.",
+            origin: "Vernaccia di San Gimignano is a white grape variety native to Italy, specifically from the San Gimignano region in Tuscany. It is known for producing crisp, aromatic wines with good acidity and is one of Italy's most famous white wine varieties.",
             countries: Countries(
                 primary: [
                     "Italy: Particularly in San Gimignano, Tuscany."
@@ -5162,8 +5045,8 @@ static let whiteGrapes: [Grape] = [
                 "Panizzi",
                 "Teruzzi & Puthod"
             ],
-            otherNames: "None",
-            grapeSummary: "Vernaccia is appreciated for its high acidity and fresh, aromatic profile, making it a key grape in the production of crisp, elegant white wines from Tuscany."
+            otherNames: "Vernaccia can refer to other grape varieties in different regions of Italy, such as Vernaccia di Oristano in Sardinia and Vernaccia Nera in Marche, which are unrelated to Vernaccia di San Gimignano.",
+            grapeSummary: "Vernaccia di San Gimignano is appreciated for its high acidity and fresh, aromatic profile, making it a key grape in the production of crisp, elegant white wines from Tuscany."
         ),
         imageName: "vernaccia",
         iconNames: ["leaf", "drop"]
@@ -5172,7 +5055,7 @@ static let whiteGrapes: [Grape] = [
     Grape(
         name: "Vermentino",
         details: GrapeDetails(
-            origin: "Vermentino is a white grape variety that is believed to have originated in Italy. It is widely planted in the coastal regions of Liguria, Tuscany, and Sardinia.",
+            origin:  "Vermentino is a white grape variety with debated origins, believed to have historical roots in both Italy and Corsica. Today, it is widely planted in the coastal regions of Liguria, Tuscany, and Sardinia in Italy, as well as in Corsica, where it thrives in the Mediterranean climate.",
             countries: Countries(
                 primary: [
                     "Italy: Particularly in Liguria, Tuscany, and Sardinia.\n",
@@ -5247,84 +5130,7 @@ static let whiteGrapes: [Grape] = [
         iconNames: ["leaf", "drop"]
     ),
 
-    // Weißburgunder (Pinot Blanc) Details
-    Grape(
-        name: "Weißburgunder",
-        details: GrapeDetails(
-            origin: "Weißburgunder, known as Pinot Blanc in France, is a white grape variety that is believed to have originated in Burgundy. It is known for producing elegant, medium-bodied wines.",
-            countries: Countries(
-                primary: [
-                    "Germany: Widely grown in regions like Baden and Pfalz.\n",
-                    "France: Particularly in Alsace and Burgundy.\n",
-                    "Italy: Known as Pinot Bianco, especially in Alto Adige."
-                ]
-            ),
-            tastingNotes: TastingNotes(
-                color: "Pale gold.",
-                aroma: "Aromas of apple, pear, and white flowers with hints of citrus and almond.",
-                palate: "Medium-bodied with moderate acidity, featuring flavors of green apple, lemon, and a touch of minerality.",
-                finish: "Smooth and elegant with a lingering fruity finish."
-            ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in cool to moderate climates which help retain its acidity and fresh flavors.",
-                soil: "Performs best in well-drained, limestone and clay soils.",
-                growingConditions: "Vigorous vine with good disease resistance, requiring careful management to avoid over-ripening."
-            ),
-            wineStyles: [
-                "White Wines: Typically made in a dry style, showcasing its fresh fruit and elegant profile."
-            ],
-            foodPairing: [
-                "Pairs well with seafood, poultry, and light pasta dishes."
-            ],
-            notableProducers: [
-                "Weingut Dr. Heger",
-                "Domaine Zind-Humbrecht"
-            ],
-            otherNames: "Pinot Blanc in France, Pinot Bianco in Italy.",
-            grapeSummary: "Weißburgunder (Pinot Blanc) is valued for its fresh acidity and elegant fruit flavors, making it a versatile and widely planted grape variety in many cool-climate wine regions."
-        ),
-        imageName: "weissburgunder",
-        iconNames: ["leaf", "drop"]
-    ),
-    // Welschriesling Details
-    Grape(
-        name: "Welschriesling",
-        details: GrapeDetails(
-            origin: "Welschriesling is a white grape variety that is not related to the Riesling grape. It is widely grown in Central and Eastern Europe.",
-            countries: Countries(
-                primary: [
-                    "Austria: Particularly in the regions of Burgenland and Styria.\n",
-                    "Hungary: Known as Olaszrizling, especially in the Lake Balaton area.\n",
-                    "Croatia: Known as Graševina, widely planted in Slavonia and other regions."
-                ]
-            ),
-            tastingNotes: TastingNotes(
-                color: "Pale yellow.",
-                aroma: "Aromas of green apple, citrus, and white flowers with hints of herbs.\n",
-                palate: "Light to medium-bodied with high acidity, featuring flavors of lemon, green apple, and a touch of minerality.\n",
-                finish: "Crisp and refreshing with a clean, zesty finish."
-            ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in cool to moderate climates which help retain its acidity and fresh flavors.",
-                soil: "Performs best in well-drained, limestone and clay soils.",
-                growingConditions: "Vigorous vine with good disease resistance, requiring careful management to avoid over-ripening."
-            ),
-            wineStyles: [
-                "White Wines: Typically made in a dry style, showcasing its fresh acidity and crisp, clean profile."
-            ],
-            foodPairing: [
-                "Pairs well with seafood, light salads, and fresh cheeses."
-            ],
-            notableProducers: [
-                "Weingut Tement",
-                "Josić Winery"
-            ],
-            otherNames: "Olaszrizling in Hungary, Graševina in Croatia.",
-            grapeSummary: "Welschriesling is valued for its fresh acidity and crisp, clean profile, making it a versatile and widely planted grape variety in Central and Eastern Europe."
-        ),
-        imageName: "welschriesling",
-        iconNames: ["leaf", "drop"]
-    ),
+    
 
     // Xarel·lo Details
     Grape(

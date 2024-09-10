@@ -20,7 +20,8 @@ struct PersistenceController {
         }
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
+                // Instead of crashing, log the error and consider notifying the user or recovering.
+                           print("Unresolved CoreData error \(error), \(error.userInfo)")
             }
         })
         container.viewContext.automaticallyMergesChangesFromParent = true
@@ -33,7 +34,8 @@ struct PersistenceController {
     func loadFlashcardsFromJSON() {
         guard let url = Bundle.main.url(forResource: "flashcards", withExtension: "json"),
               let data = try? Data(contentsOf: url) else {
-            fatalError("Failed to load flashcards.json from bundle.")
+            print("Failed to load flashcards.json from bundle.")
+            return // Exit the function early if the JSON file cannot be loaded.
         }
         
         do {
@@ -90,7 +92,8 @@ struct PersistenceController {
             printAllFlashcards()
             
         } catch {
-            fatalError("Failed to load flashcards from JSON: \(error)")
+            // Log the error and handle gracefully
+            print("Failed to decode flashcards from JSON: \(error.localizedDescription)")
         }
     }
     
@@ -122,11 +125,11 @@ struct PersistenceController {
         }
         
         // Update the next review date based on the new box number
-        let reviewInterval = [1, 3, 7, 14, 28] // Example intervals for each box (in days)
+        let reviewInterval = [10, 15, 20, 25, 30] // Example intervals for each box (in days)
         let boxIndex = Int(flashcard.boxNumber) - 1 // Adjust for 0-based indexing
         let interval = reviewInterval[boxIndex]
         
-        let newReviewDate = Calendar.current.date(byAdding: .day, value: interval, to: Date())
+        let newReviewDate = Calendar.current.date(byAdding: .second, value: interval, to: Date())
         print("Updating flashcard ID \(flashcard.id ?? "unknown") to box \(flashcard.boxNumber) with next review date \(newReviewDate!)")
         flashcard.nextReviewDate = newReviewDate
         

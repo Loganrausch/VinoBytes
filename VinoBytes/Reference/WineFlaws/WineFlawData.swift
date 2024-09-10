@@ -15,6 +15,14 @@ struct WineFlaw: Identifiable {
 }
 
 let wineFlawData = [
+    
+    WineFlaw(name: "Acetobacter",
+                  description: "A genus of bacteria that converts alcohol into acetic acid, leading to wine spoilage and vinegar-like off-flavors.",
+                  additionalInfo: "Acetobacter is responsible for the oxidation of ethanol to acetic acid, causing wine to develop a sour, vinegar taste. This bacteria thrives in the presence of oxygen, making proper storage and handling essential to prevent spoilage."),
+    
+    WineFlaw(name: "Acetaldehyde",
+             description: "A compound produced during fermentation that can cause off-flavors in wine if present in high concentrations, often associated with oxidative spoilage.",
+             additionalInfo: "Acetaldehyde is generally considered a flaw in most wine styles, imparting aromas of green apple, bruised apple, or sherry-like notes when oxidation is unintended. However, in certain wine styles, such as Fino or Manzanilla Sherry, acetaldehyde is a desired characteristic that contributes to the wine's distinctive nutty, briny flavor profile. Proper management during fermentation and storage can prevent excessive levels of acetaldehyde in wines where it is undesirable."),
     WineFlaw(name: "Oxidation", description: "Oxidation occurs when wine is exposed to oxygen for too long, resulting in a loss of color and flavor. This can happen during the winemaking process or through a faulty cork. Oxidized wines often have a brownish hue and taste flat, with notes of sherry or overripe fruit.", additionalInfo: "Preventive measures include using proper sealing techniques, adding antioxidants like sulfur dioxide, and storing wine in a cool, dark place. Winemakers often use inert gases to displace oxygen in tanks and bottles."),
 
     WineFlaw(name: "Cork Taint (TCA)", description: "Cork taint is caused by the presence of 2,4,6-trichloroanisole (TCA), which gives the wine a musty, moldy aroma and flavor. TCA can come from contaminated corks, barrels, or winery equipment. Affected wines smell like damp cardboard, wet dog, or moldy basement.", additionalInfo: "TCA can be detected at very low concentrations (as low as parts per trillion). Synthetic corks and screw caps are alternatives to natural corks that can reduce the risk of cork taint."),
@@ -35,7 +43,7 @@ let wineFlawData = [
 
     WineFlaw(name: "Geranium Taint", description: "Geranium taint produces a distinct geranium leaf odor, often caused by lactic acid bacteria metabolizing sorbic acid.", additionalInfo: "Avoiding the use of sorbic acid in wines that will undergo malolactic fermentation can prevent geranium taint. Proper sanitation and monitoring can also help mitigate this risk."),
 
-    WineFlaw(name: "Ladybug Taint", description: "Ladybug taint occurs when ladybugs are inadvertently crushed during harvest, imparting a green, bell pepper-like aroma to the wine.", additionalInfo: "Preventive measures include careful sorting of grapes before fermentation. Once present, ladybug taint is challenging to remove and may require blending to reduce its impact."),
+    WineFlaw(name: "Ladybug Taint", description: "Ladybug taint occurs when ladybugs are inadvertently crushed during harvest, imparting a green, bell pepper-like aroma to the wine. This should be distinguished from the naturally occurring green flavors in some varietals like Cabernet Sauvignon and Sauvignon Blanc, where such aromas are desirable and result from compounds known as pyrazines.", additionalInfo: "Preventive measures include careful sorting of grapes before fermentation. Once present, ladybug taint is challenging to remove and may require blending to reduce its impact. Recognizing the source of green notes—whether from pyrazines or contaminants—is crucial for accurate assessment and handling."),
 
     WineFlaw(name: "Mouse Taint", description: "Mouse taint is an off-flavor caused by lactic acid bacteria, resulting in a mousy, rodent-like taste that is often perceived after swallowing.", additionalInfo: "Preventive measures include maintaining proper pH levels, sulfur dioxide management, and good sanitation practices. Once detected, mouse taint is difficult to eliminate and often requires blending or masking."),
 

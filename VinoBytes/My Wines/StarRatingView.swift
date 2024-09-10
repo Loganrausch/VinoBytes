@@ -16,7 +16,7 @@ struct StarRatingView: View {
     var onImage = Image(systemName: "wineglass.fill")
     
     var offColor = Color.gray
-    var onColor = Color.maroon
+    var onColor = Color.yellow
     
     func image(for number: Int) -> Image {
         if number > rating {

@@ -75,11 +75,17 @@ struct WineDetailView: View {
                     if let sweetness = wineEntity.sweetness {
                         Text("Sweetness: \(sweetness)")
                     }
-                    if let tannin = wineEntity.tannin {
-                        Text("Tannin: \(tannin)")
-                    }
-                }
-            }
+                    // Display tannin information or a message regarding its typical minimal presence
+                           if wineEntity.wineType == "Red" || wineEntity.wineType == "Orange" || wineEntity.wineType == "Fortified" {
+                               if let tannin = wineEntity.tannin {
+                                   Text("Tannin: \(tannin)")
+                               }
+                           } else {
+                               // Display a message for other wine types
+                               Text("Tannin: Typically minimal for selected type.")
+                           }
+                       }
+                   }
 
             Section(header: Text("Rating")) {
                            StarRatingDisplayView(rating: Int(wineEntity.rating))

@@ -132,64 +132,79 @@ struct FlashcardView: View {
         .navigationBarTitle("Flashcard Study")
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
-            if !flashcards.isEmpty {
-                currentRegion = flashcards[currentFlashcardIndex].region
-            } else {
-                currentRegion = nil
-            }
-        }
+                    updateCurrentRegion()
+                }
     }
     
     private func handleSwipe(_ width: CGFloat) {
-        if abs(width) > 100 {
-            let knewAnswer = width > 0
-            feedbackIcon = knewAnswer ? "checkmark.circle.fill" : "xmark.circle.fill"
-            showFeedback = true
-            feedbackOpacity = 0 // Start from transparent
-            
-            withAnimation(.easeOut(duration: 0.8)) {
-                swipeOffset = width > 0 ? 1000 : -1000
-                feedbackOpacity = 1 // Fade in the feedback text
-            }
-            
-            // Delay to ensure the card moves off screen before showing feedback
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            guard !flashcards.isEmpty else { return }
+
+            if abs(width) > 100 {
+                let knewAnswer = width > 0
+                feedbackIcon = knewAnswer ? "checkmark.circle.fill" : "xmark.circle.fill"
                 showFeedback = true
-                borderColor = .maroon // Reset border color
-                
-                // Further delay to show the feedback icon briefly before moving to the next card
+                feedbackOpacity = 0 // Start from transparent
+
+                withAnimation(.easeOut(duration: 0.8)) {
+                    swipeOffset = width > 0 ? 1000 : -1000
+                    feedbackOpacity = 1 // Fade in the feedback text
+                }
+
+                // Delay to ensure the card moves off screen before showing feedback
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                    showFeedback = false
-                    
-                    PersistenceController.reviewFlashcard(flashcard: flashcards[currentFlashcardIndex], knewAnswer: knewAnswer, context: viewContext)
-                    
-                    moveToNextFlashcard()
+                    self.showFeedback = true
+                    self.borderColor = .maroon // Reset border color
+
+                    // Further delay to show the feedback icon briefly before moving to the next card
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        self.showFeedback = false
+                        
+                        // Check if the current index is within bounds before reviewing
+                        if self.currentFlashcardIndex < self.flashcards.count {
+                            PersistenceController.reviewFlashcard(
+                                flashcard: self.flashcards[self.currentFlashcardIndex],
+                                knewAnswer: knewAnswer,
+                                context: self.viewContext
+                            )
+                        }
+                        
+                        self.moveToNextFlashcard()
+                    }
+                }
+            } else {
+                withAnimation(.spring()) {
+                    swipeOffset = 0 // Return card to center if not swiped far enough
+                    borderColor = .maroon // Reset border color
                 }
             }
-        } else {
-            withAnimation(.spring()) {
-                swipeOffset = 0 // Return card to center if not swiped far enough
-                borderColor = .maroon // Reset border color
-            }
         }
-    }
-    
+        
     private func moveToNextFlashcard() {
+        print("Current index before increment: \(currentFlashcardIndex), Total cards: \(flashcards.count)")
+        
         currentFlashcardIndex += 1
         
-        // Check if we've exhausted all flashcards
         if currentFlashcardIndex >= flashcards.count {
-            isFlipped = false
-            swipeOffset = 0
-            currentRegion = nil  // Clear the region display
+            print("Reached end of flashcards. Resetting index to 0.")
+            currentFlashcardIndex = 0 // Reset to start
         } else {
-            // Update the view for the next flashcard
-            isFlipped = false
-            swipeOffset = 0
-            currentRegion = flashcards[currentFlashcardIndex].region
+            print("Moving to next flashcard. New index: \(currentFlashcardIndex)")
         }
+        
+        updateCurrentRegion()
+        isFlipped = false
+        swipeOffset = 0
     }
-}
+
+            private func updateCurrentRegion() {
+                if flashcards.isEmpty {
+                    currentRegion = nil
+                } else {
+                    currentRegion = flashcards[currentFlashcardIndex].region
+                }
+            }
+        }
+
 
 struct FlashcardView_Previews: PreviewProvider {
     static var previews: some View {

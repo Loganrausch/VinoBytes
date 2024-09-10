@@ -17,7 +17,7 @@ struct WineFormView: View {
 
     @State private var producer: String = ""
     @State private var wineName: String = ""
-    @State private var wineType: String = ""
+    @State private var wineType: String = "Red"
     @State private var region: String = ""
     @State private var grape: String = ""
     @State private var vintage: String = ""
@@ -62,70 +62,71 @@ struct WineFormView: View {
         Form {
             Section(header: Text("Wine Image")) {
                 Button(action: {
-                                    isShowingImagePicker = true
-                                }) {
-                                    if let selectedImage = selectedImage {
-                                        Image(uiImage: selectedImage)
-                                            .resizable()
-                                            .scaledToFit()
-                                    } else {
-                                        Text("Select Image")
-                                            .accentColor(Color.blue)
-                                    }
-                                }
-                            }
+                    isShowingImagePicker = true
+                }) {
+                    if let selectedImage = selectedImage {
+                        Image(uiImage: selectedImage)
+                            .resizable()
+                            .scaledToFit()
+                    } else {
+                        Text("Select Image")
+                            .accentColor(Color.blue)
+                    }
+                }
+            }
             
             Section(header: Text("Wine Type")) {
-                            Picker("Select Wine Type", selection: $wineType) {
-                                Text("Red").tag("Red")
-                                Text("White").tag("White")
-                                Text("Rosé").tag("Rosé")
-                                Text("Sparkling").tag("Sparkling")
-                                Text("Dessert").tag("Dessert")
-                                Text("Fortified").tag("Fortified")
-                            }
-                            .pickerStyle(MenuPickerStyle())
-                            .accentColor(.black)
-                        }
-                            
+                Picker("Select Wine Type", selection: $wineType) {
+                    Text("Dessert").tag("Dessert")
+                    Text("Fortified").tag("Fortified")
+                    Text("Orange").tag("Orange")
+                    Text("Red").tag("Red")
+                    Text("Rosé").tag("Rosé")
+                    Text("Sparkling").tag("Sparkling")
+                    Text("White").tag("White")
+                }
+                .pickerStyle(MenuPickerStyle())
+                .accentColor(.black)
+            }
+            
             Section(header: Text("Vintage Selection")) {
-                            HStack {
-                                Button("NV") {
-                                    vintage = "NV"
-                                    isNonVintage = true
-                                }
-                                .foregroundColor(isNonVintage ? Color("Maroon") : .gray)
-                                .padding(8)
-                                .background(isNonVintage ? Color("Maroon").opacity(0.2) : Color.clear)
-                                .cornerRadius(5)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 5)
-                                        .stroke(isNonVintage ? Color("Maroon") : Color.clear, lineWidth: 2)
-                                )
-                                .disabled(isNonVintage)
-
-                                Button("Vintage") {
-                                    isNonVintage = false
-                                    vintage = ""  // Clear the vintage or set it to a default value
-                                }
-                                .foregroundColor(!isNonVintage ? Color("Maroon") : .gray)
-                                .padding(8)
-                                .background(!isNonVintage ? Color("Maroon").opacity(0.2) : Color.clear)
-                                .cornerRadius(5)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 5)
-                                        .stroke(!isNonVintage ? Color("Maroon") : Color.clear, lineWidth: 2)
-                                )
-                                .disabled(!isNonVintage)
-                            }
-                            if !isNonVintage {
-                                TextField("Enter Vintage Year", text: $vintage)
-                                    .keyboardType(.default)  // Allow alphanumeric input
-                            }
-                        }
+                HStack {
+                    Button("NV") {
+                        vintage = "NV"
+                        isNonVintage = true
+                    }
+                    .foregroundColor(isNonVintage ? Color("Maroon") : .gray)
+                    .padding(8)
+                    .background(isNonVintage ? Color("Maroon").opacity(0.2) : Color.clear)
+                    .cornerRadius(5)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 5)
+                            .stroke(isNonVintage ? Color("Maroon") : Color.clear, lineWidth: 2)
+                    )
+                    .disabled(isNonVintage)
+                    
+                    Button("Vintage") {
+                        isNonVintage = false
+                        vintage = ""  // Clear the vintage or set it to a default value
+                    }
+                    .foregroundColor(!isNonVintage ? Color("Maroon") : .gray)
+                    .padding(8)
+                    .background(!isNonVintage ? Color("Maroon").opacity(0.2) : Color.clear)
+                    .cornerRadius(5)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 5)
+                            .stroke(!isNonVintage ? Color("Maroon") : Color.clear, lineWidth: 2)
+                    )
+                    .disabled(!isNonVintage)
+                }
+                if !isNonVintage {
+                    TextField("Enter Vintage Year", text: $vintage)
+                        .keyboardType(.default)  // Allow alphanumeric input
+                }
+            }
             .accentColor(Color.black) // Set cursor color to system gray
             
-                    
+            
             
             Section(header: Text("Wine Details")) {
                 TextField("Producer", text: $producer)
@@ -161,6 +162,7 @@ struct WineFormView: View {
                     }
                     .pickerStyle(SegmentedPickerStyle())
                     .accentColor(.red) // Set the accent color to red
+                    .padding(.bottom, 10)  // Adds space below the text
                     
                     Text("Alcohol").font(.system(size: 13))
                     Picker("Alcohol", selection: $alcohol) {
@@ -171,6 +173,7 @@ struct WineFormView: View {
                         Text("High").tag("High")
                     }
                     .pickerStyle(SegmentedPickerStyle())
+                    .padding(.bottom, 10)  // Adds space below the text
                     
                     Text("Body").font(.system(size: 13))
                     Picker("Body", selection: $structureBody) {
@@ -181,6 +184,7 @@ struct WineFormView: View {
                         Text("Full").tag("Full")
                     }
                     .pickerStyle(SegmentedPickerStyle())
+                    .padding(.bottom, 10)  // Adds space below the text
                     
                     Text("Sweetness").font(.system(size: 13))
                     Picker("Sweet", selection: $sweetness) {
@@ -191,22 +195,31 @@ struct WineFormView: View {
                         Text("V. Sweet").tag("V. Sweet")
                     }
                     .pickerStyle(SegmentedPickerStyle())
+                    .padding(.bottom, 10)  // Adds space below the text
                     
+                    // Tannin Label and Picker
                     Text("Tannin").font(.system(size: 13))
-                    Picker("Tannin", selection: $tannin) {
-                        Text("Low").tag("Low")
-                        Text("Med-").tag("Med-")
-                        Text("Med").tag("Med")
-                        Text("Med+").tag("Med+")
-                        Text("High").tag("High")
+                    if wineType == "Red" || wineType == "Orange" || wineType == "Fortified" {
+                        Picker("Tannin", selection: $tannin) {
+                            Text("Low").tag("Low")
+                            Text("Med-").tag("Med-")
+                            Text("Med").tag("Med")
+                            Text("Med+").tag("Med+")
+                            Text("High").tag("High")
+                        }
+                        .pickerStyle(SegmentedPickerStyle())
+                        .padding(.bottom, 10)  // Adds space below the text
+                    } else {
+                        Text("Typically minimal for selected type.")
+                            .foregroundColor(.gray)
                     }
-                    .pickerStyle(SegmentedPickerStyle())
                 }
             }
             
+            
             Section(header: Text("Rating")) {
-                            StarRatingView(rating: $rating)
-                        }
+                StarRatingView(rating: $rating)
+            }
             
             Section(header: Text("Final Thoughts")) {
                 TextEditor(text: $finalThoughts)
@@ -218,16 +231,18 @@ struct WineFormView: View {
             Button("Save") {
                 saveWine()
             }
-            .foregroundColor(.blue) // Sets the text color to white
-            .navigationBarTitle(wineEntity != nil ? "Edit Wine" : "Add Wine")
+            .accentColor(Color.blue) // Set cursor color to system gray
+        }
+           
+            .navigationBarTitle(wineEntity != nil ? "Edit Wine" : "Add Wine", displayMode: .inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Cancel") {
                         presentationMode.wrappedValue.dismiss()
                     }
                 }
             }
-        }
+        
         .sheet(isPresented: $isShowingImagePicker, onDismiss: loadImage) {
             ImagePicker(selectedImage: $selectedImage)
         }
