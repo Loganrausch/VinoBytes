@@ -65,7 +65,7 @@ struct DashboardView: View {
                         isFlashcardProgressSheetPresented = true
                     }) {
                         VStack(spacing: 6) {
-                            Text("View Flashcard Progress")
+                            Text("My Flashcard Progress")
                                 .frame(maxWidth: .infinity, minHeight: 20) // Ensures the text field fills the button area
                                 .contentShape(Rectangle()) // Makes the whole area tappable
                                 .bold()

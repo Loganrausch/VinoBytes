@@ -49,7 +49,7 @@ struct StudyView: View {
                                                    .clipShape(Circle()) // This makes the background a circle
                                                    .overlay(
                                                        Circle() // Overlay a circle border
-                                                           .stroke(Color("Maroon"), lineWidth: 2)
+                                                           .stroke(Color("LightMaroon"), lineWidth: 2)
                                                    )
                                                    .shadow(radius: 5)
                                            }
@@ -89,9 +89,8 @@ struct RegionView: View {
                 .foregroundColor(isSelected ? .white : .black)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .padding()
-                .background(isSelected ? Color(red: 128/255, green: 0, blue: 0) : Color.white)
+                .background(isSelected ? Color("LightMaroon") : Color.white)
                 .cornerRadius(5)
-                
                 .shadow(color: .gray, radius: 4)
         }
     }

@@ -57,7 +57,7 @@ class OpenAIManager: ObservableObject {
     
     private func requestResponse(for text: String, context: [[String: String?]], completion: @escaping (String?) -> Void) {
         guard let url = URL(string: "https://vinobytes-afe480cea091.herokuapp.com/api/chat") else {
-            completion(nil)
+            completion("API URL is not valid")
             return
         }
         var request = URLRequest(url: url)
@@ -69,7 +69,7 @@ class OpenAIManager: ObservableObject {
         }
         
         let body: [String: Any] = [
-            "messages": modifiedContext + [["role": "user", "content": text]],
+            "messages": [systemMessage] + modifiedContext + [["role": "user", "content": text]],
             "max_tokens": 500
         ]
         
