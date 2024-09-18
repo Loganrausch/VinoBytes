@@ -52,7 +52,7 @@ struct DashboardView: View {
                 .cornerRadius(10)
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color("Maroon"), lineWidth: 1.5)
+                        .stroke(Color("LightMaroon"), lineWidth: 1.5)
                 )
                 .padding()
                 Spacer(minLength: 1)
@@ -77,7 +77,7 @@ struct DashboardView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .overlay(
                             RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color("Maroon"), lineWidth: 2)
+                                .stroke(Color("LightMaroon"), lineWidth: 2)
                             
                             
                         )
@@ -100,7 +100,7 @@ struct DashboardView: View {
                         NavigationLink(destination: MyWinesView(isRootView: false, refreshNotifier: refreshNotifier)) {
                             ZStack {
                                 Circle()
-                                    .stroke(Color("Maroon"), lineWidth: 5)
+                                    .stroke(Color("LightMaroon"), lineWidth: 5)
                                     .frame(width: 110, height: 110)
                                     .background(Color.white)
                                     .clipShape(Circle())
@@ -121,7 +121,7 @@ struct DashboardView: View {
                         }) {
                             ZStack {
                                 Circle()
-                                    .stroke(Color("Maroon"), lineWidth: 5)
+                                    .stroke(Color("LightMaroon"), lineWidth: 5)
                                     .frame(width: 110, height: 110)
                                     .background(Color.white)
                                     .clipShape(Circle())
@@ -150,7 +150,7 @@ struct DashboardView: View {
                     NavigationLink(destination: BlogPostView(blogPost: latestPost, blogPosts: blogPosts)) {
                         ZStack {
                             RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color("Maroon"), lineWidth: 5)
+                                .stroke(Color("LightMaroon"), lineWidth: 5)
                                 .frame(width: 200, height: 50)
                                 .background(Color.white)
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
@@ -163,7 +163,7 @@ struct DashboardView: View {
                 } else {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color("Maroon"), lineWidth: 5)
+                            .stroke(Color("LightMaroon"), lineWidth: 5)
                             .frame(width: 200, height: 50)
                             .background(Color.white)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
@@ -255,7 +255,7 @@ struct DashboardView: View {
 struct CustomProgressViewStyle: ProgressViewStyle {
     func makeBody(configuration: Configuration) -> some View {
         ProgressView(configuration)
-            .accentColor(Color("Maroon"))
+            .accentColor(Color("LightMaroon"))
     }
 }
 

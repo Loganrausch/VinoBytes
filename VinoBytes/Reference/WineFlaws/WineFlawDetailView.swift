@@ -20,7 +20,7 @@ struct WineFlawDetailView: View {
             
             Text("Description")
                 .font(.headline)
-                .foregroundStyle(Color(red: 128/255, green: 0, blue: 0))
+                .foregroundStyle(Color("LightMaroon"))
             
             Text(wineFlaw.description)
                 .font(.body)
@@ -30,7 +30,7 @@ struct WineFlawDetailView: View {
             
             Text("Additional Info")
                 .font(.headline)
-                .foregroundStyle(Color(red: 128/255, green: 0, blue: 0))
+                .foregroundStyle(Color("LightMaroon"))
             
             Text(wineFlaw.additionalInfo)
                 .font(.body)

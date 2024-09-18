@@ -418,9 +418,9 @@ Grape(
                 origin: "Cabernet Sauvignon, originating from the Bordeaux region of France, has transcended its regional beginnings to become one of the most celebrated and widely planted red wine grape varieties worldwide. Its rise to fame is attributed to its prominent role in Bordeaux blends, where it contributes structure, tannins, and longevity. Over centuries, it has adapted to a variety of climates and terroirs, making it a versatile grape that has helped to establish and enhance the reputation of emerging wine regions across the globe. This includes the acclaimed vineyards of Napa Valley in California, the diverse terrains of Chile and Australia, the historic estates of South Africa, and as a crucial component in Italy’s Super Tuscans, where it adds depth and complexity to these innovative blends.",
                 countries: Countries(
                     primary: [
-                        "France: A staple in Bordeaux blends.",
-                        "USA: Dominant in California, especially Napa Valley.",
-                        "Italy: Integral to Super Tuscans alongside traditional regions.",
+                        "France: A staple in Bordeaux blends.\n",
+                        "USA: Dominant in California, especially Napa Valley.\n",
+                        "Italy: Integral to Super Tuscans alongside traditional regions.\n",
                         "Chile, Australia, South Africa: Extensively planted."
                     ]
                 ),
@@ -431,8 +431,8 @@ Grape(
                     finish: "Long and persistent with layered complexity."
                 ),
                 viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Prefers warmer climates to fully ripen but can adapt to cooler areas.",
-                    soil: "Best in deep, well-drained gravelly and loamy soils.",
+                    climate: "Prefers warmer climates to fully ripen but can adapt to cooler areas.\n",
+                    soil: "Best in deep, well-drained gravelly and loamy soils.\n",
                     growingConditions: "Vigorous and hardy, but can be susceptible to poor fruit set due to cold or rainy weather during flowering."
                 ),
                 wineStyles: [

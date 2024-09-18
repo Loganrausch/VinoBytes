@@ -18,7 +18,7 @@ struct WineGlassLoadingView: View {
             ForEach(0..<3, id: \.self) { index in
                 Image(systemName: "wineglass.fill")
                     .font(.system(size: 10)) // Adjusted font size for better visibility
-                    .foregroundColor(Color("Maroon"))
+                    .foregroundColor(Color("LightMaroon"))
                     .scaleEffect(self.isActive ? 1.0 : 0.6)
                     .animation(self.animation.delay(Double(index) * 0.2), value: self.isActive)
             }

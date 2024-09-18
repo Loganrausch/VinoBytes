@@ -28,12 +28,22 @@ struct AccountView: View {
     @Environment(\.managedObjectContext) private var viewContext  // Core Data context
     @ObservedObject var refreshNotifier: RefreshNotifier  // Add this line
     
+    var appVersion: String {
+            // Fetching the app version and build number from the Info.plist
+            if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
+               let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
+                return "Version \(version) (\(build))"
+            }
+            return "Version not available"
+        }
+    
     var body: some View {
         VStack {
             if let errorMessage = errorMessage {
                 Text(errorMessage)
                     .foregroundColor(.red)
             }
+            
             Form {
                 Section(header: Text("Actions")) {
                     Button("Rate VinoBytes App") {
@@ -45,8 +55,9 @@ struct AccountView: View {
                         showingShareSheet.toggle()
                     }
                     .sheet(isPresented: $showingShareSheet) {
-                        ShareSheet(activityItems: ["Check out this cool wine app!"])
+                        ShareSheet(activityItems: ["Check out this cool wine app: VinoBytes! You can download it here: https://vinobytes.com"])
                     }
+                    
                     Button("Feedback") {
                         showingFeedbackSheet = true
                     }
@@ -79,14 +90,25 @@ struct AccountView: View {
                     }
                 }
                 
-                Button(action: {
-                    // Log out logic
-                }) {
-                    Text("Log Out")
-                }
                 .accentColor(Color.black) // Applying custom accent color locally to these buttons
             }
+            
+            .padding(.top, 20)
             .navigationBarTitle("Account Settings", displayMode: .inline)
+            
+            // Logo image at the bottom
+                        Image("vinobytes_logo_final")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 150)  // Adjust the size as needed
+                            .padding(.bottom, 10)
+            
+            // App version at the bottom
+                       Text(appVersion)
+                           .font(.footnote)
+                           .foregroundColor(.gray)
+                           .padding(.bottom, 18) // Padding for space at the bottom
+            
         }
         .background(Color(.systemGroupedBackground).edgesIgnoringSafeArea(.all))
         .toast(message: "All wines successfully deleted!", isShowing: $showingSuccessToast)

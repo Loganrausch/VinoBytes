@@ -63,9 +63,9 @@ struct OpenAIChatView: View {
                     
                 VStack(spacing: 0) {
                                     Rectangle()
-                                        .fill(Color("Maroon"))
+                                        .fill(Color("LightMaroon"))
                                         .frame(height: 2)
-                                        .opacity(0.4)
+                                        .opacity(0.6)
                                     
                                     VStack {
                                         Spacer(minLength: 0)
@@ -206,7 +206,7 @@ struct CustomTextField: View {
                 Image(systemName: "arrow.up.square")
                     .resizable()
                     .frame(width: 26, height: 26)
-                    .foregroundColor(Color("Maroon"))
+                    .foregroundColor(Color("LightMaroon"))
                     .padding(.trailing, -4)
             }
         }

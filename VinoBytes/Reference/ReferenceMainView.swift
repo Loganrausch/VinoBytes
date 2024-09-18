@@ -17,7 +17,7 @@ struct ReferenceMainView: View {
                     }
                     
                     NavigationLink(destination: WineGlossaryListView()) {
-                        buttonContent(title: "Glossary", systemImage: "books.vertical")
+                        buttonContent(title: "Glossary", systemImage: "pencil.and.list.clipboard")
                     }
                     
                     NavigationLink(destination: FoodWinePairingsListView()) {
@@ -55,7 +55,7 @@ struct ReferenceMainView: View {
         .cornerRadius(10) // Add corner radius to make the rectangle corners rounded
         .shadow(radius: 10) // Apply shadow
         .overlay(
-            RoundedRectangle(cornerRadius: 10).stroke(Color("Maroon"), lineWidth: 2)
+            RoundedRectangle(cornerRadius: 10).stroke(Color("LightMaroon"), lineWidth: 2.2)
         )
     }
 }

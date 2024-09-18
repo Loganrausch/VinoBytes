@@ -4,6 +4,7 @@
 //
 //  Created by Logan Rausch on 3/1/24.
 //
+
 import SwiftUI
 import CoreData
 
@@ -15,12 +16,13 @@ struct FlashcardView: View {
     private var flashcards: FetchedResults<StudyCard> { flashcardsFetchRequest.wrappedValue }
     
     @State private var currentFlashcardIndex = 0
-    @State private var isFlipped = false
+    @State private var rotationAngle: Double = 0 // Track the rotation angle
+    @State private var showFront: Bool = true // Manage which side to show
     @State private var swipeOffset: CGFloat = 0
     @State private var currentRegion: String? = nil
     @State private var showFeedback: Bool = false
     @State private var feedbackIcon: String = ""
-    @State private var borderColor: Color = .maroon // Default border color for the card
+    @State private var borderColor: Color = .lightMaroon // Default border color for the card
     @State private var feedbackOpacity: Double = 0 // Manage the opacity of feedback
     
     init(selectedRegions: [String]) {
@@ -40,7 +42,7 @@ struct FlashcardView: View {
                 // Display message when there are no flashcards due for review
                 Text("No flashcards are due for review right now.")
                     .font(.headline)
-                    .foregroundColor(.maroon)
+                    .foregroundColor(.lightMaroon)
                     .padding()
                 
                 Text("Try selecting a different region or check back later.")
@@ -51,14 +53,14 @@ struct FlashcardView: View {
                 Text(currentRegion ?? "Unknown Region")
                     .font(.headline)
                     .fontWeight(.bold)
-                    .foregroundColor(.maroon)
+                    .foregroundColor(.lightMaroon)
                     .padding(.horizontal)  // Keep horizontal padding for spacing around the text
                     .frame(height: 35)  // Set a fixed height for the box
                     .background(Color.white)
                     .cornerRadius(10)
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.maroon, lineWidth: 2)
+                            .stroke(Color.lightMaroon, lineWidth: 2)
                     )
                     .padding(.bottom, 30)
                 
@@ -75,10 +77,14 @@ struct FlashcardView: View {
                                             .stroke(borderColor, lineWidth: 3) // Dynamic border color
                                     )
                                     .shadow(color: .gray, radius: 5, x: 0, y: 0) // Adding shadow here
-                                    .rotation3DEffect(.degrees(isFlipped ? 180 : 0), axis: (x: 0, y: 1, z: 0))
-                                    .offset(x: swipeOffset)
-                                    .animation(.easeInOut, value: swipeOffset)
-                                    .opacity(isFlipped ? 0 : 1) // Hide when flipped
+                                    .rotation3DEffect(
+                                                                            .degrees(rotationAngle),
+                                                                            axis: (x: 0, y: 1, z: 0)
+                                                                        )
+                                    
+                                   
+                                    .opacity(showFront ? 1 : 0) // Show front only when showFront is true
+                                    
                                 
                                 // Display the answer side of the card
                                 FlashcardContent(text: flashcards[index].answer)
@@ -89,11 +95,16 @@ struct FlashcardView: View {
                                             .stroke(borderColor, lineWidth: 3) // Dynamic border color
                                     )
                                     .shadow(color: .gray, radius: 5, x: 0, y: 0) // Adding shadow here
-                                    .rotation3DEffect(.degrees(isFlipped ? 360 : 180), axis: (x: 0, y: 1, z: 0)) // Correct the orientation for the answer
-                                    .offset(x: swipeOffset)
-                                    .animation(.easeInOut, value: swipeOffset)
-                                    .opacity(isFlipped ? 1 : 0) // Show only when flipped
+                                    .rotation3DEffect(
+                                                                            .degrees(rotationAngle + 180),
+                                                                            axis: (x: 0, y: 1, z: 0)
+                                                                        )
+                                    
+                                    .opacity(showFront ? 0 : 1) // Show back only when showFront is false
+                                   
                             }
+                            .offset(x: swipeOffset)
+                            .animation(.easeInOut(duration: 0.3), value: swipeOffset) // Animate the swipe offset
                         }
                     }
                     
@@ -118,16 +129,11 @@ struct FlashcardView: View {
                         }
                 )
                 .onTapGesture {
-                    withAnimation {
-                        isFlipped.toggle()
-                    }
-                }
-                
-                
-                .padding(.bottom, 30)
-                
-            }
-        }
+                                    flipCard()
+                                }
+                                .padding(.bottom, 30)
+                            }
+                        }
         .padding()
         .navigationBarTitle("Flashcard Study")
         .navigationBarTitleDisplayMode(.inline)
@@ -135,6 +141,20 @@ struct FlashcardView: View {
                     updateCurrentRegion()
                 }
     }
+    
+    private func flipCard() {
+           let animationDuration = 0.4
+           withAnimation(.linear(duration: animationDuration)) {
+               rotationAngle += 180
+           }
+           
+           // Toggle the side to show after half the animation duration
+           DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration / 2) {
+               withAnimation(.none) { // Shorter animation for opacity change
+                   showFront.toggle()
+               }
+           }
+       }
     
     private func handleSwipe(_ width: CGFloat) {
             guard !flashcards.isEmpty else { return }
@@ -153,7 +173,7 @@ struct FlashcardView: View {
                 // Delay to ensure the card moves off screen before showing feedback
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                     self.showFeedback = true
-                    self.borderColor = .maroon // Reset border color
+                    self.borderColor = .lightMaroon // Reset border color
 
                     // Further delay to show the feedback icon briefly before moving to the next card
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
@@ -174,7 +194,7 @@ struct FlashcardView: View {
             } else {
                 withAnimation(.spring()) {
                     swipeOffset = 0 // Return card to center if not swiped far enough
-                    borderColor = .maroon // Reset border color
+                    borderColor = .lightMaroon // Reset border color
                 }
             }
         }
@@ -192,8 +212,10 @@ struct FlashcardView: View {
         }
         
         updateCurrentRegion()
-        isFlipped = false
+        rotationAngle = 0 // Reset rotation angle
+        showFront = true // Ensure front is shown for the next card
         swipeOffset = 0
+        
     }
 
             private func updateCurrentRegion() {
@@ -206,8 +228,11 @@ struct FlashcardView: View {
         }
 
 
+
+
 struct FlashcardView_Previews: PreviewProvider {
     static var previews: some View {
         FlashcardView(selectedRegions: ["Europe", "Asia"])
+            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

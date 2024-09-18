@@ -1320,7 +1320,7 @@ Country(name: "Australia", regions: [
         topProducers: [
             "Penfolds (Tanunda)",
             "Yalumba (Barossa Valley)",
-            "Torbreck (Lyndoch)",
+            "Torbreck (Marananga)",
             "Seppeltsfield (Seppeltsfield)",
             "Jacob's Creek (Tanunda)"
         ],
@@ -1359,15 +1359,15 @@ Country(name: "Australia", regions: [
         name: "Coonawarra",
         details: "Coonawarra is a renowned wine region located in South Australia, famous for its premium red wines, particularly Cabernet Sauvignon. The region's unique 'terra rossa' soil and cool maritime climate provide ideal conditions for viticulture, contributing to the distinctive character and high quality of its wines.",
         subregions: [
-            "Penola: Known for its rich, full-bodied Cabernet Sauvignon with excellent aging potential.\n",
-            "Kalangadoo: Produces a range of high-quality wines, including Shiraz and Merlot, with rich flavors and balanced structures."
+            "Coonawarra (General): Known for its concentration of vineyards along the narrow strip of 'terra rossa' soil, producing premium Cabernet Sauvignon with distinctive regional characteristics.\n",
+            "Penola: The main town associated with the Coonawarra wine region, central to its wine production and home to many wineries."
         ],
         climate: "Coonawarra has a cool maritime climate with moderate temperatures and a long growing season. The cooling influence of the nearby Southern Ocean helps to maintain acidity and develop complex flavors in the grapes.",
         soil: [
-            "Penola: Predominantly 'terra rossa' soil, a red clay over limestone, which is ideal for producing structured and complex red wines.\n",
-            "Kalangadoo: A mix of 'terra rossa' and black clay soils, enhancing the richness and body of the wines."
+            "Coonawarra (General): Predominantly 'terra rossa' soil—a thin layer of red clay over limestone—which is ideal for producing structured and complex red wines, particularly Cabernet Sauvignon.\n",
+            "Penola: Similar 'terra rossa' soils that contribute to the high quality and distinctive character of the region's wines."
         ],
-        keyWineStyles: "Coonawarra is best known for its Cabernet Sauvignon, which is characterized by its deep color, firm tannins, and complex flavors of blackcurrant, mint, and cedar. The region also produces excellent Shiraz, Merlot, and Chardonnay, known for their balance and elegance.",
+        keyWineStyles: "Coonawarra is best known for its Cabernet Sauvignon, characterized by deep color, firm tannins, and complex flavors of blackcurrant, mint, and cedar. The region also produces excellent Shiraz, Merlot, and Chardonnay, known for their balance and elegance.",
         topProducers: [
             "Wynns Coonawarra Estate (Penola)",
             "Parker Coonawarra Estate (Penola)",
@@ -1399,7 +1399,6 @@ Country(name: "Australia", regions: [
             "Henschke (Keyneton)",
             "Pewsey Vale (High Eden)",
             "Yalumba (Flaxman Valley)",
-            "Eden Road Wines (High Eden)",
             "Mountadam Vineyards (High Eden)",
             "Irvine Wines (Keyneton)"
         ],
@@ -1596,7 +1595,6 @@ Country(name: "Australia", regions: [
             "Casella Family Brands (Griffith)",
             "McWilliam's Wines (Griffith)",
             "Warburn Estate (Griffith)",
-            "Yellow Tail (Yenda)",
             "Toorak Winery (Leeton)"
         ],
         imageName: "riverina_image",
@@ -1622,8 +1620,7 @@ Country(name: "Australia", regions: [
             "Jasper Hill (Colbinabbin)",
             "Mount Ida Estate (Tooborac)",
             "Sanguine Estate (Heathcote)",
-            "McIvor Estate (Tooborac)",
-            "Idavue Estate (Mia Mia)"
+            "McIvor Estate (Tooborac)"
         ],
         imageName: "heathcote_image",
         iconNames: ["mountain", "wine_glass"]
@@ -1686,24 +1683,19 @@ Country(name: "Australia", regions: [
         name: "Pemberton",
         details: "Pemberton is a picturesque wine region located in Western Australia, known for its cool climate and pristine natural environment. The region's diverse soils and moderate climate create ideal conditions for producing high-quality wines, particularly Chardonnay and Pinot Noir. Pemberton's lush forests and coastal influences contribute to the unique character of its wines.",
         subregions: [
-            "Karri Valley: Known for its premium Chardonnay and Pinot Noir, benefiting from the cool climate and high-altitude vineyards.\n",
-            "Manjimup: Produces a variety of high-quality wines, including Shiraz, Merlot, and Sauvignon Blanc.\n",
-            "Warren River: Famous for its boutique wineries and diverse wine styles, from crisp whites to robust reds."
+            "Note: Pemberton does not have any officially recognized subregions. However, the region's vineyards are dispersed across various areas, each contributing unique characteristics to the wines. The proximity to Karri forests, variations in elevation, and differences in soil types across the region enhance the diversity of Pemberton's wine styles."
         ],
-        climate: "Pemberton has a cool to moderate climate with significant maritime influences. The region experiences mild summers and cool, wet winters, which are ideal for growing a variety of grape varieties, particularly those that thrive in cooler conditions.",
+        climate: "Pemberton has a cool to moderate climate with significant maritime influences. The region experiences mild summers and cool, wet winters, which are ideal for growing grape varieties that thrive in cooler conditions.",
         soil: [
-            "Karri Valley: Predominantly gravelly loam and sandy soils, contributing to the structure and minerality of the wines.\n",
-            "Manjimup: A mix of sandy loam and clay soils, supporting the production of balanced and complex wines.\n",
-            "Warren River: Varied soils, including loam and gravel, enhancing the versatility and quality of the wines."
+            "The region features predominantly gravelly loam and sandy soils, contributing to the structure and minerality of the wines. Varied soils, including loam and gravel, enhance the versatility and quality of the wines."
         ],
-        keyWineStyles: "Pemberton is best known for its Chardonnay, characterized by its bright acidity, tropical fruit flavors, and subtle oak influence. The region also produces outstanding Pinot Noir, known for its elegance, red fruit flavors, and fine tannins. Other notable varieties include Shiraz, Merlot, Sauvignon Blanc, and Cabernet Sauvignon, which are known for their balance and complexity.",
+        keyWineStyles: "Pemberton is best known for its Chardonnay, characterized by bright acidity, tropical fruit flavors, and subtle oak influence. The region also produces outstanding Pinot Noir, known for its elegance, red fruit flavors, and fine tannins. Other notable varieties include Shiraz, Merlot, Sauvignon Blanc, and Cabernet Sauvignon, which are known for their balance and complexity.",
         topProducers: [
-            "Picardy (Karri Valley)",
-            "Salitage Wines (Karri Valley)",
-            "Bellarmine Wines (Manjimup)",
-            "Peos Estate (Manjimup)",
-            "Silkwood Estate (Warren River)",
-            "Mountford Wines (Warren River)"
+            "Picardy (Pemberton)",
+            "Salitage Wines (Pemberton)",
+            "Silkwood Estate (Pemberton)",
+            "Lost Lake Wines (Pemberton)",
+            "Hidden River Estate (Pemberton)"
         ],
         imageName: "pemberton_image",
         iconNames: ["forest", "wine_glass"]
@@ -1737,7 +1729,7 @@ Country(name: "United States", regions: [
                 "Stag's Leap Wine Cellars (Stags Leap District)",
                 "Caymus Vineyards (Rutherford)",
                 "Harlan Estate (Oakville)",
-                "Duckhorn Vineyards (Howell Mountain)",
+                "Dunn Vineyards (Howell Mountain)",
                 "Domaine Carneros (Carneros)"
             ],
             imageName: "napa_valley_image",
@@ -1786,7 +1778,7 @@ Country(name: "United States", regions: [
             climate: "Willamette Valley has a cool, maritime climate with mild summers and wet winters. The region experiences significant diurnal temperature variations, which help to preserve acidity and develop complex flavors in the grapes.",
             soil: [
                 "Dundee Hills: Predominantly volcanic Jory soils, contributing to the structure and bright fruit flavors of the wines.\n",
-                "Eola-Amity Hills: Marine sedimentary soils, enhancing the acidity and dark fruit characteristics of the wines.\n",
+                "Eola-Amity Hills: Volcanic and marine sedimentary soils, enhancing the acidity and dark fruit characteristics of the wines.\n",
                 "McMinnville: Basalt and marine sedimentary soils, supporting the production of robust and complex wines.\n",
                 "Yamhill-Carlton: Ancient marine sedimentary soils, providing a rich and silky texture to the wines.\n",
                 "Chehalem Mountains: Varied soils, including volcanic, marine sedimentary, and loess, enhancing the diversity of wine styles."
@@ -2081,7 +2073,7 @@ Country(name: "Germany", regions: [
             "Weingut Keller (Flörsheim-Dalsheim)",
             "Weingut Gunderloch (Nackenheim)",
             "Weingut Wagner-Stempel (Siefersheim)",
-            "Weingut Philipp Kuhn (Laumersheim)",
+            "Weingut Battenfeld-Spanier (Hohen-Sülzen)",
             "Weingut Dreissigacker (Bechtheim)"
         ],
         imageName: "rheinhessen_image",
@@ -2132,7 +2124,7 @@ Country(name: "Germany", regions: [
             "Weingut Dönnhoff (Oberhausen)",
             "Weingut Schäfer-Fröhlich (Bockenau)",
             "Weingut Emrich-Schönleber (Monzingen)",
-            "Weingut Hermann Dönnhoff (Oberhausen)",
+            "Weingut Kruger-Rumpf (Münster-Sarmsheim)",
             "Weingut Gut Hermannsberg (Niederhausen)",
             "Weingut Hexamer (Meddersheim)"
         ],
@@ -2347,7 +2339,6 @@ Country(name: "Austria", regions: [
             "Weingut Salomon Undhof (Krems)",
             "Weingut Stadt Krems (Krems)",
             "Weingut Sepp Moser (Rohrendorf)",
-            "Weingut Martin Nittnaus (Krems)",
             "Weingut Geyerhof (Oberfucha)"
         ],
         imageName: "kremstal_image",
@@ -2358,7 +2349,7 @@ Country(name: "Austria", regions: [
         details: "Located in the eastern part of Austria, bordering Hungary, Burgenland is distinguished by its warm climate and extensive lakes, which provide a tempering effect on the hot summers. This region is renowned for its red wines, particularly from the Blaufränkisch grape, which thrives in the local conditions. Burgenland also produces exquisite sweet wines, such as Beerenauslese and Trockenbeerenauslese, from grapes concentrated by noble rot.",
         subregions: [
             "Neusiedlersee: Known for powerful red wines and rich, sweet whites due to the moderating effect of the lake.\n",
-            "Eisenstadt: A smaller area focusing on both red and white wines, known for its sustainable viticulture.\n",
+            "Leithaberg: known for both red and white wines, with a focus on sustainable viticulture and complex wines from Blaufränkisch and Chardonnay.\n",
             "Mittelburgenland: Often called ‘Blaufränkischland’, focused on producing structured and spicy Blaufränkisch."
         ],
         climate: "Burgenland features a Pannonian climate with hot summers and mild winters, moderated by the Neusiedlersee which helps in the development of noble rot, crucial for sweet wine production.",
@@ -2397,9 +2388,7 @@ Country(name: "Austria", regions: [
         topProducers: [
             "Weingut Tement (Südsteiermark)",
             "Weingut Polz (Südsteiermark)",
-            "Weingut Manfred Tement (Berghausen)",
             "Weingut Winkler-Hermaden (Südoststeiermark)",
-            "Schilcherland Weingut (Weststeiermark)",
             "Weingut Gross (Ratsch an der Weinstraße)"
         ],
         imageName: "styria_image",
@@ -2421,7 +2410,6 @@ Country(name: "Austria", regions: [
         ],
         keyWineStyles: "Weinviertel is famed for its Weinviertel DAC Grüner Veltliner, showcasing distinct peppery, crisp, and vibrant characteristics. The region also produces quality Riesling, Chardonnay, and some red varieties such as Zweigelt.",
         topProducers: [
-            "Weingut Bründlmayer (Poysdorf)",
             "Weingut Pfaffl (Stetten)",
             "Weingut Hagn (Mailberg)",
             "Weingut Hermann Moser (Rohrendorf bei Krems)",
@@ -2503,7 +2491,6 @@ Country(name: "Austria", regions: [
             "Weingut Leth (Fels am Wagram)",
             "Weingut Josef Ehmoser (Großweikersdorf)",
             "Weingut Markus Huber (Reichersdorf)",
-            "Weingut Fritz Salomon (Krems)",
             "Weingut Klaus Lang (Kirchberg)"
         ],
         imageName: "wagram_image",
@@ -2557,8 +2544,6 @@ Country(name: "Chile", regions: [
         keyWineStyles: "Maipo Valley is best known for its Cabernet Sauvignon, characterized by its body, complexity, and longevity. The region also produces excellent Merlot, Carmenere, and Chardonnay.",
         topProducers: [
             "Concha y Toro (Pirque)",
-            "Viña Almaviva (Puente Alto)",
-            "Santa Rita (Alto Jahuel)",
             "Cousiño Macul (Peñalolén)",
             "Viña Tarapacá (Isla de Maipo)",
             "Haras de Pirque (Pirque)"
@@ -2713,9 +2698,6 @@ Country(name: "Chile", regions: [
         keyWineStyles: "Maule Valley is best known for its bold Carignan, smooth Merlot, and structured Cabernet Sauvignon. The region also produces exceptional Chardonnay and Sauvignon Blanc, known for their crispness and freshness.",
         topProducers: [
             "Viña Gillmore (Cauquenes)",
-            "Viña Balduzzi (San Javier)",
-            "Bodegas y Viñedos De Martino (Isla de Maipo)",
-            "Viña J. Bouchon (Santa Rosa)",
             "Casa Donoso (Talca)",
             "Viña Calina (Talca)"
         ],
@@ -2739,7 +2721,6 @@ Country(name: "Chile", regions: [
         keyWineStyles: "Itata Valley is renowned for its Pais and Cinsault, offering fresh and fruity profiles with a rustic edge. The region also produces exceptional Muscat, known for its aromatic intensity and crisp acidity.",
         topProducers: [
             "Viña Roja (Coelemu)",
-            "De Martino (Isla de Maipo)",
             "Rogue Vine (Guarilihue)",
             "Cacique Maravilla (Ñipas)",
             "Viñedos de Alcohuaz (Ñipas)",
@@ -2768,7 +2749,6 @@ Country(name: "Chile", regions: [
             "Viña Morandé (Chillán)",
             "Viña Terranoble (Concepción)",
             "Viña Mar (Chillán)",
-            "Viña Maycas del Limarí (Mulchén)",
             "Viña Chillán (Chillán)"
         ],
         imageName: "bio_bio_valley_image",
@@ -2794,7 +2774,6 @@ Country(name: "Chile", regions: [
             "Viña Garces Silva (Leyda)",
             "Viña Ventolera (Leyda)",
             "Viña San Antonio (Leyda)",
-            "Matetic Vineyards (Rosario Valley)",
             "Viña Montsecano (Leyda)"
         ],
         imageName: "leyda_valley_image",
@@ -2905,7 +2884,6 @@ Country(name: "Argentina", regions: [
             "Bodega Valle de la Puerta (Famatina Valley)",
             "Bodega Raza (Chilecito)",
             "Bodega Borde Rio (Chilecito)",
-            "Bodega y Cavas de Weinert (Mendoza, with vines in La Rioja)"
         ],
         imageName: "la_rioja_image",
         iconNames: ["mountain", "wine_glass"]
@@ -3003,7 +2981,6 @@ Country(name: "Argentina", regions: [
         keyWineStyles: "Río Negro is best known for its elegant and aromatic Pinot Noir, structured Merlot, and crisp, refreshing Chardonnay. The region also produces high-quality Sauvignon Blanc and sparkling wines.",
         topProducers: [
             "Bodega Humberto Canale (General Roca)",
-            "Bodega Agrestis (Neuquén)",
             "Bodega Chacra (Cipolletti)",
             "Bodega Noemia (Viedma)",
             "Bodega Patagonia (General Roca)",
@@ -3585,7 +3562,7 @@ Country(name: "Portugal", regions: [
 Country(name: "South Africa", regions: [
     Region(
         name: "Stellenbosch",
-        details: "Stellenbosch, located in the Western Cape of South Africa, is perhaps the most renowned wine region in the country. Known for its rich history and prestigious educational institutions, the area boasts a diverse range of microclimates and terroirs, making it ideal for producing high-quality wines. Stellenbosch is particularly famous for its robust Cabernet Sauvignon, complex Bordeaux blends, and elegant Chardonnay.",
+        details: "Stellenbosch, located in the Western Cape of South Africa, is perhaps the most renowned wine region in the country. Known for its rich history, the area boasts a diverse range of microclimates and terroirs, making it ideal for producing high-quality wines. Stellenbosch is particularly famous for its robust Cabernet Sauvignon, complex Bordeaux blends, and elegant Chardonnay.",
         subregions: [
             "Simonsberg-Stellenbosch: Known for premium red wines with significant aging potential.\n",
             "Jonkershoek Valley: Noted for its cooler climate, influencing the production of distinctive and refined Cabernet Sauvignon.\n",
@@ -3866,8 +3843,7 @@ Country(name: "Hungary", regions: [
             "Royal Tokaji (Mád)",
             "Oremus (Tolcsva)",
             "Szepsy (Mád)",
-            "Királyudvar (Tarcal)",
-            "Pajzos Tokaj (Sárospatak)"
+            "Királyudvar (Tarcal)"
         ],
         imageName: "tokaj_image",
         iconNames: ["volcano", "wine_glass"]
@@ -3962,13 +3938,39 @@ Country(name: "Hungary", regions: [
         topProducers: [
             "Laposa Estate (Badacsony)",
             "Figula Winery (Balatonfüred-Csopak)",
-            "Kreinbacher Estate (Somló)",
             "Jásdi Winery (Csopak)",
             "Konyári Winery (Balatonboglár)",
-            "Villa Tolnay (Badacsony)"
+            "Villa Tolnay (Badacsony)",
+            "Etyeki Kúria Winery (Balatonfüred-Csopak)"
         ],
         imageName: "balaton_image",
         iconNames: ["lake", "wine_glass"]
+    ),
+    Region(
+        name: "Somló",
+        details: "Somló, located on the northern shore of Lake Balaton, is a distinguished appellation within the Balaton wine district. Renowned for its unique volcanic terroir, Somló produces wines with exceptional minerality and complexity. The region is particularly famous for its Somló (a white wine) and Kékfrankos (a red wine), which thrive in the limestone-rich volcanic soils. The cool microclimate, influenced by Lake Balaton, allows for the cultivation of grapes that exhibit vibrant acidity and distinctive flavor profiles.",
+        subregions: [
+            "Somló Hill: The heart of the Somló appellation, known for its premium Somló and Kékfrankos wines with pronounced minerality.\n",
+            "Alpesztős Somló: Features vineyards at higher elevations, producing elegant and aromatic white wines with enhanced freshness.\n",
+            "Kővágó Somló: Noted for its robust red wines and innovative winemaking techniques that highlight the region's terroir."
+        ],
+        climate: "Somló enjoys a cool continental climate, moderated by its proximity to Lake Balaton. The lake's presence helps maintain consistent temperatures, reducing the risk of frost and extending the growing season. This climate is ideal for developing the vibrant acidity and complex flavors characteristic of Somló's wines.",
+        soil: [
+            "Somló Hill: Predominantly limestone and volcanic ash soils, providing excellent drainage and contributing to the wines' distinctive minerality.\n",
+            "Alpesztős Somló: Rich in volcanic pumice and limestone, enhancing the aromatic intensity and freshness of the wines.\n",
+            "Kővágó Somló: A mix of volcanic tuff and clay soils, supporting the production of structured and expressive red wines."
+        ],
+        keyWineStyles: "Somló is best known for its Somló white wines, which are characterized by their high acidity, pronounced minerality, and citrus flavors. The region also produces robust Kékfrankos red wines, known for their rich fruit profiles, firm tannins, and excellent aging potential. Additionally, Somló showcases innovative blends and varietals that highlight the unique terroir of the region.",
+        topProducers: [
+            "Kreinbacher Estate (Somló)",
+            "Hapográmos Winery (Somló)",
+            "Somló Pincészet (Somló)",
+            "Pista Pincészet (Somló)",
+            "Bock Winery (Somló)",
+            "Kovács Winery (Somló)"
+        ],
+        imageName: "somlo_image",
+        iconNames: ["volcano", "wine_glass"]
     )
         ])
     ]

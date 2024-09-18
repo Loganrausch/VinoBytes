@@ -22,10 +22,10 @@ struct WelcomeView: View {
                     }) {
                         Text("Skip")
                             .foregroundColor(.latte)
-                            .padding(.trailing, 30)
+                            .padding(.trailing, 40)
                     }
                 }
-                .frame(height: 65) // Standard height for top bars
+                .frame(height: 70) // Standard height for top bars
                 .background(Color("Maroon")) // Replace with your custom maroon color
             
             
@@ -44,7 +44,7 @@ struct WelcomeView: View {
                 ZStack {
                     Rectangle()
                         .fill(Color("Maroon")) // Replace with your custom maroon color
-                        .frame(height: 60) // Adjust the height as needed
+                        .frame(height: 70) // Adjust the height as needed
                     
                     // Custom Page Indicator
                     HStack(spacing: 8) {

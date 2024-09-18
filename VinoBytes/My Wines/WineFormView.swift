@@ -95,13 +95,13 @@ struct WineFormView: View {
                         vintage = "NV"
                         isNonVintage = true
                     }
-                    .foregroundColor(isNonVintage ? Color("Maroon") : .gray)
+                    .foregroundColor(isNonVintage ? Color("LightMaroon") : .gray)
                     .padding(8)
-                    .background(isNonVintage ? Color("Maroon").opacity(0.2) : Color.clear)
+                    .background(isNonVintage ? Color("LightMaroon").opacity(0.2) : Color.clear)
                     .cornerRadius(5)
                     .overlay(
                         RoundedRectangle(cornerRadius: 5)
-                            .stroke(isNonVintage ? Color("Maroon") : Color.clear, lineWidth: 2)
+                            .stroke(isNonVintage ? Color("LightMaroon") : Color.clear, lineWidth: 2)
                     )
                     .disabled(isNonVintage)
                     
@@ -109,13 +109,13 @@ struct WineFormView: View {
                         isNonVintage = false
                         vintage = ""  // Clear the vintage or set it to a default value
                     }
-                    .foregroundColor(!isNonVintage ? Color("Maroon") : .gray)
+                    .foregroundColor(!isNonVintage ? Color("LightMaroon") : .gray)
                     .padding(8)
-                    .background(!isNonVintage ? Color("Maroon").opacity(0.2) : Color.clear)
+                    .background(!isNonVintage ? Color("LightMaroon").opacity(0.2) : Color.clear)
                     .cornerRadius(5)
                     .overlay(
                         RoundedRectangle(cornerRadius: 5)
-                            .stroke(!isNonVintage ? Color("Maroon") : Color.clear, lineWidth: 2)
+                            .stroke(!isNonVintage ? Color("LightMaroon") : Color.clear, lineWidth: 2)
                     )
                     .disabled(!isNonVintage)
                 }
