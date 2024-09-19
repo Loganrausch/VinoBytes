@@ -24,6 +24,7 @@ struct FlashcardView: View {
     @State private var feedbackIcon: String = ""
     @State private var borderColor: Color = .lightMaroon // Default border color for the card
     @State private var feedbackOpacity: Double = 0 // Manage the opacity of feedback
+    @State private var showSpacedRepetitionDetail = false
     
     init(selectedRegions: [String]) {
         self.selectedRegions = selectedRegions
@@ -135,12 +136,23 @@ struct FlashcardView: View {
                             }
                         }
         .padding()
-        .navigationBarTitle("Flashcard Study")
-        .navigationBarTitleDisplayMode(.inline)
-        .onAppear {
+                .navigationBarTitle("Flashcard Study")
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarItems(trailing: Button(action: {
+                    showSpacedRepetitionDetail.toggle()
+                }) {
+                    Image(systemName: "info.circle")
+                        .font(.headline) // Adjust icon size if necessary
+                        .foregroundColor(.latte) // Customize icon color if desired
+                })
+                .sheet(isPresented: $showSpacedRepetitionDetail) {
+                    SpacedRepetitionDetailView() // Your sheet view content
+                }
+                .onAppear {
                     updateCurrentRegion()
                 }
-    }
+            }
+        
     
     private func flipCard() {
            let animationDuration = 0.4

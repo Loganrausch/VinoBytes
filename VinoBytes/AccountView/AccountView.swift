@@ -11,7 +11,7 @@ import StoreKit
 import CoreData
 
 enum ActiveAlert: Identifiable {
-    case resetWines, resetFlashcards
+    case resetWines, resetFlashcards, iCloudSyncInfo
 
     var id: Int {
         hashValue
@@ -45,18 +45,7 @@ struct AccountView: View {
             }
             
             Form {
-                Section(header: Text("Actions")) {
-                    Button("Rate VinoBytes App") {
-                        if let windowScene = UIApplication.shared.windows.first?.windowScene {
-                            SKStoreReviewController.requestReview(in: windowScene)
-                        }
-                    }
-                    Button("Invite Friends") {
-                        showingShareSheet.toggle()
-                    }
-                    .sheet(isPresented: $showingShareSheet) {
-                        ShareSheet(activityItems: ["Check out this cool wine app: VinoBytes! You can download it here: https://vinobytes.com"])
-                    }
+                Section(header: Text("General")) {
                     
                     Button("Feedback") {
                         showingFeedbackSheet = true
@@ -64,6 +53,28 @@ struct AccountView: View {
                     .sheet(isPresented: $showingFeedbackSheet) {
                         ContactFormView()
                     }
+                    
+                    Button("Invite Friends") {
+                        showingShareSheet.toggle()
+                    }
+                    .sheet(isPresented: $showingShareSheet) {
+                        ShareSheet(activityItems: ["Check out this cool wine app: VinoBytes! You can download it here: https://vinobytes.com"])
+                    }
+                    
+                    Button("iCloud Sync Info") {
+                        activeAlert = .iCloudSyncInfo
+                    }
+                    
+                    Button("Rate VinoBytes App") {
+                        if let windowScene = UIApplication.shared.windows.first?.windowScene {
+                            SKStoreReviewController.requestReview(in: windowScene)
+                        }
+                    }
+                    
+                    
+                    
+                    
+                    
                 }
                 .accentColor(Color.black) // Applying custom accent color locally to these buttons
                 
@@ -82,12 +93,14 @@ struct AccountView: View {
                 
                 
                 Section(header: Text("Legal")) {
-                    NavigationLink(destination: LegalDocumentView(documentTitle: "Terms and Conditions", documentText: termsAndConditionsText)) {
-                        Text("Terms and Conditions")
-                    }
+                    
                     NavigationLink(destination: LegalDocumentView(documentTitle: "Privacy Policy", documentText: privacyPolicyText)) {
                         Text("Privacy Policy")
                     }
+                    NavigationLink(destination: LegalDocumentView(documentTitle: "Terms and Conditions", documentText: termsAndConditionsText)) {
+                        Text("Terms and Conditions")
+                    }
+                    
                 }
                 
                 .accentColor(Color.black) // Applying custom accent color locally to these buttons
@@ -96,11 +109,13 @@ struct AccountView: View {
             .padding(.top, 20)
             .navigationBarTitle("Account Settings", displayMode: .inline)
             
+            
+            
             // Logo image at the bottom
                         Image("vinobytes_logo_final")
                             .resizable()
                             .scaledToFit()
-                            .frame(height: 150)  // Adjust the size as needed
+                            .frame(height: 110)  // Adjust the size as needed
                             .padding(.bottom, 10)
             
             // App version at the bottom
@@ -133,6 +148,13 @@ struct AccountView: View {
                     },
                     secondaryButton: .cancel()
                 )
+                
+            case .iCloudSyncInfo:
+                            return Alert(
+                                title: Text("iCloud Sync"),
+                                message: Text("Your data is automatically backed up using iCloud. Ensure iCloud is enabled in your device settings to utilize this feature."),
+                                dismissButton: .default(Text("OK"))
+                            )
             }
         }
     }

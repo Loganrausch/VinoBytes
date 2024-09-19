@@ -11,10 +11,10 @@ struct PersistenceController {
     static let shared = PersistenceController()
     static let preview = PersistenceController(inMemory: true)  // Add this line for SwiftUI previews
     
-    let container: NSPersistentContainer
+    let container: NSPersistentCloudKitContainer  // Changed from NSPersistentContainer
     
     init(inMemory: Bool = false) {
-        container = NSPersistentContainer(name: "StudyCardModel")
+        container = NSPersistentCloudKitContainer(name: "StudyCardModel")
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }
@@ -25,6 +25,13 @@ struct PersistenceController {
             }
         })
         container.viewContext.automaticallyMergesChangesFromParent = true
+        
+        // Additional setup for CloudKit
+            if !inMemory {
+                let storeDescription = container.persistentStoreDescriptions.first
+                storeDescription?.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
+                storeDescription?.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
+                }
         
         // Load flashcards from JSON
         loadFlashcardsFromJSON()

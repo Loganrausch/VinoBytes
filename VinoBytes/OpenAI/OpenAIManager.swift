@@ -99,13 +99,29 @@ class OpenAIManager: ObservableObject {
         }.resume()
     }
     
-    func saveMessage(_ text: String, role: String, in conversation: Conversation) -> ChatMessage {
+    func saveMessage(_ text: String, role: String, in conversation: Conversation?) -> ChatMessage {
+        
+        
+        assert(conversation != nil, "saveMessage was called without a valid conversation.")
+            guard let conversation = conversation else {
+                fatalError("Attempted to save a message without a conversation.")
+            }
+        
         let message = ChatMessage(context: context)
         message.id = UUID()
         message.content = text
         message.role = role
         message.timestamp = Date()
         message.conversation = conversation
+        
+        // Assign the next sequence number
+           if let lastMessage = conversation.messages?.sorted(by: {
+               ($0 as! ChatMessage).sequenceNumber < ($1 as! ChatMessage).sequenceNumber
+           }).last as? ChatMessage {
+               message.sequenceNumber = lastMessage.sequenceNumber + 1
+           } else {
+               message.sequenceNumber = 1  // This is the first message
+           }
         
         do {
             try context.save()
@@ -142,7 +158,9 @@ class OpenAIManager: ObservableObject {
     func loadMessages(from conversation: Conversation) {
         let fetchRequest: NSFetchRequest<ChatMessage> = ChatMessage.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "conversation == %@", conversation)
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "timestamp", ascending: true)]
+        fetchRequest.sortDescriptors = [
+                NSSortDescriptor(key: "sequenceNumber", ascending: true)  // Sort by sequenceNumber instead of timestamp
+            ]
         
         do {
             messages = try context.fetch(fetchRequest)
