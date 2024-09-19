@@ -17,7 +17,7 @@
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="messages" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ChatMessage" inverseName="conversation" inverseEntity="ChatMessage"/>
     </entity>
-    <entity name="StudyCard" representedClassName="StudyCard" syncable="YES">
+    <entity name="StudyCard" representedClassName=".StudyCard" syncable="YES">
         <attribute name="answer" optional="YES" attributeType="String"/>
         <attribute name="boxNumber" optional="YES" attributeType="Integer 16" defaultValueString="1" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="String"/>
