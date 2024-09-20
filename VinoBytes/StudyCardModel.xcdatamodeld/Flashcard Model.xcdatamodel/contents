@@ -44,4 +44,7 @@
         <attribute name="wineName" attributeType="String" defaultValueString="Unnamed Wine"/>
         <attribute name="wineType" optional="YES" attributeType="String" defaultValueString=""/>
     </entity>
+    <configuration name="CloudKit" usedWithCloudKit="YES">
+        <memberEntity name="StudyCard"/>
+    </configuration>
 </model>

@@ -183,19 +183,15 @@ struct AccountView: View {
     
     // Update resetMyWines function
     private func resetMyWines() {
-        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = WineEntity.fetchRequest()
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-
-        deleteRequest.resultType = .resultTypeCount  // This will return the count of objects deleted
-
+        let fetchRequest: NSFetchRequest<WineEntity> = WineEntity.fetchRequest()
         do {
-            let result = try viewContext.execute(deleteRequest) as? NSBatchDeleteResult
-            if let count = result?.result as? Int {
-                print("Deleted \(count) wines.")
-                showingSuccessToast = true
+            let wines = try viewContext.fetch(fetchRequest)
+            for wine in wines {
+                viewContext.delete(wine)
             }
-            viewContext.reset()  // Reset the context to fully sync with the persistent store
             try viewContext.save()
+            print("Deleted \(wines.count) wines.")
+            showingSuccessToast = true
             refreshNotifier.needsRefresh = true  // Notify that data needs to be refreshed
         } catch {
             self.errorMessage = "Failed to reset wines: \(error.localizedDescription)"
