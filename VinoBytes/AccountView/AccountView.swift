@@ -9,9 +9,10 @@ import Foundation
 import SwiftUI
 import StoreKit
 import CoreData
+import CloudKit
 
 enum ActiveAlert: Identifiable {
-    case resetWines, resetFlashcards, iCloudSyncInfo
+    case resetWines, resetFlashcards, resetConversations, iCloudEnabled, iCloudDisabled
 
     var id: Int {
         hashValue
@@ -25,8 +26,13 @@ struct AccountView: View {
     @State private var errorMessage: String?
     @State private var showingSuccessToast = false  // State for showing the toast message
     @State private var showingFlashcardResetToast = false  // State for showing the toast message for flashcards
+    @State private var showingConversationResetToast = false
+    @State private var showingMyWinesResetToast = false
+    @State private var isICloudAvailable: Bool = false
+    @State private var isCheckingICloud: Bool = false  // For loading indicator
     @Environment(\.managedObjectContext) private var viewContext  // Core Data context
     @ObservedObject var refreshNotifier: RefreshNotifier  // Add this line
+    @EnvironmentObject var openAIManager: OpenAIManager  // Access from environment
     
     var appVersion: String {
             // Fetching the app version and build number from the Info.plist
@@ -36,6 +42,9 @@ struct AccountView: View {
             }
             return "Version not available"
         }
+    
+    // Specify your iCloud container identifier here
+        let iCloudContainerIdentifier = "iCloud.com.vinobytes.VinoBytes1" // Replace with your actual container ID
     
     var body: some View {
         VStack {
@@ -61,8 +70,22 @@ struct AccountView: View {
                         ShareSheet(activityItems: ["Check out this cool wine app: VinoBytes! You can download it here: https://vinobytes.com"])
                     }
                     
-                    Button("iCloud Sync Info") {
-                        activeAlert = .iCloudSyncInfo
+                    Button(action: {
+                        handleICloudSyncInfo(showAlert: true)  // User-initiated check
+                    }) {
+                        HStack {
+                            Text("iCloud Sync")
+                            Spacer()
+                            if isCheckingICloud {
+                                ProgressView()
+                            } else if isICloudAvailable {
+                                Image(systemName: "checkmark.circle")
+                                    .foregroundColor(.green)
+                            } else {
+                                Image(systemName: "xmark.circle")
+                                    .foregroundColor(.red)
+                            }
+                        }
                     }
                     
                     Button("Rate VinoBytes App") {
@@ -88,6 +111,10 @@ struct AccountView: View {
                     Button("Reset Flashcard Progress") {
                         activeAlert = .resetFlashcards
                     }
+                    
+                    Button("Reset Vino Chat Conversation History") {
+                        activeAlert = .resetConversations
+                    }
                 }
                 .accentColor(Color.black) // Applying custom accent color locally to these buttons
                 
@@ -106,7 +133,7 @@ struct AccountView: View {
                 .accentColor(Color.black) // Applying custom accent color locally to these buttons
             }
             
-            .padding(.top, 20)
+            .padding(.top, 15)
             .navigationBarTitle("Account Settings", displayMode: .inline)
             
             
@@ -115,7 +142,7 @@ struct AccountView: View {
                         Image("vinobytes_logo_final")
                             .resizable()
                             .scaledToFit()
-                            .frame(height: 110)  // Adjust the size as needed
+                            .frame(height: 75)  // Adjust the size as needed
                             .padding(.bottom, 10)
             
             // App version at the bottom
@@ -126,14 +153,21 @@ struct AccountView: View {
             
         }
         .background(Color(.systemGroupedBackground).edgesIgnoringSafeArea(.all))
-        .toast(message: "All wines successfully deleted!", isShowing: $showingSuccessToast)
+        .toast(message: "All wines successfully deleted!", isShowing: $showingMyWinesResetToast)
         .toast(message: "Flashcard progress reset successfully!", isShowing: $showingFlashcardResetToast)  // Add toast for flashcards
+        .toast(message: "Conversation history reset successfully!", isShowing: $showingConversationResetToast)
+        
+        .onAppear {
+            handleICloudSyncInfo(showAlert: false)  // Automatic check without alert
+            }
+        
+        
         .alert(item: $activeAlert) { alertType in
             switch alertType {
             case .resetWines:
                 return Alert(
                     title: Text("Confirm Delete"),
-                    message: Text("Are you sure you want to delete all your wines? This action cannot be undone."),
+                    message: Text("Are you sure you want to delete all your wines from your device and iCloud? This action cannot be undone."),
                     primaryButton: .destructive(Text("Delete")) {
                         resetMyWines()
                     },
@@ -142,23 +176,92 @@ struct AccountView: View {
             case .resetFlashcards:
                 return Alert(
                     title: Text("Confirm Reset"),
-                    message: Text("Are you sure you want to reset all your flashcard progress? This action cannot be undone."),
+                    message: Text("Are you sure you want to reset all your flashcard progress on your device and in iCloud? This action cannot be undone."),
                     primaryButton: .destructive(Text("Reset")) {
                         resetFlashcardProgress()
                     },
                     secondaryButton: .cancel()
                 )
                 
-            case .iCloudSyncInfo:
+            case .resetConversations:
+                    return Alert(
+                            title: Text("Confirm Delete"),
+                            message: Text("Are you sure you want to delete all your conversation history from your device and iCloud? This action cannot be undone."),
+                            primaryButton: .destructive(Text("Delete")) {
+                                    resetConversationHistory()
+                                },
+                                secondaryButton: .cancel()
+                            )
+                
+            case .iCloudEnabled:
                             return Alert(
-                                title: Text("iCloud Sync"),
-                                message: Text("Your data is automatically backed up using iCloud. Ensure iCloud is enabled in your device settings to utilize this feature."),
+                                title: Text("iCloud Synced"),
+                                message: Text("Your data has been successfully synchronized with iCloud."),
                                 dismissButton: .default(Text("OK"))
+                            )
+                        case .iCloudDisabled:
+                            return Alert(
+                                title: Text("iCloud Disabled"),
+                                message: Text("Please enable iCloud in your device settings to use this feature."),
+                                primaryButton: .default(Text("Settings"), action: {
+                                    openSettings()
+                                }),
+                                secondaryButton: .cancel()
                             )
             }
         }
     }
     
+    private func handleICloudSyncInfo(showAlert: Bool) {
+        isCheckingICloud = true  // Show loading indicator
+        let container = CKContainer(identifier: iCloudContainerIdentifier)
+        container.accountStatus { status, error in
+            DispatchQueue.main.async {
+                self.isCheckingICloud = false
+                if let error = error {
+                    self.errorMessage = "Error checking iCloud status: \(error.localizedDescription)"
+                    self.isICloudAvailable = false
+                    return
+                }
+                
+                switch status {
+                case .available:
+                    self.isICloudAvailable = true
+                    if showAlert {
+                        self.activeAlert = .iCloudEnabled
+                    }
+                case .noAccount:
+                    self.isICloudAvailable = false
+                    if showAlert {
+                        self.activeAlert = .iCloudDisabled
+                    }
+                    self.errorMessage = "No iCloud account is signed in."
+                case .restricted:
+                    self.isICloudAvailable = false
+                    self.errorMessage = "iCloud access is restricted."
+                case .couldNotDetermine:
+                    self.isICloudAvailable = false
+                    self.errorMessage = "Could not determine iCloud status."
+                case .temporarilyUnavailable:
+                    self.isICloudAvailable = false
+                    self.errorMessage = "iCloud is temporarily unavailable."
+                @unknown default:
+                    self.isICloudAvailable = false
+                    self.errorMessage = "Unknown iCloud status."
+                }
+            }
+        }
+    }
+        
+        // Opens the device settings
+        private func openSettings() {
+            guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else {
+                return
+            }
+            if UIApplication.shared.canOpenURL(settingsURL) {
+                UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
+            }
+        }
     
     // Function to reset flashcard progress
     private func resetFlashcardProgress() {
@@ -191,7 +294,7 @@ struct AccountView: View {
             }
             try viewContext.save()
             print("Deleted \(wines.count) wines.")
-            showingSuccessToast = true
+            showingMyWinesResetToast = true
             refreshNotifier.needsRefresh = true  // Notify that data needs to be refreshed
         } catch {
             self.errorMessage = "Failed to reset wines: \(error.localizedDescription)"
@@ -199,6 +302,11 @@ struct AccountView: View {
         }
     }
     
+    // New function to reset conversation history
+        private func resetConversationHistory() {
+            openAIManager.resetConversationHistory()
+            showingConversationResetToast = true  // Show toast message
+        }
     
 }
     
@@ -214,12 +322,3 @@ struct ShareSheet: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
 }
 
-struct AccountView_Previews: PreviewProvider {
-    static var previews: some View {
-        let refreshNotifier = RefreshNotifier()
-        
-        NavigationView {
-            AccountView(refreshNotifier: refreshNotifier)
-        }
-    }
-}

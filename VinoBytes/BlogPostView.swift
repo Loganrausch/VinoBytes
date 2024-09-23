@@ -7,13 +7,19 @@
 
 import Foundation
 import SwiftUI
-import Contentful
 
-struct BlogPost: Identifiable, Decodable {
+struct BlogPost: Identifiable, Codable {
     let id: String
     let title: String
-    let content: String  // Temporarily treat content as plain text
+    let content: String
     let publicationDate: Date
+    let featuredImage: ImageAsset?
+    
+    struct ImageAsset: Codable {
+        let url: String
+        let title: String?
+        let description: String?
+    }
 }
 
 struct BlogPostView: View {
@@ -29,19 +35,50 @@ struct BlogPostView: View {
     }
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading) {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 16) {
+                    // Display Featured Image
+                    if let image = selectedPost.featuredImage,
+                       let imageURL = URL(string: image.url) { // Convert String to URL
+                        AsyncImage(url: imageURL) { phase in
+                            switch phase {
+                            case .empty:
+                                ProgressView()
+                                .frame(maxWidth: .infinity, minHeight: 200)
+                        case .success(let img):
+                            img
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(maxWidth: .infinity)
+                                .cornerRadius(10)
+                        case .failure:
+                            Image(systemName: "photo")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(maxWidth: .infinity, minHeight: 200)
+                                .foregroundColor(.gray)
+                        @unknown default:
+                            EmptyView()
+                        }
+                    }
+                    .padding(.bottom)
+                }
+
+                // Blog Post Title
                 Text(selectedPost.title)
                     .font(.title)
-                    .padding(.bottom)
-                
+                    .bold()
+                    .padding(.bottom, 4)
+
+                // Blog Post Content
                 Text(selectedPost.content)
-                    .padding(.bottom)
-                
+                    .font(.body)
+                    .padding(.bottom, 8)
+
+                // Publication Date
                 Text("Published on \(formattedDate(selectedPost.publicationDate))")
                     .font(.footnote)
                     .foregroundColor(.gray)
-
             }
             .padding()
         }
@@ -57,21 +94,8 @@ struct BlogPostView: View {
 
     private func formattedDate(_ date: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd MMM yyyy" // Set the format to match Contentful's format
+        formatter.dateFormat = "dd MMM yyyy"
         return formatter.string(from: date)
     }
-
 }
 
-
-struct BlogPostView_Previews: PreviewProvider {
-    static var previews: some View {
-        let sampleBlogPost = BlogPost(
-            id: "1",
-            title: "Sample Title",
-            content: "Sample content for the blog post goes here.",
-            publicationDate: Date()
-        )
-        return BlogPostView(blogPost: sampleBlogPost, blogPosts: [sampleBlogPost])
-    }
-}

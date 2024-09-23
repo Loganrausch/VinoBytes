@@ -6,79 +6,157 @@
 //
 
 import Foundation
-import SwiftUI
-import Contentful
+import os.log
+
+// Define a custom error type
+enum ContentfulManagerError: Error, LocalizedError {
+    case invalidURL
+    case noData
+    case parsingError
+    case serverError(String)
+    case unknownError(Error)
+    
+    var errorDescription: String? {
+        switch self {
+        case .invalidURL:
+            return "The URL provided was invalid."
+        case .noData:
+            return "No data was received from the server."
+        case .parsingError:
+            return "Failed to parse the data."
+        case .serverError(let message):
+            return "Server error: \(message)"
+        case .unknownError(let error):
+            return error.localizedDescription
+        }
+    }
+}
 
 class ContentfulManager {
     static let shared = ContentfulManager()
-
-    let client: Client
-
-    init() {
-        self.client = Client(spaceId: "kby79bk8msg8", accessToken: "***REMOVED***dR7QTjdb9i9mkhCV2oZIFyMaQumU")
+    
+    private let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "ContentfulManager")
+    private let baseURL = "https://vinobytes-afe480cea091.herokuapp.com" // Replace with your Heroku app URL
+    
+    private let session: URLSession
+    
+    private init() {
+        let config = URLSessionConfiguration.default
+        config.timeoutIntervalForRequest = 30
+        self.session = URLSession(configuration: config)
     }
-}
-
-
-extension ContentfulManager {
+    
+    // Fetch Blog Posts
     func fetchBlogPosts(completion: @escaping ([BlogPost]?, Error?) -> Void) {
-        print("Fetching blog posts...")
-        let query = Query.where(contentTypeId: "blogPost")
-        do {
-            let ordering = try Ordering("fields.publicationDate", inReverse: true)
-            query.order(by: ordering)
-
-            client.fetchArray(of: Entry.self, matching: query) { result in
-                switch result {
-                case .success(let array):
-                    // Set up the DateFormatter for custom date parsing
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "yyyy-MM-dd" // Format to match the API response (date only)
-
-                    let blogPosts = array.items.compactMap { entry -> BlogPost? in
-                        print("Entry fields: \(entry.fields)") // Print raw fields for debugging
-
-                        guard let title = entry.fields["title"] as? String,
-                              let content = entry.fields["content"] as? String,
-                              let publicationDateString = entry.fields["publicationDate"] as? String,
-                              let publicationDate = dateFormatter.date(from: publicationDateString) else {
-                            print("Failed to map Contentful entry to BlogPost")
-                            return nil
-                        }
-
-                        return BlogPost(id: entry.id, title: title, content: content, publicationDate: publicationDate)
-                    }
-                    print("Successfully fetched \(blogPosts.count) posts")
-                    completion(blogPosts, nil)
-                case .failure(let error):
-                    print("Error fetching posts: \(error.localizedDescription)")
-                    completion(nil, error)
-                }
-            }
-        } catch {
-            print("Error creating ordering query: \(error.localizedDescription)")
-            completion(nil, error)
+        guard let url = URL(string: "\(baseURL)/api/blogPosts") else { // Updated path
+            logger.error("Invalid URL for blog posts")
+            completion(nil, ContentfulManagerError.invalidURL)
+            return
         }
+        
+        let task = session.dataTask(with: url) { data, response, error in
+            // Handle networking errors
+            if let error = error {
+                self.logger.error("Error fetching blog posts: \(error.localizedDescription)")
+                completion(nil, ContentfulManagerError.unknownError(error))
+                return
+            }
+            
+            // Validate response
+            guard let httpResponse = response as? HTTPURLResponse else {
+                self.logger.error("Invalid response from server.")
+                completion(nil, ContentfulManagerError.serverError("Invalid response"))
+                return
+            }
+            
+            if httpResponse.statusCode != 200 {
+                let message = HTTPURLResponse.localizedString(forStatusCode: httpResponse.statusCode)
+                self.logger.error("Server returned status code \(httpResponse.statusCode): \(message)")
+                completion(nil, ContentfulManagerError.serverError(message))
+                return
+            }
+            
+            // Parse data
+            guard let data = data else {
+                self.logger.error("No data received from server.")
+                completion(nil, ContentfulManagerError.noData)
+                return
+            }
+            
+            do {
+                            let decoder = JSONDecoder()
+                            // Define a custom date decoding strategy
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateFormat = "yyyy-MM-dd"
+                            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                            dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+                            decoder.dateDecodingStrategy = .formatted(dateFormatter)
+                            
+                            let blogPosts = try decoder.decode([BlogPost].self, from: data)
+                            self.logger.debug("Successfully fetched \(blogPosts.count) blog posts.")
+                            completion(blogPosts, nil)
+                        } catch {
+                            self.logger.error("Error parsing blog posts: \(error.localizedDescription)")
+                            completion(nil, ContentfulManagerError.parsingError)
+            }
+        }
+        
+        task.resume()
     }
-}
-
-extension ContentfulManager {
+    
+    // Fetch Wine Fact
     func fetchWineFact(completion: @escaping (String?, Error?) -> Void) {
-        let query = Query.where(contentTypeId: "wineFact") // Use the correct content type ID for WineFact
-        query.limit(to: 1) // Assuming there's only one wine fact of the week
-
-        client.fetchArray(of: Entry.self, matching: query) { result in
-            switch result {
-            case .success(let array):
-                if let entry = array.items.first,
-                   let wineFact = entry.fields["fact"] as? String {
+        guard let url = URL(string: "\(baseURL)/api/wineFact") else { // Updated path
+            logger.error("Invalid URL for wine fact")
+            completion(nil, ContentfulManagerError.invalidURL)
+            return
+        }
+        
+        let task = session.dataTask(with: url) { data, response, error in
+            // Handle networking errors
+            if let error = error {
+                self.logger.error("Error fetching wine fact: \(error.localizedDescription)")
+                completion(nil, ContentfulManagerError.unknownError(error))
+                return
+            }
+            
+            // Validate response
+            guard let httpResponse = response as? HTTPURLResponse else {
+                self.logger.error("Invalid response from server.")
+                completion(nil, ContentfulManagerError.serverError("Invalid response"))
+                return
+            }
+            
+            if httpResponse.statusCode != 200 {
+                let message = HTTPURLResponse.localizedString(forStatusCode: httpResponse.statusCode)
+                self.logger.error("Server returned status code \(httpResponse.statusCode): \(message)")
+                completion(nil, ContentfulManagerError.serverError(message))
+                return
+            }
+            
+            // Parse data
+            guard let data = data else {
+                self.logger.error("No data received from server.")
+                completion(nil, ContentfulManagerError.noData)
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let result = try decoder.decode([String: String].self, from: data)
+                if let wineFact = result["fact"] {
+                    self.logger.debug("Wine fact fetched successfully: \(wineFact)")
                     completion(wineFact, nil)
                 } else {
-                    completion(nil, NSError(domain: "WineFactError", code: 0, userInfo: [NSLocalizedDescriptionKey: "Wine fact not found"]))
+                    self.logger.error("Wine fact not found in response.")
+                    completion(nil, ContentfulManagerError.parsingError)
                 }
-            case .failure(let error):
-                completion(nil, error)
+            } catch {
+                self.logger.error("Error parsing wine fact: \(error.localizedDescription)")
+                completion(nil, ContentfulManagerError.parsingError)
             }
         }
+        
+        task.resume()
     }
 }

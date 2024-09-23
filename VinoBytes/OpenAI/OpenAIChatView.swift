@@ -9,7 +9,7 @@ import SwiftUI
 
 struct OpenAIChatView: View {
     @Environment(\.managedObjectContext) private var managedObjectContext
-    @StateObject var openAIManager = OpenAIManager(context: PersistenceController.shared.container.viewContext)
+    @EnvironmentObject var openAIManager: OpenAIManager
     
     @State private var inputText = ""
     @State private var selectedConversation: Conversation?
@@ -161,7 +161,7 @@ struct OpenAIChatView: View {
                 )
             }
                            .sheet(isPresented: $showConversationHistory) {
-                ConversationHistoryView(openAIManager: openAIManager)
+                ConversationHistoryView()
                     .preferredColorScheme(.light)
             }
         }
@@ -260,7 +260,9 @@ struct MessageView: View {
 
 struct OpenAIChatView_Previews: PreviewProvider {
     static var previews: some View {
-        OpenAIChatView().environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
+        OpenAIChatView()
+            .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
+            .environmentObject(OpenAIManager(context: PersistenceController.shared.container.viewContext))
     }
 }
 

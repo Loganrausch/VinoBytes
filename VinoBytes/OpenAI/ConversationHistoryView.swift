@@ -19,29 +19,34 @@ struct ConversationView: View {
 }
 
 struct ConversationHistoryView: View {
-    @ObservedObject var openAIManager: OpenAIManager
+    @EnvironmentObject var openAIManager: OpenAIManager  // Access OpenAIManager from the environment
     @State private var selectedConversation: Conversation?
     @State private var showReadOnlyConversation: Bool = false
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(openAIManager.conversations, id: \.self) { conversation in
-                    Button(action: {
-                        self.selectedConversation = conversation
-                        self.showReadOnlyConversation = true
-                        openAIManager.loadMessages(from: conversation)
-                    }) {
-                        ConversationView(conversation: conversation)
+                if openAIManager.conversations.isEmpty {
+                    Text("Saved Conversations Appear Here")
+                        .foregroundColor(.gray)
+                } else {
+                    ForEach(openAIManager.conversations, id: \.self) { conversation in
+                        Button(action: {
+                            self.selectedConversation = conversation
+                            self.showReadOnlyConversation = true
+                            openAIManager.loadMessages(from: conversation)
+                        }) {
+                            ConversationView(conversation: conversation)
+                        }
                     }
+                    .onDelete(perform: deleteConversations)
                 }
-                .onDelete(perform: deleteConversations)
             }
             .listStyle(PlainListStyle())
             .navigationBarTitle("Conversation History", displayMode: .inline)
             .sheet(isPresented: $showReadOnlyConversation) {
                 if let convo = selectedConversation {
-                    ReadOnlyConversationView(conversation: convo, openAIManager: openAIManager)
+                    ReadOnlyConversationView(conversation: convo)
                 }
             }
         }
@@ -55,9 +60,10 @@ struct ConversationHistoryView: View {
     }
 }
 
-// Preview provider for SwiftUI previews in Xcode.
 struct ConversationHistoryView_Previews: PreviewProvider {
     static var previews: some View {
-        ConversationHistoryView(openAIManager: OpenAIManager(context: PersistenceController.shared.container.viewContext))
+        ConversationHistoryView()
+            .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
+            .environmentObject(OpenAIManager(context: PersistenceController.shared.container.viewContext))
     }
 }

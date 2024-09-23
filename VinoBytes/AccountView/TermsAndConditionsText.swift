@@ -19,7 +19,7 @@ let termsAndConditionsText: [String: String] = [
     To use VinoBytes, you must log in using your Apple ID. By using your Apple ID, you consent to Apple’s handling of your data as per their Privacy Policy.
     """,
     "4. Data Privacy": """
-    Our Privacy Policy outlines how we collect, use, and protect your data. By using VinoBytes, you consent to the practices described in the Privacy Policy.
+    Our Privacy Policy outlines how we collect, use, and protect your data, including the use of Apple’s iCloud services for data synchronization. By using VinoBytes, you consent to the practices described in the Privacy Policy, including your rights regarding access, deletion, and correction of your data.
     """,
     "5. Interaction with OpenAI": """
     When using AI functionalities within VinoBytes, your interactions may be processed by OpenAI. OpenAI’s data handling practices are governed by their Privacy Policy.

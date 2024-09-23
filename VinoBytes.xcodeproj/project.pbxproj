@@ -16,13 +16,13 @@
 		CE1F50752C67203200D2C51F /* FlashcardJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1F50742C67203200D2C51F /* FlashcardJSON.swift */; };
 		CE1F50772C6726EB00D2C51F /* flashcards.json in Resources */ = {isa = PBXBuildFile; fileRef = CE1F50762C6726EB00D2C51F /* flashcards.json */; };
 		CE2051012B9F98BD0072704E /* FlashcardContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2051002B9F98BD0072704E /* FlashcardContent.swift */; };
-		CE21266D2BB86FC30058DCC4 /* ContentfulRichTextRenderer in Frameworks */ = {isa = PBXBuildFile; productRef = CE21266C2BB86FC30058DCC4 /* ContentfulRichTextRenderer */; };
 		CE32CDD82C1CE3C900A87202 /* WineFlawData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE32CDD72C1CE3C900A87202 /* WineFlawData.swift */; };
 		CE32CDDC2C1CE3E400A87202 /* WineFlawDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE32CDDB2C1CE3E400A87202 /* WineFlawDetailView.swift */; };
 		CE32CDDE2C1CE3FD00A87202 /* WineFlawListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE32CDDD2C1CE3FD00A87202 /* WineFlawListView.swift */; };
 		CE32CDE12C1CE5C600A87202 /* FoodWinePairingsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE32CDE02C1CE5C600A87202 /* FoodWinePairingsListView.swift */; };
 		CE32CDE32C1CE5D100A87202 /* FoodWinePairingsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE32CDE22C1CE5D100A87202 /* FoodWinePairingsData.swift */; };
 		CE32CDE52C1CE5DD00A87202 /* FoodWinePairingsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE32CDE42C1CE5DD00A87202 /* FoodWinePairingsDetailView.swift */; };
+		CE35C9B32CA0766800D31200 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE35C9B22CA0766800D31200 /* RootView.swift */; };
 		CE631ED32C35E7CE00F50E96 /* WineEntity+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE631ED22C35E7CE00F50E96 /* WineEntity+Extensions.swift */; };
 		CE64D2782B92ED64009BF1B9 /* MyWinesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE64D2772B92ED64009BF1B9 /* MyWinesView.swift */; };
 		CE6ADF312B925ED600982366 /* VinoDecksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6ADF302B925ED600982366 /* VinoDecksApp.swift */; };
@@ -48,6 +48,7 @@
 		CE7F35D72BD579710055E6DB /* Wine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7F35D62BD579710055E6DB /* Wine.swift */; };
 		CE7F9DE62C2CA1C400BA61C1 /* LoadingDotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7F9DE52C2CA1C400BA61C1 /* LoadingDotsView.swift */; };
 		CE80C17A2B9F4F29004EF540 /* StudyCardModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE80C1782B9F4F29004EF540 /* StudyCardModel.xcdatamodeld */; };
+		CE81FB062CA1F2D900811126 /* FlashcardProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE81FB052CA1F2D900811126 /* FlashcardProgressView.swift */; };
 		CE82D2852B98B853002B55F1 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82D2842B98B853002B55F1 /* SearchBar.swift */; };
 		CE82D2872B9A1F91002B55F1 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82D2862B9A1F91002B55F1 /* ImagePicker.swift */; };
 		CE82D2892B9B72CF002B55F1 /* StudyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82D2882B9B72CF002B55F1 /* StudyView.swift */; };
@@ -63,12 +64,12 @@
 		CE94AB0A2C0E3645004CE8E0 /* WineGlossaryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94AB092C0E3645004CE8E0 /* WineGlossaryDetailView.swift */; };
 		CE94AB0C2C0E3675004CE8E0 /* WineGlossaryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94AB0B2C0E3675004CE8E0 /* WineGlossaryData.swift */; };
 		CEA304EA2BA3DDFC00DD010D /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA304E92BA3DDFC00DD010D /* ActivityViewController.swift */; };
+		CEAA5BF32C9F5D9600282691 /* Contentful in Frameworks */ = {isa = PBXBuildFile; productRef = CEAA5BF22C9F5D9600282691 /* Contentful */; };
 		CECB7A622BACB69200659CB6 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB7A612BACB69200659CB6 /* WelcomeView.swift */; };
 		CECB7A662BACC50600659CB6 /* ContactFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB7A652BACC50600659CB6 /* ContactFormView.swift */; };
 		CED0F8BF2B93DE9500508E6E /* BlogPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED0F8BE2B93DE9500508E6E /* BlogPostView.swift */; };
 		CED380D82BB5E18400CAFB29 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED380D72BB5E18400CAFB29 /* DashboardView.swift */; };
 		CED380DA2BB70E1500CAFB29 /* WineData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED380D92BB70E1500CAFB29 /* WineData.swift */; };
-		CED380DD2BB755BB00CAFB29 /* Contentful in Frameworks */ = {isa = PBXBuildFile; productRef = CED380DC2BB755BB00CAFB29 /* Contentful */; };
 		CED380DF2BB756A400CAFB29 /* ContentfulManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED380DE2BB756A400CAFB29 /* ContentfulManager.swift */; };
 		CEE07EFD2C1A70450088F94C /* ConversationHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE07EFC2C1A70450088F94C /* ConversationHistoryView.swift */; };
 		CEE07EFF2C1A71C40088F94C /* ReadOnlyConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE07EFE2C1A71C40088F94C /* ReadOnlyConversationView.swift */; };
@@ -109,6 +110,7 @@
 		CE32CDE02C1CE5C600A87202 /* FoodWinePairingsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodWinePairingsListView.swift; sourceTree = "<group>"; };
 		CE32CDE22C1CE5D100A87202 /* FoodWinePairingsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodWinePairingsData.swift; sourceTree = "<group>"; };
 		CE32CDE42C1CE5DD00A87202 /* FoodWinePairingsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodWinePairingsDetailView.swift; sourceTree = "<group>"; };
+		CE35C9B22CA0766800D31200 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		CE631ED22C35E7CE00F50E96 /* WineEntity+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WineEntity+Extensions.swift"; sourceTree = "<group>"; };
 		CE64D2772B92ED64009BF1B9 /* MyWinesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWinesView.swift; sourceTree = "<group>"; };
 		CE6ADF2D2B925ED600982366 /* VinoBytes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VinoBytes.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,6 +141,7 @@
 		CE80C1792B9F4F29004EF540 /* Flashcard Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Flashcard Model.xcdatamodel"; sourceTree = "<group>"; };
 		CE81EDA02C9C940F0055F0F6 /* VinoBytes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VinoBytes.entitlements; sourceTree = "<group>"; };
 		CE81EDA12C9CB1AD0055F0F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CE81FB052CA1F2D900811126 /* FlashcardProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardProgressView.swift; sourceTree = "<group>"; };
 		CE82D2842B98B853002B55F1 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		CE82D2862B9A1F91002B55F1 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		CE82D2882B9B72CF002B55F1 /* StudyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyView.swift; sourceTree = "<group>"; };
@@ -171,8 +174,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CED380DD2BB755BB00CAFB29 /* Contentful in Frameworks */,
-				CE21266D2BB86FC30058DCC4 /* ContentfulRichTextRenderer in Frameworks */,
+				CEAA5BF32C9F5D9600282691 /* Contentful in Frameworks */,
 				CE6ADF632B9269C400982366 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -254,6 +256,7 @@
 				CE7F35D82BD57B210055E6DB /* Common */,
 				CECB7A612BACB69200659CB6 /* WelcomeView.swift */,
 				CE6ADF302B925ED600982366 /* VinoDecksApp.swift */,
+				CE35C9B22CA0766800D31200 /* RootView.swift */,
 				CE6ADF392B925ED700982366 /* Persistence.swift */,
 				CE6ADF322B925ED600982366 /* ContentView.swift */,
 				CECB7A652BACC50600659CB6 /* ContactFormView.swift */,
@@ -418,6 +421,7 @@
 			isa = PBXGroup;
 			children = (
 				CED380D72BB5E18400CAFB29 /* DashboardView.swift */,
+				CE81FB052CA1F2D900811126 /* FlashcardProgressView.swift */,
 				CE1D8B692C221EF000580834 /* WhiteBackgroundView.swift */,
 				CE1D8B672C221EC200580834 /* BrightnessModifierView.swift */,
 			);
@@ -441,8 +445,7 @@
 			);
 			name = VinoBytes;
 			packageProductDependencies = (
-				CED380DC2BB755BB00CAFB29 /* Contentful */,
-				CE21266C2BB86FC30058DCC4 /* ContentfulRichTextRenderer */,
+				CEAA5BF22C9F5D9600282691 /* Contentful */,
 			);
 			productName = VinoDecks;
 			productReference = CE6ADF2D2B925ED600982366 /* VinoBytes.app */;
@@ -517,8 +520,7 @@
 			);
 			mainGroup = CE6ADF242B925ED600982366;
 			packageReferences = (
-				CED380DB2BB755BB00CAFB29 /* XCRemoteSwiftPackageReference "contentful" */,
-				CE21266B2BB86FC30058DCC4 /* XCRemoteSwiftPackageReference "rich-text-renderer" */,
+				CEAA5BF12C9F5D9600282691 /* XCRemoteSwiftPackageReference "contentful.swift" */,
 			);
 			productRefGroup = CE6ADF2E2B925ED600982366 /* Products */;
 			projectDirPath = "";
@@ -605,6 +607,7 @@
 				CE6ADF602B9266D600982366 /* FlashcardView.swift in Sources */,
 				CE631ED32C35E7CE00F50E96 /* WineEntity+Extensions.swift in Sources */,
 				CE80C17A2B9F4F29004EF540 /* StudyCardModel.xcdatamodeld in Sources */,
+				CE81FB062CA1F2D900811126 /* FlashcardProgressView.swift in Sources */,
 				CECB7A622BACB69200659CB6 /* WelcomeView.swift in Sources */,
 				CE7B36EB2B94DA58006AFFA0 /* AccountView.swift in Sources */,
 				CE6ADF3A2B925ED700982366 /* Persistence.swift in Sources */,
@@ -620,6 +623,7 @@
 				CE6F73692B93BE8900770B35 /* WineFormView.swift in Sources */,
 				CE94AAF42C0D39DE004CE8E0 /* GrapeDetailView.swift in Sources */,
 				CE94AB072C0E3624004CE8E0 /* WineGlossaryListView.swift in Sources */,
+				CE35C9B32CA0766800D31200 /* RootView.swift in Sources */,
 				CE94AB0C2C0E3675004CE8E0 /* WineGlossaryData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -964,33 +968,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		CE21266B2BB86FC30058DCC4 /* XCRemoteSwiftPackageReference "rich-text-renderer" */ = {
+		CEAA5BF12C9F5D9600282691 /* XCRemoteSwiftPackageReference "contentful.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/contentful/rich-text-renderer.swift";
+			repositoryURL = "https://github.com/contentful/contentful.swift.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.4.1;
-			};
-		};
-		CED380DB2BB755BB00CAFB29 /* XCRemoteSwiftPackageReference "contentful" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/contentful/contentful.swift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.5.9;
+				minimumVersion = 5.5.12;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		CE21266C2BB86FC30058DCC4 /* ContentfulRichTextRenderer */ = {
+		CEAA5BF22C9F5D9600282691 /* Contentful */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = CE21266B2BB86FC30058DCC4 /* XCRemoteSwiftPackageReference "rich-text-renderer" */;
-			productName = ContentfulRichTextRenderer;
-		};
-		CED380DC2BB755BB00CAFB29 /* Contentful */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CED380DB2BB755BB00CAFB29 /* XCRemoteSwiftPackageReference "contentful" */;
+			package = CEAA5BF12C9F5D9600282691 /* XCRemoteSwiftPackageReference "contentful.swift" */;
 			productName = Contentful;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ReadOnlyConversationView: View {
     var conversation: Conversation
-    @ObservedObject var openAIManager: OpenAIManager
+    @EnvironmentObject var openAIManager: OpenAIManager  // Access from environment
     
     var body: some View {
         NavigationView {
@@ -37,6 +37,7 @@ struct ReadOnlyConversationView: View {
 
 struct ReadOnlyConversationView_Previews: PreviewProvider {
     static var previews: some View {
-        ReadOnlyConversationView(conversation: Conversation(), openAIManager: OpenAIManager(context: PersistenceController.shared.container.viewContext))
+        ReadOnlyConversationView(conversation: Conversation())
+            .environmentObject(OpenAIManager(context: PersistenceController.shared.container.viewContext))
     }
 }

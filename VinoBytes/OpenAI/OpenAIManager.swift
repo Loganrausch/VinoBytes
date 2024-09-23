@@ -225,3 +225,49 @@ struct OpenAIResponse: Codable {
         let total_tokens: Int
     }
 }
+
+
+
+extension OpenAIManager {
+    func resetConversationHistory() {
+        let conversationFetchRequest: NSFetchRequest<Conversation> = Conversation.fetchRequest()
+        let messageFetchRequest: NSFetchRequest<ChatMessage> = ChatMessage.fetchRequest()
+
+        do {
+            // Fetch and delete all conversations
+            let conversations = try context.fetch(conversationFetchRequest)
+            for conversation in conversations {
+                context.delete(conversation)
+            }
+
+            // Fetch and delete all messages
+            let messages = try context.fetch(messageFetchRequest)
+            for message in messages {
+                context.delete(message)
+            }
+
+            // Save the context to persist deletions and trigger CloudKit sync
+            try context.save()
+            print("All conversations and messages have been deleted.")
+
+            // Verify if any Conversations remain
+            let remainingConversations = try context.count(for: conversationFetchRequest)
+            print("Remaining conversations after reset: \(remainingConversations)")
+
+            let remainingMessages = try context.count(for: messageFetchRequest)
+            print("Remaining messages after reset: \(remainingMessages)")
+
+            // Clear in-memory data
+            DispatchQueue.main.async {
+                self.conversations.removeAll()
+                self.messages.removeAll()
+                self.activeConversation = nil
+                print("Conversations array after reset: \(self.conversations.count)")
+            }
+
+        } catch {
+            print("Failed to delete conversation history: \(error)")
+        }
+    }
+}
+

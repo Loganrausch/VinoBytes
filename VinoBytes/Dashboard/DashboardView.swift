@@ -15,7 +15,10 @@ struct DashboardView: View {
     @State private var wineFactOfTheWeek: String?
     @State private var isFlashcardProgressSheetPresented = false
     @State private var isWhiteDisplaySheetPresented = false
+    @State private var showAlert = false
+    @State private var alertMessage = ""
     @ObservedObject var refreshNotifier: RefreshNotifier  // Add this line
+    @EnvironmentObject var openAIManager: OpenAIManager  // Access from environment
     
     @FetchRequest(
         entity: WineEntity.entity(),
@@ -191,22 +194,38 @@ struct DashboardView: View {
                 fetchContent()
                 initializeFlashcardProgress()
             }
+            .alert(isPresented: $showAlert) { // Add this line
+                            Alert(title: Text("Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+            }
         }
     }
     
     private func fetchContent() {
         ContentfulManager.shared.fetchBlogPosts { posts, error in
             if let posts = posts {
-                self.blogPosts = posts
+                DispatchQueue.main.async {
+                    self.blogPosts = posts
+                }
                 print("Fetched \(posts.count) posts")
             } else if let error = error {
+                DispatchQueue.main.async {
+                    self.alertMessage = error.localizedDescription
+                    self.showAlert = true
+                }
                 print("Error fetching posts: \(error.localizedDescription)")
             }
         }
+        
         ContentfulManager.shared.fetchWineFact { fact, error in
             if let fact = fact {
-                self.wineFactOfTheWeek = fact
+                DispatchQueue.main.async {
+                    self.wineFactOfTheWeek = fact
+                }
             } else {
+                DispatchQueue.main.async {
+                    self.alertMessage = error?.localizedDescription ?? "Unknown error"
+                    self.showAlert = true
+                }
                 print("Error fetching wine fact: \(error?.localizedDescription ?? "Unknown error")")
             }
         }
@@ -249,43 +268,5 @@ struct DashboardView: View {
         }
     }
 }
-        
-
-// Custom ProgressViewStyle
-struct CustomProgressViewStyle: ProgressViewStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        ProgressView(configuration)
-            .accentColor(Color("LightMaroon"))
-    }
-}
-
-// FlashcardProgressView for the sheet
-struct FlashcardProgressView: View {
-    var flashcardProgress: [String: Int]
-
-    var body: some View {
-        VStack {
-            Text("Flashcard Progress")
-                .font(.title)
-                .padding()
-
-            ForEach(flashcardProgress.keys.sorted(), id: \.self) { region in
-                let progress = flashcardProgress[region, default: 0]
-                HStack {
-                    Text(region)
-                    Spacer()
-                    ProgressView(value: Float(progress), total: 100)
-                        .progressViewStyle(CustomProgressViewStyle())
-                        .frame(width: 100)
-                    Text("\(progress)%")
-                }
-                .padding(.vertical, 2)
-            }
-            Spacer()
-        }
-        .padding()
-    }
-}
-
 
 

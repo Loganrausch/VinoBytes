@@ -11,6 +11,7 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var context
     @State private var selectedTab = 0
     let refreshNotifier = RefreshNotifier()  // Create a single instance
+    
 
     init() {
         setupTabBarAppearance()
