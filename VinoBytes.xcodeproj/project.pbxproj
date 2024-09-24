@@ -49,6 +49,7 @@
 		CE7F9DE62C2CA1C400BA61C1 /* LoadingDotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7F9DE52C2CA1C400BA61C1 /* LoadingDotsView.swift */; };
 		CE80C17A2B9F4F29004EF540 /* StudyCardModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE80C1782B9F4F29004EF540 /* StudyCardModel.xcdatamodeld */; };
 		CE81FB062CA1F2D900811126 /* FlashcardProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE81FB052CA1F2D900811126 /* FlashcardProgressView.swift */; };
+		CE81FB0C2CA24E6600811126 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE81FB0B2CA24E6600811126 /* CircularProgressView.swift */; };
 		CE82D2852B98B853002B55F1 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82D2842B98B853002B55F1 /* SearchBar.swift */; };
 		CE82D2872B9A1F91002B55F1 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82D2862B9A1F91002B55F1 /* ImagePicker.swift */; };
 		CE82D2892B9B72CF002B55F1 /* StudyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82D2882B9B72CF002B55F1 /* StudyView.swift */; };
@@ -64,7 +65,6 @@
 		CE94AB0A2C0E3645004CE8E0 /* WineGlossaryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94AB092C0E3645004CE8E0 /* WineGlossaryDetailView.swift */; };
 		CE94AB0C2C0E3675004CE8E0 /* WineGlossaryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94AB0B2C0E3675004CE8E0 /* WineGlossaryData.swift */; };
 		CEA304EA2BA3DDFC00DD010D /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA304E92BA3DDFC00DD010D /* ActivityViewController.swift */; };
-		CEAA5BF32C9F5D9600282691 /* Contentful in Frameworks */ = {isa = PBXBuildFile; productRef = CEAA5BF22C9F5D9600282691 /* Contentful */; };
 		CECB7A622BACB69200659CB6 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB7A612BACB69200659CB6 /* WelcomeView.swift */; };
 		CECB7A662BACC50600659CB6 /* ContactFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB7A652BACC50600659CB6 /* ContactFormView.swift */; };
 		CED0F8BF2B93DE9500508E6E /* BlogPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED0F8BE2B93DE9500508E6E /* BlogPostView.swift */; };
@@ -142,6 +142,7 @@
 		CE81EDA02C9C940F0055F0F6 /* VinoBytes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VinoBytes.entitlements; sourceTree = "<group>"; };
 		CE81EDA12C9CB1AD0055F0F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CE81FB052CA1F2D900811126 /* FlashcardProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardProgressView.swift; sourceTree = "<group>"; };
+		CE81FB0B2CA24E6600811126 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		CE82D2842B98B853002B55F1 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		CE82D2862B9A1F91002B55F1 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		CE82D2882B9B72CF002B55F1 /* StudyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyView.swift; sourceTree = "<group>"; };
@@ -174,7 +175,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEAA5BF32C9F5D9600282691 /* Contentful in Frameworks */,
 				CE6ADF632B9269C400982366 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -422,6 +422,7 @@
 			children = (
 				CED380D72BB5E18400CAFB29 /* DashboardView.swift */,
 				CE81FB052CA1F2D900811126 /* FlashcardProgressView.swift */,
+				CE81FB0B2CA24E6600811126 /* CircularProgressView.swift */,
 				CE1D8B692C221EF000580834 /* WhiteBackgroundView.swift */,
 				CE1D8B672C221EC200580834 /* BrightnessModifierView.swift */,
 			);
@@ -445,7 +446,6 @@
 			);
 			name = VinoBytes;
 			packageProductDependencies = (
-				CEAA5BF22C9F5D9600282691 /* Contentful */,
 			);
 			productName = VinoDecks;
 			productReference = CE6ADF2D2B925ED600982366 /* VinoBytes.app */;
@@ -592,6 +592,7 @@
 				CE2051012B9F98BD0072704E /* FlashcardContent.swift in Sources */,
 				CE7717062C22752000F34C4C /* TermsAndConditionsText.swift in Sources */,
 				CEE1607E2C3C5AB3006F5E66 /* StarRatingDisplayView.swift in Sources */,
+				CE81FB0C2CA24E6600811126 /* CircularProgressView.swift in Sources */,
 				CE82D2892B9B72CF002B55F1 /* StudyView.swift in Sources */,
 				CE32CDE12C1CE5C600A87202 /* FoodWinePairingsListView.swift in Sources */,
 				CED380D82BB5E18400CAFB29 /* DashboardView.swift in Sources */,
@@ -977,14 +978,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		CEAA5BF22C9F5D9600282691 /* Contentful */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CEAA5BF12C9F5D9600282691 /* XCRemoteSwiftPackageReference "contentful.swift" */;
-			productName = Contentful;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		CE6ADF3B2B925ED700982366 /* VinoDecks.xcdatamodeld */ = {
