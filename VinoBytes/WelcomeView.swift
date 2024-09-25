@@ -9,7 +9,7 @@ import SwiftUI
 
 struct WelcomeView: View {
     @State private var selectedTab = 0
-    let totalTabs = 6
+    let totalTabs = 7
     
     var body: some View {
             VStack(spacing: 10) {
@@ -31,7 +31,7 @@ struct WelcomeView: View {
             
             // Tab View Content
             TabView(selection: $selectedTab) {
-                ForEach(0..<6) { index in
+                ForEach(0..<7) { index in
                     WelcomeScreen(index: index, isSelected: $selectedTab)
                         .tag(index)
                 }
@@ -47,7 +47,7 @@ struct WelcomeView: View {
                         .frame(height: 70) // Adjust the height as needed
                     
                     // Custom Page Indicator
-                    HStack(spacing: 8) {
+                    HStack(spacing: 10) {
                         ForEach(0..<totalTabs) { index in
                             Circle()
                                 .fill(index == selectedTab ? Color.latte : Color.gray)
@@ -74,88 +74,120 @@ struct WelcomeScreen: View {
         "Vino Chat",
         "My Wines",
         "Library",
+        "iCloud Sync",
         "Get Started"
     ]
     
-    let imageNames = [
-        "dashboard",
-        "flashcards",
-        "aichat",
-        "mywines",
-        "library",
-        "welcome_final"
+    let sfSymbolNames = [
+        "chart.bar.doc.horizontal",        // Dashboard
+        "square.3.layers.3d.top.filled",         // Flashcards
+        "bubble.left.and.bubble.right", // Vino Chat
+        "wineglass",                  // My Wines
+        "books.vertical",             // Library
+        "icloud",                     // iCloud Sync
+        "door.french.open"                    // Get Started
+    ]
+    
+    let symbolColors = [
+        Color.lightMaroon,      // Dashboard
+        Color.lightMaroon,    // Flashcards
+        Color.lightMaroon,    // Vino Chat
+        Color.lightMaroon,       // My Wines
+        Color.lightMaroon,    // Library
+        Color.lightMaroon,      // iCloud Sync
+        Color.lightMaroon,     // Get Started
     ]
     
     let descriptions = [
-        "Access all your wine learning tools and progress from one convenient place.",
-        "Dive into over 2,000 interactive flashcards covering 14 wine regions from around the world.",
+        "Access your learning tools and track progress all in one convenient place.",
+        "Master over 2,000 interactive flashcards, optimized with spaced repetition for effective learning.",
         "Ask questions and get instant answers with our wine chat powered by OpenAI.",
-        "Log and track the wines you taste in the same app that you study.",
-        "Consult our extensive database for detailed information on wine grapes, regions, pairing suggestions, and more.",
+        "Log and track the wines you taste for easy reference as you study.",
+        "Extensive information on grapes, regions, pairings, flaws and more.",
+        "Automatically sync your data with iCloud integration.",
         "Start your wine journey today with a 1 week free trial!"
     ]
 
     var body: some View {
-        VStack(alignment: .center, spacing: 20) {
-           
-            Spacer() // This maintains some space at the bottom as well
-            
-            Text(titles[index])
-                .font(.largeTitle)
-                .padding(.horizontal)
-                .multilineTextAlignment(.center) // Center the description
-            Text(descriptions[index])
-                .font(.title3)
-                .padding(.horizontal)
-                .multilineTextAlignment(.center) // Center the description
-            Image(imageNames[index]) // Use images from your asset catalog
-                .resizable()
-                .scaledToFit()
-                .frame(maxWidth: 400, maxHeight: 500)
-            if index == 5 {
-                Button("Start Exploring", action: startFreeTrial)
+            VStack(alignment: .center, spacing: 10) {
+                Spacer()
+                
+                // Grouped Title and Description
+                VStack(alignment: .center, spacing: 18) {
+                    Text(titles[index])
+                        .font(.largeTitle)
+                        .padding(.horizontal)
+                        .multilineTextAlignment(.center)
+                    Text(descriptions[index])
+                        .font(.title2)
+                        .padding(.horizontal)
+                        .multilineTextAlignment(.center)
+                }
+                .padding(.bottom, 55) // Adjust spacing between text group and image here
+                
+                Image(systemName: sfSymbolNames[index])
+                
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: 250, maxHeight: 250)
+                    .symbolRenderingMode(.hierarchical)
+                    .foregroundColor(symbolColors[index])
                     .padding()
-                    .foregroundColor(.white)
-                    .background(Color("LightMaroon"))
-                    .cornerRadius(8)
+                    .fontWeight(.thin)
+                
+                // Optional Button for the Last Screen
+                if index == 6 {
+                    Button("LEARN", action: startFreeTrial)
+                        .padding() // Adjust padding as needed for the internal content area
+                        .frame(width: 110, height: 110) // Ensures the button is circular by making width and height equal
+                        .foregroundColor(.maroon)
+                        .font(.title3)
+                        .background(Color.white) // Background color of the button
+                        .clipShape(Circle()) // Clips the background to a circle
+                        .overlay( // Adds a border/stroke
+                            Circle().stroke(Color.lightMaroon, lineWidth: 3) // Adjust color and line width for stroke
+                        )
+                        .shadow(color: .gray, radius: 10, x: 0, y: 4) // Adds a shadow
+                        .padding(.top, 50)
+                }
+                
+                Spacer()
             }
-            Spacer() // This maintains some space at the bottom as well
-        }
-        .padding()
-        .opacity(contentOpacity)
-        .onChange(of: isSelected) { newValue in
-            if newValue == index {
-                fadeIn()
-            } else {
-                fadeOut()
+            .padding(.bottom, 80)
+            .opacity(contentOpacity)
+            .onChange(of: isSelected) { newValue in
+                if newValue == index {
+                    fadeIn()
+                } else {
+                    fadeOut()
+                }
+            }
+            .onAppear {
+                if isSelected == index {
+                    fadeIn()
+                }
             }
         }
-        .onAppear {
-            if isSelected == index {
-                fadeIn()
+        
+        private func fadeIn() {
+            withAnimation(.easeInOut(duration: 1.5)) {
+                contentOpacity = 1.0
             }
         }
-    }
-    
-    private func fadeIn() {
-        withAnimation(.easeInOut(duration: 1.5)) {
-            contentOpacity = 1.0
+        
+        private func fadeOut() {
+            withAnimation(.easeInOut(duration: 0.3)) {
+                contentOpacity = 0.0
+            }
+        }
+        
+        func startFreeTrial() {
+            // Implement the free trial start logic here
         }
     }
-    
-    private func fadeOut() {
-        withAnimation(.easeInOut(duration: 0.3)) {
-            contentOpacity = 0.0
-        }
-    }
-    
-    func startFreeTrial() {
-        // Implement the free trial start logic here
-    }
-}
 
-struct WelcomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        WelcomeView()
+    struct WelcomeView_Previews: PreviewProvider {
+        static var previews: some View {
+            WelcomeView()
+        }
     }
-}

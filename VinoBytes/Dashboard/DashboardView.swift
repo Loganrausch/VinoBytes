@@ -57,6 +57,32 @@ struct DashboardView: View {
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(Color("LightMaroon"), lineWidth: 1.5)
                 )
+                .background(
+                    Color.latte.opacity(0.6)
+                    // Adding the circles at each corner inside the background modifier
+                    .overlay(
+                        GeometryReader { geometry in
+                                    Group {
+                                        // Shift each circle inwards by adjusting the position offsets
+                                        Circle().fill(Color("LightMaroon"))
+                                            .frame(width: 10, height: 10)
+                                            .position(x: geometry.frame(in: .local).minX + 15, y: geometry.frame(in: .local).minY + 15) // Top left corner
+                                        
+                                        Circle().fill(Color("LightMaroon"))
+                                            .frame(width: 10, height: 10)
+                                            .position(x: geometry.frame(in: .local).maxX - 15, y: geometry.frame(in: .local).minY + 15) // Top right corner
+                                        
+                                        Circle().fill(Color("LightMaroon"))
+                                            .frame(width: 10, height: 10)
+                                            .position(x: geometry.frame(in: .local).minX + 15, y: geometry.frame(in: .local).maxY - 15) // Bottom left corner
+                                        
+                                        Circle().fill(Color("LightMaroon"))
+                                            .frame(width: 10, height: 10)
+                                            .position(x: geometry.frame(in: .local).maxX - 15, y: geometry.frame(in: .local).maxY - 15) // Bottom right corner
+                            }
+                        }
+                    )
+                )
                 .padding()
                 Spacer(minLength: 1)
                 

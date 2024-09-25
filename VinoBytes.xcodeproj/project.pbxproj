@@ -64,7 +64,6 @@
 		CE94AB072C0E3624004CE8E0 /* WineGlossaryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94AB062C0E3624004CE8E0 /* WineGlossaryListView.swift */; };
 		CE94AB0A2C0E3645004CE8E0 /* WineGlossaryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94AB092C0E3645004CE8E0 /* WineGlossaryDetailView.swift */; };
 		CE94AB0C2C0E3675004CE8E0 /* WineGlossaryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94AB0B2C0E3675004CE8E0 /* WineGlossaryData.swift */; };
-		CEA304EA2BA3DDFC00DD010D /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA304E92BA3DDFC00DD010D /* ActivityViewController.swift */; };
 		CECB7A622BACB69200659CB6 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB7A612BACB69200659CB6 /* WelcomeView.swift */; };
 		CECB7A662BACC50600659CB6 /* ContactFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB7A652BACC50600659CB6 /* ContactFormView.swift */; };
 		CED0F8BF2B93DE9500508E6E /* BlogPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED0F8BE2B93DE9500508E6E /* BlogPostView.swift */; };
@@ -157,7 +156,6 @@
 		CE94AB062C0E3624004CE8E0 /* WineGlossaryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineGlossaryListView.swift; sourceTree = "<group>"; };
 		CE94AB092C0E3645004CE8E0 /* WineGlossaryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineGlossaryDetailView.swift; sourceTree = "<group>"; };
 		CE94AB0B2C0E3675004CE8E0 /* WineGlossaryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineGlossaryData.swift; sourceTree = "<group>"; };
-		CEA304E92BA3DDFC00DD010D /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		CECB7A612BACB69200659CB6 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		CECB7A652BACC50600659CB6 /* ContactFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactFormView.swift; sourceTree = "<group>"; };
 		CED0F8BE2B93DE9500508E6E /* BlogPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogPostView.swift; sourceTree = "<group>"; };
@@ -334,7 +332,6 @@
 				CE631ED22C35E7CE00F50E96 /* WineEntity+Extensions.swift */,
 				CE82D2842B98B853002B55F1 /* SearchBar.swift */,
 				CE82D2862B9A1F91002B55F1 /* ImagePicker.swift */,
-				CEA304E92BA3DDFC00DD010D /* ActivityViewController.swift */,
 				CEE1607B2C3C56F9006F5E66 /* StarRatingView.swift */,
 				CEE1607D2C3C5AB3006F5E66 /* StarRatingDisplayView.swift */,
 				CE738AC62C7781D500C76892 /* RefreshNotifier.swift */,
@@ -575,7 +572,6 @@
 				CE738AC72C7781D500C76892 /* RefreshNotifier.swift in Sources */,
 				CED380DF2BB756A400CAFB29 /* ContentfulManager.swift in Sources */,
 				CE32CDDC2C1CE3E400A87202 /* WineFlawDetailView.swift in Sources */,
-				CEA304EA2BA3DDFC00DD010D /* ActivityViewController.swift in Sources */,
 				CE32CDE32C1CE5D100A87202 /* FoodWinePairingsData.swift in Sources */,
 				CEE07EFF2C1A71C40088F94C /* ReadOnlyConversationView.swift in Sources */,
 				CE0EF5982C18D5FF009CFDCB /* OpenAIChatView.swift in Sources */,

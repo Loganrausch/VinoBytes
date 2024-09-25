@@ -22,14 +22,14 @@ struct ContentView: View {
         TabView(selection: $selectedTab) {
             DashboardView(refreshNotifier: refreshNotifier)
                 .tabItem {
-                    Image(systemName: "house")
-                    Text("Home")
+                    Image(systemName: "chart.bar.doc.horizontal")
+                    Text("Dashboard")
                 }
                 .tag(0)
 
             StudyView()
                 .tabItem {
-                    Image(systemName: "book")
+                    Image(systemName: "square.3.layers.3d.top.filled")
                     Text("Flashcards")
                 }
                 .tag(1)
@@ -68,12 +68,6 @@ struct ContentView: View {
         if #available(iOS 15.0, *) {
             UITabBar.appearance().scrollEdgeAppearance = appearance
         }
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }
 
