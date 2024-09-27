@@ -28,6 +28,7 @@
     <entity name="WineEntity" representedClassName=".WineEntity" syncable="YES" codeGenerationType="class">
         <attribute name="acid" optional="YES" attributeType="String"/>
         <attribute name="alcohol" optional="YES" attributeType="String"/>
+        <attribute name="dateAdded" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="finalThoughts" optional="YES" attributeType="String"/>
         <attribute name="grape" attributeType="String" defaultValueString="Unknown Grape"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>

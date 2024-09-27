@@ -29,7 +29,13 @@ extension WineEntity {
         self.tannin = wine.tannin
         self.imageData = wine.image?.jpegData(compressionQuality: 1.0)
         self.finalThoughts = wine.finalThoughts
-    }
+        
+        // **Only set dateAdded if it's nil (i.e., new entity)**
+                if self.dateAdded == nil {
+                    self.dateAdded = Date()
+                }
+            }
+    
 
     // Convert from WineEntity (managed object) to Wine struct
     func toWine() -> Wine {
@@ -50,7 +56,8 @@ extension WineEntity {
             sweetness: self.sweetness!,
             tannin: self.tannin!,
             image: (self.imageData != nil ? UIImage(data: self.imageData!) : nil),
-            finalThoughts: self.finalThoughts!
+            finalThoughts: self.finalThoughts!,
+            dateAdded: self.dateAdded ?? Date() // Handle dateAdded
         )
     }
 }

@@ -17,20 +17,17 @@ struct DashboardView: View {
     @State private var isWhiteDisplaySheetPresented = false
     @State private var showAlert = false
     @State private var alertMessage = ""
+    @State private var recentWines: [WineEntity] = []
     @ObservedObject var refreshNotifier: RefreshNotifier  // Add this line
     @EnvironmentObject var openAIManager: OpenAIManager  // Access from environment
     
-    @FetchRequest(
-        entity: WineEntity.entity(),
-        sortDescriptors: []
-    ) var wines: FetchedResults<WineEntity>
-    
+
     // List of all regions
     let allRegions = ["Argentina", "Australia", "Austria", "Chile", "France", "Germany", "Greece", "Hungary", "Italy", "New Zealand", "Portugal", "South Africa", "Spain", "USA"]
     
     var body: some View {
         NavigationView {
-            VStack(alignment: .center, spacing: 20) {
+            VStack(alignment: .center, spacing: 10) {
                 
                 VStack {
                     Text("Wine Fact of the Week")
@@ -40,6 +37,7 @@ struct DashboardView: View {
                     
                     if let fact = wineFactOfTheWeek {
                         Text(fact)
+                            
                             .multilineTextAlignment(.center)
                             .padding()
                     } else {
@@ -48,8 +46,7 @@ struct DashboardView: View {
                             .padding()
                     }
                 }
-                .frame(minWidth: 250, maxWidth: 350) // Ensures the box is never too small or too large
-                .frame(maxHeight: 200) // Ensures the height does not exceed 150
+                .frame(maxWidth: .infinity, minHeight: 175) // Dynamic width, minimum height of 175
                 .padding()
                 // Subtle, semi-transparent background
                 .cornerRadius(10)
@@ -58,171 +55,230 @@ struct DashboardView: View {
                         .stroke(Color("LightMaroon"), lineWidth: 1.5)
                 )
                 .background(
-                    Color.latte.opacity(0.6)
+                    Color.lightLatte.opacity(1)
                     // Adding the circles at each corner inside the background modifier
-                    .overlay(
-                        GeometryReader { geometry in
-                                    Group {
-                                        // Shift each circle inwards by adjusting the position offsets
-                                        Circle().fill(Color("LightMaroon"))
-                                            .frame(width: 10, height: 10)
-                                            .position(x: geometry.frame(in: .local).minX + 15, y: geometry.frame(in: .local).minY + 15) // Top left corner
-                                        
-                                        Circle().fill(Color("LightMaroon"))
-                                            .frame(width: 10, height: 10)
-                                            .position(x: geometry.frame(in: .local).maxX - 15, y: geometry.frame(in: .local).minY + 15) // Top right corner
-                                        
-                                        Circle().fill(Color("LightMaroon"))
-                                            .frame(width: 10, height: 10)
-                                            .position(x: geometry.frame(in: .local).minX + 15, y: geometry.frame(in: .local).maxY - 15) // Bottom left corner
-                                        
-                                        Circle().fill(Color("LightMaroon"))
-                                            .frame(width: 10, height: 10)
-                                            .position(x: geometry.frame(in: .local).maxX - 15, y: geometry.frame(in: .local).maxY - 15) // Bottom right corner
+                        .overlay(
+                            GeometryReader { geometry in
+                                Group {
+                                    // Shift each circle inwards by adjusting the position offsets
+                                    Circle().fill(Color("Maroon"))
+                                        .frame(width: 7, height: 7)
+                                        .position(x: geometry.frame(in: .local).minX + 15, y: geometry.frame(in: .local).minY + 15) // Top left corner
+                                    
+                                    Circle().fill(Color("Maroon"))
+                                        .frame(width: 7, height: 7)
+                                        .position(x: geometry.frame(in: .local).maxX - 15, y: geometry.frame(in: .local).minY + 15) // Top right corner
+                                    
+                                    Circle().fill(Color("Maroon"))
+                                        .frame(width: 7, height: 7)
+                                        .position(x: geometry.frame(in: .local).minX + 15, y: geometry.frame(in: .local).maxY - 15) // Bottom left corner
+                                    
+                                    Circle().fill(Color("Maroon"))
+                                        .frame(width: 7, height: 7)
+                                        .position(x: geometry.frame(in: .local).maxX - 15, y: geometry.frame(in: .local).maxY - 15) // Bottom right corner
+                                }
                             }
-                        }
-                    )
+                        )
                 )
                 .padding()
-                Spacer(minLength: 1)
                 
                 
                 
-                // Flashcard Progress Button
-                VStack {
-                    Button(action: {
-                        isFlashcardProgressSheetPresented = true
-                    }) {
-                        VStack(spacing: 6) {
-                            Text("My Flashcard Progress")
-                                .frame(maxWidth: .infinity, minHeight: 20) // Ensures the text field fills the button area
-                                .contentShape(Rectangle()) // Makes the whole area tappable
-                                .bold()
-                                .foregroundColor(Color.black) // Text color set to Latte
-                            
-                        }
-                        .padding()
-                        .background(Color.white) // Background color set to Maroon
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color("LightMaroon"), lineWidth: 2)
-                            
-                            
-                        )
-                        .shadow(radius: 10) // Apply shadow
-                    }
-                    .padding(.horizontal)
-                    
-                }
-                .sheet(isPresented: $isFlashcardProgressSheetPresented) {
-                    FlashcardProgressView(flashcardProgress: flashcardProgress)
-                        .preferredColorScheme(.light) // Force light mode
-                }
-                .padding(.bottom)
                 
-                HStack(spacing: 75) {
+                HStack(alignment: .center, spacing: 2) {
+                    // Flashcard Progress Button
                     VStack {
-                        Text("My Wines")
-                            .font(.headline)
-                            .frame(width: 100, alignment: .center)
-                        NavigationLink(destination: MyWinesView(isRootView: false, refreshNotifier: refreshNotifier)) {
-                            ZStack {
-                                Circle()
-                                    .stroke(Color("LightMaroon"), lineWidth: 5)
-                                    .frame(width: 110, height: 110)
-                                    .background(Color.white)
-                                    .clipShape(Circle())
-                                    .shadow(radius: 10) // Apply shadow
-                                Text("\(wines.count)")
-                                    .font(.largeTitle)
-                                    .foregroundColor(.black)
-                            }
-                        }
-                    }
-                    
-                    VStack {
-                        Text("White Sheet")
-                            .font(.headline)
-                            .frame(width: 109, alignment: .center)
                         Button(action: {
-                            isWhiteDisplaySheetPresented = true
+                            isFlashcardProgressSheetPresented = true
                         }) {
-                            ZStack {
-                                Circle()
-                                    .stroke(Color("LightMaroon"), lineWidth: 5)
-                                    .frame(width: 110, height: 110)
-                                    .background(Color.white)
-                                    .clipShape(Circle())
-                                    .shadow(radius: 10) // Apply shadow
-                                
-                                Text("Tap Here")
-                                    .font(.headline)
-                                    .foregroundColor(.black)
+                            VStack() {
+                                Text("My Flashcard Progress")
+                                    .frame(width: 125, height: 100) // Ensures the text field fills the button area
+                                    .contentShape(Rectangle()) // Makes the whole area tappable
+                                    .bold()
+                                    .foregroundColor(Color.black) // Text color set to Latte
+                                    .multilineTextAlignment(.center) // Center align text
                                 
                             }
+                            .padding()
+                            .background(Color.lightLatte.opacity(1)) // Background color set to Maroon
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color("LightMaroon"), lineWidth: 2.4)
+                                
+                                
+                            )
+                            
+                            .shadow(color: .black.opacity(0.4), radius: 7) // Apply shadow
                         }
-                        .sheet(isPresented: $isWhiteDisplaySheetPresented) {
-                            WhiteBackgroundView()
-                                .preferredColorScheme(.light) // Force light mode
+                    }
+                    .sheet(isPresented: $isFlashcardProgressSheetPresented) {
+                        FlashcardProgressView(flashcardProgress: flashcardProgress)
+                            .preferredColorScheme(.light) // Force light mode
+                    }
+                    
+                    Spacer()
+                    
+                    
+                    
+                    VStack {
+                        if let latestPost = blogPosts.first {
+                            NavigationLink(destination: BlogPostView(blogPost: latestPost, blogPosts: blogPosts)) {
+                                ZStack {
+                                    Text("Weekly Blog Post")
+                                        .frame(width: 125, height: 100)
+                                        .contentShape(Rectangle())
+                                        .bold()
+                                        .foregroundColor(Color.black)
+                                        .multilineTextAlignment(.center)
+                                }
+                                .padding()
+                                .background(Color.lightLatte.opacity(1))
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(Color("LightMaroon"), lineWidth: 2.4)
+                                )
+                                .shadow(color: .black.opacity(0.4), radius: 7) // Apply shadow
+                            }
+                        } else {
+                            ZStack {
+                                Text("Loading Blog Post...")
+                                    .frame(width: 125, height: 100)
+                                    .contentShape(Rectangle())
+                                    .bold()
+                                    .foregroundColor(Color.gray)
+                                    .multilineTextAlignment(.center)
+                            }
+                            .padding()
+                            .background(Color.lightLatte.opacity(1))
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color("LightMaroon"), lineWidth: 2.4)
+                            )
+                            .shadow(color: .black.opacity(0.4), radius: 7) // Apply shadow
                         }
                     }
                 }
+                .frame(maxWidth: .infinity, alignment: .center)
+                .padding() // Padding around the HStack
+                
+               
+                
+                
+                
+                // New Recent Wines Section
+                VStack(alignment: .center) { // Changed alignment to .center
+                    Text("Recently Added Wines")
+                        .font(.headline)
+                        .padding(.bottom, 3)
+                    // Additional content in this VStack will also be centered
+                    
+                    
+                    if recentWines.isEmpty {
+                        Text("No recent wines added.")
+                            .foregroundColor(.gray)
+                    } else {
+                        ForEach(recentWines, id: \.self) { wine in
+                            NavigationLink(destination: WineDetailView(wineEntity: wine)) {
+                                HStack {
+                                    // Optional: Display an image if available
+                                    if let imageData = wine.imageData, let uiImage = UIImage(data: imageData) {
+                                        Image(uiImage: uiImage)
+                                            .resizable()
+                                            .scaledToFill()
+                                            .frame(width: 45, height: 45)
+                                            .clipShape(RoundedRectangle(cornerRadius: 5))
+                                    } else {
+                                        Rectangle()
+                                            .fill(Color.gray.opacity(0.3))
+                                            .frame(width: 45, height: 45)
+                                            .clipShape(RoundedRectangle(cornerRadius: 5))
+                                            .overlay(
+                                                Image(systemName: "wineglass")
+                                                    .foregroundColor(.white)
+                                            )
+                                    }
+                                    
+                                    VStack(alignment: .leading) {
+                                        Text(wine.wineName ?? "Unnamed Wine")
+                                            .font(.subheadline)
+                                            .bold()
+                                        Text("\(wine.producer ?? "Unknown Producer"), \(wine.vintage ?? "Unknown Vintage")")
+                                            .font(.caption)
+                                            .foregroundColor(.gray)
+                                    }
+                                    
+                                    Spacer()
+                                    
+                                    
+                                    Image(systemName: "chevron.right")
+                                        .foregroundColor(.gray)
+                                    
+                                }
+                                .contentShape(Rectangle())  // Ensures the entire area is clickable
+                                .padding(.vertical, 5)
+                               
+                            }
+                            
+                            .buttonStyle(PlainButtonStyle()) // Use PlainButtonStyle to avoid default button behavior
+                            
+                            
+                           Divider()
+                        }
+                    }
+                }
+                
+                .frame(maxWidth: .infinity, minHeight: 235, alignment: .center)
+                .padding()
+                .cornerRadius(10)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color("LightMaroon"), lineWidth: 1.5)
+                )
+                .background(Color.lightLatte.opacity(1))
                 .padding()
                 
-                Text("Weekly Wine Blog")
-                    .font(.title3)
-                    .bold()
-                    .padding(.top)
-                
-                if let latestPost = blogPosts.first {
-                    NavigationLink(destination: BlogPostView(blogPost: latestPost, blogPosts: blogPosts)) {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color("LightMaroon"), lineWidth: 5)
-                                .frame(width: 200, height: 50)
-                                .background(Color.white)
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
-                                .shadow(radius: 10) // Apply shadow
-                            Text("Read Our Latest Post")
-                                .font(.headline)
-                                .foregroundColor(.black)
-                        }
-                    }
-                } else {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color("LightMaroon"), lineWidth: 5)
-                            .frame(width: 200, height: 50)
-                            .background(Color.white)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                            .shadow(radius: 10)
-                        Text("Read Our Latest Post")
-                            .font(.headline)
-                            .foregroundColor(.gray)
-                    }
-                }
-                
-                Spacer(minLength: 20)
-            }
-            .padding()
-            .navigationBarTitle("Dashboard", displayMode: .inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink(destination: AccountView(refreshNotifier: refreshNotifier)) {
-                        Image(systemName: "gearshape.fill")
-                            .imageScale(.large)
-                            .foregroundColor(Color(red: 243/255, green: 232/255, blue: 219/255))
-                    }
+                Spacer(minLength: 1)
+        }
+        
+        .padding(20)
+        .navigationBarTitle("Dashboard", displayMode: .inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink(destination: AccountView(refreshNotifier: refreshNotifier)) {
+                    Image(systemName: "gearshape.fill")
+                        .imageScale(.large)
+                        .foregroundColor(Color.latte)
                 }
             }
-            .onAppear {
-                fetchContent()
-                initializeFlashcardProgress()
+        }
+        .onAppear {
+            fetchContent()
+            initializeFlashcardProgress()
+            fetchRecentWines()  // Manually fetch recent wines
+        }
+            
+        .alert(isPresented: $showAlert) { // Add this line
+            Alert(title: Text("Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+        }
+    }
+}
+    
+    private func fetchRecentWines() {
+        let request: NSFetchRequest<WineEntity> = WineEntity.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(keyPath: \WineEntity.dateAdded, ascending: false)]
+        request.fetchLimit = 3
+
+        do {
+            let result = try context.fetch(request)
+            DispatchQueue.main.async {
+                self.recentWines = result
             }
-            .alert(isPresented: $showAlert) { // Add this line
-                            Alert(title: Text("Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
-            }
+        } catch {
+            print("Failed to fetch recent wines: \(error)")
         }
     }
     

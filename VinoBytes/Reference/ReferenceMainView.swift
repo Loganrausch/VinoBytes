@@ -10,8 +10,17 @@ import SwiftUI
 struct ReferenceMainView: View {
     var body: some View {
         NavigationView {
-            ZStack {
+            ZStack(alignment: .top) {
                 VStack(spacing: 45) { // Adjust spacing as needed
+                    
+                  
+                    Text("Select Topic")
+                        .foregroundColor(.black)
+                        .font(.title3)
+                        .bold()
+                        .padding(.top, -15) // Reduce this value as needed to move closer to the top
+                    
+                    
                     NavigationLink(destination: GrapeListView()) {
                         buttonContent(title: "Grapes", systemImage: "leaf.arrow.circlepath")
                     }
@@ -31,9 +40,10 @@ struct ReferenceMainView: View {
                     NavigationLink(destination: WineFlawListView()) {
                         buttonContent(title: "Wine Flaws", systemImage: "exclamationmark.triangle")
                     }
+                    
+                    
                 }
-                .padding(.horizontal, 40)
-                .padding(.top, -20)
+                
                 .navigationTitle("Wine Library")
                 .navigationBarTitleDisplayMode(.inline)
             }
@@ -51,7 +61,7 @@ struct ReferenceMainView: View {
                 .foregroundColor(.black)
         }
         .frame(width: 340, height: 80) // Adjust frame size to make it rectangular
-        .background(Color.white)
+        .background(Color.lightLatte)
         .cornerRadius(10) // Add corner radius to make the rectangle corners rounded
         .shadow(radius: 10) // Apply shadow
         .overlay(

@@ -48,17 +48,27 @@ struct MyWinesView: View {
             TextField("Search wines...", text: $searchText)
                 .padding(10)
                 .padding(.horizontal)
-                .background(Color.white)
+                .background(Color.lightLatte)
                 .cornerRadius(10)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.lightMaroon.opacity(1), lineWidth: 1.5) // Customize color and width
+                )
+            
                 .padding(.top)
                 .padding(.horizontal)
-                .accentColor(.black)
-                .shadow(radius: 4)
+                .accentColor(.lightMaroon)
+                
 
             List {
                 ForEach(filteredWinesGrouped, id: \.0) { region, wines in
-                    Section(header: Text(region).textCase(nil).padding(.leading, -7)) {
-                        ForEach(wines, id: \.self) { wine in
+                    Section(header: Text(region)
+                        .textCase(nil)
+                        .padding(.leading, -7)
+                        .foregroundColor(.maroon) // Change the color as needed
+                    
+                    ) {
+                        ForEach(wines, id: \.objectID) { wine in
                             NavigationLink(destination: WineDetailView(wineEntity: wine)) {
                                 Text("\(wine.vintage ?? "Unknown Vintage") \(wine.producer ?? "Unknown Producer") \(wine.wineName ?? "Unnamed Wine")")
                             }
@@ -74,12 +84,14 @@ struct MyWinesView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Add Wine") {
-                        isAddingWine = true
+                    Button(action: {
+                                isAddingWine = true
+                            }) {
+                                Text("Add Wine")
+                                    .font(.headline) // Customize with your font
+                            }
+                        }
                     }
-                }
-            }
-            
             NavigationLink(destination: WineFormView(wineEntity: nil), isActive: $isAddingWine) {
                 EmptyView()
             }
@@ -96,7 +108,8 @@ struct MyWinesView: View {
             wine.producer?.lowercased().contains(searchText.lowercased()) ?? false ||
             wine.wineName?.lowercased().contains(searchText.lowercased()) ?? false ||
             wine.region?.lowercased().contains(searchText.lowercased()) ?? false ||
-            wine.grape?.lowercased().contains(searchText.lowercased()) ?? false
+            wine.grape?.lowercased().contains(searchText.lowercased()) ?? false ||
+            wine.vintage?.lowercased().contains(searchText.lowercased()) ?? false
         }
         return Dictionary(grouping: filteredWines, by: { $0.region ?? "Unknown" })
             .map { ($0.key, $0.value) }

@@ -31,7 +31,9 @@ class WineData: ObservableObject {
     func addWine(_ wine: Wine) {
         let newWine = WineEntity(context: context)
         newWine.fromWine(wine)  // Assume conversion method exists in WineEntity
+        print("Added Wine: \(wine.wineName), Date Added: \(newWine.dateAdded ?? Date())")
         saveContext()
+        
     }
 
     func updateWine(_ wine: Wine) {
@@ -39,7 +41,9 @@ class WineData: ObservableObject {
         fetchRequest.predicate = NSPredicate(format: "id == %@", wine.id as CVarArg)
 
         if let wineEntity = (try? context.fetch(fetchRequest))?.first {
+            print("Updating Wine: \(wineEntity.wineName ?? "Unnamed"), Original Date Added: \(wineEntity.dateAdded ?? Date())")
             wineEntity.fromWine(wine)
+            print("After Update Date Added: \(wineEntity.dateAdded ?? Date())")
             saveContext()
         }
     }

@@ -27,6 +27,7 @@ struct Wine: Identifiable {
     var tannin: String
     var image: UIImage?
     var finalThoughts: String
+    var dateAdded: Date
 }
 
 

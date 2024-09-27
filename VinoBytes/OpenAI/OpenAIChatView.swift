@@ -244,7 +244,7 @@ struct MessageView: View {
             Spacer()
             Text(content)
                 .padding()
-                .background(Color("Maroon").opacity(0.4))  // Adjust opacity as needed
+                .background(Color("Maroon").opacity(0.38))  // Adjust opacity as needed
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .frame(maxWidth: 300, alignment: .trailing)
         } else {

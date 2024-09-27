@@ -266,14 +266,21 @@ struct WineFormView: View {
         wineToSave.tannin = tannin
         wineToSave.finalThoughts = finalThoughts
         wineToSave.imageData = selectedImage?.jpegData(compressionQuality: 1.0)
+        
+        // **Set dateAdded only if adding a new wine**
+            if wineEntity == nil {
+                wineToSave.dateAdded = Date()
+            }
 
                     do {
                         try context.save()
-                        presentationMode.wrappedValue.dismiss()
-                    } catch {
-                        print("Failed to save wine: \(error)")
-                    }
-                }
+                                // Force a refresh of all fetched objects
+                                context.refreshAllObjects()
+                                presentationMode.wrappedValue.dismiss()
+                            } catch {
+                                print("Failed to save wine: \(error)")
+                            }
+                        }
 
                 private func loadImage() {
                     guard let selectedImage = selectedImage else { return }

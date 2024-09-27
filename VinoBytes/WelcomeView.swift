@@ -137,7 +137,7 @@ struct WelcomeScreen: View {
                 
                 // Optional Button for the Last Screen
                 if index == 6 {
-                    Button("LEARN", action: startFreeTrial)
+                    Button("START!", action: startFreeTrial)
                         .padding() // Adjust padding as needed for the internal content area
                         .frame(width: 110, height: 110) // Ensures the button is circular by making width and height equal
                         .foregroundColor(.maroon)
