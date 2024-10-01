@@ -12,12 +12,12 @@ struct ContentView: View {
     @State private var selectedTab = 0
     let refreshNotifier = RefreshNotifier()  // Create a single instance
     
-
+    
     init() {
         setupTabBarAppearance()
         
     }
-
+    
     var body: some View {
         TabView(selection: $selectedTab) {
             DashboardView(refreshNotifier: refreshNotifier)
@@ -26,14 +26,14 @@ struct ContentView: View {
                     Text("Dashboard")
                 }
                 .tag(0)
-
+            
             StudyView()
                 .tabItem {
                     Image(systemName: "square.3.layers.3d.top.filled")
                     Text("Flashcards")
                 }
                 .tag(1)
-
+            
             OpenAIChatView()
                 .tabItem {
                     Image(systemName: "bubble.left.and.bubble.right")
@@ -45,7 +45,7 @@ struct ContentView: View {
                     Label("My Wines", systemImage: "wineglass")
                 }
                 .tag(3)
-
+            
             ReferenceMainView()
                 .tabItem {
                     Image(systemName: "books.vertical")
@@ -56,13 +56,13 @@ struct ContentView: View {
         
         .accentColor(Color("Latte"))
     }
-
+    
     private func setupTabBarAppearance() {
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = UIColor(named: "Maroon")
-
-
+        
+        
         // Applying the appearance settings
         UITabBar.appearance().standardAppearance = appearance
         if #available(iOS 15.0, *) {

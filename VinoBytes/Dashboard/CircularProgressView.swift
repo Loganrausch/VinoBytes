@@ -29,11 +29,11 @@ struct CircularProgressView: View {
                 .animation(.linear, value: progress)
             
             // Progress text
-            Text(String(format: "%.0f %%", min(self.progress, 1.0)*100.0))
-                .font(.title2)
-                .bold()
-                .foregroundColor(.black)
-        }
-        .frame(width: 120.0, height: 120.0)
-    }
-}
+                        Text(String(format: "%.1f %%", min(self.progress, 1.0)*100.0))
+                            .font(.title2)
+                            .bold()
+                            .foregroundColor(.black)
+                    }
+                    .frame(width: 120.0, height: 120.0)
+                }
+            }

@@ -124,7 +124,7 @@ struct WineFormView: View {
                         .keyboardType(.default)  // Allow alphanumeric input
                 }
             }
-            .accentColor(Color.black) // Set cursor color to system gray
+            .accentColor(Color.lightMaroon) // Set cursor color
             
             
             
@@ -134,18 +134,18 @@ struct WineFormView: View {
                 TextField("Region", text: $region)
                 TextField("Grape", text: $grape)
             }
-            .accentColor(Color(UIColor.systemGray)) // Applying the accent color to all TextField elements in the section
+            .accentColor(Color.lightMaroon) // Set cursor color
             
             Section(header: Text("Sight")) {
                 TextEditor(text: $sight)
-                    .accentColor(Color(UIColor.systemGray)) // Set cursor color to system gray
+                    .accentColor(Color.lightMaroon) // Set cursor color
                     .frame(minHeight: 100, maxHeight: 200) // Set minimum and maximum height
                     .cornerRadius(8)
             }
             
             Section(header: Text("Smell / Taste")) {
                 TextEditor(text: $smellTaste)
-                    .accentColor(Color(UIColor.systemGray)) // Set cursor color to system gray
+                    .accentColor(Color.lightMaroon) // Set cursor color
                     .frame(minHeight: 100, maxHeight: 200) // Set minimum and maximum height
                     .cornerRadius(8)
             }
@@ -223,23 +223,20 @@ struct WineFormView: View {
             
             Section(header: Text("Final Thoughts")) {
                 TextEditor(text: $finalThoughts)
-                    .accentColor(Color(UIColor.systemGray)) // Set cursor color to system gray
+                    .accentColor(Color.lightMaroon) // Set cursor color
                     .frame(minHeight: 100, maxHeight: 200) // Set minimum and maximum height
                     .cornerRadius(8)
             }
             
-            Button("Save") {
-                saveWine()
-            }
-            .accentColor(Color.blue) // Set cursor color to system gray
         }
            
             .navigationBarTitle(wineEntity != nil ? "Edit Wine" : "Add Wine", displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Cancel") {
-                        presentationMode.wrappedValue.dismiss()
+                    Button("Save") {
+                        saveWine()
                     }
+                    .font(.headline)
                 }
             }
         

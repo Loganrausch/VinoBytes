@@ -12,66 +12,90 @@ struct StudyView: View {
     let regions = ["Argentina", "Australia", "Austria", "Chile", "France", "Germany", "Greece", "Hungary", "Italy", "New Zealand", "Portugal", "South Africa", "Spain", "USA"]
     @State private var selectedRegions = Set<String>()
     @State private var showingAlert = false
-    @State private var isActiveLink = false // Manages navigation link activation
+    @State private var isActiveLink = false
 
     var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack(spacing: 20) {
-                    Spacer(minLength: 5)
-                    Text("Select Regions").font(.headline)
-                    
-                    LazyVGrid(columns: [GridItem(.fixed(170)), GridItem(.fixed(170))]) {
-                        ForEach(regions, id: \.self) { region in
-                            RegionView(region: region, isSelected: selectedRegions.contains(region)) {
-                                if selectedRegions.contains(region) {
-                                    selectedRegions.remove(region)
-                                } else {
-                                    selectedRegions.insert(region)
-                                }
-                            }
-                            .frame(width: 150, height: 50)
-                            .padding(9)
-                        }
-                    }
+        NavigationStack {
+            GeometryReader { geometry in
+                let screenWidth = geometry.size.width
+                let screenHeight = geometry.size.height
 
-                    Button(action: {
-                        if selectedRegions.isEmpty {
-                            showingAlert = true
-                        } else {
-                            isActiveLink = true
+                // Adjust spacing and padding based on screen height
+                let horizontalPadding = screenWidth * 0.10    // 5% of screen width
+                let verticalSpacing = screenHeight * 0.018     // 2% of screen height
+                let itemHeight = (screenHeight * 0.6) / 7     // Distribute 60% of screen height among 7 rows
+                let columnSpacing = screenWidth * 0.05
+                
+                let columns = [
+                    GridItem(.flexible(), spacing: columnSpacing),
+                    GridItem(.flexible())
+                ]
+
+                
+                    VStack(spacing: verticalSpacing) {
+                        
+                        LazyVGrid(columns: columns, spacing: verticalSpacing) {
+                            ForEach(regions, id: \.self) { region in
+                                RegionView(region: region,
+                                           isSelected: selectedRegions.contains(region),
+                                           fontSize: screenHeight * 0.025, // Adjust font size
+                                           padding: screenHeight * 0.025,   // Adjust padding
+                                           action: {
+                                    if selectedRegions.contains(region) {
+                                        selectedRegions.remove(region)
+                                    } else {
+                                        selectedRegions.insert(region)
+                                    }
+                                })
+                                .frame(height: itemHeight)
+                            }
                         }
-                    }) {
-                        Text("Start Learning")
-                                .foregroundColor(.maroon)
+                        .padding(.horizontal, horizontalPadding)
+                        
+
+                        Spacer(minLength: verticalSpacing)
+
+                        Button(action: {
+                            if selectedRegions.isEmpty {
+                                showingAlert = true
+                            } else {
+                                isActiveLink = true
+                            }
+                        }) {
+                            Text("Start Learning")
+                                .foregroundColor(.black)
                                 .bold()
-                                .frame(width: 100, height: 100) // Adjust the width and height to be equal for a circle
+                                .frame(width: screenWidth * 0.25, height: screenWidth * 0.25) // Adjust size based on screen width
                                 .background(Color.lightLatte)
-                                .clipShape(Circle()) // This makes the background a circle
+                                .clipShape(Circle())
                                 .overlay(
-                                Circle() // Overlay a circle border
-                                    .stroke(Color.black, lineWidth: 2)
-                                                   )
+                                    Circle()
+                                        .stroke(Color.lightMaroon, lineWidth: 2)
+                                )
                                 .shadow(radius: 5)
-                                           }
-                    .alert(isPresented: $showingAlert) {
-                        Alert(title: Text("No Regions Selected"), message: Text("Please select a wine region to start learning."), dismissButton: .default(Text("OK")))
+                        }
+                        .padding(.bottom, 70)
+                        .padding(.top, 1)
+                        .alert(isPresented: $showingAlert) {
+                            Alert(title: Text("No Regions Selected"), message: Text("Please select a wine region to start learning."), dismissButton: .default(Text("OK")))
+                        }
+                        .navigationDestination(isPresented: $isActiveLink) {
+                                FlashcardView(selectedRegions: Array(selectedRegions))
+                        }
                     }
-                    .background(NavigationLink(destination: FlashcardView(selectedRegions: Array(selectedRegions)), isActive: $isActiveLink) {
-                        EmptyView()
-                    })
-                }
+                    .padding(.top, 65)
+                    .frame(minHeight: geometry.size.height)
+                
+                .navigationBarTitle("Select Regions", displayMode: .inline)
+                .navigationBarItems(trailing: Button(action: toggleSelection) {
+                    Text(selectedRegions.count == regions.count ? "Deselect All" : "Select All")
+                        .font(.headline)
+                })
             }
-            .navigationBarTitle("Flashcards", displayMode: .inline)
-            .navigationBarItems(trailing: Button(action: toggleSelection) {
-                            Text(selectedRegions.count == regions.count ? "Deselect All" : "Select All")
-                                .font(.headline)
-                        })
         }
     }
 
-
-private func toggleSelection() {
+    private func toggleSelection() {
         if selectedRegions.count == regions.count {
             selectedRegions.removeAll()
         } else {
@@ -83,19 +107,22 @@ private func toggleSelection() {
 struct RegionView: View {
     var region: String
     var isSelected: Bool
+    var fontSize: CGFloat
+    var padding: CGFloat
     var action: () -> Void
-    
+
     var body: some View {
         Button(action: action) {
             Text(region)
+                .font(.system(size: fontSize))
                 .foregroundColor(isSelected ? .latte : .black)
                 .bold()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .padding()
+                .frame(maxWidth: .infinity)
+                .padding(padding)
                 .background(
                     isSelected ?
-                    Color("LightMaroon").opacity(1) :  // Assuming 100% opacity for selected state
-                    Color.lightLatte.opacity(1)         // Assuming 100% opacity for unselected state
+                    Color("LightMaroon").opacity(1) :
+                    Color.lightLatte.opacity(1)
                 )
                 .cornerRadius(5)
                 .shadow(color: .gray, radius: 4)
@@ -106,6 +133,7 @@ struct RegionView: View {
         }
     }
 }
+
 struct StudyView_Previews: PreviewProvider {
     static var previews: some View {
         StudyView()

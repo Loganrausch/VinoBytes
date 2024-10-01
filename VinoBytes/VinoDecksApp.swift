@@ -10,11 +10,11 @@ import SwiftUI
 @main
 struct VinoDecksApp: App {
     @State private var isShowingLaunchScreen = true
-
+    
     init() {
         configureNavigationBar()
     }
-
+    
     var body: some Scene {
         WindowGroup {
             if isShowingLaunchScreen {
@@ -29,14 +29,14 @@ struct VinoDecksApp: App {
         .environment(\.colorScheme, .light)
     }
     
-
+    
     private func configureNavigationBar() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground() // Ensures the background is not transparent
         appearance.backgroundColor = UIColor(Color("Maroon")) // Dark maroon color
         appearance.titleTextAttributes = [.foregroundColor: UIColor.latte]
         appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.latte]
-
+        
         // Apply the appearance to all navigation bar types
         UINavigationBar.appearance().standardAppearance = appearance
         UINavigationBar.appearance().compactAppearance = appearance
@@ -47,22 +47,22 @@ struct VinoDecksApp: App {
 struct LaunchScreen: View {
     @Binding var isShowingLaunchScreen: Bool
     @State private var opacity: Double = 0  // Single opacity variable for both text and image
-
+    
     var body: some View {
         ZStack {
-          VStack(spacing: 20) {
+            VStack(spacing: 20) {
                 Image("vinobytes_logo_final")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 200, height: 200)
                     .opacity(opacity)  // Use the same opacity for image and text
-
+                
                 Text("VinoBytes")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .foregroundColor(.primary)
                     .opacity(opacity)  // Shared opacity for uniform fade-in
-
+                
                 Text("Wine Education in Small Bytes")
                     .font(.title3)
                     .foregroundColor(.primary)

@@ -48,13 +48,13 @@ struct AccountView: View {
     
     var body: some View {
         VStack {
-            if let errorMessage = errorMessage {
-                Text(errorMessage)
-                    .foregroundColor(.red)
-            }
             
             Form {
-                Section(header: Text("General")) {
+                Section(header: Text("General")
+                    .font(.headline)
+                    .foregroundColor(.black)
+                
+                ) {
                     
                     Button("Feedback") {
                         showingFeedbackSheet = true
@@ -88,20 +88,19 @@ struct AccountView: View {
                         }
                     }
                     
-                    Button("Rate VinoBytes App") {
-                        if let windowScene = UIApplication.shared.windows.first?.windowScene {
-                            SKStoreReviewController.requestReview(in: windowScene)
-                        }
-                    }
-                    
-                    
-                    
-                    
-                    
-                }
-                .accentColor(Color.black) // Applying custom accent color locally to these buttons
+                    // Updated "Rate VinoBytes App" Button
+                                       Button("Rate VinoBytes App") {
+                                           requestAppReview()
+                                       }
+                                   }
+                                   .accentColor(Color.black) // Applying custom accent color locally to these buttons
                 
-                Section(header: Text("Reset Progress")) {
+                Section(header: Text("Reset Progress")
+                    .font(.headline)
+                    .foregroundColor(.black)
+                
+                ) {
+                    
                     Button("Reset My Wines") {
                         activeAlert = .resetWines
                         viewContext.refreshAllObjects()
@@ -119,7 +118,13 @@ struct AccountView: View {
                 .accentColor(Color.black) // Applying custom accent color locally to these buttons
                 
                 
-                Section(header: Text("Legal")) {
+                Section(header: Text("Legal")
+                    .font(.headline)
+                    .foregroundColor(.black)
+                   
+                        
+                
+                ) {
                     
                     NavigationLink(destination: LegalDocumentView(documentTitle: "Privacy Policy", documentText: privacyPolicyText)) {
                         Text("Privacy Policy")
@@ -136,20 +141,12 @@ struct AccountView: View {
             .padding(.top, 15)
             .navigationBarTitle("Account Settings", displayMode: .inline)
             
-            
-            
-            // Logo image at the bottom
-                        Image("vinobytes_logo_final")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: 75)  // Adjust the size as needed
-                            .padding(.bottom, 10)
-            
+       
             // App version at the bottom
                        Text(appVersion)
                            .font(.footnote)
                            .foregroundColor(.gray)
-                           .padding(.bottom, 18) // Padding for space at the bottom
+                           .padding(.bottom, 12) // Padding for space at the bottom
             
         }
         .background(Color(.systemGroupedBackground).edgesIgnoringSafeArea(.all))
@@ -212,6 +209,20 @@ struct AccountView: View {
         }
     }
     
+    private func requestAppReview() {
+            // Fetch all connected scenes
+            let scenes = UIApplication.shared.connectedScenes
+            
+            // Filter for the first active UIWindowScene
+            if let windowScene = scenes
+                .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
+                
+                // Request the review using the active window scene
+                SKStoreReviewController.requestReview(in: windowScene)
+            }
+        }
+        
+    
     private func handleICloudSyncInfo(showAlert: Bool) {
         isCheckingICloud = true  // Show loading indicator
         let container = CKContainer(identifier: iCloudContainerIdentifier)
@@ -270,8 +281,8 @@ struct AccountView: View {
             let flashcards = try viewContext.fetch(fetchRequest)
             print("Resetting progress for \(flashcards.count) flashcards.")
             for flashcard in flashcards {
-                print("Resetting flashcard with ID \(flashcard.id ?? "Unknown ID") from box \(flashcard.boxNumber) to box 1.")
-                flashcard.boxNumber = 1
+                print("Resetting flashcard with ID \(flashcard.id ?? "Unknown ID") from box \(flashcard.boxNumber) to box 0.")
+                flashcard.boxNumber = 0
                 flashcard.nextReviewDate = Date()
             }
             try viewContext.save()

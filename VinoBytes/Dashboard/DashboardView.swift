@@ -11,7 +11,7 @@ import CoreData
 struct DashboardView: View {
     @Environment(\.managedObjectContext) private var context
     @State private var blogPosts: [BlogPost] = []
-    @State private var flashcardProgress: [String: Int] = [:]
+    @State private var flashcardProgress: [String: Double] = [:]
     @State private var wineFactOfTheWeek: String?
     @State private var isFlashcardProgressSheetPresented = false
     @State private var isWhiteDisplaySheetPresented = false
@@ -21,257 +21,242 @@ struct DashboardView: View {
     @ObservedObject var refreshNotifier: RefreshNotifier  // Add this line
     @EnvironmentObject var openAIManager: OpenAIManager  // Access from environment
     
-
+    
     // List of all regions
     let allRegions = ["Argentina", "Australia", "Austria", "Chile", "France", "Germany", "Greece", "Hungary", "Italy", "New Zealand", "Portugal", "South Africa", "Spain", "USA"]
     
     var body: some View {
+        
         NavigationView {
-            VStack(alignment: .center, spacing: 10) {
+            
+            VStack(alignment: .center, spacing: 16) {
                 
                 VStack {
                     Text("Wine Fact of the Week")
                         .font(.title3)
                         .bold()
-                    
-                    
+                        .minimumScaleFactor(0.8)
                     if let fact = wineFactOfTheWeek {
                         Text(fact)
-                            
                             .multilineTextAlignment(.center)
-                            .padding()
+                            .minimumScaleFactor(0.8)
+                            .padding(.horizontal)
+                            .padding(.vertical, 6)
                     } else {
                         Text("Loading wine fact...")
                             .multilineTextAlignment(.center)
-                            .padding()
+                            .padding(.horizontal)
+                            .padding(.vertical, 6)
                     }
                 }
-                .frame(maxWidth: .infinity, minHeight: 175) // Dynamic width, minimum height of 175
-                .padding()
-                // Subtle, semi-transparent background
+                .frame(maxWidth: .infinity)
+                .frame(maxHeight: 170)
+                .padding(.top)
+                .padding(.horizontal)
+                .padding(.bottom, 5)
+                .background(
+                    // Apply the background before padding so it matches the overlay size
+                    Color.lightLatte
+                        .overlay(
+                            GeometryReader { geometry in
+                                // Circles at each corner
+                                Group {
+                                    Circle().fill(Color("Maroon"))
+                                        .frame(width: 7, height: 7)
+                                        .position(x: 15, y: 15) // Top-left corner
+                                    Circle().fill(Color("Maroon"))
+                                        .frame(width: 7, height: 7)
+                                        .position(x: geometry.size.width - 15, y: 15) // Top-right corner
+                                    Circle().fill(Color("Maroon"))
+                                        .frame(width: 7, height: 7)
+                                        .position(x: 15, y: geometry.size.height - 15) // Bottom-left corner
+                                    Circle().fill(Color("Maroon"))
+                                        .frame(width: 7, height: 7)
+                                        .position(x: geometry.size.width - 15, y: geometry.size.height - 15) // Bottom-right corner
+                                }
+                            }
+                        )
+                )
                 .cornerRadius(10)
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(Color("LightMaroon"), lineWidth: 1.5)
                 )
-                .background(
-                    Color.lightLatte.opacity(1)
-                    // Adding the circles at each corner inside the background modifier
-                        .overlay(
-                            GeometryReader { geometry in
-                                Group {
-                                    // Shift each circle inwards by adjusting the position offsets
-                                    Circle().fill(Color("Maroon"))
-                                        .frame(width: 7, height: 7)
-                                        .position(x: geometry.frame(in: .local).minX + 15, y: geometry.frame(in: .local).minY + 15) // Top left corner
-                                    
-                                    Circle().fill(Color("Maroon"))
-                                        .frame(width: 7, height: 7)
-                                        .position(x: geometry.frame(in: .local).maxX - 15, y: geometry.frame(in: .local).minY + 15) // Top right corner
-                                    
-                                    Circle().fill(Color("Maroon"))
-                                        .frame(width: 7, height: 7)
-                                        .position(x: geometry.frame(in: .local).minX + 15, y: geometry.frame(in: .local).maxY - 15) // Bottom left corner
-                                    
-                                    Circle().fill(Color("Maroon"))
-                                        .frame(width: 7, height: 7)
-                                        .position(x: geometry.frame(in: .local).maxX - 15, y: geometry.frame(in: .local).maxY - 15) // Bottom right corner
-                                }
-                            }
-                        )
-                )
                 .padding()
+                .padding(.top)
                 
                 
                 
-                
-                HStack(alignment: .center, spacing: 2) {
+                HStack(spacing: 16) {
                     // Flashcard Progress Button
-                    VStack {
-                        Button(action: {
-                            isFlashcardProgressSheetPresented = true
-                        }) {
-                            VStack() {
-                                Text("My Flashcard Progress")
-                                    .frame(width: 125, height: 100) // Ensures the text field fills the button area
-                                    .contentShape(Rectangle()) // Makes the whole area tappable
-                                    .bold()
-                                    .foregroundColor(Color.black) // Text color set to Latte
-                                    .multilineTextAlignment(.center) // Center align text
-                                
-                            }
+                    Button(action: {
+                        isFlashcardProgressSheetPresented = true
+                    }) {
+                        Text("My Flashcard Progress")
+                            .bold()
+                            .foregroundColor(.black)
+                            .frame(maxWidth: .infinity)
                             .padding()
-                            .background(Color.lightLatte.opacity(1)) // Background color set to Maroon
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .padding(.top)
+                            .padding(.bottom)
+                            .background(Color.lightLatte)
+                            .cornerRadius(10)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 10)
                                     .stroke(Color("LightMaroon"), lineWidth: 2.4)
-                                
-                                
                             )
-                            
-                            .shadow(color: .black.opacity(0.4), radius: 7) // Apply shadow
-                        }
+                        
+                            .shadow(color: .black.opacity(0.5), radius: 5)
                     }
                     .sheet(isPresented: $isFlashcardProgressSheetPresented) {
                         FlashcardProgressView(flashcardProgress: flashcardProgress)
-                            .preferredColorScheme(.light) // Force light mode
+                            .preferredColorScheme(.light)
                     }
                     
                     Spacer()
                     
-                    
-                    
-                    VStack {
-                        if let latestPost = blogPosts.first {
-                            NavigationLink(destination: BlogPostView(blogPost: latestPost, blogPosts: blogPosts)) {
-                                ZStack {
-                                    Text("Weekly Blog Post")
-                                        .frame(width: 125, height: 100)
-                                        .contentShape(Rectangle())
-                                        .bold()
-                                        .foregroundColor(Color.black)
-                                        .multilineTextAlignment(.center)
-                                }
+                    // Weekly Blog Post Button
+                    if let latestPost = blogPosts.first {
+                        NavigationLink(destination: BlogPostView(blogPost: latestPost, blogPosts: blogPosts)) {
+                            Text("Weekly Wine Blog Post")
+                                .bold()
+                                .foregroundColor(.black)
+                                .frame(maxWidth: .infinity)
                                 .padding()
-                                .background(Color.lightLatte.opacity(1))
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                .padding(.top)
+                                .padding(.bottom)
+                                .background(Color.lightLatte)
+                                .cornerRadius(10)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 10)
                                         .stroke(Color("LightMaroon"), lineWidth: 2.4)
                                 )
-                                .shadow(color: .black.opacity(0.4), radius: 7) // Apply shadow
-                            }
-                        } else {
-                            ZStack {
-                                Text("Loading Blog Post...")
-                                    .frame(width: 125, height: 100)
-                                    .contentShape(Rectangle())
-                                    .bold()
-                                    .foregroundColor(Color.gray)
-                                    .multilineTextAlignment(.center)
-                            }
+                                .shadow(color: .black.opacity(0.6), radius: 6)
+                        }
+                    } else {
+                        Text("Loading Blog Post...")
+                            .bold()
+                            .foregroundColor(.gray)
+                            .frame(maxWidth: .infinity)
                             .padding()
-                            .background(Color.lightLatte.opacity(1))
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .padding(.top)
+                            .padding(.bottom)
+                            .background(Color.lightLatte)
+                            .cornerRadius(10)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 10)
                                     .stroke(Color("LightMaroon"), lineWidth: 2.4)
                             )
-                            .shadow(color: .black.opacity(0.4), radius: 7) // Apply shadow
-                        }
+                            .shadow(color: .black.opacity(0.6), radius: 6)
                     }
                 }
-                .frame(maxWidth: .infinity, alignment: .center)
-                .padding() // Padding around the HStack
+                .padding(.horizontal)
                 
-               
-                
-                
-                
-                // New Recent Wines Section
-                VStack(alignment: .center) { // Changed alignment to .center
+                // Recent Wines Section
+                VStack(alignment: .center, spacing: 8) {
                     Text("Recently Added Wines")
                         .font(.headline)
-                        .padding(.bottom, 3)
-                    // Additional content in this VStack will also be centered
-                    
+                        .padding(.bottom, 2)
+                        .padding(.top, 2)
                     
                     if recentWines.isEmpty {
                         Text("No recent wines added.")
                             .foregroundColor(.gray)
                     } else {
-                        ForEach(recentWines, id: \.self) { wine in
-                            NavigationLink(destination: WineDetailView(wineEntity: wine)) {
-                                HStack {
-                                    // Optional: Display an image if available
-                                    if let imageData = wine.imageData, let uiImage = UIImage(data: imageData) {
-                                        Image(uiImage: uiImage)
-                                            .resizable()
-                                            .scaledToFill()
-                                            .frame(width: 45, height: 45)
-                                            .clipShape(RoundedRectangle(cornerRadius: 5))
-                                    } else {
-                                        Rectangle()
-                                            .fill(Color.gray.opacity(0.3))
-                                            .frame(width: 45, height: 45)
-                                            .clipShape(RoundedRectangle(cornerRadius: 5))
-                                            .overlay(
-                                                Image(systemName: "wineglass")
-                                                    .foregroundColor(.white)
-                                            )
+                        ScrollView(showsIndicators: false) {
+                            VStack(spacing: 8) {
+                                ForEach(recentWines, id: \.self) { wine in
+                                    NavigationLink(destination: WineDetailView(wineEntity: wine)) {
+                                        HStack {
+                                            // Wine Image
+                                            if let imageData = wine.imageData, let uiImage = UIImage(data: imageData) {
+                                                Image(uiImage: uiImage)
+                                                    .resizable()
+                                                    .scaledToFill()
+                                                    .frame(width: 45, height: 45)
+                                                    .clipShape(RoundedRectangle(cornerRadius: 5))
+                                            } else {
+                                                Rectangle()
+                                                    .fill(Color.gray.opacity(0.3))
+                                                    .frame(width: 45, height: 45)
+                                                    .clipShape(RoundedRectangle(cornerRadius: 5))
+                                                    .overlay(
+                                                        Image(systemName: "wineglass")
+                                                            .foregroundColor(.white)
+                                                    )
+                                            }
+                                            
+                                            VStack(alignment: .leading) {
+                                                Text(wine.wineName ?? "Unnamed Wine")
+                                                    .font(.subheadline)
+                                                    .bold()
+                                                Text("\(wine.producer ?? "Unknown Producer"), \(wine.vintage ?? "Unknown Vintage")")
+                                                    .font(.caption)
+                                                    .foregroundColor(.black.opacity(0.7))
+                                            }
+                                            
+                                            Spacer()
+                                            
+                                            Image(systemName: "chevron.right")
+                                                .foregroundColor(.gray)
+                                        }
+                                        .padding(.vertical, 5)
                                     }
-                                    
-                                    VStack(alignment: .leading) {
-                                        Text(wine.wineName ?? "Unnamed Wine")
-                                            .font(.subheadline)
-                                            .bold()
-                                        Text("\(wine.producer ?? "Unknown Producer"), \(wine.vintage ?? "Unknown Vintage")")
-                                            .font(.caption)
-                                            .foregroundColor(.gray)
-                                    }
-                                    
-                                    Spacer()
-                                    
-                                    
-                                    Image(systemName: "chevron.right")
-                                        .foregroundColor(.gray)
-                                    
+                                    .buttonStyle(PlainButtonStyle())
+                                    Divider()
                                 }
-                                .contentShape(Rectangle())  // Ensures the entire area is clickable
-                                .padding(.vertical, 5)
-                               
                             }
-                            
-                            .buttonStyle(PlainButtonStyle()) // Use PlainButtonStyle to avoid default button behavior
-                            
-                            
-                           Divider()
+                            .padding(.horizontal)
                         }
                     }
                 }
-                
-                .frame(maxWidth: .infinity, minHeight: 235, alignment: .center)
-                .padding()
+                .frame(maxWidth: .infinity)
+                .frame(maxHeight: 318)
+                .padding(.top)
+                .padding(.horizontal)
+                .padding(.bottom, 5)
+                .background(Color.lightLatte)
                 .cornerRadius(10)
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(Color("LightMaroon"), lineWidth: 1.5)
                 )
-                .background(Color.lightLatte.opacity(1))
-                .padding()
+                .padding(.top)
+                .padding(.horizontal)
                 
-                Spacer(minLength: 1)
-        }
-        
-        .padding(20)
-        .navigationBarTitle("Dashboard", displayMode: .inline)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink(destination: AccountView(refreshNotifier: refreshNotifier)) {
-                    Image(systemName: "gearshape.fill")
-                        .imageScale(.large)
-                        .foregroundColor(Color.latte)
+                
+                
+                Spacer()
+                
+            }
+            .padding(.horizontal, 10)
+            .navigationBarTitle("Dashboard", displayMode: .inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink(destination: AccountView(refreshNotifier: refreshNotifier)) {
+                        Image(systemName: "gearshape.fill")
+                            .imageScale(.large)
+                            .foregroundColor(Color.latte)
+                    }
                 }
             }
-        }
-        .onAppear {
-            fetchContent()
-            initializeFlashcardProgress()
-            fetchRecentWines()  // Manually fetch recent wines
-        }
+            .onAppear {
+                fetchContent()
+                initializeFlashcardProgress()
+                fetchRecentWines()  // Manually fetch recent wines
+            }
             
-        .alert(isPresented: $showAlert) { // Add this line
-            Alert(title: Text("Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+            .alert(isPresented: $showAlert) { // Add this line
+                Alert(title: Text("Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+            }
         }
     }
-}
     
     private func fetchRecentWines() {
         let request: NSFetchRequest<WineEntity> = WineEntity.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(keyPath: \WineEntity.dateAdded, ascending: false)]
-        request.fetchLimit = 3
-
+        request.fetchLimit = 4
+        
         do {
             let result = try context.fetch(request)
             DispatchQueue.main.async {
@@ -316,7 +301,7 @@ struct DashboardView: View {
     private func initializeFlashcardProgress() {
         if flashcardProgress.isEmpty {  // Only initialize if it's empty
             for region in allRegions {
-                flashcardProgress[region] = 0 // Start every region at 0%
+                flashcardProgress[region] = 0.0 // Start every region at 0%
             }
         }
         fetchFlashcardProgress()  // Always fetch to update with the latest data
@@ -326,24 +311,30 @@ struct DashboardView: View {
         let request: NSFetchRequest<StudyCard> = StudyCard.fetchRequest()
         do {
             let results = try context.fetch(request)
-            var progressCount: [String: Int] = [:]
-            var totalCount: [String: Int] = [:]
+            var totalProgressPerRegion: [String: Double] = [:]
+            var totalCountPerRegion: [String: Int] = [:]
             
-            // Calculate the number of cards per region and the number qualifying for progress
+            // For each card, calculate its progress and accumulate per region
             for card in results {
                 let region = card.region ?? "Unknown"
-                totalCount[region, default: 0] += 1
-                if card.boxNumber >= 3 {  // Assuming progress is counted from box 3 and above
-                    progressCount[region, default: 0] += 1
-                }
+                totalCountPerRegion[region, default: 0] += 1
+                
+                // Assuming boxNumber ranges from 0 to 5
+                let boxNumber = Int(card.boxNumber)
+                let progressPerCard = (Double(boxNumber) / 5.0) * 100.0  // Progress from 0% to 100%
+                totalProgressPerRegion[region, default: 0.0] += progressPerCard
             }
             
-            // Calculate and update progress for each region
+            // Calculate and update average progress for each region
             for region in allRegions {
-                let knownCount = progressCount[region] ?? 0
-                let total = totalCount[region] ?? 1  // Avoid division by zero
-                let percentage = (knownCount * 100) / total
-                flashcardProgress[region] = percentage
+                let totalProgress = totalProgressPerRegion[region] ?? 0.0
+                let totalCards = totalCountPerRegion[region] ?? 0  // Set default to 0
+                if totalCards > 0 {
+                    let averageProgress = totalProgress / Double(totalCards)
+                    flashcardProgress[region] = averageProgress
+                } else {
+                    flashcardProgress[region] = 0.0
+                }
             }
         } catch {
             print("Error fetching flashcard data: \(error)")

@@ -29,7 +29,7 @@ struct ContactFormView: View {
                 TextEditor(text: $message)
                     .frame(minHeight: 150)
                     .focused($isMessageFocused) // Link with focus state
-                    .onChange(of: message) { newValue in
+                    .onChange(of: message) { _, newValue in
                         print("Message updated to: \(newValue)")  // Debugging
                     }
             }

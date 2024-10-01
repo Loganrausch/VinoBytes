@@ -25,6 +25,7 @@ struct FlashcardView: View {
     @State private var borderColor: Color = .lightMaroon // Default border color for the card
     @State private var feedbackOpacity: Double = 0 // Manage the opacity of feedback
     @State private var showSpacedRepetitionDetail = false
+    @State private var showTutorialBubble: Bool = false // Controls the visibility of the overlay
     
     init(selectedRegions: [String]) {
         self.selectedRegions = selectedRegions
@@ -36,107 +37,129 @@ struct FlashcardView: View {
     }
     
     var body: some View {
-        VStack {
+        
+        GeometryReader { geometry in
+            let cardWidth = geometry.size.width * 0.84 // Adjust the multiplier as needed
+            let cardHeight = geometry.size.height * 0.78 // Adjust the multiplier as needed\
             
-            
-            if flashcards.isEmpty {
-                // Display message when there are no flashcards due for review
-                Text("No flashcards are due for review right now.")
-                    .font(.headline)
-                    .foregroundColor(.lightMaroon)
-                    .padding()
-                
-                Text("Try selecting a different region or check back later.")
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
-                    .padding(.top, 10)
-            } else {
-                Text(currentRegion ?? "Unknown Region")
-                    .font(.headline)
-                    .fontWeight(.bold)
-                    .foregroundColor(.lightMaroon)
-                    .padding(.horizontal)  // Keep horizontal padding for spacing around the text
-                    .frame(height: 35)  // Set a fixed height for the box
-                    .background(Color.white)
-                    .cornerRadius(10)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.lightMaroon, lineWidth: 2)
-                    )
-                    .padding(.bottom, 30)
-                
-                ZStack(alignment: .center) {
-                    ForEach(flashcards.indices, id: \.self) { index in
-                        if index == currentFlashcardIndex {
-                            Group {
-                                // Display the question side of the card
-                                FlashcardContent(text: flashcards[index].question)
-                                    .background(Color.white)
-                                    .cornerRadius(10)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 10)
-                                            .stroke(borderColor, lineWidth: 3) // Dynamic border color
-                                    )
-                                    .shadow(color: .gray, radius: 5, x: 0, y: 0) // Adding shadow here
-                                    .rotation3DEffect(
-                                                                            .degrees(rotationAngle),
-                                                                            axis: (x: 0, y: 1, z: 0)
-                                                                        )
-                                    
-                                   
-                                    .opacity(showFront ? 1 : 0) // Show front only when showFront is true
-                                    
-                                
-                                // Display the answer side of the card
-                                FlashcardContent(text: flashcards[index].answer)
-                                    .background(Color.white)
-                                    .cornerRadius(10)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 10)
-                                            .stroke(borderColor, lineWidth: 3) // Dynamic border color
-                                    )
-                                    .shadow(color: .gray, radius: 5, x: 0, y: 0) // Adding shadow here
-                                    .rotation3DEffect(
-                                                                            .degrees(rotationAngle + 180),
-                                                                            axis: (x: 0, y: 1, z: 0)
-                                                                        )
-                                    
-                                    .opacity(showFront ? 0 : 1) // Show back only when showFront is false
-                                   
-                            }
-                            .offset(x: swipeOffset)
-                            .animation(.easeInOut(duration: 0.3), value: swipeOffset) // Animate the swipe offset
+            ZStack {
+                VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/) {
+              
+                    
+                    
+                    
+                    if flashcards.isEmpty {
+                        VStack {
+                            // Display message when there are no flashcards due for review
+                            Text("No flashcards are due for review right now.")
+                                .font(.headline)
+                                .foregroundColor(.lightMaroon)
+                                .padding()
+
+                            Text("Try selecting a different region or check back later.")
+                                .font(.subheadline)
+                                .foregroundColor(.gray)
+                                .padding(.top, 10)
                         }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)  // Center the VStack in the available space
+                        .multilineTextAlignment(.center)  // Center-align the text
+                    
+                    } else {
+                        Text(currentRegion ?? "Unknown Region")
+                            .font(.headline)
+                            .fontWeight(.bold)
+                            .foregroundColor(.lightMaroon)
+                            .padding(.horizontal)  // Keep horizontal padding for spacing around the text
+                            .frame(height: 35)  // Set a fixed height for the box
+                            .background(Color.white)
+                            .cornerRadius(10)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color.lightMaroon, lineWidth: 2)
+                            )
+                            .padding(.bottom, 30)
+                            .padding(.top, 10)
+                        
+                        ZStack(alignment: .center) {
+                            ForEach(flashcards.indices, id: \.self) { index in
+                                if index == currentFlashcardIndex {
+                                    Group {
+                                        // Display the question side of the card
+                                        FlashcardContent(text: flashcards[index].question)
+                                            .frame(width: cardWidth, height: cardHeight)
+                                            .background(Color.white)
+                                            .cornerRadius(10)
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 10)
+                                                    .stroke(borderColor, lineWidth: 3) // Dynamic border color
+                                            )
+                                            .shadow(color: .gray, radius: 5, x: 0, y: 0) // Adding shadow here
+                                            .rotation3DEffect(
+                                                .degrees(rotationAngle),
+                                                axis: (x: 0, y: 1, z: 0)
+                                            )
+                                        
+                                        
+                                            .opacity(showFront ? 1 : 0) // Show front only when showFront is true
+                                        
+                                        
+                                        
+                                        // Display the answer side of the card
+                                        FlashcardContent(text: flashcards[index].answer)
+                                            .frame(width: cardWidth, height: cardHeight)
+                                            .background(Color.white)
+                                            .cornerRadius(10)
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 10)
+                                                    .stroke(borderColor, lineWidth: 3) // Dynamic border color
+                                            )
+                                            .shadow(color: .gray, radius: 5, x: 0, y: 0) // Adding shadow here
+                                            .rotation3DEffect(
+                                                .degrees(rotationAngle + 180),
+                                                axis: (x: 0, y: 1, z: 0)
+                                            )
+                                        
+                                            .opacity(showFront ? 0 : 1) // Show back only when showFront is false
+                                        
+                                    }
+                                    
+                                    .offset(x: swipeOffset)
+                                    .animation(.easeInOut(duration: 0.3), value: swipeOffset) // Animate the swipe offset
+                                }
+                            }
+                            
+                            if showFeedback {
+                                Image(systemName: feedbackIcon)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 50, height: 50)
+                                    .foregroundColor(feedbackIcon == "checkmark.circle.fill" ? .green : .orange)
+                                    .transition(.opacity)
+                                    .animation(.easeInOut(duration: 0.5), value: showFeedback)
+                            }
+                        }
+                        .frame(maxWidth: .infinity) // Ensure ZStack takes full width
+                        .gesture(
+                            DragGesture()
+                                .onChanged { gesture in
+                                    swipeOffset = gesture.translation.width
+                                    borderColor = gesture.translation.width > 0 ? .green : .orange
+                                }
+                                .onEnded { gesture in
+                                    handleSwipe(gesture.translation.width)
+                                }
+                        )
+                        .onTapGesture {
+                            flipCard()
+                        }
+                        .padding(.bottom, 30)
                     }
                     
-                    if showFeedback {
-                        Image(systemName: feedbackIcon)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 50, height: 50)
-                            .foregroundColor(feedbackIcon == "checkmark.circle.fill" ? .green : .orange)
-                            .transition(.opacity)
-                            .animation(.easeInOut(duration: 0.5))
-                    }
+                    
                 }
-                .gesture(
-                    DragGesture()
-                        .onChanged { gesture in
-                            swipeOffset = gesture.translation.width
-                            borderColor = gesture.translation.width > 0 ? .green : .orange
-                        }
-                        .onEnded { gesture in
-                            handleSwipe(gesture.translation.width)
-                        }
-                )
-                .onTapGesture {
-                                    flipCard()
-                                }
-                                .padding(.bottom, 30)
-                            }
-                        }
-        .padding()
-                .navigationBarTitle("Flashcard Study")
+                .frame(maxWidth: .infinity) // Ensure VStack takes full width
+                .padding()
+                .navigationBarTitle("Flashcard Bytes")
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarItems(trailing: Button(action: {
                     showSpacedRepetitionDetail.toggle()
@@ -150,8 +173,72 @@ struct FlashcardView: View {
                 }
                 .onAppear {
                     updateCurrentRegion()
+                    checkFirstLaunch() // Check if we need to show the tutorial
                 }
-            }
+                
+                // New Overlay for Tutorial
+                                if showTutorialBubble {
+                                    ZStack {
+                                        Color.black.opacity(0.65)
+                                            .ignoresSafeArea()
+                                            .onTapGesture {
+                                                // Dismiss when tapping outside the overlay
+                                                markTutorialAsSeen()
+                                            }
+                                        
+                                        VStack(spacing: 20) {
+                                            Text("Welcome to Flashcard Bytes!")
+                                                .font(.title2)
+                                                .foregroundColor(.black)
+                                                .multilineTextAlignment(.center)
+                                            
+                                            Text("Tap 'Learn' to find out how to use spaced repetition for effective studying.")
+                                                .font(.headline)
+                                                .foregroundColor(.black)
+                                                .multilineTextAlignment(.center)
+                                                .padding()
+                                            
+                                            Button(action: {
+                                                markTutorialAsSeen()
+                                                showSpacedRepetitionDetail = true
+                                            }) {
+                                                Text("Learn")
+                                                    .font(.headline)
+                                                    .padding()
+                                                    .background(Color.lightMaroon)
+                                                    .foregroundColor(.lightLatte)
+                                                    .cornerRadius(10)
+                                                    .shadow(color: .black.opacity(0.6), radius: 6)
+                                            }
+                                        }
+                                     
+                                        .padding()
+                                        .background(Color.lightLatte)
+                                        .cornerRadius(12)
+                                        .padding()
+                                        
+                                        
+                                    }
+                                }
+                            }
+                        }
+                    }
+                // MARK: - Helper Functions
+            
+
+            
+    
+    // Check if the tutorial has been shown before
+        private func checkFirstLaunch() {
+            let hasSeenTutorial = UserDefaults.standard.bool(forKey: "hasSeenFlashcardTutorial")
+            showTutorialBubble = !hasSeenTutorial
+        }
+
+        // Mark the tutorial as seen
+        private func markTutorialAsSeen() {
+            UserDefaults.standard.set(true, forKey: "hasSeenFlashcardTutorial")
+            showTutorialBubble = false
+        }
         
     
     private func flipCard() {
@@ -238,13 +325,20 @@ struct FlashcardView: View {
                 }
             }
         }
+    
 
 
 
 
 struct FlashcardView_Previews: PreviewProvider {
     static var previews: some View {
-        FlashcardView(selectedRegions: ["Europe", "Asia"])
-            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        // Use the preview context
+        let context = PersistenceController.preview.container.viewContext
+
+        // Define selected regions that match the sample data
+        let selectedRegions = ["Sample Region"]
+
+        return FlashcardView(selectedRegions: selectedRegions)
+            .environment(\.managedObjectContext, context)
     }
 }

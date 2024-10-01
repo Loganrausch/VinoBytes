@@ -25,8 +25,7 @@ struct FlashcardContent: View {
                     .font(.title)
                     .padding()
                     .foregroundColor(.primary)
-                    .frame(width: 360, height: 575)
-                    .background(Color.white)
+                    .background(Color.clear)
                     .cornerRadius(12)
                     .shadow(radius: 5)
             } else {
@@ -34,8 +33,8 @@ struct FlashcardContent: View {
                     .font(.title)
                     .padding()
                     .foregroundColor(.primary)
-                    .frame(width: 360, height: 575)
-                    .background(Color.white)
+                   
+                    .background(Color.clear)
                     .cornerRadius(12)
                     .shadow(radius: 5)
             }

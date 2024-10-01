@@ -24,43 +24,57 @@ struct MyWinesView: View {
         var winesFetched: FetchedResults<WineEntity>
 
     var body: some View {
-        Group {
-            if isRootView {
-                NavigationView {
+            Group {
+                if isRootView {
+                    NavigationStack {
+                        winesList
+                            .navigationDestination(isPresented: $isAddingWine) {
+                                WineFormView(wineEntity: nil)
+                            }
+                    }
+                } else {
                     winesList
+                        .navigationDestination(isPresented: $isAddingWine) {
+                            WineFormView(wineEntity: nil)
+                        }
                 }
-            } else {
-                winesList
+            }
+            .onAppear {
+                // Refresh logic
+                if refreshNotifier.needsRefresh {
+                    context.refreshAllObjects() // Refresh all objects in the context
+                    refreshNotifier.needsRefresh = false
+                }
             }
         }
-        
-        .onAppear {
-                    // This will check if the data needs to be refreshed
-                    if refreshNotifier.needsRefresh {
-                        context.refreshAllObjects() // Refresh all objects in the context
-                        refreshNotifier.needsRefresh = false
-                    }
-                }
-    }
 
     private var winesList: some View {
-        VStack {
-            TextField("Search wines...", text: $searchText)
-                .padding(10)
-                .padding(.horizontal)
-                .background(Color.lightLatte)
-                .cornerRadius(10)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.lightMaroon.opacity(1), lineWidth: 1.5) // Customize color and width
-                )
-            
-                .padding(.top)
-                .padding(.horizontal)
-                .accentColor(.lightMaroon)
-                
-
+        ZStack {
             List {
+                Section {
+                    
+                    TextField("Search wines...", text: $searchText)
+                        .padding(10)
+                        .padding(.horizontal)
+                        .background(Color.lightLatte.opacity(0.8))
+                        .cornerRadius(10)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.lightMaroon.opacity(1), lineWidth: 2) // Customize color and width
+                        )
+                    
+                        .padding(.top)
+                        .accentColor(.lightMaroon)
+                    
+                
+                }
+                
+                
+                
+                .listRowSeparator(.hidden)
+             
+
+        
                 ForEach(filteredWinesGrouped, id: \.0) { region, wines in
                     Section(header: Text(region)
                         .textCase(nil)
@@ -92,11 +106,21 @@ struct MyWinesView: View {
                             }
                         }
                     }
-            NavigationLink(destination: WineFormView(wineEntity: nil), isActive: $isAddingWine) {
-                EmptyView()
-            }
-        }
-    }
+            // Conditional Overlay Message
+                   if filteredWinesGrouped.isEmpty {
+                       VStack {
+                           Spacer()
+                           Text("Add a wine to get started.")
+                               .foregroundColor(.gray)
+                               .multilineTextAlignment(.center)
+                               .padding()
+                           Spacer()
+                       }
+                       .frame(maxWidth: .infinity, maxHeight: .infinity)
+                       
+                   }
+               }
+           }
 
     private func deleteWines(at offsets: IndexSet, in wines: [WineEntity]) {
         offsets.map { wines[$0] }.forEach(context.delete)

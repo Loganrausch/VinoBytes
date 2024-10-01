@@ -25,25 +25,26 @@ struct BlogPost: Identifiable, Codable {
 struct BlogPostView: View {
     let blogPost: BlogPost
     var blogPosts: [BlogPost]
-
+    
     @State private var selectedPost: BlogPost
-
+    @State private var showingPastPosts = false
+    
     init(blogPost: BlogPost, blogPosts: [BlogPost]) {
         self.blogPost = blogPost
         self.blogPosts = blogPosts
         _selectedPost = State(initialValue: blogPost)
     }
-
+    
     var body: some View {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 16) {
-                    // Display Featured Image
-                    if let image = selectedPost.featuredImage,
-                       let imageURL = URL(string: image.url) { // Convert String to URL
-                        AsyncImage(url: imageURL) { phase in
-                            switch phase {
-                            case .empty:
-                                ProgressView()
+        ScrollView {
+            VStack(alignment: .leading, spacing: 16) {
+                // Display Featured Image
+                if let image = selectedPost.featuredImage,
+                   let imageURL = URL(string: image.url) { // Convert String to URL
+                    AsyncImage(url: imageURL) { phase in
+                        switch phase {
+                        case .empty:
+                            ProgressView()
                                 .frame(maxWidth: .infinity, minHeight: 200)
                         case .success(let img):
                             img
@@ -63,18 +64,28 @@ struct BlogPostView: View {
                     }
                     .padding(.bottom)
                 }
-
+                
                 // Blog Post Title
                 Text(selectedPost.title)
                     .font(.title)
                     .bold()
                     .padding(.bottom, 4)
-
-                // Blog Post Content
-                Text(selectedPost.content)
-                    .font(.body)
-                    .padding(.bottom, 8)
-
+                
+                if let attributedContent = try? AttributedString(
+                    markdown: selectedPost.content,
+                    options: AttributedString.MarkdownParsingOptions(
+                        allowsExtendedAttributes: true,
+                        interpretedSyntax: .inlineOnlyPreservingWhitespace
+                    )
+                ) {
+                    Text(attributedContent)
+                        .padding(.bottom, 8)
+                } else {
+                    Text(selectedPost.content)
+                        .font(.body)
+                        .padding(.bottom, 8)
+                }
+                
                 // Publication Date
                 Text("Published on \(formattedDate(selectedPost.publicationDate))")
                     .font(.footnote)
@@ -83,15 +94,21 @@ struct BlogPostView: View {
             .padding()
         }
         .navigationBarTitle("Blog Post", displayMode: .inline)
-        .navigationBarItems(trailing: Menu("Past Posts") {
-            ForEach(blogPosts, id: \.id) { post in
-                Button(post.title) {
-                    self.selectedPost = post
-                }
-            }
-        })
+        .navigationBarItems(trailing:
+                                Button(action: {
+            showingPastPosts = true
+        }) {
+            Image(systemName: "list.bullet")
+                .imageScale(.large)
+                .foregroundColor(.latte)
+        }
+           
+        )
+        .sheet(isPresented: $showingPastPosts) {
+            PastPostsSheet(blogPosts: blogPosts, selectedPost: $selectedPost)
+        }
     }
-
+    
     private func formattedDate(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd MMM yyyy"

@@ -6,7 +6,6 @@
 //
 
 import Foundation
-
 import SwiftUI
 
 struct SpacedRepetitionDetailView: View {
@@ -26,91 +25,106 @@ struct SpacedRepetitionDetailView: View {
                         .padding(.top)
                     
                     Divider()
-                        .frame(width: 200, height: 2) // Customize the width and height
-                        .background(Color.lightMaroon) // Optionally, add a color
-                        .padding(.vertical, 15) // Add padding if needed
+                        .frame(width: 300, height: 1.5)
+                        .background(Color.lightMaroon)
+                        .padding(.vertical, 15)
                         .frame(maxWidth: .infinity, alignment: .center)
                     
                     VStack(alignment: .center, spacing: 10) {
-                        
-                        Text("If you know the answer, **swipe to the right**.")
+                        // Explanation for Box 0
+                        Text("All new cards start in **Box 0** and are considered unreviewed.")
                             .font(.title3)
+                  
+                            .bold()
                             .multilineTextAlignment(.center)
                         
-                        Image("CorrectFlashcard")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 350, height: 350)  // Customize the size of the image
-                            .frame(maxWidth: .infinity, alignment: .center)
+                        Spacer()
                         
-                        
-                        
-                        
-                        Text("This moves the card to the next box. The card will appear less frequently.")
+                        Text("When you review a card for the first time and swipe right, it moves to **Box 1** and begins the spaced repetition ladder.")
                             .font(.title3)
                             .multilineTextAlignment(.center)
                         
                         Divider()
-                            .frame(width: 200, height: 2) // Customize the width and height
-                            .background(Color.lightMaroon) // Optionally, add a color
-                            .padding(.vertical, 15) // Add padding if needed
+                            .frame(width: 300, height: 1.5)
+                            .background(Color.lightMaroon)
+                            .padding(.vertical, 15)
                             .frame(maxWidth: .infinity, alignment: .center)
                         
+                       
+                            Text("If you know the answer, **swipe to the right**.")
+                                .font(.title3)
+                                .multilineTextAlignment(.center)
                         
-                        Text("If you don't know the answer, **swipe to the left**.")
+                        
+                        Image("CorrectFlashcard")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 350, height: 350)
+                            .frame(maxWidth: .infinity, alignment: .center)
+                        
+                        Text("This moves the card to the next box up. The card will appear less frequently for review.")
                             .font(.title3)
                             .multilineTextAlignment(.center)
+                        
+                        Divider()
+                            .frame(width: 300, height: 1.5)
+                            .background(Color.lightMaroon)
+                            .padding(.vertical, 15)
+                            .frame(maxWidth: .infinity, alignment: .center)
+                        
+                       
+                            Text("If you don't know the answer, **swipe to the left**.")
+                                .font(.title3)
+                                .multilineTextAlignment(.center)
+                     
                         
                         Image("IncorrectFlashcard")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 350, height: 350)  // Customize the size of the image
+                            .frame(width: 350, height: 350)
                             .frame(maxWidth: .infinity, alignment: .center)
                         
-                        Text("This moves the card back to box 1, resetting the interval. The card will appear more frequently.")
+                        Text("This will return the card to Box 0, resetting the spaced repetition ladder.")
                             .font(.title3)
                             .multilineTextAlignment(.center)
                     }
                     
                     Divider()
-                        .frame(width: 200, height: 2) // Customize the width and height
-                        .background(Color.lightMaroon) // Optionally, add a color
-                        .padding(.vertical, 15) // Add padding if needed
+                        .frame(width: 300, height: 1.5)
+                        .background(Color.lightMaroon)
+                        .padding(.vertical, 15)
                         .frame(maxWidth: .infinity, alignment: .center)
-                    
-                    
-                    
-                    
-                    Text("**Review Intervals**")
-                        .font(.title3)
-                        .fontWeight(.bold)
-                        .foregroundColor(.lightMaroon)
-                    
-                    Text("""
-                                    **Box 1**: 1 day
-                                    **Box 2**: 3 days
-                                    **Box 3**: 7 days
-                                    **Box 4**: 14 days
-                                    **Box 5**: 30 days
+                    VStack {
+                        Text("**Spaced Repetition Ladder**")
+                            .font(.title3)
+                            .fontWeight(.bold)
+                            .foregroundColor(.lightMaroon)
+                            .padding(.bottom)
+                        
+                        Text("""
+                                    **Box 0**: Cards Start Here
+                                    **Box 1**: One day until next review
+                                    **Box 2**: Three days until next review
+                                    **Box 3**: Seven days until next review
+                                    **Box 4**: Fourteen days until next review
+                                    **Box 5**: Thirty days until next review
                                     
                                     """)
-                    .font(.title3)
+                        
+                        .font(.title3)
+                    }
                     
-                    
-                    
-                    // Benefits
+                    // Benefits section
                     Text("Benefits")
                         .font(.title3)
                         .fontWeight(.bold)
                         .foregroundColor(.lightMaroon)
                     
-                    
-                    
                     Text("By reviewing information at optimal intervals, you strengthen long-term memory and focus your efforts on materials that need the most reinforcement.")
-                    
                         .font(.title3)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     
+                    // Additional Info
                     Text("Additional Info")
                         .font(.title3)
                         .fontWeight(.bold)
@@ -119,33 +133,29 @@ struct SpacedRepetitionDetailView: View {
                     Text("""
                     Once a card reaches Box 5, you have mastered that material. Keep in mind, this process takes time!
                          
-                    Even in Box 5, the card will stay in circulation and be presented every 30 days to ensure retention of material. No matter which box you are in, if you swipe left on the card, it will return to box 1 for more frequent review.
+                    Even in Box 5, the card will stay in circulation and be presented every 30 days to ensure retention of material. If a card is swiped left at any box, it will return to Box 0, ensuring a focus on materials needing reinforcement.
                     
                     """)
-                    
                     .font(.title3)
                     
-                    
                     Text("**Please contact us via the feedback form in your account settings if you have any questions!**")
-                    
                         .font(.headline)
                         .multilineTextAlignment(.center)
-                    
                     
                     Spacer()
                 }
                 .padding()
             }
             .navigationTitle("Spaced Repetition")
-            .navigationBarTitleDisplayMode(.inline) // Set the title to display inline
+            .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(trailing: Button("Done") {
                 presentationMode.wrappedValue.dismiss()
             })
-            .accentColor(.latte) // Apply the accent color to the navigation bar items
+            .accentColor(.latte)
+            .font(.headline)
         }
     }
 }
-
 
 // Preview for the sheet view
 struct SpacedRepetitionDetailView_Previews: PreviewProvider {

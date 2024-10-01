@@ -44,7 +44,7 @@ struct OpenAIChatView: View {
                                         .onAppear {
                                             self.scrollViewProxy = proxy
                                         }
-                                        .onChange(of: openAIManager.messages.count) { _ in
+                                        .onChange(of: openAIManager.messages.count) { _, _ in
                                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                                                 if let lastUserMessage = openAIManager.messages.last(where: { $0.role == "user" }) {
                                                     proxy.scrollTo(lastUserMessage.id, anchor: .top)
@@ -65,7 +65,7 @@ struct OpenAIChatView: View {
                                     Rectangle()
                                         .fill(Color("LightMaroon"))
                                         .frame(height: 2)
-                                        .opacity(0.6)
+                                        .opacity(0.7)
                                     
                                     VStack {
                                         Spacer(minLength: 0)
@@ -212,11 +212,11 @@ struct CustomTextField: View {
         }
         .padding(.horizontal)
         .padding(.vertical, 8)
-        .background(Color.gray.opacity(0.08))
+        .background(Color.lightLatte.opacity(0.8))
         .cornerRadius(8)
         .overlay(
             RoundedRectangle(cornerRadius: 8)
-                .stroke(Color.black, lineWidth: 1)
+                .stroke(Color.lightMaroon, lineWidth: 2)
         )
     }
 }
@@ -250,7 +250,7 @@ struct MessageView: View {
         } else {
             Text(content)
                 .padding()
-                .background(Color(red: 205/255, green: 190/255, blue: 170/255).opacity((0.4)))  // Warm Grey color for user messages
+                .background(Color.darkLatte)  // Warm Grey color for user messages
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .frame(maxWidth: 300, alignment: .leading)
             Spacer()
