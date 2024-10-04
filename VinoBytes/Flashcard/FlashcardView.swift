@@ -31,7 +31,7 @@ struct FlashcardView: View {
         self.selectedRegions = selectedRegions
         self.flashcardsFetchRequest = FetchRequest<StudyCard>(
             entity: StudyCard.entity(),
-            sortDescriptors: [],
+            sortDescriptors: [NSSortDescriptor(keyPath: \StudyCard.nextReviewDate, ascending: true),],
             predicate: NSPredicate(format: "region IN %@ AND nextReviewDate <= %@", selectedRegions, Date() as NSDate)
         )
     }
