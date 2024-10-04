@@ -23,6 +23,8 @@ struct FlashcardContent: View {
             if let unwrappedText = text {
                 Text(unwrappedText)
                     .font(.title)
+                    .lineLimit(nil) // Allow unlimited lines
+                    .minimumScaleFactor(0.5) // Allow scaling down to 50%
                     .padding()
                     .foregroundColor(.primary)
                     .background(Color.clear)
@@ -31,13 +33,15 @@ struct FlashcardContent: View {
             } else {
                 Text("No text")
                     .font(.title)
+                    .lineLimit(nil) // Allow unlimited lines
+                    .minimumScaleFactor(0.5) // Allow scaling down to 50%
                     .padding()
                     .foregroundColor(.primary)
-                   
                     .background(Color.clear)
                     .cornerRadius(12)
                     .shadow(radius: 5)
             }
         }
+        .padding(20) // Increased padding around VStack
     }
 }

@@ -12,6 +12,4 @@ struct FlashcardJSON: Codable {
     var answer: String
     var region: String
     var id: String
-    var boxNumber: Int
-    var nextReviewDate: String
 }

@@ -81,15 +81,17 @@ class PersistenceController: ObservableObject {
         // Check if data exists in CloudKit
         checkIfDataExistsInCloudKit { [weak self] dataExists in
             guard let self = self else { return }
-            self.dataExistsInCloudKit = dataExists // Store the result
-            if dataExists {
-                // Data exists in CloudKit, wait for sync
-                print("Data exists in CloudKit, waiting for sync.")
-                self.listenForICloudChanges()
-            } else {
-                // No data in CloudKit, safe to load from JSON
-                print("No data in CloudKit, loading from JSON.")
-                self.loadFlashcardsFromJSON()
+            DispatchQueue.main.async { // Ensure main thread
+                self.dataExistsInCloudKit = dataExists // Store the result
+                if dataExists {
+                    // Data exists in CloudKit, wait for sync
+                    print("Data exists in CloudKit, waiting for sync.")
+                    self.listenForICloudChanges()
+                } else {
+                    // No data in CloudKit, safe to load from JSON
+                    print("No data in CloudKit, loading from JSON.")
+                    self.loadFlashcardsFromJSON()
+                }
             }
         }
     }
@@ -119,31 +121,33 @@ class PersistenceController: ObservableObject {
         
         // Replace 'queryCompletionBlock' with 'queryResultBlock'
         queryOperation.queryResultBlock = { result in
-            switch result {
-            case .success(_):
-                completion(foundRecords)
-            case .failure(let error):
-                if let ckError = error as? CKError {
-                    switch ckError.code {
-                    case .unknownItem:
-                        // Record type doesn't exist yet; treat as no data in CloudKit
-                        print("Record type CD_StudyCard does not exist in CloudKit.")
-                        completion(false)
-                    case .partialFailure:
-                        // Handle partial failures, which may contain more detailed errors
-                        if let errors = ckError.userInfo[CKPartialErrorsByItemIDKey] as? [AnyHashable: Error] {
-                            for (_, error) in errors {
-                                print("Partial error: \(error.localizedDescription)")
+            DispatchQueue.main.async { // Ensure main thread
+                switch result {
+                case .success(_):
+                    completion(foundRecords)
+                case .failure(let error):
+                    if let ckError = error as? CKError {
+                        switch ckError.code {
+                        case .unknownItem:
+                            // Record type doesn't exist yet; treat as no data in CloudKit
+                            print("Record type CD_StudyCard does not exist in CloudKit.")
+                            completion(false)
+                        case .partialFailure:
+                            // Handle partial failures, which may contain more detailed errors
+                            if let errors = ckError.userInfo[CKPartialErrorsByItemIDKey] as? [AnyHashable: Error] {
+                                for (_, error) in errors {
+                                    print("Partial error: \(error.localizedDescription)")
+                                }
                             }
+                            completion(false)
+                        default:
+                            print("Error querying CloudKit: \(ckError.localizedDescription)")
+                            completion(false)
                         }
-                        completion(false)
-                    default:
-                        print("Error querying CloudKit: \(ckError.localizedDescription)")
+                    } else {
+                        print("Non-CKError encountered: \(error.localizedDescription)")
                         completion(false)
                     }
-                } else {
-                    print("Non-CKError encountered: \(error.localizedDescription)")
-                    completion(false)
                 }
             }
         }
@@ -152,12 +156,13 @@ class PersistenceController: ObservableObject {
     }
     
     private func listenForICloudChanges() {
-        // Listen for remote change notifications
-        NotificationCenter.default.publisher(for: .NSPersistentStoreRemoteChange)
-            .sink { [weak self] _ in
-                self?.checkAndLoadDataIfNeeded()
-            }
-            .store(in: &cancellables)
+        DispatchQueue.main.async {
+            NotificationCenter.default.publisher(for: .NSPersistentStoreRemoteChange)
+                .sink { [weak self] _ in
+                    self?.checkAndLoadDataIfNeeded()
+                }
+                .store(in: &self.cancellables)
+        }
     }
     
     private func checkAndLoadDataIfNeeded() {
@@ -211,6 +216,37 @@ class PersistenceController: ObservableObject {
             dateFormatter.dateFormat = "yyyy-MM-dd"
             
             let flashcards = try decoder.decode([FlashcardJSON].self, from: data)
+            print("\(flashcards.count) flashcards loaded from JSON.")  // Print the count of flashcards loaded
+            
+            // --- Duplicate ID Detection Start ---
+                   
+                   // Initialize sets to track IDs and duplicates
+                   var idSet = Set<String>()
+                   var duplicateIDs = Set<String>()
+                   
+                   // Check for duplicate IDs in the JSON data
+                   for flashcard in flashcards {
+                       if idSet.contains(flashcard.id) {
+                           // Duplicate ID found
+                           duplicateIDs.insert(flashcard.id)
+                       } else {
+                           idSet.insert(flashcard.id)
+                       }
+                   }
+                   
+                   // Print out the result of the duplicate ID check
+                   if duplicateIDs.isEmpty {
+                       print("No duplicates detected in JSON data.")
+                   } else {
+                       print("Duplicates detected with the following IDs:")
+                       for id in duplicateIDs {
+                           print("Duplicate ID: \(id)")
+                       }
+                       // Optionally, you can stop processing if duplicates are found
+                       // return
+                   }
+                   
+                   // --- Duplicate ID Detection End ---
             
             for flashcard in flashcards {
                 let fetchRequest: NSFetchRequest<StudyCard> = StudyCard.fetchRequest()
