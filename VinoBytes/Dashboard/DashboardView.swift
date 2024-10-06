@@ -11,19 +11,13 @@ import CoreData
 struct DashboardView: View {
     @Environment(\.managedObjectContext) private var context
     @State private var blogPosts: [BlogPost] = []
-    @State private var flashcardProgress: [String: Double] = [:]
     @State private var wineFactOfTheWeek: String?
-    @State private var isFlashcardProgressSheetPresented = false
-    @State private var isWhiteDisplaySheetPresented = false
     @State private var showAlert = false
     @State private var alertMessage = ""
     @State private var recentWines: [WineEntity] = []
     @ObservedObject var refreshNotifier: RefreshNotifier  // Add this line
     @EnvironmentObject var openAIManager: OpenAIManager  // Access from environment
     
-    
-    // List of all regions
-    let allRegions = ["Argentina", "Australia", "Austria", "Chile", "France", "Germany", "Greece", "Hungary", "Italy", "New Zealand", "Portugal", "South Africa", "Spain", "USA"]
     
     var body: some View {
         
@@ -89,10 +83,8 @@ struct DashboardView: View {
                 
                 HStack(spacing: 16) {
                     // Flashcard Progress Button
-                    Button(action: {
-                        isFlashcardProgressSheetPresented = true
-                    }) {
-                        Text("My Flashcard Progress")
+                  
+                        Text("Need Something Here. Hmm..")
                             .bold()
                             .foregroundColor(.black)
                             .frame(maxWidth: .infinity)
@@ -107,11 +99,8 @@ struct DashboardView: View {
                             )
                         
                             .shadow(color: .black.opacity(0.5), radius: 5)
-                    }
-                    .sheet(isPresented: $isFlashcardProgressSheetPresented) {
-                        FlashcardProgressView(flashcardProgress: flashcardProgress)
-                            .preferredColorScheme(.light)
-                    }
+                        
+                    
                     
                     Spacer()
                     
@@ -242,7 +231,6 @@ struct DashboardView: View {
             }
             .onAppear {
                 fetchContent()
-                initializeFlashcardProgress()
                 fetchRecentWines()  // Manually fetch recent wines
             }
             
@@ -295,49 +283,6 @@ struct DashboardView: View {
                 }
                 print("Error fetching wine fact: \(error?.localizedDescription ?? "Unknown error")")
             }
-        }
-    }
-    
-    private func initializeFlashcardProgress() {
-        if flashcardProgress.isEmpty {  // Only initialize if it's empty
-            for region in allRegions {
-                flashcardProgress[region] = 0.0 // Start every region at 0%
-            }
-        }
-        fetchFlashcardProgress()  // Always fetch to update with the latest data
-    }
-    
-    private func fetchFlashcardProgress() {
-        let request: NSFetchRequest<StudyCard> = StudyCard.fetchRequest()
-        do {
-            let results = try context.fetch(request)
-            var totalProgressPerRegion: [String: Double] = [:]
-            var totalCountPerRegion: [String: Int] = [:]
-            
-            // For each card, calculate its progress and accumulate per region
-            for card in results {
-                let region = card.region ?? "Unknown"
-                totalCountPerRegion[region, default: 0] += 1
-                
-                // Assuming boxNumber ranges from 0 to 5
-                let boxNumber = Int(card.boxNumber)
-                let progressPerCard = (Double(boxNumber) / 5.0) * 100.0  // Progress from 0% to 100%
-                totalProgressPerRegion[region, default: 0.0] += progressPerCard
-            }
-            
-            // Calculate and update average progress for each region
-            for region in allRegions {
-                let totalProgress = totalProgressPerRegion[region] ?? 0.0
-                let totalCards = totalCountPerRegion[region] ?? 0  // Set default to 0
-                if totalCards > 0 {
-                    let averageProgress = totalProgress / Double(totalCards)
-                    flashcardProgress[region] = averageProgress
-                } else {
-                    flashcardProgress[region] = 0.0
-                }
-            }
-        } catch {
-            print("Error fetching flashcard data: \(error)")
         }
     }
 }

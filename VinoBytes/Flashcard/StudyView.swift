@@ -9,10 +9,12 @@ import Foundation
 import SwiftUI
 
 struct StudyView: View {
-    let regions = ["Argentina", "Australia", "Austria", "Chile", "France", "Germany", "Greece", "Hungary", "Italy", "New Zealand", "Portugal", "South Africa", "Spain", "USA"]
+    @ObservedObject private var flashcardManager = FlashcardManager.shared
     @State private var selectedRegions = Set<String>()
     @State private var showingAlert = false
     @State private var isActiveLink = false
+    
+    let regions = ["Argentina", "Australia", "Austria", "Chile", "France", "Germany", "Greece", "Hungary", "Italy", "New Zealand", "Portugal", "South Africa", "Spain", "USA"]
 
     var body: some View {
         NavigationStack {
@@ -80,9 +82,10 @@ struct StudyView: View {
                             Alert(title: Text("No Regions Selected"), message: Text("Please select a wine region to start learning."), dismissButton: .default(Text("OK")))
                         }
                         .navigationDestination(isPresented: $isActiveLink) {
-                                FlashcardView(selectedRegions: Array(selectedRegions))
-                        }
-                    }
+                            // Pass the filtered flashcards to FlashcardView
+                            FlashcardView(flashcards: flashcardManager.getFlashcards(for: selectedRegions))
+                                            }
+                                        }
                     .padding(.top, 65)
                     .frame(minHeight: geometry.size.height)
                 

@@ -13,6 +13,7 @@ struct VinoDecksApp: App {
     
     init() {
         configureNavigationBar()
+        FlashcardManager.shared.loadFlashcards() // Preload flashcards when app starts
     }
     
     var body: some Scene {
@@ -24,6 +25,7 @@ struct VinoDecksApp: App {
                 RootView()  // Use the new RootView
                     .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
                     .environment(\.colorScheme, .light)
+                
             }
         }
         .environment(\.colorScheme, .light)

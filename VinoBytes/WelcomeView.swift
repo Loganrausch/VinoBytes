@@ -100,12 +100,12 @@ struct WelcomeScreen: View {
     
     let descriptions = [
         "Access your learning tools and track progress all in one convenient place.",
-        "Master over 2,000 interactive flashcards, optimized with spaced repetition for effective learning.",
+        "Master over 1,800 interactive flashcards.",
         "Ask questions and get instant answers with our wine chat powered by OpenAI.",
         "Log and track the wines you taste for easy reference as you study.",
         "Extensive information on grapes, regions, pairings, flaws and more.",
         "Automatically sync your data with iCloud integration.",
-        "Start your wine journey today with a 1 week free trial!"
+        "Start your wine journey today with a 3 day free trial!"
     ]
     
     var body: some View {

@@ -12,7 +12,7 @@ import CoreData
 import CloudKit
 
 enum ActiveAlert: Identifiable {
-    case resetWines, resetFlashcards, resetConversations, iCloudEnabled, iCloudDisabled
+    case resetWines, resetConversations, iCloudEnabled, iCloudDisabled
 
     var id: Int {
         hashValue
@@ -25,7 +25,7 @@ struct AccountView: View {
     @State private var activeAlert: ActiveAlert?
     @State private var errorMessage: String?
     @State private var showingSuccessToast = false  // State for showing the toast message
-    @State private var showingFlashcardResetToast = false  // State for showing the toast message for flashcards
+    
     @State private var showingConversationResetToast = false
     @State private var showingMyWinesResetToast = false
     @State private var isICloudAvailable: Bool = false
@@ -107,10 +107,6 @@ struct AccountView: View {
                     }
                     
                     
-                    Button("Reset Flashcard Progress") {
-                        activeAlert = .resetFlashcards
-                    }
-                    
                     Button("Reset Vino Chat Conversation History") {
                         activeAlert = .resetConversations
                     }
@@ -151,7 +147,6 @@ struct AccountView: View {
         }
         .background(Color(.systemGroupedBackground).edgesIgnoringSafeArea(.all))
         .toast(message: "All wines successfully deleted!", isShowing: $showingMyWinesResetToast)
-        .toast(message: "Flashcard progress reset successfully!", isShowing: $showingFlashcardResetToast)  // Add toast for flashcards
         .toast(message: "Conversation history reset successfully!", isShowing: $showingConversationResetToast)
         
         .onAppear {
@@ -167,15 +162,6 @@ struct AccountView: View {
                     message: Text("Are you sure you want to delete all your wines from your device and iCloud? This action cannot be undone."),
                     primaryButton: .destructive(Text("Delete")) {
                         resetMyWines()
-                    },
-                    secondaryButton: .cancel()
-                )
-            case .resetFlashcards:
-                return Alert(
-                    title: Text("Confirm Reset"),
-                    message: Text("Are you sure you want to reset all your flashcard progress on your device and in iCloud? This action cannot be undone."),
-                    primaryButton: .destructive(Text("Reset")) {
-                        resetFlashcardProgress()
                     },
                     secondaryButton: .cancel()
                 )
@@ -273,26 +259,6 @@ struct AccountView: View {
                 UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
             }
         }
-    
-    // Function to reset flashcard progress
-    private func resetFlashcardProgress() {
-        let fetchRequest: NSFetchRequest<StudyCard> = StudyCard.fetchRequest()
-        do {
-            let flashcards = try viewContext.fetch(fetchRequest)
-            print("Resetting progress for \(flashcards.count) flashcards.")
-            for flashcard in flashcards {
-                print("Resetting flashcard with ID \(flashcard.id ?? "Unknown ID") from box \(flashcard.boxNumber) to box 0.")
-                flashcard.boxNumber = 0
-                flashcard.nextReviewDate = Date()
-            }
-            try viewContext.save()
-            print("All flashcards have been reset.")
-            showingFlashcardResetToast = true  // Trigger the toast
-        } catch {
-            print("Failed to reset flashcard progress: \(error.localizedDescription)")
-            self.errorMessage = "Failed to reset flashcard progress: \(error.localizedDescription)"
-        }
-    }
     
     
     // Update resetMyWines function

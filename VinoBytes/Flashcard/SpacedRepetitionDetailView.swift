@@ -1,13 +1,12 @@
 //
-//  SpacedRepetitionIconView.swift
+//  ShowSpacedRepetitionDetail.swift
 //  VinoBytes
 //
-//  Created by Logan Rausch on 9/18/24.
+//  Created by Logan Rausch on 10/4/24.
 //
 
 import Foundation
 import SwiftUI
-
 struct SpacedRepetitionDetailView: View {
     
     @Environment(\.presentationMode) var presentationMode
@@ -156,7 +155,6 @@ struct SpacedRepetitionDetailView: View {
         }
     }
 }
-
 // Preview for the sheet view
 struct SpacedRepetitionDetailView_Previews: PreviewProvider {
     static var previews: some View {

@@ -141,10 +141,4 @@ struct MyWinesView: View {
     }
 }
 
-struct MyWinesView_Previews: PreviewProvider {
-    static var previews: some View {
-        let refreshNotifier = RefreshNotifier()
-        return MyWinesView(isRootView: true, refreshNotifier: refreshNotifier)
-            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-    }
-}
+

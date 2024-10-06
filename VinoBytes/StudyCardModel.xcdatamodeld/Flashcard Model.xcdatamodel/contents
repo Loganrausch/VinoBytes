@@ -17,14 +17,6 @@
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="messages" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ChatMessage" inverseName="conversation" inverseEntity="ChatMessage"/>
     </entity>
-    <entity name="StudyCard" representedClassName=".StudyCard" syncable="YES">
-        <attribute name="answer" optional="YES" attributeType="String"/>
-        <attribute name="boxNumber" optional="YES" attributeType="Integer 16" defaultValueString="1" usesScalarValueType="YES"/>
-        <attribute name="id" optional="YES" attributeType="String"/>
-        <attribute name="nextReviewDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="question" optional="YES" attributeType="String"/>
-        <attribute name="region" optional="YES" attributeType="String"/>
-    </entity>
     <entity name="WineEntity" representedClassName=".WineEntity" syncable="YES" codeGenerationType="class">
         <attribute name="acid" optional="YES" attributeType="String"/>
         <attribute name="alcohol" optional="YES" attributeType="String"/>
@@ -46,6 +38,8 @@
         <attribute name="wineType" optional="YES" attributeType="String" defaultValueString=""/>
     </entity>
     <configuration name="CloudKit" usedWithCloudKit="YES">
-        <memberEntity name="StudyCard"/>
+        <memberEntity name="WineEntity"/>
+        <memberEntity name="Conversation"/>
+        <memberEntity name="ChatMessage"/>
     </configuration>
 </model>
