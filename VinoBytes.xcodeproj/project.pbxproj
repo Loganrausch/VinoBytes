@@ -272,20 +272,16 @@
 			children = (
 				CE4347112CB3B6B200DD56FF /* VinoBytesRelease.entitlements */,
 				CE81EDA12C9CB1AD0055F0F6 /* Info.plist */,
-				CE81EDA02C9C940F0055F0F6 /* VinoBytes.entitlements */,
-				CECB7A612BACB69200659CB6 /* WelcomeView.swift */,
 				CE02C5BE2CB363EB00EAAE52 /* VinoBytes.storekit */,
-				CE02C5C02CB36A6200EAAE52 /* SignInWithAppleButtonView.swift */,
-				CE02C5C22CB36B9A00EAAE52 /* SignInWithAppleViewModel.swift */,
-				CE02C5C62CB371D100EAAE52 /* Keychain Helper.swift */,
-				CE02C5C42CB36C8300EAAE52 /* SignInView.swift */,
+				CE81EDA02C9C940F0055F0F6 /* VinoBytes.entitlements */,
 				CE6ADF302B925ED600982366 /* VinoBytesApp.swift */,
 				CE02C5C82CB374C200EAAE52 /* LaunchingContentView.swift */,
-				CE8318A72CB34EBC0030CC98 /* SubscriptionManager.swift */,
+				CECB7A612BACB69200659CB6 /* WelcomeView.swift */,
 				CE8318A52CB34E190030CC98 /* LaunchScreen.swift */,
 				CE35C9B22CA0766800D31200 /* RootView.swift */,
 				CE6ADF392B925ED700982366 /* Persistence.swift */,
 				CE6ADF322B925ED600982366 /* ContentView.swift */,
+				CEF48E9B2CB45D5B00E29D06 /* Sign in */,
 				CEC8A80B2C23C1C5009F937D /* Dashboard */,
 				CE7717022C2274EF00F34C4C /* AccountView */,
 				CE0EF5942C18D5A8009CFDCB /* OpenAI */,
@@ -435,6 +431,18 @@
 				CED0E6BE2CAB4F5300D32266 /* PastPostsSheet.swift */,
 			);
 			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		CEF48E9B2CB45D5B00E29D06 /* Sign in */ = {
+			isa = PBXGroup;
+			children = (
+				CE02C5C42CB36C8300EAAE52 /* SignInView.swift */,
+				CE02C5C22CB36B9A00EAAE52 /* SignInWithAppleViewModel.swift */,
+				CE02C5C02CB36A6200EAAE52 /* SignInWithAppleButtonView.swift */,
+				CE8318A72CB34EBC0030CC98 /* SubscriptionManager.swift */,
+				CE02C5C62CB371D100EAAE52 /* Keychain Helper.swift */,
+			);
+			path = "Sign in";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -803,6 +811,46 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = VinoBytes/VinoBytes.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"VinoBytes/Preview Content\"";
+				DEVELOPMENT_TEAM = 7BWDUC2WMW;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = VinoBytes/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = VinoBytes;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs access to the camera to allow users to take photos of their wines.\n                if isEditing {\n                    Button(action: {\n                        isShowingImagePicker = true\n                    }) {\n                        if let image = editedWine.image {\n                            Image(uiImage: image)\n                                .resizable()\n                                .scaledToFit()\n                        } else {\n                            Text(\"Select Image\")\n                        }\n                    }\n                    .sheet(isPresented: $isShowingImagePicker) {\n                        ImagePicker(selectedImage: $editedWine.image)\n                    }\n                } else {\n                    if let image = wine.image {\n                        Image(uiImage: image)\n                            .resizable()\n                            .scaledToFit()\n                    } else {\n                        Text(\"No Image Available\")\n                    }\n                }\n            }";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your photo library to select images for your wines.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vinobytes.VinoBytes;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		CE6ADF582B925ED700982366 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = VinoBytes/VinoBytesRelease.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -830,47 +878,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.vinobytes.VinoBytes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = DistributionProfileForVinoBytes;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Debug;
-		};
-		CE6ADF582B925ED700982366 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = VinoBytes/VinoBytesRelease.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"VinoBytes/Preview Content\"";
-				DEVELOPMENT_TEAM = 7BWDUC2WMW;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = VinoBytes/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = VinoBytes;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
-				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs access to the camera to allow users to take photos of their wines.\n                if isEditing {\n                    Button(action: {\n                        isShowingImagePicker = true\n                    }) {\n                        if let image = editedWine.image {\n                            Image(uiImage: image)\n                                .resizable()\n                                .scaledToFit()\n                        } else {\n                            Text(\"Select Image\")\n                        }\n                    }\n                    .sheet(isPresented: $isShowingImagePicker) {\n                        ImagePicker(selectedImage: $editedWine.image)\n                    }\n                } else {\n                    if let image = wine.image {\n                        Image(uiImage: image)\n                            .resizable()\n                            .scaledToFit()\n                    } else {\n                        Text(\"No Image Available\")\n                    }\n                }\n            }";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your photo library to select images for your wines.";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.vinobytes.VinoBytes;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = NewVinoBytesDistributionCert;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;

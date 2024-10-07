@@ -25,17 +25,17 @@ struct VinoBytesApp: App {
                 .environmentObject(signInViewModel)
                 .onAppear {
                  //    Handle user login with RevenueCat
-                    if let storedUserID = KeychainHelper.retrieve(forKey: "appleUserID") {
-                       signInViewModel.userID = storedUserID
-                        Purchases.shared.logIn(storedUserID) { customerInfo, created, error in
-                            if let error = error {
-                                print("RevenueCat logIn error on app launch: \(error.localizedDescription)")
-                            } else {
-                                print("User logged in with RevenueCat ID on app launch: \(storedUserID), created: \(created)")
-                                signInViewModel.isSignedIn = true
-                            }
-                        }
-                    }
+            //        if let storedUserID = KeychainHelper.retrieve(forKey: "appleUserID") {
+            //           signInViewModel.userID = storedUserID
+            //            Purchases.shared.logIn(storedUserID) { customerInfo, created, error in
+            //                if let error = error {
+             //                   print("RevenueCat logIn error on app launch: \(error.localizedDescription)")
+             //               } else {
+             //                   print("User logged in with RevenueCat ID on app launch: \(storedUserID), created: \(created)")
+             //                   signInViewModel.isSignedIn = true
+              //              }
+              //          }
+              //      }
                 }
                 .environment(\.colorScheme, ColorScheme.light)
         }
