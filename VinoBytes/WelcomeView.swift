@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import RevenueCat
+import RevenueCatUI
 
 struct WelcomeView: View {
     @State private var selectedTab = 0
@@ -13,19 +15,12 @@ struct WelcomeView: View {
     
     var body: some View {
         VStack(spacing: 10) {
-            // Top Navigation Bar with Skip Button
+            // Top Navigation Bar
             HStack {
                 Spacer()
-                Button(action: {
-                    // Navigate to the last onboarding page
-                    selectedTab = totalTabs - 1
-                }) {
-                    Text("Skip")
-                        .foregroundColor(.latte)
-                        .padding(.trailing, 40)
-                }
+              
             }
-            .frame(height: 70) // Standard height for top bars
+            .frame(height: 75) // Standard height for top bars
             .background(Color("Maroon")) // Replace with your custom maroon color
             
             
@@ -54,6 +49,7 @@ struct WelcomeView: View {
                             .frame(width: 10, height: 10)
                     }
                 }
+                
             }
             .edgesIgnoringSafeArea(.bottom) // Ensure the bar extends to the bottom edge
         }
@@ -66,6 +62,7 @@ struct WelcomeScreen: View {
     let index: Int
     @Binding var isSelected: Int
     @State private var contentOpacity = 0.0
+    @State private var isPaywallPresented = false  // State to control the presentation of the paywall
     
     // Arrays to hold your content data
     let titles = [
@@ -105,7 +102,7 @@ struct WelcomeScreen: View {
         "Log and track the wines you taste for easy reference as you study.",
         "Extensive information on grapes, regions, pairings, flaws and more.",
         "Automatically sync your data with iCloud integration.",
-        "Start your wine journey today with a 3 day free trial!"
+        "Experience the best in wine education!"
     ]
     
     var body: some View {
@@ -155,6 +152,10 @@ struct WelcomeScreen: View {
         }
         .padding(.bottom, 80)
         .opacity(contentOpacity)
+                .sheet(isPresented: $isPaywallPresented) {  // This presents the paywall
+                    PaywallView()
+                }
+        
         .onChange(of: isSelected) { _, newValue in
             if newValue == index {
                 fadeIn()
@@ -182,8 +183,18 @@ struct WelcomeScreen: View {
         }
     }
     
-    func startFreeTrial() {
-        // Implement the free trial start logic here
+    private func startFreeTrial() {
+        Purchases.shared.getOfferings { (offerings, error) in
+            if let offerings = offerings, let offering = offerings.current {
+                if offering.availablePackages.isEmpty {
+                    print("No packages available")
+                } else {
+                    isPaywallPresented = true  // Trigger the paywall presentation
+                }
+            } else if let error = error {
+                print("Error fetching offerings: \(error.localizedDescription)")
+            }
+        }
     }
 }
 

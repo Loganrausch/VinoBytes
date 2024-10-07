@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct StudyView: View {
-    @ObservedObject private var flashcardManager = FlashcardManager.shared
+    @EnvironmentObject var flashcardManager: FlashcardManager // Access via environment
     @State private var selectedRegions = Set<String>()
     @State private var showingAlert = false
     @State private var isActiveLink = false

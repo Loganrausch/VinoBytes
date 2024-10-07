@@ -1,50 +1,12 @@
 //
-//  VinoDecksApp.swift
-//  VinoDecks
+//  LaunchScreen.swift
+//  VinoBytes
 //
-//  Created by Logan Rausch on 3/1/24.
+//  Created by Logan Rausch on 10/6/24.
 //
 
+import Foundation
 import SwiftUI
-
-@main
-struct VinoDecksApp: App {
-    @State private var isShowingLaunchScreen = true
-    
-    init() {
-        configureNavigationBar()
-        FlashcardManager.shared.loadFlashcards() // Preload flashcards when app starts
-    }
-    
-    var body: some Scene {
-        WindowGroup {
-            if isShowingLaunchScreen {
-                LaunchScreen(isShowingLaunchScreen: $isShowingLaunchScreen)
-                    .environment(\.colorScheme, .light)
-            } else {
-                RootView()  // Use the new RootView
-                    .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
-                    .environment(\.colorScheme, .light)
-                
-            }
-        }
-        .environment(\.colorScheme, .light)
-    }
-    
-    
-    private func configureNavigationBar() {
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground() // Ensures the background is not transparent
-        appearance.backgroundColor = UIColor(Color("Maroon")) // Dark maroon color
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.latte]
-        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.latte]
-        
-        // Apply the appearance to all navigation bar types
-        UINavigationBar.appearance().standardAppearance = appearance
-        UINavigationBar.appearance().compactAppearance = appearance
-        UINavigationBar.appearance().scrollEdgeAppearance = appearance
-    }
-}
 
 struct LaunchScreen: View {
     @Binding var isShowingLaunchScreen: Bool

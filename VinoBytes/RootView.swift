@@ -21,5 +21,6 @@ struct RootView: View {
     var body: some View {
         ContentView()
             .environmentObject(openAIManager)
+            .environmentObject(FlashcardManager.shared) // Inject as Environment Object
     }
 }

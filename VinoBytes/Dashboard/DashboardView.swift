@@ -14,6 +14,7 @@ struct DashboardView: View {
     @State private var wineFactOfTheWeek: String?
     @State private var showAlert = false
     @State private var alertMessage = ""
+    @State private var showWhiteBackgroundView = false
     @State private var recentWines: [WineEntity] = []
     @ObservedObject var refreshNotifier: RefreshNotifier  // Add this line
     @EnvironmentObject var openAIManager: OpenAIManager  // Access from environment
@@ -83,8 +84,10 @@ struct DashboardView: View {
                 
                 HStack(spacing: 16) {
                     // Flashcard Progress Button
-                  
-                        Text("Need Something Here. Hmm..")
+                    Button(action: {
+                        showWhiteBackgroundView.toggle()
+                    }) {
+                        Text("Digital Napkin Mode")
                             .bold()
                             .foregroundColor(.black)
                             .frame(maxWidth: .infinity)
@@ -99,9 +102,10 @@ struct DashboardView: View {
                             )
                         
                             .shadow(color: .black.opacity(0.5), radius: 5)
-                        
-                    
-                    
+                    }
+                    .sheet(isPresented: $showWhiteBackgroundView) {
+                        WhiteBackgroundView()
+                    }
                     Spacer()
                     
                     // Weekly Blog Post Button
@@ -190,6 +194,9 @@ struct DashboardView: View {
                                                 .foregroundColor(.gray)
                                         }
                                         .padding(.vertical, 5)
+                                        // Make the entire HStack tappable
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .contentShape(Rectangle())
                                     }
                                     .buttonStyle(PlainButtonStyle())
                                     Divider()

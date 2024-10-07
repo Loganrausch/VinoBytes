@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE02C5BF2CB363EB00EAAE52 /* VinoBytes.storekit in Resources */ = {isa = PBXBuildFile; fileRef = CE02C5BE2CB363EB00EAAE52 /* VinoBytes.storekit */; };
+		CE02C5C12CB36A6200EAAE52 /* SignInWithAppleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE02C5C02CB36A6200EAAE52 /* SignInWithAppleButtonView.swift */; };
+		CE02C5C32CB36B9A00EAAE52 /* SignInWithAppleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE02C5C22CB36B9A00EAAE52 /* SignInWithAppleViewModel.swift */; };
+		CE02C5C52CB36C8300EAAE52 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE02C5C42CB36C8300EAAE52 /* SignInView.swift */; };
+		CE02C5C72CB371D100EAAE52 /* Keychain Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE02C5C62CB371D100EAAE52 /* Keychain Helper.swift */; };
+		CE02C5C92CB374C200EAAE52 /* LaunchingContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE02C5C82CB374C200EAAE52 /* LaunchingContentView.swift */; };
 		CE0EF5962C18D5ED009CFDCB /* OpenAIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0EF5952C18D5ED009CFDCB /* OpenAIManager.swift */; };
 		CE0EF5982C18D5FF009CFDCB /* OpenAIChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0EF5972C18D5FF009CFDCB /* OpenAIChatView.swift */; };
 		CE1F50752C67203200D2C51F /* Flashcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1F50742C67203200D2C51F /* Flashcard.swift */; };
@@ -21,7 +27,7 @@
 		CE35C9B32CA0766800D31200 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE35C9B22CA0766800D31200 /* RootView.swift */; };
 		CE631ED32C35E7CE00F50E96 /* WineEntity+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE631ED22C35E7CE00F50E96 /* WineEntity+Extensions.swift */; };
 		CE64D2782B92ED64009BF1B9 /* MyWinesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE64D2772B92ED64009BF1B9 /* MyWinesView.swift */; };
-		CE6ADF312B925ED600982366 /* VinoDecksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6ADF302B925ED600982366 /* VinoDecksApp.swift */; };
+		CE6ADF312B925ED600982366 /* VinoBytesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6ADF302B925ED600982366 /* VinoBytesApp.swift */; };
 		CE6ADF332B925ED600982366 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6ADF322B925ED600982366 /* ContentView.swift */; };
 		CE6ADF352B925ED700982366 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE6ADF342B925ED700982366 /* Assets.xcassets */; };
 		CE6ADF382B925ED700982366 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE6ADF372B925ED700982366 /* Preview Assets.xcassets */; };
@@ -45,6 +51,14 @@
 		CE80C17A2B9F4F29004EF540 /* StudyCardModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE80C1782B9F4F29004EF540 /* StudyCardModel.xcdatamodeld */; };
 		CE82D2872B9A1F91002B55F1 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82D2862B9A1F91002B55F1 /* ImagePicker.swift */; };
 		CE82D2892B9B72CF002B55F1 /* StudyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82D2882B9B72CF002B55F1 /* StudyView.swift */; };
+		CE83188F2CB23A620030CC98 /* WhiteBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE83188E2CB23A620030CC98 /* WhiteBackgroundView.swift */; };
+		CE8318912CB247B80030CC98 /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8318902CB247B80030CC98 /* CustomSlider.swift */; };
+		CE8318952CB2EBC10030CC98 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE8318942CB2EBC10030CC98 /* StoreKit.framework */; };
+		CE83189E2CB345D00030CC98 /* ReceiptParser in Frameworks */ = {isa = PBXBuildFile; productRef = CE83189D2CB345D00030CC98 /* ReceiptParser */; };
+		CE8318A02CB345D00030CC98 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = CE83189F2CB345D00030CC98 /* RevenueCat */; };
+		CE8318A22CB345D00030CC98 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = CE8318A12CB345D00030CC98 /* RevenueCatUI */; };
+		CE8318A62CB34E190030CC98 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8318A52CB34E190030CC98 /* LaunchScreen.swift */; };
+		CE8318A82CB34EBC0030CC98 /* SubscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8318A72CB34EBC0030CC98 /* SubscriptionManager.swift */; };
 		CE8C7F482CB0C2F800A42BC1 /* SpacedRepetitionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8C7F472CB0C2F800A42BC1 /* SpacedRepetitionDetailView.swift */; };
 		CE8C7F4A2CB0D12E00A42BC1 /* FlashcardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8C7F492CB0D12E00A42BC1 /* FlashcardManager.swift */; };
 		CE94AAF12C0D3957004CE8E0 /* ReferenceMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94AAF02C0D3957004CE8E0 /* ReferenceMainView.swift */; };
@@ -89,6 +103,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CE02C5BE2CB363EB00EAAE52 /* VinoBytes.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = VinoBytes.storekit; sourceTree = "<group>"; };
+		CE02C5C02CB36A6200EAAE52 /* SignInWithAppleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleButtonView.swift; sourceTree = "<group>"; };
+		CE02C5C22CB36B9A00EAAE52 /* SignInWithAppleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleViewModel.swift; sourceTree = "<group>"; };
+		CE02C5C42CB36C8300EAAE52 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		CE02C5C62CB371D100EAAE52 /* Keychain Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Keychain Helper.swift"; sourceTree = "<group>"; };
+		CE02C5C82CB374C200EAAE52 /* LaunchingContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchingContentView.swift; sourceTree = "<group>"; };
 		CE0EF5952C18D5ED009CFDCB /* OpenAIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIManager.swift; sourceTree = "<group>"; };
 		CE0EF5972C18D5FF009CFDCB /* OpenAIChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIChatView.swift; sourceTree = "<group>"; };
 		CE1F50742C67203200D2C51F /* Flashcard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flashcard.swift; sourceTree = "<group>"; };
@@ -101,10 +121,11 @@
 		CE32CDE22C1CE5D100A87202 /* FoodWinePairingsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodWinePairingsData.swift; sourceTree = "<group>"; };
 		CE32CDE42C1CE5DD00A87202 /* FoodWinePairingsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodWinePairingsDetailView.swift; sourceTree = "<group>"; };
 		CE35C9B22CA0766800D31200 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		CE4347112CB3B6B200DD56FF /* VinoBytesRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VinoBytesRelease.entitlements; sourceTree = "<group>"; };
 		CE631ED22C35E7CE00F50E96 /* WineEntity+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WineEntity+Extensions.swift"; sourceTree = "<group>"; };
 		CE64D2772B92ED64009BF1B9 /* MyWinesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWinesView.swift; sourceTree = "<group>"; };
 		CE6ADF2D2B925ED600982366 /* VinoBytes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VinoBytes.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE6ADF302B925ED600982366 /* VinoDecksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinoDecksApp.swift; sourceTree = "<group>"; };
+		CE6ADF302B925ED600982366 /* VinoBytesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinoBytesApp.swift; sourceTree = "<group>"; };
 		CE6ADF322B925ED600982366 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CE6ADF342B925ED700982366 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE6ADF372B925ED700982366 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -132,6 +153,11 @@
 		CE81EDA12C9CB1AD0055F0F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CE82D2862B9A1F91002B55F1 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		CE82D2882B9B72CF002B55F1 /* StudyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyView.swift; sourceTree = "<group>"; };
+		CE83188E2CB23A620030CC98 /* WhiteBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteBackgroundView.swift; sourceTree = "<group>"; };
+		CE8318902CB247B80030CC98 /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
+		CE8318942CB2EBC10030CC98 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		CE8318A52CB34E190030CC98 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
+		CE8318A72CB34EBC0030CC98 /* SubscriptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionManager.swift; sourceTree = "<group>"; };
 		CE8C7F472CB0C2F800A42BC1 /* SpacedRepetitionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacedRepetitionDetailView.swift; sourceTree = "<group>"; };
 		CE8C7F492CB0D12E00A42BC1 /* FlashcardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardManager.swift; sourceTree = "<group>"; };
 		CE94AAF02C0D3957004CE8E0 /* ReferenceMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceMainView.swift; sourceTree = "<group>"; };
@@ -163,7 +189,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE8318A02CB345D00030CC98 /* RevenueCat in Frameworks */,
+				CE83189E2CB345D00030CC98 /* ReceiptParser in Frameworks */,
 				CE6ADF632B9269C400982366 /* CoreData.framework in Frameworks */,
+				CE8318A22CB345D00030CC98 /* RevenueCatUI in Frameworks */,
+				CE8318952CB2EBC10030CC98 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,10 +270,19 @@
 		CE6ADF2F2B925ED600982366 /* VinoBytes */ = {
 			isa = PBXGroup;
 			children = (
+				CE4347112CB3B6B200DD56FF /* VinoBytesRelease.entitlements */,
 				CE81EDA12C9CB1AD0055F0F6 /* Info.plist */,
 				CE81EDA02C9C940F0055F0F6 /* VinoBytes.entitlements */,
 				CECB7A612BACB69200659CB6 /* WelcomeView.swift */,
-				CE6ADF302B925ED600982366 /* VinoDecksApp.swift */,
+				CE02C5BE2CB363EB00EAAE52 /* VinoBytes.storekit */,
+				CE02C5C02CB36A6200EAAE52 /* SignInWithAppleButtonView.swift */,
+				CE02C5C22CB36B9A00EAAE52 /* SignInWithAppleViewModel.swift */,
+				CE02C5C62CB371D100EAAE52 /* Keychain Helper.swift */,
+				CE02C5C42CB36C8300EAAE52 /* SignInView.swift */,
+				CE6ADF302B925ED600982366 /* VinoBytesApp.swift */,
+				CE02C5C82CB374C200EAAE52 /* LaunchingContentView.swift */,
+				CE8318A72CB34EBC0030CC98 /* SubscriptionManager.swift */,
+				CE8318A52CB34E190030CC98 /* LaunchScreen.swift */,
 				CE35C9B22CA0766800D31200 /* RootView.swift */,
 				CE6ADF392B925ED700982366 /* Persistence.swift */,
 				CE6ADF322B925ED600982366 /* ContentView.swift */,
@@ -291,6 +330,7 @@
 		CE6ADF612B9269C400982366 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE8318942CB2EBC10030CC98 /* StoreKit.framework */,
 				CE6ADF622B9269C400982366 /* CoreData.framework */,
 			);
 			name = Frameworks;
@@ -388,6 +428,8 @@
 			isa = PBXGroup;
 			children = (
 				CED380D72BB5E18400CAFB29 /* DashboardView.swift */,
+				CE83188E2CB23A620030CC98 /* WhiteBackgroundView.swift */,
+				CE8318902CB247B80030CC98 /* CustomSlider.swift */,
 				CED380DE2BB756A400CAFB29 /* ContentfulManager.swift */,
 				CED0F8BE2B93DE9500508E6E /* BlogPostView.swift */,
 				CED0E6BE2CAB4F5300D32266 /* PastPostsSheet.swift */,
@@ -412,6 +454,9 @@
 			);
 			name = VinoBytes;
 			packageProductDependencies = (
+				CE83189D2CB345D00030CC98 /* ReceiptParser */,
+				CE83189F2CB345D00030CC98 /* RevenueCat */,
+				CE8318A12CB345D00030CC98 /* RevenueCatUI */,
 			);
 			productName = VinoDecks;
 			productReference = CE6ADF2D2B925ED600982366 /* VinoBytes.app */;
@@ -486,6 +531,7 @@
 			);
 			mainGroup = CE6ADF242B925ED600982366;
 			packageReferences = (
+				CE83189C2CB345D00030CC98 /* XCRemoteSwiftPackageReference "purchases-ios" */,
 			);
 			productRefGroup = CE6ADF2E2B925ED600982366 /* Products */;
 			projectDirPath = "";
@@ -503,6 +549,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE02C5BF2CB363EB00EAAE52 /* VinoBytes.storekit in Resources */,
 				CE1F50772C6726EB00D2C51F /* flashcards.json in Resources */,
 				CE6ADF382B925ED700982366 /* Preview Assets.xcassets in Resources */,
 				CE6ADF352B925ED700982366 /* Assets.xcassets in Resources */,
@@ -534,10 +581,12 @@
 				CE32CDE52C1CE5DD00A87202 /* FoodWinePairingsDetailView.swift in Sources */,
 				CE94AAF82C0D444E004CE8E0 /* Grape.swift in Sources */,
 				CED0F8BF2B93DE9500508E6E /* BlogPostView.swift in Sources */,
+				CE02C5C92CB374C200EAAE52 /* LaunchingContentView.swift in Sources */,
 				CE94AB002C0E27FC004CE8E0 /* RegionDetailView.swift in Sources */,
 				CE738AC72C7781D500C76892 /* RefreshNotifier.swift in Sources */,
 				CED380DF2BB756A400CAFB29 /* ContentfulManager.swift in Sources */,
 				CE32CDDC2C1CE3E400A87202 /* WineFlawDetailView.swift in Sources */,
+				CE02C5C12CB36A6200EAAE52 /* SignInWithAppleButtonView.swift in Sources */,
 				CE32CDE32C1CE5D100A87202 /* FoodWinePairingsData.swift in Sources */,
 				CEE07EFF2C1A71C40088F94C /* ReadOnlyConversationView.swift in Sources */,
 				CE0EF5982C18D5FF009CFDCB /* OpenAIChatView.swift in Sources */,
@@ -554,10 +603,12 @@
 				CE2051012B9F98BD0072704E /* FlashcardContent.swift in Sources */,
 				CE7717062C22752000F34C4C /* TermsAndConditionsText.swift in Sources */,
 				CEE1607E2C3C5AB3006F5E66 /* StarRatingDisplayView.swift in Sources */,
+				CE8318A62CB34E190030CC98 /* LaunchScreen.swift in Sources */,
 				CE82D2892B9B72CF002B55F1 /* StudyView.swift in Sources */,
 				CE32CDE12C1CE5C600A87202 /* FoodWinePairingsListView.swift in Sources */,
 				CED380D82BB5E18400CAFB29 /* DashboardView.swift in Sources */,
 				CE7F9DE62C2CA1C400BA61C1 /* LoadingDotsView.swift in Sources */,
+				CE02C5C52CB36C8300EAAE52 /* SignInView.swift in Sources */,
 				CED380DA2BB70E1500CAFB29 /* WineData.swift in Sources */,
 				CE7717012C2274DB00F34C4C /* LegalDocumentView.swift in Sources */,
 				CE6ADF3D2B925ED700982366 /* VinoDecks.xcdatamodeld in Sources */,
@@ -567,18 +618,23 @@
 				CED0E6BF2CAB4F5300D32266 /* PastPostsSheet.swift in Sources */,
 				CE631ED32C35E7CE00F50E96 /* WineEntity+Extensions.swift in Sources */,
 				CE80C17A2B9F4F29004EF540 /* StudyCardModel.xcdatamodeld in Sources */,
+				CE8318A82CB34EBC0030CC98 /* SubscriptionManager.swift in Sources */,
 				CECB7A622BACB69200659CB6 /* WelcomeView.swift in Sources */,
 				CE7B36EB2B94DA58006AFFA0 /* AccountView.swift in Sources */,
 				CE6ADF3A2B925ED700982366 /* Persistence.swift in Sources */,
+				CE8318912CB247B80030CC98 /* CustomSlider.swift in Sources */,
 				CE6ADF332B925ED600982366 /* ContentView.swift in Sources */,
 				CE8C7F482CB0C2F800A42BC1 /* SpacedRepetitionDetailView.swift in Sources */,
 				CE94AAFE2C0E279F004CE8E0 /* RegionData.swift in Sources */,
 				CE32CDDE2C1CE3FD00A87202 /* WineFlawListView.swift in Sources */,
+				CE02C5C72CB371D100EAAE52 /* Keychain Helper.swift in Sources */,
+				CE83188F2CB23A620030CC98 /* WhiteBackgroundView.swift in Sources */,
 				CE94AAF12C0D3957004CE8E0 /* ReferenceMainView.swift in Sources */,
 				CE94AB0A2C0E3645004CE8E0 /* WineGlossaryDetailView.swift in Sources */,
 				CE7717042C22750900F34C4C /* PrivacyPolicyText.swift in Sources */,
+				CE02C5C32CB36B9A00EAAE52 /* SignInWithAppleViewModel.swift in Sources */,
 				CEE1607C2C3C56F9006F5E66 /* StarRatingView.swift in Sources */,
-				CE6ADF312B925ED600982366 /* VinoDecksApp.swift in Sources */,
+				CE6ADF312B925ED600982366 /* VinoBytesApp.swift in Sources */,
 				CE7F35D72BD579710055E6DB /* Wine.swift in Sources */,
 				CE6F73692B93BE8900770B35 /* WineFormView.swift in Sources */,
 				CE94AAF42C0D39DE004CE8E0 /* GrapeDetailView.swift in Sources */,
@@ -673,7 +729,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -730,7 +786,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -746,15 +802,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = VinoBytes/VinoBytes.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"VinoBytes/Preview Content\"";
-				DEVELOPMENT_TEAM = 7BWDUC2WMW;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 7BWDUC2WMW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = VinoBytes/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "";
-				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_CFBundleDisplayName = VinoBytes;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs access to the camera to allow users to take photos of their wines.\n                if isEditing {\n                    Button(action: {\n                        isShowingImagePicker = true\n                    }) {\n                        if let image = editedWine.image {\n                            Image(uiImage: image)\n                                .resizable()\n                                .scaledToFit()\n                        } else {\n                            Text(\"Select Image\")\n                        }\n                    }\n                    .sheet(isPresented: $isShowingImagePicker) {\n                        ImagePicker(selectedImage: $editedWine.image)\n                    }\n                } else {\n                    if let image = wine.image {\n                        Image(uiImage: image)\n                            .resizable()\n                            .scaledToFit()\n                    } else {\n                        Text(\"No Image Available\")\n                    }\n                }\n            }";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your photo library to select images for your wines.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -770,6 +829,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vinobytes.VinoBytes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = DistributionProfileForVinoBytes;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -783,7 +844,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = VinoBytes/VinoBytes.entitlements;
+				CODE_SIGN_ENTITLEMENTS = VinoBytes/VinoBytesRelease.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"VinoBytes/Preview Content\"";
@@ -791,8 +853,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = VinoBytes/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "";
-				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_CFBundleDisplayName = VinoBytes;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs access to the camera to allow users to take photos of their wines.\n                if isEditing {\n                    Button(action: {\n                        isShowingImagePicker = true\n                    }) {\n                        if let image = editedWine.image {\n                            Image(uiImage: image)\n                                .resizable()\n                                .scaledToFit()\n                        } else {\n                            Text(\"Select Image\")\n                        }\n                    }\n                    .sheet(isPresented: $isShowingImagePicker) {\n                        ImagePicker(selectedImage: $editedWine.image)\n                    }\n                } else {\n                    if let image = wine.image {\n                        Image(uiImage: image)\n                            .resizable()\n                            .scaledToFit()\n                    } else {\n                        Text(\"No Image Available\")\n                    }\n                }\n            }";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your photo library to select images for your wines.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -808,6 +870,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vinobytes.VinoBytes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -928,6 +991,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CE83189C2CB345D00030CC98 /* XCRemoteSwiftPackageReference "purchases-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RevenueCat/purchases-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CE83189D2CB345D00030CC98 /* ReceiptParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE83189C2CB345D00030CC98 /* XCRemoteSwiftPackageReference "purchases-ios" */;
+			productName = ReceiptParser;
+		};
+		CE83189F2CB345D00030CC98 /* RevenueCat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE83189C2CB345D00030CC98 /* XCRemoteSwiftPackageReference "purchases-ios" */;
+			productName = RevenueCat;
+		};
+		CE8318A12CB345D00030CC98 /* RevenueCatUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE83189C2CB345D00030CC98 /* XCRemoteSwiftPackageReference "purchases-ios" */;
+			productName = RevenueCatUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		CE6ADF3B2B925ED700982366 /* VinoDecks.xcdatamodeld */ = {

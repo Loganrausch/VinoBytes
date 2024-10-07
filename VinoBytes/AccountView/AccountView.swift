@@ -67,7 +67,7 @@ struct AccountView: View {
                         showingShareSheet.toggle()
                     }
                     .sheet(isPresented: $showingShareSheet) {
-                        ShareSheet(activityItems: ["Check out this cool wine app: VinoBytes! You can download it here: https://vinobytes.com"])
+                        ShareSheet(activityItems: ["Check out this awesome wine app: VinoBytes! You can download it here: https://apps.apple.com/us/app/vinobytes/id6736579105"])
                     }
                     
                     Button(action: {

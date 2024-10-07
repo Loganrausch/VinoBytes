@@ -1,0 +1,139 @@
+{
+  "identifier" : "B39124A7",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+
+  ],
+  "settings" : {
+    "_applicationInternalID" : "6736579105",
+    "_developerTeamID" : "7BWDUC2WMW",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 749959605.38607597,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "21553795",
+      "localizations" : [
+
+      ],
+      "name" : "VinoBytes Pricing",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "9.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "6736579231",
+          "introductoryOffer" : {
+            "internalID" : "CCD15B1B",
+            "numberOfPeriods" : 1,
+            "paymentMode" : "free",
+            "subscriptionPeriod" : "P3D"
+          },
+          "localizations" : [
+            {
+              "description" : "Enjoy full access with 3 day free trial. ",
+              "displayName" : "Monthly Access to VinoBytes",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "com.vinobytes.pricing.monthly",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "VinoBytes Monthly",
+          "subscriptionGroupID" : "21553795",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "99.0",
+          "familyShareable" : false,
+          "groupNumber" : 2,
+          "internalID" : "6736579307",
+          "introductoryOffer" : {
+            "internalID" : "32B09CE4",
+            "numberOfPeriods" : 1,
+            "paymentMode" : "free",
+            "subscriptionPeriod" : "P3D"
+          },
+          "localizations" : [
+            {
+              "description" : "Enjoy full access with 3 day free trial. ",
+              "displayName" : "Yearly Access to VinoBytes",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "com.vinobytes.pricing.yearly",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "VinoBytes Yearly",
+          "subscriptionGroupID" : "21553795",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

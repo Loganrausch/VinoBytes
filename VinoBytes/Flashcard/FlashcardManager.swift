@@ -14,8 +14,9 @@ class FlashcardManager: ObservableObject {
     @Published var flashcards: [Flashcard] = []
     
     private init() {
-        loadFlashcards()
-    }
+        print("FlashcardManager initialized")
+                loadFlashcards()
+            }
     
     // Load flashcards from JSON file
     func loadFlashcards() {
