@@ -44,6 +44,10 @@ struct ConversationHistoryView: View {
             }
             .listStyle(PlainListStyle())
             .navigationBarTitle("Conversation History", displayMode: .inline)
+            .preferredColorScheme(.light)
+            .onAppear {
+                           openAIManager.loadAllConversations()
+                       }
             .sheet(isPresented: $showReadOnlyConversation) {
                 if let convo = selectedConversation {
                     ReadOnlyConversationView(conversation: convo)

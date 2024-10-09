@@ -9,6 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var context
+    @EnvironmentObject var openAIManager: OpenAIManager
+    @EnvironmentObject var flashcardManager: FlashcardManager
+    @EnvironmentObject var studySessionManager: StudySessionManager
     @State private var selectedTab = 0
     let refreshNotifier = RefreshNotifier()  // Create a single instance
     
@@ -53,7 +56,7 @@ struct ContentView: View {
                 }
                 .tag(4)
         }
-        
+        .preferredColorScheme(.light) // Enforce light mode globally
         .accentColor(Color("Latte"))
     }
     

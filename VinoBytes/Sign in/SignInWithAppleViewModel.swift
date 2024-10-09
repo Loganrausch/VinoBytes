@@ -36,10 +36,10 @@ class SignInWithAppleViewModel: ObservableObject {
             
             // Optionally retrieve user information
             // Uncomment the following lines if you plan to use email and fullName
-            /*
+        
             let email = appleIDCredential.email
             let fullName = appleIDCredential.fullName
-            */
+            
             
             // Log in the user with RevenueCat
             Purchases.shared.logIn(userID) { [weak self] customerInfo, created, error in

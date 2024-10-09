@@ -14,21 +14,30 @@ class PersistenceController: ObservableObject {
     
     let container: NSPersistentCloudKitContainer
     
-    
     init(inMemory: Bool = false) {
         container = NSPersistentCloudKitContainer(name: "StudyCardModel")
         
         // Configure persistent store descriptions
-        let description = container.persistentStoreDescriptions.first
-        if inMemory {
-            description?.url = URL(fileURLWithPath: "/dev/null")
+        if let description = container.persistentStoreDescriptions.first {
+            if inMemory {
+                description.url = URL(fileURLWithPath: "/dev/null")
+            }
+            
+            // Enable remote change notifications
+            description.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
         }
         
         // Load persistent stores
         container.loadPersistentStores { storeDescription, error in
             if let error = error as NSError? {
                 print("Unresolved CoreData error \(error), \(error.userInfo)")
+            } else {
+                print("Successfully loaded store: \(storeDescription)")
             }
         }
+        
+        // **Enable automatic merging of changes from parent contexts (iCloud)**
+        container.viewContext.automaticallyMergesChangesFromParent = true
+        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
     }
 }

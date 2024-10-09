@@ -18,7 +18,7 @@ struct ReferenceMainView: View {
                             .foregroundColor(.black)
                             .font(.title3)
                             .bold()
-                            .padding(.top, geometry.size.height * 0.02) // Dynamic padding
+                            .padding(.top, geometry.size.height * 0.0001) // Dynamic padding
                             .minimumScaleFactor(0.5) // Allows text to scale down if needed
                             .lineLimit(1)
                         
@@ -71,7 +71,7 @@ struct ReferenceMainView: View {
                             .frame(width: geometry.size.width * 0.06, height: geometry.size.width * 0.06) // Dynamic icon size
                             .minimumScaleFactor(0.5) // Allows icon to scale down if needed
             Text(title)
-                .font(.system(size: dynamicFontSize(base: 30, geometry: geometry)))
+                .font(.system(size: dynamicFontSize(base: 35, geometry: geometry)))
                 .foregroundColor(.black)
                 .minimumScaleFactor(0.5) // Allows text to scale down if needed
                 .lineLimit(1)

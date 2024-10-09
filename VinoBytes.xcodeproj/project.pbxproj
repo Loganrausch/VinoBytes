@@ -32,7 +32,6 @@
 		CE6ADF352B925ED700982366 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE6ADF342B925ED700982366 /* Assets.xcassets */; };
 		CE6ADF382B925ED700982366 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE6ADF372B925ED700982366 /* Preview Assets.xcassets */; };
 		CE6ADF3A2B925ED700982366 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6ADF392B925ED700982366 /* Persistence.swift */; };
-		CE6ADF3D2B925ED700982366 /* VinoDecks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE6ADF3B2B925ED700982366 /* VinoDecks.xcdatamodeld */; };
 		CE6ADF472B925ED700982366 /* VinoDecksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6ADF462B925ED700982366 /* VinoDecksTests.swift */; };
 		CE6ADF512B925ED700982366 /* VinoDecksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6ADF502B925ED700982366 /* VinoDecksUITests.swift */; };
 		CE6ADF532B925ED700982366 /* VinoDecksUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6ADF522B925ED700982366 /* VinoDecksUITestsLaunchTests.swift */; };
@@ -59,7 +58,6 @@
 		CE8318A22CB345D00030CC98 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = CE8318A12CB345D00030CC98 /* RevenueCatUI */; };
 		CE8318A62CB34E190030CC98 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8318A52CB34E190030CC98 /* LaunchScreen.swift */; };
 		CE8318A82CB34EBC0030CC98 /* SubscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8318A72CB34EBC0030CC98 /* SubscriptionManager.swift */; };
-		CE8C7F482CB0C2F800A42BC1 /* SpacedRepetitionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8C7F472CB0C2F800A42BC1 /* SpacedRepetitionDetailView.swift */; };
 		CE8C7F4A2CB0D12E00A42BC1 /* FlashcardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8C7F492CB0D12E00A42BC1 /* FlashcardManager.swift */; };
 		CE94AAF12C0D3957004CE8E0 /* ReferenceMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94AAF02C0D3957004CE8E0 /* ReferenceMainView.swift */; };
 		CE94AAF42C0D39DE004CE8E0 /* GrapeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94AAF32C0D39DE004CE8E0 /* GrapeDetailView.swift */; };
@@ -83,6 +81,10 @@
 		CEE07EFF2C1A71C40088F94C /* ReadOnlyConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE07EFE2C1A71C40088F94C /* ReadOnlyConversationView.swift */; };
 		CEE1607C2C3C56F9006F5E66 /* StarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE1607B2C3C56F9006F5E66 /* StarRatingView.swift */; };
 		CEE1607E2C3C5AB3006F5E66 /* StarRatingDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE1607D2C3C5AB3006F5E66 /* StarRatingDisplayView.swift */; };
+		CEF48E9E2CB4729800E29D06 /* StudySessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF48E9D2CB4729700E29D06 /* StudySessionManager.swift */; };
+		CEF48EA02CB4764A00E29D06 /* SessionSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF48E9F2CB4764A00E29D06 /* SessionSummaryView.swift */; };
+		CEF48EA22CB4767E00E29D06 /* SessionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF48EA12CB4767E00E29D06 /* SessionListView.swift */; };
+		CEF48EA42CB476AE00E29D06 /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF48EA32CB476AE00E29D06 /* SessionDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,7 +132,6 @@
 		CE6ADF342B925ED700982366 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE6ADF372B925ED700982366 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CE6ADF392B925ED700982366 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		CE6ADF3C2B925ED700982366 /* VinoDecks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VinoDecks.xcdatamodel; sourceTree = "<group>"; };
 		CE6ADF422B925ED700982366 /* VinoBytesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VinoBytesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE6ADF462B925ED700982366 /* VinoDecksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinoDecksTests.swift; sourceTree = "<group>"; };
 		CE6ADF4C2B925ED700982366 /* VinoBytesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VinoBytesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,7 +159,6 @@
 		CE8318942CB2EBC10030CC98 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		CE8318A52CB34E190030CC98 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 		CE8318A72CB34EBC0030CC98 /* SubscriptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionManager.swift; sourceTree = "<group>"; };
-		CE8C7F472CB0C2F800A42BC1 /* SpacedRepetitionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacedRepetitionDetailView.swift; sourceTree = "<group>"; };
 		CE8C7F492CB0D12E00A42BC1 /* FlashcardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardManager.swift; sourceTree = "<group>"; };
 		CE94AAF02C0D3957004CE8E0 /* ReferenceMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceMainView.swift; sourceTree = "<group>"; };
 		CE94AAF32C0D39DE004CE8E0 /* GrapeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrapeDetailView.swift; sourceTree = "<group>"; };
@@ -182,6 +182,10 @@
 		CEE07EFE2C1A71C40088F94C /* ReadOnlyConversationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadOnlyConversationView.swift; sourceTree = "<group>"; };
 		CEE1607B2C3C56F9006F5E66 /* StarRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingView.swift; sourceTree = "<group>"; };
 		CEE1607D2C3C5AB3006F5E66 /* StarRatingDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingDisplayView.swift; sourceTree = "<group>"; };
+		CEF48E9D2CB4729700E29D06 /* StudySessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudySessionManager.swift; sourceTree = "<group>"; };
+		CEF48E9F2CB4764A00E29D06 /* SessionSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSummaryView.swift; sourceTree = "<group>"; };
+		CEF48EA12CB4767E00E29D06 /* SessionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionListView.swift; sourceTree = "<group>"; };
+		CEF48EA32CB476AE00E29D06 /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,13 +278,7 @@
 				CE81EDA12C9CB1AD0055F0F6 /* Info.plist */,
 				CE02C5BE2CB363EB00EAAE52 /* VinoBytes.storekit */,
 				CE81EDA02C9C940F0055F0F6 /* VinoBytes.entitlements */,
-				CE6ADF302B925ED600982366 /* VinoBytesApp.swift */,
-				CE02C5C82CB374C200EAAE52 /* LaunchingContentView.swift */,
-				CECB7A612BACB69200659CB6 /* WelcomeView.swift */,
-				CE8318A52CB34E190030CC98 /* LaunchScreen.swift */,
-				CE35C9B22CA0766800D31200 /* RootView.swift */,
-				CE6ADF392B925ED700982366 /* Persistence.swift */,
-				CE6ADF322B925ED600982366 /* ContentView.swift */,
+				CE86CB762CB6198200BBC1B6 /* Initializing */,
 				CEF48E9B2CB45D5B00E29D06 /* Sign in */,
 				CEC8A80B2C23C1C5009F937D /* Dashboard */,
 				CE7717022C2274EF00F34C4C /* AccountView */,
@@ -289,7 +287,7 @@
 				CE7879F72BA0B16200CB0E97 /* My Wines */,
 				CE7879F82BA0B18E00CB0E97 /* Flashcard */,
 				CE80C1782B9F4F29004EF540 /* StudyCardModel.xcdatamodeld */,
-				CE6ADF3B2B925ED700982366 /* VinoDecks.xcdatamodeld */,
+				CE6ADF392B925ED700982366 /* Persistence.swift */,
 				CE6ADF342B925ED700982366 /* Assets.xcassets */,
 				CE6ADF362B925ED700982366 /* Preview Content */,
 			);
@@ -368,12 +366,25 @@
 				CE2051002B9F98BD0072704E /* FlashcardContent.swift */,
 				CE8C7F492CB0D12E00A42BC1 /* FlashcardManager.swift */,
 				CE6ADF5F2B9266D600982366 /* FlashcardView.swift */,
+				CEF48E9C2CB4727800E29D06 /* FlashcardSessions */,
 				CE82D2882B9B72CF002B55F1 /* StudyView.swift */,
 				CE1F50742C67203200D2C51F /* Flashcard.swift */,
 				CE1F50762C6726EB00D2C51F /* flashcards.json */,
-				CE8C7F472CB0C2F800A42BC1 /* SpacedRepetitionDetailView.swift */,
 			);
 			path = Flashcard;
+			sourceTree = "<group>";
+		};
+		CE86CB762CB6198200BBC1B6 /* Initializing */ = {
+			isa = PBXGroup;
+			children = (
+				CE6ADF302B925ED600982366 /* VinoBytesApp.swift */,
+				CE8318A52CB34E190030CC98 /* LaunchScreen.swift */,
+				CE02C5C82CB374C200EAAE52 /* LaunchingContentView.swift */,
+				CE35C9B22CA0766800D31200 /* RootView.swift */,
+				CECB7A612BACB69200659CB6 /* WelcomeView.swift */,
+				CE6ADF322B925ED600982366 /* ContentView.swift */,
+			);
+			path = Initializing;
 			sourceTree = "<group>";
 		};
 		CE94AAF22C0D3961004CE8E0 /* Reference */ = {
@@ -443,6 +454,17 @@
 				CE02C5C62CB371D100EAAE52 /* Keychain Helper.swift */,
 			);
 			path = "Sign in";
+			sourceTree = "<group>";
+		};
+		CEF48E9C2CB4727800E29D06 /* FlashcardSessions */ = {
+			isa = PBXGroup;
+			children = (
+				CEF48E9D2CB4729700E29D06 /* StudySessionManager.swift */,
+				CEF48E9F2CB4764A00E29D06 /* SessionSummaryView.swift */,
+				CEF48EA12CB4767E00E29D06 /* SessionListView.swift */,
+				CEF48EA32CB476AE00E29D06 /* SessionDetailView.swift */,
+			);
+			path = FlashcardSessions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -588,6 +610,7 @@
 				CEE07EFD2C1A70450088F94C /* ConversationHistoryView.swift in Sources */,
 				CE32CDE52C1CE5DD00A87202 /* FoodWinePairingsDetailView.swift in Sources */,
 				CE94AAF82C0D444E004CE8E0 /* Grape.swift in Sources */,
+				CEF48EA22CB4767E00E29D06 /* SessionListView.swift in Sources */,
 				CED0F8BF2B93DE9500508E6E /* BlogPostView.swift in Sources */,
 				CE02C5C92CB374C200EAAE52 /* LaunchingContentView.swift in Sources */,
 				CE94AB002C0E27FC004CE8E0 /* RegionDetailView.swift in Sources */,
@@ -605,6 +628,7 @@
 				CE94AAFC2C0E2547004CE8E0 /* RegionListView.swift in Sources */,
 				CE0EF5962C18D5ED009CFDCB /* OpenAIManager.swift in Sources */,
 				CE1F50752C67203200D2C51F /* Flashcard.swift in Sources */,
+				CEF48EA02CB4764A00E29D06 /* SessionSummaryView.swift in Sources */,
 				CE32CDD82C1CE3C900A87202 /* WineFlawData.swift in Sources */,
 				CE738AC92C7793DB00C76892 /* Toast.swift in Sources */,
 				CE94AAFA2C0D502D004CE8E0 /* GrapeData.swift in Sources */,
@@ -619,7 +643,6 @@
 				CE02C5C52CB36C8300EAAE52 /* SignInView.swift in Sources */,
 				CED380DA2BB70E1500CAFB29 /* WineData.swift in Sources */,
 				CE7717012C2274DB00F34C4C /* LegalDocumentView.swift in Sources */,
-				CE6ADF3D2B925ED700982366 /* VinoDecks.xcdatamodeld in Sources */,
 				CECB7A662BACC50600659CB6 /* ContactFormView.swift in Sources */,
 				CE7B36EF2B96B6F9006AFFA0 /* WineDetailView.swift in Sources */,
 				CE6ADF602B9266D600982366 /* FlashcardView.swift in Sources */,
@@ -632,9 +655,9 @@
 				CE6ADF3A2B925ED700982366 /* Persistence.swift in Sources */,
 				CE8318912CB247B80030CC98 /* CustomSlider.swift in Sources */,
 				CE6ADF332B925ED600982366 /* ContentView.swift in Sources */,
-				CE8C7F482CB0C2F800A42BC1 /* SpacedRepetitionDetailView.swift in Sources */,
 				CE94AAFE2C0E279F004CE8E0 /* RegionData.swift in Sources */,
 				CE32CDDE2C1CE3FD00A87202 /* WineFlawListView.swift in Sources */,
+				CEF48EA42CB476AE00E29D06 /* SessionDetailView.swift in Sources */,
 				CE02C5C72CB371D100EAAE52 /* Keychain Helper.swift in Sources */,
 				CE83188F2CB23A620030CC98 /* WhiteBackgroundView.swift in Sources */,
 				CE94AAF12C0D3957004CE8E0 /* ReferenceMainView.swift in Sources */,
@@ -643,6 +666,7 @@
 				CE02C5C32CB36B9A00EAAE52 /* SignInWithAppleViewModel.swift in Sources */,
 				CEE1607C2C3C56F9006F5E66 /* StarRatingView.swift in Sources */,
 				CE6ADF312B925ED600982366 /* VinoBytesApp.swift in Sources */,
+				CEF48E9E2CB4729800E29D06 /* StudySessionManager.swift in Sources */,
 				CE7F35D72BD579710055E6DB /* Wine.swift in Sources */,
 				CE6F73692B93BE8900770B35 /* WineFormView.swift in Sources */,
 				CE94AAF42C0D39DE004CE8E0 /* GrapeDetailView.swift in Sources */,
@@ -812,7 +836,7 @@
 				CODE_SIGN_ENTITLEMENTS = VinoBytes/VinoBytes.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"VinoBytes/Preview Content\"";
 				DEVELOPMENT_TEAM = 7BWDUC2WMW;
 				ENABLE_PREVIEWS = YES;
@@ -853,7 +877,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"VinoBytes/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 7BWDUC2WMW;
@@ -1030,16 +1054,6 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		CE6ADF3B2B925ED700982366 /* VinoDecks.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				CE6ADF3C2B925ED700982366 /* VinoDecks.xcdatamodel */,
-			);
-			currentVersion = CE6ADF3C2B925ED700982366 /* VinoDecks.xcdatamodel */;
-			path = VinoDecks.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
 		CE80C1782B9F4F29004EF540 /* StudyCardModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (

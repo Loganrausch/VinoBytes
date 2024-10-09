@@ -36,6 +36,7 @@ struct PastPostsSheet: View {
             .accentColor(.latte)
             .bold()
         }
+        .preferredColorScheme(.light) // Enforce light mode for the entire sheet
     }
 }
 

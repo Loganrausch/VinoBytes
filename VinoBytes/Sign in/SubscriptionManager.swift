@@ -12,6 +12,7 @@ class SubscriptionManager: NSObject, ObservableObject, PurchasesDelegate {
     static let shared = SubscriptionManager()  // Singleton instance
     
     @Published var hasActiveSubscription = false
+    @Published var shouldNavigateToRoot = false  // Add this property to notify UI of navigation
     
     override init() {
         super.init()
@@ -37,9 +38,35 @@ class SubscriptionManager: NSObject, ObservableObject, PurchasesDelegate {
         }
     }
     
-    func purchases(_ purchases: Purchases, receivedUpdated customerInfo: CustomerInfo) {
-        DispatchQueue.main.async {
-            self.hasActiveSubscription = customerInfo.entitlements.all["full_access"]?.isActive ?? false
-        }
-    }
-}
+    func restorePurchases(completion: @escaping (Bool, String) -> Void) {
+           Purchases.shared.restorePurchases { [weak self] customerInfo, error in
+               if let error = error {
+                   print("Restore purchases failed: \(error.localizedDescription)")
+                   completion(false, "Restore failed. Please try again.")
+               } else if let customerInfo = customerInfo {
+                   DispatchQueue.main.async {
+                       self?.hasActiveSubscription = customerInfo.entitlements.all["full_access"]?.isActive ?? false
+                       print("Purchases restored. Subscription active: \(self?.hasActiveSubscription ?? false)")
+
+                       // Trigger UI navigation if subscription is active
+                       if self?.hasActiveSubscription == true {
+                           self?.shouldNavigateToRoot = true
+                       }
+                       completion(true, "Purchases restored successfully.")
+                   }
+               }
+           }
+       }
+
+       // Delegate method for RevenueCat subscription updates
+       func purchases(_ purchases: Purchases, receivedUpdated customerInfo: CustomerInfo) {
+           DispatchQueue.main.async {
+               self.hasActiveSubscription = customerInfo.entitlements.all["full_access"]?.isActive ?? false
+               print("Subscription updated: \(self.hasActiveSubscription)")
+
+               if self.hasActiveSubscription {
+                   self.shouldNavigateToRoot = true
+               }
+           }
+       }
+   }

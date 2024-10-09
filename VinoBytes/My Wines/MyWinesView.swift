@@ -112,6 +112,7 @@ struct MyWinesView: View {
                            Spacer()
                            Text("Add a wine to get started.")
                                .foregroundColor(.gray)
+                               .italic()
                                .multilineTextAlignment(.center)
                                .padding()
                            Spacer()

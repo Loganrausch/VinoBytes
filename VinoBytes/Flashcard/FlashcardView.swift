@@ -6,12 +6,15 @@
 //
 
 import SwiftUI
+import CoreData
 
 
 struct FlashcardView: View {
     var flashcards: [Flashcard]
     
-    @State private var shuffledFlashcards: [Flashcard] = [] // Mutable local copy
+    @EnvironmentObject var sessionManager: StudySessionManager
+    
+    @State private var shuffledFlashcards: [Flashcard] = []
     @State private var currentFlashcardIndex = 0
     @State private var rotationAngle: Double = 0 // Track the rotation angle
     @State private var showFront: Bool = true // Manage which side to show
@@ -20,9 +23,10 @@ struct FlashcardView: View {
     @State private var feedbackIcon: String = ""
     @State private var borderColor: Color = .lightMaroon // Default border color for the card
     @State private var feedbackOpacity: Double = 0 // Manage the opacity of feedback
-    @State private var showSpacedRepetitionDetail = false
     @State private var showTutorialBubble: Bool = false // Controls the visibility of the overlay
-    @State private var showEndOfDeckAlert: Bool = false // Controls the end-of-deck alert
+    @State private var showEndSessionAlert = false
+    @State private var session: StudySession?
+    @State private var navigateToSessionSummary = false
     
     
     var body: some View {
@@ -36,8 +40,8 @@ struct FlashcardView: View {
                     VStack(spacing: 10) {
                         Spacer()
                         
-                        // Ensure there are flashcards to display
-                        if !shuffledFlashcards.isEmpty {
+                        // Updated Condition
+                        if !shuffledFlashcards.isEmpty && currentFlashcardIndex < shuffledFlashcards.count {
                             
                             
                             // Current Region Display
@@ -56,7 +60,7 @@ struct FlashcardView: View {
                                 .padding(.bottom, 30)
                                 .padding(.top, 10)
                             
-                          
+                            
                             
                             ZStack(alignment: .center) {
                                 
@@ -133,130 +137,117 @@ struct FlashcardView: View {
                     }
                     
                     
-                        Spacer()
-                        
+                    Spacer()
+                    
                         .frame(maxWidth: .infinity)
                         .padding()
                         .navigationBarTitle("Flashcard Study")
                         .navigationBarTitleDisplayMode(.inline)
-                        .navigationBarItems(trailing: Button(action: {
-                            showSpacedRepetitionDetail.toggle()
-                        }) {
-                            Image(systemName: "info.circle")
-                                .font(.headline) // Adjust icon size if necessary
-                                .foregroundColor(.latte) // Customize icon color if desired
-                        })
-                        .sheet(isPresented: $showSpacedRepetitionDetail) {
-                            SpacedRepetitionDetailView() // Your sheet view content
+                        .navigationBarItems(trailing:
+                            Button(action: {
+                                endSession()
+                            }) {
+                                Text("End Session")
+                                    .font(.headline)
+                                    .foregroundColor(.latte)
+                            }
+                        )
+                    
+                        .alert(isPresented: $showEndSessionAlert) {
+                            Alert(
+                                title: Text("End Session"),
+                                message: Text("Are you sure you want to end the session?"),
+                                primaryButton: .destructive(Text("End Session")) {
+                                    sessionManager.endCurrentSession()
+                                    // Navigate to SessionSummaryView
+                                    navigateToSessionSummary = true
+                                },
+                                secondaryButton: .cancel()
+                            )
                         }
+                    
                         .onAppear {
                             checkFirstLaunch() // Check if we need to show the tutorial
                             shuffledFlashcards = flashcards.shuffled() // Initialize shuffledFlashcards with the input flashcards
+                            currentFlashcardIndex = 0 // Reset the current index
                         }
                     
                 }
                 
                 Spacer()
-                    
-                    // New Overlay for Tutorial
-                    if showTutorialBubble {
-                        ZStack {
-                            Color.black.opacity(0.65)
-                                .ignoresSafeArea()
-                                .onTapGesture {
-                                    // Dismiss when tapping outside the overlay
-                                    markTutorialAsSeen()
-                                }
-                            
-                            VStack(spacing: 20) {
-                                Text("Welcome to Flashcard Study!")
-                                    .font(.title2)
-                                    .foregroundColor(.black)
-                                    .multilineTextAlignment(.center)
-                                
-                                Text("Tap a card to flip it and swipe left or right to navigate through your flashcards.")
-                                    .font(.headline)
-                                    .foregroundColor(.black)
-                                    .multilineTextAlignment(.center)
-                                    .padding()
-                                
-                                Button(action: {
-                                    markTutorialAsSeen()
-                                    showSpacedRepetitionDetail = true
-                                }) {
-                                    Text("Got It!")
-                                        .font(.headline)
-                                        .padding()
-                                        .background(Color.lightMaroon)
-                                        .foregroundColor(.lightLatte)
-                                        .cornerRadius(10)
-                                        .shadow(color: .black.opacity(0.6), radius: 6)
-                                }
+                
+                // New Overlay for Tutorial
+                if showTutorialBubble {
+                    ZStack {
+                        Color.black.opacity(0.65)
+                            .ignoresSafeArea()
+                            .onTapGesture {
+                                // Dismiss when tapping outside the overlay
+                                markTutorialAsSeen()
                             }
+                        
+                        VStack(spacing: 20) {
+                            Text("Tap a card to flip it")
+                                .font(.title)
+                                .foregroundColor(.black)
+                                .multilineTextAlignment(.center)
                             
-                            .padding()
-                            .background(Color.lightLatte)
-                            .cornerRadius(12)
-                            .padding()
+                            Text("Swipe **right** if you know the card and **left** if you don't. End the session when you are done to see your results!")
+                                .font(.title3)
+                                .foregroundColor(.black)
+                                .multilineTextAlignment(.center)
+                                .padding()
                             
-                            
+                            Button(action: {
+                                markTutorialAsSeen()
+                            }) {
+                                Text("Got It!")
+                                    .font(.headline)
+                                    .padding()
+                                    .background(Color.lightMaroon)
+                                    .foregroundColor(.lightLatte)
+                                    .cornerRadius(10)
+                                    .shadow(color: .black.opacity(0.6), radius: 6)
+                            }
                         }
+                        
+                        .padding()
+                        .background(Color.lightLatte)
+                        .cornerRadius(12)
+                        .padding()
+                        
+                        
                     }
+                }
                 
                 // Show feedback icon on top of flashcard
-                               if showFeedback {
-                                   Image(systemName: feedbackIcon)
-                                       .resizable()
-                                       .scaledToFit()
-                                       .frame(width: 50, height: 50)
-                                       .foregroundColor(feedbackIcon == "checkmark.circle.fill" ? .green : .orange)
-                                       .transition(.opacity)
-                                       .animation(.easeInOut(duration: 0.5), value: showFeedback)
-                               }
-                    // End of Deck Alert
-                    if showEndOfDeckAlert {
-                        ZStack {
-                            Color.black.opacity(0.4)
-                                .ignoresSafeArea()
-                            
-                            VStack(spacing: 20) {
-                                Text("Congratulations!")
-                                    .font(.title)
-                                    .bold()
-                                    .foregroundColor(.black)
-                                
-                                Text("You've reviewed all flashcards.")
-                                    .font(.headline)
-                                    .foregroundColor(.black)
-                                    .multilineTextAlignment(.center)
-                                    .padding()
-                                
-                                Button(action: {
-                                    shuffleFlashcards()
-                                    showEndOfDeckAlert = false
-                                }) {
-                                    Text("Shuffle")
-                                        .font(.headline)
-                                        .padding()
-                                        .background(Color.lightMaroon)
-                                        .foregroundColor(.lightLatte)
-                                        .cornerRadius(10)
-                                        .shadow(color: .black.opacity(0.6), radius: 6)
-                                }
-                            }
-                            .padding()
-                            .background(Color.lightLatte)
-                            .cornerRadius(12)
-                            .padding()
-                        }
-                    }
+                if showFeedback {
+                    Image(systemName: feedbackIcon)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 50, height: 50)
+                        .foregroundColor(feedbackIcon == "checkmark.circle.fill" ? .green : .orange)
+                        .transition(.opacity)
+                        .animation(.easeInOut(duration: 0.5), value: showFeedback)
                 }
             }
         }
+        // Add navigationDestination at the end of the body
+        .navigationDestination(isPresented: $navigateToSessionSummary) {
+            if let session = sessionManager.lastSession {
+                SessionSummaryView(session: session)
+            } else {
+                EmptyView() // Or handle appropriately
+            }
+        }
+    }
+    
             
             // MARK: - Helper Functions
             
-          
+    private func endSession() {
+        showEndSessionAlert = true
+    }
             
             
             // Check if the tutorial has been shown before
@@ -287,10 +278,19 @@ struct FlashcardView: View {
             }
             
             private func handleSwipe(_ width: CGFloat) {
-                guard !shuffledFlashcards.isEmpty else { return }
+                guard !shuffledFlashcards.isEmpty && currentFlashcardIndex < shuffledFlashcards.count else { return }
                 
                 if abs(width) > 100 {
                     let knewAnswer = width > 0
+                    
+                    
+                    // Record the result
+                           sessionManager.addFlashcardResult(
+                               flashcard: shuffledFlashcards[currentFlashcardIndex],
+                               wasCorrect: knewAnswer
+                           )
+                    
+                    
                     feedbackIcon = knewAnswer ? "checkmark.circle.fill" : "xmark.circle.fill"
                     showFeedback = true
                     feedbackOpacity = 0 // Start from transparent
@@ -321,25 +321,27 @@ struct FlashcardView: View {
                 }
             }
             
-            private func moveToNextFlashcard() {
-                print("Current index before increment: \(currentFlashcardIndex), Total cards: \(shuffledFlashcards.count)")
-                
-                currentFlashcardIndex += 1
-                
-                if currentFlashcardIndex >= shuffledFlashcards.count {
-                    currentFlashcardIndex = 0 // Reset to start
-                    showEndOfDeckAlert = true
-                }
-                
-                
-                rotationAngle = 0 // Reset rotation angle
-                showFront = true // Ensure front is shown for the next card
-                // Reset swipeOffset without animation
-                    
-                withAnimation(.none) {
-                        swipeOffset = 0
-                    }
-                }
+    private func moveToNextFlashcard() {
+        print("Current index before increment: \(currentFlashcardIndex), Total cards: \(shuffledFlashcards.count)")
+
+        currentFlashcardIndex += 1
+
+        if currentFlashcardIndex >= shuffledFlashcards.count {
+            sessionManager.endCurrentSession()
+            // Navigate to SessionSummaryView
+            navigateToSessionSummary = true
+        }
+
+        rotationAngle = 0 // Reset rotation angle
+        showFront = true // Ensure front is shown for the next card
+        // Reset swipeOffset without animation
+
+        withAnimation(.none) {
+            swipeOffset = 0
+        }
+    }
+    
+    
             
             
     private func shuffleFlashcards() {

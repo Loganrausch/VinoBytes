@@ -17,6 +17,20 @@
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="messages" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ChatMessage" inverseName="conversation" inverseEntity="ChatMessage"/>
     </entity>
+    <entity name="FlashcardResult" representedClassName="FlashcardResult" syncable="YES" codeGenerationType="class">
+        <attribute name="answer" optional="YES" attributeType="String"/>
+        <attribute name="question" optional="YES" attributeType="String"/>
+        <attribute name="region" optional="YES" attributeType="String"/>
+        <attribute name="wasCorrect" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <relationship name="session" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StudySession" inverseName="flashcardResults" inverseEntity="StudySession"/>
+    </entity>
+    <entity name="StudySession" representedClassName="StudySession" syncable="YES" codeGenerationType="class">
+        <attribute name="correctAnswers" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="totalQuestions" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="flashcardResults" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="FlashcardResult" inverseName="session" inverseEntity="FlashcardResult"/>
+    </entity>
     <entity name="WineEntity" representedClassName=".WineEntity" syncable="YES" codeGenerationType="class">
         <attribute name="acid" optional="YES" attributeType="String"/>
         <attribute name="alcohol" optional="YES" attributeType="String"/>
@@ -41,5 +55,7 @@
         <memberEntity name="WineEntity"/>
         <memberEntity name="Conversation"/>
         <memberEntity name="ChatMessage"/>
+        <memberEntity name="StudySession"/>
+        <memberEntity name="FlashcardResult"/>
     </configuration>
 </model>

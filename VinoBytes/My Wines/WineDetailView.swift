@@ -8,7 +8,6 @@ import SwiftUI
 import UIKit
 
 struct WineDetailView: View {
-    @Environment(\.presentationMode) var presentationMode
     @Environment(\.managedObjectContext) private var context
     
     @ObservedObject var wineEntity: WineEntity
@@ -95,60 +94,23 @@ struct WineDetailView: View {
                 Text(wineEntity.finalThoughts ?? "")
             }
         }
-        .navigationBarItems(
-            trailing: HStack {
+        .navigationTitle("Details")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
                 Button("Edit") {
                     isEditing = true
                 }
-                //                SHARING FEATURE LATER
-                //                Button(action: {
-                //                    isSharing = true
-                //                }) {
-                //                    Image(systemName: "square.and.arrow.up")
-                //                }
             }
-        )
-        .sheet(isPresented: $isEditing) {
-            WineFormView(wineEntity: wineEntity)
         }
         
         
-        //        SHARING FEATURE LATER
-        //        .sheet(isPresented: $isSharing) {
-        //            ActivityView(activityItems: wineItems())
-        //                }
+        .sheet(isPresented: $isEditing) {
+            NavigationView {
+                WineFormView(wineEntity: wineEntity)
+                
+            }
+        }
     }
-    
-    
-//    SHARING FUNCTION FOR LATER
-//        func wineItems() -> [Any] {
-//            var text = "\n"
-//            text += "Wine Type: \(wineEntity.wineType ?? "")\n"
-//            text += "Vintage: \(wineEntity.vintage ?? "")\n"
-//            text += "Producer: \(wineEntity.producer ?? "")\n"
-//            text += "Wine Name: \(wineEntity.wineName ?? "")\n"
-//            text += "Region: \(wineEntity.region ?? "")\n"
-//            text += "Grape: \(wineEntity.grape ?? "")\n"
-//            text += "Sight: \(wineEntity.sight ?? "")\n"
-//            text += "Smell/Taste: \(wineEntity.smellTaste ?? "")\n"
-//            text += "Acid: \(wineEntity.acid ?? "")\n"
-//            text += "Alcohol: \(wineEntity.alcohol ?? "")\n"
-//            text += "Body: \(wineEntity.structureBody ?? "")\n"
-//            text += "Sweetness: \(wineEntity.sweetness ?? "")\n"
-//            text += "Tannin: \(wineEntity.tannin ?? "")\n"
-//            text += "Rating: \(wineEntity.rating) out of 5\n"
-//            text += "Final Thoughts: \(wineEntity.finalThoughts ?? "")\n\n"
-//            text += "VinoBytes on iOS"
-//    
-//            var items: [Any] = [text]
-//    
-//            if let imageData = wineEntity.imageData, let image = UIImage(data: imageData) {
-//                items.append(image)
-//            }
-//    
-//            return items
-//        }
-    
     
 }
 

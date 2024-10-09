@@ -11,7 +11,7 @@ import RevenueCat
 @main
 struct VinoBytesApp: App {
     @State private var isShowingLaunchScreen = true
-    @ObservedObject private var subscriptionManager = SubscriptionManager.shared
+    @StateObject private var subscriptionManager = SubscriptionManager.shared
     @StateObject private var signInViewModel = SignInWithAppleViewModel()
     
     init() {
@@ -24,22 +24,23 @@ struct VinoBytesApp: App {
                 .environmentObject(subscriptionManager)
                 .environmentObject(signInViewModel)
                 .onAppear {
-                 //    Handle user login with RevenueCat
-            //        if let storedUserID = KeychainHelper.retrieve(forKey: "appleUserID") {
-            //           signInViewModel.userID = storedUserID
-            //            Purchases.shared.logIn(storedUserID) { customerInfo, created, error in
-            //                if let error = error {
-             //                   print("RevenueCat logIn error on app launch: \(error.localizedDescription)")
-             //               } else {
-             //                   print("User logged in with RevenueCat ID on app launch: \(storedUserID), created: \(created)")
-             //                   signInViewModel.isSignedIn = true
-              //              }
-              //          }
-              //      }
+               //      Handle user login with RevenueCat
+                    if let storedUserID = KeychainHelper.retrieve(forKey: "appleUserID") {
+                       signInViewModel.userID = storedUserID
+                        Purchases.shared.logIn(storedUserID) { customerInfo, created, error in
+                            if let error = error {
+                                print("RevenueCat logIn error on app launch: \(error.localizedDescription)")
+                            } else {
+                                print("User logged in with RevenueCat ID on app launch: \(storedUserID), created: \(created)")
+                                signInViewModel.isSignedIn = true
+                            }
+                        }
+                    }
                 }
-                .environment(\.colorScheme, ColorScheme.light)
+                .preferredColorScheme(.light) // Enforce light mode globally
         }
     }
+    
     
     private func configureNavigationBar() {
         let appearance = UINavigationBarAppearance()

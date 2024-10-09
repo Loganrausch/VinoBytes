@@ -11,6 +11,8 @@ import SwiftUI
 
 struct RootView: View {
     @StateObject private var openAIManager: OpenAIManager
+    @StateObject private var studySessionManager = StudySessionManager.shared  // Dependent Manager
+    @StateObject private var flashcardManager = FlashcardManager.shared        // Dependent Manager
     
     init() {
         // Initialize OpenAIManager here, after Core Data is ready
@@ -19,8 +21,9 @@ struct RootView: View {
     }
     
     var body: some View {
-        ContentView()
-            .environmentObject(openAIManager)
-            .environmentObject(FlashcardManager.shared) // Inject as Environment Object
+            ContentView()
+                .environmentObject(openAIManager)
+                .environmentObject(studySessionManager)
+                .environmentObject(flashcardManager)
+        }
     }
-}

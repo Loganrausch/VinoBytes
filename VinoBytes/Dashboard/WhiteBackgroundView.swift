@@ -42,6 +42,7 @@ struct WhiteBackgroundView: View {
             }
             .background(Color.white)
             .edgesIgnoringSafeArea(.all)
+            
             .overlay(
                 Image("Napkin_Texture")
                     .resizable()
@@ -92,6 +93,7 @@ struct WhiteBackgroundView: View {
                                 }
                         }
                     }
+        .preferredColorScheme(.light) // Enforce light mode
                 }
             }
 

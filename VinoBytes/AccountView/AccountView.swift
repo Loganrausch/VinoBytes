@@ -12,7 +12,7 @@ import CoreData
 import CloudKit
 
 enum ActiveAlert: Identifiable {
-    case resetWines, resetConversations, iCloudEnabled, iCloudDisabled
+    case resetWines, resetConversations, resetFlashcardSessions, iCloudEnabled, iCloudDisabled
 
     var id: Int {
         hashValue
@@ -25,7 +25,7 @@ struct AccountView: View {
     @State private var activeAlert: ActiveAlert?
     @State private var errorMessage: String?
     @State private var showingSuccessToast = false  // State for showing the toast message
-    
+    @State private var showingFlashcardSessionsResetToast = false
     @State private var showingConversationResetToast = false
     @State private var showingMyWinesResetToast = false
     @State private var isICloudAvailable: Bool = false
@@ -101,13 +101,17 @@ struct AccountView: View {
                 
                 ) {
                     
-                    Button("Reset My Wines") {
+                    Button("Delete My Wines") {
                         activeAlert = .resetWines
                         viewContext.refreshAllObjects()
                     }
                     
+                    Button("Delete Flashcard Sessions") {
+                        activeAlert = .resetFlashcardSessions
+                    }
                     
-                    Button("Reset Vino Chat Conversation History") {
+                    
+                    Button("Delete Vino Chat Conversation History") {
                         activeAlert = .resetConversations
                     }
                 }
@@ -137,18 +141,29 @@ struct AccountView: View {
             .padding(.top, 15)
             .navigationBarTitle("Account Settings", displayMode: .inline)
             
+           
+            
        
             // App version at the bottom
                        Text(appVersion)
                            .font(.footnote)
                            .foregroundColor(.gray)
-                           .padding(.bottom, 12) // Padding for space at the bottom
+                           .padding(.bottom, 5) // Padding for space at the bottom
+            
+            VStack{  Text("support@vinobytes.com")
+                    .font(.footnote)
+                    .foregroundColor(.gray)
+                    .padding(.bottom, 12) // Padding for space at the bottom
+                
+            }
+            
+            .accentColor(Color.gray) // Applying custom accent color locally to these buttons
             
         }
         .background(Color(.systemGroupedBackground).edgesIgnoringSafeArea(.all))
         .toast(message: "All wines successfully deleted!", isShowing: $showingMyWinesResetToast)
         .toast(message: "Conversation history reset successfully!", isShowing: $showingConversationResetToast)
-        
+        .toast(message: "Flashcard session history reset successfully!", isShowing: $showingFlashcardSessionsResetToast)
         .onAppear {
             handleICloudSyncInfo(showAlert: false)  // Automatic check without alert
             }
@@ -175,6 +190,16 @@ struct AccountView: View {
                                 },
                                 secondaryButton: .cancel()
                             )
+                
+            case .resetFlashcardSessions:
+                    return Alert(
+                        title: Text("Confirm Delete"),
+                        message: Text("Are you sure you want to delete all your flashcard sessions from your device and iCloud? This action cannot be undone."),
+                        primaryButton: .destructive(Text("Delete")) {
+                            resetFlashcardSessions()
+                        },
+                        secondaryButton: .cancel()
+                    )
                 
             case .iCloudEnabled:
                             return Alert(
@@ -284,6 +309,22 @@ struct AccountView: View {
             openAIManager.resetConversationHistory()
             showingConversationResetToast = true  // Show toast message
         }
+    
+    private func resetFlashcardSessions() {
+        let fetchRequest: NSFetchRequest<StudySession> = StudySession.fetchRequest()
+        do {
+            let sessions = try viewContext.fetch(fetchRequest)
+            for session in sessions {
+                viewContext.delete(session)
+            }
+            try viewContext.save()
+            print("Deleted \(sessions.count) flashcard sessions.")
+            showingFlashcardSessionsResetToast = true
+        } catch {
+            self.errorMessage = "Failed to reset flashcard sessions: \(error.localizedDescription)"
+            print("Failed to reset flashcard sessions: \(error)")
+        }
+    }
     
 }
     

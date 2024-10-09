@@ -64,17 +64,12 @@ struct SignInView: View {
                 
                 .padding()
                 .navigationBarHidden(true)
-                .fullScreenCover(isPresented: $viewModel.isSignedIn) {
-                    if subscriptionManager.hasActiveSubscription {
-                        RootView()
-                    } else {
-                        WelcomeView()
+            
                     }
                 }
             }
         }
-    }
-}
+
 
 
 struct SignInView_Previews: PreviewProvider {

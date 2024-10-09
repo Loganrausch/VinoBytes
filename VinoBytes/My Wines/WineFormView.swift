@@ -10,7 +10,7 @@ import SwiftUI
 import PhotosUI
 
 struct WineFormView: View {
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) var dismiss
     @Environment(\.managedObjectContext) private var context
 
     var wineEntity: WineEntity?
@@ -232,18 +232,25 @@ struct WineFormView: View {
            
             .navigationBarTitle(wineEntity != nil ? "Edit Wine" : "Add Wine", displayMode: .inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Save") {
-                        saveWine()
+                        // Add "Cancel" button on the leading side
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            Button("Cancel") {
+                                dismiss()
+                            }
+                        }
+                        // Existing "Save" button on the trailing side
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button("Save") {
+                                saveWine()
+                            }
+                            .font(.headline)
+                        }
                     }
-                    .font(.headline)
+                    .accentColor(.latte)
+                    .sheet(isPresented: $isShowingImagePicker, onDismiss: loadImage) {
+                        ImagePicker(selectedImage: $selectedImage)
+                    }
                 }
-            }
-        
-        .sheet(isPresented: $isShowingImagePicker, onDismiss: loadImage) {
-            ImagePicker(selectedImage: $selectedImage)
-        }
-    }
 
     private func saveWine() {
         let wineToSave = wineEntity ?? WineEntity(context: context)
@@ -269,15 +276,19 @@ struct WineFormView: View {
                 wineToSave.dateAdded = Date()
             }
 
-                    do {
-                        try context.save()
-                                // Force a refresh of all fetched objects
-                                context.refreshAllObjects()
-                                presentationMode.wrappedValue.dismiss()
-                            } catch {
-                                print("Failed to save wine: \(error)")
-                            }
-                        }
+        do {
+               try context.save()
+               print("Context saved successfully.")
+               DispatchQueue.main.async {
+                   print("Attempting to dismiss.")
+                   dismiss()
+                   print("Dismiss called.")
+               }
+           } catch {
+               print("Failed to save wine: \(error)")
+           }
+       }
+    
 
                 private func loadImage() {
                     guard let selectedImage = selectedImage else { return }

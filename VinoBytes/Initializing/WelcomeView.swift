@@ -31,7 +31,7 @@ struct WelcomeView: View {
                         .tag(index)
                 }
             }
-            .tabViewStyle(PageTabViewStyle())
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never)) // Hide default page indicators
             .frame(maxHeight: .infinity) // Ensures the TabView does not take over the entire space
             
             
@@ -51,6 +51,7 @@ struct WelcomeView: View {
                 }
                 
             }
+            
             .edgesIgnoringSafeArea(.bottom) // Ensure the bar extends to the bottom edge
         }
         .edgesIgnoringSafeArea(.all) // Ensure the background goes all the way to the edges
@@ -72,7 +73,7 @@ struct WelcomeScreen: View {
         "My Wines",
         "Library",
         "iCloud Sync",
-        "Get Started"
+        "3 Day Free Trial"
     ]
     
     let sfSymbolNames = [
@@ -96,9 +97,9 @@ struct WelcomeScreen: View {
     ]
     
     let descriptions = [
-        "Access your learning tools and track progress all in one convenient place.",
+        "Access your learning tools all in one convenient place.",
         "Master over 1,800 interactive flashcards.",
-        "Ask questions and get instant answers with our wine chat powered by OpenAI.",
+        "Get instant answers with our wine chat powered by OpenAI.",
         "Log and track the wines you taste for easy reference as you study.",
         "Extensive information on grapes, regions, pairings, flaws and more.",
         "Automatically sync your data with iCloud integration.",
@@ -106,73 +107,83 @@ struct WelcomeScreen: View {
     ]
     
     var body: some View {
-        VStack(alignment: .center, spacing: 10) {
-            Spacer()
-            
-            // Grouped Title and Description
-            VStack(alignment: .center, spacing: 18) {
-                Text(titles[index])
-                    .font(.largeTitle)
-                    .padding(.horizontal)
-                    .multilineTextAlignment(.center)
-                Text(descriptions[index])
-                    .font(.title2)
-                    .padding(.horizontal)
-                    .multilineTextAlignment(.center)
-            }
-            .padding(.bottom, 55) // Adjust spacing between text group and image here
-            
-            Image(systemName: sfSymbolNames[index])
-            
-                .resizable()
-                .scaledToFit()
-                .frame(maxWidth: 250, maxHeight: 250)
-                .symbolRenderingMode(.hierarchical)
-                .foregroundColor(symbolColors[index])
-                .padding()
-                .fontWeight(.thin)
-            
-            // Optional Button for the Last Screen
-            if index == 6 {
-                Button("START!", action: startFreeTrial)
-                    .padding() // Adjust padding as needed for the internal content area
-                    .frame(width: 110, height: 110) // Ensures the button is circular by making width and height equal
-                    .foregroundColor(.maroon)
-                    .font(.title3)
-                    .background(Color.white) // Background color of the button
-                    .clipShape(Circle()) // Clips the background to a circle
-                    .overlay( // Adds a border/stroke
-                        Circle().stroke(Color.lightMaroon, lineWidth: 3) // Adjust color and line width for stroke
-                    )
-                    .shadow(color: .gray, radius: 10, x: 0, y: 4) // Adds a shadow
-                    .padding(.top, 50)
-            }
-            
-            Spacer()
-        }
-        .padding(.bottom, 80)
-        .opacity(contentOpacity)
-                .sheet(isPresented: $isPaywallPresented) {  // This presents the paywall
+            GeometryReader { geometry in
+                VStack(spacing: 0) {  // No spacing to control layout precisely
+                    Spacer()  // Push content to the top
+                    
+                    // Grouped Title and Description
+                    VStack(alignment: .center, spacing: 20) {
+                        Text(titles[index])
+                            .font(.largeTitle)
+                            .padding(.horizontal)
+                            .multilineTextAlignment(.center)
+                        
+                        Text(descriptions[index])
+                            .font(.title2)
+                            .padding(.horizontal)
+                            .multilineTextAlignment(.center)
+                    }
+                    .fixedSize(horizontal: false, vertical: true) // Allow description to expand vertically
+                    .padding(.bottom, 50) // Fixed padding to create space between description and image
+                    
+                    // Image with Fixed Size
+                    Image(systemName: sfSymbolNames[index])
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxWidth: 250, maxHeight: 250)
+                        .symbolRenderingMode(.hierarchical)
+                        .foregroundColor(symbolColors[index])
+                        .padding(.bottom, 20) // Spacing between image and button
+                        .fontWeight(.thin)
+                    
+                   Spacer()
+                    
+                    // "Learn!" Button on the Last Screen
+                    if index == 6 {
+                        Button(action: startFreeTrial) {
+                            Text("Subscribe!")
+                                .bold()
+                                .padding()
+                                .foregroundColor(.maroon)
+                                .font(.title3)
+                                .background(Color.white) // Button background color
+                                .clipShape(RoundedRectangle(cornerRadius: 10)) // Rounded corners
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 10) // Border matching rounded corners
+                                        .stroke(Color.lightMaroon, lineWidth: 2)
+                                )
+                                .shadow(radius: 5)
+                        }
+                        .padding(.bottom, 30) // Padding from the bottom edge
+                    } else {
+                        // Reserve space for the button to maintain layout consistency
+                        Rectangle()
+                            .fill(Color.clear)
+                            .frame(height: 70) // Same height as the "Learn!" button + padding
+                    }
+                }
+                .frame(width: geometry.size.width, height: geometry.size.height) // Ensure full-screen coverage
+                .opacity(contentOpacity)
+                .sheet(isPresented: $isPaywallPresented) {  // Presents the paywall
                     PaywallView()
                 }
-        
-        .onChange(of: isSelected) { _, newValue in
-            if newValue == index {
-                fadeIn()
-            } else {
-                fadeOut()
+                .onChange(of: isSelected) { _, newValue in
+                    if newValue == index {
+                        fadeIn()
+                    } else {
+                        fadeOut()
+                    }
+                }
+                .onAppear {
+                    if isSelected == index {
+                        fadeIn()
+                    }
+                }
             }
         }
-        
-        .onAppear {
-            if isSelected == index {
-                fadeIn()
-            }
-        }
-    }
     
     private func fadeIn() {
-        withAnimation(.easeInOut(duration: 1.5)) {
+        withAnimation(.easeInOut(duration: 1.2)) {
             contentOpacity = 1.0
         }
     }
