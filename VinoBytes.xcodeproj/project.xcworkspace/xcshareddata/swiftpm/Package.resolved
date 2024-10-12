@@ -1,6 +1,24 @@
 {
-  "originHash" : "fbdec518f66720abc9cceef1ea36ee3229c4faa09fdcfd36f45e77839c989f98",
+  "originHash" : "0d3624f36ce24ca6c611fff5c7fb59e1f339845e92c5645332f753c1cd2f321e",
   "pins" : [
+    {
+      "identity" : "markdownui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/gonzalezreal/MarkdownUI.git",
+      "state" : {
+        "revision" : "55441810c0f678c78ed7e2ebd46dde89228e02fc",
+        "version" : "2.4.0"
+      }
+    },
+    {
+      "identity" : "networkimage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/gonzalezreal/NetworkImage",
+      "state" : {
+        "revision" : "7aff8d1b31148d32c5933d75557d42f6323ee3d1",
+        "version" : "6.0.0"
+      }
+    },
     {
       "identity" : "purchases-ios",
       "kind" : "remoteSourceControl",

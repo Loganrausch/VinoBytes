@@ -113,7 +113,7 @@ struct StudyView: View {
                 .navigationBarItems(
                     leading:
                         NavigationLink(destination: SessionListView()) {
-                            Image(systemName: "list.bullet")
+                            Text("History")
                                 .font(.headline)
                                 .foregroundColor(.latte)
                         },

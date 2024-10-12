@@ -15,7 +15,7 @@ class OpenAIManager: ObservableObject {
     private let context: NSManagedObjectContext
     
     // System message to set context for the assistant
-    private let systemMessage = ["role": "system", "content": "You are a wine expert assistant. Answer all questions with a focus on wine and wine education. Provide detailed information about wine regions, grape varieties, wine tasting notes, and wine production methods."]
+    private let systemMessage = ["role": "system", "content": "You are a wine expert assistant. Answer all questions with a focus on wine and wine education. Be concise and informative."]
     
     init(context: NSManagedObjectContext) {
         self.context = context
@@ -70,7 +70,7 @@ class OpenAIManager: ObservableObject {
         
         let body: [String: Any] = [
             "messages": [systemMessage] + modifiedContext + [["role": "user", "content": text]],
-            "max_tokens": 500
+            "max_tokens": 1000
         ]
         
         do {

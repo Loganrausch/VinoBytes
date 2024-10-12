@@ -12,6 +12,7 @@ import RevenueCatUI
 struct WelcomeView: View {
     @State private var selectedTab = 0
     let totalTabs = 7
+    @EnvironmentObject var authViewModel: AuthViewModel
     
     var body: some View {
         VStack(spacing: 10) {
@@ -25,14 +26,14 @@ struct WelcomeView: View {
             
             
             // Tab View Content
-            TabView(selection: $selectedTab) {
-                ForEach(0..<7) { index in
-                    WelcomeScreen(index: index, isSelected: $selectedTab)
-                        .tag(index)
-                }
-            }
-            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never)) // Hide default page indicators
-            .frame(maxHeight: .infinity) // Ensures the TabView does not take over the entire space
+                       TabView(selection: $selectedTab) {
+                           ForEach(0..<7) { index in
+                               WelcomeScreen(index: index, isSelected: $selectedTab)
+                                   .tag(index)
+                           }
+                       }
+                       .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                       .frame(maxHeight: .infinity)
             
             
             // Bottom Navigation Bar with Custom Page Indicator
@@ -54,7 +55,9 @@ struct WelcomeView: View {
             
             .edgesIgnoringSafeArea(.bottom) // Ensure the bar extends to the bottom edge
         }
+        .background(Color.lightLatte)
         .edgesIgnoringSafeArea(.all) // Ensure the background goes all the way to the edges
+        
     }
 }
 
@@ -64,9 +67,13 @@ struct WelcomeScreen: View {
     @Binding var isSelected: Int
     @State private var contentOpacity = 0.0
     @State private var isPaywallPresented = false  // State to control the presentation of the paywall
+    @State private var isLoading = false
+    @State private var restoreSuccess = false
+    @EnvironmentObject var authViewModel: AuthViewModel
     
     // Arrays to hold your content data
     let titles = [
+       
         "Dashboard",
         "Flashcards",
         "Vino Chat",
@@ -77,6 +84,7 @@ struct WelcomeScreen: View {
     ]
     
     let sfSymbolNames = [
+        
         "chart.bar.doc.horizontal",        // Dashboard
         "square.3.layers.3d.top.filled",         // Flashcards
         "bubble.left.and.bubble.right", // Vino Chat
@@ -87,6 +95,7 @@ struct WelcomeScreen: View {
     ]
     
     let symbolColors = [
+        
         Color.lightMaroon,      // Dashboard
         Color.lightMaroon,    // Flashcards
         Color.lightMaroon,    // Vino Chat
@@ -97,13 +106,14 @@ struct WelcomeScreen: View {
     ]
     
     let descriptions = [
+       
         "Access your learning tools all in one convenient place.",
         "Master over 1,800 interactive flashcards.",
         "Get instant answers with our wine chat powered by OpenAI.",
         "Log and track the wines you taste for easy reference as you study.",
         "Extensive information on grapes, regions, pairings, flaws and more.",
         "Automatically sync your data with iCloud integration.",
-        "Experience the best in wine education!"
+        "Experience the best in wine education."
     ]
     
     var body: some View {
@@ -115,11 +125,13 @@ struct WelcomeScreen: View {
                     VStack(alignment: .center, spacing: 20) {
                         Text(titles[index])
                             .font(.largeTitle)
+                            .foregroundColor(.black)
                             .padding(.horizontal)
                             .multilineTextAlignment(.center)
                         
                         Text(descriptions[index])
                             .font(.title2)
+                            .foregroundColor(.black)
                             .padding(.horizontal)
                             .multilineTextAlignment(.center)
                     }
@@ -144,17 +156,40 @@ struct WelcomeScreen: View {
                             Text("Subscribe!")
                                 .bold()
                                 .padding()
-                                .foregroundColor(.maroon)
-                                .font(.title3)
-                                .background(Color.white) // Button background color
-                                .clipShape(RoundedRectangle(cornerRadius: 10)) // Rounded corners
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 10) // Border matching rounded corners
-                                        .stroke(Color.lightMaroon, lineWidth: 2)
-                                )
+                                .foregroundColor(.latte)
+                                .font(.headline)
+                                .background(Color.lightMaroon) // Button background color
+                                .cornerRadius(10) // Rounded corners
                                 .shadow(radius: 5)
                         }
-                        .padding(.bottom, 30) // Padding from the bottom edge
+                        
+                        Spacer()
+                        
+                        if isLoading {
+                            ProgressView("Restoring Purchase...")
+                        } else {
+                            Button(action: restorePurchases) {
+                                Text("Restore Purchase")
+                                    .bold()
+                                    .padding()
+                                    .foregroundColor(.lightMaroon)
+                                    .font(.headline)
+                                    
+                                    
+                            }
+                        }
+                        
+                        if let errorMessage = authViewModel.errorMessage {
+                            Text(errorMessage)
+                                .foregroundColor(.red)
+                                .multilineTextAlignment(.center)
+                                .padding()
+                        } else if restoreSuccess {
+                            Text("Purchases restored successfully!")
+                                .foregroundColor(.lightMaroon)
+                                .padding()
+                        }
+                        
                     } else {
                         // Reserve space for the button to maintain layout consistency
                         Rectangle()
@@ -181,6 +216,14 @@ struct WelcomeScreen: View {
                 }
             }
         }
+    
+    private func restorePurchases() {
+           isLoading = true
+           authViewModel.restorePurchases { success in
+               isLoading = false
+               restoreSuccess = success
+           }
+       }
     
     private func fadeIn() {
         withAnimation(.easeInOut(duration: 1.2)) {

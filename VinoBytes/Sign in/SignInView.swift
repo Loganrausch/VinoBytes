@@ -6,76 +6,85 @@
 //
 
 import SwiftUI
+import AuthenticationServices
 
 struct SignInView: View {
-    @EnvironmentObject var viewModel: SignInWithAppleViewModel
-    @EnvironmentObject var subscriptionManager: SubscriptionManager // Add this line
-    @State private var showingOnboarding = false
-
+    @EnvironmentObject var authViewModel: AuthViewModel
+    
     var body: some View {
         NavigationView {
             ZStack {
-                Color("Latte") // Replace with any Color or custom color defined in your assets
-                    .edgesIgnoringSafeArea(.all) // Make sure it covers the entire screen
                 
-                VStack(spacing: 20) {
-                    Spacer()
-                    
-                    // Icon Image
-                        Image("vinobytes_logo_final") // Use a system icon or your custom image
-                        .resizable() // Makes the image resizable
-                        .frame(width: 120, height: 120) // Set the desired size
-                        .padding(.bottom, 20)
-                       
-                    
-                    Text("Welcome to VinoBytes")
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .padding(.bottom, 30)
-                    
-                  
-                    
-                    SignInWithAppleButtonView(
-                        onRequest: { request in
-                            // Additional request configurations if needed
-                            // For example, request.email = true, etc.
-                        },
-                        onCompletion: { result in
-                            switch result {
-                            case .success(let authorization):
-                                viewModel.handleSignIn(authorization: authorization)
-                            case .failure(let error):
-                                viewModel.handleError(error)
+                
+                if authViewModel.isLoading {
+                    ProgressView("Signing In...")
+                        .progressViewStyle(CircularProgressViewStyle())
+                } else {
+                    VStack(spacing: 20) {
+                        Spacer()
+                        
+                        // Logo
+                        Image("vinobytes_logo_final")
+                            .resizable()
+                            .frame(width: 120, height: 120)
+                            .padding(.bottom, 10)
+                        
+                        // Welcome Text
+                        Text("VinoBytes")
+                            .font(.title)
+                            .foregroundColor(.black)
+                            .fontWeight(.bold)
+                            .padding(.bottom, 1)
+                        
+                        
+                        // Welcome Text
+                        Text("Wine Education in Small Bytes")
+                            .font(.body)
+                            .foregroundColor(.black)
+                            
+                            .padding(.bottom, 40)
+                        
+                        // Sign In with Apple Button
+                        SignInWithAppleButton(
+                            .signIn,
+                            onRequest: { request in
+                                request.requestedScopes = [.fullName, .email]
+                            },
+                            onCompletion: { result in
+                                switch result {
+                                case .success(let authorization):
+                                    authViewModel.handleSignIn(authorization: authorization)
+                                case .failure(let error):
+                                    authViewModel.handleSignInError(error)
+                                }
                             }
+                        )
+                        .signInWithAppleButtonStyle(.black)
+                        .frame(width: 200, height: 50)
+                        
+                        // Error Message
+                        if let errorMessage = authViewModel.errorMessage {
+                            Text(errorMessage)
+                                .foregroundColor(.red)
+                                .multilineTextAlignment(.center)
+                                .padding()
                         }
-                    )
-                    .frame(width: 200, height: 50)
-                    
-                    
-                    if let errorMessage = viewModel.errorMessage {
-                        Text(errorMessage)
-                            .foregroundColor(.red)
-                            .multilineTextAlignment(.center)
-                            .padding()
+                        
+                        Spacer()
                     }
-                    
-                    Spacer()
-                }
-                
-                .padding()
-                .navigationBarHidden(true)
-            
-                    }
+                    .padding()
+                    .navigationBarHidden(true)
                 }
             }
+            .preferredColorScheme(.light)
         }
-
+    }
+}
 
 
 struct SignInView_Previews: PreviewProvider {
     static var previews: some View {
         SignInView()
-            .environmentObject(SignInWithAppleViewModel()) // Mock ViewModel for preview
-            .environmentObject(SubscriptionManager())      // Mock SubscriptionManager for preview
+            .environmentObject(AuthViewModel())
     }
 }

@@ -16,85 +16,177 @@ struct WineDetailView: View {
     @State private var isEditing = false
     
     var body: some View {
-        Form {
-            if let imageData = wineEntity.imageData, let uiImage = UIImage(data: imageData) {
-                Section(header: Text("Wine Image")) {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 16) {
+                
+            
+                // Header: Vintage, Producer, Wine Name
+                VStack(alignment: .leading, spacing: 5) {
+                    Text("\(wineEntity.vintage ?? "Year Unknown") \(wineEntity.producer ?? "Unknown Producer") \(wineEntity.wineName ?? "Unnamed Wine")")
+                        .font(.title)
+                        .fontWeight(.bold)
+                    
+                    
+                        Text("Grape: \(wineEntity.grape ?? "Not Listed")")
+                            .font(.subheadline)
+                           
+                 
+                    
+                    if let region = wineEntity.region, !region.isEmpty {
+                        Text(region)
+                            .font(.subheadline)
+                            
+                    }
+                }
+                .padding(.horizontal)
+                
+                Divider()
+                
+                // Tasting Notes Section
+                CardView {
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("Tasting Notes")
+                            .font(.headline)
+                            .foregroundColor(.primary)
+                        
+                        HStack(alignment: .top, spacing: 16) {
+                            // Sight Information
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text("Sight:")
+                                    .font(.subheadline)
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.secondary)
+                                Text(wineEntity.sight ?? "N/A")
+                                    .font(.body)
+                            }
+                        }
+                        
+                        // Smell / Taste Information
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text("Nose / Palate:")
+                                .font(.subheadline)
+                                .fontWeight(.semibold)
+                                .foregroundColor(.secondary)
+                            Text(wineEntity.smellTaste ?? "N/A")
+                                .font(.body)
+                        }
+                    }
+                }
+                
+                Divider()
+                
+                // Structure Section
+                CardView {
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("Structure")
+                            .font(.headline)
+                            .foregroundColor(.primary)
+                        
+                        HStack(alignment: .top, spacing: 16) {
+                            VStack(alignment: .leading, spacing: 4) {
+                                if let acid = wineEntity.acid {
+                                    Text("Acid:")
+                                        .font(.subheadline)
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(.secondary)
+                                    Text(acid)
+                                        .font(.body)
+                                }
+                                
+                                if let alcohol = wineEntity.alcohol {
+                                    Text("Alcohol:")
+                                        .font(.subheadline)
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(.secondary)
+                                    Text(alcohol)
+                                        .font(.body)
+                                }
+                            }
+                            Spacer()
+                            VStack(alignment: .leading, spacing: 4) {
+                                if let body = wineEntity.structureBody {
+                                    Text("Body:")
+                                        .font(.subheadline)
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(.secondary)
+                                    Text(body)
+                                        .font(.body)
+                                }
+                                
+                                if let sweetness = wineEntity.sweetness {
+                                    Text("Sweetness:")
+                                        .font(.subheadline)
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(.secondary)
+                                    Text(sweetness)
+                                        .font(.body)
+                                }
+                            }
+                        }
+                        
+                        if wineEntity.wineType == "Red" || wineEntity.wineType == "Orange" || wineEntity.wineType == "Fortified" {
+                            if let tannin = wineEntity.tannin {
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text("Tannin:")
+                                        .font(.subheadline)
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(.secondary)
+                                    Text(tannin)
+                                        .font(.body)
+                                }
+                            }
+                        } else {
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text("Tannin:")
+                                    .font(.subheadline)
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.secondary)
+                                Text("Typically minimal for selected type.")
+                                    .font(.body)
+                                    .italic()
+                            }
+                        }
+                    }
+                }
+                
+                Divider()
+                
+                // Final Thoughts
+                CardView {
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("Final Thoughts")
+                            .font(.headline)
+                        Text(wineEntity.finalThoughts ?? "No additional thoughts.")
+                            .font(.body)
+                            .padding(.bottom)
+                    }
+                }
+                
+                // Rating
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Rating")
+                        .font(.headline)
+                    StarRatingDisplayView(rating: Int(wineEntity.rating))
+                }
+                .padding(.horizontal)
+                
+                Divider()
+                
+                // Wine Image
+                if let imageData = wineEntity.imageData, let uiImage = UIImage(data: imageData) {
                     Image(uiImage: uiImage)
                         .resizable()
                         .scaledToFit()
+                        .frame(maxWidth: .infinity)
+                        .cornerRadius(10)
+                        .shadow(radius: 5)
+                        .padding(.horizontal)
                 }
+                
             }
-            
-            Section(header: Text("Wine Type")) {
-                Text(wineEntity.wineType ?? "Not Specified")  // Display the wine type
-            }
-            
-            Section(header: Text("Vintage")) {
-                // Directly display the vintage as it's already a string. No need for String() conversion.
-                Text(wineEntity.vintage ?? "Not specified") // Provide a fallback in case of nil
-            }
-            
-            Section(header: Text("Producer")) {
-                // Display the producer, handle nil with a fallback to an empty string or placeholder
-                Text(wineEntity.producer ?? "Unknown Producer")
-            }
-            
-            Section(header: Text("Wine Name")) {
-                // Display the wine name, handle nil similarly
-                Text(wineEntity.wineName ?? "Unnamed Wine")
-            }
-            
-            Section(header: Text("Region")) {
-                Text(wineEntity.region ?? "")
-            }
-            
-            Section(header: Text("Grape")) {
-                Text(wineEntity.grape ?? "")
-            }
-            
-            Section(header: Text("Sight")) {
-                Text(wineEntity.sight ?? "")
-            }
-            
-            Section(header: Text("Smell / Taste")) {
-                Text(wineEntity.smellTaste ?? "")
-            }
-            
-            Section(header: Text("Structure")) {
-                VStack(alignment: .leading) {
-                    if let acid = wineEntity.acid {
-                        Text("Acid: \(acid)")
-                    }
-                    if let alcohol = wineEntity.alcohol {
-                        Text("Alcohol: \(alcohol)")
-                    }
-                    if let body = wineEntity.structureBody {
-                        Text("Body: \(body)")
-                    }
-                    if let sweetness = wineEntity.sweetness {
-                        Text("Sweetness: \(sweetness)")
-                    }
-                    // Display tannin information or a message regarding its typical minimal presence
-                    if wineEntity.wineType == "Red" || wineEntity.wineType == "Orange" || wineEntity.wineType == "Fortified" {
-                        if let tannin = wineEntity.tannin {
-                            Text("Tannin: \(tannin)")
-                        }
-                    } else {
-                        // Display a message for other wine types
-                        Text("Tannin: Typically minimal for selected type.")
-                    }
-                }
-            }
-            
-            Section(header: Text("Rating")) {
-                StarRatingDisplayView(rating: Int(wineEntity.rating))
-            }
-            
-            Section(header: Text("Final Thoughts")) {
-                Text(wineEntity.finalThoughts ?? "")
-            }
+            .padding(.vertical)
         }
-        .navigationTitle("Details")
+        .navigationTitle("Wine Details")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("Edit") {
@@ -102,21 +194,12 @@ struct WineDetailView: View {
                 }
             }
         }
-        
-        
         .sheet(isPresented: $isEditing) {
             NavigationView {
                 WineFormView(wineEntity: wineEntity)
-                
             }
+            .preferredColorScheme(.light) // Apply light mode to the entire view
         }
-    }
-    
-}
-
-struct WineDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        WineDetailView(wineEntity: WineEntity()) // Assuming a default initializable context or mock
+        
     }
 }
-

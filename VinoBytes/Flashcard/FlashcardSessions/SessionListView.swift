@@ -38,7 +38,7 @@ struct SessionListView: View {
                 .onDelete(perform: deleteSessions) // Add this line
             }
         }
-        .navigationTitle("Sessions")
+        .navigationTitle("History")
         .onAppear {
             sessions = sessionManager.fetchPastSessions()
         }

@@ -12,7 +12,7 @@ import CoreData
 import CloudKit
 
 enum ActiveAlert: Identifiable {
-    case resetWines, resetConversations, resetFlashcardSessions, iCloudEnabled, iCloudDisabled
+    case resetWines, resetConversations, resetFlashcardSessions, iCloudEnabled, iCloudDisabled, logout
 
     var id: Int {
         hashValue
@@ -33,6 +33,9 @@ struct AccountView: View {
     @Environment(\.managedObjectContext) private var viewContext  // Core Data context
     @ObservedObject var refreshNotifier: RefreshNotifier  // Add this line
     @EnvironmentObject var openAIManager: OpenAIManager  // Access from environment
+    @EnvironmentObject var authViewModel: AuthViewModel  // Access AuthViewModel
+    @Environment(\.openURL) var openURL
+
     
     var appVersion: String {
             // Fetching the app version and build number from the Info.plist
@@ -70,24 +73,6 @@ struct AccountView: View {
                         ShareSheet(activityItems: ["Check out this awesome wine app: VinoBytes! You can download it here: https://apps.apple.com/us/app/vinobytes/id6736579105"])
                     }
                     
-                    Button(action: {
-                        handleICloudSyncInfo(showAlert: true)  // User-initiated check
-                    }) {
-                        HStack {
-                            Text("iCloud Sync")
-                            Spacer()
-                            if isCheckingICloud {
-                                ProgressView()
-                            } else if isICloudAvailable {
-                                Image(systemName: "checkmark.circle")
-                                    .foregroundColor(.green)
-                            } else {
-                                Image(systemName: "xmark.circle")
-                                    .foregroundColor(.red)
-                            }
-                        }
-                    }
-                    
                     // Updated "Rate VinoBytes App" Button
                                        Button("Rate VinoBytes App") {
                                            requestAppReview()
@@ -121,21 +106,57 @@ struct AccountView: View {
                 Section(header: Text("Legal")
                     .font(.headline)
                     .foregroundColor(.black)
-                   
-                        
-                
                 ) {
-                    
-                    NavigationLink(destination: LegalDocumentView(documentTitle: "Privacy Policy", documentText: privacyPolicyText)) {
+                    Button(action: {
+                        if let url = URL(string: "https://vinobytes.com/privacy-policy") {
+                            openURL(url)
+                        }
+                    }) {
                         Text("Privacy Policy")
                     }
-                    NavigationLink(destination: LegalDocumentView(documentTitle: "Terms and Conditions", documentText: termsAndConditionsText)) {
+                    
+                    Button(action: {
+                        if let url = URL(string: "https://vinobytes.com/terms-and-conditions") {
+                            openURL(url)
+                        }
+                    }) {
                         Text("Terms and Conditions")
                     }
-                    
                 }
-                
                 .accentColor(Color.black) // Applying custom accent color locally to these buttons
+                
+                // New Account Section
+                    Section(header: Text("Account")
+                    .font(.headline)
+                    .foregroundColor(.black)) {
+                        
+                        
+                        Button(action: {
+                            handleICloudSyncInfo(showAlert: true)  // User-initiated check
+                        }) {
+                            HStack {
+                                Text("iCloud Sync")
+                                Spacer()
+                                if isCheckingICloud {
+                                    ProgressView()
+                                } else if isICloudAvailable {
+                                    Image(systemName: "checkmark.circle")
+                                        .foregroundColor(.green)
+                                } else {
+                                    Image(systemName: "xmark.circle")
+                                        .foregroundColor(.red)
+                                }
+                            }
+                            .accentColor(Color.black) // Applying custom accent color locally to these buttons
+                        }
+
+                    Button(action: {
+                        activeAlert = .logout
+                    }) {
+                        Text("Log Out")
+                        .foregroundColor(.red)
+                    }
+                }
             }
             
             .padding(.top, 15)
@@ -207,7 +228,7 @@ struct AccountView: View {
                                 message: Text("Your data has been successfully synchronized with iCloud."),
                                 dismissButton: .default(Text("OK"))
                             )
-                        case .iCloudDisabled:
+            case .iCloudDisabled:
                             return Alert(
                                 title: Text("iCloud Disabled"),
                                 message: Text("Please enable iCloud in your device settings to use this feature."),
@@ -216,6 +237,15 @@ struct AccountView: View {
                                 }),
                                 secondaryButton: .cancel()
                             )
+            case .logout:
+                                    return Alert(
+                                        title: Text("Log Out"),
+                                        message: Text("Are you sure you want to log out?"),
+                                        primaryButton: .destructive(Text("Log Out")) {
+                                            authViewModel.logout()
+                                        },
+                                        secondaryButton: .cancel()
+                                    )
             }
         }
     }

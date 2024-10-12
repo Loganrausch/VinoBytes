@@ -66,7 +66,7 @@ struct WhiteBackgroundView: View {
                                 .edgesIgnoringSafeArea(.all)
                                 .overlay(
                                     VStack {
-                                        Text("For optimal wine evaluation, use this digital napkin. The white background ensures you see the true color of your wine.")
+                                        Text("For optimal wine evaluation, use this digital napkin as a background. This ensures you see the true colors of your wine.")
                                             .font(.title)
                                             .multilineTextAlignment(.center)
                                             .bold()

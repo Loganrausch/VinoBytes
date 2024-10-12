@@ -9,7 +9,6 @@ import SwiftUI
 
 struct FoodWinePairingsDetailView: View {
     var foodWinePairing: FoodWinePairing
-    @State private var selectedGrape: GrapeDetail?
 
     var body: some View {
         ScrollView {
@@ -32,9 +31,7 @@ struct FoodWinePairingsDetailView: View {
 
                 // Sorting grapes alphabetically by name
                 ForEach(foodWinePairing.grapes.sorted { $0.name < $1.name }, id: \.id) { grape in
-                    Button(action: {
-                        selectedGrape = grape
-                    }) {
+                    NavigationLink(destination: GrapePairingDetailView(grape: grape)) {
                         HStack {
                             Text(grape.name)
                                 .foregroundColor(.primary)
@@ -51,12 +48,10 @@ struct FoodWinePairingsDetailView: View {
             }
             .padding()
             .navigationTitle("Pairing Details")
-            .sheet(item: $selectedGrape) { grape in
-                GrapePairingDetailView(grape: grape)
-            }
         }
     }
 }
+
 
 struct GrapePairingDetailView: View {
     var grape: GrapeDetail
@@ -67,14 +62,14 @@ struct GrapePairingDetailView: View {
                 Text(grape.name)
                     .font(.title)
                     .fontWeight(.bold)
-
+                
                 Text(grape.description)
                     .font(.body)
-
+                
                 Text("Serving Suggestions")
                     .font(.headline)
                     .padding(.top)
-
+                
                 Text("Temperature: \(grape.servingTemperature)")
                 Text("Glass: \(grape.glassType)")
                 Text("Decanting: \(grape.decantingRecommendation)")

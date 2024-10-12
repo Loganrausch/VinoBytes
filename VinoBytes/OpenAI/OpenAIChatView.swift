@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MarkdownUI
 
 struct OpenAIChatView: View {
     @Environment(\.managedObjectContext) private var managedObjectContext
@@ -18,72 +19,72 @@ struct OpenAIChatView: View {
     @State private var isLoading = false
     @State private var scrollViewProxy: ScrollViewProxy?
     @State private var showEndChatAlert = false  // State for showing the end chat alert
-
+    
     var body: some View {
         NavigationView {
             VStack {
-                            if selectedConversation != nil && !openAIManager.messages.isEmpty {
-                                ScrollView {
-                                    ScrollViewReader { proxy in
-                                        VStack {
-                                            ForEach(openAIManager.messages) { message in
-                                                MessageView(message: message)
-                                            }
-                                            if isLoading {
-                                                HStack {
-                                                    WineGlassLoadingView()
-                                                        .scaleEffect(1.5)
-                                                        .padding(.vertical, 10)
-                                                    Spacer()
-                                                }
-                                                .frame(maxWidth: .infinity, alignment: .leading)
-                                                .padding(.horizontal)
-                                            }
-                                        }
-                                        .padding(.top, 20)  // Add padding to the top of the ScrollView content
-                                        .onAppear {
-                                            self.scrollViewProxy = proxy
-                                        }
-                                        .onChange(of: openAIManager.messages.count) { _, _ in
-                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                                                if let lastUserMessage = openAIManager.messages.last(where: { $0.role == "user" }) {
-                                                    proxy.scrollTo(lastUserMessage.id, anchor: .top)
-                                                }
-                                            }
-                                        }
+                if selectedConversation != nil && !openAIManager.messages.isEmpty {
+                    ScrollView {
+                        ScrollViewReader { proxy in
+                            VStack {
+                                ForEach(openAIManager.messages) { message in
+                                    MessageView(message: message)
+                                }
+                                if isLoading {
+                                    HStack {
+                                        WineGlassLoadingView()
+                                            .scaleEffect(1.5)
+                                            .padding(.vertical, 10)
+                                        Spacer()
+                                    }
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(.horizontal)
+                                }
+                            }
+                            .padding(.top, 20)  // Add padding to the top of the ScrollView content
+                            .onAppear {
+                                self.scrollViewProxy = proxy
+                            }
+                            .onChange(of: openAIManager.messages.count) { _, _ in
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                                    if let lastUserMessage = openAIManager.messages.last(where: { $0.role == "user" }) {
+                                        proxy.scrollTo(lastUserMessage.id, anchor: .top)
                                     }
                                 }
-                            } else {
-                                Spacer()
-                                Text("The world of wine, uncorked.")
-                                    .foregroundColor(.gray)
                             }
-                                Spacer()
+                        }
+                    }
+                } else {
+                    Spacer()
+                    Text("The world of wine, uncorked.")
+                        .foregroundColor(.gray)
+                }
+                Spacer()
                 
-                    
+                
                 VStack(spacing: 0) {
-                                    Rectangle()
-                                        .fill(Color("LightMaroon"))
-                                        .frame(height: 2)
-                                        .opacity(0.7)
-                                    
-                                    VStack {
-                                        Spacer(minLength: 0)
-                                        
-                                        Image("OpenAIBadge")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 120, height: 120)
-                                            .padding(.bottom, -25)
-                                            .padding(.top, -30)
-                                        
-                                        Spacer(minLength: 0)
-                                    }
-                                    .frame(maxWidth: .infinity, maxHeight: 70)
-                                    .contentShape(Rectangle())
-                                    .background(Color.clear)
-                                    
-                                    CustomTextField(placeholder: "Ask me anything...", text: $inputText, onSend: {
+                    Rectangle()
+                        .fill(Color("LightMaroon"))
+                        .frame(height: 2)
+                        .opacity(0.7)
+                    
+                    VStack {
+                        Spacer(minLength: 0)
+                        
+                        Image("OpenAIBadge")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 120, height: 120)
+                            .padding(.bottom, -25)
+                            .padding(.top, -30)
+                        
+                        Spacer(minLength: 0)
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: 70)
+                    .contentShape(Rectangle())
+                    .background(Color.clear)
+                    
+                    CustomTextField(placeholder: "Ask me your wine-related questions!", text: $inputText, onSend: {
                         if !inputText.trimmingCharacters(in: .whitespaces).isEmpty {
                             let messageToSend = inputText
                             inputText = ""
@@ -107,17 +108,21 @@ struct OpenAIChatView: View {
                         }
                     })
                     .padding(.horizontal)
-                
+                    
                 }
                 .padding(.bottom, 20) // Adjust padding to account for tab view
-                                .gesture(DragGesture().onEnded { value in
-                                    if value.translation.height > 50 {
-                                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                                    }
-                                })
-                            }
-                            .padding(.horizontal, 0)
-          
+                .gesture(DragGesture().onEnded { value in
+                    if value.translation.height > 50 {
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                    }
+                })
+            }
+            .padding(.horizontal, 0)
+            .contentShape(Rectangle()) // Ensures the gesture area covers the entire VStack
+            .onTapGesture {
+                hideKeyboard()
+            }
+            
             .navigationBarTitle("Vino Chat", displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -130,15 +135,15 @@ struct OpenAIChatView: View {
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                                   Button(action: {
-                                       showEndChatAlert = true
-                                   }) {
-                                       Text("End Chat")
-                                           .foregroundColor(Color("Latte"))
-                                           .font(.headline)
-                                   }
-                               }
-                           }
+                    Button(action: {
+                        showEndChatAlert = true
+                    }) {
+                        Text("End Chat")
+                            .foregroundColor(Color("Latte"))
+                            .font(.headline)
+                    }
+                }
+            }
             .alert(isPresented: $showEndChatAlert) {
                 Alert(
                     title: Text("End Chat"),
@@ -160,14 +165,14 @@ struct OpenAIChatView: View {
                     }
                 )
             }
-                           .sheet(isPresented: $showConversationHistory) {
+            .sheet(isPresented: $showConversationHistory) {
                 ConversationHistoryView()
                     .preferredColorScheme(.light)
             }
         }
         .onAppear(perform: subscribeToKeyboardEvents)
     }
-
+    
     private func subscribeToKeyboardEvents() {
         NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { notification in
             guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
@@ -176,12 +181,17 @@ struct OpenAIChatView: View {
             
             keyboardHeight = keyboardFrame.height - safeAreaInsets
         }
-
+        
         NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { _ in
             keyboardHeight = 0
         }
     }
-}
+    
+    private func hideKeyboard() {
+           UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+       }
+   }
+
 
 struct CustomTextField: View {
     var placeholder: String
@@ -237,22 +247,26 @@ struct MessageView: View {
         }
         .padding(.horizontal)
     }
-
+    
     @ViewBuilder
     private func messageBubble(for content: String, isUser: Bool) -> some View {
         if isUser {
             Spacer()
-            Text(content)
+            Markdown(content)
+                .markdownTheme(.userBubbleTheme)
                 .padding()
-                .background(Color("Maroon").opacity(0.38))  // Adjust opacity as needed
+                .background(Color("Maroon").opacity(0.38))
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .frame(maxWidth: 300, alignment: .trailing)
+                .layoutPriority(1)
         } else {
-            Text(content)
+            Markdown(content)
+                .markdownTheme(.assistantBubbleTheme)
                 .padding()
-                .background(Color.darkLatte)  // Warm Grey color for user messages
+                .background(Color("DarkLatte"))
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .frame(maxWidth: 300, alignment: .leading)
+                .layoutPriority(1)
             Spacer()
         }
     }
@@ -266,3 +280,42 @@ struct OpenAIChatView_Previews: PreviewProvider {
     }
 }
 
+extension Theme {
+    static let userBubbleTheme = Theme()
+        .text {
+            ForegroundColor(.primary)
+            FontSize(16)
+        }
+        .heading1 { configuration in
+            configuration.label
+                .font(.system(size: 24, weight: .bold))
+        }
+        .heading2 { configuration in
+            configuration.label
+                .font(.system(size: 20, weight: .bold))
+        }
+        .paragraph { configuration in
+            configuration.label
+                .font(.system(size: 16))
+        }
+        // Add more customizations as needed
+
+    static let assistantBubbleTheme = Theme()
+        .text {
+            ForegroundColor(.primary)
+            FontSize(16)
+        }
+        .heading1 { configuration in
+            configuration.label
+                .font(.system(size: 24, weight: .bold))
+        }
+        .heading2 { configuration in
+            configuration.label
+                .font(.system(size: 20, weight: .bold))
+        }
+        .paragraph { configuration in
+            configuration.label
+                .font(.system(size: 16))
+        }
+        // Add more customizations as needed
+}

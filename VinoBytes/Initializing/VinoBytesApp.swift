@@ -10,9 +10,8 @@ import RevenueCat
 
 @main
 struct VinoBytesApp: App {
+    @StateObject var authViewModel = AuthViewModel()
     @State private var isShowingLaunchScreen = true
-    @StateObject private var subscriptionManager = SubscriptionManager.shared
-    @StateObject private var signInViewModel = SignInWithAppleViewModel()
     
     init() {
         configureNavigationBar()
@@ -21,23 +20,8 @@ struct VinoBytesApp: App {
     var body: some Scene {
         WindowGroup {
             LaunchingContentView(isShowingLaunchScreen: $isShowingLaunchScreen)
-                .environmentObject(subscriptionManager)
-                .environmentObject(signInViewModel)
-                .onAppear {
-               //      Handle user login with RevenueCat
-                    if let storedUserID = KeychainHelper.retrieve(forKey: "appleUserID") {
-                       signInViewModel.userID = storedUserID
-                        Purchases.shared.logIn(storedUserID) { customerInfo, created, error in
-                            if let error = error {
-                                print("RevenueCat logIn error on app launch: \(error.localizedDescription)")
-                            } else {
-                                print("User logged in with RevenueCat ID on app launch: \(storedUserID), created: \(created)")
-                                signInViewModel.isSignedIn = true
-                            }
-                        }
-                    }
-                }
-                .preferredColorScheme(.light) // Enforce light mode globally
+                .environmentObject(authViewModel)
+            
         }
     }
     

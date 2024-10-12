@@ -14,6 +14,7 @@ struct LaunchScreen: View {
     
     var body: some View {
         ZStack {
+            
             VStack(spacing: 20) {
                 Image("vinobytes_logo_final")
                     .resizable()
@@ -21,16 +22,6 @@ struct LaunchScreen: View {
                     .frame(width: 200, height: 200)
                     .opacity(opacity)  // Use the same opacity for image and text
                 
-                Text("VinoBytes")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .foregroundColor(.primary)
-                    .opacity(opacity)  // Shared opacity for uniform fade-in
-                
-                Text("Wine Education in Small Bytes")
-                    .font(.title3)
-                    .foregroundColor(.primary)
-                    .opacity(opacity)  // Shared opacity for uniform fade-in
             }
             .onAppear {
                 withAnimation(Animation.easeIn(duration: 2)) {
@@ -46,5 +37,6 @@ struct LaunchScreen: View {
                 }
             }
         }
+        .preferredColorScheme(.light) // Apply light mode to the entire view
     }
 }

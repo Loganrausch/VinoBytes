@@ -60,20 +60,6 @@ struct WineFormView: View {
     
     var body: some View {
         Form {
-            Section(header: Text("Wine Image")) {
-                Button(action: {
-                    isShowingImagePicker = true
-                }) {
-                    if let selectedImage = selectedImage {
-                        Image(uiImage: selectedImage)
-                            .resizable()
-                            .scaledToFit()
-                    } else {
-                        Text("Select Image")
-                            .accentColor(Color.blue)
-                    }
-                }
-            }
             
             Section(header: Text("Wine Type")) {
                 Picker("Select Wine Type", selection: $wineType) {
@@ -143,7 +129,7 @@ struct WineFormView: View {
                     .cornerRadius(8)
             }
             
-            Section(header: Text("Smell / Taste")) {
+            Section(header: Text("Nose / Palate")) {
                 TextEditor(text: $smellTaste)
                     .accentColor(Color.lightMaroon) // Set cursor color
                     .frame(minHeight: 100, maxHeight: 200) // Set minimum and maximum height
@@ -228,16 +214,24 @@ struct WineFormView: View {
                     .cornerRadius(8)
             }
             
+            Section(header: Text("Wine Image")) {
+                Button(action: {
+                    isShowingImagePicker = true
+                }) {
+                    if let selectedImage = selectedImage {
+                        Image(uiImage: selectedImage)
+                            .resizable()
+                            .scaledToFit()
+                    } else {
+                        Text("Select Image")
+                            .accentColor(Color.blue)
+                    }
+                }
+            }
         }
            
             .navigationBarTitle(wineEntity != nil ? "Edit Wine" : "Add Wine", displayMode: .inline)
             .toolbar {
-                        // Add "Cancel" button on the leading side
-                        ToolbarItem(placement: .navigationBarLeading) {
-                            Button("Cancel") {
-                                dismiss()
-                            }
-                        }
                         // Existing "Save" button on the trailing side
                         ToolbarItem(placement: .navigationBarTrailing) {
                             Button("Save") {

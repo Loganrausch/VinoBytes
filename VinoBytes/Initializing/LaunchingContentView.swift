@@ -5,43 +5,47 @@
 //  Created by Logan Rausch on 10/6/24.
 //
 
+// LaunchingContentView.swift
+
 import SwiftUI
 
 struct LaunchingContentView: View {
     @Binding var isShowingLaunchScreen: Bool
-    @EnvironmentObject var subscriptionManager: SubscriptionManager
-    @EnvironmentObject var signInViewModel: SignInWithAppleViewModel
-
+    @EnvironmentObject var authViewModel: AuthViewModel
+    
     var body: some View {
         Group {
-                    if isShowingLaunchScreen {
-                        LaunchScreen(isShowingLaunchScreen: $isShowingLaunchScreen)
-                            .environment(\.colorScheme, ColorScheme.light)
-                    } else {
-                        if !signInViewModel.isSignedIn {
-                            SignInView()
-                        } else {
-                            if subscriptionManager.hasActiveSubscription || subscriptionManager.shouldNavigateToRoot {
-                                RootView()
-                                    .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
-                                    .environment(\.colorScheme, ColorScheme.light)
-                            } else {
-                                WelcomeView()
-                            }
-                        }
-                    }
-                }
-                .animation(.easeInOut, value: isShowingLaunchScreen)
-                .animation(.easeInOut, value: signInViewModel.isSignedIn)
-                .animation(.easeInOut, value: subscriptionManager.hasActiveSubscription)
-                .animation(.easeInOut, value: subscriptionManager.shouldNavigateToRoot)  // Observe navigation trigger
-                .onChange(of: subscriptionManager.shouldNavigateToRoot) { newValue, _ in
-                    if newValue {
-                        // Reset the flag after navigation
-                        DispatchQueue.main.async {
-                            subscriptionManager.shouldNavigateToRoot = false
-                        }
-                    }
-                }
+            if isShowingLaunchScreen {
+                LaunchScreen(isShowingLaunchScreen: $isShowingLaunchScreen)
+                    .environment(\.colorScheme, .light)
+            } else if authViewModel.isLoading {
+                // Show a loading indicator while checking authentication and subscription status
+                ProgressView("Loading...")
+            } else {
+                mainContent()
             }
         }
+    }
+    
+    @ViewBuilder
+    private func mainContent() -> some View {
+        if authViewModel.isSignedIn {
+            if authViewModel.hasActiveSubscription {
+                RootView()
+                    .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
+                    .environment(\.colorScheme, .light)
+            } else {
+                WelcomeView()  // For signed-in users without an active subscription
+            }
+        } else {
+            SignInView()  // For users who are not signed in
+        }
+    }
+}
+
+struct LaunchingContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        LaunchingContentView(isShowingLaunchScreen: .constant(true))
+            .environmentObject(AuthViewModel())
+    }
+}

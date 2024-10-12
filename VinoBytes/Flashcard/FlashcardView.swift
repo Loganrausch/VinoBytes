@@ -192,7 +192,7 @@ struct FlashcardView: View {
                                 .foregroundColor(.black)
                                 .multilineTextAlignment(.center)
                             
-                            Text("Swipe **right** if you know the card and **left** if you don't. End the session when you are done to see your results!")
+                            Text("Swipe **right** if you know the card and **left** if you don't. End the session when you are done to save and view your results!")
                                 .font(.title3)
                                 .foregroundColor(.black)
                                 .multilineTextAlignment(.center)

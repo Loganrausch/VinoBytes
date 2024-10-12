@@ -56,7 +56,6 @@ struct ContentView: View {
                 }
                 .tag(4)
         }
-        .preferredColorScheme(.light) // Enforce light mode globally
         .accentColor(Color("Latte"))
     }
     
