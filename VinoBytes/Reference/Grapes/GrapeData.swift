@@ -891,7 +891,7 @@ Grape(
         Grape(
             name: "Gamay",
             details: GrapeDetails(
-                origin: "Gamay, best known for its production in Beaujolais, France, is a light-bodied red wine grape that originated in the Burgundy region but found its true home in Beaujolais, just south of Burgundy.",
+                origin: "Gamay, predominantly associated with Beaujolais, France, is a light-bodied red wine grape that originally hails from the Burgundy region. Although Beaujolais is geographically part of Burgundy, its distinct style often leads enthusiasts to consider it separately.  It was first noted in historical records around the 15th century. However, due to its high yield and the resulting lower quality of wine compared to Pinot Noir, it was less favored by the Duke of Burgundy, Philip the Bold. He famously ordered the uprooting of Gamay vines from the Côte d'Or in 1395, calling it 'a very bad and disloyal plant'. As a result, Gamay became more concentrated in the Beaujolais area, south of the main Burgundy region, where it thrives on the granite-based soils and produces the distinctively fruity and light wines that the area is known for today.",
                 countries: Countries(
                     primary: [
                         "France: Predominantly in Beaujolais and parts of the Loire Valley."

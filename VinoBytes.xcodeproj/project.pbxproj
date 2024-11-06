@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		CE02C5BF2CB363EB00EAAE52 /* VinoBytes.storekit in Resources */ = {isa = PBXBuildFile; fileRef = CE02C5BE2CB363EB00EAAE52 /* VinoBytes.storekit */; };
 		CE02C5C52CB36C8300EAAE52 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE02C5C42CB36C8300EAAE52 /* SignInView.swift */; };
-		CE02C5C72CB371D100EAAE52 /* Keychain Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE02C5C62CB371D100EAAE52 /* Keychain Helper.swift */; };
 		CE02C5C92CB374C200EAAE52 /* LaunchingContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE02C5C82CB374C200EAAE52 /* LaunchingContentView.swift */; };
 		CE0EF5962C18D5ED009CFDCB /* OpenAIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0EF5952C18D5ED009CFDCB /* OpenAIManager.swift */; };
 		CE0EF5982C18D5FF009CFDCB /* OpenAIChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0EF5972C18D5FF009CFDCB /* OpenAIChatView.swift */; };
@@ -104,7 +103,6 @@
 /* Begin PBXFileReference section */
 		CE02C5BE2CB363EB00EAAE52 /* VinoBytes.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = VinoBytes.storekit; sourceTree = "<group>"; };
 		CE02C5C42CB36C8300EAAE52 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
-		CE02C5C62CB371D100EAAE52 /* Keychain Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Keychain Helper.swift"; sourceTree = "<group>"; };
 		CE02C5C82CB374C200EAAE52 /* LaunchingContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchingContentView.swift; sourceTree = "<group>"; };
 		CE0EF5952C18D5ED009CFDCB /* OpenAIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIManager.swift; sourceTree = "<group>"; };
 		CE0EF5972C18D5FF009CFDCB /* OpenAIChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIChatView.swift; sourceTree = "<group>"; };
@@ -281,7 +279,6 @@
 				CE7879F82BA0B18E00CB0E97 /* Flashcard */,
 				CE80C1782B9F4F29004EF540 /* StudyCardModel.xcdatamodeld */,
 				CE7879F72BA0B16200CB0E97 /* My Wines */,
-				CE6ADF392B925ED700982366 /* Persistence.swift */,
 				CE6ADF342B925ED700982366 /* Assets.xcassets */,
 				CE6ADF362B925ED700982366 /* Preview Content */,
 			);
@@ -375,6 +372,7 @@
 				CE35C9B22CA0766800D31200 /* RootView.swift */,
 				CECB7A612BACB69200659CB6 /* WelcomeView.swift */,
 				CE6ADF322B925ED600982366 /* ContentView.swift */,
+				CE6ADF392B925ED700982366 /* Persistence.swift */,
 			);
 			path = Initializing;
 			sourceTree = "<group>";
@@ -441,7 +439,6 @@
 			children = (
 				CE37A4002CB64424009F79CC /* AuthViewModel.swift */,
 				CE02C5C42CB36C8300EAAE52 /* SignInView.swift */,
-				CE02C5C62CB371D100EAAE52 /* Keychain Helper.swift */,
 			);
 			path = "Sign in";
 			sourceTree = "<group>";
@@ -647,7 +644,6 @@
 				CE94AAFE2C0E279F004CE8E0 /* RegionData.swift in Sources */,
 				CE32CDDE2C1CE3FD00A87202 /* WineFlawListView.swift in Sources */,
 				CEF48EA42CB476AE00E29D06 /* SessionDetailView.swift in Sources */,
-				CE02C5C72CB371D100EAAE52 /* Keychain Helper.swift in Sources */,
 				CE83188F2CB23A620030CC98 /* WhiteBackgroundView.swift in Sources */,
 				CE94AAF12C0D3957004CE8E0 /* ReferenceMainView.swift in Sources */,
 				CE94AB0A2C0E3645004CE8E0 /* WineGlossaryDetailView.swift in Sources */,

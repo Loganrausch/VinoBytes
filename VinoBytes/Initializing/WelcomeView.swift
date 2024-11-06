@@ -19,9 +19,19 @@ struct WelcomeView: View {
             // Top Navigation Bar
             HStack {
                 Spacer()
-              
-            }
-            .frame(height: 75) // Standard height for top bars
+                
+                Button(action: {
+                                    selectedTab = totalTabs - 1 // Go to the last tab
+                                }) {
+                                    Text("Skip")
+                                        .foregroundColor(.white)
+                                        .bold()
+                                        .padding(.horizontal)
+                                        .padding(.top, 30)
+                                }
+                            }
+            
+            .frame(height: 80) // Standard height for top bars
             .background(Color("Maroon")) // Replace with your custom maroon color
             
             
@@ -67,8 +77,6 @@ struct WelcomeScreen: View {
     @Binding var isSelected: Int
     @State private var contentOpacity = 0.0
     @State private var isPaywallPresented = false  // State to control the presentation of the paywall
-    @State private var isLoading = false
-    @State private var restoreSuccess = false
     @EnvironmentObject var authViewModel: AuthViewModel
     
     // Arrays to hold your content data
@@ -164,39 +172,38 @@ struct WelcomeScreen: View {
                         }
                         
                         Spacer()
-                        
-                        if isLoading {
-                            ProgressView("Restoring Purchase...")
-                        } else {
-                            Button(action: restorePurchases) {
-                                Text("Restore Purchase")
-                                    .bold()
-                                    .padding()
-                                    .foregroundColor(.lightMaroon)
-                                    .font(.headline)
-                                    
-                                    
-                            }
-                        }
-                        
-                        if let errorMessage = authViewModel.errorMessage {
-                            Text(errorMessage)
-                                .foregroundColor(.red)
-                                .multilineTextAlignment(.center)
-                                .padding()
-                        } else if restoreSuccess {
-                            Text("Purchases restored successfully!")
-                                .foregroundColor(.lightMaroon)
-                                .padding()
-                        }
-                        
-                    } else {
-                        // Reserve space for the button to maintain layout consistency
-                        Rectangle()
-                            .fill(Color.clear)
-                            .frame(height: 70) // Same height as the "Learn!" button + padding
-                    }
-                }
+                                            
+                                            if authViewModel.isLoading {
+                                                ProgressView("Restoring Purchase...")
+                                            } else {
+                                                Button(action: restorePurchases) {
+                                                    Text("Restore Purchase")
+                                                        .bold()
+                                                        .padding()
+                                                        .foregroundColor(.lightMaroon)
+                                                        .font(.headline)
+                                                }
+                                            }
+                                            
+                                            // Display error message or success message based on ViewModel's state
+                                            if let errorMessage = authViewModel.errorMessage {
+                                                Text(errorMessage)
+                                                    .foregroundColor(.red)
+                                                    .multilineTextAlignment(.center)
+                                                    .padding()
+                                            } else if authViewModel.hasActiveSubscription {
+                                                Text("Purchases restored successfully!")
+                                                    .foregroundColor(.lightMaroon)
+                                                    .padding()
+                                            }
+                                            
+                                        } else {
+                                            // Reserve space for the button to maintain layout consistency
+                                            Rectangle()
+                                                .fill(Color.clear)
+                                                .frame(height: 70) // Same height as the "Learn!" button + padding
+                                        }
+                                    }
                 .frame(width: geometry.size.width, height: geometry.size.height) // Ensure full-screen coverage
                 .opacity(contentOpacity)
                 .sheet(isPresented: $isPaywallPresented) {  // Presents the paywall
@@ -218,11 +225,7 @@ struct WelcomeScreen: View {
         }
     
     private func restorePurchases() {
-           isLoading = true
-           authViewModel.restorePurchases { success in
-               isLoading = false
-               restoreSuccess = success
-           }
+        authViewModel.restorePurchases()
        }
     
     private func fadeIn() {

@@ -10,12 +10,12 @@ import AuthenticationServices
 
 struct SignInView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
+    @Environment(\.openURL) var openURL  // Environment value to handle URL opening
+    
     
     var body: some View {
         NavigationView {
             ZStack {
-                
-                
                 if authViewModel.isLoading {
                     ProgressView("Signing In...")
                         .progressViewStyle(CircularProgressViewStyle())
@@ -36,12 +36,10 @@ struct SignInView: View {
                             .fontWeight(.bold)
                             .padding(.bottom, 1)
                         
-                        
-                        // Welcome Text
+                        // Tagline
                         Text("Wine Education in Small Bytes")
                             .font(.body)
                             .foregroundColor(.black)
-                            
                             .padding(.bottom, 40)
                         
                         // Sign In with Apple Button
@@ -71,6 +69,24 @@ struct SignInView: View {
                         }
                         
                         Spacer()
+                        // Links for Privacy Policy and Terms and Conditions
+                        HStack {
+                            Button("Privacy Policy") {
+                                // Action to show Privacy Policy
+                                openURL(URL(string: "https://vinobytes.com/privacy-policy")!)
+                            }
+                            .foregroundColor(.black)
+                            
+                            Text("|")
+                                .foregroundColor(.gray)
+                            
+                            Button("Terms and Conditions") {
+                                // Action to show Terms and Conditions
+                                openURL(URL(string: "https://vinobytes.com/terms-and-conditions")!)
+                            }
+                            .foregroundColor(.black)
+                        }
+                        .padding()
                     }
                     .padding()
                     .navigationBarHidden(true)
@@ -80,7 +96,6 @@ struct SignInView: View {
         }
     }
 }
-
 
 struct SignInView_Previews: PreviewProvider {
     static var previews: some View {

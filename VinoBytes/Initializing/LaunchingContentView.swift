@@ -14,20 +14,22 @@ struct LaunchingContentView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
     
     var body: some View {
-       
-        if isShowingLaunchScreen {
-            LaunchScreen(isShowingLaunchScreen: $isShowingLaunchScreen)
-                .environment(\.colorScheme, .light)
-        } else if authViewModel.isLoading || authViewModel.isFetchingSubscription {
+        Group {
+            if isShowingLaunchScreen {
+                LaunchScreen(isShowingLaunchScreen: $isShowingLaunchScreen)
+                    .environment(\.colorScheme, .light)
+            } else if authViewModel.isLoading {
                 // Show a loading indicator while checking authentication and subscription status
                 ProgressView("Loading...")
+                    .progressViewStyle(CircularProgressViewStyle())
             } else {
-                mainContent()
+                mainContent
             }
+        }
     }
     
     @ViewBuilder
-    private func mainContent() -> some View {
+    private var mainContent: some View {
         if authViewModel.isSignedIn {
             if authViewModel.hasActiveSubscription {
                 RootView()
