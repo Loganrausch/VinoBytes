@@ -23,26 +23,47 @@ struct WhiteBackgroundView: View {
     var body: some View {
         ZStack {
             VStack {
-                
-                Capsule()
-                                    .frame(width: 60, height: 6)
-                                    .foregroundColor(.secondary)
-                                    .padding(10)
-                
-                Spacer() // This will push everything below it down.
-                
-                
+                // Top bar with capsule and info button
+                HStack {
+                    Spacer()
+                    
+                    Capsule()
+                        .frame(width: 60, height: 6)
+                        .foregroundColor(.secondary)
+                        .padding(.leading)
+
+                    Spacer()
+
+                    Button(action: {
+                        showMessage = true
+                    }) {
+                        Image(systemName: "info.circle")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                            .foregroundColor(.lightMaroon)
+                    }
+                    .padding(.trailing, 16)
+                }
+                .padding(.top, 12)
+
+                Spacer() // Pushes content down
 
                 CustomSlider(value: $brightness, range: 0...1, thumbColor: .lightMaroon)
                     .frame(width: 300, height: 44)
                     .onChange(of: brightness) { newValue, _ in
                         UIScreen.main.brightness = newValue
                     }
-                    .padding(.bottom, 50)
+                Text("Caution: Keep your glass at a safe distance to avoid spills on your device.")
+                    .font(.body)
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.maroon)
+                    .bold()
+                    .background(Color.clear.opacity(0.5))
+                    .cornerRadius(10)
+                    .padding(.bottom, 30)
             }
             .background(Color.white)
             .edgesIgnoringSafeArea(.all)
-            
             .overlay(
                 Image("Napkin_Texture")
                     .resizable()
@@ -52,53 +73,52 @@ struct WhiteBackgroundView: View {
                     .allowsHitTesting(false)
             )
             .onAppear {
-                // Store the current brightness when the view appears
                 originalBrightness = UIScreen.main.brightness
             }
             .onDisappear {
-                // Restore the original brightness when the view disappears
                 UIScreen.main.brightness = originalBrightness
             }
 
             // Conditionally show a dimmed overlay with a message
             if showMessage {
-                            Color.black.opacity(0.6)
-                                .edgesIgnoringSafeArea(.all)
-                                .overlay(
-                                    VStack {
-                                        Text("For optimal wine evaluation, use this digital napkin as a background. This ensures you see the true colors of your wine.")
-                                            .font(.title)
-                                            .multilineTextAlignment(.center)
-                                            .bold()
-                                            .foregroundColor(.white)
-                                            .padding()
-                                            .background(Color.clear.opacity(0.8))
-                                            .cornerRadius(10)
-                                            .padding()
-
-                                        
-                                        Text("Tap anywhere to continue")
-                                            .font(.title2)
-                                            .foregroundColor(.white)
-                                            .bold()
-                                            .padding()
-                                            .background(Color.clear.opacity(0.5))
-                                            .cornerRadius(10)
-                                            .padding()
-                                    }
-                                )
-                                .onTapGesture {
-                                    showMessage = false
-                                    UserDefaults.standard.set(true, forKey: "hasShownMessage")
-                                }
+                Color.black.opacity(0.6)
+                    .edgesIgnoringSafeArea(.all)
+                    .overlay(
+                        VStack {
+                            Text("For accurate wine assessment, use this digital napkin as a backdrop to observe your wine’s true color.")
+                                .font(.title)
+                                .multilineTextAlignment(.center)
+                                .bold()
+                                .foregroundColor(.latte)
+                                .padding()
+                                .background(Color.clear.opacity(0.8))
+                                .cornerRadius(10)
+                                .padding()
+                            
+                    
+                            
+                            Text("Tap anywhere to continue")
+                                .font(.title2)
+                                .foregroundColor(.latte)
+                                .bold()
+                                .padding()
+                                .background(Color.clear.opacity(0.5))
+                                .cornerRadius(10)
+                                .padding()
                         }
+                    )
+                    .onTapGesture {
+                        showMessage = false
+                        UserDefaults.standard.set(true, forKey: "hasShownMessage")
                     }
-        .preferredColorScheme(.light) // Enforce light mode
-                }
             }
+        }
+        .preferredColorScheme(.light)
+    }
+}
 
-            struct WhiteBackgroundView_Previews: PreviewProvider {
-                static var previews: some View {
-                    WhiteBackgroundView()
-                }
-            }
+struct WhiteBackgroundView_Previews: PreviewProvider {
+    static var previews: some View {
+        WhiteBackgroundView()
+    }
+}

@@ -34,38 +34,37 @@ struct RegionData {
         Country(name: "France", regions: [
                     
             Region(
-                        name: "Bordeaux",
-                        details: "Bordeaux is renowned for its storied winemaking history and pivotal role in the global wine market, with a heritage that traces back to Roman times. The region is geographically divided by the Gironde Estuary into the Left Bank and Right Bank, cultivating diverse wine styles influenced by their distinct terroirs. The Left Bank is noted for structured, tannic wines from Cabernet Sauvignon, whereas the Right Bank offers softer, Merlot-based wines that are often more approachable at a younger age.",
-                        subregions: [
-                            "Left Bank: Famous for Cabernet Sauvignon-dominant wines with notable appellations including Médoc, Margaux, Pauillac, Saint-Julien, and Saint-Estèphe.\n",
-                            "Right Bank: Dominated by Merlot, this area features celebrated regions like Saint-Émilion and Pomerol.\n",
-                            "Graves (Left Bank): Distinct for both its sophisticated red wines and premium dry white wines predominantly from Sauvignon Blanc and Sémillon. Sauternes, a subregion within Graves, is globally acclaimed for its exceptional sweet wines, crafted from grapes affected by Botrytis cinerea, or noble rot.\n",
-                            "Entre-Deux-Mers: Situated between the Garonne and Dordogne rivers, this area is primarily recognized for its crisp and aromatic white wines made from Sauvignon Blanc, Sémillon, and Muscadelle."
-                        ],
-                        
-                        
-                        climate: "Bordeaux's maritime climate, moderated by the Atlantic Ocean and the Gironde Estuary, ensures a temperate environment ideal for viticulture, with a long growing season critical for the complex maturation of grapes.",
-                        soil: [
-                            "Left Bank: Deep gravel, good for Cabernet Sauvignon, reflects sunlight and retains heat aiding in ripening, while adding minerality and structure to the wines.",
-                            "Right Bank: Predominantly clay and limestone, which support Merlot cultivation by retaining moisture and providing the necessary nutrients to produce robust and complex wines.",
-                            "Graves: A unique mix of gravel, sand, clay, and limestone, creating diverse wine styles. Gravel and limestone enhance the minerality and freshness, particularly in white wines, while clay and sand offer structure and elegance, supporting both robust reds and aromatic whites.",
-                            "Entre-Deux-Mers: Predominantly clay, limestone, and sandy soils, ideal for enhancing the fruitiness and acidity of Sauvignon Blanc, Sémillon, and Muscadelle. These soils provide excellent drainage and moderate fertility, contributing to the vibrant and fresh character of the wines."
-                        ],
-                        keyWineStyles: "The region is celebrated for its red blends based on Cabernet Sauvignon and Merlot, known for their depth and complexity. Bordeaux also boasts of the dry white wines of Graves and the sublime sweet wines of Sauternes, each expressing a distinct palate profile reflective of their terroir.",
-                        topProducers: [
-                            "Château Margaux (Margaux)",
-                            "Château Latour (Pauillac)",
-                            "Château Haut-Brion (Pessac-Léognan)",
-                            "Château Lafite Rothschild (Pauillac)",
-                            "Château Mouton Rothschild (Pauillac)",
-                            "Château Cheval Blanc (Saint-Émilion)",
-                            "Château Pétrus (Pomerol)",
-                            "Château Le Pin (Pomerol)",
-                            "Château d'Yquem (Sauternes)"
-                        ],
-                        imageName: "bordeaux_image",
-                        iconNames: ["leaf", "drop"]
-                    ),
+                name: "Bordeaux",
+                details: "Bordeaux is a cornerstone of the global wine world, with a winemaking legacy stretching back to Roman times. Geographically divided by the Gironde Estuary into the Left Bank and Right Bank, the region offers a stunning diversity of wines shaped by distinct terroirs and centuries of tradition. The Left Bank is celebrated for its bold, structured Cabernet Sauvignon-dominant blends, while the Right Bank crafts softer, Merlot-based wines that are approachable yet complex.",
+                subregions: [
+                    "Left Bank: Renowned for its Cabernet Sauvignon-dominant blends, with prestigious appellations like Médoc, Margaux, Pauillac, Saint-Julien, and Saint-Estèphe.",
+                    "Right Bank: Known for Merlot-driven wines, featuring iconic regions like Saint-Émilion and Pomerol.",
+                    "Graves (Left Bank): Uniquely produces both elegant red wines and premium dry whites, often from Sauvignon Blanc and Sémillon. Within Graves lies Sauternes, famous for its luscious sweet wines crafted from grapes kissed by noble rot (Botrytis cinerea).",
+                    "Entre-Deux-Mers: Nestled between the Garonne and Dordogne rivers, this area specializes in crisp, aromatic white wines from Sauvignon Blanc, Sémillon, and Muscadelle."
+                ],
+                climate: "Bordeaux's maritime climate, tempered by the Atlantic Ocean and Gironde Estuary, provides a long, temperate growing season perfect for ripening grapes. This climate supports the development of nuanced flavors and complexity in the region’s wines, though the humidity poses challenges such as mildew and rot.",
+                soil: [
+                    "Left Bank: Gravel soils reflect sunlight and retain warmth, helping Cabernet Sauvignon reach optimal ripeness while adding structure and minerality.",
+                    "Right Bank: Clay and limestone dominate, offering moisture retention and essential nutrients for producing robust, complex Merlot-based wines.",
+                    "Graves: A diverse mix of gravel, clay, sand, and limestone contributes to wines of remarkable complexity, with gravel enhancing minerality and limestone promoting freshness in whites.",
+                    "Entre-Deux-Mers: Primarily clay and limestone with sandy areas, ideal for producing lively, fruit-forward white wines with vibrant acidity."
+                ],
+                keyWineStyles: "Bordeaux is synonymous with red blends based on Cabernet Sauvignon and Merlot, known for their depth, complexity, and aging potential. The region also excels in crisp, dry whites from Graves and world-class sweet wines from Sauternes, showcasing an unparalleled diversity of styles.",
+                topProducers: [
+                    "Château Margaux (Margaux)",
+                    "Château Latour (Pauillac)",
+                    "Château Haut-Brion (Pessac-Léognan)",
+                    "Château Lafite Rothschild (Pauillac)",
+                    "Château Mouton Rothschild (Pauillac)",
+                    "Château Cheval Blanc (Saint-Émilion)",
+                    "Château Pétrus (Pomerol)",
+                    "Château Le Pin (Pomerol)",
+                    "Château d'Yquem (Sauternes)"
+                ],
+                imageName: "bordeaux_image",
+                iconNames: ["leaf", "drop"]
+            ),
+
             
             
                     Region(
@@ -622,6 +621,8 @@ Country(name: "Italy", regions: [
         imageName: "friuli_venezia_giulia_image",
         iconNames: ["hills", "wine_bottle"]
     ),
+    
+    
     Region(
         name: "Campania",
         details: "Campania, located in southern Italy, is known for its ancient winemaking traditions and diverse range of wines. The region's volcanic soils, particularly around Mount Vesuvius, contribute to the unique character of its wines, which include robust reds, fresh whites, and notable sparkling wines.",
@@ -1602,13 +1603,13 @@ Country(name: "Australia", regions: [
     ),
     Region(
         name: "Heathcote",
-        details: "Heathcote is a prominent wine region located in Victoria, Australia. Known for its distinctive red soils and cool climate, the region produces high-quality wines, particularly Shiraz. Heathcote's unique terroir and careful vineyard management contribute to the rich, concentrated flavors and excellent aging potential of its wines.",
+        details: "Heathcote is a prominent wine region located in Victoria, Australia. Known for its distinctive red soils and warm climate, the region produces high-quality wines, particularly Shiraz. Heathcote's unique terroir and careful vineyard management contribute to the rich, concentrated flavors and excellent aging potential of its wines.",
         subregions: [
             "Colbinabbin: Known for its premium Shiraz and Cabernet Sauvignon, with a focus on producing wines with depth and complexity.\n",
             "Tooborac: Produces a variety of high-quality wines, including Shiraz, Merlot, and Viognier.\n",
             "Mia Mia: Famous for its boutique wineries and innovative winemaking techniques, producing elegant and refined wines."
         ],
-        climate: "Heathcote has a cool to moderate climate with significant diurnal temperature variations. The region experiences warm days and cool nights during the growing season, which helps to preserve acidity and develop complex flavors in the grapes.",
+        climate: "Heathcote has a moderate to warm climate with significant diurnal temperature variations. The region experiences warm days and cool nights during the growing season, which helps to preserve acidity and develop complex flavors in the grapes.",
         soil: [
             "Colbinabbin: Predominantly red Cambrian soils, which are rich in minerals and contribute to the structure and complexity of the wines.\n",
             "Tooborac: A mix of red and brown loam soils, supporting the production of robust and balanced wines.\n",
@@ -2346,16 +2347,16 @@ Country(name: "Austria", regions: [
     ),
     Region(
         name: "Burgenland",
-        details: "Located in the eastern part of Austria, bordering Hungary, Burgenland is distinguished by its warm climate and extensive lakes, which provide a tempering effect on the hot summers. This region is renowned for its red wines, particularly from the Blaufränkisch grape, which thrives in the local conditions. Burgenland also produces exquisite sweet wines, such as Beerenauslese and Trockenbeerenauslese, from grapes concentrated by noble rot.",
+        details: "Located in the eastern part of Austria, bordering Hungary, Burgenland is distinguished by its warm climate and Lake Neusiedl, which provide a tempering effect on the hot summers. This region is renowned for its red wines, particularly from the Blaufränkisch grape, which thrives in the local conditions. Burgenland also produces exquisite sweet wines, such as Beerenauslese and Trockenbeerenauslese, from grapes concentrated by noble rot.",
         subregions: [
             "Neusiedlersee: Known for powerful red wines and rich, sweet whites due to the moderating effect of the lake.\n",
-            "Leithaberg: known for both red and white wines, with a focus on sustainable viticulture and complex wines from Blaufränkisch and Chardonnay.\n",
+            "Leithaberg: Known for both red and white wines, with a focus on sustainable viticulture and complex wines from Blaufränkisch and Chardonnay.\n",
             "Mittelburgenland: Often called ‘Blaufränkischland’, focused on producing structured and spicy Blaufränkisch."
         ],
         climate: "Burgenland features a Pannonian climate with hot summers and mild winters, moderated by the Neusiedlersee which helps in the development of noble rot, crucial for sweet wine production.",
         soil: [
             "Neusiedlersee: Black earth and sandy soils which retain heat, aiding the ripening of red and sweet white grapes.\n",
-            "Eisenstadt: Varied soils including loess and limestone, contributing to the complexity of the wines.\n",
+            "Leithaberg: Varied soils including loess and limestone, contributing to the complexity of both red and white wines.\n",
             "Mittelburgenland: Primarily clay and iron-rich soils, perfect for cultivating Blaufränkisch."
         ],
         keyWineStyles: "Burgenland is best known for its robust Blaufränkisch, with dark berry flavors and spicy notes. The region also excels in producing sweet wines like Beerenauslese, characterized by their rich honey and apricot flavors.",
@@ -2372,7 +2373,7 @@ Country(name: "Austria", regions: [
     ),
     Region(
         name: "Styria",
-        details: "Styria, located in the southern part of Austria, is divided into three distinct wine-growing areas: Südsteiermark, Weststeiermark, and Südoststeiermark. The region is renowned for its hilly landscapes and a cooler climate that is perfect for white wines. Styria is especially famous for its aromatic whites, such as Sauvignon Blanc, which are often compared to those from New Zealand in terms of their vibrancy and crisp acidity.",
+        details: "Styria, located in the southern part of Austria, is divided into three distinct wine-growing areas: Südsteiermark, Weststeiermark, and Südoststeiermark. The region is renowned for its hilly landscapes and a cooler climate that is perfect for white wines. Styria is especially famous for its aromatic whites, such as Sauvignon Blanc, which are often renowned for their vibrancy, crisp acidity, and distinct mineral-driven character.",
         subregions: [
             "Südsteiermark: Known for its fresh and aromatic Sauvignon Blanc, this area benefits from a cool climate and steep vineyards.\n",
             "Weststeiermark: Famous for Schilcher, a rosé made from the indigenous Blauer Wildbacher grape, characterized by its vibrant acidity and cherry notes.\n",
@@ -2532,16 +2533,16 @@ Country(name: "Chile", regions: [
         details: "Located just south of Santiago, the Maipo Valley is one of Chile’s most prestigious and oldest wine-producing regions. Known primarily for its high-quality Cabernet Sauvignon, the valley benefits from a Mediterranean climate and the moderating effects of the Andes and the coastal range. The wines from this region are often noted for their richness, structure, and depth, with earthy and spicy notes that reflect the valley’s unique terroir.",
         subregions: [
             "Alto Maipo: Situated closer to the Andes, known for producing some of the finest Cabernet Sauvignon with intense flavors and robust tannins.\n",
-            "Central Maipo: The heart of the valley, known for versatile wine production including Merlot and Carmenere.\n",
-            "Pacific Maipo: Closer to the coast, produces fresher, more mineral-driven styles of wine."
+            "Central Maipo: The heart of the valley, known for versatile wine production including Cabernet Sauvignon, Merlot, and Carmenere.\n",
+            "Coastal Maipo: Closer to the coast, produces fresher, more mineral-driven styles of wine."
         ],
         climate: "Maipo Valley enjoys a Mediterranean climate with hot, dry summers and cool, wet winters. The significant diurnal temperature variation helps to maintain acidity and enhances the aromatic profile in the grapes.",
         soil: [
             "Alto Maipo: Predominantly rocky and alluvial soils, which provide excellent drainage and help concentrate flavors in the grapes.\n",
             "Central Maipo: More varied soils including loam and clay, suitable for a variety of grape types.\n",
-            "Pacific Maipo: Sandy and clay soils, which contribute to the elegance and minerality of the wines."
+            "Coastal Maipo: Sandy and clay soils, which contribute to the elegance and minerality of the wines."
         ],
-        keyWineStyles: "Maipo Valley is best known for its Cabernet Sauvignon, characterized by its body, complexity, and longevity. The region also produces excellent Merlot, Carmenere, and Chardonnay.",
+        keyWineStyles: "Maipo Valley is best known for its Cabernet Sauvignon, characterized by its body, complexity, and longevity. The region also produces excellent Merlot, Carmenere, and Syrah.",
         topProducers: [
             "Concha y Toro (Pirque)",
             "Cousiño Macul (Peñalolén)",
@@ -2579,7 +2580,7 @@ Country(name: "Chile", regions: [
     ),
     Region(
         name: "Casablanca Valley",
-        details: "Located just west of Santiago and close to the Pacific Ocean, the Casablanca Valley is one of Chile’s premier wine regions for white wines, particularly Chardonnay and Sauvignon Blanc. The valley's proximity to the ocean ensures a cooler climate, which is ideal for these varietals, allowing them to develop vibrant acidity and complex flavors. The region also produces excellent Pinot Noir and Syrah, reflecting the influence of its cool, maritime climate.",
+        details: "Located just west of Santiago and close to the Pacific Ocean, the Casablanca Valley is one of Chile’s premier wine regions for white wines, particularly Chardonnay and Sauvignon Blanc. The valley's proximity to the ocean ensures a cooler climate, which is ideal for these varietals, allowing them to develop vibrant acidity and complex flavors. The region also produces excellent Pinot Noir, reflecting the influence of its cool, maritime climate.",
         subregions: [
             "Eastern Casablanca: Closer to the Andes, known for elegant Chardonnay with bright acidity.\n",
             "Central Casablanca: The heart of the valley, where most vineyards are located, famous for its crisp Sauvignon Blanc.\n",
@@ -2743,7 +2744,7 @@ Country(name: "Chile", regions: [
             "Chillán: Granite and clay soils, which help to impart mineral notes and complexity to the wines.\n",
             "Concepción: Mainly clay and sandy soils, excellent for producing finely textured Pinot Noir."
         ],
-        keyWineStyles: "Bío-Bío is renowned for its aromatic and crisp white wines such as Riesling and Chardonnay, and for its light, fruit-forward Pinot Noir. The region also produces notable Sauvignon Blanc with vibrant acidity.",
+        keyWineStyles: "Bío-Bío is renowned for its aromatic and crisp white wines such as Riesling, Chardonnay, and Sauvignon Blanc. The region also produces notable Pinot Noir.",
         topProducers: [
             "Viña Cono Sur (Concepción)",
             "Viña Morandé (Chillán)",
@@ -3301,7 +3302,7 @@ Country(name: "New Zealand", regions: [
 Country(name: "Portugal", regions: [
     Region(
         name: "Douro",
-        details: "Located in northern Portugal, the Douro is one of the oldest demarcated wine regions in the world, renowned for its Port wines as well as high-quality table wines. The region features steep terraced vineyards along the Douro River, creating a dramatic and picturesque landscape. The extreme climate and unique schist soils contribute to the production of intense and robust red wines, primarily from Touriga Nacional, Touriga Franca, and Tinta Roriz (Tempranillo) grapes.",
+        details: "Located in northern Portugal, the Douro is one of the oldest demarcated wine regions in the world, renowned for its Port wines and high-quality table wines. The region features steep terraced vineyards along the Douro River, creating a dramatic and picturesque landscape. The extreme climate and unique schist soils contribute to the production of intense and robust red wines, primarily from Touriga Nacional, Touriga Franca, and Tinta Roriz (Tempranillo) grapes. The city of Porto, situated at the mouth of the Douro River, historically serves as the hub where Port wine is aged, stored, and exported globally.",
         subregions: [
             "Cima Corgo: The heart of Port wine production, known for its complex and age-worthy Ports.\n",
             "Baixo Corgo: Produces lighter and less concentrated wines, both Ports and table wines.\n",
@@ -3313,18 +3314,21 @@ Country(name: "Portugal", regions: [
             "Baixo Corgo: Richer soils with more organic material, yielding more fruit-forward and accessible wines.\n",
             "Douro Superior: Primarily schist, which stresses the vines for highly concentrated grapes."
         ],
-        keyWineStyles: "Douro is best known for its rich and complex Port wines and robust, structured red table wines. The region also produces some notable white wines from Rabigato, Viosinho, and Gouveio, which are crisp and minerally.",
+        keyWineStyles: "The Douro is best known for its rich and complex Port wines—including Tawny, Ruby, Vintage, and Late Bottled Vintage (LBV)—and robust, structured red table wines. The region also produces some notable white wines from Rabigato, Viosinho, and Gouveio, which are crisp and mineral-driven.",
         topProducers: [
             "Quinta do Noval (Cima Corgo)",
             "Quinta do Crasto (Cima Corgo)",
             "Quinta de la Rosa (Cima Corgo)",
             "Symington Family Estates (Multiple subregions)",
             "Niepoort (Cima Corgo)",
-            "Dow's Port (Baixo Corgo)"
+            "Taylor's (Vila Nova de Gaia)",
+            "Graham's (Vila Nova de Gaia)",
+            "Fonseca (Vila Nova de Gaia)"
         ],
         imageName: "douro_image",
         iconNames: ["river", "wine_glass"]
     ),
+
     Region(
         name: "Vinho Verde",
         details: "Vinho Verde, located in the northwestern part of Portugal, is known for its young, fresh, and often slightly effervescent white wines. The region's name translates to 'green wine,' reflecting both the verdant landscape and the youthful style of the wines. Vinho Verde is primarily made from Alvarinho, Loureiro, and Trajadura grape varieties, offering vibrant acidity and light, refreshing flavors that are perfect for warm weather.",
@@ -3530,31 +3534,8 @@ Country(name: "Portugal", regions: [
         ],
         imageName: "madeira_image",
         iconNames: ["volcano", "wine_glass"]
-    ),
-    Region(
-        name: "Porto",
-        details: "Porto, more accurately associated with the Douro Valley where the vineyards are located, is world-renowned for its Port wine, a fortified wine that is typically sweet and rich. The region's steep terraced vineyards along the Douro River are a UNESCO World Heritage site, reflecting the ancient viticultural traditions. Port wine is produced by adding grape spirit to halt fermentation and preserve sugar, resulting in a high-alcohol, sweet wine, often enjoyed as a dessert wine.",
-        subregions: [
-            "Cima Corgo: The heart of high-quality Port production, known for its complex, age-worthy Ports.\n",
-            "Baixo Corgo: Produces lighter, less concentrated styles of Port.\n",
-            "Douro Superior: Known for robust and intense Ports, with a growing reputation for dry table wines."
-        ],
-        climate: "The Douro Valley experiences a hot-continental climate, with hot dry summers and cold winters, ideal for the cultivation of concentrated and ripe grapes necessary for Port wine production.",
-        soil: [
-            "Primarily composed of schist, a slate-like metamorphic rock that fractures vertically, allowing vine roots to penetrate deep into the ground to access nutrients and moisture."
-        ],
-        keyWineStyles: "Porto is famous for its range of Port wines, including Tawny, Ruby, Vintage, and Late Bottled Vintage (LBV). Each style offers different expressions, from vibrant berry flavors to rich, caramelized profiles developed through barrel aging.",
-        topProducers: [
-            "Taylor's (Vila Nova de Gaia)",
-            "Graham's (Vila Nova de Gaia)",
-            "Fonseca (Vila Nova de Gaia)",
-            "Niepoort (Vila Nova de Gaia)",
-            "Quinta do Noval (Pinhão)",
-            "Symington Family Estates (Various)"
-        ],
-        imageName: "porto_image",
-        iconNames: ["barrel", "wine_glass"]
     )
+    
         ]),
 
 //SOUTH AFRICA
@@ -3668,8 +3649,7 @@ Country(name: "South Africa", regions: [
         name: "Constantia",
         details: "Located just south of Cape Town, Constantia is South Africa’s oldest wine-producing area, with a winemaking history dating back to 1685. This historic region is famed for its cool-climate wines, particularly its world-renowned dessert wine, Vin de Constance, along with excellent Sauvignon Blanc and Chardonnay. Nestled between the Constantiaberg mountain and the Atlantic Ocean, the area benefits from cool sea breezes and morning mists, ideal for producing wines with fresh acidity and complex flavors.",
         subregions: [
-            "Upper Constantia: Known for premium Sauvignon Blanc and elegant Chardonnay with vibrant acidity and mineral complexity.\n",
-            "Lower Constantia: Home to the iconic Vin de Constance, as well as superb red wines from Merlot and Cabernet Sauvignon."
+            "Constantia: The valley is known for producing premium Sauvignon Blanc and Chardonnay, celebrated for their vibrant acidity and minerality. It is also home to the iconic Vin de Constance, a sweet wine made from Muscat Blanc à Petits Grains, and structured red wines like Merlot and Cabernet Sauvignon."
         ],
         climate: "Constantia enjoys a moderate maritime climate, with mild temperatures year-round influenced by proximity to the ocean. The cooling sea breezes and frequent mists help maintain acidity levels and slow the ripening process, enhancing flavor development in the grapes.",
         soil: [
@@ -3948,26 +3928,21 @@ Country(name: "Hungary", regions: [
     ),
     Region(
         name: "Somló",
-        details: "Somló, located on the northern shore of Lake Balaton, is a distinguished appellation within the Balaton wine district. Renowned for its unique volcanic terroir, Somló produces wines with exceptional minerality and complexity. The region is particularly famous for its Somló (a white wine) and Kékfrankos (a red wine), which thrive in the limestone-rich volcanic soils. The cool microclimate, influenced by Lake Balaton, allows for the cultivation of grapes that exhibit vibrant acidity and distinctive flavor profiles.",
+        details: "Somló, located on the northern shore of Lake Balaton in Hungary, is a distinguished wine region renowned for its white wines, particularly those made from indigenous grape varieties such as Juhfark, Furmint, Hárslevelű, and Olaszrizling (Welschriesling). The region’s unique volcanic terroir imparts exceptional minerality and complexity to its wines, which are known for their high acidity, vibrant aromatics, and excellent aging potential. Somló’s wines have a reputation for being among the most distinctive in Hungary.",
         subregions: [
-            "Somló Hill: The heart of the Somló appellation, known for its premium Somló and Kékfrankos wines with pronounced minerality.\n",
-            "Alpesztős Somló: Features vineyards at higher elevations, producing elegant and aromatic white wines with enhanced freshness.\n",
-            "Kővágó Somló: Noted for its robust red wines and innovative winemaking techniques that highlight the region's terroir."
+            "Somló Hill: The central and defining area of the region, producing the highest-quality white wines characterized by pronounced minerality and freshness."
         ],
-        climate: "Somló enjoys a cool continental climate, moderated by its proximity to Lake Balaton. The lake's presence helps maintain consistent temperatures, reducing the risk of frost and extending the growing season. This climate is ideal for developing the vibrant acidity and complex flavors characteristic of Somló's wines.",
+        climate: "Somló has a cool continental climate, moderated by the influence of Lake Balaton. The proximity to the lake helps stabilize temperatures, reducing frost risk and extending the growing season, which enhances the aromatic complexity and acidity of the wines.",
         soil: [
-            "Somló Hill: Predominantly limestone and volcanic ash soils, providing excellent drainage and contributing to the wines' distinctive minerality.\n",
-            "Alpesztős Somló: Rich in volcanic pumice and limestone, enhancing the aromatic intensity and freshness of the wines.\n",
-            "Kővágó Somló: A mix of volcanic tuff and clay soils, supporting the production of structured and expressive red wines."
+            "Somló is defined by its volcanic soils, including basalt, tuff, and ash, often mixed with limestone and clay. These soils provide excellent drainage and contribute to the wines' distinctive minerality and longevity."
         ],
-        keyWineStyles: "Somló is best known for its Somló white wines, which are characterized by their high acidity, pronounced minerality, and citrus flavors. The region also produces robust Kékfrankos red wines, known for their rich fruit profiles, firm tannins, and excellent aging potential. Additionally, Somló showcases innovative blends and varietals that highlight the unique terroir of the region.",
+        keyWineStyles: "Somló is celebrated for its white wines, particularly Juhfark, which is known for its vibrant acidity, mineral intensity, and citrus and honeyed flavors. Furmint and Hárslevelű offer structured, complex wines with flavors of stone fruits and spices, while Olaszrizling is prized for its crispness and elegance. These wines are typically age-worthy and showcase the unique volcanic terroir of the region.",
         topProducers: [
             "Kreinbacher Estate (Somló)",
-            "Hapográmos Winery (Somló)",
-            "Somló Pincészet (Somló)",
-            "Pista Pincészet (Somló)",
-            "Bock Winery (Somló)",
-            "Kovács Winery (Somló)"
+            "Tornai Winery (Somló)",
+            "Kolonics Winery (Somló)",
+            "Spiegelberg Winery (Somló)",
+            "Fekete Winery (Somló)"
         ],
         imageName: "somlo_image",
         iconNames: ["volcano", "wine_glass"]

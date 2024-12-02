@@ -12,6 +12,7 @@ import SwiftUI
 struct LaunchingContentView: View {
     @Binding var isShowingLaunchScreen: Bool
     @EnvironmentObject var authViewModel: AuthViewModel
+    @State private var hasSeenWelcomeView: Bool = UserDefaults.standard.bool(forKey: "hasSeenWelcomeView")
     
     var body: some View {
         Group {
@@ -26,20 +27,26 @@ struct LaunchingContentView: View {
                 mainContent
             }
         }
+        .onChange(of: authViewModel.hasActiveSubscription) { oldValue, newValue in
+            if newValue {
+                hasSeenWelcomeView = true
+                UserDefaults.standard.set(true, forKey: "hasSeenWelcomeView")
+            }
+        }
     }
     
     @ViewBuilder
     private var mainContent: some View {
         if authViewModel.isSignedIn {
-            if authViewModel.hasActiveSubscription {
+            if authViewModel.hasActiveSubscription || hasSeenWelcomeView {
                 RootView()
                     .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
                     .environment(\.colorScheme, .light)
             } else {
-                WelcomeView()  // For signed-in users without an active subscription
+                WelcomeView(hasSeenWelcomeView: $hasSeenWelcomeView)
             }
         } else {
-            SignInView()  // For users who are not signed in
+            SignInView()
         }
     }
 }

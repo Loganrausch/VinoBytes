@@ -31,6 +31,26 @@ class FlashcardManager: ObservableObject {
             let decoder = JSONDecoder()
             flashcards = try decoder.decode([Flashcard].self, from: data)
             print("Successfully loaded \(flashcards.count) flashcards.")
+            
+            // Check for duplicate IDs and list them
+            let ids = flashcards.map { $0.id }
+            var idCounts: [String: Int] = [:]
+            
+            // Count occurrences of each ID
+            for id in ids {
+                idCounts[id, default: 0] += 1
+            }
+            
+            // Filter IDs that occur more than once
+            let duplicateIDs = idCounts.filter { $0.value > 1 }.map { $0.key }
+            
+            if !duplicateIDs.isEmpty {
+                            print("Warning: Duplicate IDs found: \(duplicateIDs)")
+                            // Handle duplicates as needed
+                        } else {
+                            print("No duplicate IDs found.")
+                        }
+            
         } catch {
             print("Error decoding flashcards JSON: \(error)")
             flashcards = [] // Set to empty on error

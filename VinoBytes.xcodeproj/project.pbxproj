@@ -12,6 +12,7 @@
 		CE02C5C92CB374C200EAAE52 /* LaunchingContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE02C5C82CB374C200EAAE52 /* LaunchingContentView.swift */; };
 		CE0EF5962C18D5ED009CFDCB /* OpenAIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0EF5952C18D5ED009CFDCB /* OpenAIManager.swift */; };
 		CE0EF5982C18D5FF009CFDCB /* OpenAIChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0EF5972C18D5FF009CFDCB /* OpenAIChatView.swift */; };
+		CE1AE2892CDC23AE00306FC6 /* RegionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1AE2882CDC23A400306FC6 /* RegionView.swift */; };
 		CE1F50752C67203200D2C51F /* Flashcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1F50742C67203200D2C51F /* Flashcard.swift */; };
 		CE1F50772C6726EB00D2C51F /* flashcards.json in Resources */ = {isa = PBXBuildFile; fileRef = CE1F50762C6726EB00D2C51F /* flashcards.json */; };
 		CE2051012B9F98BD0072704E /* FlashcardContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2051002B9F98BD0072704E /* FlashcardContent.swift */; };
@@ -106,6 +107,7 @@
 		CE02C5C82CB374C200EAAE52 /* LaunchingContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchingContentView.swift; sourceTree = "<group>"; };
 		CE0EF5952C18D5ED009CFDCB /* OpenAIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIManager.swift; sourceTree = "<group>"; };
 		CE0EF5972C18D5FF009CFDCB /* OpenAIChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIChatView.swift; sourceTree = "<group>"; };
+		CE1AE2882CDC23A400306FC6 /* RegionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionView.swift; sourceTree = "<group>"; };
 		CE1F50742C67203200D2C51F /* Flashcard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flashcard.swift; sourceTree = "<group>"; };
 		CE1F50762C6726EB00D2C51F /* flashcards.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = flashcards.json; sourceTree = "<group>"; };
 		CE2051002B9F98BD0072704E /* FlashcardContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardContent.swift; sourceTree = "<group>"; };
@@ -357,6 +359,7 @@
 				CE6ADF5F2B9266D600982366 /* FlashcardView.swift */,
 				CEF48E9C2CB4727800E29D06 /* FlashcardSessions */,
 				CE82D2882B9B72CF002B55F1 /* StudyView.swift */,
+				CE1AE2882CDC23A400306FC6 /* RegionView.swift */,
 				CE1F50742C67203200D2C51F /* Flashcard.swift */,
 				CE1F50762C6726EB00D2C51F /* flashcards.json */,
 			);
@@ -524,7 +527,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1520;
-				LastUpgradeCheck = 1520;
+				LastUpgradeCheck = 1610;
 				TargetAttributes = {
 					CE6ADF2C2B925ED600982366 = {
 						CreatedOnToolsVersion = 15.2;
@@ -628,6 +631,7 @@
 				CE32CDE12C1CE5C600A87202 /* FoodWinePairingsListView.swift in Sources */,
 				CED380D82BB5E18400CAFB29 /* DashboardView.swift in Sources */,
 				CE7F9DE62C2CA1C400BA61C1 /* LoadingDotsView.swift in Sources */,
+				CE1AE2892CDC23AE00306FC6 /* RegionView.swift in Sources */,
 				CE02C5C52CB36C8300EAAE52 /* SignInView.swift in Sources */,
 				CED380DA2BB70E1500CAFB29 /* WineData.swift in Sources */,
 				CECB7A662BACC50600659CB6 /* ContactFormView.swift in Sources */,
@@ -835,7 +839,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -859,12 +863,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = VinoBytes/VinoBytesRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_ASSET_PATHS = "\"VinoBytes/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 7BWDUC2WMW;
+				DEVELOPMENT_TEAM = 7BWDUC2WMW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = VinoBytes/Info.plist;
@@ -877,7 +879,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -886,7 +888,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.vinobytes.VinoBytes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = NewVinoBytesDistributionCert;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -898,7 +899,6 @@
 		CE6ADF5A2B925ED700982366 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -917,7 +917,6 @@
 		CE6ADF5B2B925ED700982366 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -936,7 +935,6 @@
 		CE6ADF5D2B925ED700982366 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -953,7 +951,6 @@
 		CE6ADF5E2B925ED700982366 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;

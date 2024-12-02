@@ -7,19 +7,37 @@
 
 import Foundation
 import SwiftUI
+import RevenueCat
+import RevenueCatUI
+
+struct StudyRegion: Identifiable {
+    let name: String
+    let isPremium: Bool
+    var id: String { name }
+}
 
 struct StudyView: View {
     @EnvironmentObject var flashcardManager: FlashcardManager
     @EnvironmentObject var sessionManager: StudySessionManager
+    @EnvironmentObject var authViewModel: AuthViewModel  // To access subscription status
     @State private var selectedRegions = Set<String>()
     @State private var navigateToSessionSummary = false
     @State private var showingAlert = false
     @State private var isActiveLink = false
     @State private var showSessionSummary = false
     @State private var lastSession: StudySession?
+    @State private var isPaywallPresented = false  // Controls the presentation of the paywall
     
-    let regions = ["Argentina", "Australia", "Austria", "Chile", "France", "Germany", "Greece", "Hungary", "Italy", "New Zealand", "Portugal", "South Africa", "Spain", "USA"]
+    let freeRegions = ["Argentina", "Hungary", "Portugal"]
+       let premiumRegions = ["Australia", "Austria", "Chile", "France", "Germany", "Greece", "Italy", "New Zealand", "South Africa", "Spain", "USA"]
 
+       var allRegions: [StudyRegion] {
+           let free = freeRegions.map { StudyRegion(name: $0, isPremium: false) }
+           let premium = premiumRegions.map { StudyRegion(name: $0, isPremium: true) }
+           return (free + premium).sorted { $0.name < $1.name }
+       }
+    
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -42,18 +60,28 @@ struct StudyView: View {
                 VStack(spacing: verticalSpacing) {
                     
                     LazyVGrid(columns: columns, spacing: verticalSpacing) {
-                        ForEach(regions, id: \.self) { region in
-                            RegionView(region: region,
-                                       isSelected: selectedRegions.contains(region),
-                                       fontSize: screenHeight * 0.025, // Adjust font size
-                                       padding: screenHeight * 0.025,   // Adjust padding
-                                       action: {
-                                if selectedRegions.contains(region) {
-                                    selectedRegions.remove(region)
+                        ForEach(allRegions) { region in
+                            let isLocked = region.isPremium && !authViewModel.hasActiveSubscription
+
+                            RegionView(
+                                region: region.name,
+                                isSelected: selectedRegions.contains(region.name),
+                                isLocked: isLocked,
+                                fontSize: screenHeight * 0.025,
+                                padding: screenHeight * 0.025
+                            ) {
+                                if isLocked {
+                                    // Show the paywall
+                                    startSubscriptionProcess()
                                 } else {
-                                    selectedRegions.insert(region)
+                                    // Toggle selection
+                                    if selectedRegions.contains(region.name) {
+                                        selectedRegions.remove(region.name)
+                                    } else {
+                                        selectedRegions.insert(region.name)
+                                    }
                                 }
-                            })
+                            }
                             .frame(height: itemHeight)
                         }
                     }
@@ -118,10 +146,10 @@ struct StudyView: View {
                                 .foregroundColor(.latte)
                         },
                     trailing:
-                        Button(action: toggleSelection) {
-                            Text(selectedRegions.count == regions.count ? "Deselect All" : "Select All")
-                                .font(.headline)
-                        }
+                                        Button(action: toggleSelection) {
+                                            Text(getSelectionButtonTitle())
+                                                .font(.headline)
+                                        }
                 )
             // Add the onAppear modifier here
                 .onAppear {
@@ -134,50 +162,59 @@ struct StudyView: View {
                         self.navigateToSessionSummary = true
                 }
             }
+            
+            // Present the PaywallView when needed
+                        .sheet(isPresented: $isPaywallPresented) {
+                            PaywallView()
+                                .environmentObject(authViewModel)
+                        }
         }
     }
 
-    private func toggleSelection() {
-        if selectedRegions.count == regions.count {
-            selectedRegions.removeAll()
-        } else {
-            selectedRegions = Set(regions)
+ 
+    private func startSubscriptionProcess() {
+            Purchases.shared.getOfferings { offerings, error in
+                if let offerings = offerings, let offering = offerings.current {
+                    if offering.availablePackages.isEmpty {
+                        print("No packages available")
+                    } else {
+                        isPaywallPresented = true  // Trigger the paywall presentation
+                    }
+                } else if let error = error {
+                    print("Error fetching offerings: \(error.localizedDescription)")
+                }
+            }
+        }
+
+        private func getSelectionButtonTitle() -> String {
+            let totalRegions = authViewModel.hasActiveSubscription ? allRegions.count : freeRegions.count
+            return selectedRegions.count == totalRegions ? "Deselect All" : "Select All"
+        }
+
+        private func toggleSelection() {
+            if authViewModel.hasActiveSubscription {
+                // For subscribed users, select/deselect all regions
+                if selectedRegions.count == allRegions.count {
+                    selectedRegions.removeAll()
+                } else {
+                    selectedRegions = Set(allRegions.map { $0.name })
+                }
+            } else {
+                // For free users, select/deselect free regions
+                if selectedRegions.count == freeRegions.count {
+                    selectedRegions.removeAll()
+                } else {
+                    selectedRegions = Set(freeRegions)
+                }
+            }
         }
     }
-}
 
-struct RegionView: View {
-    var region: String
-    var isSelected: Bool
-    var fontSize: CGFloat
-    var padding: CGFloat
-    var action: () -> Void
-
-    var body: some View {
-        Button(action: action) {
-            Text(region)
-                .font(.system(size: fontSize))
-                .foregroundColor(isSelected ? .latte : .black)
-                .bold()
-                .frame(maxWidth: .infinity)
-                .padding(padding)
-                .background(
-                    isSelected ?
-                    Color("LightMaroon").opacity(1) :
-                    Color.lightLatte.opacity(1)
-                )
-                .cornerRadius(5)
-                .shadow(color: .gray, radius: 4)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 5)
-                        .stroke(isSelected ? Color.latte : Color.lightMaroon, lineWidth: 2)
-                )
+    struct StudyView_Previews: PreviewProvider {
+        static var previews: some View {
+            StudyView()
+                .environmentObject(AuthViewModel())
+                .environmentObject(FlashcardManager.shared)
+                .environmentObject(StudySessionManager.shared)
         }
     }
-}
-
-struct StudyView_Previews: PreviewProvider {
-    static var previews: some View {
-        StudyView()
-    }
-}

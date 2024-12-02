@@ -7,6 +7,8 @@
 
 import SwiftUI
 import CoreData
+import RevenueCat
+import RevenueCatUI
 
 struct DashboardView: View {
     @Environment(\.managedObjectContext) private var context
@@ -16,13 +18,17 @@ struct DashboardView: View {
     @State private var alertMessage = ""
     @State private var showWhiteBackgroundView = false
     @State private var recentWines: [WineEntity] = []
+    @State private var isPaywallPresented = false  // Controls the presentation of the paywall
+    @State private var navigateToBlogPost = false  // Controls navigation to the blog post
     @ObservedObject var refreshNotifier: RefreshNotifier  // Add this line
     @EnvironmentObject var openAIManager: OpenAIManager  // Access from environment
+    @EnvironmentObject var authViewModel: AuthViewModel  // To access subscription status
+
     
     
     var body: some View {
         
-        NavigationView {
+        NavigationStack {
             
             VStack(alignment: .center, spacing: 16) {
                 
@@ -110,21 +116,54 @@ struct DashboardView: View {
                     
                     // Weekly Blog Post Button
                     if let latestPost = blogPosts.first {
-                        NavigationLink(destination: BlogPostView(blogPost: latestPost, blogPosts: blogPosts)) {
-                            Text("Weekly Wine Blog Post")
-                                .bold()
-                                .foregroundColor(.black)
-                                .frame(maxWidth: .infinity)
-                                .padding()
-                                .padding(.top)
-                                .padding(.bottom)
-                                .background(Color.lightLatte)
-                                .cornerRadius(10)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .stroke(Color("LightMaroon"), lineWidth: 2.4)
-                                )
-                                .shadow(color: .black.opacity(0.6), radius: 6)
+                        let isLocked = !authViewModel.hasActiveSubscription
+
+                        Button(action: {
+                            if authViewModel.hasActiveSubscription {
+                                // Navigate to BlogPostView
+                                navigateToBlogPost = true
+                            } else {
+                                // Show the paywall
+                                startSubscriptionProcess()
+                            }
+                        }) {
+                            HStack {
+                                if isLocked {
+                                    // Left-aligned text with lock icon on the right
+                                    Text("Latest Wine Byte")
+                                        .bold()
+                                        .foregroundColor(.black.opacity(0.6))
+                                    Spacer()
+                                    Image(systemName: "lock.fill")
+                                        .foregroundColor(.lightMaroon)
+                                } else {
+                                    // Centered text when not locked
+                                    Spacer()
+                                    Text("Weekly Wine Byte")
+                                        .bold()
+                                        .foregroundColor(.black)
+                                    Spacer()
+                                }
+                            }
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .padding(.top)
+                            .padding(.bottom)
+                            .background(
+                                isLocked ? Color.gray.opacity(0.2) : Color.lightLatte
+                            )
+                            .cornerRadius(10)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(
+                                        isLocked ? Color.gray.opacity(0.5) : Color("LightMaroon"),
+                                        lineWidth: 2.4
+                                    )
+                            )
+                            .shadow(color: .black.opacity(0.6), radius: 6)
+                        }
+                        .navigationDestination(isPresented: $navigateToBlogPost) {
+                            BlogPostView(blogPost: latestPost, blogPosts: blogPosts)
                         }
                     } else {
                         Text("Loading Blog Post...")
@@ -142,8 +181,9 @@ struct DashboardView: View {
                             )
                             .shadow(color: .black.opacity(0.6), radius: 6)
                     }
-                }
-                .padding(.horizontal)
+
+                                   }
+                                   .padding(.horizontal)
                 
                 // Recent Wines Section
                 VStack(alignment: .center, spacing: 8) {
@@ -244,8 +284,27 @@ struct DashboardView: View {
             .alert(isPresented: $showAlert) { // Add this line
                 Alert(title: Text("Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
             }
+            // Present the PaywallView when needed
+                       .sheet(isPresented: $isPaywallPresented) {
+                           PaywallView()
+                               .environmentObject(authViewModel)
+            }
         }
     }
+    
+    private func startSubscriptionProcess() {
+            Purchases.shared.getOfferings { offerings, error in
+                if let offerings = offerings, let offering = offerings.current {
+                    if offering.availablePackages.isEmpty {
+                        print("No packages available")
+                    } else {
+                        isPaywallPresented = true  // Trigger the paywall presentation
+                    }
+                } else if let error = error {
+                    print("Error fetching offerings: \(error.localizedDescription)")
+                }
+            }
+        }
     
     private func fetchRecentWines() {
         let request: NSFetchRequest<WineEntity> = WineEntity.fetchRequest()

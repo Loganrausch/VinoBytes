@@ -1,13 +1,13 @@
 {
-  "originHash" : "0d3624f36ce24ca6c611fff5c7fb59e1f339845e92c5645332f753c1cd2f321e",
+  "originHash" : "0b89d806a8231f84bcdad78b1c5edc07fc74a6b8f7f9c3e47b4baaa57d07d252",
   "pins" : [
     {
       "identity" : "markdownui",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/gonzalezreal/MarkdownUI.git",
       "state" : {
-        "revision" : "55441810c0f678c78ed7e2ebd46dde89228e02fc",
-        "version" : "2.4.0"
+        "revision" : "5f613358148239d0292c0cef674a3c2314737f9e",
+        "version" : "2.4.1"
       }
     },
     {
@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/gonzalezreal/NetworkImage",
       "state" : {
-        "revision" : "7aff8d1b31148d32c5933d75557d42f6323ee3d1",
-        "version" : "6.0.0"
+        "revision" : "2849f5323265386e200484b0d0f896e73c3411b9",
+        "version" : "6.0.1"
       }
     },
     {
@@ -24,8 +24,17 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/RevenueCat/purchases-ios",
       "state" : {
-        "revision" : "c7058bfd80d7f42ca6aa392bf1fab769d1158bf1",
-        "version" : "5.5.0"
+        "revision" : "92f42b658c9638430d094103d1e86cea950f9ffb",
+        "version" : "5.12.1"
+      }
+    },
+    {
+      "identity" : "swift-cmark",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftlang/swift-cmark",
+      "state" : {
+        "revision" : "3ccff77b2dc5b96b77db3da0d68d28068593fa53",
+        "version" : "0.5.0"
       }
     }
   ],

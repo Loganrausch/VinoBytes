@@ -6,13 +6,20 @@
 //
 import SwiftUI
 import CoreData
+import RevenueCat
+import RevenueCatUI
 
 struct MyWinesView: View {
     @Environment(\.managedObjectContext) private var context
+    @EnvironmentObject var authViewModel: AuthViewModel  // Access subscription status
     @State private var searchText: String = ""
     @State private var isAddingWine = false  // State to trigger navigation to the WineFormView
+    @State private var showUpgradeAlert = false  // State to show upgrade alert
+    @State private var isPaywallPresented = false  // Controls the presentation of the paywall
     var isRootView: Bool
     @ObservedObject var refreshNotifier: RefreshNotifier
+    
+    let maxFreeWines = 5  // Maximum number of free wines allowed
 
     @FetchRequest(
             entity: WineEntity.entity(),
@@ -46,6 +53,20 @@ struct MyWinesView: View {
                     refreshNotifier.needsRefresh = false
                 }
             }
+            .alert(isPresented: $showUpgradeAlert) {
+                       Alert(
+                           title: Text("Upgrade Required"),
+                           message: Text("You've added the maximum of \(maxFreeWines) wines. Upgrade to add unlimited wines."),
+                           primaryButton: .default(Text("Upgrade")) {
+                               startSubscriptionProcess()
+                           },
+                           secondaryButton: .cancel()
+                       )
+                   }
+                   .sheet(isPresented: $isPaywallPresented) {
+                       PaywallView()
+                           .environmentObject(authViewModel)
+                   }
         }
 
     private var winesList: some View {
@@ -99,13 +120,24 @@ struct MyWinesView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                                isAddingWine = true
-                            }) {
-                                Text("Add Wine")
-                                    .font(.headline) // Customize with your font
+                        if canAddMoreWines() {
+                                       isAddingWine = true
+                                   } else {
+                                       showUpgradeAlert = true  // Show alert prompting to upgrade
+                                   }
+                               }) {
+                                   Text("Add Wine")
+                                       .font(.headline)
                             }
                         }
                     }
+            
+            .safeAreaInset(edge: .bottom) {
+                   if shouldShowBanner {
+                       bannerView
+                   }
+               }
+            
             // Conditional Overlay Message
                    if filteredWinesGrouped.isEmpty {
                        VStack {
@@ -122,6 +154,84 @@ struct MyWinesView: View {
                    }
                }
            }
+    
+    private var winesLeft: Int {
+        max(0, maxFreeWines - winesFetched.count)
+    }
+    
+    private var shouldShowBanner: Bool {
+        !authViewModel.hasActiveSubscription
+    }
+
+
+    private var bannerView: some View {
+        VStack {
+            if winesFetched.count < maxFreeWines {
+                // Display wines added out of max free wines
+                Text("You have added \(winesFetched.count) out of \(maxFreeWines) free wines.")
+                    .font(.subheadline)
+                    .frame(maxWidth: .infinity)
+                    .foregroundColor(.lightMaroon)
+                    .padding(.bottom, 5)
+            } else {
+                // Display message that the user has reached the limit
+                Text("Maximum limit of \(maxFreeWines) free wines reached.")
+                    .font(.subheadline)
+                    .foregroundColor(.lightMaroon)
+                    .padding(.bottom, 5)
+                
+                
+                // Display the Upgrade button with maroon outline
+                           Button(action: {
+                               startSubscriptionProcess()
+                           }) {
+                               Text("Go Premium - Unlimited Wines")
+                                   .font(.headline)
+                                   .foregroundColor(Color("LightMaroon"))
+                                   .padding()
+                                   .frame(maxWidth: .infinity)
+                                   .background(Color.clear)
+                                   .overlay(
+                                       RoundedRectangle(cornerRadius: 10)
+                                           .stroke(Color("LightMaroon"), lineWidth: 2)
+                                   )
+                           }
+                       }
+                   }
+                   .padding()
+                   .background(Color("Latte"))
+               }
+
+
+
+    
+    private func startSubscriptionProcess() {
+        Purchases.shared.getOfferings { offerings, error in
+            if let offerings = offerings, let offering = offerings.current {
+                if offering.availablePackages.isEmpty {
+                    print("No packages available")
+                } else {
+                    // Present the paywall or subscription view
+                    // You might need to set a state variable to present a sheet
+                    isPaywallPresented = true
+                }
+            } else if let error = error {
+                print("Error fetching offerings: \(error.localizedDescription)")
+            }
+        }
+    }
+
+    
+    private func canAddMoreWines() -> Bool {
+        if authViewModel.hasActiveSubscription {
+            return true  // Subscribed users can add unlimited wines
+        } else {
+            // Fetch the number of wines the user has added
+            let wineCount = winesFetched.count
+            return wineCount < maxFreeWines
+        }
+    }
+
 
     private func deleteWines(at offsets: IndexSet, in wines: [WineEntity]) {
         offsets.map { wines[$0] }.forEach(context.delete)

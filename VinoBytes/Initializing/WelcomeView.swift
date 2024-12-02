@@ -10,6 +10,7 @@ import RevenueCat
 import RevenueCatUI
 
 struct WelcomeView: View {
+    @Binding var hasSeenWelcomeView: Bool  // Accept the binding
     @State private var selectedTab = 0
     let totalTabs = 7
     @EnvironmentObject var authViewModel: AuthViewModel
@@ -20,17 +21,18 @@ struct WelcomeView: View {
             HStack {
                 Spacer()
                 
-                Button(action: {
-                                    selectedTab = totalTabs - 1 // Go to the last tab
-                                }) {
-                                    Text("Skip")
-                                        .foregroundColor(.white)
-                                        .bold()
-                                        .padding(.horizontal)
-                                        .padding(.top, 30)
-                                }
-                            }
-            
+                if selectedTab < totalTabs - 1 { // Hide Skip button on the last screen
+                    Button(action: {
+                        selectedTab = totalTabs - 1 // Go to the last tab
+                    }) {
+                        Text("Skip")
+                            .foregroundColor(.white)
+                            .bold()
+                            .padding(.horizontal)
+                            .padding(.top, 30)
+                    }
+                }
+            }
             .frame(height: 80) // Standard height for top bars
             .background(Color("Maroon")) // Replace with your custom maroon color
             
@@ -38,8 +40,8 @@ struct WelcomeView: View {
             // Tab View Content
                        TabView(selection: $selectedTab) {
                            ForEach(0..<7) { index in
-                               WelcomeScreen(index: index, isSelected: $selectedTab)
-                                   .tag(index)
+                               WelcomeScreen(index: index, isSelected: $selectedTab, hasSeenWelcomeView: $hasSeenWelcomeView)
+                                                       .tag(index)
                            }
                        }
                        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
@@ -75,6 +77,7 @@ struct WelcomeView: View {
 struct WelcomeScreen: View {
     let index: Int
     @Binding var isSelected: Int
+    @Binding var hasSeenWelcomeView: Bool  // Accept the binding
     @State private var contentOpacity = 0.0
     @State private var isPaywallPresented = false  // State to control the presentation of the paywall
     @EnvironmentObject var authViewModel: AuthViewModel
@@ -88,7 +91,7 @@ struct WelcomeScreen: View {
         "My Wines",
         "Library",
         "iCloud Sync",
-        "3 Day Free Trial"
+        "Welcome to VinoBytes"
     ]
     
     let sfSymbolNames = [
@@ -121,107 +124,147 @@ struct WelcomeScreen: View {
         "Log and track the wines you taste for easy reference as you study.",
         "Extensive information on grapes, regions, pairings, flaws and more.",
         "Automatically sync your data with iCloud integration.",
-        "Experience the best in wine education."
+        "Wine Education, Byte-Sized."
     ]
     
     var body: some View {
-            GeometryReader { geometry in
-                VStack(spacing: 0) {  // No spacing to control layout precisely
-                    Spacer()  // Push content to the top
+        GeometryReader { geometry in
+            VStack(spacing: 40) {
+                Spacer() // Push content towards the center vertically
+                
+                // Grouped Title and Description
+                VStack(alignment: .center, spacing: 20) {
+                    Text(titles[index])
+                        .font(.largeTitle)
+                        .foregroundColor(.black)
+                        .padding(.horizontal)
+                        .multilineTextAlignment(.center)
                     
-                    // Grouped Title and Description
-                    VStack(alignment: .center, spacing: 20) {
-                        Text(titles[index])
-                            .font(.largeTitle)
-                            .foregroundColor(.black)
-                            .padding(.horizontal)
-                            .multilineTextAlignment(.center)
-                        
-                        Text(descriptions[index])
-                            .font(.title2)
-                            .foregroundColor(.black)
-                            .padding(.horizontal)
-                            .multilineTextAlignment(.center)
-                    }
-                    .fixedSize(horizontal: false, vertical: true) // Allow description to expand vertically
-                    .padding(.bottom, 50) // Fixed padding to create space between description and image
-                    
-                    // Image with Fixed Size
+                    Text(descriptions[index])
+                        .font(.title2)
+                        .foregroundColor(.black)
+                        .padding(.horizontal)
+                        .multilineTextAlignment(.center)
+                }
+                .fixedSize(horizontal: false, vertical: true)
+                .padding(.bottom, 30) // Adjusted padding
+                
+                // Image with Conditional Visibility
+                if index != 6 || geometry.size.width > 375 { // Show the icon unless it's the last page on a compact screen
                     Image(systemName: sfSymbolNames[index])
                         .resizable()
                         .scaledToFit()
-                        .frame(maxWidth: 250, maxHeight: 250)
+                        .frame(width: calculateIconSize(geometry: geometry), height: calculateIconSize(geometry: geometry))
                         .symbolRenderingMode(.hierarchical)
                         .foregroundColor(symbolColors[index])
-                        .padding(.bottom, 20) // Spacing between image and button
+                        .padding(.bottom, 30) // Adjusted padding
                         .fontWeight(.thin)
-                    
-                   Spacer()
-                    
-                    // "Learn!" Button on the Last Screen
-                    if index == 6 {
+                }
+                
+             
+                // "Get Full Access" Button and Other Elements on the Last Screen
+                if index == 6 {
+                    VStack(spacing: 20) { // Increased spacing for better separation
+                        // First Button with Background
                         Button(action: startFreeTrial) {
-                            Text("Subscribe!")
+                            Text("Get Full Access")
                                 .bold()
-                                .padding()
-                                .foregroundColor(.latte)
                                 .font(.headline)
-                                .background(Color.lightMaroon) // Button background color
-                                .cornerRadius(10) // Rounded corners
-                                .shadow(radius: 5)
+                                .foregroundColor(.latte)
+                                .padding()
+                                .padding(.horizontal, 62)
+                                .background(Color.lightMaroon)
+                                .cornerRadius(10)
+                                .shadow(radius: 6)
+                            
                         }
                         
-                        Spacer()
-                                            
-                                            if authViewModel.isLoading {
-                                                ProgressView("Restoring Purchase...")
-                                            } else {
-                                                Button(action: restorePurchases) {
-                                                    Text("Restore Purchase")
-                                                        .bold()
-                                                        .padding()
-                                                        .foregroundColor(.lightMaroon)
-                                                        .font(.headline)
-                                                }
-                                            }
-                                            
-                                            // Display error message or success message based on ViewModel's state
-                                            if let errorMessage = authViewModel.errorMessage {
-                                                Text(errorMessage)
-                                                    .foregroundColor(.red)
-                                                    .multilineTextAlignment(.center)
-                                                    .padding()
-                                            } else if authViewModel.hasActiveSubscription {
-                                                Text("Purchases restored successfully!")
-                                                    .foregroundColor(.lightMaroon)
-                                                    .padding()
-                                            }
-                                            
-                                        } else {
-                                            // Reserve space for the button to maintain layout consistency
-                                            Rectangle()
-                                                .fill(Color.clear)
-                                                .frame(height: 70) // Same height as the "Learn!" button + padding
-                                        }
-                                    }
-                .frame(width: geometry.size.width, height: geometry.size.height) // Ensure full-screen coverage
-                .opacity(contentOpacity)
-                .sheet(isPresented: $isPaywallPresented) {  // Presents the paywall
-                    PaywallView()
-                }
-                .onChange(of: isSelected) { _, newValue in
-                    if newValue == index {
-                        fadeIn()
-                    } else {
-                        fadeOut()
+                        // Second Button with Border
+                        Button(action: proceedToLimitedVersion) {
+                            Text("Continue with Limited Features")
+                                .bold()
+                                .font(.headline)
+                                .foregroundColor(.lightMaroon)
+                                .padding()
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(Color.lightMaroon, lineWidth: 2)
+                                )
+                            
+                        }
+                        
+                        // Restore Purchase Button
+                        if authViewModel.isLoading {
+                            ProgressView("Restoring Purchase...")
+                        } else {
+                            Button(action: restorePurchases) {
+                                Text("Restore Purchase")
+                                    .bold()
+                                    .font(.headline)
+                                    .foregroundColor(.lightMaroon)
+                                    .frame(maxWidth: .infinity)
+                                    .padding()
+                                    
+                            }
+                        }
+                        
+                        // Error or Success Message
+                        if let errorMessage = authViewModel.errorMessage {
+                            Text(errorMessage)
+                                .foregroundColor(.red)
+                                .multilineTextAlignment(.center)
+                                .padding(.horizontal)
+                        } else if authViewModel.hasActiveSubscription {
+                            Text("Purchases restored successfully!")
+                                .foregroundColor(.lightMaroon)
+                                .padding(.horizontal)
+                        }
                     }
+                    .padding(.horizontal)
+                    .padding(.bottom, 30)
+                } else {
+                    Spacer().frame(height: 70)
                 }
-                .onAppear {
-                    if isSelected == index {
-                        fadeIn()
-                    }
+
+               
+            }
+            .frame(width: geometry.size.width, height: geometry.size.height)
+            .opacity(contentOpacity)
+            .sheet(isPresented: $isPaywallPresented) {
+                PaywallView()
+            }
+            .onChange(of: isSelected) { _, newValue in
+                if newValue == index {
+                    fadeIn()
+                } else {
+                    fadeOut()
                 }
             }
+            .onAppear {
+                if isSelected == index {
+                    fadeIn()
+                }
+            }
+        }
+    }
+    
+    private func calculateIconSize(geometry: GeometryProxy) -> CGFloat {
+            let screenWidth = geometry.size.width
+            // For smaller screens like iPhone SE, use smaller sizes
+            switch screenWidth {
+            case ...320: // iPhone SE and similar
+                return 150
+            case 321...375: // iPhone 8 and similar
+                return 200
+            default: // Larger devices
+                return 250
+            }
+        }
+
+    
+    private func proceedToLimitedVersion() {
+            hasSeenWelcomeView = true
+            UserDefaults.standard.set(true, forKey: "hasSeenWelcomeView")
         }
     
     private func restorePurchases() {
@@ -255,8 +298,16 @@ struct WelcomeScreen: View {
     }
 }
 
-struct WelcomeView_Previews: PreviewProvider {
+struct WelcomeScreen_Previews: PreviewProvider {
+    @State static var isSelected = 6
+    @State static var hasSeenWelcomeView = false
+    
     static var previews: some View {
-        WelcomeView()
+        WelcomeScreen(
+            index: 6,
+            isSelected: $isSelected,
+            hasSeenWelcomeView: $hasSeenWelcomeView
+        )
+        .environmentObject(AuthViewModel())
     }
 }

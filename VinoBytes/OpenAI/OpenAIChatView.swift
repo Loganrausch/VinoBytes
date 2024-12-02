@@ -7,11 +7,13 @@
 
 import SwiftUI
 import MarkdownUI
+import RevenueCat
+import RevenueCatUI
 
 struct OpenAIChatView: View {
     @Environment(\.managedObjectContext) private var managedObjectContext
     @EnvironmentObject var openAIManager: OpenAIManager
-    
+    @EnvironmentObject var authViewModel: AuthViewModel  // Access subscription status
     @State private var inputText = ""
     @State private var selectedConversation: Conversation?
     @State private var showConversationHistory = false
@@ -19,159 +21,232 @@ struct OpenAIChatView: View {
     @State private var isLoading = false
     @State private var scrollViewProxy: ScrollViewProxy?
     @State private var showEndChatAlert = false  // State for showing the end chat alert
+    @State private var isPaywallPresented = false  // Controls the presentation of the paywall
+
     
     var body: some View {
         NavigationView {
-            VStack {
-                if selectedConversation != nil && !openAIManager.messages.isEmpty {
-                    ScrollView {
-                        ScrollViewReader { proxy in
-                            VStack {
-                                ForEach(openAIManager.messages) { message in
-                                    MessageView(message: message)
-                                }
-                                if isLoading {
-                                    HStack {
-                                        WineGlassLoadingView()
-                                            .scaleEffect(1.5)
-                                            .padding(.vertical, 10)
-                                        Spacer()
+            ZStack {
+                // Main Content
+                VStack {
+                    if selectedConversation != nil && !openAIManager.messages.isEmpty {
+                        ScrollView {
+                            ScrollViewReader { proxy in
+                                VStack {
+                                    ForEach(openAIManager.messages) { message in
+                                        MessageView(message: message)
                                     }
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .padding(.horizontal)
-                                }
-                            }
-                            .padding(.top, 20)  // Add padding to the top of the ScrollView content
-                            .onAppear {
-                                self.scrollViewProxy = proxy
-                            }
-                            .onChange(of: openAIManager.messages.count) { _, _ in
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                                    if let lastUserMessage = openAIManager.messages.last(where: { $0.role == "user" }) {
-                                        proxy.scrollTo(lastUserMessage.id, anchor: .top)
+                                    if isLoading {
+                                        HStack {
+                                            WineGlassLoadingView()
+                                                .scaleEffect(1.5)
+                                                .padding(.vertical, 10)
+                                            Spacer()
+                                        }
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .padding(.horizontal)
                                     }
                                 }
-                            }
-                        }
-                    }
-                } else {
-                    Spacer()
-                    Text("The world of wine, uncorked.")
-                        .foregroundColor(.gray)
-                }
-                Spacer()
-                
-                
-                VStack(spacing: 0) {
-                    Rectangle()
-                        .fill(Color("LightMaroon"))
-                        .frame(height: 2)
-                        .opacity(0.7)
-                    
-                    VStack {
-                        Spacer(minLength: 0)
-                        
-                        Image("OpenAIBadge")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 120, height: 120)
-                            .padding(.bottom, -25)
-                            .padding(.top, -30)
-                        
-                        Spacer(minLength: 0)
-                    }
-                    .frame(maxWidth: .infinity, maxHeight: 70)
-                    .contentShape(Rectangle())
-                    .background(Color.clear)
-                    
-                    CustomTextField(placeholder: "Ask me your wine-related questions!", text: $inputText, onSend: {
-                        if !inputText.trimmingCharacters(in: .whitespaces).isEmpty {
-                            let messageToSend = inputText
-                            inputText = ""
-                            
-                            if selectedConversation == nil {
-                                selectedConversation = openAIManager.startNewConversation()
-                            }
-                            if let conversation = selectedConversation {
-                                isLoading = true
-                                openAIManager.sendMessage(messageToSend, in: conversation) { errorMessage in
-                                    DispatchQueue.main.async {
-                                        isLoading = false
-                                        if let error = errorMessage {
-                                            print("Error sending message: \(error)")
-                                        } else if let lastUserMessage = openAIManager.messages.last(where: { $0.role == "user" }) {
-                                            scrollViewProxy?.scrollTo(lastUserMessage.id, anchor: .bottom)
+                                .padding(.top, 20)  // Add padding to the top of the ScrollView content
+                                .onAppear {
+                                    self.scrollViewProxy = proxy
+                                }
+                                .onChange(of: openAIManager.messages.count) { _, _ in
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                                        if let lastUserMessage = openAIManager.messages.last(where: { $0.role == "user" }) {
+                                            proxy.scrollTo(lastUserMessage.id, anchor: .top)
                                         }
                                     }
                                 }
                             }
                         }
-                    })
-                    .padding(.horizontal)
+                    } else {
+                        Spacer()
+                        Text("The world of wine, uncorked.")
+                            .foregroundColor(.gray)
+                    }
+                    Spacer()
                     
-                }
-                .padding(.bottom, 20) // Adjust padding to account for tab view
-                .gesture(DragGesture().onEnded { value in
-                    if value.translation.height > 50 {
-                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                    }
-                })
-            }
-            .padding(.horizontal, 0)
-            .contentShape(Rectangle()) // Ensures the gesture area covers the entire VStack
-            .onTapGesture {
-                hideKeyboard()
-            }
-            
-            .navigationBarTitle("Vino Chat", displayMode: .inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
-                        showConversationHistory.toggle()
-                    }) {
-                        Image(systemName: "list.bullet")
-                            .imageScale(.large)
-                            .foregroundColor(Color("Latte"))
-                    }
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        showEndChatAlert = true
-                    }) {
-                        Text("End Chat")
-                            .foregroundColor(Color("Latte"))
-                            .font(.headline)
-                    }
-                }
-            }
-            .alert(isPresented: $showEndChatAlert) {
-                Alert(
-                    title: Text("End Chat"),
-                    message: Text("Would you like to save your current chat?"),
-                    primaryButton: .destructive(Text("Don't Save")) {
-                        // Code to handle not saving the chat
-                        selectedConversation = nil
-                        inputText = ""
-                        openAIManager.messages.removeAll()
-                    },
-                    secondaryButton: .default(Text("Save")) {
-                        // Code to handle saving the chat
-                        if let conversation = selectedConversation {
-                            openAIManager.endConversation(conversation)
+                    
+                    VStack(spacing: 0) {
+                        Rectangle()
+                            .fill(Color("LightMaroon"))
+                            .frame(height: 2)
+                            .opacity(0.7)
+                        
+                        VStack {
+                            Spacer(minLength: 0)
+                            
+                            Image("OpenAIBadge")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 120, height: 120)
+                                .padding(.bottom, -25)
+                                .padding(.top, -30)
+                            
+                            Spacer(minLength: 0)
                         }
-                        selectedConversation = nil
-                        inputText = ""
-                        openAIManager.messages.removeAll()
+                        .frame(maxWidth: .infinity, maxHeight: 70)
+                        .contentShape(Rectangle())
+                        .background(Color.clear)
+                        
+                        CustomTextField(placeholder: "Ask me anything wine related!", text: $inputText, onSend: {
+                            if !inputText.trimmingCharacters(in: .whitespaces).isEmpty {
+                                let messageToSend = inputText
+                                inputText = ""
+                                
+                                if selectedConversation == nil {
+                                    selectedConversation = openAIManager.startNewConversation()
+                                }
+                                if let conversation = selectedConversation {
+                                    isLoading = true
+                                    openAIManager.sendMessage(messageToSend, in: conversation) { errorMessage in
+                                        DispatchQueue.main.async {
+                                            isLoading = false
+                                            if let error = errorMessage {
+                                                print("Error sending message: \(error)")
+                                            } else if let lastUserMessage = openAIManager.messages.last(where: { $0.role == "user" }) {
+                                                scrollViewProxy?.scrollTo(lastUserMessage.id, anchor: .bottom)
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        })
+                        .padding(.horizontal)
+                        .padding(.bottom, 20) // Adjust padding to account for tab view
+                        .gesture(DragGesture().onEnded { value in
+                            if value.translation.height > 50 {
+                                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                            }
+                        })
                     }
-                )
+                }
+                .padding(.horizontal, 0)
+                .contentShape(Rectangle()) // Ensures the gesture area covers the entire VStack
+                .onTapGesture {
+                    hideKeyboard()
+                }
+                
+                .navigationBarTitle("Vino Chat", displayMode: .inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        if authViewModel.hasActiveSubscription {
+                            Button(action: {
+                                showConversationHistory.toggle()
+                            }) {
+                                Image(systemName: "list.bullet")
+                                    .imageScale(.large)
+                                    .foregroundColor(Color("Latte"))
+                            }
+                        }
+                    }
+                    
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        if authViewModel.hasActiveSubscription {
+                            Button(action: {
+                                showEndChatAlert = true
+                            }) {
+                                Text("End Chat")
+                                    .foregroundColor(Color("Latte"))
+                                    .font(.headline)
+                            }
+                        }
+                    }
+                }
+                
+                .alert(isPresented: $showEndChatAlert) {
+                    Alert(
+                        title: Text("End Chat"),
+                        message: Text("Would you like to save your current chat?"),
+                        primaryButton: .destructive(Text("Don't Save")) {
+                            // Code to handle not saving the chat
+                            selectedConversation = nil
+                            inputText = ""
+                            openAIManager.messages.removeAll()
+                        },
+                        secondaryButton: .default(Text("Save")) {
+                            // Code to handle saving the chat
+                            if let conversation = selectedConversation {
+                                openAIManager.endConversation(conversation)
+                            }
+                            selectedConversation = nil
+                            inputText = ""
+                            openAIManager.messages.removeAll()
+                        }
+                    )
+                }
+                .sheet(isPresented: $showConversationHistory) {
+                    ConversationHistoryView()
+                        .preferredColorScheme(.light)
+                }
+                
+                .onAppear(perform: subscribeToKeyboardEvents)
+                
+                // Overlay for Non-Subscribed Users
+                if !authViewModel.hasActiveSubscription {
+                    Color.black.opacity(0.3)
+                        .edgesIgnoringSafeArea(.all)
+                    
+                    VStack(spacing: 20) {
+                        Text("Premium Feature")
+                            .font(.title)
+                            .bold()
+                            .foregroundColor(.lightMaroon)
+                        
+                        Text("Please upgrade to the premium subscription to access our AI wine assistant.")
+                            .font(.body)
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal)
+                            .foregroundColor(.lightMaroon)
+                        
+                        Button(action: {
+                            startSubscriptionProcess()
+                        }) {
+                            Text("Subscribe")
+                                .bold()
+                                .foregroundColor(.lightMaroon)
+                                .padding()
+                                .frame(maxWidth: .infinity)
+                                .background(Color("Latte"))
+                                .cornerRadius(10)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(Color.lightMaroon, lineWidth: 2) // Adjust line width as needed
+                                )
+                                .shadow(radius: 5)
+                                .padding(.horizontal, 50)
+                        }
+                    }
+                    .padding() // Inner padding for content within the overlay
+                    .background(Color("Latte")) // Using fully opaque background
+                    .cornerRadius(10) // Softening the corners of the overlay content
+                    .padding(.horizontal, 20) // Adds horizontal padding to prevent touching the sides
+                    .shadow(radius: 20) // Optional: Add shadow to elevate the content above the dark background
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                }
             }
-            .sheet(isPresented: $showConversationHistory) {
-                ConversationHistoryView()
-                    .preferredColorScheme(.light)
+                    .sheet(isPresented: $isPaywallPresented) {
+                        PaywallView()
+                            .environmentObject(authViewModel)
+                    }
             }
         }
-        .onAppear(perform: subscribeToKeyboardEvents)
-    }
+
+              // Helper Functions
+              private func startSubscriptionProcess() {
+                  Purchases.shared.getOfferings { offerings, error in
+                      if let offerings = offerings, let offering = offerings.current {
+                          if offering.availablePackages.isEmpty {
+                              print("No packages available")
+                          } else {
+                              isPaywallPresented = true  // Trigger the paywall presentation
+                          }
+                      } else if let error = error {
+                          print("Error fetching offerings: \(error.localizedDescription)")
+                      }
+                  }
+              }
     
     private func subscribeToKeyboardEvents() {
         NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { notification in

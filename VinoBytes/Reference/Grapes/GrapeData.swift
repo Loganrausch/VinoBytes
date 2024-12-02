@@ -7,8 +7,6 @@
 
 import Foundation
 
-//THE PRODUCERS IN THIS SECTION ARE NOT VERIFIED.. WILL BE ADDING LATER BUT HAVE PRODUCER PLACEHOLDERS IN PLACE FOR NOW. ALL OTHER INFORMATION IS VERIFIED AND CORRECT.
-
 struct GrapeData {
     static let redGrapes: [Grape] = [
     
@@ -28,35 +26,21 @@ struct GrapeData {
                     palate: "Medium to full-bodied with balanced acidity and moderate tannins. Flavors of red berries, plums, and a touch of black pepper and vanilla from oak aging.",
                     finish: "Smooth, with a lingering fruity and spicy aftertaste."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Thrives in Mediterranean climates with warm, dry summers and mild winters.",
-                    soil: "Prefers well-drained soils, particularly sandy and clay loams.",
-                    growingConditions: "Resistant to drought and can adapt to various elevations. Known for its high yield and vigorous growth."
-                ),
+               
                 wineStyles: [
                     "Red Wines: Ranges from fresh, young, and fruity wines to more complex, oak-aged versions.\n",
-                    "Rosé Wines: Produced in a lighter style with fresh red fruit flavors and crisp acidity."
+                    "Rosé Wines: Produced in a lighter style with fresh red fruit flavors and crisp acidity.\n",
+                    "Sweet Wines: Often produced from late-harvested or sun-dried grapes, offering concentrated flavors of dried fruits and honey with balanced acidity."
                 ],
-                foodPairing: [
-                    "Red Wines: Pairs well with grilled meats, lamb, moussaka, and Mediterranean cuisine featuring herbs and spices.\n",
-                    "Rosé Wines: Complements lighter dishes like salads, seafood, and poultry."
-                ],
-                notableProducers: [
-                    "Gaia Wines (Nemea, Greece)",
-                    "Skouras Winery (Nemea, Greece)",
-                    "Domaine Spiropoulos (Nemea, Greece)"
-                ],
-                otherNames: "Locally known as Agiorgitiko, which means 'Saint George's grape.'",
-                grapeSummary: "Agiorgitiko is a versatile grape, capable of producing a wide range of wine styles, from refreshing rosés to concentrated sweet wines. It is often compared to Merlot for its versatility and approachable style. Agiorgitiko plays a significant role in Greece’s wine production."
-            ),
-            imageName: "agiorgitiko",
-            iconNames: ["leaf", "drop"]
+               
+                grapeSummary: "Agiorgitiko is a versatile grape, capable of producing a wide range of wine styles, from refreshing rosés to concentrated sweet wines. It is often compared to Merlot for its versatility and approachable style."
+            )
         ),
 
         Grape(
             name: "Aglianico",
             details: GrapeDetails(
-                origin: "Aglianico is an ancient grape variety believed to have been introduced by the Greeks to southern Italy. It is primarily grown in the Campania and Basilicata regions, with a long history of producing high-quality wines.",
+                origin: "Aglianico is an ancient grape variety believed to have been introduced by the Greeks to southern Italy. It thrives in volcanic soils and at high altitudes, particularly in Campania and Basilicata, where cooler temperatures allow for slow ripening and balanced wines.",
                 countries: Countries(
                     primary: [
                         "Italy: Predominantly in the regions of Campania and Basilicata."
@@ -65,33 +49,17 @@ struct GrapeData {
                 tastingNotes: TastingNotes(
                     color: "Deep garnet red.",
                     aroma: "Intense aromas of dark fruits such as blackberry and plum, with hints of smoke, cured meat, and savory herbs like oregano.",
-                    palate: "Full-bodied with high acidity and firm tannins. Flavors of black cherry, plum, and smoke, with notes of tobacco and baking spices.",
+                    palate: "Full-bodied with high acidity and firm tannins that soften with age. Flavors of black cherry, plum, and smoke, with notes of tobacco and baking spices.",
                     finish: "Long and complex, with a persistent and structured finish."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Thrives in warm climates with plenty of sunlight, often grown at higher altitudes to maintain acidity.",
-                    soil: "Prefers volcanic soils, which are rich in minerals and provide good drainage.",
-                    growingConditions: "Known for its late ripening, requiring a long growing season. It is resilient and can withstand hot climates, producing wines with high acidity and tannins."
-                ),
+               
                 wineStyles: [
                     "Red Wines: Typically produces full-bodied, age-worthy reds with high acidity and tannins.\n",
-                    "Rosé Wines: Occasionally made into rosé, offering bright acidity and fresh fruit flavors."
+                    "Rosé Wines: Occasionally crafted in a vibrant ‘Rosato’ style, with fresh red fruit flavors and bright acidity."
                 ],
-                foodPairing: [
-                    "Red Wines: Pairs well with rich, hearty dishes such as braised meats, game, and aged cheeses.\n",
-                    "Rosé Wines: Complements lighter fare like charcuterie, grilled vegetables, and poultry."
-                ],
-                notableProducers: [
-                    "Mastroberardino (Campania, Italy)",
-                    "Feudi di San Gregorio (Campania, Italy)",
-                    "Terredora di Paolo (Campania, Italy)",
-                    "Cantine del Notaio (Basilicata, Italy)"
-                ],
-                otherNames: "Sometimes referred to as 'the Barolo of the South' due to its tannic structure and aging potential.",
-                grapeSummary: "Aglianico is a noble grape variety of southern Italy, known for producing robust, age-worthy wines. Its high acidity and tannins make it ideal for long aging, and it is often compared to Nebbiolo for its structure and complexity. Aglianico is a cornerstone of Italian viticulture, particularly in the regions of Campania and Basilicata."
-            ),
-            imageName: "aglianico",
-            iconNames: ["leaf", "drop"]
+               
+                grapeSummary: "Aglianico is a noble grape variety of southern Italy, known for producing robust, age-worthy wines. Its high acidity and tannins make it ideal for long aging, and it is often compared to Nebbiolo for its structure and complexity. Aglianico is the key grape in prestigious appellations such as Taurasi DOCG in Campania and Aglianico del Vulture DOCG in Basilicata, where it produces some of Italy’s finest age-worthy wines."
+            )
         ),
 
         Grape(
@@ -100,8 +68,9 @@ struct GrapeData {
                 origin: "Alicante Bouschet is a teinturier grape variety created by Henri Bouschet in France in 1866 by crossing Petit Bouschet with Grenache. It is known for its deep color and high anthocyanin content.",
                 countries: Countries(
                     primary: [
-                        "Portugal: Widely grown in the Alentejo region, where it is a key component in many red blends and varietal wines.",
-                        "Spain: Known as Garnacha Tintorera, especially in regions like Castilla-La Mancha, where it adds color and structure to various blends."
+                        "Portugal: Widely grown in the Alentejo region, where it is a key component in many red blends and varietal wines.\n",
+                        "Spain: Known as Garnacha Tintorera, especially in regions like Castilla-La Mancha, where it adds color and structure to various blends.\n",
+                        "France: Still cultivated in the Languedoc, where it is used in red blends."
                     ]
                 ),
                 tastingNotes: TastingNotes(
@@ -110,29 +79,14 @@ struct GrapeData {
                     palate: "Full-bodied with firm tannins and balanced acidity. Flavors of black fruits, such as blackberry and black cherry, with notes of pepper and chocolate.",
                     finish: "Long and robust with lingering fruit and spice notes."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Thrives in warm, sunny climates with well-drained soils.",
-                    soil: "Prefers a variety of soil types, including sandy, clay, and limestone soils.",
-                    growingConditions: "Vigorous and productive, known for its resistance to disease and ability to produce deeply colored wines."
-                ),
+               
                 wineStyles: [
-                    "Red Wines: Often used in blends to add color, body, and complexity.",
-                    "Varietal Wines: Produces rich, dark wines with aging potential."
+                    "Red Wines: Frequently used in blends to add color, body, and complexity, ranging from entry-level to high-quality wines.",
+                    "Varietal Wines: Produces rich, dark wines with moderate aging potential."
                 ],
-                foodPairing: [
-                    "Red Wines: Pairs well with grilled meats, game, stews, and dishes with robust flavors.",
-                    "Varietal Wines: Complements hearty dishes, aged cheeses, and dark chocolate."
-                ],
-                notableProducers: [
-                    "Herdade do Esporão (Alentejo, Portugal)",
-                    "Adega de Borba (Alentejo, Portugal)",
-                    "Bodegas Castaño (Murcia, Spain)"
-                ],
-                otherNames: "Sometimes referred to as 'Garnacha Tintorera' in Spain.",
-                grapeSummary: "Alicante Bouschet is one of the few grape varieties with red flesh, making it unique in its ability to produce deeply colored wines. It is valued for its versatility in blending and its contribution to the structure and color of wines."
-            ),
-            imageName: "alicante_bouschet",
-            iconNames: ["leaf", "drop"]
+               
+                grapeSummary: "Alicante Bouschet is one of the few grape varieties with red flesh, making it unique in its ability to produce deeply colored wines. It is valued for its versatility in blending and its contribution to the structure and color of wines. It is highly resistant to drought, thriving in warm, dry climates, which makes it particularly important in regions facing climate challenges."
+            )
         ),
 
 
@@ -148,32 +102,18 @@ Grape(
                 tastingNotes: TastingNotes(
                     color: "Deep ruby to purple.",
                     aroma: "Aromas of blackberry, black currant, dried cherry, cocoa, and tar.",
-                    palate: "Medium to full-bodied with high tannins and high acidity. Flavors of black fruits, with earthy and smoky notes.",
+                    palate: "Medium to full-bodied with high tannins and high acidity. Flavors of black fruits, with earthy and smoky notes. Softens with age and develops notes of leather, tobacco, and dried fruits.",
                     finish: "Long and robust with lingering fruit and spice notes."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Thrives in warm, dry climates with well-drained soils.",
-                    soil: "Prefers clay and limestone soils, which help balance the grape's acidity and tannins.",
-                    growingConditions: "Vigorous and late-ripening, requiring careful management to avoid rot and ensure phenolic ripeness."
-                ),
+                
                 wineStyles: [
                     "Red Wines: Known for producing tannic, age-worthy wines with significant structure.\n",
-                    "Rosé Wines: Can produce vibrant and complex sparkling rosé."
+                    "Rosé Wines: Can produce vibrant and complex sparkling rosé.\n",
+                    "Sparkling Wines: Commonly used in the production of Bairrada’s traditional sparkling wines, known for their crisp acidity and complex flavors."
                 ],
-                foodPairing: [
-                    "Red Wines: Pairs well with roasted meats, braised beef ribs, and robust dishes.\n",
-                    "Rosé Wines: Complements lighter dishes, smoked trout, and white meats."
-                ],
-                notableProducers: [
-                    "Luis Pato (Bairrada, Portugal)",
-                    "Niepoort (Douro, Portugal)",
-                    "Quinta das Bágeiras (Bairrada, Portugal)"
-                ],
-                otherNames: "Also known as Tinta Bairrada, Tinta Poeirinha.",
-                grapeSummary: "Baga is often compared to Pinot Noir and Nebbiolo due to its ability to reflect the terroir and its high acidity and tannin structure. It is essential in the production of Bairrada's signature sparkling and red wines."
-            ),
-            imageName: "baga",
-            iconNames: ["leaf", "drop"]
+               
+                grapeSummary: "Baga is often compared to Pinot Noir and Nebbiolo due to its ability to reflect the terroir and its high acidity and tannin structure. It is essential in the production of Bairrada's signature sparkling and red wines. Baga thrives in cool coastal climates, particularly in Bairrada, but requires careful vineyard management due to its tight clusters and susceptibility to rot."
+            )
         ),
 
 Grape(
@@ -182,36 +122,24 @@ Grape(
         origin: "Barbera is a native grape of Piedmont, Italy, with a history dating back to the 13th century. It is one of Italy’s most widely planted red grape varieties.",
         countries: Countries(
             primary: [
-                "Italy: Predominantly in Piedmont, Emilia-Romagna, Lombardy, and other central and northern regions."
+                "Italy: Predominantly in Piedmont, Emilia-Romagna, Lombardy, and other central and northern regions.\n",
+                "Other: Found in California and Argentina, where it produces vibrant, fruit-driven wines."
             ]
         ),
         tastingNotes: TastingNotes(
             color: "Deep ruby to purple.",
             aroma: "Aromas of red cherry, blackberry, and plum, with hints of dried herbs, black pepper, and licorice.",
-            palate: "Medium to full-bodied with low tannins and high acidity. Flavors of tart cherry, blackberry, and dried herbs.",
+            palate: "Medium to full-bodied with low to moderate tannins and high acidity. Flavors of tart cherry, blackberry, and dried herbs, often complemented by spice and vanilla in oak-aged styles.",
             finish: "Bright and zesty with a lingering acidity and fruit-forward finish."
         ),
-        viticulturalCharacteristics: ViticulturalCharacteristics(
-            climate: "Thrives in warm, sunny climates.",
-            soil: "Prefers well-drained sandy and clay soils.",
-            growingConditions: "Vigorous and high-yielding, requiring careful vineyard management to maintain quality."
-        ),
+      
         wineStyles: [
-            "Red Wines: Known for producing fresh, fruit-forward wines that are both youthful and age-worthy."
+            "Red Wines: Known for producing fresh, fruit-forward wines as well as more complex, oak-aged styles that can be both youthful and age-worthy."
         ],
-        foodPairing: [
-            "Red Wines: Pairs well with pizza, stews, mushroom dishes, grilled meats, and aged cheeses like Pecorino and Asiago."
-        ],
-        notableProducers: [
-            "Vietti (Piedmont, Italy)",
-            "Braida (Piedmont, Italy)",
-            "Pio Cesare (Piedmont, Italy)"
-        ],
-        otherNames: "Known as 'Barbera Nera' in some regions.",
-        grapeSummary: "Barbera is often overshadowed by Nebbiolo in Piedmont but is beloved for its versatility and approachable style. Its high acidity makes it a perfect food wine."
-    ),
-    imageName: "barbera",
-    iconNames: ["leaf", "drop"]
+       
+        grapeSummary: "Barbera is often overshadowed by Nebbiolo in Piedmont but is beloved for its versatility and approachable style. It is most notable in Barbera d’Asti and Barbera d’Alba, where it produces some of the finest examples of this variety, ranging from youthful and vibrant to complex and age-worthy. Its high acidity makes it a perfect food wine."
+    )
+ 
 ),
 
 
@@ -223,37 +151,23 @@ Grape(
         countries: Countries(
             primary: [
                 "Austria: Particularly in Burgenland and Neusiedlersee regions.\n",
-                "Hungary: Known as Kékfrankos, especially in Sopron and Eger."
+                "Hungary: Known as Kékfrankos, especially in Sopron and Eger.\n",
+                "Germany: Known as Lemberger, especially in Württemberg."
             ]
         ),
         tastingNotes: TastingNotes(
             color: "Deep ruby to purple.",
             aroma: "Aromas of blackberry, black cherry, and dark chocolate with notes of allspice and pepper.",
-            palate: "Medium-bodied with medium-high tannins and acidity. Flavors of black fruits, pepper, and earthy undertones.",
+            palate: "Medium-bodied with medium-high tannins and vibrant acidity, which can be tart in youth but mellows with age. Flavors of black fruits, pepper, and earthy undertones.",
             finish: "Long and spicy with balanced acidity and firm tannins."
         ),
-        viticulturalCharacteristics: ViticulturalCharacteristics(
-            climate: "Thrives in warm, sunny climates.",
-            soil: "Grows well in diverse soils, including limestone, clay, and volcanic soils.",
-            growingConditions: "Late-ripening and high-yielding, requires careful vineyard management to achieve optimal phenolic ripeness."
-        ),
+      
         wineStyles: [
-            "Red Wines: Produces both fresh, fruity wines and more complex, age-worthy wines."
+            "Red Wines: Produces both fresh, fruity wines and more complex, age-worthy wines that develop notes of leather, dried herbs, and tobacco with time."
         ],
-        foodPairing: [
-            "Red Wines: Pairs well with smoked sausages, red potato goulash, and cheesy spaetzle dumplings."
-        ],
-        notableProducers: [
-                "Weingut Moric (Burgenland, Austria)",
-                "Weingut Prieler (Burgenland, Austria)",
-                "Heinrich Winery (Burgenland, Austria)",
-                "Weninger (Sopron, Hungary; also operates in Burgenland, Austria)"
-            ],
-        otherNames: "Known as Kékfrankos in Hungary and Lemberger in Germany and the United States.",
-        grapeSummary: "Blaufränkisch is notable for its ability to reflect terroir, producing a wide range of wine styles from different regions. It is often compared to Syrah for its spicy character and to Pinot Noir for its ability to age gracefully."
-    ),
-    imageName: "blaufrankisch",
-    iconNames: ["leaf", "drop"]
+      
+        grapeSummary: "Blaufränkisch is notable for its ability to reflect terroir, producing a wide range of wine styles from different regions. It is often compared to Syrah for its spicy character and to Pinot Noir for its ability to age gracefully. Blaufränkisch thrives in cool to moderate climates, where it retains its vibrant acidity and develops complex flavors."
+    )
     
 ),
     
@@ -263,7 +177,7 @@ Grape(
             origin: "Bobal is indigenous to the Utiel-Requena region in Valencia, Spain, where it is one of the most widely planted red grape varieties.",
             countries: Countries(
                 primary: [
-                    "Spain: Predominantly in Valencia, particularly in Utiel-Requena."
+                    "Spain: Predominantly in Valencia, particularly in Utiel-Requena. Also grown in La Mancha and Manchuela, where it contributes to robust red blends and varietal wines."
                 ]
             ),
             tastingNotes: TastingNotes(
@@ -272,28 +186,14 @@ Grape(
                 palate: "Full-bodied with robust tannins and high acidity, offering flavors of dark fruit, licorice, and sometimes leather.",
                 finish: "Long and persistent, often with a slightly bitter finish that is characteristic of the variety."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Adapts well to hot, arid climates.",
-                soil: "Thrives in limestone-rich soils but can adapt to a variety of soil types.",
-                growingConditions: "Bobal is known for its hardiness and resistance to drought and diseases."
-            ),
+            
             wineStyles: [
-                "Red Wines: Typically robust and tannic, suitable for aging.\n",
-                "Rosé Wines: Fruit-forward and vibrant, usually consumed young."
+                "Red Wines: Typically robust and tannic, often aged in oak to develop complexity with notes of vanilla, spice, and cocoa.\n",
+                "Rosé Wines: Fresh, aromatic, and fruit-forward, increasingly popular for their vibrant flavors and refreshing acidity."
             ],
-            foodPairing: [
-                "Red Wines: Pairs well with hearty meat dishes like stews and grilled red meats.\n",
-                "Rosé Wines: Excellent with tapas, charcuterie, and lighter fare."
-            ],
-            notableProducers: [
-                "Mustiguillo (Utiel-Requena, Valencia, Spain)",
-                "Bodega Sierra Norte (Utiel-Requena, Valencia, Spain)"
-            ],
-            otherNames: "None",
-            grapeSummary: "Bobal is known for its deep color and ability to produce both full-bodied red wines and fresh rosés. It is appreciated for its adaptability to the hot climate of central Spain and its versatility in winemaking."
-        ),
-        imageName: "bobal",
-        iconNames: ["leaf", "drop"]
+            
+            grapeSummary: "Bobal is known for its deep color and ability to produce both full-bodied red wines and fresh rosés. It is highly drought-resistant, making it well-suited to the dry, hot climate of central Spain, where it thrives despite challenging conditions."
+        )
     ),
 
         Grape(
@@ -302,7 +202,8 @@ Grape(
                 origin: "Bonarda in Argentina refers to Douce Noir, a grape variety originally from the Savoie region in France. It is now predominantly found in Argentina, where it is the second most planted red grape variety after Malbec. It is important to note that the name 'Bonarda' is also used in Italy to refer to different grape varieties, such as Bonarda Piemontese and Bonarda Novarese (Uva Rara), which are distinct from the Bonarda in Argentina.",
                 countries: Countries(
                     primary: [
-                        "Argentina: Widely planted across Mendoza and San Juan."
+                        "Argentina: Widely planted across Mendoza and San Juan.\n",
+                        "California: Known as Charbono, where it produces fruit-forward wines."
                     ]
                 ),
                 tastingNotes: TastingNotes(
@@ -311,26 +212,13 @@ Grape(
                     palate: "Medium-bodied with moderate acidity and smooth tannins, featuring fruity flavors with occasional spicy or earthy undertones.",
                     finish: "Medium-length with fruity and sometimes floral or earthy echoes."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Prefers warmer climates.",
-                    soil: "Performs best in sandy loam soils.",
-                    growingConditions: "Resilient to local pests and diseases, producing consistent and high yields."
-                ),
+               
                 wineStyles: [
-                    "Red Wines: Typically fruity and approachable, often vinified to be enjoyed young."
+                    "Red Wines: Typically fruity and approachable, often vinified to be enjoyed young, but also crafted in oak-aged styles that develop over time."
                 ],
-                foodPairing: [
-                    "Red Wines: Pairs well with pizza, pasta dishes with red sauces, and various meats like chicken and pork."
-                ],
-                notableProducers: [
-                    "Familia Zuccardi (Mendoza, Argentina)",
-                    "El Esteco (Salta, Argentina)"
-                ],
-                otherNames: "Also known as Douce Noir in its French origin and Charbono in California.",
-                grapeSummary: "Bonarda, known as Douce Noir or Charbono in other regions, is valued for its fruit-forward, accessible wines that are best enjoyed while young. It plays a significant role in Argentina's red wine production, particularly in the Mendoza and San Juan regions."
-            ),
-            imageName: "bonarda",
-            iconNames: ["leaf", "drop"]
+                
+                grapeSummary: "Bonarda, known as Douce Noir or Charbono in other regions, is valued for its fruit-forward, accessible wines that are best enjoyed while young. It plays a significant role in Argentina's red wine production, particularly in the Mendoza and San Juan regions. Bonarda thrives in warm climates and high-altitude vineyards, contributing to its prominence in Argentina’s red wine production."
+            )
         ),
 
 Grape(
@@ -348,80 +236,55 @@ Grape(
                     palate: "Light-bodied, often sweet or semi-sweet, with pronounced fruitiness and low tannins.",
                     finish: "Refreshing and aromatic, emphasizing the floral and fruity characteristics."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Prefers cooler climates to maintain its aromatic profile.",
-                    soil: "Best in calcareous marl soils.",
-                    growingConditions: "Sensitive to overcropping but can maintain high acidity in suitable growing conditions."
-                ),
+                
                 wineStyles: [
                     "Sweet Red Wines: Often frizzante (lightly sparkling) and sweet, known as Brachetto d’Acqui."
                 ],
-                foodPairing: [
-                    "Ideal with desserts, particularly those featuring berries, chocolate, or cream."
-                ],
-                notableProducers: [
-                    "Marenco (Piedmont, Italy)",
-                    "Braida di Giacomo Bologna (Piedmont, Italy)",
-                    "Cantina Sociale di Acqui (Piedmont, Italy)"
-                ],
-                otherNames: "Brachetto d’Acqui when made in its traditional sparkling, sweet style.",
-                grapeSummary: "Brachetto is celebrated for its sweet, aromatic wines that showcase its distinctive floral and fruity notes. It is often enjoyed as a dessert wine, particularly in its sparkling form."
-            ),
-            imageName: "brachetto",
-            iconNames: ["leaf", "drop"]
+               
+                grapeSummary: "Brachetto is best known for its expression in the Brachetto d’Acqui DOCG, where it is crafted into sweet, lightly sparkling wines that are a hallmark of Piedmont. Typically served chilled, Brachetto pairs beautifully with desserts such as chocolate or fruit-based pastries."
+            )
         ),
         
 Grape(
             name: "Cabernet Franc",
             details: GrapeDetails(
-                origin: "Originating from the Bordeaux region of France, Cabernet Franc is a key variety also found in the Loire Valley. It is a parent grape to Cabernet Sauvignon and Merlot.",
+                origin: "Originating from the Bordeaux region of France, Cabernet Franc is a key variety also found in the Loire Valley where it shines in appellations such as Chinon, Bourgueil, and Saumur. In Bordeaux, it is a key component of blends, particularly in the Right Bank regions of Saint-Émilion and Pomerol, where it contributes aromatic complexity and structure. It is a parent grape to Cabernet Sauvignon and Merlot.",
                 countries: Countries(
                     primary: [
                         "France: Predominantly in Bordeaux and Loire Valley.\n",
                         "Italy: Increasingly popular in northern regions.\n",
-                        "USA: Widely planted in California and Washington State."
+                        "USA: Widely planted in California, Washington State, and Virginia.\n",
+                        "Argentina: Emerging as a varietal wine in cooler areas like Mendoza."
                     ]
                 ),
                 tastingNotes: TastingNotes(
                     color: "Medium red with lighter tints compared to Cabernet Sauvignon.",
-                    aroma: "Aromas of raspberry, bell pepper, cassis, and sometimes tobacco and graphite.",
+                    aroma: "Aromas of raspberry, green bell pepper, cassis, and sometimes tobacco and graphite.",
                     palate: "Medium-bodied with bright acidity and moderate tannins, flavors of red fruits, herbaceous notes, and a distinct peppery profile.",
                     finish: "Elegant and persistent with herbal and fruity nuances."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Prefers cooler climates than Cabernet Sauvignon, ripens earlier.",
-                    soil: "Thrives on well-drained, lime-rich soils.",
-                    growingConditions: "Moderately vigorous, bud-breaks early which can be susceptible to spring frosts."
-                ),
+               
                 wineStyles: [
                     "Red Wines: Often blended but also makes varietal wines, appreciated for their aromatic complexity."
                 ],
-                foodPairing: [
-                    "Ideal with roasted meats, poultry, and hearty vegetable dishes like ratatouille."
-                ],
-                notableProducers: [
-                    "Château Cheval Blanc (Bordeaux, France)",
-                    "Domaine Bernard Baudry (Loire Valley, France)",
-                    "Frog's Leap (Napa Valley, USA)"
-                ],
-                otherNames: "Also known as Breton in the Loire Valley.",
+                
                 grapeSummary: "Cabernet Franc is appreciated for its finesse, aromatic complexity, and ability to age gracefully. It serves both as a blending grape and as a standalone varietal in many regions."
-            ),
-            imageName: "cabernet_franc",
-            iconNames: ["leaf", "drop"]
+            )
         ),
 
         
 Grape(
             name: "Cabernet Sauvignon",
             details: GrapeDetails(
-                origin: "Cabernet Sauvignon, originating from the Bordeaux region of France, has transcended its regional beginnings to become one of the most celebrated and widely planted red wine grape varieties worldwide. Its rise to fame is attributed to its prominent role in Bordeaux blends, where it contributes structure, tannins, and longevity. Over centuries, it has adapted to a variety of climates and terroirs, making it a versatile grape that has helped to establish and enhance the reputation of emerging wine regions across the globe. This includes the acclaimed vineyards of Napa Valley in California, the diverse terrains of Chile and Australia, the historic estates of South Africa, and as a crucial component in Italy’s Super Tuscans, where it adds depth and complexity to these innovative blends.",
+                origin: "Cabernet Sauvignon, originating from the Bordeaux region of France, has transcended its regional beginnings to become one of the most celebrated and widely planted red wine grape varieties worldwide. Its rise to fame is attributed to its prominent role in Bordeaux blends, where it contributes structure, tannins, and longevity. Over centuries, it has adapted to a variety of climates and terroirs, making it a versatile grape that has helped to establish and enhance the reputation of emerging wine regions across the globe. This includes the acclaimed vineyards of Napa Valley in California, the diverse terrains of Chile and Australia, the historic estates of South Africa, and as a crucial component in Italy’s Super Tuscans, where it adds depth and complexity to these innovative blends. Cabernet Sauvignon is a natural cross between Cabernet Franc and Sauvignon Blanc",
                 countries: Countries(
                     primary: [
                         "France: A staple in Bordeaux blends.\n",
                         "USA: Dominant in California, especially Napa Valley.\n",
                         "Italy: Integral to Super Tuscans alongside traditional regions.\n",
-                        "Chile, Australia, South Africa: Extensively planted."
+                        "Chile, Australia, South Africa: Extensively planted.\n",
+                        "Other: Also grown in Argentina, Spain, and New Zealand. "
+                        
                     ]
                 ),
                 tastingNotes: TastingNotes(
@@ -430,41 +293,20 @@ Grape(
                     palate: "Full-bodied with firm tannins and acidity, robust flavors of dark fruits and oak influence.",
                     finish: "Long and persistent with layered complexity."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Prefers warmer climates to fully ripen but can adapt to cooler areas.\n",
-                    soil: "Best in deep, well-drained gravelly and loamy soils.\n",
-                    growingConditions: "Vigorous and hardy, but can be susceptible to poor fruit set due to cold or rainy weather during flowering."
-                ),
+              
                 wineStyles: [
-                    "Red Wines: Typically powerful and age-worthy, often requiring time to reach maturity."
+                    "Red Wines: Typically powerful and age-worthy, often requiring time to reach maturity, but also crafted in more approachable, fruit-forward styles in New World regions."
                 ],
-                foodPairing: [
-                    "Pairs excellently with grilled steaks, lamb, and hearty stews."
-                ],
-                notableProducers: [
-                    "Château Margaux (Bordeaux, France)",
-                    "Château Latour (Bordeaux, France)",
-                    "Château Haut-Brion (Bordeaux, France)",
-                    "Château Mouton Rothschild (Bordeaux, France)",
-                    "Robert Mondavi Winery (Napa Valley, USA)",
-                    "Penfolds (South Australia, Australia)",
-                    "Tenuta San Guido - Sassicaia (Tuscany, Italy)",
-                    "Ornellaia (Tuscany, Italy)",
-                    "Antinori - Tignanello (Tuscany, Italy)",
-                    "Marchesi de' Frescobaldi - Mormoreto (Tuscany, Italy)"
-                ],
-                otherNames: "None - Cabernet Sauvignon is universally recognized by this name across different regions.",
+                
                 grapeSummary: "Cabernet Sauvignon is renowned for its depth, structure, and capacity to produce complex wines with exceptional aging potential. Celebrated for its robust tannins and rich flavors of dark fruits and spices, it has played a pivotal role in crafting some of the world’s most prestigious wines. The grape’s adaptability to different climates and soils, combined with its consistent quality across both Old and New World wine regions, has solidified its status as a cornerstone of the global wine industry. Its influence extends beyond the vineyard, shaping winemaking techniques and consumer preferences around the world."
-            ),
-            imageName: "cabernet_sauvignon",
-            iconNames: ["leaf", "drop"]
+            )
         ),
 
         
         Grape(
             name: "Cannonau",
             details: GrapeDetails(
-                origin: "Cannonau is believed to be native to Sardinia, Italy, and is genetically identical to Grenache, which is widespread across Spain and France.",
+                origin: "While Cannonau is genetically identical to Grenache, it is debated whether it is native to Sardinia or was introduced from Spain during Aragonese rule.",
                 countries: Countries(
                     primary: [
                         "Italy: Almost exclusively cultivated in Sardinia."
@@ -476,234 +318,143 @@ Grape(
                     palate: "Medium to full-bodied with pronounced tannins and moderate acidity. Flavors include red fruit, spice, and herbal notes.",
                     finish: "Warm and persistent, with a spicy and sometimes smoky aftertaste."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Thrives in the warm, Mediterranean climate of Sardinia.",
-                    soil: "Best in sandy and calcareous soils, which help in retaining warmth.",
-                    growingConditions: "Resilient to drought and heat, suitable for the rugged terrain of Sardinia."
-                ),
+               
                 wineStyles: [
-                    "Red Wines: Typically robust and well-structured, suitable for aging."
+                    "Red Wines: Typically robust and well-structured, suitable for aging, though lighter, fresher styles are produced./n",
+                    "Rosé Wines: Produced in vibrant, fresh styles with delicate red fruit flavors and a hint of spice."
                 ],
-                foodPairing: [
-                    "Pairs well with rich, hearty dishes such as roasted meats, game, and strong cheeses."
-                ],
-                notableProducers: [
-                    "Cantina di Santadi (Sardinia, Italy)",
-                    "Argiolas (Sardinia, Italy)"
-                ],
-                otherNames: "Identical to Grenache or Garnacha but locally known as Cannonau.",
-                grapeSummary: "Cannonau is celebrated for its bold flavors and is a staple in Sardinian culture, often associated with longevity of life among the island’s inhabitants."
-            ),
-            imageName: "cannonau",
-            iconNames: ["leaf", "drop"]
+               
+                grapeSummary: "Cannonau is celebrated for its bold flavors and is a staple in Sardinian culture, often associated with longevity of life among the island’s inhabitants. As the Sardinian expression of Grenache, Cannonau shares a connection with this globally cultivated variety but retains a unique identity tied to Sardinian terroir and culture."
+            )
         ),
         
         
         // Carignan Details
-Grape(
+        Grape(
             name: "Carignan",
             details: GrapeDetails(
-                origin: "Carignan is believed to have originated in Spain but became extensively planted in the Languedoc-Roussillon region in France.",
+                origin: "Carignan is believed to have originated in Aragón, Spain, before becoming extensively planted in the Languedoc-Roussillon region in France.",
                 countries: Countries(
                     primary: [
-                        "France: Widely found in Languedoc-Roussillon.\n",
-                        "Spain: Known as Cariñena in Aragón.\n",
-                        "Italy: Grown in Sardinia where it is known as Carignano."
+                        "France: Widely found in Languedoc-Roussillon, as well as Provence and Corsica.\n",
+                        "Spain: Known as Cariñena in Aragón, where it is historically significant and shares its name with a DO (Denominación de Origen).\n",
+                        "Italy: Grown in Sardinia, primarily for DOC wines like Carignano del Sulcis."
                     ]
                 ),
                 tastingNotes: TastingNotes(
                     color: "Deep, dark red.",
-                    aroma: "Aromas of red and black fruits, spice, and sometimes hints of tar and leather.",
-                    palate: "High acidity and tannins with flavors of dark berries, pepper, and earthy notes.",
-                    finish: "Robust and tannic, often with a rustic character."
-                ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Prefers warm, dry climates.",
-                    soil: "Thrives in rocky and schist soils.",
-                    growingConditions: "High yielding but susceptible to diseases; benefits from old vines and low yields for quality."
+                    aroma: "Aromas of red and black fruits, spice, hints of tar and leather, and occasionally herbal notes like garrigue.",
+                    palate: "High acidity and tannins with flavors of dark berries, pepper, earthy notes, and hints of Mediterranean herbs.",
+                    finish: "Robust and tannic, often with a rustic character, though old vines can yield more balance and complexity."
                 ),
                 wineStyles: [
-                    "Red Wines: Often used in blends, adding color, acidity, and tannin structure.\n",
+                    "Red Wines: Often used in blends, adding color, acidity, and tannin structure. Occasionally vinified as a single-varietal wine, especially from old vines.",
                     "Rosé Wines: Also made into deeply colored rosés."
                 ],
-                foodPairing: [
-                    "Red Wines: Pairs well with grilled meats, game, and hearty stews."
-                ],
-                notableProducers: [
-                    "Domaine de Courbissac (Languedoc-Roussillon, France)",
-                    "Château Maris (Languedoc-Roussillon, France)",
-                    "Bodegas San Valero (Aragón, Spain)",
-                    "Cantina Santadi (Sardinia, Italy)"
-                ],
-                otherNames: "Known as Mazuelo in some regions of Spain.",
-                grapeSummary: "Carignan is known for its ability to produce deeply colored, robust wines, often used in blends for added complexity and structure."
-            ),
-            imageName: "carignan",
-            iconNames: ["leaf", "drop"]
+                grapeSummary: "Carignan is known for its ability to produce deeply colored, robust wines. While often used in blends for complexity and structure, old vines are prized for creating high-quality, balanced wines with depth."
+            )
         ),
 
     
-        // Carmenere Details
         Grape(
             name: "Carmenere",
             details: GrapeDetails(
-                origin: "Originally from Bordeaux, France, Carmenere is now primarily associated with Chile where it has become a signature grape variety.",
+                origin: "Originally from Bordeaux, France, Carmenere was one of the original six Bordeaux varieties. It largely disappeared from France due to phylloxera but was rediscovered in Chile in the 1990s, where it has become a signature grape variety.",
                 countries: Countries(
                     primary: [
-                        "Chile: Extensively planted throughout the Central Valley.\n",
-                        "France: Small quantities remain in Bordeaux."
+                        "Chile: Extensively planted throughout the Central Valley, particularly thriving in regions like Colchagua Valley and Maipo Valley.\n",
+                        "France: Rarely grown in Bordeaux today, with only small quantities remaining."
                     ]
                 ),
                 tastingNotes: TastingNotes(
                     color: "Deep red with purple hues.",
-                    aroma: "Complex aromas of red and dark fruits like raspberry and blueberry, with distinctive notes of spice, coffee, and sometimes green pepper.",
-                    palate: "Medium to full-bodied with soft tannins and moderate acidity, offering flavors of dark chocolate, tobacco, and leather, alongside the fruit.",
+                    aroma: "Complex aromas of red and dark fruits like raspberry and blueberry, with distinctive notes of spice, coffee, green bell pepper, and occasionally black olive or soy sauce.",
+                    palate: "Medium to full-bodied with soft tannins and moderate acidity, offering flavors of dark chocolate, tobacco, leather, and ripe fruit.",
                     finish: "Smooth with a persistent, spicy finish."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Prefers moderate to warm climates.",
-                    soil: "Performs best in deep, poor soils with good drainage.",
-                    growingConditions: "Late ripening variety that requires careful management to avoid vegetal flavors."
-                ),
                 wineStyles: [
-                    "Red Wines: Often made as a single varietal, showcasing its unique profile."
+                    "Red Wines: Often made as a single varietal, showcasing its unique profile. Also used in blends, particularly with Cabernet Sauvignon and Merlot."
                 ],
-                foodPairing: [
-                    "Ideal with lamb, spicy dishes, and hearty stews."
-                ],
-                notableProducers: [
-                    "Viña Montes (Colchagua Valley, Chile)",
-                    "Concha y Toro (Central Valley, Chile)"
-                ],
-                otherNames: "Sometimes confused with Merlot in its early days in Chile.",
-                grapeSummary: "Carmenere is celebrated for its rich, smooth character and complex spice and fruit flavors, embodying the winemaking heritage of Chile."
-            ),
-            imageName: "carmenere",
-            iconNames: ["leaf", "drop"]
+                grapeSummary: "Carmenere is celebrated for its rich, smooth character and complex spice and fruit flavors. Once nearly extinct, it was rediscovered in Chile, where it thrives in the warm, sunny climate of the Central Valley, becoming a flagship grape for the country."
+            )
         ),
 
         // Castelão Details
         Grape(
             name: "Castelão",
             details: GrapeDetails(
-                origin: "Native to Portugal, particularly thriving in the regions of Ribatejo and Península de Setúbal.",
+                origin: "Native to Portugal, Castelão is one of the country’s most widely planted red grape varieties, thriving in warm, dry regions such as Ribatejo and Península de Setúbal.",
                 countries: Countries(
                     primary: [
-                        "Portugal: Widely planted across the southern regions."
+                        "Portugal: Widely planted across the southern regions, including Ribatejo, Península de Setúbal, and Alentejo."
                     ]
                 ),
                 tastingNotes: TastingNotes(
                     color: "Ruby red.",
-                    aroma: "Aromas of red fruits like strawberries and plums, with notes of leather and herbs.",
-                    palate: "Medium-bodied with moderate acidity and tannins, featuring fruity and earthy flavors.",
-                    finish: "Pleasantly rustic with a fruity finish."
-                ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Adapts well to warmer climates.",
-                    soil: "Prefers sandy soils.",
-                    growingConditions: "Resilient to local vine diseases and versatile in various viticultural environments."
+                    aroma: "Aromas of red fruits like strawberries and plums, with additional notes of leather, herbs, dried figs, and licorice.",
+                    palate: "Medium-bodied with moderate acidity and tannins, offering a mix of fruity, earthy, and occasionally gamey flavors.",
+                    finish: "Pleasantly rustic with a fruity and slightly spicy finish."
                 ),
                 wineStyles: [
-                    "Red Wines: Often used in blends, but also produces varietal wines known for their fruit-forward and rustic nature."
+                    "Red Wines: Often used in blends to add structure and fruitiness, but also produces varietal wines that balance rusticity and elegance, particularly from old vines in regions like Setúbal."
                 ],
-                foodPairing: [
-                    "Pairs well with traditional Portuguese dishes, grilled meats, and cheeses."
-                ],
-                notableProducers: [
-                    "José Maria da Fonseca (Península de Setúbal, Portugal)",
-                    "Quinta do Carmo (Alentejo, Portugal)"
-                ],
-                otherNames: "Also known as Periquita in some local regions.",
-                grapeSummary: "Castelão is a versatile grape known for its adaptability and the rustic, approachable wines it produces."
-            ),
-            imageName: "castelao",
-            iconNames: ["leaf", "drop"]
+                grapeSummary: "Castelão is a versatile and adaptable grape variety, known for its drought resistance and ability to produce rustic yet approachable wines with fruit-forward and earthy characteristics. It thrives in Portugal’s warm, southern regions."
+            )
         ),
         // Cinsault Details
         Grape(
             name: "Cinsault",
             details: GrapeDetails(
-                origin: "Cinsault is a heat-tolerant grape variety originating from the South of France, widely used in blends with Grenache and Syrah.",
+                origin: "Cinsault is a heat-tolerant grape variety believed to have originated in the Languedoc region of southern France. It is widely used in blends with Grenache and Syrah for its aromatics and acidity.",
                 countries: Countries(
                     primary: [
-                        "France: Common in the Languedoc-Roussillon and Provence regions.\n",
-                        "South Africa: Used in many blends and for making rosé wines.\n",
-                        "Lebanon: Integral part of the famed Chateau Musar blends."
+                        "France: Common in the Languedoc-Roussillon and Provence regions, and occasionally used in Rhône blends.\n",
+                        "North Africa: Cultivated in Morocco and Algeria, where it is used in blends and sometimes as a single varietal.\n",
+                        "South Africa: Widely used in blends, for making rosé wines, and as a parent of Pinotage (a cross with Pinot Noir)."
                     ]
                 ),
                 tastingNotes: TastingNotes(
                     color: "Light red, often with a pale hue.",
-                    aroma: "Aromatic with notes of red berries, cherry, and floral undertones.",
-                    palate: "Light to medium-bodied, featuring high acidity and fresh, fruity flavors with minimal tannins.",
+                    aroma: "Aromatic with notes of red berries, cherry, floral undertones, and occasionally a hint of spice.",
+                    palate: "Light to medium-bodied, featuring high acidity and fresh, fruity flavors with minimal tannins and a touch of earthiness.",
                     finish: "Refreshing and straightforward with a smooth, clean finish."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Thrives in hot, dry climates.",
-                    soil: "Performs well in sandy and stony soils.",
-                    growingConditions: "Highly vigorous and can produce high yields, but best quality comes from controlled yields."
-                ),
                 wineStyles: [
-                    "Red Wines: Often blended for its aromatics and acidity.\n",
+                    "Red Wines: Often blended for its aromatics and acidity but occasionally vinified as a light, fresh red wine on its own.\n",
                     "Rosé Wines: Frequently used to produce light, aromatic rosés."
                 ],
-                foodPairing: [
-                    "Excellent with light dishes, seafood, and Mediterranean cuisine."
-                ],
-                notableProducers: [
-                    "Domaine de Triennes (Provence, France)",
-                    "AA Badenhorst (Swartland, South Africa)",
-                    "Chateau Musar (Bekaa Valley, Lebanon)"
-                ],
-                otherNames: "Often used synonymously with its blends and sometimes referred to as Hermitage in South Africa.",
-                grapeSummary: "Cinsault is favored for its ability to add freshness and aromatic lift to blends, as well as its capability to produce elegant rosé wines."
-            ),
-            imageName: "cinsault",
-            iconNames: ["leaf", "drop"]
+                grapeSummary: "Cinsault is favored for its ability to add freshness and aromatic lift to blends, its drought resistance, and its versatility in producing elegant rosé wines and fresh, light reds in hot climates."
+            )
         ),
         // Corvina Details
         Grape(
             name: "Corvina",
             details: GrapeDetails(
-                origin: "Corvina is primarily associated with the Veneto region of Italy, notably used in the production of Valpolicella and Amarone wines.",
+                origin: "Corvina is native to the Veneto region of Italy, thriving in the hilly, well-drained soils that characterize the area. It is notably used in the production of Valpolicella and Amarone wines.",
                 countries: Countries(
                     primary: [
-                        "Italy: Predominantly in the Veneto region."
+                        "Italy: Predominantly in the Veneto region, especially in Valpolicella, Amarone, and Recioto wines."
                     ]
                 ),
                 tastingNotes: TastingNotes(
                     color: "Medium ruby red.",
-                    aroma: "Notes of sour cherry, almond, and spices, with sometimes hints of dried fruits in Amarone styles.",
-                    palate: "Medium-bodied with moderate to high acidity and light to medium tannins, featuring flavors of cherry, red berry, and herbal notes.",
-                    finish: "Elegant with a slightly bitter almond note on the finish."
-                ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Prefers cooler, temperate climates.",
-                    soil: "Thrives in calcareous, volcanic and alluvial soils.",
-                    growingConditions: "Susceptible to grape diseases like powdery mildew but benefits from the traditional drying process for Amarone."
+                    aroma: "Notes of sour cherry, almond, and spices, with hints of dried fruits such as figs and prunes in Amarone styles. Herbal nuances like bay leaf or rosemary are also common.",
+                    palate: "Medium-bodied with moderate to high acidity and light to medium tannins, offering flavors of cherry, red berries, and subtle herbal notes, with a smooth texture.",
+                    finish: "Elegant with a slightly bitter almond note, particularly in lighter Valpolicella styles, and a rich, lingering finish in Amarone."
                 ),
                 wineStyles: [
-                    "Red Wines: Ranges from light, crisp Valpolicella to rich, concentrated Amarone.\n",
-                    "Recioto: Sweet wines also made from semi-dried grapes."
+                    "Red Wines: Ranges from the light, crisp Valpolicella to the rich, concentrated Amarone, often blended with Rondinella and Molinara.",
+                    "Recioto: Sweet wines made from semi-dried grapes, offering intense, raisined flavors."
                 ],
-                foodPairing: [
-                    "Valpolicella pairs well with pizza and lighter pasta dishes, while Amarone is excellent with game, roasted meats, and mature cheeses."
-                ],
-                notableProducers: [
-                    "Allegrini (Valpolicella, Veneto)",
-                    "Masi Agricola (Valpolicella, Veneto)"
-                ],
-                otherNames: "None",
-                grapeSummary: "Corvina is best known for its role in creating the distinct styles of red wines from the Veneto region, especially appreciated in the raisined, intense flavors of Amarone."
-            ),
-            imageName: "corvina",
-            iconNames: ["leaf", "drop"]
+                grapeSummary: "Corvina is best known for its role in creating the distinct styles of red wines from the Veneto region. It is appreciated for its bright acidity, fresh cherry flavors, and ability to produce wines ranging from light and vibrant to rich and raisined, as seen in Amarone and Recioto."
+            )
         ),
 
         // Corvinone Details
         Grape(
             name: "Corvinone",
             details: GrapeDetails(
-                origin: "Corvinone, like Corvina, is native to the Veneto region in Italy and is often used interchangeably or alongside Corvina in the production of Valpolicella wines.",
+                origin: "Corvinone, like Corvina, is native to the Veneto region in Italy. Often mistaken for a clone of Corvina, it is a distinct variety that plays a key role in Valpolicella blends.",
                 countries: Countries(
                     primary: [
                         "Italy: Predominantly in the Veneto region, especially in the Valpolicella area."
@@ -711,301 +462,190 @@ Grape(
                 ),
                 tastingNotes: TastingNotes(
                     color: "Deep ruby red.",
-                    aroma: "Richer and more intense than Corvina, with aromas of dark cherry, blackberry, and spice, along with dried fruit nuances in Amarone styles.",
-                    palate: "Fuller-bodied than Corvina, with strong tannins and acidity, offering deep berry flavors, spice, and chocolate notes.",
-                    finish: "Robust and lingering, particularly noted in the dried grape styles like Amarone."
-                ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Adapts well to the temperate climate of Veneto.",
-                    soil: "Performs best in volcanic and calcareous soils.",
-                    growingConditions: "More robust and hardy than Corvina, less prone to diseases and capable of producing higher quality fruit in the drying process used for Amarone."
+                    aroma: "Richer and more intense than Corvina, with aromas of dark cherry, blackberry, and spice, along with nuances of dried fruits such as figs and raisins in Amarone styles.",
+                    palate: "Fuller-bodied than Corvina, with strong tannins and acidity, offering deep berry flavors, chocolate, and hints of tobacco and clove.",
+                    finish: "Robust and lingering, particularly noted in the dried grape styles like Amarone, where it adds depth and complexity."
                 ),
                 wineStyles: [
-                    "Red Wines: Commonly used in Valpolicella blends, enhancing structure and depth, particularly in Amarone and Ripasso wines."
+                    "Red Wines: Commonly used in Valpolicella blends, enhancing structure and depth, particularly in Amarone and Ripasso wines. Rarely vinified as a single varietal."
                 ],
-                foodPairing: [
-                    "Ideal with rich meat dishes, such as braised beef, and strong, aged cheeses."
-                ],
-                notableProducers: [
-                    "Tedeshi (Valpolicella, Veneto)",
-                    "Tommasi (Valpolicella, Veneto)"
-                ],
-                otherNames: "Often confused with Corvina but is a distinct variety with larger berries and looser clusters.",
-                grapeSummary: "Corvinone is valued for its contribution to the body and structure of Veneto's prestigious red wines, particularly in Amarone, where it adds complexity and aging potential."
-            ),
-            imageName: "corvinone",
-            iconNames: ["leaf", "drop"]
+                grapeSummary: "Corvinone is valued for its contribution to the body and structure of Veneto's prestigious red wines. Its large berries and thick skins make it ideal for the appassimento process, adding complexity, richness, and aging potential, especially in Amarone."
+            )
         ),
         // Counoise Details
         Grape(
             name: "Counoise",
             details: GrapeDetails(
-                origin: "Counoise is a lesser-known grape variety from the Rhône region of France, often used as a blending grape in Châteauneuf-du-Pape.",
+                origin: "Counoise is a lesser-known grape variety from the Rhône region of France. It is one of the 13 permitted varieties in Châteauneuf-du-Pape and is valued for its ability to add freshness and balance to blends.",
                 countries: Countries(
                     primary: [
-                        "France: Primarily found in the Rhône Valley, especially in Châteauneuf-du-Pape."
+                        "France: Primarily found in the Rhône Valley, especially in Châteauneuf-du-Pape. It is also occasionally seen in blends from the Languedoc.\n",
+                        "United States: Small plantings exist in California, where it is sometimes vinified as a single varietal."
                     ]
                 ),
                 tastingNotes: TastingNotes(
                     color: "Medium garnet.",
-                    aroma: "Aromatic with notes of fresh red berries, spice, and hints of violet and pepper.",
+                    aroma: "Aromatic with notes of fresh red berries, spice, violet, pepper, and occasionally herbal or earthy undertones.",
                     palate: "Light to medium-bodied, with lively acidity and moderate tannins, offering flavors of cherry, raspberry, and a peppery spice.",
-                    finish: "Bright and fruity with a spicy undertone."
-                ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Prefers warm, dry climates.",
-                    soil: "Adapts well to various soil types but prefers stony, sandy soils.",
-                    growingConditions: "Late-ripening variety that adds complexity and freshness to blends."
+                    finish: "Bright and fruity with a spicy and slightly herbal undertone."
                 ),
                 wineStyles: [
-                    "Red Wines: Mostly used in blends, contributing freshness and aromatic complexity."
+                    "Red Wines: Mostly used in blends, contributing freshness, acidity, and aromatic complexity. Occasionally vinified as a single varietal to highlight its unique profile."
                 ],
-                foodPairing: [
-                    "Pairs well with grilled meats, charcuterie, and hearty vegetable dishes."
-                ],
-                notableProducers: [
-                    "Château de Beaucastel (Châteauneuf-du-Pape, France)",
-                    "Domaine du Vieux Télégraphe (Châteauneuf-du-Pape, France)"
-                ],
-                otherNames: "None",
-                grapeSummary: "Counoise is appreciated for its contribution to the aromatic complexity and freshness in Rhône blends, particularly in those from Châteauneuf-du-Pape."
-            ),
-            imageName: "counoise",
-            iconNames: ["leaf", "drop"]
+                grapeSummary: "Counoise is appreciated for its contribution to the aromatic complexity and freshness in Rhône blends, particularly in Châteauneuf-du-Pape. Its naturally high acidity makes it a valuable balancing component in warm climates."
+            )
         ),
 
         // Dolcetto Details
         Grape(
             name: "Dolcetto",
             details: GrapeDetails(
-                origin: "Dolcetto is a native Italian grape primarily grown in the Piedmont region, known for producing early-drinking, fruit-forward wines.",
+                origin: "Dolcetto is a native Italian grape primarily grown in the Piedmont region. Its name translates to 'little sweet one,' though its wines are typically dry.",
                 countries: Countries(
                     primary: [
-                        "Italy: Predominantly in the Piedmont region, especially in areas like Dogliani, Alba, and Asti."
+                        "Italy: Predominantly in the Piedmont region, especially in areas like Dogliani, Alba, and Asti.\n",
+                        "United States: Small plantings exist in California, where it is used for producing fruit-forward red wines.",
+                        "Australia: Occasionally grown for boutique production."
                     ]
                 ),
                 tastingNotes: TastingNotes(
                     color: "Deep ruby red.",
-                    aroma: "Rich aromas of black cherry, plum, and licorice with occasional notes of chocolate.",
-                    palate: "Medium-bodied with low acidity and mild tannins, showcasing flavors of dark fruits and a slight bitter almond finish.",
+                    aroma: "Rich aromas of black cherry, plum, and licorice, with additional notes of chocolate and occasional hints of dried herbs or underbrush.",
+                    palate: "Medium-bodied with low acidity and moderate to high tannins, showcasing flavors of dark fruits, licorice, and a slight bitter almond note.",
                     finish: "Smooth with a characteristically dry, slightly bitter finish."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Thrives in cooler, temperate climates.",
-                    soil: "Prefers calcareous marl soils, which help in moderating vigor.",
-                    growingConditions: "Sensitive to vineyard conditions, particularly to over-cropping which can dilute flavors."
-                ),
                 wineStyles: [
-                    "Red Wines: Generally consumed young, known for their fruitiness and approachability."
+                    "Red Wines: Generally consumed young for their fruitiness and approachability, though higher-quality expressions, particularly from Dogliani, can benefit from short-term aging."
                 ],
-                foodPairing: [
-                    "Perfect with pizza, pasta with meat sauces, and simple meat dishes."
-                ],
-                notableProducers: [
-                    "Pecchenino",
-                    "Marziano Abbona"
-                ],
-                otherNames: "None",
-                grapeSummary: "Dolcetto is cherished for its early maturation and the ability to produce soft, fruit-driven wines that are best enjoyed young."
-            ),
-            imageName: "dolcetto",
-            iconNames: ["leaf", "drop"]
+                grapeSummary: "Dolcetto is cherished for its early maturation and the ability to produce soft, fruit-driven wines that are best enjoyed young. It serves as an approachable alternative to the more tannic Nebbiolo wines of Piedmont."
+            )
         ),
-        // Dornfelder Details
         Grape(
             name: "Dornfelder",
             details: GrapeDetails(
-                origin: "Dornfelder is a relatively new grape variety developed in 1955 in Germany, primarily grown in the Pfalz and Rheinhessen regions.",
+                origin: "Dornfelder is a relatively new grape variety developed in 1955 by August Herold in Germany. It is a cross between Helfensteiner and Heroldrebe, created to produce deeply colored and flavorful red wines.",
                 countries: Countries(
                     primary: [
-                        "Germany: Widely planted across Pfalz and Rheinhessen."
+                        "Germany: Widely planted across Pfalz and Rheinhessen, with notable presence in other regions.\n",
+                        "England: Small plantings exist, valued for its early ripening and cold tolerance."
                     ]
                 ),
                 tastingNotes: TastingNotes(
                     color: "Deep, dark red, almost opaque.",
-                    aroma: "Intense aromas of dark fruits such as blackberry and plum, often complemented by a hint of oak and spice.",
-                    palate: "Medium to full-bodied with moderate acidity and soft tannins, offering rich flavors of dark berries, hints of chocolate, and spice.",
+                    aroma: "Intense aromas of dark fruits such as blackberry and plum, often complemented by hints of oak, spice, and occasionally floral notes like violet.",
+                    palate: "Medium to full-bodied with moderate acidity and soft tannins, offering rich flavors of dark berries, chocolate, and subtle herbal or spicy undertones.",
                     finish: "Smooth and fruit-forward with a lingering sweet spice."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Prefers cooler climates but adaptable to various conditions.",
-                    soil: "Versatile with soil types but performs best in loamy soils.",
-                    growingConditions: "Highly vigorous and produces high yields, easy to grow and provides consistent quality."
-                ),
                 wineStyles: [
-                    "Red Wines: Typically made in a fruit-driven, approachable style, often aged in oak to enhance complexity."
+                    "Red Wines: Typically made in a fruit-driven, approachable style, often aged in oak to enhance complexity.\n",
+                    "Off-Dry and Semi-Sweet Wines: Popular in Germany, showcasing Dornfelder’s natural fruitiness and soft tannins."
                 ],
-                foodPairing: [
-                    "Pairs well with grilled meats, hearty pasta dishes, and rich cheeses."
-                ],
-                notableProducers: [
-                    "Weingut Knipser",
-                    "Weingut Becker"
-                ],
-                otherNames: "None",
-                grapeSummary: "Dornfelder is known for its deep color and robust flavors, offering an appealing option for those looking for an accessible yet rich red wine from Germany."
-            ),
-            imageName: "dornfelder",
-            iconNames: ["leaf", "drop"]
+                grapeSummary: "Dornfelder is known for its deep color and robust flavors, offering an accessible yet rich red wine option from Germany. Its versatility allows for both dry and off-dry styles, making it a popular choice domestically and increasingly appreciated internationally."
+            )
         ),
 
         // Frappato Details
         Grape(
             name: "Frappato",
             details: GrapeDetails(
-                origin: "Frappato is an indigenous grape variety from Sicily, often associated with the Vittoria region where it is a key component of Cerasuolo di Vittoria DOCG.",
+                origin: "Frappato is an indigenous grape variety from Sicily, believed to date back to the 17th century. It is closely associated with the Vittoria region, where it plays a key role in Sicily’s only DOCG wine, Cerasuolo di Vittoria.",
                 countries: Countries(
                     primary: [
-                        "Italy: Mostly in Sicily, particularly in the Vittoria area."
+                        "Italy: Primarily grown in Sicily, particularly in the Vittoria area, but increasingly planted in other parts of the island."
                     ]
                 ),
                 tastingNotes: TastingNotes(
                     color: "Light ruby red with a translucent quality.",
-                    aroma: "Bright aromas of red cherry, strawberry, and hints of floral and herbal nuances.",
-                    palate: "Light-bodied with vibrant acidity, featuring fresh red fruit flavors and a subtle earthy undertone.",
+                    aroma: "Bright aromas of red cherry, strawberry, and floral notes, complemented by herbal nuances such as Mediterranean scrub and subtle earthy undertones.",
+                    palate: "Light-bodied with vibrant acidity, offering fresh red fruit flavors, a hint of savory herbs, and a delicate minerality.",
                     finish: "Refreshing and fruity with a clean, crisp finish."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Thrives in the warm, Mediterranean climate of Sicily.",
-                    soil: "Performs best in sandy and clay-rich soils.",
-                    growingConditions: "Resilient to heat and drought, but sensitive to overcropping which can dilute its aromatic profile."
-                ),
                 wineStyles: [
-                    "Red Wines: Typically produced as a varietal wine or blended with Nero d’Avola in Cerasuolo di Vittoria.\n",
+                    "Red Wines: Typically produced as a varietal wine, showcasing its aromatic freshness, or blended with Nero d’Avola in Cerasuolo di Vittoria.\n",
                     "Rosé Wines: Occasionally made into light, aromatic rosés."
                 ],
-                foodPairing: [
-                    "Excellent with seafood, light pastas, and traditional Sicilian dishes like caponata."
-                ],
-                notableProducers: [
-                    "Valle dell'Acate",
-                    "Planeta"
-                ],
-                otherNames: "None",
-                grapeSummary: "Frappato is celebrated for its bright, expressive fruit character and versatility in both red and rosé wine production, adding a distinctive Sicilian flair to blends and varietal wines."
-            ),
-            imageName: "frappato",
-            iconNames: ["leaf", "drop"]
+                grapeSummary: "Frappato is celebrated for its bright, expressive fruit character and vibrant acidity. It adds freshness and aromatics to blends like Cerasuolo di Vittoria and is increasingly appreciated as a single-varietal wine, embodying the distinctive elegance of Sicilian viticulture."
+            )
         ),
         // Gamay Details
         Grape(
             name: "Gamay",
             details: GrapeDetails(
-                origin: "Gamay, predominantly associated with Beaujolais, France, is a light-bodied red wine grape that originally hails from the Burgundy region. Although Beaujolais is geographically part of Burgundy, its distinct style often leads enthusiasts to consider it separately.  It was first noted in historical records around the 15th century. However, due to its high yield and the resulting lower quality of wine compared to Pinot Noir, it was less favored by the Duke of Burgundy, Philip the Bold. He famously ordered the uprooting of Gamay vines from the Côte d'Or in 1395, calling it 'a very bad and disloyal plant'. As a result, Gamay became more concentrated in the Beaujolais area, south of the main Burgundy region, where it thrives on the granite-based soils and produces the distinctively fruity and light wines that the area is known for today.",
+                origin: "Gamay, predominantly associated with Beaujolais, France, is a light-bodied red wine grape that originally hails from the Burgundy region. Although Beaujolais is geographically part of Burgundy, its distinct style often leads enthusiasts to consider it separately. It was first noted in historical records around the 15th century. However, due to its high yield and the resulting lower quality of wine compared to Pinot Noir, it was less favored by the Duke of Burgundy, Philip the Bold. He famously ordered the uprooting of Gamay vines from the Côte d'Or in 1395, calling it 'a very bad and disloyal plant.' As a result, Gamay became more concentrated in the Beaujolais area, south of the main Burgundy region, where it thrives on granite-based soils and produces the distinctively fruity and light wines that the area is known for today.",
                 countries: Countries(
                     primary: [
-                        "France: Predominantly in Beaujolais and parts of the Loire Valley."
+                        "France: Predominantly in Beaujolais.\n",
+                        "Switzerland: Small plantings, where it is often blended with Pinot Noir.\n",
+                        "United States: Found in regions like Oregon and California."
                     ]
                 ),
                 tastingNotes: TastingNotes(
                     color: "Light to medium ruby red.",
-                    aroma: "Aromas of red fruits like cherries, raspberries, and strawberries, often with hints of banana and spices.",
-                    palate: "Light-bodied with high acidity and low tannins, featuring juicy red fruit flavors and a fresh, vibrant finish.",
-                    finish: "Refreshing and fruity, with a distinctive smoothness that makes it very drinkable."
-                ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Prefers a cooler climate to maintain its high acidity and delicate flavors.",
-                    soil: "Thrives in granite-based soils, typical of the Beaujolais region.",
-                    growingConditions: "Susceptible to diseases like powdery mildew; benefits from careful canopy management."
+                    aroma: "Aromas of red fruits like cherries, raspberries, and strawberries, with hints of banana, violets, and subtle spices.",
+                    palate: "Light-bodied with high acidity and low tannins, featuring juicy red fruit flavors, floral nuances, and a fresh, vibrant finish.",
+                    finish: "Refreshing and fruity, with a smooth texture and a hint of minerality in more structured styles."
                 ),
                 wineStyles: [
-                    "Red Wines: Primarily produced as light, fruity reds. Notably, the Beaujolais Nouveau is released annually with much fanfare.\n",
-                    "Rosé Wines: Sometimes made into light and refreshing rosés."
+                    "Red Wines: Primarily produced as light, fruity reds. Beaujolais Nouveau is a popular early-release style, while Cru Beaujolais wines (e.g., Morgon, Fleurie, Moulin-à-Vent) are more complex and age-worthy.\n",
+                    "Rosé Wines: Occasionally made into light and refreshing rosés."
                 ],
-                foodPairing: [
-                    "Pairs well with a wide range of dishes, from light salads to hearty meats like sausages and grilled chicken."
-                ],
-                notableProducers: [
-                    "Domaine Jean Foillard",
-                    "Château des Jacques"
-                ],
-                otherNames: "None",
-                grapeSummary: "Gamay is celebrated for its straightforward, fruit-driven profile and ability to produce wines best enjoyed young and fresh."
-            ),
-            imageName: "gamay",
-            iconNames: ["leaf", "drop"]
+                grapeSummary: "Gamay is celebrated for its bright, fruit-driven profile and versatility, producing wines that range from the youthful and vibrant Beaujolais Nouveau to terroir-driven Cru Beaujolais, which can age gracefully."
+            )
         ),
         
-        // Graciano Details
         Grape(
             name: "Graciano",
             details: GrapeDetails(
-                origin: "Graciano is a Spanish grape variety known for its deep color and aromatic complexity, primarily grown in the Rioja and Navarra regions.",
+                origin: "Graciano is a Spanish grape variety known for its deep color and aromatic complexity, primarily grown in the Rioja and Navarra regions. It is a low-yielding variety, which contributed to its historical decline, but its quality has led to a resurgence in modern viticulture.",
                 countries: Countries(
                     primary: [
-                        "Spain: Mainly in Rioja and Navarra, with some plantings in the Basque Country."
+                        "Spain: Mainly in Rioja and Navarra, with some plantings in the Basque Country and La Mancha.\n",
+                        "Australia: Gaining attention for its ability to thrive in warm climates.\n",
+                        "United States: Found in California and Texas, where it is used in both blends and single-varietal wines.\n",
+                        "Portugal: Small plantings used in experimental blends."
                     ]
                 ),
                 tastingNotes: TastingNotes(
                     color: "Deep, vibrant purple.",
-                    aroma: "Intense aromas of black fruits, such as blackberries and plums, complemented by herbal and floral notes, and a distinct peppery spice.",
-                    palate: "Medium to full-bodied with high acidity and firm tannins, featuring concentrated flavors of dark fruits, herbal undertones, and spice.",
-                    finish: "Long and persistent, with a characteristic freshness and spicy aftertaste."
-                ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Adapts well to warm, dry climates.",
-                    soil: "Prefers well-drained, poor soils, which help concentrate its flavors.",
-                    growingConditions: "Low yielding, which contributes to the concentration and intensity of the wines produced."
+                    aroma: "Intense aromas of black fruits, such as blackberries and plums, complemented by herbal and floral notes, a distinct peppery spice, and earthy undertones.",
+                    palate: "Medium to full-bodied with high acidity and firm tannins, offering concentrated flavors of dark fruits, herbal undertones, spice, and a touch of leather in aged examples.",
+                    finish: "Long and persistent, with a characteristic freshness and spicy, earthy aftertaste."
                 ),
                 wineStyles: [
-                    "Red Wines: Often used in blends to enhance aroma and color, particularly in Rioja, and occasionally made into single-varietal wines."
+                    "Red Wines: Often used in blends to enhance aroma, color, and structure, particularly in Rioja Gran Reserva wines. Single-varietal expressions are increasingly produced to highlight its unique character."
                 ],
-                foodPairing: [
-                    "Excellent with grilled red meats, game, and rich, savory dishes."
-                ],
-                notableProducers: [
-                    "Bodegas Palacios Remondo",
-                    "Bodegas Ysios"
-                ],
-                otherNames: "Sometimes known as Tintilla in other regions of Spain.",
-                grapeSummary: "Graciano is prized for its aromatic intensity and aging potential, often contributing complexity and longevity to the wines in which it is used."
-            ),
-            imageName: "graciano",
-            iconNames: ["leaf", "drop"]
+                grapeSummary: "Graciano is prized for its aromatic intensity, deep color, and aging potential. It contributes complexity, freshness, and structure to blends and is increasingly recognized as a standout varietal in its own right."
+            )
         ),
 
         
         
-        // Grenache Details
         Grape(
             name: "Grenache",
             details: GrapeDetails(
-                origin: "Grenache, or Garnacha in Spanish, is one of the most widely planted red wine grape varieties worldwide. It likely originated in Spain before spreading to other regions, notably Southern France.",
+                origin: "Grenache, or Garnacha in Spanish, is one of the most widely planted red wine grape varieties worldwide. It is believed to have originated in Aragón, Spain, before spreading throughout the Mediterranean and beyond. Known for its adaptability to warm climates, it has become a cornerstone of winemaking in Southern France and Spain.",
                 countries: Countries(
                     primary: [
-                        "Spain: Predominantly in regions like Priorat and Aragón.\n",
-                        "France: Extensively used in the Rhône Valley and Languedoc-Roussillon.\n",
+                        "Spain: Predominantly in regions like Priorat, Aragón, and Rioja.\n",
+                        "France: Extensively used in the Rhône Valley, Languedoc-Roussillon, and Provence.\n",
+                        "Italy: Known as Cannonau in Sardinia, where it is highly regarded.\n",
                         "USA: Grown in California, particularly in Paso Robles and Santa Barbara.\n",
-                        "Australia: Found in regions like Barossa Valley and McLaren Vale."
+                        "Australia: Found in regions like Barossa Valley and McLaren Vale.\n",
+                        "South Africa: Small plantings exist, especially in Swartland."
                     ]
                 ),
                 tastingNotes: TastingNotes(
                     color: "Light to medium red, often with orange hues as it ages.",
-                    aroma: "Aromas of red fruit like strawberry and raspberry, with spice and sometimes hints of anise and tobacco.",
-                    palate: "Medium to full-bodied with soft tannins and high alcohol, featuring flavors of red fruit, orange peel, and cinnamon.",
+                    aroma: "Aromas of red fruits like strawberry and raspberry, with notes of spice, anise, tobacco, and occasionally garrigue or dried herbs.",
+                    palate: "Medium to full-bodied with soft tannins and high alcohol, featuring flavors of red fruit, orange peel, cinnamon, and hints of dried fruit or jam in warmer climates.",
                     finish: "Warm and spicy with a smooth, often sweet finish."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Thrives in hot, dry climates.",
-                    soil: "Performs well in sandy, stony, and clay soils.",
-                    growingConditions: "Resistant to wind and drought, but susceptible to various vine diseases."
-                ),
                 wineStyles: [
-                    "Red Wines: Often used in blends, especially in Rhône blends and as a major component of Châteauneuf-du-Pape.\n",
+                    "Red Wines: Often used in blends, especially in Rhône blends and as a major component of Châteauneuf-du-Pape. Also used in fortified wines like Roussillon's Vin Doux Naturel.\n",
                     "Rosé Wines: Important in rosé production in regions like Tavel and Provence."
                 ],
-                foodPairing: [
-                    "Pairs well with a variety of foods including grilled meats, spicy dishes, and hearty stews."
-                ],
-                notableProducers: [
-                    "Château Rayas",
-                    "Alvaro Palacios"
-                ],
-                otherNames: "Also known as Garnacha in Spain and Cannonau in Sardinia, Italy.",
-                grapeSummary: "Grenache is renowned for its versatility in producing both lush, berry-flavored red wines and crisp, flavorful rosés, making it a favorite among winemakers and drinkers alike."
-            ),
-            imageName: "grenache",
-            iconNames: ["leaf", "drop"]
+                grapeSummary: "Grenache is renowned for its versatility, producing lush, berry-flavored red wines, crisp and flavorful rosés, and even fortified wines. Its ability to thrive in warm climates and contribute structure, alcohol, and aromatics makes it a favorite among winemakers and wine lovers alike."
+            )
         ),
 
         // Kadarka Details
@@ -1025,26 +665,13 @@ Grape(
                     palate: "Medium-bodied with moderate acidity and tannins, offering flavors of cherry, blackberry, and spice with an earthy undertone.",
                     finish: "Delicate and moderately long with a spicy, somewhat floral aftertaste."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Prefers cooler to moderate climates, with a susceptibility to spring frosts.",
-                    soil: "Thrives in loamy and clay soils.",
-                    growingConditions: "Moderately vigorous with a tendency towards higher yields if not carefully managed."
-                ),
+               
                 wineStyles: [
                     "Red Wines: Typically made into varietal wines that are appreciated for their unique flavor profile."
                 ],
-                foodPairing: [
-                    "Ideal with traditional Hungarian dishes like goulash, as well as other spiced meat dishes and cheeses."
-                ],
-                notableProducers: [
-                    "Heimann Family Estate",
-                    "Takler Pince"
-                ],
-                otherNames: "Sometimes referred to as Gamza in Bulgaria.",
-                grapeSummary: "Kadarka is prized for its contribution to traditional blends and varietal wines that offer a distinctive mix of fruitiness and spice, reflective of its Eastern European heritage."
-            ),
-            imageName: "kadarka",
-            iconNames: ["leaf", "drop"]
+               
+                grapeSummary: "Kadarka is prized for its contribution to traditional blends like Bikavér (Bull's Blood) and varietal wines that offer a distinctive mix of fruitiness and spice."
+            )
         ),
         // Kotsifali Details
         Grape(
@@ -1058,30 +685,17 @@ Grape(
                 ),
                 tastingNotes: TastingNotes(
                     color: "Medium ruby red.",
-                    aroma: "Aromas of ripe red fruits like cherries and strawberries, with herbal and spicy notes.",
-                    palate: "Medium-bodied with moderate tannins and acidity, offering flavors of red fruit, earth, and hints of spice.",
+                    aroma: "Aromas of ripe red fruits like cherries and strawberries, with herbal and spicy notes.\n",
+                    palate: "Medium-bodied with moderate tannins and acidity, offering flavors of red fruit, earth, and hints of spice.\n",
                     finish: "Smooth with a slightly spicy and warm finish."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Adapts well to the warm, Mediterranean climate of Crete.",
-                    soil: "Prefers calcareous and clay-rich soils.",
-                    growingConditions: "Moderately vigorous, with a resistance to drought but susceptibility to certain fungal diseases."
-                ),
+               
                 wineStyles: [
                     "Red Wines: Often blended with Mandilaria to create balanced, aromatic reds typical of the region."
                 ],
-                foodPairing: [
-                    "Pairs well with Mediterranean dishes, grilled meats, and robust cheeses."
-                ],
-                notableProducers: [
-                    "Lyrarakis Winery",
-                    "Boutari"
-                ],
-                otherNames: "None",
+              
                 grapeSummary: "Kotsifali is celebrated for its ability to produce aromatic, approachable red wines that embody the essence of Cretan winemaking."
-            ),
-            imageName: "kotsifali",
-            iconNames: ["leaf", "drop"]
+            )
         ),
 
         // Lambrusco Details
@@ -1100,26 +714,13 @@ Grape(
                     palate: "Light to medium-bodied, with a natural sweetness balanced by high acidity and flavors of fresh red berries, often with a hint of earthiness.",
                     finish: "Lively and refreshing with a fruity and slightly tannic finish."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Prefers cooler climates which enhance its acidity and freshness.",
-                    soil: "Thrives in alluvial and sandy soils, which help maintain its vibrant fruit flavors.",
-                    growingConditions: "High yielding, but quality can be maintained with careful vineyard management to control vigor."
-                ),
+               
                 wineStyles: [
                     "Sparkling Red Wines: Ranges from secco (dry) to dolce (sweet), with most being frizzante (lightly sparkling)."
                 ],
-                foodPairing: [
-                    "Excellent with charcuterie, pizza, and various regional Italian dishes, especially those featuring balsamic vinegar or rich meats."
-                ],
-                notableProducers: [
-                    "Cantina della Volta",
-                    "Cleto Chiarli"
-                ],
-                otherNames: "Several biotypes including Lambrusco Grasparossa, Lambrusco Salamino, and Lambrusco di Sorbara.",
+              
                 grapeSummary: "Lambrusco is valued for its versatility and the delightful, refreshing sparkling wines it produces, which range widely in sweetness levels."
-            ),
-            imageName: "lambrusco",
-            iconNames: ["leaf", "drop"]
+            )
         ),
         // Limnio Details
         Grape(
@@ -1137,26 +738,13 @@ Grape(
                     palate: "Medium-bodied with balanced acidity and moderate tannins, featuring flavors of cherry, plum, and a distinct herbal quality.",
                     finish: "Elegant with a mineral-driven aftertaste and herbal freshness."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Prefers a Mediterranean climate, with sufficient warmth to fully ripen.",
-                    soil: "Adapts well to various soil types but favors sandy and clay-rich soils.",
-                    growingConditions: "Resilient to drought and heat, making it well-suited to the Greek climate."
-                ),
+             
                 wineStyles: [
                     "Red Wines: Typically produced as a varietal wine or used in blends, offering a distinctive expression of Greek terroir."
                 ],
-                foodPairing: [
-                    "Pairs excellently with Mediterranean dishes, grilled meats, and rich cheeses."
-                ],
-                notableProducers: [
-                    "Domaine Porto Carras",
-                    "Ktima Biblia Chora"
-                ],
-                otherNames: "Also historically known as Kalambaki.",
+                
                 grapeSummary: "Limnio is renowned for its historical significance and its capacity to produce aromatic, characterful red wines that reflect the rich heritage of Greek viticulture."
-            ),
-            imageName: "limnio",
-            iconNames: ["leaf", "drop"]
+            )
         ),
         // Malbec Details
         Grape(
@@ -1176,26 +764,13 @@ Grape(
                     palate: "Full-bodied with robust tannins and moderate acidity, offering flavors of dark fruits, chocolate, and vanilla from oak aging.",
                     finish: "Long and fruit-rich, often with spicy and smoky undertones."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Prefers warm, dry climates to fully ripen.",
-                    soil: "Performs best in well-drained, sandy or rocky soils.",
-                    growingConditions: "Highly vigorous, requiring careful management to avoid overproduction which can dilute flavors."
-                ),
+               
                 wineStyles: [
                     "Red Wines: Typically bold and structured, often aged in oak to enhance complexity."
                 ],
-                foodPairing: [
-                    "Pairs excellently with red meats, particularly steak and barbecue, as well as hearty stews and strong cheeses."
-                ],
-                notableProducers: [
-                    "Catena Zapata",
-                    "Bodega Colomé"
-                ],
-                otherNames: "Also known as Côt in the Loire Valley and Auxerrois in Cahors, France.",
+                
                 grapeSummary: "Malbec is celebrated for its rich, dark flavors and smooth tannins, making it a favorite for those who enjoy robust red wines."
-            ),
-            imageName: "malbec",
-            iconNames: ["leaf", "drop"]
+            )
         ),
 
         // Mavrodaphne Details
@@ -1214,26 +789,13 @@ Grape(
                     palate: "Full-bodied with low to medium acidity and high sweetness, featuring flavors of prune, black cherry, and spice, often with a nutty or woody finish due to aging.",
                     finish: "Long and sweet, with a velvety texture."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Thrives in warm, Mediterranean climates.",
-                    soil: "Best in calcareous and well-drained soils.",
-                    growingConditions: "Susceptible to various vine diseases but suitable for organic cultivation due to its thick skin."
-                ),
+               
                 wineStyles: [
                     "Fortified Wines: Most commonly made into sweet, fortified wines that are aged extensively."
                 ],
-                foodPairing: [
-                    "Perfect with rich desserts, blue cheeses, or as a dessert on its own."
-                ],
-                notableProducers: [
-                    "Achaia Clauss",
-                    "Domaine Mercouri"
-                ],
-                otherNames: "None",
+                
                 grapeSummary: "Mavrodaphne is distinguished by its ability to produce intensely flavorful, sweet wines that are traditionally enjoyed as aperitifs or with desserts."
-            ),
-            imageName: "mavrodaphne",
-            iconNames: ["leaf", "drop"]
+            )
         ),
         // Mencía Details
         Grape(
@@ -1252,26 +814,13 @@ Grape(
                     palate: "Medium-bodied with moderate to high acidity and soft tannins, featuring flavors of fresh red berries, herbal notes, and a distinctive minerality.",
                     finish: "Elegant and fresh with a lingering fruity and floral aftertaste."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Prefers cooler, more humid climates which help retain its acidity and aromatic profile.",
-                    soil: "Thrives in slate and granite soils, which contribute to its mineral complexity.",
-                    growingConditions: "Resistant to drought and relatively low-yielding, which helps concentrate flavors."
-                ),
+             
                 wineStyles: [
                     "Red Wines: Predominantly made as varietal wines or occasionally blended, celebrated for their expressiveness and freshness."
                 ],
-                foodPairing: [
-                    "Pairs well with roasted meats, charcuterie, and regional Spanish cuisine."
-                ],
-                notableProducers: [
-                    "Descendientes de J. Palacios",
-                    "Dominio de Tares"
-                ],
-                otherNames: "Known as Jaen in Portugal.",
+                
                 grapeSummary: "Mencía is appreciated for its vibrant fruit flavors and floral aromatics, offering a distinctive and refreshing take on Spanish red wines."
-            ),
-            imageName: "mencia",
-            iconNames: ["leaf", "drop"]
+            )
         ),
 
         // Merlot Details
@@ -1292,26 +841,13 @@ Grape(
                     palate: "Medium to full-bodied with low to medium tannins and moderate acidity, offering a plush texture and flavors of ripe dark fruits, vanilla, and herbs.",
                     finish: "Smooth and velvety with a chocolatey, fruity linger."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Adaptable to both cool and warm climates, which affects the style significantly.",
-                    soil: "Prefers clay and limestone soils for optimal growth, which help retain moisture and regulate temperature.",
-                    growingConditions: "Vigorous and high yielding, but sensitive to cold and moisture-related diseases like mildew."
-                ),
+                
                 wineStyles: [
                     "Red Wines: Often blended with Cabernet Sauvignon and Cabernet Franc in Bordeaux styles or made into lush, velvety single varietal wines."
                 ],
-                foodPairing: [
-                    "Versatile with food, pairing well with everything from light poultry dishes to hearty red meats and rich pastas."
-                ],
-                notableProducers: [
-                    "Château Pétrus",
-                    "Duckhorn Vineyards"
-                ],
-                otherNames: "None",
+                
                 grapeSummary: "Merlot is celebrated for its accessibility, smooth tannins, and rich fruit flavors, making it a favorite for both blending and single varietal expressions."
-            ),
-            imageName: "merlot",
-            iconNames: ["leaf", "drop"]
+            )
         ),
         // Molinara Details
         Grape(
@@ -1329,26 +865,13 @@ Grape(
                     palate: "Light-bodied with high acidity and soft tannins, featuring subtle flavors of cherry, almond, and herbal undertones.",
                     finish: "Crisp and refreshing with a slightly bitter finish that is characteristic of the variety."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Prefers cooler, temperate climates.",
-                    soil: "Performs best in well-drained, volcanic soils.",
-                    growingConditions: "Resistant to many vine diseases but can be prone to overproduction, which dilutes quality."
-                ),
+                
                 wineStyles: [
                     "Red Wines: Mostly used in blends with Corvina and Rondinella for Valpolicella and Bardolino wines."
                 ],
-                foodPairing: [
-                    "Pairs well with light pasta dishes, pizza, and white meats, complementing their flavors without overpowering."
-                ],
-                notableProducers: [
-                    "Zenato",
-                    "Masi Agricola"
-                ],
-                otherNames: "None",
-                grapeSummary: "Molinara is valued for its acidity and fresh, light profile in blends, adding balance and brightness to the wines."
-            ),
-            imageName: "molinara",
-            iconNames: ["leaf", "drop"]
+                
+                grapeSummary: "While Molinara provides good acidity and freshness, its tendency to oxidize has caused producers to reduce or completely avoid its use in their wines."
+            )
         ),
         // Mondeuse Details
         Grape(
@@ -1366,26 +889,13 @@ Grape(
                     palate: "Medium to full-bodied with high acidity and robust tannins, offering flavors of dark berries, spice, and herbal notes.",
                     finish: "Lingering with a characteristic peppery note and a hint of tartness."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Prefers cooler mountain climates, which help maintain its acidity and aromatic complexity.",
-                    soil: "Thrives in limestone and rocky soils.",
-                    growingConditions: "Tolerant to cold but susceptible to some vine diseases; benefits from high-altitude planting for optimal ripening."
-                ),
+                
                 wineStyles: [
                     "Red Wines: Typically vinified on its own to produce varietal wines that highlight its unique flavor profile."
                 ],
-                foodPairing: [
-                    "Pairs well with game meats, charcuterie, and robust cheeses."
-                ],
-                notableProducers: [
-                    "Domaine Jean Vullien",
-                    "Domaine de l'Idylle"
-                ],
-                otherNames: "None",
+               
                 grapeSummary: "Mondeuse is celebrated for its complex, spicy profile and is often likened to Syrah for its peppery and vibrant dark fruit flavors."
-            ),
-            imageName: "mondeuse",
-            iconNames: ["leaf", "drop"]
+            )
         ),
 
         // Montepulciano Details
@@ -1404,26 +914,13 @@ Grape(
                     palate: "Full-bodied with medium to high tannins and acidity, offering robust flavors of dark fruits, tobacco, and cocoa.",
                     finish: "Rich and lingering, with a smooth, velvety texture."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Prefers warmer climates to fully develop its flavors and color.",
-                    soil: "Adaptable to various soil types but does best in clay and limestone soils.",
-                    growingConditions: "Vigorous vine that can yield high but requires careful management to maintain quality."
-                ),
+               
                 wineStyles: [
                     "Red Wines: Most commonly made into robust, age-worthy wines that are often enjoyed for their fruity and earthy complexity."
                 ],
-                foodPairing: [
-                    "Ideal with hearty dishes such as pasta with meat sauces, lamb, and aged cheeses."
-                ],
-                notableProducers: [
-                    "Cantina Zaccagnini",
-                    "Masciarelli"
-                ],
-                otherNames: "None",
+               
                 grapeSummary: "Montepulciano is known for its deep color, robust tannins, and ability to produce rich, flavorful wines that pair excellently with a wide range of foods."
-            ),
-            imageName: "montepulciano",
-            iconNames: ["leaf", "drop"]
+            )
         ),
         // Mourvèdre Details
         Grape(
@@ -1443,26 +940,13 @@ Grape(
                     palate: "Full-bodied with high tannins and medium acidity, delivering flavors of dark fruit, game, leather, and earth.",
                     finish: "Long and persistent, often with spicy and chocolatey undertones."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Thrives in warm, dry climates that allow for full ripening.",
-                    soil: "Performs best in stony, well-drained soils.",
-                    growingConditions: "Drought-resistant but requires a long growing season to reach full maturity."
-                ),
+               
                 wineStyles: [
                     "Red Wines: Often used in GSM (Grenache-Syrah-Mourvèdre) blends, as well as varietal wines and rosés in Bandol."
                 ],
-                foodPairing: [
-                    "Excellent with game, dark meats, and hearty, spicy dishes."
-                ],
-                notableProducers: [
-                    "Domaine Tempier",
-                    "Château de Pibarnon"
-                ],
-                otherNames: "Known as Monastrell in Spain and Mataro in Australia and parts of the USA.",
+                
                 grapeSummary: "Mourvèdre is celebrated for its contribution to complex, age-worthy wines, offering a robust structure and rich flavors that are ideal for blending or as standalone varietal wines."
-            ),
-            imageName: "mourvedre",
-            iconNames: ["leaf", "drop"]
+            )
         ),
 
         // Nebbiolo Details
@@ -1481,26 +965,13 @@ Grape(
                     palate: "Full-bodied with robust tannins and high acidity, offering deep flavors of red fruit, licorice, and dried flowers.",
                     finish: "Long and powerful, renowned for its considerable aging potential, which softens the tannins and enhances complexity."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Prefers cool climates with a long growing season to develop its complex flavors while retaining acidity.",
-                    soil: "Best in calcareous marl soils which provide adequate drainage and retain warmth.",
-                    growingConditions: "Challenging to cultivate due to its late ripening and susceptibility to diseases; requires meticulous vineyard management."
-                ),
+                
                 wineStyles: [
                     "Red Wines: Primarily used to produce Barolo and Barbaresco, among the world’s most revered wines."
                 ],
-                foodPairing: [
-                    "Ideal with rich, meaty dishes such as braised beef, truffles, and hearty stews. Also pairs well with aged cheeses."
-                ],
-                notableProducers: [
-                    "Giacomo Conterno",
-                    "Gaja"
-                ],
-                otherNames: "None",
+               
                 grapeSummary: "Nebbiolo is famed for its profound aromatic complexity, formidable structure, and exceptional longevity, making it a cornerstone of Italian viticulture."
-            ),
-            imageName: "nebbiolo",
-            iconNames: ["leaf", "drop"]
+            )
         ),
         // Negroamaro Details
         Grape(
@@ -1518,26 +989,13 @@ Grape(
                     palate: "Full-bodied with pronounced tannins and acidity, delivering flavors of dark fruits, tobacco, and an earthy bitterness.",
                     finish: "Rich and robust with a lingering bittersweet chocolate and anise aftertaste."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Thrives in hot, arid climates.",
-                    soil: "Performs best in calcareous, well-drained soils.",
-                    growingConditions: "Drought-resistant and generally hardy, though it can produce high yields which need to be controlled for quality."
-                ),
+               
                 wineStyles: [
                     "Red Wines: Typically produces robust, dark wines that can age well. Also used in blends and rosé wines."
                 ],
-                foodPairing: [
-                    "Pairs well with hearty dishes, such as roasted meats, rich pasta dishes, and strong cheeses."
-                ],
-                notableProducers: [
-                    "Cantina Due Palme",
-                    "Leone de Castris"
-                ],
-                otherNames: "Occasionally referred to as Negro amaro.",
+               
                 grapeSummary: "Negroamaro is celebrated for its bold flavors and is a staple in the winemaking tradition of southern Italy, especially in Puglia."
-            ),
-            imageName: "negroamaro",
-            iconNames: ["leaf", "drop"]
+            )
         ),
 
         // Nerello Mascalese Details
@@ -1556,26 +1014,13 @@ Grape(
                     palate: "Medium-bodied with firm tannins and high acidity, offering a flavor profile that includes red fruit, smoke, and spice, with a distinctive minerality.",
                     finish: "Elegant and persistent, with a refined structure that evolves gracefully with age."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Prefers the cooler, high-altitude climates of Mount Etna, which help preserve its acidity and aromatic profile.",
-                    soil: "Volcanic soils contribute significantly to its mineral and complex flavor profile.",
-                    growingConditions: "Adaptable but best at higher elevations where the diurnal temperature variation can be leveraged to enhance its aromatic complexity."
-                ),
+                
                 wineStyles: [
                     "Red Wines: Often made into varietal wines or blended with Nerello Cappuccio, showcasing elegance and aging potential."
                 ],
-                foodPairing: [
-                    "Ideal with grilled meats, mushroom dishes, and hearty fish courses like tuna or swordfish."
-                ],
-                notableProducers: [
-                    "Tenuta delle Terre Nere",
-                    "Benanti"
-                ],
-                otherNames: "None",
+                
                 grapeSummary: "Nerello Mascalese is highly regarded for its ability to balance power and elegance, producing wines that are both approachable in their youth and capable of long aging."
-            ),
-            imageName: "nerello_mascalese",
-            iconNames: ["leaf", "drop"]
+            )
         ),
         // Nero d’Avola Details
         Grape(
@@ -1593,26 +1038,13 @@ Grape(
                     palate: "Full-bodied with robust tannins and moderate acidity, offering lush fruit flavors along with hints of tobacco and dark chocolate.",
                     finish: "Long and smooth, often with a spicy or slightly sweet note on the finish."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Thrives in hot, arid climates.",
-                    soil: "Performs well in sandy soils but can adapt to various soil types.",
-                    growingConditions: "Drought-resistant and generally robust, producing high yields without significant loss of quality."
-                ),
+                
                 wineStyles: [
                     "Red Wines: Typically made as a varietal wine, sometimes aged in oak to enhance complexity."
                 ],
-                foodPairing: [
-                    "Pairs excellently with grilled meats, game, and hearty pasta dishes."
-                ],
-                notableProducers: [
-                    "Planeta",
-                    "Donnafugata"
-                ],
-                otherNames: "Also known locally as Calabrese.",
+                
                 grapeSummary: "Nero d'Avola is celebrated for its rich, full-bodied wines that embody the warmth and intensity of Sicily’s sun-drenched vineyards."
-            ),
-            imageName: "nero_davola",
-            iconNames: ["leaf", "drop"]
+            )
         ),
 
         // Petit Verdot Details
@@ -1633,26 +1065,13 @@ Grape(
                     palate: "Full-bodied with high tannins and acidity, delivering flavors of dark fruits, vanilla, and spices.",
                     finish: "Long and robust, with a lingering spicy and floral note."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Prefers warmer climates to fully ripen.",
-                    soil: "Best in deep, well-drained soils.",
-                    growingConditions: "Late-ripening variety that can be challenging to grow, but yields concentrated flavors when fully matured."
-                ),
+               
                 wineStyles: [
-                    "Red Wines: Often used in small amounts to add color, tannin, and flavor complexity to blends."
+                    "Red Wines: Often used in small amounts to add color, tannin, and flavor to blends. It is also used to create varietal wines in New World regions."
                 ],
-                foodPairing: [
-                    "Ideal with rich, fatty meats like lamb and beef, as well as aged cheeses."
-                ],
-                notableProducers: [
-                    "Château Palmer",
-                    "Pride Mountain Vineyards"
-                ],
-                otherNames: "None",
+               
                 grapeSummary: "Petit Verdot is known for its power and concentration, offering depth and complexity to wines, especially in blends where it can shine even in small proportions."
-            ),
-            imageName: "petit_verdot",
-            iconNames: ["leaf", "drop"]
+            )
         ),
         // Petite Sirah Details
         Grape(
@@ -1671,26 +1090,13 @@ Grape(
                     palate: "Full-bodied with firm tannins and low to moderate acidity, featuring robust flavors of dark fruit, pepper, and licorice.",
                     finish: "Long and powerful, with persistent dark fruit and spicy notes."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Prefers warm, dry climates to fully develop its rich flavors.",
-                    soil: "Performs best in well-drained soils.",
-                    growingConditions: "Vigorous grower with high resistance to downy mildew; can produce high yields but often requires careful management to ensure quality."
-                ),
+               
                 wineStyles: [
                     "Red Wines: Typically bold and intense, often benefiting from aging in oak to enhance complexity."
                 ],
-                foodPairing: [
-                    "Pairs well with rich, flavorful dishes such as grilled meats, barbecue, and strong cheeses."
-                ],
-                notableProducers: [
-                    "Ridge Vineyards",
-                    "Michael David Winery"
-                ],
-                otherNames: "Known as Durif in Australia and other regions.",
+               
                 grapeSummary: "Petite Sirah is known for its powerful, tannic wines with deep color and longevity, making it a favorite for bold red wine enthusiasts."
-            ),
-            imageName: "petite_sirah",
-            iconNames: ["leaf", "drop"]
+            )
         ),
 
         // Pinot Noir Details
@@ -1711,26 +1117,13 @@ Grape(
                     palate: "Medium-bodied with soft to moderate tannins and high acidity, offering flavors of red fruit, spice, and earthy notes.",
                     finish: "Elegant and smooth, with a nuanced, lingering finish that can develop greater complexity with age."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Prefers cooler climates which help maintain its acidity and delicate flavors.",
-                    soil: "Best in calcareous clay and limestone-based soils, which provide drainage and retain adequate moisture.",
-                    growingConditions: "Challenging to grow due to its thin skin and susceptibility to various vine diseases."
-                ),
+                
                 wineStyles: [
                     "Red Wines: Renowned for its versatility, ranging from light and fruity to rich and full-bodied, depending on the region and winemaking techniques used."
                 ],
-                foodPairing: [
-                    "Exceptionally versatile with food, pairs well with poultry, red meat, fish, and vegetarian dishes."
-                ],
-                notableProducers: [
-                    "Domaine de la Romanée-Conti",
-                    "Williams Selyem"
-                ],
-                otherNames: "None",
+               
                 grapeSummary: "Pinot Noir is highly prized for its depth, complexity, and versatility, producing some of the most sought-after wines in the world."
-            ),
-            imageName: "pinot_noir",
-            iconNames: ["leaf", "drop"]
+            )
         ),
         // Pinotage Details
         Grape(
@@ -1748,26 +1141,13 @@ Grape(
                     palate: "Medium to full-bodied with bold tannins and a high acidity, offering flavors of dark fruits, roasted earth, and sometimes notes of tar and tobacco.",
                     finish: "Robust and lingering, with a rustic character that can soften with aging."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Thrives in warm climates, with a preference for dry conditions to enhance fruit concentration.",
-                    soil: "Adapts to a variety of soil types but favors well-drained, sandy soils.",
-                    growingConditions: "Vigorous grower, resistant to wind and drought, but can be prone to overcropping without careful vineyard management."
-                ),
+                
                 wineStyles: [
                     "Red Wines: Typically made into varietal wines that showcase its unique flavor profile, also used in blends."
                 ],
-                foodPairing: [
-                    "Pairs well with bold, flavorful dishes such as barbecued meats, game, and spicy stews."
-                ],
-                notableProducers: [
-                    "Kanonkop",
-                    "Beyerskloof"
-                ],
-                otherNames: "None",
+              
                 grapeSummary: "Pinotage is celebrated for its distinctive and bold profile, embodying the terroir and winemaking heritage of South Africa."
-            ),
-            imageName: "pinotage",
-            iconNames: ["leaf", "drop"]
+            )
         ),
 
         // Portugieser Details
@@ -1787,26 +1167,13 @@ Grape(
                     palate: "Light-bodied with low tannins and moderate acidity, offering straightforward fruit flavors and a pleasant, easy-drinking quality.",
                     finish: "Short to medium, refreshing, with a focus on fruitiness rather than complexity."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Prefers cooler climates which help retain its natural freshness and acidity.",
-                    soil: "Not particularly demanding, but performs well in loamy and clay soils.",
-                    growingConditions: "Generally easy to cultivate, with a tendency towards high yields which require control for quality production."
-                ),
+               
                 wineStyles: [
                     "Red Wines: Typically made as light, quaffable wines meant for early consumption."
                 ],
-                foodPairing: [
-                    "Ideal with light dishes, cold cuts, and mild cheeses, or as a refreshing summer red."
-                ],
-                notableProducers: [
-                    "Weingut Becker",
-                    "Weingut Wittmann"
-                ],
-                otherNames: "Also known as Blauer Portugieser.",
+                
                 grapeSummary: "Portugieser is appreciated for its light, fruity wines that are best enjoyed young, often serving as a pleasant everyday wine."
-            ),
-            imageName: "portugieser",
-            iconNames: ["leaf", "drop"]
+            )
         ),
         // Primitivo Details
         Grape(
@@ -1825,26 +1192,13 @@ Grape(
                     palate: "Full-bodied with high alcohol content, offering flavors of jammy fruits, spice, and sometimes tobacco and leather, with a sweet edge if made in a late harvest style.",
                     finish: "Rich and intense with a lingering sweetness and spice."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Prefers warm to hot climates, which are essential for achieving full phenolic ripeness.",
-                    soil: "Thrives in well-drained, fertile soil but can adapt to various soil types.",
-                    growingConditions: "Robust and vigorous, with high sugar content that can lead to high alcohol wines."
-                ),
+               
                 wineStyles: [
-                    "Red Wines: Often made in a bold, rich style; also popular as a semi-sweet rosé known as White Zinfandel in the US."
+                    "Red Wines: Often made in a bold, rich style."
                 ],
-                foodPairing: [
-                    "Pairs well with hearty dishes such as barbecued meats, spicy dishes, and robust pasta sauces."
-                ],
-                notableProducers: [
-                    "Antinori",
-                    "Fatalone"
-                ],
-                otherNames: "Zinfandel in the United States.",
+              
                 grapeSummary: "Primitivo is celebrated for its capacity to produce powerful, fruity wines that showcase the intensity of Southern Italian viticulture."
-            ),
-            imageName: "primitivo",
-            iconNames: ["leaf", "drop"]
+            )
         ),
 
         // Refosco Details
@@ -1863,26 +1217,13 @@ Grape(
                     palate: "Medium to full-bodied with noticeable tannins and acidity, offering flavors of dark fruits, violet, and a distinct minerality.",
                     finish: "Tart and tannic with a rustic, earthy aftertaste."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Best suited to cooler, maritime climates where it can ripen slowly.",
-                    soil: "Prefers well-drained, rich marl and sandstone soils.",
-                    growingConditions: "Somewhat vigorous and can produce high yields, but best quality comes from controlled yield management."
-                ),
+             
                 wineStyles: [
                     "Red Wines: Typically produced as a varietal wine, showcasing its unique flavor profile and structure."
                 ],
-                foodPairing: [
-                    "Excellent with game, grilled meats, and richly flavored cheeses."
-                ],
-                notableProducers: [
-                    "Livio Felluga",
-                    "Villa Rubini"
-                ],
-                otherNames: "Several varietals exist, including Refosco dal Peduncolo Rosso.",
+               
                 grapeSummary: "Refosco is known for its deep color, vibrant acidity, and ability to produce complex wines that reflect the terroir of northeastern Italy."
-            ),
-            imageName: "refosco",
-            iconNames: ["leaf", "drop"]
+            )
         ),
         
         // Rondinella Details
@@ -1901,27 +1242,14 @@ Grape(
                     palate: "Light-bodied with moderate acidity and soft tannins, featuring delicate flavors of red berries and a slight herbal note.",
                     finish: "Soft and refreshing with a clean, slightly bitter finish typical of the grapes from this region."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Adapts well to the moderate and humid climate of the Veneto region.",
-                    soil: "Prefers well-drained, calcareous and alluvial soils.",
-                    growingConditions: "Resistant to many common vine diseases and adapts well to different training systems, though it is less vigorous than Corvina."
-                ),
+              
                 wineStyles: [
                     "Red Wines: Commonly used in blends to add color and aroma.\n",
                     "Rosé Wines: Sometimes used to produce light rosés."
                 ],
-                foodPairing: [
-                    "Pairs well with light pasta dishes, pizza, and young cheeses."
-                ],
-                notableProducers: [
-                    "Zenato",
-                    "Masi Agricola"
-                ],
-                otherNames: "None",
+               
                 grapeSummary: "Rondinella is valued for its contribution to the floral and fruity components in traditional Venetian blends, enhancing the overall elegance and drinkability of the wines."
-            ),
-            imageName: "rondinella",
-            iconNames: ["leaf", "drop"]
+            )
         ),
 
         // Sagrantino Details
@@ -1940,26 +1268,13 @@ Grape(
                     palate: "Full-bodied and robust, with a high tannin content and matching acidity, offering intense flavors of dark chocolate, black cherry, and spice.",
                     finish: "Long and powerful, with persistent tannic strength and potential for aging."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Thrives in warm, dry climates that enhance its flavor concentration and tannin maturity.",
-                    soil: "Performs best in well-drained, rocky soils.",
-                    growingConditions: "Low-yielding, which helps concentrate the flavors and tannins in the grapes."
-                ),
+              
                 wineStyles: [
                     "Red Wines: Predominantly produced as a dry red wine that benefits greatly from aging. Also made into a sweet passito style wine."
                 ],
-                foodPairing: [
-                    "Ideal with rich, hearty dishes such as roasted meats, game, and strong cheeses."
-                ],
-                notableProducers: [
-                    "Arnaldo Caprai",
-                    "Antonelli San Marco"
-                ],
-                otherNames: "None",
+               
                 grapeSummary: "Sagrantino is celebrated for its depth, complexity, and aging potential, making it one of the most prestigious and sought-after wines of Umbria."
-            ),
-            imageName: "sagrantino",
-            iconNames: ["leaf", "drop"]
+            )
         ),
         // Sangiovese Details
         Grape(
@@ -1977,26 +1292,13 @@ Grape(
                     palate: "Medium to full-bodied with high acidity and robust tannins, offering flavors of red fruit, dried herbs, and often a distinct balsamic or mineral edge.",
                     finish: "Long and savory, with a potential for cherry and floral notes in the aftertaste."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Prefers a warm and dry climate but is adaptable, with different clones better suited to varying conditions.",
-                    soil: "Best in calcareous clay soils which contribute to its flavor complexity and structure.",
-                    growingConditions: "Vigorous vine that can be prone to overcropping, hence careful vineyard management is essential for quality."
-                ),
+               
                 wineStyles: [
                     "Red Wines: Often used in blends but also shines as a varietal wine. Notable for its role in Chianti, Chianti Classico, and Brunello di Montalcino."
                 ],
-                foodPairing: [
-                    "Versatile with food, pairs well with everything from pasta and pizza to complex meat dishes and aged cheeses."
-                ],
-                notableProducers: [
-                    "Antinori",
-                    "Biondi-Santi"
-                ],
-                otherNames: "None",
+               
                 grapeSummary: "Sangiovese is celebrated for its versatility, depth, and ability to express terroir, making it a cornerstone of Italian winemaking."
-            ),
-            imageName: "sangiovese",
-            iconNames: ["leaf", "drop"]
+            )
         ),
 
         // Schiava Details
@@ -2015,26 +1317,13 @@ Grape(
                     palate: "Light-bodied with low tannins and moderate acidity, delivering flavors of strawberry, raspberry, and hints of nuttiness.",
                     finish: "Soft and fruity, with a pleasantly smooth texture."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Thrives in cooler climates, which help maintain its delicate aromas and acidity.",
-                    soil: "Performs well in sandy and stony soils typical of its native region.",
-                    growingConditions: "Generally hardy and resistant to major diseases, though it is susceptible to frost."
-                ),
+                
                 wineStyles: [
                     "Red Wines: Primarily made as a varietal wine, often consumed young to appreciate its fresh, fruity qualities."
                 ],
-                foodPairing: [
-                    "Pairs well with light appetizers, fish dishes, and can be a delightful companion to pizza and light pasta dishes."
-                ],
-                notableProducers: [
-                    "Cantina Terlano",
-                    "Nals Margreid"
-                ],
-                otherNames: "Also known as Vernatsch or Trollinger.",
+                
                 grapeSummary: "Schiava is valued for its approachability and charm, offering a refreshing take on red wine that is best enjoyed in its youth."
-            ),
-            imageName: "schiava",
-            iconNames: ["leaf", "drop"]
+            )
         ),
         // St. Laurent Details
         Grape(
@@ -2053,26 +1342,13 @@ Grape(
                     palate: "Medium-bodied with moderate tannins and high acidity, featuring flavors of ripe dark fruits and a hint of herbal spice.",
                     finish: "Elegant and somewhat tart, with a lingering spicy finish."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Prefers cooler climates, similar to Pinot Noir, which helps in maintaining its acidity and aromatic complexity.",
-                    soil: "Performs best in limestone and chalky soils, which contribute to its mineral complexity.",
-                    growingConditions: "Relatively hardy but can be prone to diseases such as rot if the conditions are too damp."
-                ),
+               
                 wineStyles: [
                     "Red Wines: Primarily produced as a varietal wine, often aged in oak to enhance its spicy character."
                 ],
-                foodPairing: [
-                    "Pairs well with game meats, roasted pork, and dishes with earthy or smoky flavors."
-                ],
-                notableProducers: [
-                    "Weingut Heinrich",
-                    "Weingut Juris"
-                ],
-                otherNames: "Also known in some regions as Sankt Laurent.",
+               
                 grapeSummary: "St. Laurent is valued for its ability to produce deeply colored, aromatic wines that balance fruitiness with spice, making it popular among enthusiasts of unique varietal wines."
-            ),
-            imageName: "st_laurent",
-            iconNames: ["leaf", "drop"]
+            )
         ),
 
         // Syrah Details
@@ -2093,26 +1369,13 @@ Grape(
                     palate: "Full-bodied with firm tannins and moderate to high acidity, offering flavors of dark fruits, pepper, and dark chocolate, with a smoky, meaty character in some wines.",
                     finish: "Long and persistent, with a peppery and spicy aftertaste that complements its robust structure."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Thrives in both hot and temperate climates, adaptable but best expresses its characteristics in warm, dry conditions.",
-                    soil: "Prefers well-drained, rocky soils which contribute to its concentration and depth.",
-                    growingConditions: "Vigorous vine that can produce high yields, but quality is enhanced by controlling yield and focusing on intense flavor development."
-                ),
+              
                 wineStyles: [
                     "Red Wines: Made as a full-bodied varietal wine, commonly aged in oak to add complexity. Also crucial in blends like Côtes du Rhône and GSM (Grenache, Syrah, Mourvèdre)."
                 ],
-                foodPairing: [
-                    "Ideal with grilled meats, game, hearty stews, and a variety of cheeses."
-                ],
-                notableProducers: [
-                    "Penfolds",
-                    "E. Guigal"
-                ],
-                otherNames: "Known as Shiraz in Australia and South Africa.",
+               
                 grapeSummary: "Syrah is celebrated for its intense flavors and ability to produce deeply colored, complex wines that are highly valued across the world."
-            ),
-            imageName: "syrah",
-            iconNames: ["leaf", "drop"]
+            )
         ),
         // Tannat Details
         Grape(
@@ -2132,26 +1395,13 @@ Grape(
                     palate: "Full-bodied with pronounced tannins and acidity, delivering flavors of dark fruits, tobacco, and dark chocolate.",
                     finish: "Long and tannic, with a persistent dark fruit and spicy aftertaste."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Thrives in both cool and warm climates, adaptable but benefits from the heat to fully mature its tannins.",
-                    soil: "Performs best in well-drained, poor soils which help in moderating vigor.",
-                    growingConditions: "Vigorous vine that can be prone to overproduction; yield control is crucial for quality."
-                ),
+                
                 wineStyles: [
                     "Red Wines: Often vinified to soften its tannins, typically through extended aging in oak."
                 ],
-                foodPairing: [
-                    "Pairs excellently with rich, fatty meats like lamb and beef, which help soften the wine's tannins."
-                ],
-                notableProducers: [
-                    "Château Montus",
-                    "Bodega Garzón"
-                ],
-                otherNames: "None",
+                
                 grapeSummary: "Tannat is renowned for its bold structure and high tannin content, making it suitable for aging and blending, offering significant health benefits due to its high levels of antioxidants."
-            ),
-            imageName: "tannat",
-            iconNames: ["leaf", "drop"]
+            )
         ),
 
         // Tempranillo Details
@@ -2171,26 +1421,13 @@ Grape(
                     palate: "Medium-bodied with moderate to high acidity and tannins, offering a balanced profile of fruit, oak, and earthy elements.",
                     finish: "Smooth and lingering, often with a spicy and leathery complexity."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Prefers a cooler climate to maintain its acidity and structure but adaptable to various conditions.",
-                    soil: "Varies, but limestone-based soils are considered ideal for its growth.",
-                    growingConditions: "Moderately vigorous, requiring careful management to prevent over-ripening and maintain balance."
-                ),
+              
                 wineStyles: [
                     "Red Wines: Typically aged in oak, contributing to its characteristic flavor profile; prominent in blends and varietal wines."
                 ],
-                foodPairing: [
-                    "Versatile with food pairings, excellent with tapas, grilled meats, and traditional Spanish dishes."
-                ],
-                notableProducers: [
-                    "Bodegas Vega Sicilia",
-                    "Bodegas Muga"
-                ],
-                otherNames: "Tinta Roriz in Portugal, Aragonêz in some regions.",
+               
                 grapeSummary: "Tempranillo is celebrated for its versatility and complexity, capable of producing a wide range of wine styles from fresh and fruity to deeply nuanced and age-worthy."
-            ),
-            imageName: "tempranillo",
-            iconNames: ["leaf", "drop"]
+            )
         ),
         // Teroldego Details
         Grape(
@@ -2208,26 +1445,13 @@ Grape(
                     palate: "Medium to full-bodied with vibrant acidity and tannins, offering flavors of ripe red and black fruits, underpinned by earthy and herbal notes.",
                     finish: "Long and robust, with a lingering presence of fruit and spice."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Prefers cooler climates which enhance its acidity and aromatic profile.",
-                    soil: "Thrives in alluvial soils rich in gravel and sand, typical of its native growing areas.",
-                    growingConditions: "Vigorous vine that requires careful canopy management to ensure adequate sun exposure for optimal ripening."
-                ),
+               
                 wineStyles: [
                     "Red Wines: Typically made as varietal wines, showcasing the grape’s characteristic flavors and aging potential."
                 ],
-                foodPairing: [
-                    "Pairs well with rich, savory dishes such as grilled meats, game, and aged cheeses."
-                ],
-                notableProducers: [
-                    "Foradori",
-                    "Mezzacorona"
-                ],
-                otherNames: "None",
+               
                 grapeSummary: "Teroldego is celebrated for its profound color and complex flavor profile, making it one of the gems of northern Italian viticulture."
-            ),
-            imageName: "teroldego",
-            iconNames: ["leaf", "drop"]
+            )
         ),
 
         // Touriga Nacional Details
@@ -2246,26 +1470,13 @@ Grape(
                     palate: "Full-bodied with high tannins and acidity, delivering flavors of ripe dark fruits, balsamic, and chocolate, enriched by oak aging.",
                     finish: "Long and persistent, with a velvety texture and powerful tannic backbone."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Adapts well to a variety of climates, from cooler maritime to hotter inland areas.",
-                    soil: "Prefers schist and granite-based soils, which help stress the vine and concentrate its flavors.",
-                    growingConditions: "Low-yielding, which contributes to the concentration and intensity of its wines."
-                ),
+              
                 wineStyles: [
                     "Red Wines: Primarily used in the production of complex, structured wines and fortified Port wines."
                 ],
-                foodPairing: [
-                    "Excellent with robust meat dishes, such as beef stews and game, as well as strong, mature cheeses."
-                ],
-                notableProducers: [
-                    "Quinta do Noval",
-                    "Symington Family Estates"
-                ],
-                otherNames: "None",
+               
                 grapeSummary: "Touriga Nacional is renowned for its depth and complexity, serving as the backbone of Portugal’s most prestigious red and fortified wines."
-            ),
-            imageName: "touriga_nacional",
-            iconNames: ["leaf", "drop"]
+            )
         ),
         // Trousseau Details
         Grape(
@@ -2285,26 +1496,13 @@ Grape(
                     palate: "Light to medium-bodied with moderate acidity and tannins, presenting flavors of strawberry, raspberry, and spice with a rustic edge.",
                     finish: "Elegant and moderately long with a spicy and slightly earthy aftertaste."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Prefers cooler climates which help preserve its delicate aromas and acidity.",
-                    soil: "Adapts well to a variety of soils but thrives in limestone-rich soils typical of its native Jura.",
-                    growingConditions: "Moderately vigorous, with a susceptibility to fungal diseases, requiring careful vineyard management."
-                ),
+              
                 wineStyles: [
                     "Red Wines: Primarily made as varietal wines, often light and expressive, suitable for early consumption."
                 ],
-                foodPairing: [
-                    "Pairs well with charcuterie, light poultry dishes, and creamy cheeses."
-                ],
-                notableProducers: [
-                    "Domaine André et Mireille Tissot",
-                    "Domaine de la Tournelle"
-                ],
-                otherNames: "Known as Bastardo in Portugal.",
+               
                 grapeSummary: "Trousseau is valued for its aromatic complexity and versatility, producing distinctive wines that express a strong sense of place."
-            ),
-            imageName: "trousseau",
-            iconNames: ["leaf", "drop"]
+            )
         ),
 
         // Xinomavro Details
@@ -2323,26 +1521,13 @@ Grape(
                     palate: "Medium to full-bodied with pronounced acidity and tannins, offering flavors of red berries, earthy notes, and spice, with aging potential that brings out dried fruit and tobacco nuances.",
                     finish: "Long and robust, with a characteristic acidity that lingers."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Prefers cooler climates which help maintain its acidity and develop its aromatic complexity.",
-                    soil: "Thrives in sandy, clay, and limestone soils, which contribute to its flavor profile.",
-                    growingConditions: "Moderately vigorous, requiring careful management to balance yield and fruit quality."
-                ),
+               
                 wineStyles: [
                     "Red Wines: Often made as a varietal wine, celebrated for its aging potential and complex flavor development."
                 ],
-                foodPairing: [
-                    "Pairs excellently with game, lamb, and rich sauces, as well as aged cheeses."
-                ],
-                notableProducers: [
-                    "Alpha Estate",
-                    "Kir-Yianni"
-                ],
-                otherNames: "None",
+                
                 grapeSummary: "Xinomavro is acclaimed for its complexity and aging potential, often compared to Nebbiolo for its ability to produce profound and long-lived wines."
-            ),
-            imageName: "xinomavro",
-            iconNames: ["leaf", "drop"]
+            )
         ),
 
         // Zinfandel Details
@@ -2361,27 +1546,14 @@ Grape(
                     palate: "Medium to full-bodied with moderate to high alcohol content, featuring a jammy fruitiness, balanced by peppery spice and a lush texture.",
                     finish: "Warm and long, with a sweet or spicy edge depending on the style."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Prefers warm to hot climates which allow the grapes to fully ripen and develop rich flavors.",
-                    soil: "Adaptable to various soil types but best in well-drained sandy or loamy soils.",
-                    growingConditions: "Vigorous vine that can produce high yields; careful vineyard management is needed to maintain quality."
-                ),
+               
                 wineStyles: [
                     "Red Wines: Ranges from medium-bodied to rich and intense. Also famous for the sweet, light rosé style known as White Zinfandel.\n",
                     "Rosé Wines: White Zinfandel, which is a sweeter and lighter rosé wine style."
                 ],
-                foodPairing: [
-                    "Robust reds pair well with grilled meats and barbecue, while the sweeter styles can complement spicy foods or serve as a refreshing aperitif."
-                ],
-                notableProducers: [
-                    "Ridge Vineyards",
-                    "Turley Wine Cellars"
-                ],
-                otherNames: "Primitivo in Italy.",
+                
                 grapeSummary: "Zinfandel is versatile and capable of producing a wide array of wine styles, each expressing a distinct character that ranges from rich and spicy to sweet and light."
-            ),
-            imageName: "zinfandel",
-            iconNames: ["leaf", "drop"]
+            )
         ),
         // Zweigelt Details
         Grape(
@@ -2399,26 +1571,13 @@ Grape(
                     palate: "Medium-bodied with moderate acidity and soft tannins, offering a palate of ripe red fruits complemented by subtle spice and sometimes notes of dark chocolate.",
                     finish: "Smooth and fruity, with a pleasant, easy-drinking finish."
                 ),
-                viticulturalCharacteristics: ViticulturalCharacteristics(
-                    climate: "Thrives in a variety of climates, from cooler regions which enhance its acidity to warmer areas that intensify its fruit flavors.",
-                    soil: "Versatile in soil adaptability, but best results are often from loamy and chalky soils.",
-                    growingConditions: "Zweigelt is relatively easy to cultivate, with good resistance to cold and diseases, making it a reliable crop for consistent quality."
-                ),
+               
                 wineStyles: [
                     "Red Wines: Often produced as varietal wines but also used in blends. It is capable of producing wines that range from light and fresh to more complex and oak-aged versions."
                 ],
-                foodPairing: [
-                    "Pairs well with a wide range of dishes, from grilled chicken and pork to pasta dishes and flavorful cheese."
-                ],
-                notableProducers: [
-                    "Weingut Pittnauer",
-                    "Weingut Heinrich"
-                ],
-                otherNames: "None",
+               
                 grapeSummary: "Zweigelt is cherished for its versatility and approachability, producing vibrant and fruit-forward wines that appeal to a wide array of wine enthusiasts."
-            ),
-            imageName: "zweigelt",
-            iconNames: ["leaf", "drop"]
+            )
         )
     ]
 //
@@ -2442,28 +1601,14 @@ static let whiteGrapes: [Grape] = [
                 palate: "Light-bodied with moderate acidity. Flavors of green apple, citrus fruits, and a touch of pear.",
                 finish: "Crisp and clean with a short to medium finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in hot, dry climates with plenty of sunshine.",
-                soil: "Prefers well-drained soils, particularly sandy and clay loams.",
-                growingConditions: "Resistant to drought and can produce high yields. Known for its ability to thrive in harsh growing conditions."
-            ),
+           
             wineStyles: [
                 "White Wines: Often produced as a light, easy-drinking wine with refreshing acidity.\n",
                 "Blended Wines: Commonly used in blends to add body and neutral flavors."
             ],
-            foodPairing: [
-                "White Wines: Pairs well with light salads, seafood, and poultry dishes.\n",
-                "Blended Wines: Complements a variety of dishes due to its neutral profile."
-            ],
-            notableProducers: [
-                "Bodegas Verum",
-                "Bodegas Cristo de la Vega"
-            ],
-            otherNames: "Known as Lairén in some regions.",
+          
             grapeSummary: "Airen is notable for its high yield and adaptability to harsh growing conditions, making it a significant grape variety in Spain's wine production."
-        ),
-        imageName: "airen",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Albariño (Alvarinho) Details
@@ -2483,26 +1628,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Light to medium-bodied with high acidity, offering flavors of lime, apricot, and a distinct saline minerality.",
                 finish: "Crisp and refreshing with a lingering citrus and mineral finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in cooler, maritime climates which help maintain its high acidity and aromatic profile.",
-                soil: "Prefers well-drained, sandy, and granitic soils.",
-                growingConditions: "Vigorous vine that can be prone to mildew; careful canopy management is necessary."
-            ),
+           
             wineStyles: [
                 "White Wines: Typically made in a dry, crisp style, often showcasing its fresh acidity and aromatic complexity."
             ],
-            foodPairing: [
-                "Pairs well with seafood, particularly shellfish, as well as light salads and fresh cheeses."
-            ],
-            notableProducers: [
-                "Pazo de Señorans",
-                "Quinta de Soalheiro"
-            ],
-            otherNames: "Alvarinho in Portugal.",
+            
             grapeSummary: "Albariño is celebrated for its bright acidity and aromatic intensity, making it a favorite for refreshing, seafood-friendly wines."
-        ),
-        imageName: "albarino",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Aligoté Details
@@ -2521,26 +1653,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Light-bodied with high acidity, offering flavors of citrus, green apple, and a crisp, clean minerality.",
                 finish: "Bright and refreshing with a zesty, mineral-driven finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Prefers cool climates to maintain its acidity and fresh flavor profile.",
-                soil: "Thrives in limestone-rich soils typical of Burgundy.",
-                growingConditions: "Vigorous vine that produces high yields; quality is best maintained with controlled yields."
-            ),
+            
             wineStyles: [
                 "White Wines: Often used in blends or on its own to produce crisp, refreshing wines."
             ],
-            foodPairing: [
-                "Pairs well with seafood, salads, and light poultry dishes. Also a classic choice for the cocktail Kir."
-            ],
-            notableProducers: [
-                "Domaine A. & P. de Villaine",
-                "Maison Louis Jadot"
-            ],
-            otherNames: "None",
+           
             grapeSummary: "Aligoté is known for its high acidity and fresh, citrus-driven profile, making it a versatile white wine option, particularly in Burgundy."
-        ),
-        imageName: "aligote",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Arinto Details
@@ -2559,26 +1678,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Light to medium-bodied with high acidity, featuring flavors of citrus, green apple, and a distinct minerality.",
                 finish: "Crisp and zesty with a refreshing, mineral-driven finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Adapts well to a variety of climates, from cool coastal areas to warmer inland regions.",
-                soil: "Performs well in sandy and clay-limestone soils.",
-                growingConditions: "Vigorous and productive vine, known for maintaining its acidity even in warm climates."
-            ),
+           
             wineStyles: [
                 "White Wines: Often made into varietal wines or used in blends, showcasing its acidity and fresh citrus flavors."
             ],
-            foodPairing: [
-                "Pairs well with seafood, salads, and light dishes, enhancing their freshness."
-            ],
-            notableProducers: [
-                "Quinta da Romeira",
-                "Herdade do Esporão"
-            ],
-            otherNames: "None",
+           
             grapeSummary: "Arinto is appreciated for its vibrant acidity and citrus flavors, making it a key component in many refreshing Portuguese white wines."
-        ),
-        imageName: "arinto",
-        iconNames: ["leaf", "drop"]
+        )
     ),
     // Arneis Details
     Grape(
@@ -2596,26 +1702,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Medium-bodied with moderate acidity, featuring flavors of ripe pear, peach, and a hint of citrus with a slightly nutty finish.",
                 finish: "Elegant and smooth, with a lingering fruit and floral aftertaste."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Prefers a moderate climate with sufficient sunshine to fully ripen.",
-                soil: "Thrives in sandy, calcareous soils typical of the Roero region.",
-                growingConditions: "Vigorous vine that can be prone to overproduction; requires careful yield management for quality."
-            ),
+            
             wineStyles: [
                 "White Wines: Typically produced as a varietal wine, showcasing its aromatic and fruity profile."
             ],
-            foodPairing: [
-                "Pairs well with seafood, poultry, and creamy pasta dishes."
-            ],
-            notableProducers: [
-                "Bruno Giacosa",
-                "Vietti"
-            ],
-            otherNames: "None",
+          
             grapeSummary: "Arneis is celebrated for its aromatic complexity and elegant fruit flavors, making it a standout white wine from Piedmont."
-        ),
-        imageName: "arneis",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Assyrtiko Details
@@ -2634,26 +1727,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Light to medium-bodied with high acidity, offering flavors of lemon, lime, and green apple, complemented by a distinct minerality.",
                 finish: "Crisp and clean with a long, mineral-driven finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in hot, dry climates, especially those with volcanic soils.",
-                soil: "Best in well-drained, volcanic soils rich in pumice and ash.",
-                growingConditions: "Resistant to drought and heat, with a capacity to retain acidity even in warm climates."
-            ),
+           
             wineStyles: [
                 "White Wines: Typically made in a dry style, emphasizing its high acidity and mineral notes."
             ],
-            foodPairing: [
-                "Perfect with seafood, grilled fish, and Mediterranean dishes."
-            ],
-            notableProducers: [
-                "Gaia Wines",
-                "Domaine Sigalas"
-            ],
-            otherNames: "None",
+            
             grapeSummary: "Assyrtiko is renowned for its vibrant acidity and mineral complexity, making it one of Greece's most esteemed white grape varieties."
-        ),
-        imageName: "assyrtiko",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Boal (Bual) Details
@@ -2672,26 +1752,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Medium-bodied with balanced sweetness and acidity, featuring flavors of raisins, caramel, and a touch of citrus.",
                 finish: "Long and smooth with a lingering sweet and nutty aftertaste."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in the warm, humid climate of Madeira.",
-                soil: "Grows well in volcanic, well-drained soils.",
-                growingConditions: "Vigorous vine that is well-suited to the terraced vineyards of Madeira."
-            ),
+          
             wineStyles: [
                 "Fortified Wines: Used primarily for medium-sweet Madeira wines."
             ],
-            foodPairing: [
-                "Pairs well with desserts, particularly those with dried fruits and nuts, as well as strong cheeses."
-            ],
-            notableProducers: [
-                "Blandy’s",
-                "Henriques & Henriques"
-            ],
-            otherNames: "Bual in Madeira.",
+            
             grapeSummary: "Boal is esteemed for its role in producing medium-sweet Madeira wines, offering a rich, balanced profile with notable aging potential."
-        ),
-        imageName: "boal",
-        iconNames: ["leaf", "drop"]
+        )
     ),
     // Chardonnay Details
     Grape(
@@ -2711,27 +1778,14 @@ static let whiteGrapes: [Grape] = [
                 palate: "Medium to full-bodied with flavors ranging from green apple and lemon in cooler climates to peach and pineapple in warmer regions, often with a creamy texture if malolactic fermentation is used.",
                 finish: "Can be crisp and refreshing or rich and buttery, depending on the style."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Grows well in a variety of climates, from cool to warm.",
-                soil: "Prefers limestone, clay, and marl soils but is highly adaptable.",
-                growingConditions: "Versatile and hardy, though prone to early bud break which can make it susceptible to frost."
-            ),
+           
             wineStyles: [
                 "White Wines: Can range from lean, crisp, and unoaked to rich, buttery, and oak-aged.\n",
                 "Sparkling Wines: Key grape in Champagne and other sparkling wines."
             ],
-            foodPairing: [
-                "Pairs well with a wide range of foods, including seafood, poultry, salads, and creamy sauces."
-            ],
-            notableProducers: [
-                "Domaine Leflaive",
-                "Kistler Vineyards"
-            ],
-            otherNames: "None",
+           
             grapeSummary: "Chardonnay is celebrated for its versatility and adaptability, capable of producing a wide range of wine styles that are enjoyed worldwide."
-        ),
-        imageName: "chardonnay",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Chenin Blanc Details
@@ -2751,26 +1805,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "High acidity with flavors of apple, pear, and citrus in dry styles, and honey, apricot, and marmalade in sweeter styles.",
                 finish: "Can be crisp and clean or rich and sweet, depending on the style."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Adaptable to various climates but excels in cooler climates which help retain its acidity.",
-                soil: "Thrives in clay, limestone, and schist soils.",
-                growingConditions: "Vigorous and productive, with a tendency to maintain high acidity even in warm climates."
-            ),
+        
             wineStyles: [
                 "White Wines: Ranges from dry to sweet, including sparkling and dessert wines."
             ],
-            foodPairing: [
-                "Versatile with food, pairing well with seafood, poultry, pork, and a variety of cheeses."
-            ],
-            notableProducers: [
-                "Domaine Huet",
-                "Ken Forrester Vineyards"
-            ],
-            otherNames: "Steen in South Africa.",
+           
             grapeSummary: "Chenin Blanc is valued for its high acidity and versatility, capable of producing a wide range of wine styles from bone-dry to lusciously sweet."
-        ),
-        imageName: "chenin_blanc",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Colombard Details
@@ -2791,26 +1832,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Light-bodied with high acidity, featuring flavors of lemon, green apple, and occasionally tropical fruit.",
                 finish: "Crisp and refreshing with a clean, zesty finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Prefers warm climates but retains acidity well.",
-                soil: "Adaptable to various soil types, though often found in sandy and clay soils.",
-                growingConditions: "Vigorous and high-yielding, making it a reliable producer."
-            ),
+           
             wineStyles: [
                 "White Wines: Often used in blends to add freshness and acidity, also made into varietal wines."
             ],
-            foodPairing: [
-                "Pairs well with light seafood dishes, salads, and light cheeses."
-            ],
-            notableProducers: [
-                "Domaine Duffour",
-                "KWV"
-            ],
-            otherNames: "French Colombard in the USA.",
+           
             grapeSummary: "Colombard is appreciated for its bright acidity and fresh, fruity profile, making it a popular choice for refreshing white wines and blends."
-        ),
-        imageName: "colombard",
-        iconNames: ["leaf", "drop"]
+        )
     ),
     // Cortese Details
     Grape(
@@ -2828,26 +1856,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Light-bodied with high acidity, offering flavors of lemon, green apple, and a distinct minerality.",
                 finish: "Crisp and refreshing with a clean, mineral finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Prefers a moderate climate with sufficient sunlight to develop its aromatic profile.",
-                soil: "Thrives in calcareous and clay soils which help retain acidity.",
-                growingConditions: "Vigorous vine that can produce high yields; quality is best maintained with controlled yields."
-            ),
+            
             wineStyles: [
                 "White Wines: Typically made in a dry, crisp style, often showcasing its fresh acidity and aromatic complexity."
             ],
-            foodPairing: [
-                "Pairs well with seafood, light pasta dishes, and salads."
-            ],
-            notableProducers: [
-                "La Scolca",
-                "Villa Sparina"
-            ],
-            otherNames: "None",
+           
             grapeSummary: "Cortese is celebrated for its high acidity and fresh, citrus-driven profile, making it a key component in the production of Gavi wines."
-        ),
-        imageName: "cortese",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Falanghina Details
@@ -2866,26 +1881,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Medium-bodied with high acidity, featuring flavors of lemon, apple, and a distinct minerality.",
                 finish: "Crisp and refreshing with a lingering citrus and mineral finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in warm, sunny climates which help develop its aromatic profile.",
-                soil: "Performs well in volcanic soils rich in minerals.",
-                growingConditions: "Moderately vigorous vine that requires careful canopy management to prevent over-ripening."
-            ),
+           
             wineStyles: [
                 "White Wines: Typically made in a dry style, showcasing its vibrant acidity and fresh fruit flavors."
             ],
-            foodPairing: [
-                "Pairs well with seafood, shellfish, and light vegetarian dishes."
-            ],
-            notableProducers: [
-                "Feudi di San Gregorio",
-                "Mastroberardino"
-            ],
-            otherNames: "None",
+            
             grapeSummary: "Falanghina is prized for its bright acidity and aromatic complexity, making it a standout white wine from Campania."
-        ),
-        imageName: "falanghina",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Fernão Pires Details
@@ -2904,26 +1906,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Light to medium-bodied with moderate acidity, featuring flavors of orange, lime, and a touch of honey.",
                 finish: "Smooth and aromatic with a lingering fruit and floral finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Adapts well to a variety of climates, thriving in both cool and warm regions.",
-                soil: "Performs best in sandy and well-drained soils.",
-                growingConditions: "Vigorous and high-yielding vine, requiring careful management to maintain quality."
-            ),
+            
             wineStyles: [
                 "White Wines: Often made as a varietal wine but also used in blends, showcasing its aromatic and fresh qualities."
             ],
-            foodPairing: [
-                "Pairs well with seafood, poultry, and spicy dishes."
-            ],
-            notableProducers: [
-                "Luis Pato",
-                "Quinta da Alorna"
-            ],
-            otherNames: "Known as Maria Gomes in Bairrada.",
+           
             grapeSummary: "Fernão Pires is appreciated for its aromatic intensity and versatility, making it a key component in many refreshing Portuguese white wines."
-        ),
-        imageName: "fernao_pires",
-        iconNames: ["leaf", "drop"]
+        )
     ),
     // Fiano Details
     Grape(
@@ -2941,26 +1930,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Medium-bodied with moderate acidity, featuring flavors of apple, citrus, and a touch of honey and nuts.",
                 finish: "Rich and lingering with a smooth, nutty finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Prefers warm, sunny climates which help develop its rich, aromatic profile.",
-                soil: "Thrives in volcanic and calcareous soils.",
-                growingConditions: "Moderately vigorous vine with good resistance to disease."
-            ),
+           
             wineStyles: [
                 "White Wines: Typically made in a dry style, showcasing its aromatic complexity and rich flavors."
             ],
-            foodPairing: [
-                "Pairs well with seafood, poultry, and creamy pasta dishes."
-            ],
-            notableProducers: [
-                "Feudi di San Gregorio",
-                "Mastroberardino"
-            ],
-            otherNames: "None",
+           
             grapeSummary: "Fiano is prized for its rich, aromatic profile and nutty flavors, making it a standout white wine from Campania."
-        ),
-        imageName: "fiano",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Folle Blanche Details
@@ -2979,26 +1955,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Light-bodied with high acidity, featuring flavors of lemon, green apple, and a crisp, clean minerality.",
                 finish: "Bright and refreshing with a zesty, mineral-driven finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Prefers cool climates to maintain its high acidity and fresh flavor profile.",
-                soil: "Performs best in sandy and clay-limestone soils.",
-                growingConditions: "Vigorous vine that can be prone to disease; careful vineyard management is essential."
-            ),
+           
             wineStyles: [
                 "White Wines: Often made into light, crisp wines, and also used in the production of spirits."
             ],
-            foodPairing: [
-                "Pairs well with seafood, light salads, and goat cheese."
-            ],
-            notableProducers: [
-                "Domaine de la Foliette",
-                "Château de Laubade (for Armagnac)"
-            ],
-            otherNames: "Sometimes called Picpoule or Piquepoul in certain contexts, but not related to the Piquepoul variety found in Languedoc.",
+           
             grapeSummary: "Folle Blanche is known for its high acidity and crisp, clean profile, making it a versatile grape for both wine and spirit production."
-        ),
-        imageName: "folle_blanche",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Friulano Details
@@ -3017,26 +1980,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Medium-bodied with moderate acidity, featuring flavors of green apple, pear, and a characteristic almond note.",
                 finish: "Smooth and slightly bitter with a lingering almond aftertaste."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in cool to moderate climates which help retain its acidity and fresh flavors.",
-                soil: "Performs well in marl and limestone soils.",
-                growingConditions: "Vigorous vine that requires careful management to maintain quality."
-            ),
+           
             wineStyles: [
                 "White Wines: Typically made in a dry style, showcasing its fresh fruit flavors and distinctive almond finish."
             ],
-            foodPairing: [
-                "Pairs well with prosciutto, light pasta dishes, and seafood."
-            ],
-            notableProducers: [
-                "Livio Felluga",
-                "Jermann"
-            ],
-            otherNames: "Formerly known as Tocai Friulano, but renamed Friulano due to EU regulations to distinguish it from Hungary's Tokaji wines.",
+            
             grapeSummary: "Friulano is appreciated for its fresh, aromatic profile and distinctive almond finish, making it a key white wine from Friuli-Venezia Giulia."
-        ),
-        imageName: "friulano",
-        iconNames: ["leaf", "drop"]
+        )
     ),
     // Furmint Details
     Grape(
@@ -3054,26 +2004,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Medium-bodied with high acidity, featuring flavors of apple, citrus, and apricot, with a distinctive mineral character.",
                 finish: "Crisp and refreshing in dry styles, luscious and long in sweet styles."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Prefers cooler climates which help retain its acidity and aromatic profile.",
-                soil: "Thrives in volcanic and clay soils typical of the Tokaj region.",
-                growingConditions: "Moderately vigorous vine, susceptible to botrytis which is beneficial for sweet wine production."
-            ),
+           
             wineStyles: [
                 "White Wines: Ranges from dry to sweet, including the renowned Tokaji Aszú."
             ],
-            foodPairing: [
-                "Pairs well with spicy Asian dishes, foie gras, and blue cheeses."
-            ],
-            notableProducers: [
-                "Royal Tokaji",
-                "Disznókő"
-            ],
-            otherNames: "None",
+            
             grapeSummary: "Furmint is celebrated for its versatility and ability to produce both crisp dry wines and complex sweet wines, particularly the renowned Tokaji."
-        ),
-        imageName: "furmint",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Garganega Details
@@ -3092,26 +2029,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Light to medium-bodied with moderate acidity, featuring flavors of lemon, melon, and a distinct minerality.",
                 finish: "Crisp and refreshing with a lingering almond and citrus finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Prefers a moderate climate with sufficient sunlight to develop its aromatic profile.",
-                soil: "Thrives in volcanic and limestone-rich soils.",
-                growingConditions: "Vigorous vine that can produce high yields; careful management is necessary to maintain quality."
-            ),
+           
             wineStyles: [
                 "White Wines: Typically made in a dry, crisp style, showcasing its fresh acidity and aromatic complexity."
             ],
-            foodPairing: [
-                "Pairs well with seafood, light pasta dishes, and salads."
-            ],
-            notableProducers: [
-                "Pieropan",
-                "Inama"
-            ],
-            otherNames: "None",
+          
             grapeSummary: "Garganega is known for its fresh, aromatic profile and is a key component in the production of Soave wines, making it one of Veneto's most important white grape varieties."
-        ),
-        imageName: "garganega",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Gewürztraminer Details
@@ -3132,26 +2056,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Full-bodied with moderate acidity, featuring flavors of lychee, mango, and pineapple, complemented by a spicy and floral character.",
                 finish: "Rich and long-lasting with a slightly bitter, spicy finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Prefers cool to moderate climates which help develop its aromatic intensity.",
-                soil: "Thrives in limestone, clay, and marl soils.",
-                growingConditions: "Moderately vigorous vine, susceptible to fungal diseases; requires careful vineyard management."
-            ),
+            
             wineStyles: [
                 "White Wines: Typically made in a dry to off-dry style, showcasing its aromatic and spicy profile."
             ],
-            foodPairing: [
-                "Pairs well with spicy Asian cuisine, strong cheeses, and smoked fish."
-            ],
-            notableProducers: [
-                "Hugel & Fils",
-                "Trimbach"
-            ],
-            otherNames: "Traminer, Roter Traminer.",
+          
             grapeSummary: "Gewürztraminer is renowned for its aromatic intensity and distinctively spicy and floral character, making it one of the most recognizable white grape varieties."
-        ),
-        imageName: "gewurztraminer",
-        iconNames: ["leaf", "drop"]
+        )
     ),
     // Glera Details
     Grape(
@@ -3169,26 +2080,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Light-bodied with high acidity, featuring flavors of apple, peach, and a touch of honey.",
                 finish: "Crisp and refreshing with a clean, slightly sweet finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Prefers a moderate climate with cool nights and warm days to retain its acidity and fresh flavors.",
-                soil: "Thrives in well-drained, calcareous soils.",
-                growingConditions: "Vigorous and productive vine, requiring careful management to maintain quality."
-            ),
+           
             wineStyles: [
                 "Sparkling Wines: Primarily used for Prosecco, which can range from dry (Brut) to slightly sweet (Extra Dry)."
             ],
-            foodPairing: [
-                "Pairs well with light appetizers, seafood, and salads. Also enjoyed as an aperitif."
-            ],
-            notableProducers: [
-                "Nino Franco",
-                "Santa Margherita"
-            ],
-            otherNames: "Formerly known as Prosecco. The name was changed to Glera in 2009 to protect the Prosecco wine designation and distinguish the grape from the sparkling wine made using it.",
+          
             grapeSummary: "Glera is celebrated for its role in producing Prosecco, offering bright, fruity flavors and a refreshing effervescence."
-        ),
-        imageName: "glera",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Godello Details
@@ -3207,26 +2105,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Medium-bodied with high acidity, featuring flavors of lemon, apple, and a distinct minerality.",
                 finish: "Crisp and refreshing with a long, mineral-driven finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Prefers cooler climates which help retain its acidity and aromatic profile.",
-                soil: "Thrives in slate and granite soils typical of its native regions.",
-                growingConditions: "Moderately vigorous vine, capable of producing high-quality wines with careful management."
-            ),
+           
             wineStyles: [
                 "White Wines: Often made in a dry style, showcasing its fresh acidity and mineral complexity."
             ],
-            foodPairing: [
-                "Pairs well with seafood, light poultry dishes, and salads."
-            ],
-            notableProducers: [
-                "Valdesil",
-                "Bodegas Godeval"
-            ],
-            otherNames: "None",
+            
             grapeSummary: "Godello is appreciated for its fresh acidity and mineral complexity, making it a key white grape in the Valdeorras region of Spain."
-        ),
-        imageName: "godello",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Grechetto Details
@@ -3245,26 +2130,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Medium-bodied with moderate acidity, featuring flavors of green apple, lemon, and a subtle nuttiness.",
                 finish: "Crisp and refreshing with a lingering almond and citrus finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Prefers a warm, sunny climate to fully develop its flavors.",
-                soil: "Thrives in well-drained, calcareous soils.",
-                growingConditions: "Vigorous vine with good resistance to disease; requires careful management to maintain quality."
-            ),
+           
             wineStyles: [
                 "White Wines: Often made as a varietal wine or blended, showcasing its fresh acidity and nutty complexity."
             ],
-            foodPairing: [
-                "Pairs well with seafood, white meats, and light pasta dishes."
-            ],
-            notableProducers: [
-                "Lungarotti",
-                "Antinori"
-            ],
-            otherNames: "None",
+            
             grapeSummary: "Grechetto is appreciated for its fresh acidity and subtle nutty flavors, making it a versatile white grape from central Italy."
-        ),
-        imageName: "grechetto",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Greco Details
@@ -3283,26 +2155,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Medium-bodied with high acidity, featuring flavors of stone fruits, lemon, and a distinct minerality.",
                 finish: "Crisp and clean with a long, mineral-driven finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in warm, sunny climates which help develop its aromatic profile.",
-                soil: "Performs best in volcanic and calcareous soils.",
-                growingConditions: "Moderately vigorous vine with good resistance to disease."
-            ),
+           
             wineStyles: [
                 "White Wines: Typically made in a dry style, showcasing its high acidity and mineral complexity."
             ],
-            foodPairing: [
-                "Pairs well with seafood, shellfish, and light vegetarian dishes."
-            ],
-            notableProducers: [
-                "Feudi di San Gregorio",
-                "Mastroberardino"
-            ],
-            otherNames: "Greco Bianco.",
+           
             grapeSummary: "Greco is renowned for its high acidity and mineral complexity, making it one of southern Italy's most esteemed white grape varieties."
-        ),
-        imageName: "greco",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Grenache Blanc Details
@@ -3322,26 +2181,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Medium-bodied with moderate acidity, featuring flavors of apple, peach, and a touch of spice.",
                 finish: "Smooth and slightly creamy with a lingering fruit and floral finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Prefers a warm climate with plenty of sunlight to fully ripen.",
-                soil: "Adaptable to various soil types but performs best in well-drained, sandy soils.",
-                growingConditions: "Vigorous vine that can produce high yields; quality is best maintained with controlled yields."
-            ),
+            
             wineStyles: [
                 "White Wines: Often used in blends to add richness and body, but also made as a varietal wine."
             ],
-            foodPairing: [
-                "Pairs well with seafood, poultry, and Mediterranean dishes."
-            ],
-            notableProducers: [
-                "Domaine du Vieux Télégraphe",
-                "Clos Mogador"
-            ],
-            otherNames: "Garnacha Blanca in Spain.",
+           
             grapeSummary: "Grenache Blanc is valued for its versatility and ability to add body and complexity to white wines, making it a key component in many Rhône and Spanish blends."
-        ),
-        imageName: "grenache_blanc",
-        iconNames: ["leaf", "drop"]
+        )
     ),
     // Gros Manseng Details
     Grape(
@@ -3359,26 +2205,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Medium-bodied with high acidity, featuring flavors of lemon, quince, and a touch of honey.",
                 finish: "Crisp and refreshing with a lingering citrus and floral finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Prefers a warm, sunny climate with cool nights to maintain acidity.",
-                soil: "Thrives in well-drained, gravelly soils.",
-                growingConditions: "Vigorous vine that requires careful management to control yields and ensure quality."
-            ),
+           
             wineStyles: [
                 "White Wines: Used for both dry and sweet wines, showcasing its high acidity and aromatic complexity."
             ],
-            foodPairing: [
-                "Pairs well with seafood, white meats, and spicy dishes."
-            ],
-            notableProducers: [
-                "Domaine Cauhapé",
-                "Domaine Nigri"
-            ],
-            otherNames: "None",
+           
             grapeSummary: "Gros Manseng is known for its high acidity and aromatic complexity, making it a versatile grape for both dry and sweet wines in southwest France."
-        ),
-        imageName: "gros_manseng",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Grüner Veltliner Details
@@ -3397,26 +2230,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Light to medium-bodied with high acidity, featuring flavors of citrus, green apple, and a characteristic peppery spice.",
                 finish: "Crisp and refreshing with a long, mineral-driven finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in cool to moderate climates which help retain its acidity and develop its aromatic profile.",
-                soil: "Performs well in loess, gravel, and primary rock soils.",
-                growingConditions: "Vigorous vine with good disease resistance, requiring careful management to avoid overcropping."
-            ),
+            
             wineStyles: [
                 "White Wines: Typically made in a dry style, showcasing its fresh acidity and characteristic peppery notes."
             ],
-            foodPairing: [
-                "Pairs well with Austrian cuisine, seafood, and spicy dishes."
-            ],
-            notableProducers: [
-                "Weingut Bründlmayer",
-                "F.X. Pichler"
-            ],
-            otherNames: "None",
+           
             grapeSummary: "Grüner Veltliner is celebrated for its fresh acidity and distinctive peppery spice, making it Austria's most important and versatile white grape variety."
-        ),
-        imageName: "gruner_veltliner",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Hárslevelű Details
@@ -3435,26 +2255,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Medium-bodied with moderate acidity, featuring flavors of peach, melon, and a hint of spice.",
                 finish: "Smooth and aromatic with a lingering honeyed finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Prefers a warm, sunny climate to fully develop its aromatic profile.",
-                soil: "Thrives in volcanic and clay soils.",
-                growingConditions: "Vigorous vine that requires careful management to maintain quality."
-            ),
+            
             wineStyles: [
                 "White Wines: Used for both dry and sweet wines, often blended with Furmint."
             ],
-            foodPairing: [
-                "Pairs well with spicy Asian cuisine, rich poultry dishes, and creamy cheeses."
-            ],
-            notableProducers: [
-                "Disznókő",
-                "Oremus"
-            ],
-            otherNames: "None",
+            
             grapeSummary: "Hárslevelű is known for its aromatic intensity and versatility, playing a crucial role in the production of both dry and sweet Tokaji wines."
-        ),
-        imageName: "harslevelu",
-        iconNames: ["leaf", "drop"]
+        )
     ),
     // Irsai Olivér Details
     Grape(
@@ -3472,26 +2279,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Light-bodied with moderate acidity, featuring flavors of lemon, orange, and a touch of spice.",
                 finish: "Crisp and refreshing with a lingering fruity finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Prefers a warm climate to develop its aromatic profile.",
-                soil: "Adaptable to various soil types but prefers well-drained soils.",
-                growingConditions: "Vigorous vine with good resistance to disease."
-            ),
+            
             wineStyles: [
                 "White Wines: Typically made in a dry, aromatic style, showcasing its fresh fruit and floral notes."
             ],
-            foodPairing: [
-                "Pairs well with light appetizers, salads, and seafood."
-            ],
-            notableProducers: [
-                "Hilltop Neszmély",
-                "Garamvári Vineyards"
-            ],
-            otherNames: "None",
+            
             grapeSummary: "Irsai Olivér is celebrated for its aromatic intensity and fresh fruit flavors, making it a popular choice for aromatic white wines in Hungary."
-        ),
-        imageName: "irsai_oliver",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Juhfark Details
@@ -3510,26 +2304,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Medium-bodied with high acidity, featuring flavors of lemon, green apple, and a distinct mineral character.",
                 finish: "Crisp and clean with a long, mineral-driven finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in cool to moderate climates which help retain its high acidity.",
-                soil: "Performs best in volcanic soils, particularly those of the Somló region.",
-                growingConditions: "Vigorous vine that requires careful management to maintain quality."
-            ),
+           
             wineStyles: [
                 "White Wines: Often made in a dry style, showcasing its high acidity and mineral complexity."
             ],
-            foodPairing: [
-                "Pairs well with seafood, poultry, and rich, creamy dishes."
-            ],
-            notableProducers: [
-                "Kreinbacher Birtok",
-                "Tornai Pincészet"
-            ],
-            otherNames: "None",
+            
             grapeSummary: "Juhfark is known for its high acidity and distinct mineral character, making it a unique and sought-after white grape from Hungary."
-        ),
-        imageName: "juhfark",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Kerner Details
@@ -3549,26 +2330,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Light to medium-bodied with high acidity, featuring flavors of apple, pear, and a hint of spice.",
                 finish: "Crisp and refreshing with a lingering fruity and spicy finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in cool climates which help retain its high acidity and aromatic profile.",
-                soil: "Performs best in well-drained, sandy, and loamy soils.",
-                growingConditions: "Vigorous vine with good resistance to cold, making it suitable for cooler growing regions."
-            ),
+            
             wineStyles: [
                 "White Wines: Typically made in a dry style, showcasing its fresh acidity and aromatic complexity."
             ],
-            foodPairing: [
-                "Pairs well with seafood, light poultry dishes, and spicy cuisine."
-            ],
-            notableProducers: [
-                "Weingut Kallfelz",
-                "Cantina Tramin"
-            ],
-            otherNames: "None",
+           
             grapeSummary: "Kerner is appreciated for its crisp acidity and aromatic intensity, making it a versatile and popular white grape variety in Germany and beyond."
-        ),
-        imageName: "kerner",
-        iconNames: ["leaf", "drop"]
+        )
     ),
     // Macabeo (Viura) Details
     Grape(
@@ -3587,38 +2355,25 @@ static let whiteGrapes: [Grape] = [
                 palate: "Light to medium-bodied with moderate acidity, featuring flavors of lemon, apple, and a slight nuttiness.",
                 finish: "Crisp and clean with a refreshing citrus finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in warm, dry climates but retains acidity well.",
-                soil: "Adaptable to various soil types but prefers well-drained, calcareous soils.",
-                growingConditions: "Vigorous vine with good resistance to disease."
-            ),
+            
             wineStyles: [
                 "White Wines: Often used in both young and aged white wines.\n",
                 "Sparkling Wines: Key component in Cava."
             ],
-            foodPairing: [
-                "Pairs well with seafood, light tapas, and salads."
-            ],
-            notableProducers: [
-                "R. López de Heredia",
-                "Freixenet (for Cava)"
-            ],
-            otherNames: "Viura in Rioja, Macabeu in France.",
+           
             grapeSummary: "Macabeo (Viura) is a versatile grape known for its crisp acidity and ability to produce both fresh and aged white wines, as well as being a key component in Cava sparkling wines."
-        ),
-        imageName: "macabeo",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Malmsey Details
     Grape(
         name: "Malmsey",
         details: GrapeDetails(
-            origin: "Malmsey is a white grape variety traditionally used in the production of rich, sweet Madeira wines. It has a long history of cultivation in the Mediterranean region.",
+            origin: "Malmsey is a white grape variety specifically associated with the production of rich, sweet Madeira wines. It belongs to the broader Malvasia family of grapes, which have a long history of cultivation across the Mediterranean.",
             countries: Countries(
                 primary: [
-                    "Portugal: Particularly in Madeira.\n",
-                    "Italy: Known as Malvasia in various regions, including Tuscany and Lazio."
+                    "Portugal: Primarily in Madeira, where it is used for fortified wines.\n",
+                    "Italy: As part of the Malvasia family, it is cultivated in regions such as Tuscany and Lazio to produce a variety of wine styles."
                 ]
             ),
             tastingNotes: TastingNotes(
@@ -3627,27 +2382,14 @@ static let whiteGrapes: [Grape] = [
                 palate: "Full-bodied with moderate acidity, featuring flavors of raisins, figs, and a rich, honeyed sweetness.",
                 finish: "Long and luscious with a lingering sweet and nutty finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Prefers warm, sunny climates which help develop its rich flavors.",
-                soil: "Thrives in volcanic soils of Madeira.",
-                growingConditions: "Vigorous vine with high yield potential, requiring careful management for quality."
-            ),
+           
             wineStyles: [
                         "Fortified Wines: Primarily used in sweet Madeira wines in Portugal.",
-                        "White Wines: In Italy, Malvasia is used to produce a range of white wines, from light and dry to rich and aromatic, often showcasing fresh fruit and floral notes."
+                        "White Wines: In Italy, Malvasia is used to produce a range of white wines, from light and dry to rich and aromatic."
                     ],
-            foodPairing: [
-                "Pairs well with desserts, particularly those with dried fruits and nuts, as well as strong cheeses."
-            ],
-            notableProducers: [
-                "Blandy’s",
-                "Henriques & Henriques"
-            ],
-            otherNames: "Malvasia in Italy.",
+           
             grapeSummary: "Malmsey is renowned for its role in producing rich, sweet Madeira wines, offering complex flavors and a luxurious finish."
-        ),
-        imageName: "malmsey",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Marsanne Details
@@ -3667,26 +2409,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Full-bodied with moderate acidity, featuring flavors of stone fruits, melon, and a touch of almond.",
                 finish: "Rich and lingering with a slightly oily texture and a nutty finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Prefers warm climates which help develop its rich flavors.",
-                soil: "Thrives in granite and clay-limestone soils.",
-                growingConditions: "Moderately vigorous vine with a tendency to produce low yields, enhancing quality."
-            ),
+            
             wineStyles: [
                 "White Wines: Often blended with Roussanne, showcasing its rich, full-bodied character. Also vinified as a varietal wine, particularly in Australia, to highlight its unique richness and texture."
             ],
-            foodPairing: [
-                "Pairs well with poultry, seafood, and creamy sauces."
-            ],
-            notableProducers: [
-                "M. Chapoutier",
-                "Yalumba"
-            ],
-            otherNames: "None",
+           
             grapeSummary: "Marsanne is celebrated for its rich, full-bodied character and is often blended with Roussanne or vinified on its own to produce complex, aromatic white wines."
-        ),
-        imageName: "marsanne",
-        iconNames: ["leaf", "drop"]
+        )
     ),
     // Melon de Bourgogne Details
     Grape(
@@ -3704,26 +2433,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Light-bodied with high acidity, featuring flavors of citrus, green apple, and a distinct minerality.",
                 finish: "Crisp and refreshing with a clean, mineral-driven finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in cool maritime climates which help retain its high acidity.",
-                soil: "Prefers well-drained, sandy, and gravelly soils.",
-                growingConditions: "Vigorous vine that produces high yields; quality is maintained with controlled yields and extended lees aging."
-            ),
+         
             wineStyles: [
                         "White Wines: Typically made in a dry, unoaked style, often with extended lees aging ('sur lie') to add complexity and a subtle bread dough character."
                     ],
-            foodPairing: [
-                "Pairs well with seafood, especially oysters, and light salads."
-            ],
-            notableProducers: [
-                "Domaine de la Pépière",
-                "Château de Cléry"
-            ],
-            otherNames: "Muscadet (refers to the wine made from Melon de Bourgogne in the Muscadet appellations).",
+          
             grapeSummary: "Melon de Bourgogne is valued for its high acidity and fresh, mineral-driven profile, making it the ideal grape for the crisp, refreshing wines of Muscadet. The grape's ability to thrive in the Loire Valley's maritime climate and its compatibility with extended lees aging ('sur lie') techniques contributes to the unique character of Muscadet wines."
-        ),
-        imageName: "melon_de_bourgogne",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Moscatel Details
@@ -3746,29 +2462,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Medium-bodied with moderate acidity, featuring flavors of ripe peach, orange, and a touch of honey, with variations depending on the style.",
                 finish: "Sweet and luscious with a long, aromatic finish, or crisp and refreshing in drier styles."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Prefers warm, sunny climates which enhance its aromatic profile and sugar content, but also adaptable to cooler climates for a fresher style.",
-                soil: "Adaptable to various soil types but performs exceptionally well in well-drained, sandy, and calcareous soils.",
-                growingConditions: "Vigorous vine with good resistance to drought and a propensity for high sugar accumulation, making it ideal for both dry and fortified wine production."
-            ),
+            
             wineStyles: [
                 "White Wines: Often made in sweet and fortified styles, showcasing its aromatic intensity, but also produced as dry and sparkling wines in regions like Italy (Moscato d'Asti) and Greece (Muscat of Samos)."
             ],
-            foodPairing: [
-                "Pairs well with desserts, particularly those with fruit and nuts, strong cheeses, spicy Asian dishes, and certain seafood dishes."
-            ],
-            notableProducers: [
-                "Bodegas Jorge Ordóñez (Spain)",
-                "José Maria da Fonseca (for Moscatel de Setúbal, Portugal)",
-                "Michele Chiarlo (Italy, for Moscato d'Asti)",
-                "Union des Grands Crus de Muscat (France, for Muscat d’Alsace)",
-                "Samos Cooperative Winery (Greece, for Muscat of Samos)"
-            ],
-            otherNames: "Muscat, Moscato, Muscat Blanc à Petits Grains, Muscat of Alexandria, Muscat Ottonel depending on the region and variety.",
+            
             grapeSummary: "Moscatel is celebrated for its intensely aromatic wines, capable of producing a wide range of styles from sweet and fortified to dry and sparkling, making it one of the most versatile and widely cultivated grape varieties globally."
-        ),
-        imageName: "moscatel",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Moschofilero Details
@@ -3787,26 +2487,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Light-bodied with high acidity, featuring flavors of lemon, orange, and a touch of spice.",
                 finish: "Crisp and aromatic with a refreshing floral finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in cool to moderate climates which help retain its acidity and aromatic profile.",
-                soil: "Prefers well-drained, sandy, and limestone soils.",
-                growingConditions: "Moderately vigorous vine with good resistance to disease."
-            ),
+           
             wineStyles: [
                 "White Wines: Typically made in a dry, aromatic style, showcasing its floral and citrus notes."
             ],
-            foodPairing: [
-                "Pairs well with Mediterranean cuisine, seafood, and light poultry dishes."
-            ],
-            notableProducers: [
-                "Boutari",
-                "Skouras"
-            ],
-            otherNames: "None",
+           
             grapeSummary: "Moschofilero is known for its aromatic and floral character, making it a unique and distinctive white grape from Greece."
-        ),
-        imageName: "moschofilero",
-        iconNames: ["leaf", "drop"]
+        )
     ),
     // Müller-Thurgau Details
     Grape(
@@ -3825,26 +2512,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Light-bodied with moderate acidity, featuring flavors of apple, pear, and a touch of citrus.",
                 finish: "Crisp and refreshing with a clean, fruity finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Prefers cool to moderate climates to retain its acidity and fresh flavors.",
-                soil: "Adaptable to various soil types but performs best in well-drained, loamy soils.",
-                growingConditions: "Vigorous vine with high yield potential; quality is maintained with controlled yields."
-            ),
+          
             wineStyles: [
                 "White Wines: Typically made in a dry to off-dry style, showcasing its fresh fruit and floral notes."
             ],
-            foodPairing: [
-                "Pairs well with light appetizers, seafood, and salads."
-            ],
-            notableProducers: [
-                "Weingut Schloss Reinhartshausen",
-                "Weingut Bründlmayer"
-            ],
-            otherNames: "Riesling-Silvaner in Switzerland.",
+           
             grapeSummary: "Müller-Thurgau is valued for its early ripening and fresh, fruity profile, making it a versatile and widely planted grape variety in Germany and beyond."
-        ),
-        imageName: "muller_thurgau",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Muscadelle Details
@@ -3864,26 +2538,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Medium-bodied with moderate acidity, featuring flavors of apricot, peach, and a touch of honey.",
                 finish: "Sweet and aromatic with a long, fruity finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Prefers warm climates to develop its aromatic profile.",
-                soil: "Thrives in well-drained, sandy, and gravelly soils.",
-                growingConditions: "Vigorous vine that requires careful management to maintain quality."
-            ),
+           
             wineStyles: [
                 "White Wines: Often used in blends for sweet and fortified wines."
             ],
-            foodPairing: [
-                "Pairs well with desserts, particularly those with fruit and nuts, as well as strong cheeses."
-            ],
-            notableProducers: [
-                "Château Coutet",
-                "Campbells of Rutherglen"
-            ],
-            otherNames: "None",
+            
             grapeSummary: "Muscadelle is celebrated for its aromatic intensity and floral character, making it a key component in many sweet and fortified wines from Bordeaux and Australia."
-        ),
-        imageName: "muscadelle",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Muscat of Alexandria Details
@@ -3904,26 +2565,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Medium-bodied with moderate acidity, featuring flavors of ripe peach, orange, and a touch of honey.",
                 finish: "Sweet and luscious with a long, aromatic finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Prefers warm, sunny climates which enhance its aromatic profile.",
-                soil: "Adaptable to various soil types but prefers well-drained soils.",
-                growingConditions: "Vigorous vine with good resistance to drought."
-            ),
+           
             wineStyles: [
                 "White Wines: Often made in sweet and fortified styles, showcasing its aromatic intensity."
             ],
-            foodPairing: [
-                "Pairs well with desserts, particularly those with fruit and nuts, as well as strong cheeses."
-            ],
-            notableProducers: [
-                "Bodegas Jorge Ordóñez",
-                "Donnafugata"
-            ],
-            otherNames: "Zibibbo in Italy.",
+           
             grapeSummary: "Muscat of Alexandria is celebrated for its intensely aromatic and sweet wines, making it one of the most versatile and widely cultivated grape varieties."
-        ),
-        imageName: "muscat_of_alexandria",
-        iconNames: ["leaf", "drop"]
+        )
     ),
     
     // Muscat Blanc à Petits Grains Details
@@ -3945,27 +2593,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Light to medium-bodied with a refreshing acidity, featuring flavors of peach, apricot, and citrus, with a honeyed sweetness in sweeter styles.",
                 finish: "Crisp and floral in dry styles, or rich and long-lasting with a sweet, aromatic finish in dessert wines."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Prefers warm, sunny climates that help develop its aromatic profile and high sugar content, but can also thrive in cooler regions with sufficient sunlight.",
-                soil: "Thrives in well-drained, calcareous soils but is adaptable to a variety of soil types, including sandy and rocky terrains.",
-                growingConditions: "Moderately vigorous vine that requires careful management to prevent overripening and maintain acidity and aromatic intensity."
-            ),
+           
             wineStyles: [
                 "White Wines: Produced in a variety of styles, including dry, sweet, fortified, and sparkling, showcasing its aromatic complexity and versatility."
             ],
-            foodPairing: [
-                "Pairs well with fruit-based desserts, soft cheeses, foie gras, spicy Asian dishes, and light salads."
-            ],
-            notableProducers: [
-                "Domaine des Bernardins (France, for Muscat de Beaumes-de-Venise)",
-                "Cavino (Greece, for Muscat of Samos)",
-                "Paolo Saracco (Italy, for Moscato d'Asti)"
-            ],
-            otherNames: "Moscato Bianco in Italy, Muscat à Petits Grains in France.",
+          
             grapeSummary: "Muscat Blanc à Petits Grains is celebrated for its aromatic intensity and versatility, producing some of the world's finest sweet wines, as well as dry and sparkling wines with a distinct floral and fruity character."
-        ),
-        imageName: "muscat_blanc_a_petits_grains",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Muscat Ottonel Details
@@ -3986,26 +2620,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Light-bodied with moderate acidity, featuring flavors of peach, apricot, and a touch of honey.",
                 finish: "Aromatic and refreshing with a lingering floral finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Prefers cool to moderate climates which help retain its aromatic profile.",
-                soil: "Performs well in loamy and sandy soils.",
-                growingConditions: "Vigorous vine with good disease resistance, requiring careful management to avoid over-ripening."
-            ),
+           
             wineStyles: [
                 "White Wines: Often made in off-dry to sweet styles, showcasing its aromatic intensity."
             ],
-            foodPairing: [
-                "Pairs well with spicy Asian cuisine, light desserts, and fresh fruit."
-            ],
-            notableProducers: [
-                "Domaine Weinbach",
-                "Crama Girboiu"
-            ],
-            otherNames: "None",
+           
             grapeSummary: "Muscat Ottonel is valued for its aromatic intensity and fresh, floral character, making it a popular choice for aromatic white wines in Eastern Europe and Alsace."
-        ),
-        imageName: "muscat_ottonel",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Olaszrizling (Welschriesling) Details
@@ -4026,26 +2647,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Light-bodied with high acidity, featuring flavors of lemon, green apple, and a touch of bitterness.",
                 finish: "Crisp and refreshing with a clean, slightly bitter finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in cool to moderate climates which help retain its acidity.",
-                soil: "Performs best in limestone and clay soils.",
-                growingConditions: "Vigorous vine with good disease resistance, capable of producing high yields."
-            ),
+           
             wineStyles: [
                 "White Wines: Typically made in a dry style, showcasing its fresh acidity and light, crisp flavors."
             ],
-            foodPairing: [
-                "Pairs well with seafood, salads, and light appetizers."
-            ],
-            notableProducers: [
-                "Figula Pincészet",
-                "Weingut Bründlmayer"
-            ],
-            otherNames: "Graševina in Croatia.",
+            
             grapeSummary: "Olaszrizling (Welschriesling) is appreciated for its fresh acidity and light, crisp profile, making it a versatile and widely planted grape variety in Central Europe."
-        ),
-        imageName: "olaszrizling",
-        iconNames: ["leaf", "drop"]
+        )
     ),
     // Palomino Details
     Grape(
@@ -4063,26 +2671,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Light-bodied with moderate acidity, featuring flavors of apple, citrus, and a distinctive briny character.",
                 finish: "Crisp and dry with a clean, slightly nutty finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in warm, sunny climates which help develop its full flavor profile.",
-                soil: "Performs best in chalky, albariza soils which retain moisture.",
-                growingConditions: "Vigorous vine that produces high yields; quality is maintained with controlled yields."
-            ),
+            
             wineStyles: [
                 "Fortified Wines: Primarily used in the production of Sherry, including Fino, Manzanilla, and Amontillado styles."
             ],
-            foodPairing: [
-                "Pairs well with tapas, seafood, and light appetizers."
-            ],
-            notableProducers: [
-                "Bodegas Tío Pepe",
-                "Lustau"
-            ],
-            otherNames: "Palomino Fino.",
+           
             grapeSummary: "Palomino is the backbone of Sherry production, known for its light, crisp wines with a distinctive saline and nutty character."
-        ),
-        imageName: "palomino",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Parellada Details
@@ -4101,26 +2696,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Light-bodied with moderate acidity, featuring flavors of apple, lemon, and a hint of herbs.",
                 finish: "Crisp and refreshing with a clean, fruity finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Prefers moderate climates to retain its fresh acidity and delicate flavors.",
-                soil: "Performs well in well-drained, calcareous soils.",
-                growingConditions: "Vigorous vine with good disease resistance, requiring careful management to avoid over-ripening."
-            ),
+           
             wineStyles: [
                 "Sparkling Wines: Primarily used in blends for Cava, contributing freshness and elegance."
             ],
-            foodPairing: [
-                "Pairs well with light seafood dishes, salads, and as an aperitif."
-            ],
-            notableProducers: [
-                "Codorníu",
-                "Freixenet"
-            ],
-            otherNames: "None",
+           
             grapeSummary: "Parellada is a key grape in the production of Cava, valued for its fresh acidity and delicate flavors, making it an essential component in Spain's sparkling wine industry."
-        ),
-        imageName: "parellada",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Pedro Ximénez Details
@@ -4139,26 +2721,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Full-bodied with low acidity, featuring rich flavors of dried fruits, caramel, and a touch of spice.",
                 finish: "Lusciously sweet with a long, complex finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in hot, sunny climates which help concentrate its sugars.",
-                soil: "Prefers chalky, albariza soils which retain moisture.",
-                growingConditions: "Vigorous vine that produces high yields; grapes are often dried in the sun to concentrate sugars."
-            ),
+           
             wineStyles: [
                 "Fortified Wines: Used to produce rich, sweet dessert wines known as Pedro Ximénez Sherry."
             ],
-            foodPairing: [
-                "Pairs well with desserts, particularly those with dried fruits and nuts, as well as blue cheeses."
-            ],
-            notableProducers: [
-                "Bodegas Toro Albalá",
-                "González Byass"
-            ],
-            otherNames: "PX.",
+            
             grapeSummary: "Pedro Ximénez is celebrated for its role in producing Pedro Ximénez Sherry, an intensely sweet and rich dessert wine with complex flavors and a luxurious finish, making it a staple in the Sherry production of Spain."
-        ),
-        imageName: "pedro_ximenez",
-        iconNames: ["leaf", "drop"]
+        )
     ),
     // Petit Manseng Details
     Grape(
@@ -4176,26 +2745,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Medium-bodied with high acidity, featuring flavors of pineapple, mango, and a hint of honey.",
                 finish: "Crisp and refreshing with a long, fruity finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Prefers warm, sunny climates to develop its full aromatic potential.",
-                soil: "Thrives in well-drained, gravelly soils.",
-                growingConditions: "Vigorous vine with good resistance to disease; requires careful management to maintain quality."
-            ),
+           
             wineStyles: [
                 "White Wines: Used for both dry and sweet wines, showcasing its high acidity and aromatic complexity."
             ],
-            foodPairing: [
-                "Pairs well with foie gras, spicy dishes, and rich cheeses."
-            ],
-            notableProducers: [
-                "Domaine Cauhapé",
-                "Domaine Nigri"
-            ],
-            otherNames: "None",
+          
             grapeSummary: "Petit Manseng is celebrated for its high acidity and aromatic intensity, making it a versatile grape for both dry and sweet wines in southwest France."
-        ),
-        imageName: "petit_manseng",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Picpoul Details
@@ -4214,26 +2770,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Light-bodied with high acidity, featuring flavors of citrus, green apple, and a distinct minerality.",
                 finish: "Crisp and refreshing with a clean, zesty finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in warm, Mediterranean climates which help retain its high acidity.",
-                soil: "Performs best in well-drained, limestone and sandy soils.",
-                growingConditions: "Moderately vigorous vine with good disease resistance, producing high yields."
-            ),
+           
             wineStyles: [
                 "White Wines: Typically made in a dry, crisp style, showcasing its fresh acidity and citrus flavors."
             ],
-            foodPairing: [
-                "Pairs well with seafood, particularly oysters, and light salads."
-            ],
-            notableProducers: [
-                "Domaine Félines Jourdan",
-                "Château Petit Roubié"
-            ],
-            otherNames: "Piquepoul.",
+           
             grapeSummary: "Picpoul is appreciated for its high acidity and fresh citrus flavors, making it a key grape in the production of crisp, refreshing white wines in the Languedoc."
-        ),
-        imageName: "picpoul",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Pinot Blanc Details
@@ -4254,26 +2797,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Medium-bodied with moderate acidity, featuring flavors of green apple, lemon, and a touch of minerality.",
                 finish: "Smooth and elegant with a lingering fruity finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in cool to moderate climates which help retain its acidity and fresh flavors.",
-                soil: "Performs best in well-drained, limestone and clay soils.",
-                growingConditions: "Vigorous vine with good disease resistance, requiring careful management to avoid over-ripening."
-            ),
+           
             wineStyles: [
                 "White Wines: Typically made in a dry style, showcasing its fresh fruit and elegant profile."
             ],
-            foodPairing: [
-                "Pairs well with seafood, poultry, and light pasta dishes."
-            ],
-            notableProducers: [
-                "Domaine Zind-Humbrecht",
-                "Alois Lageder"
-            ],
-            otherNames: "Weissburgunder in Germany, Pinot Bianco in Italy.",
+           
             grapeSummary: "Pinot Blanc is valued for its fresh acidity and elegant fruit flavors, making it a versatile and widely planted grape variety in many cool-climate wine regions."
-        ),
-        imageName: "pinot_blanc",
-        iconNames: ["leaf", "drop"]
+        )
     ),
     // Pinot Gris Details
     Grape(
@@ -4294,27 +2824,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Medium-bodied with moderate acidity, featuring flavors of pear, peach, and melon with a touch of spice.",
                 finish: "Smooth and slightly creamy with a long, fruit-driven finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in cool to moderate climates which help develop its aromatic profile.",
-                soil: "Performs well in loamy and limestone soils.",
-                growingConditions: "Moderately vigorous vine with good resistance to disease, requiring careful management to avoid over-ripening."
-            ),
+           
             wineStyles: [
                 "White Wines: Ranges from dry to off-dry, showcasing its rich fruit flavors and aromatic complexity."
             ],
-            foodPairing: [
-                "Pairs well with rich seafood dishes, poultry, and creamy pastas."
-            ],
-            notableProducers: [
-                "Domaine Zind-Humbrecht (France)",
-                "Alois Lageder (Italy)",
-                "Dr. Loosen (Germany)"
-            ],
-            otherNames: "Pinot Grigio in Italy, Grauburgunder in Germany.",
+           
             grapeSummary: "Pinot Gris, or Grauburgunder, is valued for its aromatic complexity and rich fruit flavors, making it a versatile and popular white wine variety enjoyed worldwide."
-        ),
-        imageName: "pinot_gris",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Ribolla Gialla Details
@@ -4334,26 +2850,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Light-bodied with high acidity, featuring flavors of lemon, apple, and a distinct minerality.",
                 finish: "Crisp and refreshing with a clean, zesty finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in cool to moderate climates which help retain its acidity and fresh flavors.",
-                soil: "Performs best in well-drained, marl and limestone soils.",
-                growingConditions: "Moderately vigorous vine with good disease resistance, requiring careful management to avoid over-ripening."
-            ),
+           
             wineStyles: [
                 "White Wines: Typically made in a dry, crisp style, showcasing its fresh acidity and citrus flavors."
             ],
-            foodPairing: [
-                "Pairs well with seafood, light salads, and fresh cheeses."
-            ],
-            notableProducers: [
-                "Josko Gravner",
-                "Venica & Venica"
-            ],
-            otherNames: "Rebula in Slovenia.",
+        
             grapeSummary: "Ribolla Gialla is appreciated for its high acidity and fresh citrus flavors, making it a key grape in the production of crisp, aromatic white wines in Friuli-Venezia Giulia."
-        ),
-        imageName: "ribolla_gialla",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Riesling Details
@@ -4374,26 +2877,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Light to medium-bodied with high acidity, featuring flavors of citrus, green apple, and stone fruits with a distinct minerality.",
                 finish: "Crisp and refreshing with a long, zesty finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in cool climates which help retain its high acidity and aromatic profile.",
-                soil: "Performs best in slate, granite, and limestone soils.",
-                growingConditions: "Vigorous vine with good resistance to cold, making it suitable for cooler growing regions."
-            ),
+          
             wineStyles: [
                 "White Wines: Ranges from bone-dry to lusciously sweet, showcasing its aromatic complexity and high acidity."
             ],
-            foodPairing: [
-                "Pairs well with spicy Asian cuisine, seafood, and light poultry dishes."
-            ],
-            notableProducers: [
-                "Dr. Loosen",
-                "Trimbach"
-            ],
-            otherNames: "None",
+           
             grapeSummary: "Riesling is celebrated for its aromatic intensity, high acidity, and versatility, making it one of the most esteemed and widely planted white grape varieties in the world."
-        ),
-        imageName: "riesling",
-        iconNames: ["leaf", "drop"]
+        )
     ),
     // Robola Details
     Grape(
@@ -4411,26 +2901,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Light-bodied with high acidity, featuring flavors of lemon, green apple, and a distinct minerality.",
                 finish: "Crisp and refreshing with a clean, zesty finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in warm, sunny climates with cooling maritime influences that help retain its acidity.",
-                soil: "Performs best in well-drained, limestone and rocky soils.",
-                growingConditions: "Moderately vigorous vine with good disease resistance, requiring careful management to avoid over-ripening."
-            ),
+          
             wineStyles: [
                 "White Wines: Typically made in a dry, crisp style, showcasing its fresh acidity and mineral complexity."
             ],
-            foodPairing: [
-                "Pairs well with seafood, light salads, and Mediterranean cuisine."
-            ],
-            notableProducers: [
-                "Gentilini Winery",
-                "Sclavos Wines"
-            ],
-            otherNames: "None",
+           
             grapeSummary: "Robola is appreciated for its high acidity and fresh citrus flavors, making it a key grape in the production of crisp, mineral-driven white wines from the Ionian Islands."
-        ),
-        imageName: "robola",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Roussanne Details
@@ -4450,26 +2927,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Medium to full-bodied with moderate acidity, featuring flavors of stone fruits, melon, and a touch of spice.",
                 finish: "Rich and long-lasting with a slightly oily texture and a honeyed finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Prefers warm climates which help develop its rich flavors.",
-                soil: "Thrives in granite, clay, and limestone soils.",
-                growingConditions: "Moderately vigorous vine with a tendency to produce low yields, enhancing quality."
-            ),
+           
             wineStyles: [
                 "White Wines: Often blended with Marsanne, showcasing its rich, aromatic character."
             ],
-            foodPairing: [
-                "Pairs well with poultry, seafood, and creamy sauces."
-            ],
-            notableProducers: [
-                "M. Chapoutier",
-                "Tablas Creek Vineyard"
-            ],
-            otherNames: "None",
+            
             grapeSummary: "Roussanne is celebrated for its rich, aromatic character and is often blended with Marsanne to produce complex, full-bodied white wines with good aging potential."
-        ),
-        imageName: "roussanne",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Rkatsiteli Details
@@ -4488,26 +2952,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Medium-bodied with high acidity, featuring flavors of apple, citrus, and a distinct minerality.",
                 finish: "Crisp and refreshing with a long, zesty finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in both cool and warm climates, retaining its acidity and aromatic profile.",
-                soil: "Adaptable to various soil types but performs best in well-drained, loamy soils.",
-                growingConditions: "Vigorous vine with good disease resistance, capable of producing high yields."
-            ),
+            
             wineStyles: [
                 "White Wines: Typically made in a dry style, showcasing its fresh acidity and aromatic complexity."
             ],
-            foodPairing: [
-                "Pairs well with spicy Asian cuisine, seafood, and light poultry dishes."
-            ],
-            notableProducers: [
-                "Teliani Valley",
-                "Pheasant's Tears"
-            ],
-            otherNames: "None",
+          
             grapeSummary: "Rkatsiteli is valued for its high acidity and aromatic intensity, making it one of the most important and widely planted white grape varieties in Georgia."
-        ),
-        imageName: "rkatsiteli",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
 
@@ -4529,26 +2980,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Light to medium-bodied with high acidity, featuring flavors of citrus, green apple, and tropical fruits with a distinct minerality.",
                 finish: "Crisp and refreshing with a long, zesty finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in cool to moderate climates which help retain its high acidity and aromatic profile.",
-                soil: "Performs best in well-drained, gravelly and limestone soils.",
-                growingConditions: "Moderately vigorous vine with good disease resistance, requiring careful management to avoid over-ripening."
-            ),
+           
             wineStyles: [
                 "White Wines: Typically made in a dry style, showcasing its fresh acidity and aromatic complexity."
             ],
-            foodPairing: [
-                "Pairs well with seafood, salads, and goat cheese."
-            ],
-            notableProducers: [
-                "Domaine Vacheron",
-                "Cloudy Bay"
-            ],
-            otherNames: "Fumé Blanc (USA, indicating an oaked style)",
+           
             grapeSummary: "Sauvignon Blanc is celebrated for its high acidity, aromatic intensity, and versatility, making it one of the most popular and widely planted white grape varieties in the world."
-        ),
-        imageName: "sauvignon_blanc",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Savagnin Details
@@ -4567,26 +3005,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Medium-bodied with high acidity, featuring flavors of apple, lemon, and a distinct nuttiness.",
                 finish: "Long and complex with a distinctive oxidative character."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Prefers cool to moderate climates which help retain its acidity and develop its unique flavor profile.",
-                soil: "Thrives in marl and limestone soils.",
-                growingConditions: "Moderately vigorous vine with good disease resistance, requiring careful management to avoid over-ripening."
-            ),
+           
             wineStyles: [
                 "White Wines: Often made in an oxidative style, showcasing its complex and unique flavors."
             ],
-            foodPairing: [
-                "Pairs well with Comté cheese, poultry dishes, and creamy sauces."
-            ],
-            notableProducers: [
-                "Domaine Jean Macle",
-                "Domaine Tissot"
-            ],
-            otherNames: "None",
+           
             grapeSummary: "Savagnin is celebrated for its unique and complex flavor profile, making it a key grape in the production of the distinctive Vin Jaune wines from the Jura region."
-        ),
-        imageName: "savagnin",
-        iconNames: ["leaf", "drop"]
+        )
     ),
     // Savatiano Details
     Grape(
@@ -4604,27 +3029,14 @@ static let whiteGrapes: [Grape] = [
                 palate: "Light to medium-bodied with moderate acidity, featuring flavors of lemon, apple, and a slight nuttiness.",
                 finish: "Crisp and refreshing with a clean, mineral finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in warm, sunny climates with good resistance to drought and heat.",
-                soil: "Prefers well-drained, sandy, and limestone soils.",
-                growingConditions: "Vigorous vine with high yield potential; quality is maintained with controlled yields."
-            ),
+           
             wineStyles: [
                         "White Wines: Typically made in a dry, crisp style, showcasing its fresh acidity and mineral character.",
                         "Retsina: A traditional Greek wine made by adding pine resin during fermentation, giving it a distinctive pine flavor."
                     ],
-            foodPairing: [
-                "Pairs well with seafood, salads, and light Mediterranean dishes."
-            ],
-            notableProducers: [
-                "Papagiannakos Winery",
-                "Domaine Vassiliou"
-            ],
-            otherNames: "None",
+           
             grapeSummary: "Savatiano is appreciated for its resilience to heat and its ability to produce crisp, refreshing wines that are a staple in Greek wine culture."
-        ),
-        imageName: "savatiano",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Scheurebe Details
@@ -4644,26 +3056,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Medium-bodied with high acidity, featuring flavors of citrus, peach, and a hint of spice.",
                 finish: "Crisp and aromatic with a long, fruity finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in cool to moderate climates which help retain its acidity and aromatic profile.",
-                soil: "Performs best in well-drained, sandy, and loamy soils.",
-                growingConditions: "Moderately vigorous vine with good disease resistance, requiring careful management to avoid over-ripening."
-            ),
+           
             wineStyles: [
                 "White Wines: Ranges from dry to sweet, showcasing its aromatic intensity and fresh acidity."
             ],
-            foodPairing: [
-                "Pairs well with spicy Asian cuisine, seafood, and light poultry dishes."
-            ],
-            notableProducers: [
-                "Weingut Wirsching",
-                "Weingut Bründlmayer"
-            ],
-            otherNames: "Sämling 88 (Austria)",
+         
             grapeSummary: "Scheurebe is celebrated for its aromatic intensity and versatility, making it a popular choice for both dry and sweet wines in Germany and Austria."
-        ),
-        imageName: "scheurebe",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Sercial Details
@@ -4682,26 +3081,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Light-bodied with high acidity, featuring flavors of citrus, green apple, and a distinct nuttiness.",
                 finish: "Crisp and dry with a long, mineral-driven finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in warm, sunny climates with maritime influences that help retain its acidity.",
-                soil: "Prefers volcanic and clay-limestone soils.",
-                growingConditions: "Vigorous vine with good resistance to disease; quality is enhanced with controlled yields."
-            ),
+           
             wineStyles: [
                 "Fortified Wines: Primarily used in the production of dry Madeira wines."
             ],
-            foodPairing: [
-                "Pairs well with savory appetizers, nuts, and cheeses."
-            ],
-            notableProducers: [
-                "Blandy's",
-                "Henriques & Henriques"
-            ],
-            otherNames: "Esgana Cão in mainland Portugal",
+           
             grapeSummary: "Sercial is valued for its high acidity and ability to produce dry, crisp wines that are a key component in the production of Madeira, offering a distinct mineral and nutty character."
-        ),
-        imageName: "sercial",
-        iconNames: ["leaf", "drop"]
+        )
     ),
     // Semillon Details
     Grape(
@@ -4721,26 +3107,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Medium to full-bodied with moderate acidity, featuring flavors of lemon, apple, and a touch of honey.",
                 finish: "Rich and long-lasting with a smooth, slightly oily texture."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in moderate to warm climates which help develop its rich flavors.",
-                soil: "Performs best in well-drained, gravelly and clay-limestone soils.",
-                growingConditions: "Vigorous vine with good disease resistance; quality is enhanced with controlled yields."
-            ),
+           
             wineStyles: [
                 "White Wines: Ranges from dry to sweet, including botrytized dessert wines like Sauternes."
             ],
-            foodPairing: [
-                "Pairs well with seafood, poultry, and rich, creamy dishes."
-            ],
-            notableProducers: [
-                "Château d'Yquem",
-                "Tyrrell's Wines"
-            ],
-            otherNames: "None",
+           
             grapeSummary: "Semillon is celebrated for its versatility and ability to produce both dry and sweet wines, with a rich, complex profile that develops beautifully with age."
-        ),
-        imageName: "semillon",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Silvaner Details
@@ -4761,26 +3134,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Light to medium-bodied with moderate acidity, featuring flavors of apple, melon, and a touch of spice.",
                 finish: "Crisp and clean with a refreshing, mineral-driven finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in cool to moderate climates which help retain its acidity and fresh flavors.",
-                soil: "Performs best in well-drained, limestone and clay soils.",
-                growingConditions: "Moderately vigorous vine with good disease resistance, requiring careful management to avoid over-ripening."
-            ),
+           
             wineStyles: [
                 "White Wines: Typically made in a dry style, showcasing its fresh acidity and mineral complexity."
             ],
-            foodPairing: [
-                "Pairs well with seafood, light poultry dishes, and salads."
-            ],
-            notableProducers: [
-                "Weingut Hans Wirsching",
-                "Weingut Juliusspital"
-            ],
-            otherNames: "Sylvaner (Alsace)",
+            
             grapeSummary: "Silvaner is valued for its fresh acidity and crisp, clean profile, making it a versatile and widely planted grape variety in Germany and Austria."
-        ),
-        imageName: "silvaner",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Torrontés Details
@@ -4799,26 +3159,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Light to medium-bodied with moderate acidity, featuring flavors of lemon, lychee, and peach.",
                 finish: "Aromatic and refreshing with a lingering floral and fruity finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in high-altitude regions with warm days and cool nights which help retain its aromatic intensity.",
-                soil: "Performs best in well-drained, sandy and loamy soils.",
-                growingConditions: "Vigorous vine with good disease resistance, requiring careful management to maintain quality."
-            ),
+           
             wineStyles: [
                 "White Wines: Typically made in a dry, aromatic style, showcasing its intense floral and fruit aromas."
             ],
-            foodPairing: [
-                "Pairs well with spicy Asian cuisine, seafood, and light salads."
-            ],
-            notableProducers: [
-                "Bodega Colomé",
-                "El Porvenir de Cafayate"
-            ],
-            otherNames: "None",
+           
             grapeSummary: "Torrontés is celebrated for its highly aromatic and floral character, making it Argentina's most distinctive and important white grape variety."
-        ),
-        imageName: "torrontes",
-        iconNames: ["leaf", "drop"]
+        )
     ),
     // Trebbiano (Ugni Blanc) Details
     Grape(
@@ -4837,27 +3184,14 @@ static let whiteGrapes: [Grape] = [
                 palate: "Light-bodied with high acidity, featuring flavors of citrus, green apple, and a touch of minerality.",
                 finish: "Crisp and refreshing with a clean, dry finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in warm, sunny climates with good resistance to drought and disease.",
-                soil: "Adaptable to various soil types but performs best in well-drained, calcareous soils.",
-                growingConditions: "Vigorous vine with high yield potential; quality is maintained with controlled yields."
-            ),
+            
             wineStyles: [
                 "White Wines: Often made in a dry, crisp style, showcasing its fresh acidity and subtle fruit flavors.\n",
                 "Spirits: Used in the production of Cognac and Armagnac."
             ],
-            foodPairing: [
-                "Pairs well with seafood, salads, and light appetizers."
-            ],
-            notableProducers: [
-                "Gianni Masciarelli",
-                "Martell (for Cognac)"
-            ],
-            otherNames: "Ugni Blanc in France.",
+           
             grapeSummary: "Trebbiano (Ugni Blanc) is valued for its high acidity and fresh, crisp profile, making it a versatile grape used in both wine and spirit production."
-        ),
-        imageName: "trebbiano",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Treixadura Details
@@ -4877,26 +3211,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Medium-bodied with moderate acidity, featuring flavors of green apple, lemon, and a touch of minerality.",
                 finish: "Crisp and refreshing with a clean, mineral-driven finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in cool to moderate climates which help retain its acidity and aromatic profile.",
-                soil: "Performs best in well-drained, granite and sandy soils.",
-                growingConditions: "Moderately vigorous vine with good disease resistance, requiring careful management to maintain quality."
-            ),
+           
             wineStyles: [
                 "White Wines: Typically made in a dry style, showcasing its fresh acidity and aromatic complexity."
             ],
-            foodPairing: [
-                "Pairs well with seafood, light poultry dishes, and fresh salads."
-            ],
-            notableProducers: [
-                "Viña Mein",
-                "Casal de Armán"
-            ],
-            otherNames: "Trajadura (Portugal).",
+           
             grapeSummary: "Treixadura is appreciated for its aromatic intensity and fresh acidity, making it a key grape in the production of crisp, well-structured white wines from Galicia."
-        ),
-        imageName: "treixadura",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Verdejo Details
@@ -4915,26 +3236,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Light to medium-bodied with high acidity, featuring flavors of citrus, green apple, and a touch of herbaceousness.",
                 finish: "Crisp and refreshing with a long, zesty finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in warm, sunny climates with cool nights which help retain its acidity.",
-                soil: "Performs best in well-drained, sandy and gravelly soils.",
-                growingConditions: "Moderately vigorous vine with good disease resistance, requiring careful management to avoid over-ripening."
-            ),
+            
             wineStyles: [
                 "White Wines: Typically made in a dry, crisp style, showcasing its fresh acidity and aromatic complexity."
             ],
-            foodPairing: [
-                "Pairs well with seafood, salads, and light appetizers."
-            ],
-            notableProducers: [
-                "Marqués de Riscal",
-                "Bodegas Naia"
-            ],
-            otherNames: "None",
+           
             grapeSummary: "Verdejo is celebrated for its fresh acidity and aromatic intensity, making it the most important white grape variety in the Rueda region of Spain."
-        ),
-        imageName: "verdejo",
-        iconNames: ["leaf", "drop"]
+        )
     ),
     // Verdelho Details
     Grape(
@@ -4953,27 +3261,14 @@ static let whiteGrapes: [Grape] = [
                 palate: "Medium-bodied with high acidity, featuring flavors of lemon, pineapple, and a touch of almond.",
                 finish: "Crisp and refreshing with a long, zesty finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in warm, sunny climates with good maritime influences that help retain acidity.",
-                soil: "Performs best in volcanic and sandy soils.",
-                growingConditions: "Vigorous vine with good disease resistance, requiring careful management to maintain quality."
-            ),
+           
             wineStyles: [
                 "White Wines: Typically made in a dry, crisp style.\n",
-                "Fortified Wines: Used in the production of Madeira."
+                "Fortified Wines: Used in the production of medium-dry Madeira."
             ],
-            foodPairing: [
-                "Pairs well with seafood, poultry, and light Mediterranean dishes."
-            ],
-            notableProducers: [
-                "Blandy's",
-                "Tyrrell's Wines"
-            ],
-            otherNames: "None",
+           
             grapeSummary: "Verdelho is appreciated for its high acidity and versatility, making it a key grape in both table wines and fortified wines like Madeira."
-        ),
-        imageName: "verdelho",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Verdicchio Details
@@ -4992,26 +3287,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Light to medium-bodied with high acidity, featuring flavors of lemon, apple, and a touch of bitter almond.",
                 finish: "Crisp and refreshing with a long, mineral-driven finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in moderate climates with good diurnal temperature variation to retain its acidity.",
-                soil: "Performs best in well-drained, limestone and clay soils.",
-                growingConditions: "Vigorous vine with good disease resistance, requiring careful management to maintain quality."
-            ),
+            
             wineStyles: [
                 "White Wines: Typically made in a dry, crisp style, showcasing its fresh acidity and mineral complexity."
             ],
-            foodPairing: [
-                "Pairs well with seafood, light pasta dishes, and fresh salads."
-            ],
-            notableProducers: [
-                "Villa Bucci",
-                "Garofoli"
-            ],
-            otherNames: "None",
+           
             grapeSummary: "Verdicchio is celebrated for its high acidity and fresh, mineral-driven profile, making it one of Italy's most esteemed white grape varieties."
-        ),
-        imageName: "verdicchio",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Vernaccia Details
@@ -5030,26 +3312,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Light to medium-bodied with high acidity, featuring flavors of lemon, apple, and a touch of bitter almond.",
                 finish: "Crisp and refreshing with a clean, mineral finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in moderate climates with good diurnal temperature variation to retain its acidity.",
-                soil: "Performs best in well-drained, sandy and clay soils.",
-                growingConditions: "Vigorous vine with good disease resistance, requiring careful management to maintain quality."
-            ),
+           
             wineStyles: [
                 "White Wines: Typically made in a dry, crisp style, showcasing its fresh acidity and aromatic complexity."
             ],
-            foodPairing: [
-                "Pairs well with seafood, poultry, and light pasta dishes."
-            ],
-            notableProducers: [
-                "Panizzi",
-                "Teruzzi & Puthod"
-            ],
-            otherNames: "Vernaccia can refer to other grape varieties in different regions of Italy, such as Vernaccia di Oristano in Sardinia and Vernaccia Nera in Marche, which are unrelated to Vernaccia di San Gimignano.",
+           
             grapeSummary: "Vernaccia di San Gimignano is appreciated for its high acidity and fresh, aromatic profile, making it a key grape in the production of crisp, elegant white wines from Tuscany."
-        ),
-        imageName: "vernaccia",
-        iconNames: ["leaf", "drop"]
+        )
     ),
     // Vermentino Details
     Grape(
@@ -5068,26 +3337,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Light to medium-bodied with high acidity, featuring flavors of lemon, lime, and a touch of saline minerality.",
                 finish: "Crisp and refreshing with a clean, zesty finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in warm, coastal climates with good exposure to sunlight.",
-                soil: "Performs best in well-drained, sandy and limestone soils.",
-                growingConditions: "Moderately vigorous vine with good disease resistance, requiring careful management to avoid over-ripening."
-            ),
+           
             wineStyles: [
                 "White Wines: Typically made in a dry, crisp style, showcasing its fresh acidity and aromatic complexity."
             ],
-            foodPairing: [
-                "Pairs well with seafood, light pasta dishes, and fresh salads."
-            ],
-            notableProducers: [
-                "Cantina di Gallura",
-                "Michele Satta"
-            ],
-            otherNames: "Rolle in France.",
+           
             grapeSummary: "Vermentino is celebrated for its fresh acidity and aromatic complexity, making it a popular choice for crisp, refreshing white wines in coastal regions."
-        ),
-        imageName: "vermentino",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     // Viognier Details
@@ -5108,26 +3364,13 @@ static let whiteGrapes: [Grape] = [
                 palate: "Medium to full-bodied with moderate acidity, featuring flavors of stone fruits, citrus, and a touch of spice.",
                 finish: "Rich and long-lasting with a slightly oily texture and a floral finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Prefers warm climates which help develop its rich flavors and aromatic intensity.",
-                soil: "Thrives in granite and clay-limestone soils.",
-                growingConditions: "Moderately vigorous vine with a tendency to produce low yields, enhancing quality."
-            ),
+           
             wineStyles: [
                 "White Wines: Typically made in a rich, aromatic style, showcasing its intense floral and fruit flavors."
             ],
-            foodPairing: [
-                "Pairs well with seafood, poultry, and dishes with creamy sauces."
-            ],
-            notableProducers: [
-                "Yves Cuilleron",
-                "Château-Grillet"
-            ],
-            otherNames: "None",
+            
             grapeSummary: "Viognier is celebrated for its rich, aromatic character and is often used to produce complex, full-bodied white wines with a distinctive floral and fruit-driven profile."
-        ),
-        imageName: "viognier",
-        iconNames: ["leaf", "drop"]
+        )
     ),
 
     
@@ -5148,31 +3391,20 @@ static let whiteGrapes: [Grape] = [
                 palate: "Light to medium-bodied with high acidity, featuring flavors of lemon, apple, and a distinct minerality.",
                 finish: "Crisp and refreshing with a clean, zesty finish."
             ),
-            viticulturalCharacteristics: ViticulturalCharacteristics(
-                climate: "Thrives in warm, Mediterranean climates with good exposure to sunlight.",
-                soil: "Performs best in well-drained, limestone and sandy soils.",
-                growingConditions: "Moderately vigorous vine with good disease resistance, requiring careful management to maintain quality."
-            ),
+           
             wineStyles: [
                 "Sparkling Wines: Primarily used in blends for Cava, contributing freshness and structure.",
                 "White Wines: Also used to produce still wines, showcasing its fresh acidity and mineral character."
             ],
-            foodPairing: [
-                "Pairs well with seafood, light appetizers, and as an aperitif."
-            ],
-            notableProducers: [
-                "Codorníu",
-                "Freixenet"
-            ],
-            otherNames: "None",
+           
             grapeSummary: "Xarel·lo is celebrated for its high acidity and fresh, mineral-driven profile, making it a key grape in the production of Cava and a popular choice for crisp, refreshing white wines in Catalonia."
-        ),
-        imageName: "xarello",
-        iconNames: ["leaf", "drop"]
-    )
-  ]
+        )
+    
+  )]
 
 
 }
+
+
 
 

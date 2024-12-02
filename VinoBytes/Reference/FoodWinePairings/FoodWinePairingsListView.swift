@@ -15,17 +15,8 @@ struct FoodWinePairingsListView: View {
                 }
             }
             .listStyle(PlainListStyle())
-            
-            Divider()
-                .padding(.horizontal)
-                .background(Color.black)
-            
-            Text("See Grapes Section for More Pairings")
-                .font(.footnote)
-                .foregroundColor(.gray)
-                .padding(.top, 10)
         }
-        .padding(.bottom, 20) // Adjust this value if necessary
+        .padding() // Adjust this value if necessary
         .navigationTitle("Food & Wine Pairings")
     }
 }

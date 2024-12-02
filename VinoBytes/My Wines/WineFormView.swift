@@ -33,6 +33,10 @@ struct WineFormView: View {
     @State private var finalThoughts: String = ""
     @State private var selectedImage: UIImage?
     @State private var isShowingImagePicker = false
+    
+    // State variables for the alert
+    @State private var showingAlert = false
+    @State private var alertMessage = ""
 
     init(wineEntity: WineEntity? = nil) {
         self.wineEntity = wineEntity
@@ -241,12 +245,23 @@ struct WineFormView: View {
                         }
                     }
                     .accentColor(.latte)
+                    
+                    .alert(isPresented: $showingAlert) {
+                        Alert(title: Text("Required Field Missing"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+                    }
                     .sheet(isPresented: $isShowingImagePicker, onDismiss: loadImage) {
                         ImagePicker(selectedImage: $selectedImage)
                     }
                 }
 
     private func saveWine() {
+        
+        guard !region.isEmpty else {
+            alertMessage = "Please enter a region for the wine."
+            showingAlert = true
+            return
+        }
+        
         let wineToSave = wineEntity ?? WineEntity(context: context)
         wineToSave.producer = producer
         wineToSave.wineName = wineName

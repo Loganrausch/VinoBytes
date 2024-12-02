@@ -1,4 +1,14 @@
 {
+  "appPolicies" : {
+    "eula" : "",
+    "policies" : [
+      {
+        "locale" : "en_US",
+        "policyText" : "",
+        "policyURL" : ""
+      }
+    ]
+  },
   "identifier" : "B39124A7",
   "nonRenewingSubscriptions" : [
 
@@ -97,7 +107,10 @@
           "recurringSubscriptionPeriod" : "P1M",
           "referenceName" : "VinoBytes Monthly",
           "subscriptionGroupID" : "21553795",
-          "type" : "RecurringSubscription"
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
         },
         {
           "adHocOffers" : [
@@ -127,13 +140,16 @@
           "recurringSubscriptionPeriod" : "P1Y",
           "referenceName" : "VinoBytes Yearly",
           "subscriptionGroupID" : "21553795",
-          "type" : "RecurringSubscription"
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
         }
       ]
     }
   ],
   "version" : {
-    "major" : 3,
+    "major" : 4,
     "minor" : 0
   }
 }
