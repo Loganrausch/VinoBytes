@@ -24,8 +24,8 @@ struct SessionSummaryView: View {
             // Card View
             VStack(spacing: 15) {
                 SummaryCardView(title: "Date", value: session.dateFormatted)
-                SummaryCardView(title: "Total Questions", value: "\(session.totalQuestions)")
-                SummaryCardView(title: "Correct Answers", value: "\(session.correctAnswers)")
+                SummaryCardView(title: "Total Cards Reviewed", value: "\(session.totalQuestions)")
+                SummaryCardView(title: "Cards Marked as Known", value: "\(session.correctAnswers)")
                 
                 HStack {
                     Text("Score: ")

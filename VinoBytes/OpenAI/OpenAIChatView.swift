@@ -23,6 +23,7 @@ struct OpenAIChatView: View {
     @State private var showEndChatAlert = false  // State for showing the end chat alert
     @State private var isPaywallPresented = false  // Controls the presentation of the paywall
 
+
     
     var body: some View {
         NavigationView {
@@ -115,12 +116,16 @@ struct OpenAIChatView: View {
                         })
                         .padding(.horizontal)
                         .padding(.bottom, 20) // Adjust padding to account for tab view
-                        .gesture(DragGesture().onEnded { value in
-                            if value.translation.height > 50 {
-                                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                            }
-                        })
+                       
                     }
+                    .contentShape(Rectangle()) // Ensure the gesture covers the entire area
+                                   .gesture(
+                                       DragGesture().onEnded { value in
+                                           if value.translation.height > 50 {
+                                               UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                                           }
+                                       }
+                                   ) // Attach the gesture here
                 }
                 .padding(.horizontal, 0)
                 .contentShape(Rectangle()) // Ensures the gesture area covers the entire VStack
@@ -272,6 +277,7 @@ struct CustomTextField: View {
     var placeholder: String
     @Binding var text: String
     var onSend: () -> Void
+    @FocusState private var isFocused: Bool
     
     var body: some View {
         HStack {
@@ -285,16 +291,21 @@ struct CustomTextField: View {
                     .foregroundColor(.black) // Input text color
                     .accentColor(.black) // Set cursor color here
                     .padding(4)
+                    .focused($isFocused)
             }
             
-            Button(action: onSend) {
-                Image(systemName: "arrow.up.square")
-                    .resizable()
-                    .frame(width: 26, height: 26)
-                    .foregroundColor(Color("LightMaroon"))
-                    .padding(.trailing, -4)
-            }
-        }
+            Button(action: {
+                            // Dismiss the keyboard and stop voice input
+                            isFocused = false
+                            onSend()
+                        }) {
+                            Image(systemName: "arrow.up.square")
+                                .resizable()
+                                .frame(width: 26, height: 26)
+                                .foregroundColor(Color("LightMaroon"))
+                                .padding(.trailing, -4)
+                        }
+                    }
         .padding(.horizontal)
         .padding(.vertical, 8)
         .background(Color.lightLatte.opacity(0.8))
