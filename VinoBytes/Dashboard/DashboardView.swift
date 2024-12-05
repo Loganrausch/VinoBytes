@@ -139,7 +139,7 @@ struct DashboardView: View {
                                 } else {
                                     // Centered text when not locked
                                     Spacer()
-                                    Text("Weekly Wine Byte")
+                                    Text("Latest Wine Byte")
                                         .bold()
                                         .foregroundColor(.black)
                                     Spacer()

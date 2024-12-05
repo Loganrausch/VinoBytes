@@ -28,7 +28,7 @@ struct PastPostsSheet: View {
             
             
             
-            .navigationTitle("Past Posts")
+            .navigationTitle("All Wine Bytes")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(trailing: Button("Done") {
                 presentationMode.wrappedValue.dismiss()

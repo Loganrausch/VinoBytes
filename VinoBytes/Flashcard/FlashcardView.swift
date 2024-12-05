@@ -12,6 +12,9 @@ import CoreData
 struct FlashcardView: View {
     var flashcards: [Flashcard]
     
+    @Environment(\.presentationMode) var presentationMode
+
+    
     @EnvironmentObject var sessionManager: StudySessionManager
     
     @State private var shuffledFlashcards: [Flashcard] = []
@@ -26,7 +29,7 @@ struct FlashcardView: View {
     @State private var showTutorialBubble: Bool = false // Controls the visibility of the overlay
     @State private var showEndSessionAlert = false
     @State private var session: StudySession?
-    @State private var navigateToSessionSummary = false
+    
     
     
     var body: some View {
@@ -159,12 +162,13 @@ struct FlashcardView: View {
                                 message: Text("Are you sure you want to end the session?"),
                                 primaryButton: .destructive(Text("End Session")) {
                                     sessionManager.endCurrentSession()
-                                    // Navigate to SessionSummaryView
-                                    navigateToSessionSummary = true
+                                    // Dismiss FlashcardView
+                                    presentationMode.wrappedValue.dismiss()
                                 },
                                 secondaryButton: .cancel()
                             )
                         }
+
                     
                         .onAppear {
                             checkFirstLaunch() // Check if we need to show the tutorial
@@ -230,14 +234,6 @@ struct FlashcardView: View {
                         .transition(.opacity)
                         .animation(.easeInOut(duration: 0.5), value: showFeedback)
                 }
-            }
-        }
-        // Add navigationDestination at the end of the body
-        .navigationDestination(isPresented: $navigateToSessionSummary) {
-            if let session = sessionManager.lastSession {
-                SessionSummaryView(session: session)
-            } else {
-                EmptyView() // Or handle appropriately
             }
         }
     }
@@ -328,9 +324,11 @@ struct FlashcardView: View {
 
         if currentFlashcardIndex >= shuffledFlashcards.count {
             sessionManager.endCurrentSession()
-            // Navigate to SessionSummaryView
-            navigateToSessionSummary = true
+            // Dismiss FlashcardView
+            presentationMode.wrappedValue.dismiss()
+            return
         }
+
 
         rotationAngle = 0 // Reset rotation angle
         showFront = true // Ensure front is shown for the next card

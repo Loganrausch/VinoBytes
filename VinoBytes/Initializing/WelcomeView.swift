@@ -119,7 +119,7 @@ struct WelcomeScreen: View {
     let descriptions = [
        
         "Access your learning tools all in one convenient place.",
-        "Master over 1,800 interactive flashcards.",
+        "Master over 1,500 interactive flashcards.",
         "Get instant answers with our wine chat powered by OpenAI.",
         "Log and track the wines you taste for easy reference as you study.",
         "Extensive information on grapes, regions, pairings, flaws and more.",

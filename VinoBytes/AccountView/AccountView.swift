@@ -12,7 +12,7 @@ import CoreData
 import CloudKit
 
 enum ActiveAlert: Identifiable {
-    case resetWines, resetConversations, resetFlashcardSessions, iCloudEnabled, iCloudDisabled, logout
+    case resetWines, resetConversations, resetFlashcardSessions, iCloudEnabled, iCloudDisabled
 
     var id: Int {
         hashValue
@@ -30,6 +30,8 @@ struct AccountView: View {
     @State private var showingMyWinesResetToast = false
     @State private var isICloudAvailable: Bool = false
     @State private var isCheckingICloud: Bool = false  // For loading indicator
+    @State private var showRateAlert = false
+    
     @Environment(\.managedObjectContext) private var viewContext  // Core Data context
     @ObservedObject var refreshNotifier: RefreshNotifier  // Add this line
     @EnvironmentObject var openAIManager: OpenAIManager  // Access from environment
@@ -64,21 +66,35 @@ struct AccountView: View {
                     }
                     .sheet(isPresented: $showingFeedbackSheet) {
                         ContactFormView()
+                            .environment(\.colorScheme, .light)
                     }
+                   
                     
                     Button("Invite Friends") {
                         showingShareSheet.toggle()
                     }
                     .sheet(isPresented: $showingShareSheet) {
                         ShareSheet(activityItems: ["Check out this awesome wine app: VinoBytes! You can download it here: https://apps.apple.com/us/app/vinobytes/id6736579105"])
+                            .environment(\.colorScheme, .light)
+
                     }
                     
-                    // Updated "Rate VinoBytes App" Button
-                                       Button("Rate VinoBytes App") {
-                                           requestAppReview()
-                                       }
-                                   }
-                                   .accentColor(Color.black) // Applying custom accent color locally to these buttons
+                    Button("Rate VinoBytes") {
+                                          showRateAlert = true
+                                      }
+                                      .alert(isPresented: $showRateAlert) {
+                                          Alert(
+                                              title: Text("Enjoying VinoBytes?"),
+                                              message: Text("Please take a moment to rate us on the App Store."),
+                                              primaryButton: .default(Text("Rate Now")) {
+                                                  openAppStoreForRating()
+                                              },
+                                              secondaryButton: .cancel()
+                                          )
+                                      }
+                                  }
+                                  .accentColor(Color.black)
+                                  .environment(\.colorScheme, .light)
                 
                 Section(header: Text("Reset Progress")
                     .font(.headline)
@@ -149,13 +165,6 @@ struct AccountView: View {
                             }
                             .accentColor(Color.black) // Applying custom accent color locally to these buttons
                         }
-
-                    Button(action: {
-                        activeAlert = .logout
-                    }) {
-                        Text("Log Out")
-                        .foregroundColor(.red)
-                    }
                 }
             }
             
@@ -183,8 +192,8 @@ struct AccountView: View {
         }
         .background(Color(.systemGroupedBackground).edgesIgnoringSafeArea(.all))
         .toast(message: "All wines successfully deleted!", isShowing: $showingMyWinesResetToast)
-        .toast(message: "Conversation history reset successfully!", isShowing: $showingConversationResetToast)
-        .toast(message: "Flashcard session history reset successfully!", isShowing: $showingFlashcardSessionsResetToast)
+        .toast(message: "Conversation history deleted successfully!", isShowing: $showingConversationResetToast)
+        .toast(message: "Flashcard session history deleted successfully!", isShowing: $showingFlashcardSessionsResetToast)
         .onAppear {
             handleICloudSyncInfo(showAlert: false)  // Automatic check without alert
             }
@@ -237,31 +246,27 @@ struct AccountView: View {
                                 }),
                                 secondaryButton: .cancel()
                             )
-            case .logout:
-                                    return Alert(
-                                        title: Text("Log Out"),
-                                        message: Text("Are you sure you want to log out?"),
-                                        primaryButton: .destructive(Text("Log Out")) {
-                                            authViewModel.logout()
-                                        },
-                                        secondaryButton: .cancel()
-                                    )
+           
             }
         }
     }
     
-    private func requestAppReview() {
-            // Fetch all connected scenes
-            let scenes = UIApplication.shared.connectedScenes
-            
-            // Filter for the first active UIWindowScene
-            if let windowScene = scenes
-                .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
-                
-                // Request the review using the active window scene
-                SKStoreReviewController.requestReview(in: windowScene)
+    
+    
+    private func openAppStoreForRating() {
+        let appID = "6736579105"
+        if let url = URL(string: "itms-apps://itunes.apple.com/us/app/vinobytes/id\(appID)?action=write-review"),
+           UIApplication.shared.canOpenURL(url) {
+            openURL(url)
+        } else {
+            // Fallback to the web version if the App Store can't be opened
+            if let webURL = URL(string: "https://apps.apple.com/us/app/vinobytes/id\(appID)?action=write-review") {
+                openURL(webURL)
             }
         }
+    }
+
+
         
     
     private func handleICloudSyncInfo(showAlert: Bool) {

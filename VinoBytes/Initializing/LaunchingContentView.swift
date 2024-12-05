@@ -36,24 +36,20 @@ struct LaunchingContentView: View {
     }
     
     @ViewBuilder
-    private var mainContent: some View {
-        if authViewModel.isSignedIn {
-            if authViewModel.hasActiveSubscription || hasSeenWelcomeView {
-                RootView()
-                    .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
-                    .environment(\.colorScheme, .light)
-            } else {
-                WelcomeView(hasSeenWelcomeView: $hasSeenWelcomeView)
-            }
-        } else {
-            SignInView()
-        }
-    }
-}
+       private var mainContent: some View {
+           if authViewModel.hasActiveSubscription || hasSeenWelcomeView {
+               RootView()
+                   .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
+                   .environment(\.colorScheme, .light)
+           } else {
+               WelcomeView(hasSeenWelcomeView: $hasSeenWelcomeView)
+           }
+       }
+   }
 
-struct LaunchingContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        LaunchingContentView(isShowingLaunchScreen: .constant(true))
-            .environmentObject(AuthViewModel())
-    }
-}
+   struct LaunchingContentView_Previews: PreviewProvider {
+       static var previews: some View {
+           LaunchingContentView(isShowingLaunchScreen: .constant(true))
+               .environmentObject(AuthViewModel())
+       }
+   }

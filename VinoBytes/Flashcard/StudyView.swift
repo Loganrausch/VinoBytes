@@ -129,14 +129,27 @@ struct StudyView: View {
                 .frame(minHeight: geometry.size.height)
                     }
                 }
-                // Move the navigationDestination here
-            .navigationDestination(isPresented: $navigateToSessionSummary) {
+            .fullScreenCover(isPresented: $navigateToSessionSummary) {
                 if let session = lastSession {
-                    SessionSummaryView(session: session)
+                    NavigationStack {
+                        SessionSummaryView(session: session)
+                    }
+                    .accentColor(.latte)
+                    .environment(\.colorScheme, .light)
+                    
                 } else {
-                    EmptyView() // Or handle the nil case appropriately
+                    Text("No session data available.")
                 }
             }
+
+                       .onReceive(sessionManager.$lastSession) { session in
+                           if let session = session {
+                               self.lastSession = session
+                               self.navigateToSessionSummary = true
+                               print("Received lastSession: \(session)")
+                           }
+                       }
+            
                 .navigationBarTitle("Select Regions", displayMode: .inline)
                 .navigationBarItems(
                     leading:
@@ -156,12 +169,7 @@ struct StudyView: View {
                     selectedRegions.removeAll()  // Reset selected regions
                 }
                 
-                .onReceive(sessionManager.$lastSession) { session in
-                    if let session = session {
-                        self.lastSession = session
-                        self.navigateToSessionSummary = true
-                }
-            }
+            
             
             // Present the PaywallView when needed
                         .sheet(isPresented: $isPaywallPresented) {

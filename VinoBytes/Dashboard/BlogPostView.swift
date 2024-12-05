@@ -93,7 +93,7 @@ struct BlogPostView: View {
             }
             .padding()
         }
-        .navigationBarTitle("Blog Post", displayMode: .inline)
+        .navigationBarTitle("Latest Wine Byte", displayMode: .inline)
         .navigationBarItems(trailing:
                                 Button(action: {
             showingPastPosts = true

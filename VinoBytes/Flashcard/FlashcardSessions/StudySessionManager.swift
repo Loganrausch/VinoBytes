@@ -34,6 +34,7 @@ class StudySessionManager: ObservableObject {
                try context.save()
                // Capture the session before ending it
                lastSession = currentSession
+               print("Session ended. lastSession: \(String(describing: lastSession))")
                currentSession = nil
            } catch {
                print("Failed to save session: \(error)")
