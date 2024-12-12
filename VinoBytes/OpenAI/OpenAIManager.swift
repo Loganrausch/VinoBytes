@@ -81,11 +81,24 @@ class OpenAIManager: ObservableObject {
         }
         
         URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {
-                completion(nil)
-                return
-            }
-            do {
+                    if let error = error {  // Check for network errors
+                        completion("Network error: \(error.localizedDescription)")
+                        return
+                    }
+
+                    guard let data = data else { // Check if data is received
+                        completion("OpenAI servers are down or not responding.")
+                        return
+                    }
+
+                    // Check for HTTP error responses
+                    if let httpResponse = response as? HTTPURLResponse, !(200...299).contains(httpResponse.statusCode) {
+                        // Simplified error message
+                                       completion("OpenAI service is unavailable at the moment. Please try again later. You can refer to https://status.openai.com for more information.")
+                                       return
+                                   }
+
+                                   do {
                 let result = try JSONDecoder().decode(OpenAIResponse.self, from: data)
                 
                 print("Prompt tokens used: \(result.usage.prompt_tokens)")
@@ -94,7 +107,7 @@ class OpenAIManager: ObservableObject {
                 
                 completion(result.choices.first?.message.content)
             } catch {
-                completion(nil)
+                completion("Error decoding OpenAI response: \(error.localizedDescription)")
             }
         }.resume()
     }

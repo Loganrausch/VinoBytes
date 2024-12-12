@@ -172,7 +172,7 @@ struct WelcomeScreen: View {
                                 .font(.headline)
                                 .foregroundColor(.latte)
                                 .padding()
-                                .padding(.horizontal, 62)
+                                .frame(minWidth: 250) // Ensures minimum width for the button
                                 .background(Color.lightMaroon)
                                 .cornerRadius(10)
                                 .shadow(radius: 6)
@@ -186,6 +186,7 @@ struct WelcomeScreen: View {
                                 .font(.headline)
                                 .foregroundColor(.lightMaroon)
                                 .padding()
+                                .frame(minWidth: 250) // Ensures minimum width for the button
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 10)
                                         .stroke(Color.lightMaroon, lineWidth: 2)
