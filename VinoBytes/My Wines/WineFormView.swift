@@ -292,11 +292,33 @@ struct WineFormView: View {
                    print("Attempting to dismiss.")
                    dismiss()
                    print("Dismiss called.")
+                   
+                   
+                   // After a successful save and dismiss, increment save counter and possibly request a review
+                   incrementSaveCounterAndMaybeRequestReview()
+                   
                }
            } catch {
                print("Failed to save wine: \(error)")
            }
        }
+    
+    private func incrementSaveCounterAndMaybeRequestReview() {
+        let defaults = UserDefaults.standard
+        let saveCountKey = "saveCount"
+        
+        // Increment the saved wine count
+        let newCount = defaults.integer(forKey: saveCountKey) + 1
+        defaults.setValue(newCount, forKey: saveCountKey)
+        
+        // Define your milestones
+        let milestones = [5, 20, 50, 100]
+        
+        // Check if the newCount matches any of these milestones
+        if milestones.contains(newCount) {
+            ReviewRequestHelper.requestReviewIfAppropriate()
+        }
+    }
     
 
                 private func loadImage() {

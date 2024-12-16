@@ -178,6 +178,9 @@ struct OpenAIChatView: View {
                             selectedConversation = nil
                             inputText = ""
                             openAIManager.messages.removeAll()
+                            
+                            // Increment counter and possibly request a review
+                            incrementChatEndCounterAndMaybeRequestReview()
                         }
                     )
                 }
@@ -270,7 +273,22 @@ struct OpenAIChatView: View {
     private func hideKeyboard() {
            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
        }
-   }
+    
+    private func incrementChatEndCounterAndMaybeRequestReview() {
+        let defaults = UserDefaults.standard
+        let chatEndCountKey = "chatEndCount"
+        
+        let newCount = defaults.integer(forKey: chatEndCountKey) + 1
+        defaults.setValue(newCount, forKey: chatEndCountKey)
+        
+        // Define your milestones
+        let milestones = [5, 20, 50, 100]
+        
+        if milestones.contains(newCount) {
+            ReviewRequestHelper.requestReviewIfAppropriate()
+        }
+    }
+}
 
 
 struct CustomTextField: View {

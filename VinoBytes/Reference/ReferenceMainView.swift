@@ -46,19 +46,11 @@ struct ReferenceMainView: View {
                             }
                         }
                         
-                        // **Premium Feature - Pairings**
-                        let isPairingsLocked = !authViewModel.hasActiveSubscription
-                        if isPairingsLocked {
-                            Button(action: {
-                                isPaywallPresented = true
-                            }) {
-                                buttonContent(title: "Pairings", systemImage: "fork.knife", geometry: geometry, isLocked: true)
-                            }
-                        } else {
+                        // **Free Feature - Pairings**
                             NavigationLink(destination: FoodWinePairingsListView()) {
                                 buttonContent(title: "Pairings", systemImage: "fork.knife", geometry: geometry, isLocked: false)
                             }
-                        }
+                        
                         
                         // **Free Feature - Regions**
                         NavigationLink(destination: RegionListView()) {

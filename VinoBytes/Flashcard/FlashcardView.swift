@@ -164,6 +164,9 @@ struct FlashcardView: View {
                                     sessionManager.endCurrentSession()
                                     // Dismiss FlashcardView
                                     presentationMode.wrappedValue.dismiss()
+                                    
+                                    // Increment the session end counter and request review if needed
+                                        incrementSessionEndCounterAndMaybeRequestReview()
                                 },
                                 secondaryButton: .cancel()
                             )
@@ -244,6 +247,21 @@ struct FlashcardView: View {
     private func endSession() {
         showEndSessionAlert = true
     }
+    
+    private func incrementSessionEndCounterAndMaybeRequestReview() {
+            let defaults = UserDefaults.standard
+            let sessionEndCountKey = "sessionEndCount"
+            
+            let newCount = defaults.integer(forKey: sessionEndCountKey) + 1
+            defaults.setValue(newCount, forKey: sessionEndCountKey)
+            
+            // Define your milestones for ending sessions
+            let milestones = [5, 20, 50, 100]
+            
+            if milestones.contains(newCount) {
+                ReviewRequestHelper.requestReviewIfAppropriate()
+            }
+        }
             
             
             // Check if the tutorial has been shown before

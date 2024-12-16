@@ -55,6 +55,7 @@
 		CE8318A22CB345D00030CC98 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = CE8318A12CB345D00030CC98 /* RevenueCatUI */; };
 		CE8318A62CB34E190030CC98 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8318A52CB34E190030CC98 /* LaunchScreen.swift */; };
 		CE8C7F4A2CB0D12E00A42BC1 /* FlashcardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8C7F492CB0D12E00A42BC1 /* FlashcardManager.swift */; };
+		CE8E23542D0FD8D4008A11E4 /* ReviewRequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E23532D0FD8D4008A11E4 /* ReviewRequestHelper.swift */; };
 		CE94AAF12C0D3957004CE8E0 /* ReferenceMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94AAF02C0D3957004CE8E0 /* ReferenceMainView.swift */; };
 		CE94AAF42C0D39DE004CE8E0 /* GrapeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94AAF32C0D39DE004CE8E0 /* GrapeDetailView.swift */; };
 		CE94AAF62C0D421E004CE8E0 /* GrapeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94AAF52C0D421E004CE8E0 /* GrapeListView.swift */; };
@@ -151,6 +152,7 @@
 		CE8318942CB2EBC10030CC98 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		CE8318A52CB34E190030CC98 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 		CE8C7F492CB0D12E00A42BC1 /* FlashcardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardManager.swift; sourceTree = "<group>"; };
+		CE8E23532D0FD8D4008A11E4 /* ReviewRequestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRequestHelper.swift; sourceTree = "<group>"; };
 		CE94AAF02C0D3957004CE8E0 /* ReferenceMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceMainView.swift; sourceTree = "<group>"; };
 		CE94AAF32C0D39DE004CE8E0 /* GrapeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrapeDetailView.swift; sourceTree = "<group>"; };
 		CE94AAF52C0D421E004CE8E0 /* GrapeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrapeListView.swift; sourceTree = "<group>"; };
@@ -374,6 +376,7 @@
 				CE6ADF322B925ED600982366 /* ContentView.swift */,
 				CE6ADF392B925ED700982366 /* Persistence.swift */,
 				CE37A4002CB64424009F79CC /* AuthViewModel.swift */,
+				CE8E23532D0FD8D4008A11E4 /* ReviewRequestHelper.swift */,
 			);
 			path = Initializing;
 			sourceTree = "<group>";
@@ -619,6 +622,7 @@
 				CE82D2892B9B72CF002B55F1 /* StudyView.swift in Sources */,
 				CE32CDE12C1CE5C600A87202 /* FoodWinePairingsListView.swift in Sources */,
 				CED380D82BB5E18400CAFB29 /* DashboardView.swift in Sources */,
+				CE8E23542D0FD8D4008A11E4 /* ReviewRequestHelper.swift in Sources */,
 				CE7F9DE62C2CA1C400BA61C1 /* LoadingDotsView.swift in Sources */,
 				CE1AE2892CDC23AE00306FC6 /* RegionView.swift in Sources */,
 				CED380DA2BB70E1500CAFB29 /* WineData.swift in Sources */,
