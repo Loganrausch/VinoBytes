@@ -167,7 +167,7 @@ struct WelcomeScreen: View {
                     VStack(spacing: 20) { // Increased spacing for better separation
                         // First Button with Background
                         Button(action: startFreeTrial) {
-                            Text("Get Full Access")
+                            Text("Start Free Trial")
                                 .bold()
                                 .font(.headline)
                                 .foregroundColor(.latte)
@@ -181,7 +181,7 @@ struct WelcomeScreen: View {
                         
                         // Second Button with Border
                         Button(action: proceedToLimitedVersion) {
-                            Text("Free with Limited Features")
+                            Text("Access Limited Features")
                                 .bold()
                                 .font(.headline)
                                 .foregroundColor(.lightMaroon)
@@ -209,6 +209,15 @@ struct WelcomeScreen: View {
                             }
                         }
                         
+                        // Add the disclaimer text here
+                        Text("Free trial available for new subscribers only.")
+                            .font(.body) // Keeps the font smaller but readable
+                                .foregroundColor(.gray) // Subtle color for less emphasis
+                                .multilineTextAlignment(.center) // Ensures proper wrapping
+                                .fixedSize(horizontal: false, vertical: true) // Allows the text to wrap across multiple lines
+                                .padding(.horizontal) // Adds padding to avoid cutoff near edges
+                                .padding(.top, 5) // Adds space between the button and text
+                        
                         // Error or Success Message
                         if let errorMessage = authViewModel.errorMessage {
                             Text(errorMessage)
@@ -220,6 +229,7 @@ struct WelcomeScreen: View {
                                 .foregroundColor(.lightMaroon)
                                 .padding(.horizontal)
                         }
+                        
                     }
                     .padding(.horizontal)
                     .padding(.bottom, 30)
