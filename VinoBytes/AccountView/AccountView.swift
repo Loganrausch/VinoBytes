@@ -28,14 +28,17 @@ struct AccountView: View {
     @State private var showingFlashcardSessionsResetToast = false
     @State private var showingConversationResetToast = false
     @State private var showingMyWinesResetToast = false
+    @State private var showingNameChangeSuccessToast = false
     @State private var isICloudAvailable: Bool = false
     @State private var isCheckingICloud: Bool = false  // For loading indicator
     @State private var showRateAlert = false
+    @State private var showingChangeNameSheet = false  // New state for the change name sheet
     
     @Environment(\.managedObjectContext) private var viewContext  // Core Data context
     @ObservedObject var refreshNotifier: RefreshNotifier  // Add this line
     @EnvironmentObject var openAIManager: OpenAIManager  // Access from environment
     @EnvironmentObject var authViewModel: AuthViewModel  // Access AuthViewModel
+    @EnvironmentObject var userProfile: UserProfileViewModel
     @Environment(\.openURL) var openURL
 
     
@@ -58,7 +61,7 @@ struct AccountView: View {
                 Section(header: Text("General")
                     .font(.headline)
                     .foregroundColor(.black)
-                
+                        
                 ) {
                     
                     Button("Feedback") {
@@ -68,7 +71,7 @@ struct AccountView: View {
                         ContactFormView()
                             .environment(\.colorScheme, .light)
                     }
-                   
+                    
                     
                     Button("Invite Friends") {
                         showingShareSheet.toggle()
@@ -76,30 +79,30 @@ struct AccountView: View {
                     .sheet(isPresented: $showingShareSheet) {
                         ShareSheet(activityItems: ["Check out this awesome wine app: VinoBytes! You can download it here: https://apps.apple.com/us/app/vinobytes/id6736579105"])
                             .environment(\.colorScheme, .light)
-
+                        
                     }
                     
                     Button("Rate VinoBytes") {
-                                          showRateAlert = true
-                                      }
-                                      .alert(isPresented: $showRateAlert) {
-                                          Alert(
-                                              title: Text("Enjoying VinoBytes?"),
-                                              message: Text("Please take a moment to rate us on the App Store."),
-                                              primaryButton: .default(Text("Rate Now")) {
-                                                  openAppStoreForRating()
-                                              },
-                                              secondaryButton: .cancel()
-                                          )
-                                      }
-                                  }
-                                  .accentColor(Color.black)
-                                  .environment(\.colorScheme, .light)
+                        showRateAlert = true
+                    }
+                    .alert(isPresented: $showRateAlert) {
+                        Alert(
+                            title: Text("Enjoying VinoBytes?"),
+                            message: Text("Please take a moment to rate us on the App Store."),
+                            primaryButton: .default(Text("Rate Now")) {
+                                openAppStoreForRating()
+                            },
+                            secondaryButton: .cancel()
+                        )
+                    }
+                }
+                .accentColor(Color.black)
+                .environment(\.colorScheme, .light)
                 
                 Section(header: Text("Reset Progress")
                     .font(.headline)
                     .foregroundColor(.black)
-                
+                        
                 ) {
                     
                     Button("Delete My Wines") {
@@ -142,7 +145,7 @@ struct AccountView: View {
                 .accentColor(Color.black) // Applying custom accent color locally to these buttons
                 
                 // New Account Section
-                    Section(header: Text("Account")
+                Section(header: Text("Account")
                     .font(.headline)
                     .foregroundColor(.black)) {
                         
@@ -163,10 +166,16 @@ struct AccountView: View {
                                         .foregroundColor(.red)
                                 }
                             }
-                            .accentColor(Color.black) // Applying custom accent color locally to these buttons
                         }
-                }
-            }
+                            .accentColor(Color.black) // Applying custom accent color locally to these buttons
+                            // New button for changing the name
+                            Button("Change Name") {
+                                showingChangeNameSheet = true
+                            }
+                            .accentColor(Color.black)
+                        }
+                    }
+            
             
             .padding(.top, 15)
             .navigationBarTitle("Account Settings", displayMode: .inline)
@@ -191,13 +200,27 @@ struct AccountView: View {
             
         }
         .background(Color(.systemGroupedBackground).edgesIgnoringSafeArea(.all))
+        
         .toast(message: "All wines successfully deleted!", isShowing: $showingMyWinesResetToast)
         .toast(message: "Conversation history deleted successfully!", isShowing: $showingConversationResetToast)
         .toast(message: "Flashcard session history deleted successfully!", isShowing: $showingFlashcardSessionsResetToast)
+        .toast(message: "Name Change Successful!", isShowing: $showingNameChangeSuccessToast)
         .onAppear {
             handleICloudSyncInfo(showAlert: false)  // Automatic check without alert
             }
         
+        .sheet(isPresented: $showingChangeNameSheet, onDismiss: {
+            // If a name exists (i.e. the user changed it), trigger the toast.
+            if !userProfile.firstName.isEmpty {
+                showingNameChangeSuccessToast = true
+            }
+        }) {
+            ChangeNameSheetView()
+                .environmentObject(userProfile)
+                .presentationDetents([.fraction(0.4)])
+                .presentationDragIndicator(.visible)
+                .preferredColorScheme(.light)
+        }
         
         .alert(item: $activeAlert) { alertType in
             switch alertType {

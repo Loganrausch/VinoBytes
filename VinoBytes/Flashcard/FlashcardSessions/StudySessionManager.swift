@@ -79,4 +79,22 @@ class StudySessionManager: ObservableObject {
             print("Failed to delete session: \(error)")
         }
     }
-}
+    // Computed property: Flashcards studied from the start of the current week
+       var flashcardsStudiedThisWeek: Int {
+           let calendar = Calendar.current
+           // Calculate the start of the week (using the current locale's settings)
+           guard let startOfWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: Date())) else {
+               return 0
+           }
+           
+           let sessions = fetchPastSessions().filter { session in
+               if let date = session.date {
+                   return date >= startOfWeek
+               }
+               return false
+           }
+           
+           return sessions.reduce(0) { $0 + Int($1.totalQuestions) }
+       }
+   }
+

@@ -100,7 +100,7 @@ struct BlogPostView: View {
                 .padding()
             }
             
-            .navigationBarTitle("Latest Wine Byte", displayMode: .inline)
+            .navigationBarTitle("Current Byte", displayMode: .inline)
             .navigationBarItems(trailing: navBarButton)
             .sheet(isPresented: $showingPastPosts) {
                 PastPostsSheet(blogPosts: blogPosts, selectedPost: $selectedPost)

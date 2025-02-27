@@ -140,9 +140,9 @@ struct OpenAIChatView: View {
                             Button(action: {
                                 showConversationHistory.toggle()
                             }) {
-                                Image(systemName: "list.bullet")
-                                    .imageScale(.large)
+                                Text("History")
                                     .foregroundColor(Color("Latte"))
+                                    .bold()
                             }
                         }
                     }

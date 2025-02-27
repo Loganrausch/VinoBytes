@@ -10,6 +10,44 @@ import CoreData
 import RevenueCat
 import RevenueCatUI
 
+// MARK: - Custom Navigation Actions
+enum CustomDashboardAction: String, CaseIterable, Identifiable {
+    case addWineShortcut
+    case aiHistoryShortcut
+    case flashcardHistoryShortcut
+    case grapesShortcut
+    case glossaryShortcut
+    case pairingsShortcut
+    case regionsShortcut
+    case wineflawsShortcut
+ 
+    
+
+    var id: String { rawValue }
+    
+    var displayName: String {
+        switch self {
+        case .addWineShortcut:
+            return "Add Wine"
+        case .aiHistoryShortcut:
+            return "AI History"
+        case .flashcardHistoryShortcut:
+            return "Flashcard History"
+        case .grapesShortcut:
+            return "Grapes"
+        case .glossaryShortcut:
+            return "Glossary"
+        case .pairingsShortcut:
+            return "Pairings"
+        case .regionsShortcut:
+            return "Regions"
+        case .wineflawsShortcut:
+            return "Wine Flaws"
+        
+        }
+    }
+}
+
 struct DashboardView: View {
     @Environment(\.managedObjectContext) private var context
     @State private var blogPosts: [BlogPost] = []
@@ -17,236 +55,394 @@ struct DashboardView: View {
     @State private var showAlert = false
     @State private var alertMessage = ""
     @State private var showWhiteBackgroundView = false
-    @State private var recentWines: [WineEntity] = []
     @State private var navigateToBlogPost = false  // Controls navigation to the blog post
-    @ObservedObject var refreshNotifier: RefreshNotifier  // Add this line
+    @State private var showWineFactSheet = false  // <— NEW STATE HERE
+    @State private var isFactFetching = false
+    @State private var showNameInputSheet = false
+    @State private var animateGreeting = false
+    @State private var firstButtonLongPressTriggered = false
+    @State private var secondButtonLongPressTriggered = false
+    @State private var showReassignTip = false
+    
+    @EnvironmentObject var refreshNotifier: RefreshNotifier
     @EnvironmentObject var openAIManager: OpenAIManager  // Access from environment
     @EnvironmentObject var authViewModel: AuthViewModel  // To access subscription status
-
+    @EnvironmentObject var userProfile: UserProfileViewModel // To access user first name
     
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \WineEntity.dateAdded, ascending: false)],
+        animation: .default
+    ) private var fetchedWines: FetchedResults<WineEntity>
+    
+    // Use @AppStorage to store the raw string value for each button
+    @AppStorage("firstCustomAction") private var storedFirstCustomAction: String = ""
+    @AppStorage("secondCustomAction") private var storedSecondCustomAction: String = ""
+    
+    // MARK: - New State for Custom Buttons
+    // Using Optional to represent an unassigned state.
+    
+    @State private var showActionSheet: Bool = false
+    @State private var activeButton: Int? = nil   // 1 for first, 2 for second
+    @State private var navigateToFirstCustom: Bool = false
+    @State private var navigateToSecondCustom: Bool = false
     
     var body: some View {
-        
         NavigationStack {
-            
-            VStack(alignment: .center, spacing: 16) {
+            GeometryReader { geometry in
+                let buttonHeight = geometry.size.height * 0.135
                 
-                VStack {
-                    Text("Wine Fact of the Week")
-                        .font(.title3)
-                        .bold()
-                        .minimumScaleFactor(0.8)
-                    if let fact = wineFactOfTheWeek {
-                        Text(fact)
-                            .multilineTextAlignment(.center)
-                            .minimumScaleFactor(0.8)
-                            .padding(.horizontal)
-                            .padding(.vertical, 6)
+                VStack(spacing: 16) {
+                    
+                    // If no name is set, add extra vertical space.
+                    if userProfile.firstName.isEmpty {
+                        Spacer().frame(height: 10) // Adjust height as needed
                     } else {
-                        Text("Loading wine fact...")
-                            .multilineTextAlignment(.center)
-                            .padding(.horizontal)
-                            .padding(.vertical, 6)
-                    }
-                }
-                .frame(maxWidth: .infinity)
-                .frame(maxHeight: 170)
-                .padding(.top)
-                .padding(.horizontal)
-                .padding(.bottom, 5)
-                .background(
-                    // Apply the background before padding so it matches the overlay size
-                    Color.lightLatte
-                        .overlay(
-                            GeometryReader { geometry in
-                                // Circles at each corner
-                                Group {
-                                    Circle().fill(Color("Maroon"))
-                                        .frame(width: 7, height: 7)
-                                        .position(x: 15, y: 15) // Top-left corner
-                                    Circle().fill(Color("Maroon"))
-                                        .frame(width: 7, height: 7)
-                                        .position(x: geometry.size.width - 15, y: 15) // Top-right corner
-                                    Circle().fill(Color("Maroon"))
-                                        .frame(width: 7, height: 7)
-                                        .position(x: 15, y: geometry.size.height - 15) // Bottom-left corner
-                                    Circle().fill(Color("Maroon"))
-                                        .frame(width: 7, height: 7)
-                                        .position(x: geometry.size.width - 15, y: geometry.size.height - 15) // Bottom-right corner
+                        // Display the greeting if the first name is available.
+                        Text("Hi, \(userProfile.firstName)!")
+                            .font(.title)
+                            .fontWeight(.bold)
+                            .foregroundColor(.black)
+                            .opacity(animateGreeting ? 1 : 0)
+                            .onAppear {
+                                withAnimation(.easeIn(duration: 0.6)) {
+                                    animateGreeting = true
                                 }
                             }
-                        )
-                )
-                .cornerRadius(10)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color("LightMaroon"), lineWidth: 1.5)
-                )
-                .padding()
-                .padding(.top)
-                
-                
-                
-                HStack(spacing: 16) {
-                    // Flashcard Progress Button
-                    Button(action: {
-                        showWhiteBackgroundView.toggle()
-                    }) {
-                        Text("Digital Napkin Mode")
-                            .bold()
-                            .foregroundColor(.black)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .padding(.top)
-                            .padding(.bottom)
-                            .background(Color.lightLatte)
-                            .cornerRadius(10)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(Color("LightMaroon"), lineWidth: 2.4)
-                            )
-                        
-                            .shadow(color: .black.opacity(0.5), radius: 5)
                     }
-                    .sheet(isPresented: $showWhiteBackgroundView) {
-                        WhiteBackgroundView()
-                    }
-                    Spacer()
                     
-                    // Weekly Blog Post Button
-                    if let latestPost = blogPosts.first {
-                       
+                    HStack {
+                        Text("You studied")
+                        Text("\(StudySessionManager.shared.flashcardsStudiedThisWeek)")
+                            .font(.title3)
+                            .bold()
+                            .foregroundColor(.maroon) // Optional to match your theme
+                        Text("flashcards this week.")
+                    }
+                    .font(.title3)
+                    .padding(.bottom, 8)
+                    
+                    
+                    
+                    Button(action: {
+                        handleWineFactButtonTap()
+                    }) {
+                        Group {
+                            if isFactFetching {
+                                // Loading indicator in the button
+                                HStack {
+                                    ProgressView()
+                                    Text("Loading Wine Fact...")
+                                        .foregroundStyle(Color.black)
+                                        .font(.subheadline)
+                                }
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                
+                            } else {
+                                // Normal button state
+                                Text("Wine Fact of the Week")
+                                    .font(.title3)
+                                    .bold()
+                                    .foregroundColor(.black)
+                                    .padding()
+                                    .frame(maxWidth: .infinity)
+                                    .background(Color("Latte"))
+                                    .cornerRadius(10)
+                            }
+                        }
+                        // Apply the maroon stroke overlay
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color("LightMaroon"), lineWidth: 2.4)
+                        )
+                    }
+                    
+                    .shadow(radius: 5)
+                    // Present sheet AFTER the fact is loaded
+                    .sheet(isPresented: $showWineFactSheet) {
+                        if let fact = wineFactOfTheWeek {
+                            WineFactSheetView(fact: fact)
+                                .presentationDetents([.medium, .large])
+                                .presentationDragIndicator(.visible)
+                        } else {
+                            // Fallback: should rarely happen if code is correct
+                            ProgressView("Loading Wine Fact...")
+                                .presentationDetents([.medium, .large])
+                                .presentationDragIndicator(.visible)
+                        }
+                    }
+                    .padding(.bottom)
+                    .padding(.horizontal)
+                    
+                    
+                    HStack(spacing: 30) {
+                        
+                        
                         Button(action: {
+                            showWhiteBackgroundView.toggle()
+                        }) {
+                            Text("Digital Napkin")
+                                .bold()
+                                .foregroundColor(.black)
+                                .frame(maxWidth: .infinity)
+                                .frame(height: buttonHeight)
+                                .background(Color.lightLatte)
+                                .cornerRadius(10)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(Color("LightMaroon"), lineWidth: 2.4)
+                                )
+                            
+                                .shadow(color: .gray, radius: 5)
+                        }
+                        .sheet(isPresented: $showWhiteBackgroundView) {
+                            WhiteBackgroundView()
+                        }
+                        
+                        
+                        // Weekly Blog Post Button
+                        if let latestPost = blogPosts.first {
+                            
+                            Button(action: {
                                 navigateToBlogPost = true
-                            // Only increment and maybe request review if the user has a subscription
-                                    if authViewModel.hasActiveSubscription {
-                                        incrementBlogAccessCounterAndMaybeRequestReview()
-                                    }
+                                // Only increment and maybe request review if the user has a subscription
+                                if authViewModel.hasActiveSubscription {
+                                    incrementBlogAccessCounterAndMaybeRequestReview()
+                                }
                             }) {
-                            HStack {
-                                Spacer()
+                                HStack {
+                                    Spacer()
                                     Text("Latest Wine Byte")
                                         .bold()
                                         .foregroundColor(.black)
                                     Spacer()
-                                   
+                                    
+                                }
+                                .frame(maxWidth: .infinity)
+                                .frame(height: buttonHeight)
+                                .background(Color.lightLatte)
+                                .cornerRadius(10)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(Color("LightMaroon"), lineWidth: 2.4)
+                                )
+                                .shadow(color: .gray, radius: 5)
                             }
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .padding(.top)
-                            .padding(.bottom)
-                            .background(Color.lightLatte)
-                                                       .cornerRadius(10)
-                                                       .overlay(
-                                                           RoundedRectangle(cornerRadius: 10)
-                                                               .stroke(Color("LightMaroon"), lineWidth: 2.4)
-                                                       )
-                                                       .shadow(color: .black.opacity(0.6), radius: 6)
-                                                   }
-                                                   .navigationDestination(isPresented: $navigateToBlogPost) {
-                                                       BlogPostView(blogPost: latestPost, blogPosts: blogPosts)
-                                                   }
-                                               } else {
-                        Text("Loading Blog Post...")
-                            .bold()
-                            .foregroundColor(.gray)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .padding(.top)
-                            .padding(.bottom)
-                            .background(Color.lightLatte)
-                            .cornerRadius(10)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(Color("LightMaroon"), lineWidth: 2.4)
-                            )
-                            .shadow(color: .black.opacity(0.6), radius: 6)
+                            .navigationDestination(isPresented: $navigateToBlogPost) {
+                                BlogPostView(blogPost: latestPost, blogPosts: blogPosts)
+                            }
+                        } else {
+                            Text("Loading Blog Post...")
+                                .bold()
+                                .foregroundColor(.gray)
+                                .frame(maxWidth: .infinity)
+                                .frame(minHeight: geometry.size.height * 0.1, maxHeight: geometry.size.height * 0.15)
+                                .background(Color.lightLatte)
+                                .cornerRadius(10)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(Color("LightMaroon"), lineWidth: 2.4)
+                                )
+                                .shadow(color: .gray, radius: 5)
+                        }
+                        
                     }
-
-                                   }
-                                   .padding(.horizontal)
-                
-                // Recent Wines Section
-                VStack(alignment: .center, spacing: 8) {
-                    Text("Recently Added Wines")
-                        .font(.headline)
-                        .padding(.bottom, 2)
-                        .padding(.top, 2)
+                    .padding(.horizontal)
+                    .padding(.bottom)
                     
-                    if recentWines.isEmpty {
-                        Text("No recent wines added.")
-                            .foregroundColor(.gray)
-                    } else {
-                        ScrollView(showsIndicators: false) {
-                            VStack(spacing: 8) {
-                                ForEach(recentWines, id: \.self) { wine in
-                                    NavigationLink(destination: WineDetailView(wineEntity: wine)) {
-                                        HStack {
-                                            // Wine Image
-                                            if let imageData = wine.imageData, let uiImage = UIImage(data: imageData) {
-                                                Image(uiImage: uiImage)
-                                                    .resizable()
-                                                    .scaledToFill()
-                                                    .frame(width: 45, height: 45)
-                                                    .clipShape(RoundedRectangle(cornerRadius: 5))
-                                            } else {
-                                                Rectangle()
-                                                    .fill(Color.gray.opacity(0.3))
-                                                    .frame(width: 45, height: 45)
-                                                    .clipShape(RoundedRectangle(cornerRadius: 5))
-                                                    .overlay(
-                                                        Image(systemName: "wineglass")
-                                                            .foregroundColor(.white)
-                                                    )
-                                            }
-                                            
-                                            VStack(alignment: .leading) {
-                                                Text(wine.wineName ?? "Unnamed Wine")
-                                                    .font(.subheadline)
-                                                    .bold()
-                                                Text("\(wine.producer ?? "Unknown Producer"), \(wine.vintage ?? "Unknown Vintage")")
-                                                    .font(.caption)
-                                                    .foregroundColor(.black.opacity(0.7))
-                                            }
-                                            
-                                            Spacer()
-                                            
-                                            Image(systemName: "chevron.right")
-                                                .foregroundColor(.gray)
-                                        }
-                                        .padding(.vertical, 5)
-                                        // Make the entire HStack tappable
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                        .contentShape(Rectangle())
+                    
+                    
+                    
+                    // MARK: - New Assignable Buttons Section
+                    if geometry.size.height >= 600 {
+                        
+                        HStack(spacing: 30) {
+                            ZStack(alignment: .topTrailing) {
+                                // First custom button
+                                Button(action: {
+                                    // If long press was triggered, reset flag and cancel the tap action.
+                                    if firstButtonLongPressTriggered {
+                                        firstButtonLongPressTriggered = false
+                                        return
                                     }
-                                    .buttonStyle(PlainButtonStyle())
-                                    Divider()
+                                    
+                                    // Otherwise, handle the tap normally.
+                                    if firstCustomAction != nil {
+                                        navigateToFirstCustom = true
+                                    } else {
+                                        activeButton = 1
+                                        showActionSheet = true
+                                    }
+                                }) {
+                                    VStack {
+                                        if let action = firstCustomAction {
+                                            Text(action.displayName)
+                                                .foregroundStyle(Color.black)
+                                                .bold()
+                                        } else {
+                                            VStack {
+                                                Image(systemName: "pencil")
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .foregroundStyle(Color.maroon)
+                                                    .frame(width: 30, height: 30)
+                                                Text("Unassigned")
+                                                    .font(.headline)
+                                                    .foregroundColor(.black)
+                                            }
+                                        }
+                                    }
+                                    .frame(maxWidth: .infinity)
+                                    .padding()
+                                    .frame(height: buttonHeight)
+                                    .background(Color.lightLatte)
+                                    .cornerRadius(10)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .stroke(Color("LightMaroon"), lineWidth: 2.4)
+                                    )
+                                    .shadow(color: .gray, radius: 5)
+                                }
+                                
+                                .simultaneousGesture(
+                                    LongPressGesture(minimumDuration: 1.0)
+                                        .onEnded { _ in
+                                            // Set the flag and trigger the assignment dialog.
+                                            firstButtonLongPressTriggered = true
+                                            activeButton = 1
+                                            showActionSheet = true
+                                        }
+                                )
+                                
+                                // Small pencil icon at the top
+                                if firstCustomAction != nil {
+                                    Image(systemName: "pencil")
+                                        .foregroundColor(.maroon)
+                                        .font(.system(size: 20))
+                                        .background(Color.clear)
+                                        .offset(x: -10, y: 10) // Adjust position
                                 }
                             }
-                            .padding(.horizontal)
+                            
+                            
+                            ZStack(alignment: .topTrailing) {
+                                // Second custom button
+                                Button(action: {
+                                    // If long press was triggered, reset flag and cancel the tap action.
+                                    if secondButtonLongPressTriggered {
+                                        secondButtonLongPressTriggered = false
+                                        return
+                                    }
+                                    
+                                    // Otherwise, handle the tap normally.
+                                    if secondCustomAction != nil {
+                                        navigateToSecondCustom = true
+                                    } else {
+                                        activeButton = 2
+                                        showActionSheet = true
+                                    }
+                                }) {
+                                    VStack {
+                                        if let action = secondCustomAction {
+                                            Text(action.displayName)
+                                                .foregroundStyle(Color.black)
+                                                .bold()
+                                        } else {
+                                            VStack {
+                                                Image(systemName: "pencil")
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .foregroundStyle(Color.maroon)
+                                                    .frame(width: 30, height: 30)
+                                                Text("Unassigned")
+                                                    .font(.headline)
+                                                    .foregroundColor(.black)
+                                            }
+                                        }
+                                    }
+                                    .frame(maxWidth: .infinity)
+                                    .padding()
+                                    .frame(height: buttonHeight)
+                                    .background(Color.lightLatte)
+                                    .cornerRadius(10)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .stroke(Color("LightMaroon"), lineWidth: 2.4)
+                                    )
+                                    .shadow(color: .gray, radius: 5)
+                                }
+                                
+                                .simultaneousGesture(
+                                    LongPressGesture(minimumDuration: 1.0)
+                                        .onEnded { _ in
+                                            // Set the flag and trigger the assignment dialog.
+                                            secondButtonLongPressTriggered = true
+                                            activeButton = 2
+                                            showActionSheet = true
+                                        }
+                                )
+                                // Small pencil icon at the top
+                                if secondCustomAction != nil {
+                                    Image(systemName: "pencil")
+                                        .foregroundColor(.maroon)
+                                        .font(.system(size: 20))
+                                        .background(Color.clear)
+                                        .offset(x: -10, y: 10) // Adjust position
+                                }
+                            }
                         }
+                        .padding(.horizontal)
+                        .padding(.bottom)
                     }
+                    // Recent Wines Carousel Section
+                    VStack(alignment: .center, spacing: 8) {
+                        Text("Your Recent Wines")
+                            .font(.title3)
+                            .bold()
+                            .padding(.horizontal)
+                        
+                        
+                        
+                        // Wrap the content in a fixed-height container
+                        Group {
+                            if fetchedWines.isEmpty {
+                                Text("No recent wines added.")
+                                    .foregroundColor(.gray)
+                                    .padding(.horizontal)
+                            } else {
+                                ScrollView(.horizontal, showsIndicators: false) {
+                                    HStack(spacing: 16) {
+                                        ForEach(fetchedWines.prefix(4), id: \.self) { wine in
+                                            RecentWineCard(wine: wine)
+                                        }
+                                    }
+                                    // Force SwiftUI to rebuild if the names change
+                                    .id(fetchedWines.map { $0.wineName ?? "" }.joined(separator: "-"))
+                                    .padding(.horizontal)
+                                }
+                            }
+                        }
+                        .frame(height: 145)  // Fixed size regardless of content
+                        .frame(maxWidth: .infinity)
+                        .padding(.top)
+                        .padding(.bottom)
+                        .background(Color.white)
+                        .cornerRadius(10)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color("LightMaroon"), lineWidth: 2.5)
+                        )
+                        
+                        .padding(.horizontal)
+                        .padding(.vertical, 12)
+                        
+                    }
+                    
+                    Spacer()
+                    
                 }
-                .frame(maxWidth: .infinity)
-                .frame(maxHeight: 318)
-                .padding(.top)
-                .padding(.horizontal)
-                .padding(.bottom, 5)
-                .background(Color.lightLatte)
-                .cornerRadius(10)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color("LightMaroon"), lineWidth: 1.5)
-                )
-                .padding(.top)
-                .padding(.horizontal)
-                
-                
-                
-                Spacer()
-                
             }
-            .padding(.horizontal, 10)
+            .padding(20)
             .navigationBarTitle("Dashboard", displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -257,33 +453,157 @@ struct DashboardView: View {
                     }
                 }
             }
-            .onAppear {
-                fetchContent()
-                fetchRecentWines()  // Manually fetch recent wines
-            }
             
-            .alert(isPresented: $showAlert) { // Add this line
+            .onAppear {
+                // Load the user profile from Core Data.
+                userProfile.loadUserProfile(context: context)
+                
+                // If the firstName is empty, show the name input sheet.
+                if userProfile.firstName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                    showNameInputSheet = true
+                }
+                
+                // Other onAppear actions...
+                fetchContent()
+                
+                context.refreshAllObjects()
+                print("DashboardView onAppear =>", fetchedWines.map(\.wineName))
+            }
+            .sheet(isPresented: $showNameInputSheet) {
+                NameInputSheetView()
+                    .environmentObject(userProfile)
+                    .presentationDetents([.fraction(0.40)])
+                    .presentationDragIndicator(.visible)
+                    .preferredColorScheme(.light)
+            }
+            .alert(isPresented: $showAlert) {
                 Alert(title: Text("Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
             }
-        }
-    }
-    
-    
-    
-    private func fetchRecentWines() {
-        let request: NSFetchRequest<WineEntity> = WineEntity.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(keyPath: \WineEntity.dateAdded, ascending: false)]
-        request.fetchLimit = 4
-        
-        do {
-            let result = try context.fetch(request)
-            DispatchQueue.main.async {
-                self.recentWines = result
+            // Confirmation dialog for custom button assignment.
+            .confirmationDialog("Select Destination", isPresented: $showActionSheet) {
+                ForEach(CustomDashboardAction.allCases.filter { action in
+                    // If the action represents a locked feature, only show it if the user is subscribed.
+                    if (action == .glossaryShortcut || action == .wineflawsShortcut || action == .aiHistoryShortcut) && !authViewModel.hasActiveSubscription {
+                        return false
+                    }
+                    return true
+                }) { action in
+                    Button(action.displayName) {
+                        if activeButton == 1 {
+                            storedFirstCustomAction = action.rawValue
+                        } else if activeButton == 2 {
+                            storedSecondCustomAction = action.rawValue
+                        }
+                        activeButton = nil
+                        
+                        // Show the toast every time a button is changed.
+                        showReassignTip = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                            showReassignTip = false
+                        }
+                    }
+                }
+                Button("Cancel", role: .cancel) {
+                    activeButton = nil
+                }
             }
-        } catch {
-            print("Failed to fetch recent wines: \(error)")
+            .preferredColorScheme(.light) // Forces the dialog into light mode.
+            
+            
+            // Navigation destinations for custom buttons.
+            .navigationDestination(isPresented: $navigateToFirstCustom) {
+                if let action = firstCustomAction {
+                    destinationView(for: action)
+                }
+            }
+            .navigationDestination(isPresented: $navigateToSecondCustom) {
+                if let action = secondCustomAction {
+                    destinationView(for: action)
+                }
+            }
+            .overlay(
+                VStack {
+                    if showReassignTip {
+                        Text("Button Assigned Successfully!\nHold the button to change it anytime.")
+                            .font(.headline)
+                            .foregroundColor(Color.black)
+                            .multilineTextAlignment(.center)
+                            .lineLimit(2)
+                            .padding()
+                            .background(Color("LightLatte"))
+                            .cornerRadius(10)
+                            .shadow(color: Color.black.opacity(0.7), radius: 3, x: 0, y: 2)
+                            .transition(.opacity)
+                    }
+                }
+                .padding(.horizontal)
+                .padding(.bottom, 40),
+                alignment: .bottom
+            )
         }
     }
+
+
+    
+    
+    // Computed properties to work with the enum
+        private var firstCustomAction: CustomDashboardAction? {
+            get { CustomDashboardAction(rawValue: storedFirstCustomAction) }
+            set { storedFirstCustomAction = newValue?.rawValue ?? "" }
+        }
+        
+        private var secondCustomAction: CustomDashboardAction? {
+            get { CustomDashboardAction(rawValue: storedSecondCustomAction) }
+            set { storedSecondCustomAction = newValue?.rawValue ?? "" }
+        }
+    
+    // MARK: - Navigation Destination Builder
+        @ViewBuilder
+        private func destinationView(for action: CustomDashboardAction) -> some View {
+            switch action {
+            case .addWineShortcut:
+                WineFormView()
+            case .aiHistoryShortcut:
+                ConversationHistoryView()
+            case .flashcardHistoryShortcut:
+                SessionListView()
+            case .grapesShortcut:
+                GrapeListView()
+            case .glossaryShortcut:
+                WineGlossaryListView()
+            case .pairingsShortcut:
+                FoodWinePairingsListView()
+            case .regionsShortcut:
+                RegionListView()
+            case .wineflawsShortcut:
+                WineFlawListView()
+            
+            }
+        }
+    
+    // MARK: - Button Tap Handling
+    private func handleWineFactButtonTap() {
+        // If we already have the fact, show the sheet immediately
+        if let _ = wineFactOfTheWeek {
+            showWineFactSheet = true
+        } else {
+            // Otherwise, fetch on demand
+            isFactFetching = true
+            ContentfulManager.shared.fetchWineFact { fact, error in
+                DispatchQueue.main.async {
+                    self.isFactFetching = false
+                    if let fact = fact {
+                        self.wineFactOfTheWeek = fact
+                        self.showWineFactSheet = true
+                    } else {
+                        self.alertMessage = error?.localizedDescription ?? "Unknown error"
+                        self.showAlert = true
+                    }
+                }
+            }
+        }
+    }
+    
     
     private func fetchContent() {
         ContentfulManager.shared.fetchBlogPosts { posts, error in
@@ -300,36 +620,59 @@ struct DashboardView: View {
                 print("Error fetching posts: \(error.localizedDescription)")
             }
         }
-        
-        ContentfulManager.shared.fetchWineFact { fact, error in
-            if let fact = fact {
-                DispatchQueue.main.async {
-                    self.wineFactOfTheWeek = fact
-                }
-            } else {
-                DispatchQueue.main.async {
-                    self.alertMessage = error?.localizedDescription ?? "Unknown error"
-                    self.showAlert = true
-                }
-                print("Error fetching wine fact: \(error?.localizedDescription ?? "Unknown error")")
-            }
-        }
     }
     
     private func incrementBlogAccessCounterAndMaybeRequestReview() {
-            let defaults = UserDefaults.standard
-            let blogAccessCountKey = "blogAccessCount"
-            
-            let newCount = defaults.integer(forKey: blogAccessCountKey) + 1
-            defaults.setValue(newCount, forKey: blogAccessCountKey)
-            
-            // Define your milestones
-            let milestones = [5, 20, 50, 100]
-            
-            if milestones.contains(newCount) {
-                ReviewRequestHelper.requestReviewIfAppropriate()
+        let defaults = UserDefaults.standard
+        let blogAccessCountKey = "blogAccessCount"
+        
+        let newCount = defaults.integer(forKey: blogAccessCountKey) + 1
+        defaults.setValue(newCount, forKey: blogAccessCountKey)
+        
+        // Define your milestones
+        let milestones = [5, 20, 50, 100]
+        
+        if milestones.contains(newCount) {
+            ReviewRequestHelper.requestReviewIfAppropriate()
         }
     }
 }
 
 
+#if DEBUG
+import SwiftUI
+import CoreData
+
+struct DashboardView_Previews: PreviewProvider {
+    static var previewContext: NSManagedObjectContext = {
+        let controller = PersistenceController(inMemory: true)
+        let context = controller.container.viewContext
+        if let entityDescription = NSEntityDescription.entity(forEntityName: "WineEntity", in: context) {
+            let sampleWine = NSManagedObject(entity: entityDescription, insertInto: context)
+            sampleWine.setValue(Date(), forKey: "dateAdded")
+        }
+        do {
+            try context.save()
+        } catch {
+            print("Error saving preview context: \(error)")
+        }
+        return context
+    }()
+    
+    static var previews: some View {
+        let openAIManager = OpenAIManager(context: previewContext)
+        let authViewModel = AuthViewModel()
+        let refreshNotifier = RefreshNotifier()
+        let userProfileViewModel = UserProfileViewModel()
+        
+        return NavigationView {
+            DashboardView()
+                .environment(\.managedObjectContext, previewContext)
+                .environmentObject(openAIManager)
+                .environmentObject(authViewModel)
+                .environmentObject(refreshNotifier)
+                .environmentObject(userProfileViewModel)
+        }
+    }
+}
+#endif

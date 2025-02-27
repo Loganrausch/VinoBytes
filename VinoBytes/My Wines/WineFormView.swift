@@ -12,6 +12,7 @@ import PhotosUI
 struct WineFormView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.managedObjectContext) private var context
+    @EnvironmentObject var refreshNotifier: RefreshNotifier
 
     var wineEntity: WineEntity?
 
@@ -293,6 +294,8 @@ struct WineFormView: View {
                    dismiss()
                    print("Dismiss called.")
                    
+                   // Trigger a refresh in the DashboardView
+                    refreshNotifier.needsRefresh = true
                    
                    // After a successful save and dismiss, increment save counter and possibly request a review
                    incrementSaveCounterAndMaybeRequestReview()

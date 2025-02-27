@@ -12,8 +12,8 @@ struct ContentView: View {
     @EnvironmentObject var openAIManager: OpenAIManager
     @EnvironmentObject var flashcardManager: FlashcardManager
     @EnvironmentObject var studySessionManager: StudySessionManager
+    @EnvironmentObject var refreshNotifier: RefreshNotifier
     @State private var selectedTab = 0
-    let refreshNotifier = RefreshNotifier()  // Create a single instance
     
     
     init() {
@@ -23,7 +23,7 @@ struct ContentView: View {
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            DashboardView(refreshNotifier: refreshNotifier)
+            DashboardView()
                 .tabItem {
                     Image(systemName: "chart.bar.doc.horizontal")
                     Text("Dashboard")
@@ -43,7 +43,7 @@ struct ContentView: View {
                     Text("Vino Chat")
                 }
                 .tag(2)
-            MyWinesView(isRootView: true, refreshNotifier: refreshNotifier)
+            MyWinesView(isRootView: true)
                 .tabItem {
                     Label("My Wines", systemImage: "wineglass")
                 }

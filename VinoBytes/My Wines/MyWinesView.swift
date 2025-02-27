@@ -12,12 +12,13 @@ import RevenueCatUI
 struct MyWinesView: View {
     @Environment(\.managedObjectContext) private var context
     @EnvironmentObject var authViewModel: AuthViewModel  // Access subscription status
+    @EnvironmentObject var refreshNotifier: RefreshNotifier
     @State private var searchText: String = ""
     @State private var isAddingWine = false  // State to trigger navigation to the WineFormView
     @State private var showUpgradeAlert = false  // State to show upgrade alert
     @State private var isPaywallPresented = false  // Controls the presentation of the paywall
     var isRootView: Bool
-    @ObservedObject var refreshNotifier: RefreshNotifier
+    
     
     let maxFreeWines = 5  // Maximum number of free wines allowed
 

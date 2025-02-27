@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22758" systemVersion="23D56" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23507" systemVersion="24D5034f" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
     <entity name="ChatMessage" representedClassName=".ChatMessage" syncable="YES" codeGenerationType="class">
         <attribute name="content" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
@@ -31,6 +31,9 @@
         <attribute name="totalQuestions" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="flashcardResults" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="FlashcardResult" inverseName="session" inverseEntity="FlashcardResult"/>
     </entity>
+    <entity name="UserProfile" representedClassName="UserProfile" syncable="YES" codeGenerationType="class">
+        <attribute name="firstName" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="WineEntity" representedClassName=".WineEntity" syncable="YES" codeGenerationType="class">
         <attribute name="acid" optional="YES" attributeType="String"/>
         <attribute name="alcohol" optional="YES" attributeType="String"/>
@@ -57,5 +60,6 @@
         <memberEntity name="ChatMessage"/>
         <memberEntity name="StudySession"/>
         <memberEntity name="FlashcardResult"/>
+        <memberEntity name="UserProfile"/>
     </configuration>
 </model>

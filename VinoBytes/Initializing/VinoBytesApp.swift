@@ -11,6 +11,8 @@ import RevenueCat
 @main
 struct VinoBytesApp: App {
     @StateObject var authViewModel = AuthViewModel()
+    @StateObject var userProfileViewModel = UserProfileViewModel()  // <-- Create your view model here
+    @StateObject var refreshNotifier = RefreshNotifier()  // Create it once here
     @State private var isShowingLaunchScreen = true
     
     init() {
@@ -21,7 +23,8 @@ struct VinoBytesApp: App {
         WindowGroup {
             LaunchingContentView(isShowingLaunchScreen: $isShowingLaunchScreen)
                 .environmentObject(authViewModel)
-            
+                .environmentObject(userProfileViewModel)  // <-- Inject it into the environment here
+                .environmentObject(refreshNotifier)  // Inject into environment
         }
     }
     
@@ -37,5 +40,7 @@ struct VinoBytesApp: App {
         UINavigationBar.appearance().standardAppearance = appearance
         UINavigationBar.appearance().compactAppearance = appearance
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(named: "Maroon") ?? .red
+        UIPageControl.appearance().pageIndicatorTintColor = UIColor(named: "TransparentMaroon") ?? .gray
     }
 }
