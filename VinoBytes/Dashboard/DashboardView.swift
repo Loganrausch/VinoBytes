@@ -236,7 +236,7 @@ struct DashboardView: View {
                                 .bold()
                                 .foregroundColor(.gray)
                                 .frame(maxWidth: .infinity)
-                                .frame(minHeight: geometry.size.height * 0.1, maxHeight: geometry.size.height * 0.15)
+                                .frame(height: buttonHeight)
                                 .background(Color.lightLatte)
                                 .cornerRadius(10)
                                 .overlay(
