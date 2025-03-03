@@ -72,6 +72,7 @@
 		CE94AB072C0E3624004CE8E0 /* WineGlossaryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94AB062C0E3624004CE8E0 /* WineGlossaryListView.swift */; };
 		CE94AB0A2C0E3645004CE8E0 /* WineGlossaryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94AB092C0E3645004CE8E0 /* WineGlossaryDetailView.swift */; };
 		CE94AB0C2C0E3675004CE8E0 /* WineGlossaryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94AB0B2C0E3675004CE8E0 /* WineGlossaryData.swift */; };
+		CEA165EA2D70FB2600AA9000 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA165E92D70FB2000AA9000 /* AppDelegate.swift */; };
 		CECB7A622BACB69200659CB6 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB7A612BACB69200659CB6 /* WelcomeView.swift */; };
 		CECB7A662BACC50600659CB6 /* ContactFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECB7A652BACC50600659CB6 /* ContactFormView.swift */; };
 		CED0E6BF2CAB4F5300D32266 /* PastPostsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED0E6BE2CAB4F5300D32266 /* PastPostsSheet.swift */; };
@@ -174,6 +175,7 @@
 		CE94AB062C0E3624004CE8E0 /* WineGlossaryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineGlossaryListView.swift; sourceTree = "<group>"; };
 		CE94AB092C0E3645004CE8E0 /* WineGlossaryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineGlossaryDetailView.swift; sourceTree = "<group>"; };
 		CE94AB0B2C0E3675004CE8E0 /* WineGlossaryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineGlossaryData.swift; sourceTree = "<group>"; };
+		CEA165E92D70FB2000AA9000 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CECB7A612BACB69200659CB6 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		CECB7A652BACC50600659CB6 /* ContactFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactFormView.swift; sourceTree = "<group>"; };
 		CED0E6BE2CAB4F5300D32266 /* PastPostsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastPostsSheet.swift; sourceTree = "<group>"; };
@@ -380,6 +382,7 @@
 			isa = PBXGroup;
 			children = (
 				CE6ADF302B925ED600982366 /* VinoBytesApp.swift */,
+				CEA165E92D70FB2000AA9000 /* AppDelegate.swift */,
 				CE8318A52CB34E190030CC98 /* LaunchScreen.swift */,
 				CE02C5C82CB374C200EAAE52 /* LaunchingContentView.swift */,
 				CE35C9B22CA0766800D31200 /* RootView.swift */,
@@ -638,6 +641,7 @@
 				CE8318A62CB34E190030CC98 /* LaunchScreen.swift in Sources */,
 				CE82D2892B9B72CF002B55F1 /* StudyView.swift in Sources */,
 				CE32CDE12C1CE5C600A87202 /* FoodWinePairingsListView.swift in Sources */,
+				CEA165EA2D70FB2600AA9000 /* AppDelegate.swift in Sources */,
 				CED380D82BB5E18400CAFB29 /* DashboardView.swift in Sources */,
 				CE8E23542D0FD8D4008A11E4 /* ReviewRequestHelper.swift in Sources */,
 				CE7F9DE62C2CA1C400BA61C1 /* WineGlassLoadingView.swift in Sources */,
@@ -856,7 +860,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vinobytes.VinoBytes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -896,7 +900,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vinobytes.VinoBytes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

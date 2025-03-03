@@ -159,4 +159,25 @@ class ContentfulManager {
         
         task.resume()
     }
-}
+    // MARK: - Device Token Registration
+        func registerDeviceToken(_ token: String) {
+            guard let url = URL(string: "\(baseURL)/registerDevice") else {
+                logger.error("Invalid URL for device registration")
+                return
+            }
+            
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            let body = ["deviceToken": token]
+            request.httpBody = try? JSONSerialization.data(withJSONObject: body)
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            
+            URLSession.shared.dataTask(with: request) { data, response, error in
+                if let error = error {
+                    self.logger.error("Error registering device token: \(error.localizedDescription)")
+                    return
+                }
+                self.logger.debug("Device token registered successfully")
+            }.resume()
+        }
+    }

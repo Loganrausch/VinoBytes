@@ -33,6 +33,7 @@ struct AccountView: View {
     @State private var isCheckingICloud: Bool = false  // For loading indicator
     @State private var showRateAlert = false
     @State private var showingChangeNameSheet = false  // New state for the change name sheet
+    @State private var originalName: String = ""
     
     @Environment(\.managedObjectContext) private var viewContext  // Core Data context
     @ObservedObject var refreshNotifier: RefreshNotifier  // Add this line
@@ -170,6 +171,8 @@ struct AccountView: View {
                             .accentColor(Color.black) // Applying custom accent color locally to these buttons
                             // New button for changing the name
                             Button("Change Name") {
+                                // Store the current name before presenting the sheet.
+                                originalName = userProfile.firstName
                                 showingChangeNameSheet = true
                             }
                             .accentColor(Color.black)
@@ -210,9 +213,9 @@ struct AccountView: View {
             }
         
         .sheet(isPresented: $showingChangeNameSheet, onDismiss: {
-            // If a name exists (i.e. the user changed it), trigger the toast.
-            if !userProfile.firstName.isEmpty {
-                showingNameChangeSuccessToast = true
+            // Only show success toast if the name was changed.
+                       if userProfile.firstName != originalName {
+                           showingNameChangeSuccessToast = true
             }
         }) {
             ChangeNameSheetView()

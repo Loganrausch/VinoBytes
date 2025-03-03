@@ -7,9 +7,12 @@
 
 import SwiftUI
 import RevenueCat
+import UserNotifications
 
 @main
 struct VinoBytesApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     @StateObject var authViewModel = AuthViewModel()
     @StateObject var userProfileViewModel = UserProfileViewModel()  // <-- Create your view model here
     @StateObject var refreshNotifier = RefreshNotifier()  // Create it once here
@@ -17,6 +20,7 @@ struct VinoBytesApp: App {
     
     init() {
         configureNavigationBar()
+        registerForPushNotifications()  // This triggers the permission prompt.
     }
     
     var body: some Scene {
@@ -43,4 +47,16 @@ struct VinoBytesApp: App {
         UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(named: "Maroon") ?? .red
         UIPageControl.appearance().pageIndicatorTintColor = UIColor(named: "TransparentMaroon") ?? .gray
     }
-}
+    
+    private func registerForPushNotifications() {
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
+                if granted {
+                    DispatchQueue.main.async {
+                        UIApplication.shared.registerForRemoteNotifications()
+                    }
+                } else if let error = error {
+                    print("Push notification authorization error: \(error.localizedDescription)")
+                }
+            }
+        }
+    }

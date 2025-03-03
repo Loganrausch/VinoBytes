@@ -129,7 +129,7 @@ struct WelcomeScreen: View {
     
     var body: some View {
         GeometryReader { geometry in
-            VStack(spacing: 40) {
+            VStack(spacing: 30) {
                 Spacer() // Push content towards the center vertically
                 
                 // Grouped Title and Description
@@ -150,7 +150,7 @@ struct WelcomeScreen: View {
                 .padding(.bottom, 30) // Adjusted padding
                 
                 // Image with Conditional Visibility
-                if index != 6 || geometry.size.width > 375 { // Show the icon unless it's the last page on a compact screen
+                if index != 6 || geometry.size.width > 400 { // Show the icon unless it's the last page on a compact screen
                     Image(systemName: sfSymbolNames[index])
                         .resizable()
                         .scaledToFit()
@@ -216,7 +216,7 @@ struct WelcomeScreen: View {
                                 .multilineTextAlignment(.center) // Ensures proper wrapping
                                 .fixedSize(horizontal: false, vertical: true) // Allows the text to wrap across multiple lines
                                 .padding(.horizontal) // Adds padding to avoid cutoff near edges
-                                .padding(.top, 5) // Adds space between the button and text
+                                .padding(.bottom, 5) // Adds space between the button and text
                         
                         // Error or Success Message
                         if let errorMessage = authViewModel.errorMessage {

@@ -134,6 +134,7 @@ struct DashboardView: View {
                                     Text("Loading Wine Fact...")
                                         .foregroundStyle(Color.black)
                                         .font(.subheadline)
+                                        .background(Color("Latte"))
                                 }
                                 .frame(maxWidth: .infinity)
                                 .padding()
@@ -185,6 +186,7 @@ struct DashboardView: View {
                                 .bold()
                                 .foregroundColor(.black)
                                 .frame(maxWidth: .infinity)
+                                .padding(5)
                                 .frame(height: buttonHeight)
                                 .background(Color.lightLatte)
                                 .cornerRadius(10)
@@ -219,6 +221,7 @@ struct DashboardView: View {
                                     
                                 }
                                 .frame(maxWidth: .infinity)
+                                .padding(5)
                                 .frame(height: buttonHeight)
                                 .background(Color.lightLatte)
                                 .cornerRadius(10)
@@ -254,7 +257,7 @@ struct DashboardView: View {
                     
                     
                     // MARK: - New Assignable Buttons Section
-                    if geometry.size.height >= 600 {
+                    if geometry.size.height >= 631 {
                         
                         HStack(spacing: 30) {
                             ZStack(alignment: .topTrailing) {
@@ -472,7 +475,7 @@ struct DashboardView: View {
             .sheet(isPresented: $showNameInputSheet) {
                 NameInputSheetView()
                     .environmentObject(userProfile)
-                    .presentationDetents([.fraction(0.40)])
+                    .presentationDetents([.fraction(0.3)])
                     .presentationDragIndicator(.visible)
                     .preferredColorScheme(.light)
             }

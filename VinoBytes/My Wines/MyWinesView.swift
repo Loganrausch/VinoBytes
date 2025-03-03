@@ -169,14 +169,14 @@ struct MyWinesView: View {
         VStack {
             if winesFetched.count < maxFreeWines {
                 // Display wines added out of max free wines
-                Text("You have added \(winesFetched.count) out of \(maxFreeWines) free wines.")
+                Text("You have added \(winesFetched.count) out of \(maxFreeWines) free wine entries.")
                     .font(.subheadline)
                     .frame(maxWidth: .infinity)
                     .foregroundColor(.lightMaroon)
                     .padding(.bottom, 5)
             } else {
                 // Display message that the user has reached the limit
-                Text("Maximum limit of \(maxFreeWines) free wines reached.")
+                Text("Maximum limit of \(maxFreeWines) free wine entries reached.")
                     .font(.subheadline)
                     .foregroundColor(.lightMaroon)
                     .padding(.bottom, 5)
