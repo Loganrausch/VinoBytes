@@ -126,38 +126,27 @@ struct DashboardView: View {
                     Button(action: {
                         handleWineFactButtonTap()
                     }) {
-                        Group {
+                        HStack {
                             if isFactFetching {
-                                // Loading indicator in the button
-                                HStack {
-                                    ProgressView()
-                                    Text("Loading Wine Fact...")
-                                        .foregroundStyle(Color.black)
-                                        .font(.subheadline)
-                                        .background(Color("Latte"))
-                                }
-                                .frame(maxWidth: .infinity)
-                                .padding()
-                                
+                                ProgressView()
+                                Text("Loading Wine Fact...")
+                                    .font(.subheadline)
                             } else {
-                                // Normal button state
                                 Text("Wine Fact of the Week")
                                     .font(.title3)
                                     .bold()
-                                    .foregroundColor(.black)
-                                    .padding()
-                                    .frame(maxWidth: .infinity)
-                                    .background(Color("Latte"))
-                                    .cornerRadius(10)
                             }
                         }
-                        // Apply the maroon stroke overlay
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color("LightMaroon"), lineWidth: 2.4)
-                        )
+                        .foregroundColor(.black)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color("Latte"))
+                        .cornerRadius(10)
                     }
-                    
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color("LightMaroon"), lineWidth: 2.4)
+                    )
                     .shadow(radius: 5)
                     // Present sheet AFTER the fact is loaded
                     .sheet(isPresented: $showWineFactSheet) {
@@ -444,6 +433,7 @@ struct DashboardView: View {
                     Spacer()
                     
                 }
+                .animation(nil, value: UUID()) // This disables implicit animations on this container.
             }
             .padding(20)
             .navigationBarTitle("Dashboard", displayMode: .inline)

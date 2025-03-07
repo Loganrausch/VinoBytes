@@ -128,7 +128,7 @@ struct AccountView: View {
                     .foregroundColor(.black)
                 ) {
                     Button(action: {
-                        if let url = URL(string: "https://vinobytes.com/privacy-policy") {
+                        if let url = URL(string: "https://vinobytes.my.canva.site/privacy-policy") {
                             openURL(url)
                         }
                     }) {
@@ -136,7 +136,7 @@ struct AccountView: View {
                     }
                     
                     Button(action: {
-                        if let url = URL(string: "https://vinobytes.com/terms-and-conditions") {
+                        if let url = URL(string: "https://vinobytes.my.canva.site/terms-and-conditions") {
                             openURL(url)
                         }
                     }) {
