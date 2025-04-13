@@ -181,7 +181,7 @@ struct WelcomeScreen: View {
                         
                         // Second Button with Border
                         Button(action: proceedToLimitedVersion) {
-                            Text("Access Limited Features")
+                            Text("Access Basic Features")
                                 .bold()
                                 .font(.headline)
                                 .foregroundColor(.lightMaroon)

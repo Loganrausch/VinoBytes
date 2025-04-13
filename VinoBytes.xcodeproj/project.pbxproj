@@ -88,6 +88,7 @@
 		CEF48EA02CB4764A00E29D06 /* SessionSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF48E9F2CB4764A00E29D06 /* SessionSummaryView.swift */; };
 		CEF48EA22CB4767E00E29D06 /* SessionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF48EA12CB4767E00E29D06 /* SessionListView.swift */; };
 		CEF48EA42CB476AE00E29D06 /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF48EA32CB476AE00E29D06 /* SessionDetailView.swift */; };
+		CEFAFC8D2D7EB1E40043BB88 /* PulsingWineGlass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFAFC8C2D7EB1E40043BB88 /* PulsingWineGlass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -191,6 +192,7 @@
 		CEF48E9F2CB4764A00E29D06 /* SessionSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSummaryView.swift; sourceTree = "<group>"; };
 		CEF48EA12CB4767E00E29D06 /* SessionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionListView.swift; sourceTree = "<group>"; };
 		CEF48EA32CB476AE00E29D06 /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
+		CEFAFC8C2D7EB1E40043BB88 /* PulsingWineGlass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulsingWineGlass.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -442,6 +444,7 @@
 		CEC8A80B2C23C1C5009F937D /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				CEFAFC8C2D7EB1E40043BB88 /* PulsingWineGlass.swift */,
 				CE7930582D6BCCB7003039BA /* UserProfileViewModel.swift */,
 				CE7930562D6BCC3E003039BA /* NameInputSheetView.swift */,
 				CE8088B92D6A57CA0010FFF5 /* WineFactSheetView.swift */,
@@ -665,6 +668,7 @@
 				CE8088BA2D6A57CC0010FFF5 /* WineFactSheetView.swift in Sources */,
 				CE83188F2CB23A620030CC98 /* WhiteBackgroundView.swift in Sources */,
 				CE94AAF12C0D3957004CE8E0 /* ReferenceMainView.swift in Sources */,
+				CEFAFC8D2D7EB1E40043BB88 /* PulsingWineGlass.swift in Sources */,
 				CE94AB0A2C0E3645004CE8E0 /* WineGlossaryDetailView.swift in Sources */,
 				CEE1607C2C3C56F9006F5E66 /* StarRatingView.swift in Sources */,
 				CE6ADF312B925ED600982366 /* VinoBytesApp.swift in Sources */,
@@ -840,7 +844,7 @@
 				CODE_SIGN_ENTITLEMENTS = VinoBytes/VinoBytes.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"VinoBytes/Preview Content\"";
 				DEVELOPMENT_TEAM = 7BWDUC2WMW;
 				ENABLE_PREVIEWS = YES;
@@ -860,7 +864,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vinobytes.VinoBytes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -880,7 +884,7 @@
 				CODE_SIGN_ENTITLEMENTS = VinoBytes/VinoBytesRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"VinoBytes/Preview Content\"";
 				DEVELOPMENT_TEAM = 7BWDUC2WMW;
 				ENABLE_PREVIEWS = YES;
@@ -900,7 +904,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vinobytes.VinoBytes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

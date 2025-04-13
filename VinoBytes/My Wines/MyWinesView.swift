@@ -186,7 +186,7 @@ struct MyWinesView: View {
                            Button(action: {
                                startSubscriptionProcess()
                            }) {
-                               Text("Go Premium - Unlimited Wines")
+                               Text("Go Pro - Unlimited Wines")
                                    .font(.headline)
                                    .foregroundColor(Color("LightMaroon"))
                                    .padding()

@@ -135,12 +135,12 @@ struct BlogPostView: View {
                 Color.black.opacity(0.4).edgesIgnoringSafeArea(.all)
                 
                 VStack(spacing: 20) {
-                    Text("Premium Feature")
+                    Text("Pro Feature")
                         .font(.title)
                         .bold()
                         .foregroundColor(.lightMaroon)
                     
-                    Text("Please upgrade to the premium subscription to access full wine bytes.")
+                    Text("Please upgrade to VinoBytes Pro to access full wine bytes.")
                         .font(.body)
                         .multilineTextAlignment(.center)
                         .padding(.horizontal)

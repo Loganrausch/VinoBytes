@@ -197,12 +197,12 @@ struct OpenAIChatView: View {
                         .edgesIgnoringSafeArea(.all)
                     
                     VStack(spacing: 20) {
-                        Text("Premium Feature")
+                        Text("Pro Feature")
                             .font(.title)
                             .bold()
                             .foregroundColor(.lightMaroon)
                         
-                        Text("Please upgrade to the premium subscription to access our AI wine assistant.")
+                        Text("Please upgrade to VinoBytes Pro to access our AI wine assistant.")
                             .font(.body)
                             .multilineTextAlignment(.center)
                             .padding(.horizontal)

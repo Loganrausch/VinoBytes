@@ -64,6 +64,8 @@ struct DashboardView: View {
     @State private var secondButtonLongPressTriggered = false
     @State private var showReassignTip = false
     
+    @State private var newFactAvailable: Bool = UserDefaults.standard.bool(forKey: "NewWineFactAvailable")
+    
     @EnvironmentObject var refreshNotifier: RefreshNotifier
     @EnvironmentObject var openAIManager: OpenAIManager  // Access from environment
     @EnvironmentObject var authViewModel: AuthViewModel  // To access subscription status
@@ -122,7 +124,7 @@ struct DashboardView: View {
                     .padding(.bottom, 8)
                     
                     
-                    
+                ZStack(alignment: .topTrailing) {
                     Button(action: {
                         handleWineFactButtonTap()
                     }) {
@@ -132,9 +134,14 @@ struct DashboardView: View {
                                 Text("Loading Wine Fact...")
                                     .font(.subheadline)
                             } else {
-                                Text("Wine Fact of the Week")
+                                Text("Wine Fact of the Day")
                                     .font(.title3)
                                     .bold()
+                                
+                                if newFactAvailable {
+                                                    PulsingWineGlass() // Place the wine glass here
+                                                        .frame(width: 24, height: 24) // Adjust size as needed
+                                                }
                             }
                         }
                         .foregroundColor(.black)
@@ -155,12 +162,12 @@ struct DashboardView: View {
                                 .presentationDetents([.medium, .large])
                                 .presentationDragIndicator(.visible)
                         } else {
-                            // Fallback: should rarely happen if code is correct
                             ProgressView("Loading Wine Fact...")
                                 .presentationDetents([.medium, .large])
                                 .presentationDragIndicator(.visible)
                         }
                     }
+                }
                     .padding(.bottom)
                     .padding(.horizontal)
                     
@@ -386,6 +393,9 @@ struct DashboardView: View {
                         .padding(.horizontal)
                         .padding(.bottom)
                     }
+                   
+                    
+                    
                     // Recent Wines Carousel Section
                     VStack(alignment: .center, spacing: 8) {
                         Text("Your Recent Wines")
@@ -458,9 +468,14 @@ struct DashboardView: View {
                 
                 // Other onAppear actions...
                 fetchContent()
-                
                 context.refreshAllObjects()
                 print("DashboardView onAppear =>", fetchedWines.map(\.wineName))
+                
+                // 1) Reload the "newFactAvailable" flag each time
+                    newFactAvailable = UserDefaults.standard.bool(forKey: "NewWineFactAvailable")
+
+                    // 2) Check if the wine fact in Contentful has changed
+                    checkForUpdatedFactOnLaunch()
             }
             .sheet(isPresented: $showNameInputSheet) {
                 NameInputSheetView()
@@ -534,8 +549,14 @@ struct DashboardView: View {
                 alignment: .bottom
             )
         }
-    }
-
+        // Listen for deep link notifications to trigger the wine fact sheet.
+               .onReceive(NotificationCenter.default.publisher(for: .deepLink)) { notification in
+                   if let destination = notification.userInfo?["destination"] as? String,
+                      destination == "wineFact" {
+                       handleWineFactButtonTap()
+                   }
+               }
+           }
 
     
     
@@ -576,6 +597,10 @@ struct DashboardView: View {
     
     // MARK: - Button Tap Handling
     private func handleWineFactButtonTap() {
+        // Remove the badge indicator as soon as the user taps
+           newFactAvailable = false
+           UserDefaults.standard.set(false, forKey: "NewWineFactAvailable")
+        
         // If we already have the fact, show the sheet immediately
         if let _ = wineFactOfTheWeek {
             showWineFactSheet = true
@@ -586,14 +611,18 @@ struct DashboardView: View {
                 DispatchQueue.main.async {
                     self.isFactFetching = false
                     if let fact = fact {
-                        self.wineFactOfTheWeek = fact
-                        self.showWineFactSheet = true
-                    } else {
-                        self.alertMessage = error?.localizedDescription ?? "Unknown error"
-                        self.showAlert = true
-                    }
-                }
-            }
+                        // 1) Store it immediately so the fallback doesn't consider it "new" next time
+                                    UserDefaults.standard.set(fact, forKey: "LastWineFact")
+                                    
+                                    // 2) Present the sheet
+                                    self.wineFactOfTheWeek = fact
+                                    self.showWineFactSheet = true
+                                } else {
+                                    self.alertMessage = error?.localizedDescription ?? "Unknown error"
+                                    self.showAlert = true
+                                }
+                            }
+                        }
         }
     }
     
@@ -627,6 +656,21 @@ struct DashboardView: View {
         
         if milestones.contains(newCount) {
             ReviewRequestHelper.requestReviewIfAppropriate()
+        }
+    }
+    
+    private func checkForUpdatedFactOnLaunch() {
+        ContentfulManager.shared.fetchWineFact { fact, error in
+            guard let fetchedFact = fact, error == nil else { return }
+            
+            // Compare with the last fact text we stored previously
+            let lastKnownFact = UserDefaults.standard.string(forKey: "LastWineFact") ?? ""
+            if fetchedFact != lastKnownFact {
+                // It's brand-new
+                UserDefaults.standard.set(fetchedFact, forKey: "LastWineFact")
+                UserDefaults.standard.set(true, forKey: "NewWineFactAvailable")
+                newFactAvailable = true
+            }
         }
     }
 }
@@ -669,3 +713,4 @@ struct DashboardView_Previews: PreviewProvider {
     }
 }
 #endif
+

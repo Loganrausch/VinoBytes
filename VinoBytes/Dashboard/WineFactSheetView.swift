@@ -40,5 +40,16 @@ struct WineFactSheetView: View {
         }
         .navigationTitle("Wine Fact")
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            if #available(iOS 17.0, *) {
+                UNUserNotificationCenter.current().setBadgeCount(0, withCompletionHandler: { error in
+                    if let error = error {
+                        print("Error clearing badge: \(error.localizedDescription)")
+                    }
+                })
+            } else {
+                UIApplication.shared.applicationIconBadgeNumber = 0
+            }
+        }
     }
 }
