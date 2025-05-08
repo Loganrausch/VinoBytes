@@ -21,7 +21,7 @@ struct RootView: View {
     }
     
     var body: some View {
-            ContentView()
+        MainTabView()
                 .environmentObject(openAIManager)
                 .environmentObject(studySessionManager)
                 .environmentObject(flashcardManager)

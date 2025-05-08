@@ -87,7 +87,7 @@
          </EnvironmentVariable>
       </EnvironmentVariables>
       <StoreKitConfigurationFileReference
-         identifier = "../../VinoBytes/VinoBytes.storekit">
+         identifier = "../../VinoBytes/Supporting/VinoBytes.storekit">
       </StoreKitConfigurationFileReference>
    </LaunchAction>
    <ProfileAction

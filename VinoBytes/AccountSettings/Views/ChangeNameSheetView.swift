@@ -8,31 +8,30 @@
 import SwiftUI
 
 struct ChangeNameSheetView: View {
-    @Environment(\.dismiss) var dismiss
-    @Environment(\.managedObjectContext) private var context
-    @EnvironmentObject var userProfile: UserProfileViewModel
-    @State private var firstName: String = ""
+    @Environment(\.dismiss) private var dismiss
+    @StateObject private var viewModel: ChangeNameViewModel
     @FocusState private var isFocused: Bool
+
+    init(viewModel: ChangeNameViewModel) {
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
 
     var body: some View {
         ZStack {
-            Color("Latte")
-                .ignoresSafeArea() // Use your custom background color
-            
+            Color("Latte").ignoresSafeArea()
             VStack(spacing: 20) {
                 Text("Change Your Name")
                     .font(.title)
                     .foregroundColor(.black)
                     .padding(.top)
-                
-                // Custom TextField with placeholder behavior.
+
                 ZStack(alignment: .leading) {
-                    if !isFocused && firstName.isEmpty {
+                    if !isFocused && viewModel.firstName.isEmpty {
                         Text("First Name")
                             .foregroundColor(Color("Maroon"))
                             .padding(.leading, 20)
                     }
-                    TextField("", text: $firstName)
+                    TextField("", text: $viewModel.firstName)
                         .padding(10)
                         .background(Color.white)
                         .cornerRadius(8)
@@ -43,13 +42,11 @@ struct ChangeNameSheetView: View {
                         .padding(.horizontal)
                         .focused($isFocused)
                 }
-                
-                Button(action: {
-                    if !firstName.trimmingCharacters(in: .whitespaces).isEmpty {
-                        userProfile.saveUserProfile(firstName: firstName, context: context)
-                        dismiss()
-                    }
-                }) {
+
+                Button {
+                    viewModel.save()
+                    dismiss()
+                } label: {
                     Text("Save")
                         .bold()
                         .foregroundColor(.white)
@@ -59,16 +56,12 @@ struct ChangeNameSheetView: View {
                         .cornerRadius(10)
                         .padding(.horizontal)
                 }
-                
+
                 Spacer()
             }
             .padding()
         }
-        .onAppear {
-            // Pre-fill with the current first name
-            firstName = userProfile.firstName
-        }
         .preferredColorScheme(.light)
-        .accentColor(Color.maroon)
+        .accentColor(Color("Maroon"))
     }
 }

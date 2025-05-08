@@ -10,19 +10,6 @@ import SwiftUI
 import RevenueCat
 import RevenueCatUI
 
-struct BlogPost: Identifiable, Codable {
-    let id: String
-    let title: String
-    let content: String
-    let publicationDate: Date
-    let featuredImage: ImageAsset?
-    
-    struct ImageAsset: Codable {
-        let url: String
-        let title: String?
-        let description: String?
-    }
-}
 
 struct BlogPostView: View {
     let blogPost: BlogPost

@@ -10,12 +10,6 @@ import SwiftUI
 import RevenueCat
 import RevenueCatUI
 
-struct StudyRegion: Identifiable {
-    let name: String
-    let isPremium: Bool
-    var id: String { name }
-}
-
 struct StudyView: View {
     @EnvironmentObject var flashcardManager: FlashcardManager
     @EnvironmentObject var sessionManager: StudySessionManager
@@ -29,7 +23,7 @@ struct StudyView: View {
     @State private var isPaywallPresented = false  // Controls the presentation of the paywall
     
     let freeRegions = ["Argentina", "Hungary", "Portugal"]
-       let premiumRegions = ["Australia", "Austria", "Chile", "France", "Germany", "Greece", "Italy", "New Zealand", "South Africa", "Spain", "USA"]
+    let premiumRegions = ["Australia", "Austria", "Chile", "France", "Germany", "Greece", "Italy", "New Zealand", "South Africa", "Spain", "USA"]
 
        var allRegions: [StudyRegion] {
            let free = freeRegions.map { StudyRegion(name: $0, isPremium: false) }

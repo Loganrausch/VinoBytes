@@ -9,7 +9,8 @@ import SwiftUI
 import Foundation
 
 struct RecentWineCard: View {
-    let wine: WineEntity
+  @ObservedObject var wine: WineEntity
+  
     
     var body: some View {
         NavigationLink(destination: WineDetailView(wineEntity: wine)) {

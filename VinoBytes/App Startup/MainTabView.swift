@@ -7,12 +7,13 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct MainTabView: View {
     @Environment(\.managedObjectContext) private var context
     @EnvironmentObject var openAIManager: OpenAIManager
     @EnvironmentObject var flashcardManager: FlashcardManager
     @EnvironmentObject var studySessionManager: StudySessionManager
     @EnvironmentObject var refreshNotifier: RefreshNotifier
+    @EnvironmentObject var authViewModel: AuthViewModel
     @State private var selectedTab = 0
     
     
@@ -37,7 +38,7 @@ struct ContentView: View {
                 }
                 .tag(1)
             
-            OpenAIChatView()
+            ChatView( openAIManager: openAIManager)
                 .tabItem {
                     Image(systemName: "bubble.left.and.bubble.right")
                     Text("Vino Chat")
