@@ -31,7 +31,7 @@ struct MainTabView: View {
                 }
                 .tag(0)
             
-            StudyView()
+            StudyView(auth: authViewModel)
                 .tabItem {
                     Image(systemName: "square.3.layers.3d.top.filled")
                     Text("Flashcards")
@@ -44,7 +44,7 @@ struct MainTabView: View {
                     Text("Vino Chat")
                 }
                 .tag(2)
-            MyWinesView(isRootView: true)
+            MyWinesView(isRootView: true, auth: authViewModel)
                 .tabItem {
                     Label("My Wines", systemImage: "wineglass")
                 }

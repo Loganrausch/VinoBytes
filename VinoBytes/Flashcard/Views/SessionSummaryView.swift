@@ -3,7 +3,9 @@
 //  VinoBytes
 //
 //  Created by Logan Rausch on 10/7/24.
-//
+
+// Simple read‑only view.
+// If we add filtering or edits, extract a SessionSummaryViewModel. – 2025‑05‑09
 
 import Foundation
 import SwiftUI
@@ -71,27 +73,6 @@ struct SessionSummaryView: View {
                 }
             }
         }
-    }
-}
-
-// Custom Card View for Summary Info
-struct SummaryCardView: View {
-    var title: String
-    var value: String
-
-    var body: some View {
-        HStack {
-            Text(title)
-                .font(.headline)
-                .foregroundColor(.black)
-            Spacer()
-            Text(value)
-                .font(.body)
-                
-        }
-        .padding()
-        .background(RoundedRectangle(cornerRadius: 10).fill(Color.lightLatte))
-        .shadow(radius: 3)
     }
 }
 

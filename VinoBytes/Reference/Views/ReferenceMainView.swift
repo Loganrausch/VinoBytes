@@ -4,6 +4,14 @@
 //
 //  Created by Logan Rausch on 6/2/24.
 //
+//  NOTE: MVVM Decision
+//  ───────────────────
+//  This view only hosts static navigation buttons and a simple “locked” rule that
+//  depends on AuthViewModel. No complex state or business logic, so keeping the
+//  code in the View is clearer than introducing an extra ViewModel. If future
+//  requirements add dynamic data, analytics, or networking, I will promote those rules
+//  to a ReferenceMainViewModel.
+//
 
 import SwiftUI
 import RevenueCat

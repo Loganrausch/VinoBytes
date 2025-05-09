@@ -1,8 +1,8 @@
 //
-//  CommonStructs.swift
+//  Wine.swift
 //  VinoBytes
 //
-//  Created by Logan Rausch on 4/21/24.
+//  Created by Logan Rausch on 5/9/25.
 //
 
 import Foundation

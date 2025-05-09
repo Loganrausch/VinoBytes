@@ -3,7 +3,10 @@
 //  VinoBytes
 //
 //  Created by Logan Rausch on 10/7/24.
-//
+
+
+// Simple read‑only view.
+// If we add filtering or edits, extract a SessionDetailViewModel. – 2025‑05‑09
 
 import Foundation
 import SwiftUI

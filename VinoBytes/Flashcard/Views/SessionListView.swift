@@ -5,6 +5,9 @@
 //  Created by Logan Rausch on 10/7/24.
 //
 
+// Simple read‑only view.
+// If we add filtering or edits, extract a SessionListViewModel. – 2025‑05‑09
+
 import Foundation
 import SwiftUI
 
@@ -35,7 +38,7 @@ struct SessionListView: View {
                         .padding(.vertical, 8)
                     }
                 }
-                .onDelete(perform: deleteSessions) // Add this line
+                .onDelete(perform: deleteSessions)
             }
         }
         .navigationTitle("History")
@@ -43,6 +46,8 @@ struct SessionListView: View {
             sessions = sessionManager.fetchPastSessions()
         }
     }
+    
+    // Small function - not worth pulling out into vm at this time unless complexity grows.
     private func deleteSessions(at offsets: IndexSet) {
             for index in offsets {
                 let sessionToDelete = sessions[index]

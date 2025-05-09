@@ -4,6 +4,13 @@
 //
 //  Created by Logan Rausch on 6/3/24.
 //
+//  NOTE: MVVM Decision
+//  ───────────────────
+//  This view only performs trivial UI‑oriented work (static sort, simple “locked” row rule,
+//  paywall sheet presentation). No heavy business or persistence logic is involved, so a
+//  separate ViewModel would add noise without value. If we later introduce search, filtering,
+//  or remote data loading, we can promote those rules to a dedicated RegionListViewModel.
+//
 
 import SwiftUI
 import RevenueCat

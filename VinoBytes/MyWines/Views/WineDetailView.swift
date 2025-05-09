@@ -4,6 +4,9 @@
 //
 //  Created by Logan Rausch on 3/4/24.
 
+// Read‑only view.
+// If we add updates or edits, extract a WineDetailViewModel. – 2025‑05‑09
+
 import SwiftUI
 import UIKit
 
