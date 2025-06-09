@@ -21,7 +21,7 @@ struct CustomSlider: View {
                     .foregroundColor(Color.gray.opacity(0.5)) // Slider track color
                 Rectangle()
                     .frame(width: thumbXPosition(in: geometry.size.width), height: 5)
-                    .foregroundColor(Color.lightMaroon) // Active slider track color
+                    .foregroundColor(Color.burgundy) // Active slider track color
                 Circle()
                     .foregroundColor(thumbColor) // Custom thumb color
                     .frame(width: 28, height: 28)

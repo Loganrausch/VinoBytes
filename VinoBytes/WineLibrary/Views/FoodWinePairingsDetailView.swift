@@ -27,7 +27,7 @@ struct FoodWinePairingsDetailView: View {
                 Text("Pair with:")
                     .font(.headline)
                     .padding(.vertical)
-                    .foregroundColor(.lightMaroon)
+                    .foregroundColor(.burgundy)
 
                 // Sorting grapes alphabetically by name
                 ForEach(foodWinePairing.grapes.sorted { $0.name < $1.name }, id: \.id) { grape in
@@ -37,7 +37,7 @@ struct FoodWinePairingsDetailView: View {
                                 .foregroundColor(.primary)
                             Spacer()
                             Image(systemName: "info.circle")
-                                .foregroundColor(.lightMaroon)
+                                .foregroundColor(.burgundy)
                         }
                         .padding()
                         .background(Color.white)

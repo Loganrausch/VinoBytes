@@ -113,14 +113,14 @@ struct FlashcardView: View {
         Text(vm.flashcards[vm.currentIndex].region)
             .font(.headline)
             .fontWeight(.bold)
-            .foregroundColor(.lightMaroon)
+            .foregroundColor(.burgundy)
             .padding(.horizontal)
             .frame(height: 35)
             .background(Color.white)
             .cornerRadius(10)
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.lightMaroon, lineWidth: 2)
+                    .stroke(Color.burgundy, lineWidth: 2)
             )
             .padding(.bottom, 30)
             .padding(.top, 10)
@@ -131,7 +131,7 @@ struct FlashcardView: View {
             // Front
             FlashcardContent(text: vm.flashcards[vm.currentIndex].question)
                 .frame(width: cardW, height: cardH)
-                .background(Color.lightLatte)
+                .background(Color.latte)
                 .cornerRadius(10)
                 .overlay(RoundedRectangle(cornerRadius: 10)
                     .stroke(vm.borderColor, lineWidth: 3))
@@ -142,7 +142,7 @@ struct FlashcardView: View {
             // Back
             FlashcardContent(text: vm.flashcards[vm.currentIndex].answer)
                 .frame(width: cardW, height: cardH)
-                .background(Color.lightLatte)
+                .background(Color.latte)
                 .cornerRadius(10)
                 .overlay(RoundedRectangle(cornerRadius: 10)
                     .stroke(vm.borderColor, lineWidth: 3))
@@ -155,7 +155,7 @@ struct FlashcardView: View {
     private var progressText: some View {
         Text("Card \(vm.currentIndex + 1) of \(vm.flashcards.count)")
             .font(.headline)
-            .foregroundColor(.lightMaroon)
+            .foregroundColor(.burgundy)
             .padding(.top, 15)
     }
     
@@ -183,13 +183,13 @@ struct FlashcardView: View {
                 }
                 .font(.headline)
                 .padding()
-                .background(Color.lightMaroon)
-                .foregroundColor(.lightLatte)
+                .background(Color.burgundy)
+                .foregroundColor(.latte)
                 .cornerRadius(10)
                 .shadow(color: .black.opacity(0.6), radius: 6)
             }
             .padding()
-            .background(Color.lightLatte)
+            .background(Color.latte)
             .cornerRadius(12)
             .padding()
         }

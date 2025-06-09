@@ -28,7 +28,7 @@ struct ChangeNameSheetView: View {
                 ZStack(alignment: .leading) {
                     if !isFocused && viewModel.firstName.isEmpty {
                         Text("First Name")
-                            .foregroundColor(Color("Maroon"))
+                            .foregroundColor(Color("Burgundy"))
                             .padding(.leading, 20)
                     }
                     TextField("", text: $viewModel.firstName)
@@ -37,7 +37,7 @@ struct ChangeNameSheetView: View {
                         .cornerRadius(8)
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color("Maroon"), lineWidth: 2)
+                                .stroke(Color("Burgundy"), lineWidth: 2)
                         )
                         .padding(.horizontal)
                         .focused($isFocused)
@@ -52,7 +52,7 @@ struct ChangeNameSheetView: View {
                         .foregroundColor(.white)
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color("Maroon"))
+                        .background(Color("Burgundy"))
                         .cornerRadius(10)
                         .padding(.horizontal)
                 }
@@ -62,6 +62,6 @@ struct ChangeNameSheetView: View {
             .padding()
         }
         .preferredColorScheme(.light)
-        .accentColor(Color("Maroon"))
+        .accentColor(Color("Burgundy"))
     }
 }

@@ -40,7 +40,7 @@ struct WhiteBackgroundView: View {
                         Image(systemName: "info.circle")
                             .resizable()
                             .frame(width: 20, height: 20)
-                            .foregroundColor(.lightMaroon)
+                            .foregroundColor(.burgundy)
                     }
                     .padding(.trailing, 16)
                 }
@@ -48,7 +48,7 @@ struct WhiteBackgroundView: View {
 
                 Spacer() // Pushes content down
 
-                CustomSlider(value: $brightness, range: 0...1, thumbColor: .lightMaroon)
+                CustomSlider(value: $brightness, range: 0...1, thumbColor: .burgundy)
                     .frame(width: 300, height: 44)
                     .onChange(of: brightness) { newValue, _ in
                         UIScreen.main.brightness = newValue
@@ -56,7 +56,7 @@ struct WhiteBackgroundView: View {
                 Text("Caution: Keep your glass at a safe distance to avoid spills on your device.")
                     .font(.body)
                     .multilineTextAlignment(.center)
-                    .foregroundColor(.maroon)
+                    .foregroundColor(.burgundy)
                     .bold()
                     .background(Color.clear.opacity(0.5))
                     .cornerRadius(10)

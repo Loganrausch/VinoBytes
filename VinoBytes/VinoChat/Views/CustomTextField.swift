@@ -36,17 +36,17 @@ struct CustomTextField: View {
                             Image(systemName: "arrow.up.square")
                                 .resizable()
                                 .frame(width: 26, height: 26)
-                                .foregroundColor(Color("LightMaroon"))
+                                .foregroundColor(Color("Burgundy"))
                                 .padding(.trailing, -4)
                         }
                     }
         .padding(.horizontal)
         .padding(.vertical, 8)
-        .background(Color.lightLatte.opacity(0.8))
+        .background(Color.latte.opacity(0.8))
         .cornerRadius(8)
         .overlay(
             RoundedRectangle(cornerRadius: 8)
-                .stroke(Color.lightMaroon, lineWidth: 2)
+                .stroke(Color.burgundy, lineWidth: 2)
         )
     }
 }

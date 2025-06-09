@@ -99,7 +99,7 @@ struct SectionBox<Content: View>: View {
                 .fontWeight(.semibold)
                 .padding(.vertical, 8) // Adding vertical padding for better spacing
                 .padding(.horizontal)
-                .foregroundColor(.lightMaroon)
+                .foregroundColor(.burgundy)
 
             content()
                 .padding()

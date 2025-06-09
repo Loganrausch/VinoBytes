@@ -63,7 +63,7 @@ struct MyWinesView: View {
                     Section(header: Text(region)
                         .textCase(nil)
                         .padding(.leading, -7)
-                        .foregroundColor(.maroon)) {
+                        .foregroundColor(.burgundy)) {
                         ForEach(wines, id: \.objectID) { wine in
                             NavigationLink(destination: WineDetailView(wineEntity: wine)) {
                                 Text("\(wine.vintage ?? "Unknown") \(wine.producer ?? "Unknown") \(wine.wineName ?? "Unnamed Wine")")
@@ -98,12 +98,12 @@ struct MyWinesView: View {
         Section {
             TextField("Search wines...", text: $vm.searchText)
                 .padding(10).padding(.horizontal)
-                .background(Color.lightLatte.opacity(0.8))
+                .background(Color.latte.opacity(0.8))
                 .cornerRadius(10)
                 .overlay(RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.lightMaroon, lineWidth: 2))
+                    .stroke(Color.burgundy, lineWidth: 2))
                 .padding(.top)
-                .accentColor(.lightMaroon)
+                .accentColor(.burgundy)
         }.listRowSeparator(.hidden)
     }
 
@@ -115,17 +115,17 @@ struct MyWinesView: View {
                 Text("Maximum limit of 5 free wine entries reached.")
                 Button("Go Pro - Unlimited Wines") { vm.startSubscriptionProcess() }
                     .font(.headline)
-                    .foregroundColor(Color("LightMaroon"))
+                    .foregroundColor(Color("Burgundy"))
                     .padding().frame(maxWidth: .infinity)
                     .background(Color.clear)
                     .overlay(RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color("LightMaroon"), lineWidth: 2))
+                        .stroke(Color("Burgundy"), lineWidth: 2))
             }
         }
         .font(.subheadline)
         .padding()
         .frame(maxWidth: .infinity)
-        .foregroundColor(.lightMaroon)
+        .foregroundColor(.burgundy)
         .background(Color("Latte"))
     }
 

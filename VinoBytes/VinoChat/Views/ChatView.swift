@@ -81,7 +81,7 @@ struct ChatView: View {
                     
                     VStack(spacing: 0) {
                         Rectangle()
-                            .fill(Color("LightMaroon"))
+                            .fill(Color("Burgundy"))
                             .frame(height: 2)
                             .opacity(0.7)
                         
@@ -187,27 +187,27 @@ struct ChatView: View {
                         Text("Pro Feature")
                             .font(.title)
                             .bold()
-                            .foregroundColor(.lightMaroon)
+                            .foregroundColor(.burgundy)
                         
                         Text("Please upgrade to VinoBytes Pro to access our AI wine assistant.")
                             .font(.body)
                             .multilineTextAlignment(.center)
                             .padding(.horizontal)
-                            .foregroundColor(.lightMaroon)
+                            .foregroundColor(.burgundy)
                         
                         Button(action: {
                             vm.startSubscriptionProcess()
                         }) {
                             Text("Subscribe")
                                 .bold()
-                                .foregroundColor(.lightMaroon)
+                                .foregroundColor(.burgundy)
                                 .padding()
                                 .frame(maxWidth: .infinity)
                                 .background(Color("Latte"))
                                 .cornerRadius(10)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 10)
-                                        .stroke(Color.lightMaroon, lineWidth: 2) // Adjust line width as needed
+                                        .stroke(Color.burgundy, lineWidth: 2) // Adjust line width as needed
                                 )
                                 .shadow(radius: 5)
                                 .padding(.horizontal, 50)

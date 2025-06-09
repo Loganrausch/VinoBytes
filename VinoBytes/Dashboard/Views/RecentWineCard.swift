@@ -28,7 +28,7 @@ struct RecentWineCard: View {
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .overlay(
                             Image(systemName: "wineglass")
-                                .foregroundColor(.maroon)
+                                .foregroundColor(.burgundy)
                                 .font(.title)
                         )
                 }

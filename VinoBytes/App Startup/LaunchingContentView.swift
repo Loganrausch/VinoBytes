@@ -12,7 +12,6 @@ import SwiftUI
 struct LaunchingContentView: View {
     @Binding var isShowingLaunchScreen: Bool
     @EnvironmentObject var authViewModel: AuthViewModel
-    @State private var hasSeenWelcomeView: Bool = UserDefaults.standard.bool(forKey: "hasSeenWelcomeView")
     
     var body: some View {
         Group {
@@ -24,32 +23,17 @@ struct LaunchingContentView: View {
                 ProgressView("Loading...")
                     .progressViewStyle(CircularProgressViewStyle())
             } else {
-                mainContent
-            }
-        }
-        .onChange(of: authViewModel.hasActiveSubscription) { oldValue, newValue in
-            if newValue {
-                hasSeenWelcomeView = true
-                UserDefaults.standard.set(true, forKey: "hasSeenWelcomeView")
+                RootView()
+                    .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
+                    .environment(\.colorScheme, .light)
             }
         }
     }
-    
-    @ViewBuilder
-       private var mainContent: some View {
-           if authViewModel.hasActiveSubscription || hasSeenWelcomeView {
-               RootView()
-                   .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
-                   .environment(\.colorScheme, .light)
-           } else {
-               WelcomeView(hasSeenWelcomeView: $hasSeenWelcomeView)
-           }
-       }
-   }
+}
 
-   struct LaunchingContentView_Previews: PreviewProvider {
-       static var previews: some View {
-           LaunchingContentView(isShowingLaunchScreen: .constant(true))
-               .environmentObject(AuthViewModel())
-       }
-   }
+struct LaunchingContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        LaunchingContentView(isShowingLaunchScreen: .constant(true))
+            .environmentObject(AuthViewModel())
+    }
+}

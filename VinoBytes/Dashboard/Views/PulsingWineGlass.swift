@@ -15,7 +15,7 @@ struct PulsingWineGlass: View {
             .resizable()
             .scaledToFit()
             .frame(width: 20, height: 20)
-            .foregroundColor(Color("Maroon"))  // reference your asset color
+            .foregroundColor(Color("Burgundy"))  // reference your asset color
             .scaleEffect(pulse ? 1.3 : 1.0)
             .animation(
                 .easeInOut(duration: 0.7).repeatForever(autoreverses: true),

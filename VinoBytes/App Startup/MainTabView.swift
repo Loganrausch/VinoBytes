@@ -24,7 +24,7 @@ struct MainTabView: View {
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            DashboardView()
+            HeroHomeView(selectedTab: $selectedTab)
                 .tabItem {
                     Image(systemName: "chart.bar.doc.horizontal")
                     Text("Dashboard")
@@ -63,14 +63,32 @@ struct MainTabView: View {
     private func setupTabBarAppearance() {
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = UIColor(named: "Maroon")
-        
-        
-        // Applying the appearance settings
-        UITabBar.appearance().standardAppearance = appearance
-        if #available(iOS 15.0, *) {
-            UITabBar.appearance().scrollEdgeAppearance = appearance
-        }
+
+        // ── Your palette ───────────────
+        let burgundy = UIColor(named: "Burgundy") ?? .systemRed
+        let latte    = UIColor(named: "Latte")    ?? .white
+        let latteDim = latte.withAlphaComponent(0.55)          // unselected shade
+
+        // ── Background ────────────────
+        appearance.backgroundColor = burgundy
+
+        // ── Selected tab (icon + title) ─
+        appearance.stackedLayoutAppearance.selected.iconColor  = latte
+        appearance.stackedLayoutAppearance.selected.titleTextAttributes  = [.foregroundColor: latte]
+
+        // ── Unselected tab (icon + title) ─
+        appearance.stackedLayoutAppearance.normal.iconColor  = latteDim
+        appearance.stackedLayoutAppearance.normal.titleTextAttributes  = [.foregroundColor: latteDim]
+
+        // Repeat for inline / compact so iPad + landscape obey the same colours
+        appearance.inlineLayoutAppearance   = appearance.stackedLayoutAppearance
+        appearance.compactInlineLayoutAppearance = appearance.stackedLayoutAppearance
+
+        // ── Apply globally ─────────────
+        UITabBar.appearance().standardAppearance   = appearance
+        UITabBar.appearance().scrollEdgeAppearance = appearance
+        // (You can keep or drop this; appearance now controls it)
+        UITabBar.appearance().tintColor            = latte
     }
 }
 

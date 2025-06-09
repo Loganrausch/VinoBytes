@@ -24,7 +24,7 @@ struct WineGlossaryDetailView: View {
                 Text("Definition")
                     .font(.headline)
                     .padding(.horizontal)
-                    .foregroundStyle(Color("LightMaroon"))
+                    .foregroundStyle(Color("Burgundy"))
                 
                 // Definition
                 Text(entry.definition)
@@ -38,7 +38,7 @@ struct WineGlossaryDetailView: View {
                 Text("Additional Information")
                     .font(.headline)
                     .padding(.horizontal)
-                    .foregroundStyle(Color("LightMaroon"))
+                    .foregroundStyle(Color("Burgundy"))
 
                 // Additional Information
                 Text(entry.additionalInfo)

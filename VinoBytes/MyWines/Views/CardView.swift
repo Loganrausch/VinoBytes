@@ -20,7 +20,7 @@ struct CardView<Content: View>: View {
             .frame(maxWidth: .infinity, alignment: .leading) // Ensures full-width
             .background(
                 RoundedRectangle(cornerRadius: 15)
-                    .fill(Color.lightLatte)
+                    .fill(Color.latte)
                     .shadow(color: Color.black.opacity(0.4), radius: 5)
             )
             .padding(.horizontal, 16) // Outer padding to prevent touching screen edges

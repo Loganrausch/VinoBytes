@@ -25,7 +25,7 @@ struct WineFactSheetView: View {
                             .resizable()
                             .scaledToFit()
                             .frame(width: 30, height: 30) // Adjust size as needed
-                            .foregroundColor(.maroon) // Match the text color
+                            .foregroundColor(.burgundy) // Match the text color
                         
                         // Wine fact text
                         Text(fact)

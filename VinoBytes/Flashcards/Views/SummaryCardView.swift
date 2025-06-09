@@ -24,7 +24,7 @@ struct SummaryCardView: View {
                 
         }
         .padding()
-        .background(RoundedRectangle(cornerRadius: 10).fill(Color.lightLatte))
+        .background(RoundedRectangle(cornerRadius: 10).fill(Color.latte))
         .shadow(radius: 3)
     }
 }

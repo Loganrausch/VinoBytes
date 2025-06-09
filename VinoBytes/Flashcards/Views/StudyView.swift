@@ -90,11 +90,11 @@ struct StudyView: View {
                         .bold()
                         .frame(width: screenWidth * 0.35,
                                height: screenWidth * 0.20)
-                        .background(Color.lightLatte)
+                        .background(Color.latte)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .overlay(
                             RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color.lightMaroon, lineWidth: 2)
+                                .stroke(Color.burgundy, lineWidth: 2)
                         )
                         .shadow(radius: 5)
                 }

@@ -33,12 +33,12 @@ struct SessionSummaryView: View {
                     Text("Score: ")
                         .font(.headline)
                     ProgressView(value: Double(session.scorePercentage), total: 100)
-                        .progressViewStyle(LinearProgressViewStyle(tint: Color.lightMaroon))
+                        .progressViewStyle(LinearProgressViewStyle(tint: Color.burgundy))
                         .frame(width: 150)
                     Text("\(session.scorePercentage)%")
                         .font(.headline)
                         .bold()
-                        .foregroundColor(.lightMaroon)
+                        .foregroundColor(.burgundy)
                 }
                 .padding()
             }
@@ -53,7 +53,7 @@ struct SessionSummaryView: View {
                     .bold()
                     .padding()
                     .frame(maxWidth: .infinity)
-                    .background(Color.lightMaroon)
+                    .background(Color.burgundy)
                     .foregroundColor(.latte)
                     .cornerRadius(10)
                     .shadow(radius: 5)

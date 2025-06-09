@@ -28,7 +28,7 @@ struct RegionView: View {
                         .bold()
                     Spacer()
                     Image(systemName: "lock.fill")
-                        .foregroundColor(.lightMaroon)
+                        .foregroundColor(.burgundy)
                 } else {
                     // Centered text when not locked
                     Spacer()
@@ -44,15 +44,15 @@ struct RegionView: View {
             .padding(padding)
             .background(
                 isSelected ?
-                    Color("LightMaroon").opacity(1) :
-                    (isLocked ? Color.gray.opacity(0.2) : Color.lightLatte.opacity(1))
+                    Color("Burgundy").opacity(1) :
+                    (isLocked ? Color.gray.opacity(0.2) : Color.latte.opacity(1))
             )
             .cornerRadius(5)
             .shadow(color: .gray, radius: 4)
             .overlay(
                 RoundedRectangle(cornerRadius: 5)
                     .stroke(
-                        isSelected ? Color.latte : (isLocked ? Color.gray.opacity(0.5) : Color.lightMaroon),
+                        isSelected ? Color.latte : (isLocked ? Color.gray.opacity(0.5) : Color.burgundy),
                         lineWidth: 2
                     )
             )

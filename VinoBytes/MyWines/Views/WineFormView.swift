@@ -87,7 +87,7 @@ struct WineFormView: View {
                     .keyboardType(.default)
             }
         }
-        .accentColor(.lightMaroon)
+        .accentColor(.burgundy)
     }
 
     private var wineDetailsSection: some View {
@@ -97,13 +97,13 @@ struct WineFormView: View {
             TextField("Region",   text: $vm.region)
             TextField("Grape",    text: $vm.grape)
         }
-        .accentColor(.lightMaroon)
+        .accentColor(.burgundy)
     }
 
     private func notesSection(title: String, text: Binding<String>) -> some View {
         Section(header: Text(title)) {
             TextEditor(text: text)
-                .accentColor(.lightMaroon)
+                .accentColor(.burgundy)
                 .frame(minHeight: 100, maxHeight: 200)
                 .cornerRadius(8)
         }
@@ -175,13 +175,13 @@ private struct PickerRow: View {
 private extension Button {
     func vintageButtonStyle(active: Bool) -> some View {
         self
-            .foregroundColor(active ? Color("LightMaroon") : .gray)
+            .foregroundColor(active ? Color("Burgundy") : .gray)
             .padding(8)
-            .background(active ? Color("LightMaroon").opacity(0.2) : Color.clear)
+            .background(active ? Color("Burgundy").opacity(0.2) : Color.clear)
             .cornerRadius(5)
             .overlay(
                 RoundedRectangle(cornerRadius: 5)
-                    .stroke(active ? Color("LightMaroon") : .clear, lineWidth: 2)
+                    .stroke(active ? Color("Burgundy") : .clear, lineWidth: 2)
             )
             .disabled(active)
     }

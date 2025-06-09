@@ -110,7 +110,7 @@ struct ReferenceMainView: View {
             Image(systemName: isLocked ? "lock.fill" : systemImage)  // Toggle icon based on lock status
                 .resizable()
                 .scaledToFit()
-                .foregroundColor(isLocked ? .lightMaroon : .black)  // Change color based on lock status
+                .foregroundColor(isLocked ? .burgundy : .black)  // Change color based on lock status
                 .frame(width: geometry.size.width * 0.06, height: geometry.size.width * 0.06) // Dynamic icon size
                 .minimumScaleFactor(0.5) // Allows icon to scale down if needed
             HStack {
@@ -125,12 +125,12 @@ struct ReferenceMainView: View {
         }
         .padding()
         .frame(maxWidth: .infinity, minHeight: geometry.size.height * 0.1) // Dynamic height
-        .background(isLocked ? Color.gray.opacity(0.3) : Color("LightLatte")) // Adjust background color
+        .background(isLocked ? Color.gray.opacity(0.3) : Color("latte")) // Adjust background color
         .cornerRadius(10)
         .shadow(radius: 5)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
-                .stroke(isLocked ? Color.gray.opacity(0.6) : Color("LightMaroon"), lineWidth: 2.2)
+                .stroke(isLocked ? Color.gray.opacity(0.6) : Color("Burgundy"), lineWidth: 2.2)
         )
     }
     

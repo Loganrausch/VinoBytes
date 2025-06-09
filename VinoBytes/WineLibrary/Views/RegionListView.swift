@@ -50,7 +50,7 @@ struct RegionListView: View {
                         .foregroundColor(.gray)
                     Spacer()
                     Image(systemName: "lock.fill")
-                        .foregroundColor(.lightMaroon)
+                        .foregroundColor(.burgundy)
                 }
                 .padding(.vertical, 5)
                 .contentShape(Rectangle())

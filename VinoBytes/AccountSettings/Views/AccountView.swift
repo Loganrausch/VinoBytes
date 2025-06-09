@@ -95,6 +95,7 @@ struct AccountView: View {
         } message: {
             Text("Please take a moment to rate us on the App Store.")
         }
+        .preferredColorScheme(.light)
     }
 
     // MARK: – Sub‑Views

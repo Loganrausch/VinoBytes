@@ -125,27 +125,27 @@ struct BlogPostView: View {
                     Text("Pro Feature")
                         .font(.title)
                         .bold()
-                        .foregroundColor(.lightMaroon)
+                        .foregroundColor(.burgundy)
                     
                     Text("Please upgrade to VinoBytes Pro to access full wine bytes.")
                         .font(.body)
                         .multilineTextAlignment(.center)
                         .padding(.horizontal)
-                        .foregroundColor(.lightMaroon)
+                        .foregroundColor(.burgundy)
                     
                     Button(action: {
                         startSubscriptionProcess()
                     }) {
                         Text("Subscribe")
                             .bold()
-                            .foregroundColor(.lightMaroon)
+                            .foregroundColor(.burgundy)
                             .padding()
                             .frame(maxWidth: .infinity)
                             .background(Color("Latte"))
                             .cornerRadius(10)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 10)
-                                    .stroke(Color.lightMaroon, lineWidth: 2)
+                                    .stroke(Color.burgundy, lineWidth: 2)
                             )
                             .shadow(radius: 5)
                             .padding(.horizontal, 50)

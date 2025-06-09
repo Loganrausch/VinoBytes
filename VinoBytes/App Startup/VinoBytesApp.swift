@@ -36,7 +36,7 @@ struct VinoBytesApp: App {
     private func configureNavigationBar() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground() // Ensures the background is not transparent
-        appearance.backgroundColor = UIColor(Color("Maroon")) // Dark maroon color
+        appearance.backgroundColor = UIColor(Color("Burgundy")) // Dark burgundy color
         appearance.titleTextAttributes = [.foregroundColor: UIColor.latte]
         appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.latte]
         
@@ -44,8 +44,8 @@ struct VinoBytesApp: App {
         UINavigationBar.appearance().standardAppearance = appearance
         UINavigationBar.appearance().compactAppearance = appearance
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
-        UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(named: "Maroon") ?? .red
-        UIPageControl.appearance().pageIndicatorTintColor = UIColor(named: "TransparentMaroon") ?? .gray
+        UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(named: "Burgundy") ?? .red
+        UIPageControl.appearance().pageIndicatorTintColor = UIColor(named: "Grey") ?? .darkGray
     }
     
     private func registerForPushNotifications() {

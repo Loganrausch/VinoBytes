@@ -22,7 +22,7 @@ final class FlashcardViewModel: ObservableObject {
     @Published var rotationAngle: Double   = 0
     @Published var showFront               = true
     @Published var swipeOffset: CGFloat    = 0
-    @Published var borderColor: Color      = .lightMaroon
+    @Published var borderColor: Color      = .burgundy
 
     // Feedback / tutorial
     @Published var showFeedback            = false
@@ -73,7 +73,7 @@ final class FlashcardViewModel: ObservableObject {
         } else {
             withAnimation(.spring()) {
                 swipeOffset  = 0
-                borderColor  = .lightMaroon
+                borderColor  = .burgundy
             }
         }
     }
@@ -103,7 +103,7 @@ final class FlashcardViewModel: ObservableObject {
         rotationAngle      = 0
         showFront          = true
         swipeOffset        = 0
-        borderColor        = .lightMaroon
+        borderColor        = .burgundy
         showFeedback       = false
 
         let seenTutorial   = UserDefaults.standard.bool(forKey: "hasSeenFlashcardTutorial")
@@ -142,7 +142,7 @@ final class FlashcardViewModel: ObservableObject {
         rotationAngle = 0
         showFront     = true
         withAnimation(.none) { swipeOffset = 0 }
-        borderColor   = .lightMaroon
+        borderColor   = .burgundy
     }
 
     private func incrementReviewCounter() {
