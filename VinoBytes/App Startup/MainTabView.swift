@@ -26,8 +26,8 @@ struct MainTabView: View {
         TabView(selection: $selectedTab) {
             HeroHomeView(selectedTab: $selectedTab)
                 .tabItem {
-                    Image(systemName: "chart.bar.doc.horizontal")
-                    Text("Dashboard")
+                    Image(systemName: "house")
+                    Text("Home")
                 }
                 .tag(0)
             

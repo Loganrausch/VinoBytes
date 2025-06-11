@@ -30,6 +30,7 @@ struct DashboardView: View {
     var body: some View {
         NavigationStack {
             GeometryReader { geometry in
+                let isSmallScreen = geometry.size.width <= 375
                 let buttonHeight = geometry.size.height * 0.135
                 ScrollView {
                     VStack(spacing: 16) {
@@ -37,7 +38,7 @@ struct DashboardView: View {
                         // ── Header ──
                         HStack {
                             Text("Your Dashboard")
-                                .font(.title.bold())
+                                .font(isSmallScreen ? .title2.bold() : .title.bold())
                             
                             
                             Spacer()
@@ -78,20 +79,20 @@ struct DashboardView: View {
                         .padding(.top, 12)
                         .padding(.bottom, 7)
                         
-                        Button("Reset Onboarding") {
-                            NotificationCenter.default.post(name: .didResetOnboarding, object: nil)
-                        }
-                        .font(.subheadline.bold())
-                        .foregroundColor(.burgundy)
-                        .padding()
-                        .background(Color.latte.opacity(0.8))
-                        .clipShape(Capsule())
-                        .shadow(radius: 3)
+//                        Button("Reset Onboarding") {
+//                            NotificationCenter.default.post(name: .didResetOnboarding, object: nil)
+//                        }
+//                        .font(.subheadline.bold())
+//                        .foregroundColor(.burgundy)
+//                        .padding()
+//                        .background(Color.latte.opacity(0.8))
+//                        .clipShape(Capsule())
+//                        .shadow(radius: 3)
                         
                         VStack(alignment: .leading, spacing: 8) {
                             // Outside the box
                             Text("Wine Fact of the Day")
-                                .font(.title3)
+                                .font(isSmallScreen ? .headline : .title3.bold())
                                 .bold()
                                 .padding(.horizontal)
                                 .padding(.bottom, 6)
@@ -131,7 +132,7 @@ struct DashboardView: View {
                         // Recent Wines Carousel Section
                         VStack(alignment: .leading, spacing: 8) {
                             Text("Your Recent Wines")
-                                .font(.title3)
+                                .font(isSmallScreen ? .headline : .title3.bold())
                                 .bold()
                                 .padding(.horizontal)
                             
@@ -228,8 +229,27 @@ struct DashboardView: View {
                                 
                                     .shadow(color: Color.black.opacity(0.35), radius: 6, x: 0, y: 4)
                             }
-                                .navigationDestination(isPresented: $navigateToBlogPost) {
-                                    BlogPostView(blogPost: latestPost, blogPosts: viewModel.blogPosts)
+                                .fullScreenCover(isPresented: $navigateToBlogPost) {
+                                    NavigationStack {
+                                        BlogPostView(
+                                            blogPost: latestPost,
+                                            blogPosts: viewModel.blogPosts
+                                        )
+                                        .toolbar {
+                                            ToolbarItem(placement: .navigationBarLeading) {
+                                                Button {
+                                                    navigateToBlogPost = false
+                                                } label: {
+                                                    HStack(spacing: 4) {
+                                                        Image(systemName: "chevron.left")
+                                                        Text("Back")
+                                                    }
+                                                    .foregroundColor(Color("Latte"))
+                                                    .fontWeight(.semibold)
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
                             } else {
                                 Text("Loading Blog Post...")

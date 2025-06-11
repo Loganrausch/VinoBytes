@@ -82,7 +82,7 @@
          </EnvironmentVariable>
          <EnvironmentVariable
             key = "CONTENTFUL_ACCESS_TOKEN"
-            value = "***REMOVED***dR7QTjdb9i9mkhCV2oZIFyMaQumU"
+            value = "9a8fg-l4_cLLc9ZdR7QTjdb9i9mkhCV2oZIFyMaQumU"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>

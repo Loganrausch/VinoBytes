@@ -24,6 +24,10 @@ struct HeroHomeView: View {
     @State private var pulse = false
     @State private var showDash = false
     @State private var didStartPulse = false
+    
+    private var isShortScreen: Bool {
+        UIScreen.main.bounds.height <= 670
+    }
 
     var body: some View {
         ZStack {
@@ -42,7 +46,7 @@ struct HeroHomeView: View {
                     .font(.title3.bold())
                     .foregroundColor(Color("Burgundy"))
                     .padding(.top, 30)
-                    .padding(.bottom, 20)
+                    .padding(.bottom, 30)
                 
                 
                 // If no name is set, add extra vertical space.
@@ -72,7 +76,7 @@ struct HeroHomeView: View {
                 }
                 .font(.title3)
                 .padding(.top, 10)
-                .padding(.bottom, 8)
+                
                 
               
                 Spacer()
@@ -86,7 +90,7 @@ struct HeroHomeView: View {
                         .multilineTextAlignment(.center)
                         .foregroundColor(Color("Latte"))
                         .frame(width: 220)
-                        .padding(.vertical, 120)
+                        .padding(.vertical, isShortScreen ? 90 : 120)
                         .background(
                             ZStack {
                                 RoundedRectangle(cornerRadius: 32)
@@ -159,7 +163,7 @@ struct HeroHomeView: View {
                     .shadow(color: Color.white.opacity(0.4), radius: 1, x: -1, y: -1)   // subtle edge light
                     .shadow(color: Color.black.opacity(0.4), radius: 8, x: 0, y: 6)     // deeper cast shadow
                 }
-                .padding(.bottom, 50)
+                .padding(.bottom, 40)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             

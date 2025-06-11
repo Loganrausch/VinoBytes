@@ -17,6 +17,8 @@ struct AccountView: View {
     @ObservedObject var refreshNotifier: RefreshNotifier
 
     @StateObject private var viewModel: AccountViewModel
+    
+    @State private var showSommLensPrompt = false
 
     // MARK: – Init
     init(refreshNotifier: RefreshNotifier,
@@ -95,6 +97,16 @@ struct AccountView: View {
         } message: {
             Text("Please take a moment to rate us on the App Store.")
         }
+        .alert("Scan Wine Bottles with AI", isPresented: $showSommLensPrompt) {
+            Button("Open SommLens") {
+                if let url = URL(string: "https://apps.apple.com/us/app/sommlens/id6746465776") {
+                    openURL(url)
+                }
+            }
+            Button("Later", role: .cancel) { }
+        } message: {
+            Text("Try SommLens—our AI-powered wine scanner that gives instant insights from any wine label.")
+        }
         .preferredColorScheme(.light)
     }
 
@@ -114,6 +126,9 @@ struct AccountView: View {
             Button("Feedback", action: viewModel.feedbackTapped)
             Button("Invite Friends", action: viewModel.inviteFriends)
             Button("Rate VinoBytes", action: viewModel.rateAppTapped)
+            Button("Try SommLens") {
+                showSommLensPrompt = true
+            }
         }
     }
 

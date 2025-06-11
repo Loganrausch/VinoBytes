@@ -40,7 +40,7 @@ struct MessageView: View {
             Markdown(content)
                 .markdownTheme(.assistantBubbleTheme)
                 .padding()
-                .background(Color("DarkLatte"))
+                .background(Color("DarkLatte").opacity(1.5))
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .frame(maxWidth: 300, alignment: .leading)
                 .layoutPriority(1)

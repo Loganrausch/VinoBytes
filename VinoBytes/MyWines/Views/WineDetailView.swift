@@ -17,31 +17,55 @@ struct WineDetailView: View {
     
     @State private var isSharing = false
     @State private var isEditing = false
+    @State private var isImageExpanded = false
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 
-            
-                // Header: Vintage, Producer, Wine Name
-                VStack(alignment: .leading, spacing: 5) {
-                    Text("\(wineEntity.vintage ?? "Year Unknown") \(wineEntity.producer ?? "Unknown Producer") \(wineEntity.wineName ?? "Unnamed Wine")")
-                        .font(.title)
-                        .fontWeight(.bold)
-                    
-                    
+                HStack(alignment: .top, spacing: 16) {
+                    // Header: Vintage, Producer, Wine Name
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text("\(wineEntity.vintage ?? "Year Unknown") \(wineEntity.producer ?? "Unknown Producer") \(wineEntity.wineName ?? "Unnamed Wine")")
+                            .font(.title)
+                            .fontWeight(.bold)
+                        
+                        
                         Text("Grape: \(wineEntity.grape ?? "Not Listed")")
                             .font(.subheadline)
-                           
-                 
-                    
-                    if let region = wineEntity.region, !region.isEmpty {
-                        Text(region)
-                            .font(.subheadline)
+                        
+                        
+                        
+                        if let region = wineEntity.region, !region.isEmpty {
+                            Text(region)
+                                .font(.subheadline)
                             
+                        }
                     }
-                }
-                .padding(.horizontal)
+                    // Image on right
+                      if let imageData = wineEntity.imageData, let uiImage = UIImage(data: imageData) {
+                          Image(uiImage: uiImage)
+                              .resizable()
+                              .aspectRatio(2/3, contentMode: .fill)
+                              .frame(width: 80, height: 120)
+                              .cornerRadius(10)
+                              .clipped()
+                              .shadow(radius: 3)
+                              .onTapGesture {
+                                  isImageExpanded = true
+                              }
+                      }
+                  }
+                  .padding(.horizontal)
+                  .sheet(isPresented: $isImageExpanded) {
+                      if let imageData = wineEntity.imageData, let uiImage = UIImage(data: imageData) {
+                          Image(uiImage: uiImage)
+                              .resizable()
+                              .scaledToFit()
+                              .background(Color.black.opacity(0.95))
+                              .ignoresSafeArea()
+                      }
+                  }
                 
                 Divider()
                 
@@ -173,18 +197,7 @@ struct WineDetailView: View {
                 }
                 .padding(.horizontal)
                 
-                Divider()
-                
-                // Wine Image
-                if let imageData = wineEntity.imageData, let uiImage = UIImage(data: imageData) {
-                    Image(uiImage: uiImage)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxWidth: .infinity)
-                        .cornerRadius(10)
-                        .shadow(radius: 5)
-                        .padding(.horizontal)
-                }
+              
                 
             }
             .padding(.vertical)
