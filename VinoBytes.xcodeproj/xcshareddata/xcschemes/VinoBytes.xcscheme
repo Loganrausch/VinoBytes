@@ -75,16 +75,10 @@
          </BuildableReference>
       </BuildableProductRunnable>
       <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "CONTENTFUL_SPACE_ID"
-            value = "kby79bk8msg8"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "CONTENTFUL_ACCESS_TOKEN"
-            value = "9a8fg-l4_cLLc9ZdR7QTjdb9i9mkhCV2oZIFyMaQumU"
-            isEnabled = "YES">
-         </EnvironmentVariable>
+         <EnvironmentVariable key = "CONTENTFUL_SPACE_ID" value = "$(CONTENTFUL_SPACE_ID)" isEnabled = "YES">
+  </EnvironmentVariable>
+         <EnvironmentVariable key = "CONTENTFUL_ACCESS_TOKEN" value = "$(CONTENTFUL_ACCESS_TOKEN)" isEnabled = "YES">
+  </EnvironmentVariable>
       </EnvironmentVariables>
       <StoreKitConfigurationFileReference
          identifier = "../../VinoBytes/Supporting/VinoBytes.storekit">
